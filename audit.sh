@@ -57,7 +57,7 @@ for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
 done
 echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md PATH-D-DEEP-DIVE.md SUPER-IN-DEPTH-PRESENTER-GUIDE.md EVALUATE.md audit.sh; do
+for f in START-HERE.md PRESENTATION-GUIDE.md EVALUATE.md REDACTION-NOTE.md audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
@@ -216,9 +216,9 @@ broken_list=$(mktemp)
 find presentation documentation known-issues -name "*.md" 2>/dev/null > /tmp/md_files_$$
 # include the orchestrator + evaluator files too
 echo "START-HERE.md" >> /tmp/md_files_$$
-echo "PATH-D-DEEP-DIVE.md" >> /tmp/md_files_$$
-echo "SUPER-IN-DEPTH-PRESENTER-GUIDE.md" >> /tmp/md_files_$$
+echo "PRESENTATION-GUIDE.md" >> /tmp/md_files_$$
 echo "EVALUATE.md" >> /tmp/md_files_$$
+echo "REDACTION-NOTE.md" >> /tmp/md_files_$$
 echo "README.md" >> /tmp/md_files_$$
 
 while IFS= read -r mdfile; do

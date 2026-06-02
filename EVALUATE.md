@@ -14,9 +14,8 @@ The directory you're in contains the documentation bundle:
 
 | Path | What it is |
 |------|-----------|
-| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable and four audience-specific reading orders. **Read this first.** |
-| `PATH-D-DEEP-DIVE.md` | Long-term maintainer / no-human-context audit playbook. |
-| `SUPER-IN-DEPTH-PRESENTER-GUIDE.md` | Speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
+| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable, includes Paths A-E, and contains the full Path D no-human-context audit playbook. **Read this first.** |
+| `PRESENTATION-GUIDE.md` | Path E speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |
@@ -172,7 +171,7 @@ Read enough to surface internal contradictions. Examples of the kind of thing to
 
 - Every file path it links to **exists** at that path.
 - Every path A → presented order (Sessions 1–5) names decks/docs that actually exist with those filenames.
-- Path B (45-min talk), Path C (solo successor reading order), and Path D (deep-dive maintainer playbook) reference real files.
+- Path B (45-min talk), Path C (solo successor reading order), Path D (deep-dive maintainer playbook), and Path E (presentation guide) reference real files.
 - The "Quick reference" section at the bottom is accurate.
 
 ### Task 8 — Stylistic / quality assessment

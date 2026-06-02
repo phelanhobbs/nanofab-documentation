@@ -1,4 +1,4 @@
-# Super In Depth Presenter Guide
+# Presentation Guide
 
 This file tells Faith how to present the complete handoff to a future maintainer while showing the existing slide decks on a screen.
 
@@ -56,7 +56,7 @@ Before starting, prepare:
 - A screen with slides open in presenter mode if possible.
 - This file open beside the slides.
 - [START-HERE.md](START-HERE.md) open.
-- [PATH-D-DEEP-DIVE.md](PATH-D-DEEP-DIVE.md) open.
+- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive) open to Path D.
 - The documentation repo checked out on the current handoff branch.
 - The source repos available as sibling directories: `../UNanofabTools` and `../NanofabToolkit`.
 - A terminal in `nanofab-documentation/`.
@@ -164,7 +164,7 @@ Use this as the master order. It intentionally covers more than Path A.
 ### Show
 
 - [START-HERE.md](START-HERE.md)
-- [PATH-D-DEEP-DIVE.md](PATH-D-DEEP-DIVE.md)
+- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive)
 - This file.
 
 ### Say
@@ -1221,7 +1221,7 @@ The maintainer can produce a 7-day and 30-day maintenance plan.
 
 ### Show
 
-- [PATH-D-DEEP-DIVE.md](PATH-D-DEEP-DIVE.md)
+- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive)
 - [EVALUATE.md](EVALUATE.md)
 - [audit.sh](audit.sh)
 
@@ -1434,7 +1434,7 @@ Leave them with:
 - This documentation repo.
 - The `super-in-depth` branch.
 - [START-HERE.md](START-HERE.md).
-- [PATH-D-DEEP-DIVE.md](PATH-D-DEEP-DIVE.md).
+- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive).
 - This presenter guide.
 - Current source repo locations and commits.
 - Current live-server survey snapshot.
