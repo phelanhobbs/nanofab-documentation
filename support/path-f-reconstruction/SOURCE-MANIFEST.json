@@ -1,0 +1,960 @@
+{
+  "target_words": 2500000,
+  "total_words": 3639241,
+  "files": [
+    {
+      "repo": "UNanofabTools",
+      "path": ".env.example",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": ".gitignore",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "ALDTransfer.ps1",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "ALD_chart.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CHEM_INVENTORY_README.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CHEM_INVENTORY_SETUP.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CHEM_INVENTORY_V2_QUICK_REF.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CHEM_INVENTORY_V2_UPGRADE.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CTRFurnaceTransfer.bat",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "CTRFurnaceTransfer.ps1",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "DATInstructions.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "DATfixer.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "DATgrapher.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "Dent635Transfer.ps1",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "FLASK_MIGRATION.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "FileTransferSetup.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "FileTransferTemplate.ps1",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDATA/js/adminActions.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDATA/js/graph.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDATA/js/tablesort.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDATA/js/taskActions.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDisplayerServer.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "HSCDownloader.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "INTEGRATION_SUMMARY.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "NMonStore.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "ParticleSensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "Particle_sensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "PicoConnect.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "PicoDenton18.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "PicoParylene.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "QUICK_START.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "REFACTORING_SUMMARY.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "SETUP_GUIDE.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "START_HERE.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "VGC083C_Monitor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/__init__.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/admin.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/api.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/auth.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/chem_inventory.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/chem_inventory_remote.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/machines.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/particle_demo_will.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/blueprints/tasks.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/__init__.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/chem_inventory.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/particle_sensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/session.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/task.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/models/user.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/services/admin_service.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/services/auth_service.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/services/chem_service.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/services/data_service.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/services/task_service.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/static/css/inventory.css",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/static/js/adminActions.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/static/js/graph.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/static/js/tablesort.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/static/js/taskActions.js",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/base.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/OLDbcq.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/add.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/barcode_print.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/barcode_queue.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/base.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/edit.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/inventory.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/inventory_print.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/move.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/remove.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/report.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/transactions.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/chem/upload_scans.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/createTask.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/index.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/logFileIndex.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/login.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/login_example.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/machines.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/resetpassword.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/signup.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/tasks.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "chem_inventory_remote.py",
+      "dirty": true,
+      "untracked": true
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "chem_schema.sql",
+      "dirty": true,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "chem_schema_migration_v2.sql",
+      "dirty": true,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "config/config.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "createTask.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "curl_for_particle.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "fetch_ssh.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "gencert.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "generate_test_particle_data.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "index.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "init_chem_db.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "logFileIndex.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "login.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "machines.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "migrations/README",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "migrations/alembic.ini",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "migrations/env.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "migrations/script.py.mako",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "migrations/versions/01bdbfe91bd5_create_particle_sensor_tables.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "particle_data_viewer.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "peakCount.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "peakCount.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "quick_setup.sh",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "requirements.txt",
+      "dirty": true,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "resetpassword.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "run.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "setup.sh",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "signup.html",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": ".github/workflows/build-particle-sensor.yml",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": ".gitignore",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/ALDPeakCounter.spec",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/main.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/requirements.txt",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/src/assets/icon.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/src/gui.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/src/hook-matplotlib.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ALDPeakCounter/src/peakCount.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/DentonDecoder.spec",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/main.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/pyinstaller/hooks/hook-runtime.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/requirements.txt",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/src/DentonDecoder.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/src/DentonGrapher.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "DentonDecoder/src/gui.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "LICENSE",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/ParalyneReader.spec",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/main.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/requirements.txt",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/src/ParalyneReader.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/src/assets/icon.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParalyneReader/src/gui.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/INTEGRATION_SUMMARY.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/ParticleSensor.spec",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/main.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/requirements.txt",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/src/ParticleSensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/src/assets/icon.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "ParticleSensor/src/gui.py",
+      "dirty": true,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/DHT22_sensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/GetPicoMAC.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/Particle_sensor.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/PicoNetworkCheck.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/PicoSetupInstructions.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/boot.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/picopass.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PicoHelperTools/sensor_combined.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PreciousMetalReader/PreciousMetalReader.spec",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PreciousMetalReader/main.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PreciousMetalReader/requirements.txt",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PreciousMetalReader/src/RetrieveMonthsMetals.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "PreciousMetalReader/src/gui.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "README.md",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "pyinstaller/hooks/f2py_hook.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "pyinstaller/hooks/hook-numpy.f2py.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "pyinstaller/hooks/hook-runtime.py",
+      "dirty": false,
+      "untracked": false
+    },
+    {
+      "repo": "NanofabToolkit",
+      "path": "pyinstaller/hooks/hook-scipy.py",
+      "dirty": false,
+      "untracked": false
+    }
+  ]
+}

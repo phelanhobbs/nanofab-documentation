@@ -63,7 +63,7 @@ for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
 done
 echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md support/PRESENTATION-GUIDE.md support/path-e-script/README.md support/path-e-script/TIMING.md support/path-e-script-minimum/README.md support/path-e-script-medium/README.md support/path-e-script-verbose/README.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
+for f in START-HERE.md support/PRESENTATION-GUIDE.md support/path-e-script/README.md support/path-e-script/TIMING.md support/path-e-script-minimum/README.md support/path-e-script-medium/README.md support/path-e-script-verbose/README.md support/path-f-reconstruction/README.md support/path-f-reconstruction/WORDCOUNT.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
