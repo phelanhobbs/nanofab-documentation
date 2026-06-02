@@ -55,8 +55,8 @@ Before starting, prepare:
 
 - A screen with slides open in presenter mode if possible.
 - This file open beside the slides.
-- [START-HERE.md](START-HERE.md) open.
-- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive) open to Path D.
+- [START-HERE.md](../START-HERE.md) open.
+- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive) open to Path D.
 - The documentation repo checked out on the current handoff branch.
 - The source repos available as sibling directories: `../UNanofabTools` and `../NanofabToolkit`.
 - A terminal in `nanofab-documentation/`.
@@ -127,44 +127,44 @@ Use this as the master order. It intentionally covers more than Path A.
 
 | Order | Deck | Purpose |
 |-------|------|---------|
-| 1 | [00-Start-Here-Index.pptx](presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx) | Explain the slide series and how to use it. |
-| 2 | [01-Server-Overview.pptx](presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx) | Establish the full server mental model. |
-| 3 | [Live-Server.pptx](presentation/UNanofabTools/liveserver/slides/Live-Server.pptx) | Explain what is actually running on `nfhistory`. |
-| 4 | [Server-Access.pptx](presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx) | Teach access, tmux, and safe inspection. |
-| 5 | [02-How-It-Starts.pptx](presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx) | Show startup, app factory, and blueprints. |
-| 6 | [03-Configuration.pptx](presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx) | Explain env vars, config classes, and data paths. |
-| 7 | [04-Authentication-and-Login.pptx](presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx) | Explain login, sessions, password hashing, and Duo. |
-| 8 | [05-Admin-Panel.pptx](presentation/UNanofabTools/flaskserver/slides/05-Admin-Panel.pptx) | Explain admin permissions and user management. |
-| 9 | [06-Tasks.pptx](presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx) | Explain the internal task tracker. |
-| 10 | [07-Machines-and-Logs.pptx](presentation/UNanofabTools/flaskserver/slides/07-Machines-and-Logs.pptx) | Explain machine pages, log browsing, downloads, and graphs. |
-| 11 | [08-IoT-API-Endpoints.pptx](presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx) | Explain device ingestion endpoints and data contracts. |
-| 12 | [09-Chemical-Inventory.pptx](presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx) | Explain the largest feature and the local PostgreSQL dependency. |
-| 13 | [10-Database-Models.pptx](presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx) | Explain SQLite, PostgreSQL, tables, and persistence. |
-| 14 | [11-Particle-Demo.pptx](presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx) | Explain the standalone demo page. |
-| 15 | [12-Consumers-NanofabToolkit.pptx](presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx) | Explain producers and consumers outside the Flask app. |
-| 16 | [13-Request-Lifecycle-Walkthrough.pptx](presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx) | Tie requests, devices, nginx, auth, routes, and persistence together. |
-| 17 | [14-Security-Model.pptx](presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx) | Explain security strengths and gaps honestly. |
-| 18 | [15-Endpoint-Reference.pptx](presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx) | Explain every route family and how to audit route drift. |
-| 19 | [HSC-Downloader.pptx](presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx) | Explain the CORES to HSCDATA data supply line. |
-| 20 | [File-Transfer-Scripts.pptx](presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx) | Explain machine-control-PC uploads. |
-| 21 | [PicoHelperTools.pptx](presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx) | Explain canonical Pico firmware. |
-| 22 | [ParticleSensor.pptx](presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx) | Explain canonical desktop particle viewer. |
-| 23 | [Pico-Firmware.pptx](presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx) | Explain older firmware copies and historical context. |
-| 24 | [Particle-PC-Tools.pptx](presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx) | Explain older particle viewer/test generator copies. |
-| 25 | [ParalyneReader.pptx](presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx) | Explain Parylene desktop data review. |
-| 26 | [DAT-Tools.pptx](presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx) | Explain DATfixer and DATgrapher. |
-| 27 | [DentonDecoder.pptx](presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx) | Explain the separate Denton charting tool. |
-| 28 | [ALDPeakCounter.pptx](presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx) | Explain ALD cycle counting and run comparison. |
-| 29 | [PreciousMetalReader.pptx](presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx) | Explain monthly CORES metal-usage extraction. |
-| 30 | [Utilities.pptx](presentation/UNanofabTools/utilities/slides/Utilities.pptx) | Explain helper scripts and incomplete utilities. |
-| 31 | [HSC-Displayer-Server-Legacy.pptx](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) | Explain the deprecated predecessor and why to avoid improving it. |
+| 1 | [00-Start-Here-Index.pptx](../presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx) | Explain the slide series and how to use it. |
+| 2 | [01-Server-Overview.pptx](../presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx) | Establish the full server mental model. |
+| 3 | [Live-Server.pptx](../presentation/UNanofabTools/liveserver/slides/Live-Server.pptx) | Explain what is actually running on `nfhistory`. |
+| 4 | [Server-Access.pptx](../presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx) | Teach access, tmux, and safe inspection. |
+| 5 | [02-How-It-Starts.pptx](../presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx) | Show startup, app factory, and blueprints. |
+| 6 | [03-Configuration.pptx](../presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx) | Explain env vars, config classes, and data paths. |
+| 7 | [04-Authentication-and-Login.pptx](../presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx) | Explain login, sessions, password hashing, and Duo. |
+| 8 | [05-Admin-Panel.pptx](../presentation/UNanofabTools/flaskserver/slides/05-Admin-Panel.pptx) | Explain admin permissions and user management. |
+| 9 | [06-Tasks.pptx](../presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx) | Explain the internal task tracker. |
+| 10 | [07-Machines-and-Logs.pptx](../presentation/UNanofabTools/flaskserver/slides/07-Machines-and-Logs.pptx) | Explain machine pages, log browsing, downloads, and graphs. |
+| 11 | [08-IoT-API-Endpoints.pptx](../presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx) | Explain device ingestion endpoints and data contracts. |
+| 12 | [09-Chemical-Inventory.pptx](../presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx) | Explain the largest feature and the local PostgreSQL dependency. |
+| 13 | [10-Database-Models.pptx](../presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx) | Explain SQLite, PostgreSQL, tables, and persistence. |
+| 14 | [11-Particle-Demo.pptx](../presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx) | Explain the standalone demo page. |
+| 15 | [12-Consumers-NanofabToolkit.pptx](../presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx) | Explain producers and consumers outside the Flask app. |
+| 16 | [13-Request-Lifecycle-Walkthrough.pptx](../presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx) | Tie requests, devices, nginx, auth, routes, and persistence together. |
+| 17 | [14-Security-Model.pptx](../presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx) | Explain security strengths and gaps honestly. |
+| 18 | [15-Endpoint-Reference.pptx](../presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx) | Explain every route family and how to audit route drift. |
+| 19 | [HSC-Downloader.pptx](../presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx) | Explain the CORES to HSCDATA data supply line. |
+| 20 | [File-Transfer-Scripts.pptx](../presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx) | Explain machine-control-PC uploads. |
+| 21 | [PicoHelperTools.pptx](../presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx) | Explain canonical Pico firmware. |
+| 22 | [ParticleSensor.pptx](../presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx) | Explain canonical desktop particle viewer. |
+| 23 | [Pico-Firmware.pptx](../presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx) | Explain older firmware copies and historical context. |
+| 24 | [Particle-PC-Tools.pptx](../presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx) | Explain older particle viewer/test generator copies. |
+| 25 | [ParalyneReader.pptx](../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx) | Explain Parylene desktop data review. |
+| 26 | [DAT-Tools.pptx](../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx) | Explain DATfixer and DATgrapher. |
+| 27 | [DentonDecoder.pptx](../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx) | Explain the separate Denton charting tool. |
+| 28 | [ALDPeakCounter.pptx](../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx) | Explain ALD cycle counting and run comparison. |
+| 29 | [PreciousMetalReader.pptx](../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx) | Explain monthly CORES metal-usage extraction. |
+| 30 | [Utilities.pptx](../presentation/UNanofabTools/utilities/slides/Utilities.pptx) | Explain helper scripts and incomplete utilities. |
+| 31 | [HSC-Displayer-Server-Legacy.pptx](../presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) | Explain the deprecated predecessor and why to avoid improving it. |
 
 ## Module 0 - Set The Contract
 
 ### Show
 
-- [START-HERE.md](START-HERE.md)
-- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive)
+- [START-HERE.md](../START-HERE.md)
+- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive)
 - This file.
 
 ### Say
@@ -179,7 +179,7 @@ Open a terminal and run:
 
 ```sh
 git status --short --branch
-bash audit.sh
+bash support/audit.sh
 ```
 
 Do not dwell on every line yet. Use the audit output to prove the docs have a repeatable mechanical check.
@@ -199,10 +199,10 @@ The maintainer can explain that this is a documentation-only GitHub repo and tha
 
 ### Show
 
-- [00-Start-Here-Index.pptx](presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx)
-- [01-Server-Overview.pptx](presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx)
-- [presentation/UNanofabTools/flaskserver/README.md](presentation/UNanofabTools/flaskserver/README.md)
-- [documentation/UNanofabTools/flaskserver/01-architecture.md](documentation/UNanofabTools/flaskserver/01-architecture.md)
+- [00-Start-Here-Index.pptx](../presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx)
+- [01-Server-Overview.pptx](../presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx)
+- [presentation/UNanofabTools/flaskserver/README.md](../presentation/UNanofabTools/flaskserver/README.md)
+- [documentation/UNanofabTools/flaskserver/01-architecture.md](../documentation/UNanofabTools/flaskserver/01-architecture.md)
 
 ### Presenter Intent
 
@@ -271,10 +271,10 @@ browser/devices/CORES/tool PCs
 
 ### Show
 
-- [Live-Server.pptx](presentation/UNanofabTools/liveserver/slides/Live-Server.pptx)
-- [presentation/UNanofabTools/liveserver/README.md](presentation/UNanofabTools/liveserver/README.md)
-- [documentation/UNanofabTools/liveserver/README.md](documentation/UNanofabTools/liveserver/README.md)
-- [known-issues/UNanofabTools/liveserver.md](known-issues/UNanofabTools/liveserver.md)
+- [Live-Server.pptx](../presentation/UNanofabTools/liveserver/slides/Live-Server.pptx)
+- [presentation/UNanofabTools/liveserver/README.md](../presentation/UNanofabTools/liveserver/README.md)
+- [documentation/UNanofabTools/liveserver/README.md](../documentation/UNanofabTools/liveserver/README.md)
+- [known-issues/UNanofabTools/liveserver.md](../known-issues/UNanofabTools/liveserver.md)
 
 ### Presenter Intent
 
@@ -345,10 +345,10 @@ The maintainer can say: "The app and downloader currently live in tmux. Moving t
 
 ### Show
 
-- [Server-Access.pptx](presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx)
-- [presentation/UNanofabTools/serveraccess/README.md](presentation/UNanofabTools/serveraccess/README.md)
-- [documentation/UNanofabTools/serveraccess/README.md](documentation/UNanofabTools/serveraccess/README.md)
-- [known-issues/UNanofabTools/serveraccess.md](known-issues/UNanofabTools/serveraccess.md)
+- [Server-Access.pptx](../presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx)
+- [presentation/UNanofabTools/serveraccess/README.md](../presentation/UNanofabTools/serveraccess/README.md)
+- [documentation/UNanofabTools/serveraccess/README.md](../documentation/UNanofabTools/serveraccess/README.md)
+- [known-issues/UNanofabTools/serveraccess.md](../known-issues/UNanofabTools/serveraccess.md)
 
 ### Presenter Intent
 
@@ -398,7 +398,7 @@ bash ~/survey_nfhistory.sh | tee /tmp/nfhistory_survey_$(date +%F).txt
 
 If you do not run it live, show where snapshots live:
 
-- [documentation/UNanofabTools/liveserver/snapshots/](documentation/UNanofabTools/liveserver/snapshots/)
+- [documentation/UNanofabTools/liveserver/snapshots/](../documentation/UNanofabTools/liveserver/snapshots/)
 
 ### Ask The Maintainer
 
@@ -422,10 +422,10 @@ attach, look, detach with Ctrl-b d, do not exit, do not Ctrl-c
 
 ### Show
 
-- [02-How-It-Starts.pptx](presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx)
-- [presentation/UNanofabTools/flaskserver/02-How-It-Starts.md](presentation/UNanofabTools/flaskserver/02-How-It-Starts.md)
-- [documentation/UNanofabTools/flaskserver/01-architecture.md](documentation/UNanofabTools/flaskserver/01-architecture.md)
-- [documentation/UNanofabTools/flaskserver/02-getting-started.md](documentation/UNanofabTools/flaskserver/02-getting-started.md)
+- [02-How-It-Starts.pptx](../presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx)
+- [presentation/UNanofabTools/flaskserver/02-How-It-Starts.md](../presentation/UNanofabTools/flaskserver/02-How-It-Starts.md)
+- [documentation/UNanofabTools/flaskserver/01-architecture.md](../documentation/UNanofabTools/flaskserver/01-architecture.md)
+- [documentation/UNanofabTools/flaskserver/02-getting-started.md](../documentation/UNanofabTools/flaskserver/02-getting-started.md)
 
 ### Presenter Intent
 
@@ -470,10 +470,10 @@ The maintainer can explain `run.py -> create_app -> config -> extensions -> blue
 
 ### Show
 
-- [03-Configuration.pptx](presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx)
-- [presentation/UNanofabTools/flaskserver/03-Configuration.md](presentation/UNanofabTools/flaskserver/03-Configuration.md)
-- [documentation/UNanofabTools/flaskserver/03-configuration-reference.md](documentation/UNanofabTools/flaskserver/03-configuration-reference.md)
-- [documentation/UNanofabTools/flaskserver/02-getting-started.md](documentation/UNanofabTools/flaskserver/02-getting-started.md)
+- [03-Configuration.pptx](../presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx)
+- [presentation/UNanofabTools/flaskserver/03-Configuration.md](../presentation/UNanofabTools/flaskserver/03-Configuration.md)
+- [documentation/UNanofabTools/flaskserver/03-configuration-reference.md](../documentation/UNanofabTools/flaskserver/03-configuration-reference.md)
+- [documentation/UNanofabTools/flaskserver/02-getting-started.md](../documentation/UNanofabTools/flaskserver/02-getting-started.md)
 
 ### Presenter Intent
 
@@ -527,11 +527,11 @@ The maintainer can identify production-sensitive config without seeing secret va
 
 ### Show
 
-- [04-Authentication-and-Login.pptx](presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx)
-- [05-Admin-Panel.pptx](presentation/UNanofabTools/flaskserver/slides/05-Admin-Panel.pptx)
-- [presentation/UNanofabTools/flaskserver/04-Authentication-and-Login.md](presentation/UNanofabTools/flaskserver/04-Authentication-and-Login.md)
-- [presentation/UNanofabTools/flaskserver/05-Admin-Panel.md](presentation/UNanofabTools/flaskserver/05-Admin-Panel.md)
-- [documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md](documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
+- [04-Authentication-and-Login.pptx](../presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx)
+- [05-Admin-Panel.pptx](../presentation/UNanofabTools/flaskserver/slides/05-Admin-Panel.pptx)
+- [presentation/UNanofabTools/flaskserver/04-Authentication-and-Login.md](../presentation/UNanofabTools/flaskserver/04-Authentication-and-Login.md)
+- [presentation/UNanofabTools/flaskserver/05-Admin-Panel.md](../presentation/UNanofabTools/flaskserver/05-Admin-Panel.md)
+- [documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md](../documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
 
 ### Presenter Intent
 
@@ -585,10 +585,10 @@ The maintainer can identify the login route, admin route, service-layer auth hel
 
 ### Show
 
-- [06-Tasks.pptx](presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx)
-- [presentation/UNanofabTools/flaskserver/06-Tasks.md](presentation/UNanofabTools/flaskserver/06-Tasks.md)
-- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
-- [documentation/UNanofabTools/flaskserver/06-service-layer-reference.md](documentation/UNanofabTools/flaskserver/06-service-layer-reference.md)
+- [06-Tasks.pptx](../presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx)
+- [presentation/UNanofabTools/flaskserver/06-Tasks.md](../presentation/UNanofabTools/flaskserver/06-Tasks.md)
+- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](../documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+- [documentation/UNanofabTools/flaskserver/06-service-layer-reference.md](../documentation/UNanofabTools/flaskserver/06-service-layer-reference.md)
 
 ### Presenter Intent
 
@@ -631,10 +631,10 @@ The maintainer can trace one task from creation to database row to dashboard dis
 
 ### Show
 
-- [07-Machines-and-Logs.pptx](presentation/UNanofabTools/flaskserver/slides/07-Machines-and-Logs.pptx)
-- [presentation/UNanofabTools/flaskserver/07-Machines-and-Logs.md](presentation/UNanofabTools/flaskserver/07-Machines-and-Logs.md)
-- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
-- [documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md](documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
+- [07-Machines-and-Logs.pptx](../presentation/UNanofabTools/flaskserver/slides/07-Machines-and-Logs.pptx)
+- [presentation/UNanofabTools/flaskserver/07-Machines-and-Logs.md](../presentation/UNanofabTools/flaskserver/07-Machines-and-Logs.md)
+- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](../documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+- [documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md](../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
 
 ### Presenter Intent
 
@@ -685,11 +685,11 @@ The maintainer can name the machine data path from external producer to web page
 
 ### Show
 
-- [08-IoT-API-Endpoints.pptx](presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx)
-- [12-Consumers-NanofabToolkit.pptx](presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx)
-- [presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md](presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md)
-- [presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md](presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md)
-- [documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md](documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
+- [08-IoT-API-Endpoints.pptx](../presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx)
+- [12-Consumers-NanofabToolkit.pptx](../presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx)
+- [presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md](../presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md)
+- [presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md](../presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md)
+- [documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md](../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
 
 ### Presenter Intent
 
@@ -745,12 +745,12 @@ The maintainer can trace a Pico reading from firmware to Flask route to storage 
 
 ### Show
 
-- [09-Chemical-Inventory.pptx](presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx)
-- [10-Database-Models.pptx](presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx)
-- [presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md](presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md)
-- [presentation/UNanofabTools/flaskserver/10-Database-Models.md](presentation/UNanofabTools/flaskserver/10-Database-Models.md)
-- [documentation/UNanofabTools/flaskserver/04-database-schema.md](documentation/UNanofabTools/flaskserver/04-database-schema.md)
-- [known-issues/UNanofabTools/flaskserver.md](known-issues/UNanofabTools/flaskserver.md)
+- [09-Chemical-Inventory.pptx](../presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx)
+- [10-Database-Models.pptx](../presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx)
+- [presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md](../presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md)
+- [presentation/UNanofabTools/flaskserver/10-Database-Models.md](../presentation/UNanofabTools/flaskserver/10-Database-Models.md)
+- [documentation/UNanofabTools/flaskserver/04-database-schema.md](../documentation/UNanofabTools/flaskserver/04-database-schema.md)
+- [known-issues/UNanofabTools/flaskserver.md](../known-issues/UNanofabTools/flaskserver.md)
 
 ### Presenter Intent
 
@@ -818,11 +818,11 @@ The maintainer can explain the chem inventory's data model and why schema drift 
 
 ### Show
 
-- [13-Request-Lifecycle-Walkthrough.pptx](presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx)
-- [15-Endpoint-Reference.pptx](presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx)
-- [presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md](presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md)
-- [presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md](presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md)
-- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+- [13-Request-Lifecycle-Walkthrough.pptx](../presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx)
+- [15-Endpoint-Reference.pptx](../presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx)
+- [presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md](../presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md)
+- [presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md](../presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md)
+- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](../documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
 
 ### Presenter Intent
 
@@ -842,8 +842,8 @@ rg -n "^[[:space:]]*@[a-zA-Z_]+\\.route\\(|^[[:space:]]*@app\\.route\\(" ../UNan
 
 Then compare to:
 
-- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
-- [presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md](presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md)
+- [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](../documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+- [presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md](../presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md)
 
 ### Practice Exercise
 
@@ -881,10 +881,10 @@ The maintainer can audit one endpoint from docs to source to data side effects.
 
 ### Show
 
-- [14-Security-Model.pptx](presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx)
-- [presentation/UNanofabTools/flaskserver/14-Security-Model.md](presentation/UNanofabTools/flaskserver/14-Security-Model.md)
-- [documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md](documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
-- [known-issues/UNanofabTools/README.md](known-issues/UNanofabTools/README.md)
+- [14-Security-Model.pptx](../presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx)
+- [presentation/UNanofabTools/flaskserver/14-Security-Model.md](../presentation/UNanofabTools/flaskserver/14-Security-Model.md)
+- [documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md](../documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
+- [known-issues/UNanofabTools/README.md](../known-issues/UNanofabTools/README.md)
 
 ### Presenter Intent
 
@@ -928,10 +928,10 @@ The maintainer can name the top security follow-ups without looking.
 
 ### Show
 
-- [HSC-Downloader.pptx](presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx)
-- [presentation/UNanofabTools/hscdownloader/README.md](presentation/UNanofabTools/hscdownloader/README.md)
-- [documentation/UNanofabTools/hscdownloader/README.md](documentation/UNanofabTools/hscdownloader/README.md)
-- [known-issues/UNanofabTools/hscdownloader.md](known-issues/UNanofabTools/hscdownloader.md)
+- [HSC-Downloader.pptx](../presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx)
+- [presentation/UNanofabTools/hscdownloader/README.md](../presentation/UNanofabTools/hscdownloader/README.md)
+- [documentation/UNanofabTools/hscdownloader/README.md](../documentation/UNanofabTools/hscdownloader/README.md)
+- [known-issues/UNanofabTools/hscdownloader.md](../known-issues/UNanofabTools/hscdownloader.md)
 
 ### Presenter Intent
 
@@ -977,10 +977,10 @@ The maintainer can explain CORES to HSCDownloader to `HSCDATA` to machine pages.
 
 ### Show
 
-- [File-Transfer-Scripts.pptx](presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx)
-- [presentation/UNanofabTools/filetransfer/README.md](presentation/UNanofabTools/filetransfer/README.md)
-- [documentation/UNanofabTools/filetransfer/README.md](documentation/UNanofabTools/filetransfer/README.md)
-- [known-issues/UNanofabTools/filetransfer.md](known-issues/UNanofabTools/filetransfer.md)
+- [File-Transfer-Scripts.pptx](../presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx)
+- [presentation/UNanofabTools/filetransfer/README.md](../presentation/UNanofabTools/filetransfer/README.md)
+- [documentation/UNanofabTools/filetransfer/README.md](../documentation/UNanofabTools/filetransfer/README.md)
+- [known-issues/UNanofabTools/filetransfer.md](../known-issues/UNanofabTools/filetransfer.md)
 
 ### Presenter Intent
 
@@ -1017,15 +1017,15 @@ The maintainer can distinguish HSCDownloader data from tool-PC file-transfer dat
 
 ### Show
 
-- [PicoHelperTools.pptx](presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx)
-- [ParticleSensor.pptx](presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx)
-- [Pico-Firmware.pptx](presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx)
-- [Particle-PC-Tools.pptx](presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx)
-- [documentation/NanofabToolkit/PicoHelperTools/README.md](documentation/NanofabToolkit/PicoHelperTools/README.md)
-- [documentation/NanofabToolkit/ParticleSensor/README.md](documentation/NanofabToolkit/ParticleSensor/README.md)
-- [known-issues/UNanofabTools/picofirmware.md](known-issues/UNanofabTools/picofirmware.md)
-- [known-issues/UNanofabTools/particlepctools.md](known-issues/UNanofabTools/particlepctools.md)
-- [known-issues/NanofabToolkit/ParticleSensor.md](known-issues/NanofabToolkit/ParticleSensor.md)
+- [PicoHelperTools.pptx](../presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx)
+- [ParticleSensor.pptx](../presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx)
+- [Pico-Firmware.pptx](../presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx)
+- [Particle-PC-Tools.pptx](../presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx)
+- [documentation/NanofabToolkit/PicoHelperTools/README.md](../documentation/NanofabToolkit/PicoHelperTools/README.md)
+- [documentation/NanofabToolkit/ParticleSensor/README.md](../documentation/NanofabToolkit/ParticleSensor/README.md)
+- [known-issues/UNanofabTools/picofirmware.md](../known-issues/UNanofabTools/picofirmware.md)
+- [known-issues/UNanofabTools/particlepctools.md](../known-issues/UNanofabTools/particlepctools.md)
+- [known-issues/NanofabToolkit/ParticleSensor.md](../known-issues/NanofabToolkit/ParticleSensor.md)
 
 ### Presenter Intent
 
@@ -1073,12 +1073,12 @@ The maintainer can say which repo to modify and which repo to treat as historica
 
 ### Show
 
-- [ParalyneReader.pptx](presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
-- [DAT-Tools.pptx](presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
-- [DentonDecoder.pptx](presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
-- [ALDPeakCounter.pptx](presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
-- [PreciousMetalReader.pptx](presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
-- [Utilities.pptx](presentation/UNanofabTools/utilities/slides/Utilities.pptx)
+- [ParalyneReader.pptx](../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
+- [DAT-Tools.pptx](../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
+- [DentonDecoder.pptx](../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
+- [ALDPeakCounter.pptx](../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
+- [PreciousMetalReader.pptx](../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
+- [Utilities.pptx](../presentation/UNanofabTools/utilities/slides/Utilities.pptx)
 - the matching developer READMEs under `documentation/`.
 
 ### Presenter Intent
@@ -1143,11 +1143,11 @@ The maintainer can group every tool by purpose, source repo, input, output, and 
 
 ### Show
 
-- [HSC-Displayer-Server-Legacy.pptx](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx)
-- [presentation/UNanofabTools/hscdisplayerserver/README.md](presentation/UNanofabTools/hscdisplayerserver/README.md)
-- [documentation/UNanofabTools/hscdisplayerserver/README.md](documentation/UNanofabTools/hscdisplayerserver/README.md)
-- [documentation/UNanofabTools/hscdisplayerserver/ROUTES.md](documentation/UNanofabTools/hscdisplayerserver/ROUTES.md)
-- [known-issues/UNanofabTools/hscdisplayerserver.md](known-issues/UNanofabTools/hscdisplayerserver.md)
+- [HSC-Displayer-Server-Legacy.pptx](../presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx)
+- [presentation/UNanofabTools/hscdisplayerserver/README.md](../presentation/UNanofabTools/hscdisplayerserver/README.md)
+- [documentation/UNanofabTools/hscdisplayerserver/README.md](../documentation/UNanofabTools/hscdisplayerserver/README.md)
+- [documentation/UNanofabTools/hscdisplayerserver/ROUTES.md](../documentation/UNanofabTools/hscdisplayerserver/ROUTES.md)
+- [known-issues/UNanofabTools/hscdisplayerserver.md](../known-issues/UNanofabTools/hscdisplayerserver.md)
 
 ### Presenter Intent
 
@@ -1172,11 +1172,11 @@ The maintainer can identify the legacy server and avoid patching it by accident.
 
 ### Show
 
-- [known-issues/UNanofabTools/README.md](known-issues/UNanofabTools/README.md)
-- [known-issues/UNanofabTools/liveserver.md](known-issues/UNanofabTools/liveserver.md)
-- [known-issues/UNanofabTools/serveraccess.md](known-issues/UNanofabTools/serveraccess.md)
-- [known-issues/UNanofabTools/flaskserver.md](known-issues/UNanofabTools/flaskserver.md)
-- [known-issues/NanofabToolkit/README.md](known-issues/NanofabToolkit/README.md)
+- [known-issues/UNanofabTools/README.md](../known-issues/UNanofabTools/README.md)
+- [known-issues/UNanofabTools/liveserver.md](../known-issues/UNanofabTools/liveserver.md)
+- [known-issues/UNanofabTools/serveraccess.md](../known-issues/UNanofabTools/serveraccess.md)
+- [known-issues/UNanofabTools/flaskserver.md](../known-issues/UNanofabTools/flaskserver.md)
+- [known-issues/NanofabToolkit/README.md](../known-issues/NanofabToolkit/README.md)
 
 Then open every remaining known-issues file briefly.
 
@@ -1221,7 +1221,7 @@ The maintainer can produce a 7-day and 30-day maintenance plan.
 
 ### Show
 
-- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive)
+- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive)
 - [EVALUATE.md](EVALUATE.md)
 - [audit.sh](audit.sh)
 
@@ -1234,7 +1234,7 @@ This section converts the presentation from listening into ownership.
 Run:
 
 ```sh
-bash audit.sh
+bash support/audit.sh
 ```
 
 Have the maintainer read:
@@ -1249,7 +1249,7 @@ Explain which warnings are expected context and which would be real problems.
 
 ### Exercise 2 - Verify One Route
 
-Pick one route from [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
+Pick one route from [documentation/UNanofabTools/flaskserver/05-http-api-reference.md](../documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
 
 Have the maintainer find it in source:
 
@@ -1433,8 +1433,8 @@ Leave them with:
 
 - This documentation repo.
 - The `super-in-depth` branch.
-- [START-HERE.md](START-HERE.md).
-- [START-HERE.md](START-HERE.md#path-d-long-term-maintainer-deep-dive).
+- [START-HERE.md](../START-HERE.md).
+- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive).
 - This presenter guide.
 - Current source repo locations and commits.
 - Current live-server survey snapshot.
@@ -1467,7 +1467,7 @@ Before the handoff:
 - Confirm live access or document why it is unavailable.
 - Confirm slides open.
 - Confirm no secret files are projected.
-- Run `bash audit.sh`.
+- Run `bash support/audit.sh`.
 
 During the handoff:
 

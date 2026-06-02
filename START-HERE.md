@@ -23,17 +23,6 @@ documentation/<repo>/<tool>/
 known-issues/<repo>/<tool>.md          ← punch list for that tool
 ```
 
-Root-level support files:
-
-| File | What it is |
-|------|------------|
-| `PRESENTATION-GUIDE.md` | Path E speaker script for an exhaustive live maintainer presentation using the slide decks. |
-| `audit.sh` | Read-only mechanical audit for coverage, links, stale strings, and source/doc spot-checks. |
-| `EVALUATE.md` | LLM evaluation prompt for auditing the documentation quality. |
-| `REDACTION-NOTE.md` | Values intentionally redacted from this private GitHub documentation copy. |
-
----
-
 ## Pick your path
 
 | If you are… | Go to | Time |
@@ -430,7 +419,7 @@ Goal: understand the whole system before touching implementation details.
 
 1. `START-HERE.md`
 2. `README.md`
-3. `REDACTION-NOTE.md`
+3. `support/REDACTION-NOTE.md`
 4. `presentation/UNanofabTools/README.md`
 5. `documentation/UNanofabTools/README.md`
 6. `known-issues/UNanofabTools/README.md`
@@ -484,7 +473,7 @@ Goal: catch missing files, broken links, and stale wording before doing deeper j
 From the documentation repo:
 
 ```sh
-bash audit.sh
+bash support/audit.sh
 ```
 
 Read all output. Do not treat the script as authoritative; it is a starter report.
@@ -1157,7 +1146,7 @@ Goal: leave the repo better than you found it.
 - Update known-issues.
 - Add or update live-server snapshot.
 - Remove any accidental secret values.
-- Run `bash audit.sh`.
+- Run `bash support/audit.sh`.
 - Run `git diff --check`.
 - Review `git diff`.
 - Commit documentation changes.
@@ -1238,7 +1227,7 @@ Before committing any audit output:
 
 Do this every quarter:
 
-- Run `bash audit.sh`.
+- Run `bash support/audit.sh`.
 - Refresh the live-server survey snapshot.
 - Confirm both tmux sessions or their replacement supervisor are healthy.
 - Confirm HSCDownloader is writing fresh `HSCDATA/`.
@@ -1273,7 +1262,7 @@ Use Path E when Faith is presenting the exhaustive maintainer handoff live with 
 
 The guide is here:
 
-- [`PRESENTATION-GUIDE.md`](PRESENTATION-GUIDE.md)
+- [`support/PRESENTATION-GUIDE.md`](support/PRESENTATION-GUIDE.md)
 
 Use Path E when there is no time limit and the goal is complete maintainer independence. Prefer too much coverage over too little. If the live presentation uncovers missing context, update this `START-HERE.md`, the relevant developer docs, or the relevant `known-issues/` file before the handoff is considered complete.
 

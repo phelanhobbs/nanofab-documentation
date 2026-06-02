@@ -2,7 +2,7 @@
 
 You are evaluating a body of documentation, presentations, and known-issues files produced for a handoff of two related repositories. Your job is to **assess the deliverables for completeness, internal consistency, factual correctness, and quality of cross-referencing**. You will produce a structured evaluation report.
 
-You have **no prior context** beyond what's in this directory. Read this prompt fully, then run the suggested checks, then read whatever files you need to substantiate your findings.
+You have **no prior context** beyond this repository. Read this prompt fully, then run the suggested checks from the repository root, then read whatever files you need to substantiate your findings.
 
 This GitHub repository is the documentation bundle. It intentionally excludes the application source repos. Source-code checks require sibling checkouts named `../UNanofabTools/` and `../NanofabToolkit/`, or equivalent recovered source trees.
 
@@ -10,18 +10,18 @@ This GitHub repository is the documentation bundle. It intentionally excludes th
 
 ## 1. What's being evaluated
 
-The directory you're in contains the documentation bundle:
+The repository root contains the documentation bundle:
 
 | Path | What it is |
 |------|-----------|
 | `START-HERE.md` | The umbrella orchestrator. Lists every deliverable, includes Paths A-E, and contains the full Path D no-human-context audit playbook. **Read this first.** |
-| `PRESENTATION-GUIDE.md` | Path E speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
+| `support/PRESENTATION-GUIDE.md` | Path E speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |
 | `presentation/NanofabToolkit/<tool>/` | Same layman + slides structure for the sibling NanofabToolkit repo |
 | `documentation/NanofabToolkit/<tool>/` | Developer reference for NanofabToolkit |
-| `audit.sh` | Mechanical-check script. Run it first; it produces a starter report. |
+| `support/audit.sh` | Mechanical-check script. Run it first; it produces a starter report. |
 
 For source-code comparison, use sibling source repos:
 
@@ -100,7 +100,7 @@ Run these tasks in order.
 ### Task 1 — Run the mechanical audit
 
 ```sh
-bash audit.sh
+bash support/audit.sh
 ```
 
 This prints a starter report covering: missing deliverables, broken internal links, stale string references. **Read its output before doing anything else** — many of your findings will start from rows it surfaced.
@@ -261,4 +261,4 @@ If something is genuinely good, say so — this is an evaluation, not a takedown
 
 ## 8. Stop here
 
-Once you have your report, output it. Do not edit any files in this directory — your job is to evaluate, not to fix. If you find issues important enough to fix, your report's "Suggested fix" entries are the deliverable.
+Once you have your report, output it. Do not edit any files in this repository — your job is to evaluate, not to fix. If you find issues important enough to fix, your report's "Suggested fix" entries are the deliverable.

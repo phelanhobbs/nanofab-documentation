@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 # audit.sh — mechanical-check pass over the handoff deliverables.
 #
-# Run from this directory. Prints a starter report to stdout.
+# Run from the repository root as `bash support/audit.sh`.
+# Prints a starter report to stdout.
 # The output is intended to be a first-pass aid for an LLM evaluator
-# (see EVALUATE.md). It catches the easy mechanical stuff —
+# (see support/EVALUATE.md). It catches the easy mechanical stuff —
 # missing files, broken markdown links, stale string references —
 # so the LLM can focus on substance.
 #
 # Read-only. Modifies nothing.
 
 set +e
-cd "$(dirname "$0")" || exit 1
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -d "$SCRIPT_DIR/../presentation" ] && [ -d "$SCRIPT_DIR/../documentation" ]; then
+  cd "$SCRIPT_DIR/.." || exit 1
+else
+  cd "$SCRIPT_DIR" || exit 1
+fi
 
 UNANOFABTOOLS_SRC="${UNANOFABTOOLS_SRC:-../UNanofabTools}"
 NANOFABTOOLKIT_SRC="${NANOFABTOOLKIT_SRC:-../NanofabToolkit}"
@@ -57,7 +63,7 @@ for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
 done
 echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md PRESENTATION-GUIDE.md EVALUATE.md REDACTION-NOTE.md audit.sh; do
+for f in START-HERE.md support/PRESENTATION-GUIDE.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
@@ -216,9 +222,9 @@ broken_list=$(mktemp)
 find presentation documentation known-issues -name "*.md" 2>/dev/null > /tmp/md_files_$$
 # include the orchestrator + evaluator files too
 echo "START-HERE.md" >> /tmp/md_files_$$
-echo "PRESENTATION-GUIDE.md" >> /tmp/md_files_$$
-echo "EVALUATE.md" >> /tmp/md_files_$$
-echo "REDACTION-NOTE.md" >> /tmp/md_files_$$
+echo "support/PRESENTATION-GUIDE.md" >> /tmp/md_files_$$
+echo "support/EVALUATE.md" >> /tmp/md_files_$$
+echo "support/REDACTION-NOTE.md" >> /tmp/md_files_$$
 echo "README.md" >> /tmp/md_files_$$
 
 while IFS= read -r mdfile; do
@@ -375,6 +381,6 @@ echo "  Total .pptx decks: $deck_count"
 # 7. Done
 # ----------------------------------------------------------------------
 sec "7. DONE"
-echo "  This is a mechanical pass. An LLM evaluator should now read EVALUATE.md"
+echo "  This is a mechanical pass. An LLM evaluator should now read support/EVALUATE.md"
 echo "  and use this report as a starting point. Refer to sections by number."
 echo
