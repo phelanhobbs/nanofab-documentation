@@ -83,12 +83,14 @@ READ ALOUD:
 
 ASK:
 
-- What are the stages in a browser request?
-- What are the stages in a device request?
-- How do you find all route decorators?
-- What does the endpoint reference need to say for each route?
-- What is route drift?
-- Which route-drift cases are high severity?
+| Question | Expected answer |
+|---|---|
+| What are the stages in a browser request? | Browser to HTTPS/nginx, proxy to Flask, route/blueprint match, auth guard, service/data work, response. |
+| What are the stages in a device request? | Device POST/GET to API endpoint, Flask route, validation, storage or lookup, JSON response; auth may differ from browser routes. |
+| How do you find all route decorators? | Run `rg -n "@.*route|Blueprint|login_required|admin_required" ../UNanofabTools/app/blueprints`. |
+| What does the endpoint reference need to say for each route? | Method, path, guard, inputs, behavior, side effects, response, and known risks/issues. |
+| What is route drift? | A mismatch between documented endpoints and actual source behavior. |
+| Which route-drift cases are high severity? | Missing auth in source, undocumented write routes, docs claiming wrong guards, source writing different data stores, or recovery/security commands pointing to wrong paths. |
 
 REQUIRE:
 

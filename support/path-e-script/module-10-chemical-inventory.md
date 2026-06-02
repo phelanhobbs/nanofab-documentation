@@ -103,14 +103,16 @@ READ ALOUD:
 
 ASK:
 
-- Is chemical PostgreSQL local or external?
-- What host and port does the live deployment use?
-- Which config variables control chemical database access?
-- What are the main chemical inventory entities?
-- What is a soft delete in this context?
-- Why is transaction history important?
-- What should be checked before changing barcode or move behavior?
-- What backup coverage is needed for chemical inventory?
+| Question | Expected answer |
+|---|---|
+| Is chemical PostgreSQL local or external? | Local on `nfhistory`, not an external database server. |
+| What host and port does the live deployment use? | `127.0.0.1:5432`. |
+| Which config variables control chemical database access? | The `CHEM_*` PostgreSQL settings documented in the config reference, such as host, port, database, user, and password variables. |
+| What are the main chemical inventory entities? | Rooms, vendors, items, containers, barcodes, scans, transactions, reports, moves, and removals. |
+| What is a soft delete in this context? | Marking a container removed/inactive while preserving the row and history instead of physically deleting it. |
+| Why is transaction history important? | It preserves auditability for moves, removals, inventory changes, reports, and compliance-style review. |
+| What should be checked before changing barcode or move behavior? | Schema, service functions, route guards, transaction logging, reports/exports, tests/sample data, and live backup/restore coverage. |
+| What backup coverage is needed for chemical inventory? | Local PostgreSQL data plus relevant app config, schema evidence, and any related files needed to restore inventory behavior. |
 
 REQUIRE:
 

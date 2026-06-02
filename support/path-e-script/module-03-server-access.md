@@ -112,14 +112,16 @@ The recovery commands in [`../../documentation/UNanofabTools/serveraccess/README
 
 ASK:
 
-- What are the two SSH hops?
-- Why does the SSH config use `User phelan`?
-- What are the two important tmux sessions?
-- What exact keys detach from tmux?
-- Why is `Ctrl-c` dangerous in a live service pane?
-- Why is `exit` dangerous in a live service pane?
-- What is Nanofab allowed to change?
-- What access changes require IT?
+| Question | Expected answer |
+|---|---|
+| What are the two SSH hops? | Laptop/workstation to CADE, then CADE to `nfhistory`. |
+| Why does the SSH config use `User phelan`? | Nanofab users currently access `nfhistory` through the shared `phelan` UNIX account because IT controls UNIX account creation. |
+| What are the two important tmux sessions? | `flaskserver` for the website and `downloader` for `HSCDownloader.py`. |
+| What exact keys detach from tmux? | `Ctrl-b` followed by `d`. |
+| Why is `Ctrl-c` dangerous in a live service pane? | It sends SIGINT to the running service process and can stop it. |
+| Why is `exit` dangerous in a live service pane? | It can terminate the shell hosted by tmux and stop the service session. |
+| What is Nanofab allowed to change? | Nanofab-owned app code, docs, known issues, app config under its control, service processes, and operational files under `/home/phelan/`. |
+| What access changes require IT? | Creating UNIX users, changing root-owned files, modifying `/root/`, root SSH, VM-level access policy, and other root-only changes. |
 
 REQUIRE:
 

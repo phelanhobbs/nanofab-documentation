@@ -124,11 +124,13 @@ At the end of every module, the maintainer must explain the module in their own 
 
 ASK:
 
-- What did this module establish?
-- What file or live evidence proves it?
-- What part is Nanofab-owned?
-- What part is University IT-owned?
-- What should be checked again later?
+| Question | Expected answer |
+|---|---|
+| What did this module establish? | The maintainer should summarize the module's core fact, workflow, or decision rule in their own words, not quote the slide title. |
+| What file or live evidence proves it? | They should name the specific deck, README, developer doc, source file, audit output, live command, or snapshot used as evidence. |
+| What part is Nanofab-owned? | App code, docs, known-issues updates, `HSCDownloader.py`, the Flask app, chem DB usage, data trees, and work under `/home/phelan/` when applicable. |
+| What part is University IT-owned? | VM infrastructure, root, `/root/`, root SSH, UNIX account creation, VM-level backup, base patching, and firewall-level infrastructure when applicable. |
+| What should be checked again later? | Any source/live drift, missing evidence, unresolved question, backup coverage, access state, or known issue that was not fully verified during the module. |
 
 REQUIRE:
 

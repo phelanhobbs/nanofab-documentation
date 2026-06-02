@@ -92,16 +92,18 @@ READ ALOUD:
 
 ASK:
 
-- What does `nfhistory` do for a normal cleanroom user?
-- What data comes from CORES?
-- What data comes from machine-control PCs?
-- What data comes from Pico devices?
-- What is nginx doing?
-- What is Flask doing?
-- Which data stores are databases?
-- Which data stores are file trees?
-- What does University IT own?
-- What does Nanofab own?
+| Question | Expected answer |
+|---|---|
+| What does `nfhistory` do for a normal cleanroom user? | It provides the cleanroom website: login, tasks, machine pages/logs, chemical inventory, and sensor views. |
+| What data comes from CORES? | Machine usage data pulled by `HSCDownloader.py` and written into `HSCDATA`. |
+| What data comes from machine-control PCs? | Tool log files uploaded by file-transfer scripts into `LogData`. |
+| What data comes from Pico devices? | Particle/environment sensor payloads posted to device API routes. |
+| What is nginx doing? | It handles public HTTPS/TLS and proxies requests to the Flask app on loopback. |
+| What is Flask doing? | It routes browser/device requests through blueprints, auth checks, services, templates, databases, and file trees. |
+| Which data stores are databases? | Several SQLite databases plus the local PostgreSQL database used for chemical inventory. |
+| Which data stores are file trees? | `HSCDATA`, `LogData`, `uploads`, and sensor/log file directories. |
+| What does University IT own? | The VM, root, root SSH, base patching, VM-level/off-box backup, and UNIX account creation. |
+| What does Nanofab own? | The Flask app, downloader, application docs, app/data behavior, chem DB usage, data trees, and `/home/phelan/` operational surface. |
 
 REQUIRE:
 

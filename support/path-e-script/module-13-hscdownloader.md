@@ -65,13 +65,15 @@ READ ALOUD:
 
 ASK:
 
-- What does `HSCDownloader.py` do?
-- Where does it live in production?
-- What tmux session owns it today?
-- What data tree does it write?
-- Why can the website be up while CORES data is stale?
-- What is the reliability improvement for the downloader?
-- What is the secret-handling improvement for the downloader?
+| Question | Expected answer |
+|---|---|
+| What does `HSCDownloader.py` do? | Pulls CORES/n8n machine usage data and writes CSV outputs used by the website. |
+| Where does it live in production? | `/home/phelan/server/UNanofabTools/`, beside `run.py`. |
+| What tmux session owns it today? | `downloader`. |
+| What data tree does it write? | `HSCDATA`. |
+| Why can the website be up while CORES data is stale? | nginx/Flask can be healthy while the downloader has stopped, errored, or stopped writing fresh CSVs. |
+| What is the reliability improvement for the downloader? | Move it from tmux-only operation to a supervised service with restart/logging/health checks, such as systemd. |
+| What is the secret-handling improvement for the downloader? | Move credentials/tokens out of source into protected config and rotate any exposed values. |
 
 REQUIRE:
 

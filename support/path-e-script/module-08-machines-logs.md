@@ -75,13 +75,15 @@ READ ALOUD:
 
 ASK:
 
-- What is `HSCDATA`?
-- What writes `HSCDATA`?
-- What is `LogData`?
-- What writes `LogData`?
-- Why can the website be up while machine data is stale?
-- Which file trees must be backed up?
-- What should a maintainer inspect before changing file download routes?
+| Question | Expected answer |
+|---|---|
+| What is `HSCDATA`? | The file tree of CORES-derived machine usage CSV data used by machine pages. |
+| What writes `HSCDATA`? | `HSCDownloader.py`. |
+| What is `LogData`? | The file tree of uploaded machine-control-PC logs and related log data. |
+| What writes `LogData`? | File-transfer scripts from machine-control PCs, plus app/device flows where documented. |
+| Why can the website be up while machine data is stale? | Flask/nginx may be healthy while downloader or file-transfer data pipelines have stopped or stopped writing fresh files. |
+| Which file trees must be backed up? | `HSCDATA`, `LogData`, `uploads`, `instance/`, sensor/log file directories, and related production data paths. |
+| What should a maintainer inspect before changing file download routes? | Path construction/sanitization, `safe_join` or equivalent protections, allowed directories, auth guards, and arbitrary-file-read risk. |
 
 REQUIRE:
 

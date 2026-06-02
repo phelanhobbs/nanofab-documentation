@@ -63,14 +63,16 @@ READ ALOUD:
 
 ASK:
 
-- What are the major security strengths?
-- What are the major security gaps?
-- Which secrets must never be shown?
-- Which security fixes are Nanofab-owned?
-- Which security fixes are IT tickets?
-- Why are unauthenticated device endpoints risky?
-- Why is root SSH not a Nanofab setting to casually change?
-- Where do security findings belong?
+| Question | Expected answer |
+|---|---|
+| What are the major security strengths? | HTTPS/nginx, password hashing, session login, Duo where configured, admin checks, local-only PostgreSQL, and explicit IT/Nanofab boundary docs. |
+| What are the major security gaps? | Historical hard-coded secrets, unauthenticated device routes, risky write routes, shared-account constraints, tmux-only supervision, and incomplete monitoring/rotation patterns. |
+| Which secrets must never be shown? | Bearer tokens, WiFi passwords, database passwords, Duo secrets, private keys, session cookies, and plaintext passwords. |
+| Which security fixes are Nanofab-owned? | App-level auth/authorization, validation, secret relocation in app config, docs, known issues, service supervision, and code fixes under Nanofab control. |
+| Which security fixes are IT tickets? | Root SSH, `/root/`, UNIX accounts, VM backup/patching, firewall/root-level infrastructure, and root-owned file permissions. |
+| Why are unauthenticated device endpoints risky? | They can accept spoofed or malformed data from anyone who can reach them unless other controls exist. |
+| Why is root SSH not a Nanofab setting to casually change? | It is University IT's administrative path; changing it could lock IT out or break IT-owned maintenance/backup workflows. |
+| Where do security findings belong? | In the relevant known-issues file and master known-issues index, with severity, evidence, owner, and suggested fix. |
 
 REQUIRE:
 

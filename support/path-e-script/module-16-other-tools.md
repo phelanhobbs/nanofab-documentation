@@ -79,13 +79,15 @@ READ ALOUD:
 
 ASK:
 
-- Which tools are desktop-only?
-- Which tools talk to CORES?
-- Which tools are tied to Denton data?
-- Which tool handles Parylene analog logs?
-- Which tool handles ALD cycle counting?
-- Which utilities look incomplete or personal?
-- How do you decide whether to maintain or defer a small tool?
+| Question | Expected answer |
+|---|---|
+| Which tools are desktop-only? | NanofabToolkit tools such as ParalyneReader, ALDPeakCounter, DentonDecoder, PreciousMetalReader, ParticleSensor, and similar local analysis/viewer tools unless docs say otherwise. |
+| Which tools talk to CORES? | `HSCDownloader.py` and PreciousMetalReader use CORES-related endpoints/data, but for different purposes. |
+| Which tools are tied to Denton data? | DATfixer/DATgrapher and DentonDecoder. |
+| Which tool handles Parylene analog logs? | ParalyneReader. |
+| Which tool handles ALD cycle counting? | ALDPeakCounter. |
+| Which utilities look incomplete or personal? | Utilities flagged in the utilities docs/known issues, such as personal helper scripts or unfinished utilities. |
+| How do you decide whether to maintain or defer a small tool? | Verify usage, canonical source, user impact, known issues, and whether higher-priority live-server/security/reliability work should come first. |
 
 REQUIRE:
 

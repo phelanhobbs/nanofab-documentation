@@ -74,12 +74,14 @@ READ ALOUD:
 
 ASK:
 
-- What file starts the Flask app?
-- What is an app factory?
-- What is a blueprint?
-- Where would you look if a route existed in source but did not respond?
-- What is the difference between the current tmux startup and the recommended supervised target?
-- Why is `db.create_all()` or any implicit schema creation worth noticing?
+| Question | Expected answer |
+|---|---|
+| What file starts the Flask app? | `run.py`. |
+| What is an app factory? | The function that creates/configures the Flask app, initializes extensions, registers blueprints, and returns the app object. |
+| What is a blueprint? | A Flask feature module that groups related routes/views and is registered with the app. |
+| Where would you look if a route existed in source but did not respond? | Check blueprint registration in the app factory, route decorators, nginx/proxy behavior, auth guards, and live process state. |
+| What is the difference between the current tmux startup and the recommended supervised target? | Current live state is `python run.py` inside tmux; target state is a supervised service such as systemd/gunicorn that restarts and survives reboot. |
+| Why is `db.create_all()` or any implicit schema creation worth noticing? | It may hide missing migrations/schema drift and can make production schema changes less controlled. |
 
 REQUIRE:
 

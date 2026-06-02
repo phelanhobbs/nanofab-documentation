@@ -40,11 +40,13 @@ READ ALOUD:
 
 ASK:
 
-- What is `hscdisplayerserver`?
-- Is it current or deprecated?
-- Why is it documented?
-- What should you do before spending time improving it?
-- Where should new web-app work normally go?
+| Question | Expected answer |
+|---|---|
+| What is `hscdisplayerserver`? | The legacy monolithic/predecessor server documented for historical recognition. |
+| Is it current or deprecated? | Deprecated. |
+| Why is it documented? | So maintainers recognize it and understand why not to revive it by default. |
+| What should you do before spending time improving it? | Verify live use and known-issues priority; otherwise defer/retire it. |
+| Where should new web-app work normally go? | The current Flask app in UNanofabTools, not the deprecated legacy server. |
 
 REQUIRE:
 

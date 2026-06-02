@@ -84,15 +84,17 @@ READ ALOUD:
 
 ASK:
 
-- What is the live server name?
-- What does nginx do on the live server?
-- What process serves Flask today?
-- What process writes `HSCDATA` today?
-- Why is tmux-only supervision a reliability risk?
-- Where is the live Flask app installed?
-- Is chem PostgreSQL local or external?
-- Which live-server findings are Nanofab-actionable?
-- Which findings require University IT?
+| Question | Expected answer |
+|---|---|
+| What is the live server name? | `nfhistory`. |
+| What does nginx do on the live server? | It terminates public HTTPS/TLS and proxies to the Flask app behind it. |
+| What process serves Flask today? | The live docs show `python run.py` running in the `flaskserver` tmux session, not a systemd unit. |
+| What process writes `HSCDATA` today? | `HSCDownloader.py`, running from the `downloader` tmux session. |
+| Why is tmux-only supervision a reliability risk? | tmux keeps a terminal alive but does not restart crashed services or bring them back after reboot. |
+| Where is the live Flask app installed? | `/home/phelan/server/UNanofabTools/`. |
+| Is chem PostgreSQL local or external? | Local on `nfhistory`, bound to `127.0.0.1:5432`. |
+| Which live-server findings are Nanofab-actionable? | App/downloader supervision, app config, docs, health checks, app-level security, data freshness checks, and work under `/home/phelan/`. |
+| Which findings require University IT? | Root-owned files, root SSH, VM backup/patching, UNIX accounts, and other root/VM infrastructure changes. |
 
 REQUIRE:
 

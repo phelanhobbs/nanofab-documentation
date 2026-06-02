@@ -75,11 +75,13 @@ READ ALOUD:
 
 ASK:
 
-- What are the three main documentation trees?
-- Where are the two source repos expected to live?
-- What is the difference between Path C, Path D, and Path E?
-- What is the source-of-truth order when docs, source, and live state disagree?
-- What should happen if a command might reveal secrets?
+| Question | Expected answer |
+|---|---|
+| What are the three main documentation trees? | `presentation/`, `documentation/`, and `known-issues/`. |
+| Where are the two source repos expected to live? | As sibling directories beside this docs repo: `../UNanofabTools` and `../NanofabToolkit`. |
+| What is the difference between Path C, Path D, and Path E? | Path C is self-paced reading, Path D is evidence-based audit/ownership, and Path E is the full live presenter-led handoff using slides, demos, and explain-back checks. |
+| What is the source-of-truth order when docs, source, and live state disagree? | Live production state first, then active production source, canonical repo source, live schemas/introspection, developer docs, layman docs/slides, snapshots, and finally memory or assumptions. |
+| What should happen if a command might reveal secrets? | Stop or run it only in an unprojected/safe way; show key names or non-secret metadata only, never secret values. |
 
 REQUIRE:
 

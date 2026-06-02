@@ -71,12 +71,14 @@ READ ALOUD:
 
 ASK:
 
-- What are the top three Nanofab-actionable fixes?
-- What are the top three IT tickets?
-- What evidence supports each top issue?
-- Which issues should not be worked first?
-- What issue would you close only after live evidence?
-- How do you update docs after fixing an issue?
+| Question | Expected answer |
+|---|---|
+| What are the top three Nanofab-actionable fixes? | Expected examples: move Flask/downloader toward supervised services, address app/security/secret risks, and fix high-severity Flask/chem/data freshness issues. The exact list should come from current known issues. |
+| What are the top three IT tickets? | Expected examples: root-owned file/SSH items, UNIX account/service-account requests, backup/patching confirmation. The exact list should come from current IT-bound findings. |
+| What evidence supports each top issue? | Known-issues entry, live-server snapshot, source code, audit output, or live command output. |
+| Which issues should not be worked first? | Cosmetic refactors, deprecated legacy-server polish, broad rewrites, or small-tool cleanup before reliability/security/recoverability work. |
+| What issue would you close only after live evidence? | Any live-server or backup/access/service-state issue that requires a new survey, command output, or IT confirmation. |
+| How do you update docs after fixing an issue? | Update the relevant developer/layman docs, remove or close the known issue with evidence, refresh snapshots if needed, run the audit, and commit changes. |
 
 REQUIRE:
 

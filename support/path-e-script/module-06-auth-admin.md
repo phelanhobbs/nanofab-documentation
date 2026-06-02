@@ -83,14 +83,16 @@ READ ALOUD:
 
 ASK:
 
-- What is the difference between authentication and authorization?
-- What is the difference between `login_required` and `admin_required`?
-- Where would you inspect password verification?
-- Where would you inspect admin route guards?
-- What does Duo add?
-- What should never be stored or shown in plaintext?
-- What would you inspect if admin buttons disappeared but routes still worked?
-- What would you inspect if login worked locally but not in production?
+| Question | Expected answer |
+|---|---|
+| What is the difference between authentication and authorization? | Authentication proves who the user is; authorization decides what that authenticated user may do. |
+| What is the difference between `login_required` and `admin_required`? | `login_required` requires a logged-in user; `admin_required` requires admin privileges in addition to login. |
+| Where would you inspect password verification? | The auth blueprint and auth service, especially password hashing/checking logic. |
+| Where would you inspect admin route guards? | `app/blueprints/admin.py`, admin decorators/helpers, and admin service calls. |
+| What does Duo add? | A second authentication factor beyond the password. |
+| What should never be stored or shown in plaintext? | Passwords, Duo secrets, session secrets, bearer tokens, database passwords, and private keys. |
+| What would you inspect if admin buttons disappeared but routes still worked? | Templates/UI conditions first, then server-side admin route guards to confirm authorization is still enforced. |
+| What would you inspect if login worked locally but not in production? | Production config, `.env` key names/values off-screen, Duo settings, session/cookie settings, database path, and deployed source/live process state. |
 
 REQUIRE:
 

@@ -68,13 +68,15 @@ READ ALOUD:
 
 ASK:
 
-- Which endpoints receive device data?
-- Which fields identify a sensor?
-- Why are unauthenticated device routes risky?
-- Where is canonical Pico firmware?
-- Where is canonical ParticleSensor code?
-- What can break if room names or sensor numbers drift?
-- How would you audit a server endpoint against firmware?
+| Question | Expected answer |
+|---|---|
+| Which endpoints receive device data? | Device API routes such as `/sensor-data` and `/env-data`, as documented in the endpoint/integration docs. |
+| Which fields identify a sensor? | `room_name` and `sensor_number`. |
+| Why are unauthenticated device routes risky? | Anyone who can reach them may submit false, malformed, or abusive data unless other controls exist. |
+| Where is canonical Pico firmware? | `../NanofabToolkit/PicoHelperTools/`. |
+| Where is canonical ParticleSensor code? | `../NanofabToolkit/ParticleSensor/`. |
+| What can break if room names or sensor numbers drift? | Server storage, map coloring, viewer lookups, and device-data matching can silently fail or mislabel data. |
+| How would you audit a server endpoint against firmware? | Compare server route path/method/fields to firmware POST code, payload names, units, response handling, and docs. |
 
 REQUIRE:
 

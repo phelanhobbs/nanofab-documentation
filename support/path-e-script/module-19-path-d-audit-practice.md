@@ -105,12 +105,14 @@ Record live verification as incomplete.
 
 ASK:
 
-- What does `audit.sh` check?
-- What does `audit.sh` not check?
-- How do you verify a route against source?
-- How do you verify live server facts?
-- What do you do when docs and source disagree?
-- What do you do when docs and live state disagree?
+| Question | Expected answer |
+|---|---|
+| What does `audit.sh` check? | Deliverable coverage, broken internal links, stale strings, snapshot presence, and limited source/doc spot checks. |
+| What does `audit.sh` not check? | Full factual correctness, all route behavior, all source drift, live server truth, security design, and human judgment/context. |
+| How do you verify a route against source? | Compare endpoint docs to the actual route decorator, guard, inputs, service calls, side effects, response, and known issues. |
+| How do you verify live server facts? | Use safe live commands, survey snapshots, service status, tmux state, listener checks, and IT confirmation where needed. |
+| What do you do when docs and source disagree? | Treat source as stronger evidence, update docs or create a known-issues/drift finding. |
+| What do you do when docs and live state disagree? | Treat live state as current operational truth, update docs/snapshots/known issues or mark docs as target-state only. |
 
 REQUIRE:
 

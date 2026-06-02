@@ -55,13 +55,15 @@ READ ALOUD:
 
 ASK:
 
-- What data tree do file-transfer scripts write?
-- How is `LogData` different from `HSCDATA`?
-- Why are personal-account dependencies risky?
-- What is the Nanofab-side fix?
-- What would require University IT?
-- How would you tell whether uploads are fresh?
-- What should be documented for each machine-control PC?
+| Question | Expected answer |
+|---|---|
+| What data tree do file-transfer scripts write? | `LogData`. |
+| How is `LogData` different from `HSCDATA`? | `LogData` is uploaded machine-control-PC logs; `HSCDATA` is CORES-derived CSV data written by `HSCDownloader.py`. |
+| Why are personal-account dependencies risky? | Uploads can break when a person's CADE account, key, workstation, permissions, or employment status changes. |
+| What is the Nanofab-side fix? | Use a purpose-bound SSH key authenticating as `phelan` for upload workflows, with documented controls. |
+| What would require University IT? | A dedicated UNIX service account or per-machine/per-user UNIX accounts on `nfhistory`. |
+| How would you tell whether uploads are fresh? | Check recent modification times, expected files per machine, transfer logs/output, and website data freshness. |
+| What should be documented for each machine-control PC? | Script location, schedule/trigger, source path, target path, account/key used, expected files, failure signs, and owner. |
 
 REQUIRE:
 

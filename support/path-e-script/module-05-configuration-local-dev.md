@@ -82,13 +82,15 @@ READ ALOUD:
 
 ASK:
 
-- Which configuration values are secrets?
-- Which configuration values point to databases?
-- Which values control session or login behavior?
-- What breaks if chemical database settings are wrong?
-- Why is local PostgreSQL an important fact?
-- What can be safely shown from `.env`?
-- What must never be shown or committed?
+| Question | Expected answer |
+|---|---|
+| Which configuration values are secrets? | `SECRET_KEY`, Duo secrets/keys, database passwords, bearer tokens, WiFi passwords, private keys, and any credential-like value. |
+| Which configuration values point to databases? | SQLAlchemy/SQLite settings plus chemical PostgreSQL settings such as `CHEM_*` variables. |
+| Which values control session or login behavior? | `SECRET_KEY`, session/cookie settings, login/auth config, and Duo-related settings. |
+| What breaks if chemical database settings are wrong? | Chemical inventory routes cannot connect correctly; reads/writes, barcode operations, reports, and inventory pages can fail or hit the wrong database. |
+| Why is local PostgreSQL an important fact? | Backup, firewall, restore, service health, and troubleshooting assumptions depend on PostgreSQL running locally on `nfhistory`. |
+| What can be safely shown from `.env`? | Key names and non-secret operational metadata, not values. |
+| What must never be shown or committed? | Literal secret values, tokens, passwords, Duo secrets, private keys, session cookies, and database passwords. |
 
 REQUIRE:
 

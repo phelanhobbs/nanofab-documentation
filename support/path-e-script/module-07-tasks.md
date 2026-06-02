@@ -69,14 +69,16 @@ READ ALOUD:
 
 ASK:
 
-- Which blueprint owns tasks?
-- Which service file contains task behavior?
-- Which database stores task data?
-- Which task routes mutate state?
-- Which task routes accept JSON?
-- Which task routes accept form or file data?
-- What is the security implication of a logged-in user changing task status?
-- How would you verify docs against source for one task endpoint?
+| Question | Expected answer |
+|---|---|
+| Which blueprint owns tasks? | The tasks blueprint, typically `app/blueprints/tasks.py`. |
+| Which service file contains task behavior? | `app/services/task_service.py`. |
+| Which database stores task data? | The task-related SQLite database/tables documented for the Flask app. |
+| Which task routes mutate state? | Create/update/status/claim/upload routes such as task creation, `/changestatus`, `/claimTask`, and `/uploadtaskfile`. |
+| Which task routes accept JSON? | JSON routes include task status/claim style endpoints documented with JSON bodies, such as `/changestatus` and `/claimTask`. |
+| Which task routes accept form or file data? | Task creation forms and multipart upload routes such as `/uploadtaskfile`. |
+| What is the security implication of a logged-in user changing task status? | If only login is required, any logged-in user may be able to change task state unless ownership/admin checks are added. |
+| How would you verify docs against source for one task endpoint? | Compare the endpoint reference to the route decorator, guard, input parsing, service call, side effect, response, and known-issues entry. |
 
 REQUIRE:
 

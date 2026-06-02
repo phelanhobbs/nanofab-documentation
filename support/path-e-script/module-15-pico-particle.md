@@ -64,13 +64,15 @@ READ ALOUD:
 
 ASK:
 
-- Which repo is canonical for PicoHelperTools?
-- Which repo is canonical for ParticleSensor?
-- Why do older copies exist in UNanofabTools?
-- What fields identify a sensor?
-- What can break if room labels drift?
-- Where should firmware changes be made?
-- Where should desktop viewer changes be made?
+| Question | Expected answer |
+|---|---|
+| Which repo is canonical for PicoHelperTools? | `NanofabToolkit`. |
+| Which repo is canonical for ParticleSensor? | `NanofabToolkit`. |
+| Why do older copies exist in UNanofabTools? | Historical context/reference; they should not be treated as canonical unless live evidence proves otherwise. |
+| What fields identify a sensor? | `room_name` and `sensor_number`. |
+| What can break if room labels drift? | Server matching, map coloring, viewer display, and data lookup can silently fail or mislabel sensors. |
+| Where should firmware changes be made? | `../NanofabToolkit/PicoHelperTools/`. |
+| Where should desktop viewer changes be made? | `../NanofabToolkit/ParticleSensor/`. |
 
 REQUIRE:
 
