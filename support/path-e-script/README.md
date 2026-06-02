@@ -8,6 +8,8 @@ The shorter guide at [`../PRESENTATION-GUIDE.md`](../PRESENTATION-GUIDE.md) tell
 
 Read [`00-operator-protocol.md`](00-operator-protocol.md) before presenting anything. It defines the rules for reading, pausing, demos, safety, evidence logging, and explain-back checks.
 
+Use [`TIMING.md`](TIMING.md) for read-aloud and real presentation-time estimates by version, week, and module.
+
 Use [`weekly-rollout-plan.md`](weekly-rollout-plan.md) to spread the modules across weeks or months.
 
 Longer generated tiers are available beside this directory:

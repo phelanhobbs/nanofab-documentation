@@ -1264,6 +1264,7 @@ The guide and verbatim script set are here:
 
 - [`support/PRESENTATION-GUIDE.md`](support/PRESENTATION-GUIDE.md)
 - [`support/path-e-script/README.md`](support/path-e-script/README.md)
+- [`support/path-e-script/TIMING.md`](support/path-e-script/TIMING.md) — estimated read-aloud and real presentation time by version, week, and module
 - [`support/path-e-script-minimum/README.md`](support/path-e-script-minimum/README.md) — 50k-100k target tier
 - [`support/path-e-script-medium/README.md`](support/path-e-script-medium/README.md) — 100k-250k target tier
 - [`support/path-e-script-verbose/README.md`](support/path-e-script-verbose/README.md) — 250k+ target tier
