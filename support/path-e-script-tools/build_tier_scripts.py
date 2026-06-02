@@ -15,7 +15,7 @@ still validate intentional links without being confused by copied relative links
 
 from __future__ import annotations
 
-import os
+import json
 import re
 import shutil
 from pathlib import Path
@@ -156,11 +156,30 @@ def extract_slide_strings(text: str) -> str:
     strings = []
     for match in re.finditer(r'"((?:[^"\\]|\\.){20,})"', text, re.S):
         s = match.group(1)
-        s = s.encode("utf-8", "ignore").decode("unicode_escape", "ignore")
+        try:
+            s = json.loads(f'"{s}"')
+        except json.JSONDecodeError:
+            s = (
+                s.replace(r"\'", "'")
+                .replace(r"\"", '"')
+                .replace(r"\n", "\n")
+                .replace(r"\t", "\t")
+                .replace(r"\\", "\\")
+            )
         s = re.sub(r"\s+", " ", s).strip()
         if len(s.split()) >= 5:
             strings.append(s)
     return "\n".join(f"- {s}" for s in strings)
+
+
+def slug(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9]+", "-", text).strip("-")
+    return text
+
+
+def module_filename(module_num: str, title: str) -> str:
+    return f"module-{module_num}-{slug(title)}.md"
 
 
 def all_docs() -> list[Path]:
@@ -186,12 +205,14 @@ def selected_docs(limit: int | None) -> list[Path]:
     return paths if limit is None else paths[:limit]
 
 
-def script_pack_text() -> str:
-    chunks = []
-    for p in sorted(SCRIPT_SRC.glob("*.md")):
-        chunks.append(f"\n\n# Existing Path E v1 Script File: {p.name}\n\n")
-        chunks.append(sanitize(read(p)))
-    return "".join(chunks)
+def v1_module_text(module_num: str, title: str) -> str:
+    specific = SCRIPT_SRC / module_filename(module_num, title)
+    if specific.exists():
+        return (
+            f"\n\n# Existing Path E v1 Module Script: {specific.name}\n\n"
+            + sanitize(read(specific))
+        )
+    return ""
 
 
 def docs_text(paths: list[Path]) -> str:
@@ -229,68 +250,146 @@ def slide_notes_text() -> str:
     return "".join(chunks)
 
 
-def deep_pass_text(pass_count: int) -> str:
+def deep_pass_text_for_module(module_num: str, title: str, focus: str, pass_count: int) -> str:
     chunks = []
-    for module_num, title, focus in MODULES:
-        chunks.append(f"\n\n# Expanded Module {module_num}: {title}\n\n")
+    chunks.append(f"\n\n# Expanded Module {module_num}: {title}\n\n")
+    chunks.append(
+        "READ ALOUD:\n\n"
+        f"This expanded section revisits Module {module_num}, {title}. "
+        f"The focus is {focus}. The presenter should not treat this as optional "
+        "padding. It is a structured repetition cycle: explain the idea, show "
+        "evidence, rehearse failure modes, ask for a teach-back, and record gaps.\n\n"
+    )
+    for idx in range(pass_count):
+        pass_name = PASS_NAMES[idx % len(PASS_NAMES)]
+        chunks.append(f"## {pass_name} for Module {module_num}\n\n")
         chunks.append(
             "READ ALOUD:\n\n"
-            f"This expanded section revisits Module {module_num}, {title}. "
-            f"The focus is {focus}. The presenter should not treat this as optional "
-            "padding. It is a structured repetition cycle: explain the idea, show "
-            "evidence, rehearse failure modes, ask for a teach-back, and record gaps.\n\n"
+            f"We are now doing the {pass_name.lower()} for {title}. "
+            f"The maintainer should connect this module to {focus}. "
+            "Do not accept a vague answer. Require a named file, named command, "
+            "named source path, or named live-state observation wherever possible.\n\n"
         )
-        for idx in range(pass_count):
-            pass_name = PASS_NAMES[idx % len(PASS_NAMES)]
-            chunks.append(f"## {pass_name} for Module {module_num}\n\n")
-            chunks.append(
-                "READ ALOUD:\n\n"
-                f"We are now doing the {pass_name.lower()} for {title}. "
-                f"The maintainer should connect this module to {focus}. "
-                "Do not accept a vague answer. Require a named file, named command, "
-                "named source path, or named live-state observation wherever possible.\n\n"
-            )
-            chunks.append(
-                "SHOW:\n\n"
-                "- The corresponding slide deck from the Path E deck order.\n"
-                "- The matching layman README.\n"
-                "- The matching developer reference.\n"
-                "- The matching known-issues file if the module has one.\n"
-                "- The source repo path if this pass requires code evidence.\n\n"
-            )
-            chunks.append(
-                "DO:\n\n"
-                "1. Restate the module's operational purpose.\n"
-                "2. Name the highest-risk misunderstanding for this module.\n"
-                "3. Name the evidence that resolves that misunderstanding.\n"
-                "4. Ask the maintainer to repeat the evidence path from memory.\n"
-                "5. Write any incomplete answer into the handoff notes.\n\n"
-            )
-            chunks.append(
-                "EXPECTED MAINTAINER ANSWER:\n\n"
-                f"The answer must mention {focus}. It must also separate "
-                "Nanofab-owned app or documentation work from University IT-owned "
-                "root, VM, backup, patching, or account work whenever that boundary "
-                "is relevant. If the module touches production, the answer must say "
-                "how to inspect safely without exposing secrets or stopping services.\n\n"
-            )
-            chunks.append(
-                "COMMON WRONG ANSWERS TO CORRECT:\n\n"
-                "- Treating a slide as the source of truth instead of evidence.\n"
-                "- Treating tmux as a process supervisor.\n"
-                "- Treating local PostgreSQL as external.\n"
-                "- Assigning root-owned or account-creation work to Nanofab.\n"
-                "- Updating historical copies instead of canonical source.\n"
-                "- Closing a known issue without source, live, or documented evidence.\n\n"
-            )
-            chunks.append(
-                "STOP CONDITION:\n\n"
-                "If the maintainer cannot name the evidence path, stop the module. "
-                "Reopen the relevant docs, rerun the safe check, or assign the "
-                "missing verification as homework. Do not move on by relying on "
-                "confidence or memory.\n\n"
-            )
+        chunks.append(
+            "SHOW:\n\n"
+            "- The corresponding slide deck from the Path E deck order.\n"
+            "- The matching layman README.\n"
+            "- The matching developer reference.\n"
+            "- The matching known-issues file if the module has one.\n"
+            "- The source repo path if this pass requires code evidence.\n\n"
+        )
+        chunks.append(
+            "DO:\n\n"
+            "1. Restate the module's operational purpose.\n"
+            "2. Name the highest-risk misunderstanding for this module.\n"
+            "3. Name the evidence that resolves that misunderstanding.\n"
+            "4. Ask the maintainer to repeat the evidence path from memory.\n"
+            "5. Write any incomplete answer into the handoff notes.\n\n"
+        )
+        chunks.append(
+            "EXPECTED MAINTAINER ANSWER:\n\n"
+            f"The answer must mention {focus}. It must also separate "
+            "Nanofab-owned app or documentation work from University IT-owned "
+            "root, VM, backup, patching, or account work whenever that boundary "
+            "is relevant. If the module touches production, the answer must say "
+            "how to inspect safely without exposing secrets or stopping services.\n\n"
+        )
+        chunks.append(
+            "COMMON WRONG ANSWERS TO CORRECT:\n\n"
+            "- Treating a slide as the source of truth instead of evidence.\n"
+            "- Treating tmux as a process supervisor.\n"
+            "- Treating local PostgreSQL as external.\n"
+            "- Assigning root-owned or account-creation work to Nanofab.\n"
+            "- Updating historical copies instead of canonical source.\n"
+            "- Closing a known issue without source, live, or documented evidence.\n\n"
+        )
+        chunks.append(
+            "STOP CONDITION:\n\n"
+            "If the maintainer cannot name the evidence path, stop the module. "
+            "Reopen the relevant docs, rerun the safe check, or assign the "
+            "missing verification as homework. Do not move on by relying on "
+            "confidence or memory.\n\n"
+        )
     return "".join(chunks)
+
+
+def module_for_path(path: Path) -> str:
+    rel = str(path.relative_to(ROOT))
+    lower = rel.lower()
+    name = path.name.lower()
+
+    if rel in {"README.md", "START-HERE.md"} or lower.startswith("support/"):
+        if "evaluate" in lower or "audit" in lower:
+            return "19"
+        if "presentation-guide" in lower:
+            return "00"
+        return "00"
+    if "liveserver" in lower:
+        return "02"
+    if "serveraccess" in lower:
+        return "03"
+    if "hscdownloader" in lower:
+        return "13"
+    if "filetransfer" in lower:
+        return "14"
+    if "picofirmware" in lower or "picohelpertools" in lower or "particlesensor" in lower or "particlepctools" in lower:
+        return "15"
+    if "hscdisplayerserver" in lower:
+        return "17"
+    if "known-issues" in lower:
+        return "18"
+    if "flaskserver" in lower:
+        if "01-architecture" in name or "server-overview" in lower:
+            return "01"
+        if "02-getting-started" in name or "03-configuration" in name or "configuration" in lower:
+            return "05"
+        if "04-database-schema" in name or "09-chemical" in lower or "10-database" in lower:
+            return "10"
+        if "05-http-api" in name or "13-request" in lower or "15-endpoint" in lower:
+            return "11"
+        if "06-service" in name:
+            return "11"
+        if "07-authentication" in name or "04-authentication" in lower or "05-admin" in lower:
+            return "06"
+        if "08-integrations" in name or "08-iot" in lower or "12-consumers" in lower:
+            return "09"
+        if "09-deployment" in name:
+            return "20"
+        if "10-development" in name:
+            return "05"
+        if "06-tasks" in lower:
+            return "07"
+        if "07-machines" in lower:
+            return "08"
+        if "11-particle-demo" in lower:
+            return "09"
+        return "01"
+    if "dattools" in lower or "denton" in lower or "paralyne" in lower or "aldpeakcounter" in lower or "preciousmetalreader" in lower or "utilities" in lower:
+        return "16"
+    return "16"
+
+
+def docs_by_module(paths: list[Path]) -> dict[str, list[Path]]:
+    grouped = {num: [] for num, _, _ in MODULES}
+    for p in paths:
+        grouped.setdefault(module_for_path(p), []).append(p)
+    return grouped
+
+
+def slide_notes_by_module() -> dict[str, list[tuple[Path, str]]]:
+    grouped: dict[str, list[tuple[Path, str]]] = {num: [] for num, _, _ in MODULES}
+    files = sorted((ROOT / "presentation").rglob("slides/_build/**/*.js"))
+    files += sorted((ROOT / "presentation").rglob("slides/_build/*.js"))
+    seen = set()
+    for p in files:
+        if p in seen:
+            continue
+        seen.add(p)
+        extracted = extract_slide_strings(read(p))
+        if not extracted.strip():
+            continue
+        grouped.setdefault(module_for_path(p), []).append((p, extracted))
+    return grouped
 
 
 def session_plan_text(session_count: int) -> str:
@@ -320,59 +419,102 @@ def build_tier(dirname: str, cfg: dict) -> dict:
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
+    scripts = out / "scripts"
+    scripts.mkdir()
 
     doc_paths = selected_docs(cfg["doc_limit"])
-    chunks = [
-        f"# {cfg['label']} Script\n\n",
-        "This file is generated from the existing Path E script pack, the handoff "
-        "documentation corpus, and expanded presenter rehearsal sections. It is "
-        "intended to be read aloud over many sessions. Do not treat the word count "
-        "as a reason to skip demos, explain-back checks, or evidence logging.\n\n",
-        f"Target word count: {cfg['target_min']}",
-        f" to {cfg['target_max']} words.\n\n" if cfg["target_max"] else " words minimum.\n\n",
-        session_plan_text(cfg["session_count"]),
-        script_pack_text(),
-        deep_pass_text(cfg["deep_passes"]),
-        docs_text(doc_paths),
-    ]
-    if cfg["include_slide_notes"]:
-        chunks.append(slide_notes_text())
+    grouped_docs = docs_by_module(doc_paths)
+    grouped_slides = slide_notes_by_module() if cfg["include_slide_notes"] else {}
 
-    text = "".join(chunks)
-    (out / "full-script.md").write_text(text)
+    generated_files: list[Path] = []
 
-    count = words(text)
+    intro = (
+        f"# {cfg['label']} - Operator And Session Plan\n\n"
+        "This file starts the tier. It is generated from the existing Path E script "
+        "pack and tier settings. Read it before the module files.\n\n"
+        f"Target word count: {cfg['target_min']}"
+        + (f" to {cfg['target_max']} words.\n\n" if cfg["target_max"] else " words minimum.\n\n")
+        + "\n\n# Existing Operator Protocol\n\n"
+        + sanitize(read(SCRIPT_SRC / "00-operator-protocol.md"))
+        + "\n\n# Existing Weekly Rollout Plan\n\n"
+        + sanitize(read(SCRIPT_SRC / "weekly-rollout-plan.md"))
+        + session_plan_text(cfg["session_count"])
+    )
+    intro_file = scripts / "00-operator-and-session-plan.md"
+    intro_file.write_text(intro)
+    generated_files.append(intro_file)
+
+    for module_num, title, focus in MODULES:
+        chunks = [
+            f"# {cfg['label']} - Module {module_num}: {title}\n\n",
+            "This generated module file is part of the split Path E tier. Read it "
+            "as a self-contained script for this module, then stop at the module's "
+            "stop conditions before continuing.\n\n",
+            v1_module_text(module_num, title),
+            deep_pass_text_for_module(module_num, title, focus, cfg["deep_passes"]),
+        ]
+
+        docs = grouped_docs.get(module_num, [])
+        if docs:
+            chunks.append("\n\n# Module Documentation Corpus\n\n")
+            chunks.append(docs_text(docs))
+
+        slides = grouped_slides.get(module_num, [])
+        if slides:
+            chunks.append("\n\n# Module Slide Note Corpus\n\n")
+            for p, extracted in slides:
+                rel = p.relative_to(ROOT)
+                chunks.append(f"\n\n## Slide Notes From {rel}\n\n")
+                chunks.append("READ ALOUD OR USE AS SPEAKER NOTES:\n\n")
+                chunks.append(sanitize(extracted))
+
+        module_file = scripts / module_filename(module_num, title)
+        module_file.write_text("".join(chunks))
+        generated_files.append(module_file)
+
+    counts = [(p, words(read(p))) for p in generated_files]
+    count = sum(c for _, c in counts)
+
     readme = (
         f"# {cfg['label']}\n\n"
-        f"Generated Path E tier directory.\n\n"
-        f"- `full-script.md` word count: **{count:,}** words.\n"
+        f"Generated split Path E tier directory.\n\n"
+        f"- Total script word count: **{count:,}** words.\n"
         f"- Target minimum: **{cfg['target_min']:,}** words.\n"
-        f"- Target maximum: **{cfg['target_max']:,}** words.\n" if cfg["target_max"] else
-        f"# {cfg['label']}\n\n"
-        f"Generated Path E tier directory.\n\n"
-        f"- `full-script.md` word count: **{count:,}** words.\n"
-        f"- Target minimum: **{cfg['target_min']:,}** words.\n"
-        "- Target maximum: none.\n"
     )
+    if cfg["target_max"]:
+        readme += f"- Target maximum: **{cfg['target_max']:,}** words.\n"
+    else:
+        readme += "- Target maximum: none.\n"
     readme += (
-        "\nRead `full-script.md` from top to bottom unless a stop condition tells "
-        "you to pause, collect evidence, or update documentation first.\n"
+        "\nRead the files in `scripts/` in filename order. The tier is split by "
+        "operator/session material plus one file per Path E module.\n\n"
+        "Start here:\n\n"
+        "- `scripts/00-operator-and-session-plan.md`\n"
+        "- `scripts/module-00-set-the-contract.md`\n"
     )
     (out / "README.md").write_text(readme)
+
+    count_rows = []
+    for p, c in counts:
+        count_rows.append(f"| `scripts/{p.name}` | {c:,} |\n")
 
     manifest = [
         f"# Word Count Manifest - {cfg['label']}\n\n",
         f"- Directory: `support/{dirname}/`\n",
-        f"- Full script: `full-script.md`\n",
-        f"- Word count: **{count:,}**\n",
+        f"- Script files directory: `scripts/`\n",
+        f"- Total script word count: **{count:,}**\n",
         f"- Target minimum: **{cfg['target_min']:,}**\n",
         f"- Target maximum: **{cfg['target_max']:,}**\n" if cfg["target_max"] else "- Target maximum: none\n",
         f"- Source docs included: **{len(doc_paths)}**\n",
         f"- Slide notes included: **{bool(cfg['include_slide_notes'])}**\n",
         f"- Deep rehearsal passes per module: **{cfg['deep_passes']}**\n",
+        "\n## File Counts\n\n",
+        "| File | Words |\n",
+        "|---|---:|\n",
+        *count_rows,
         "\nVerification command:\n\n",
         "```sh\n",
-        f"wc -w support/{dirname}/full-script.md\n",
+        f"wc -w support/{dirname}/scripts/*.md\n",
         "```\n",
     ]
     (out / "WORDCOUNT.md").write_text("".join(manifest))

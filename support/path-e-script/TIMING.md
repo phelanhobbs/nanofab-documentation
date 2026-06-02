@@ -12,11 +12,11 @@ Use presentation time for scheduling. Use read-aloud time only as a lower bound.
 | Version | File(s) | Words | Read-aloud time | Real presentation time |
 |---|---:|---:|---:|---:|
 | Modular script pack | operator protocol, Modules 0-21, and weekly rollout plan; excludes this timing guide | 17,249 | ~2.4 hours | ~15-23 hours |
-| Minimum full Path E | `support/path-e-script-minimum/full-script.md` | 92,295 | ~12.8 hours | ~30-50 hours |
-| Medium full Path E | `support/path-e-script-medium/full-script.md` | 232,701 | ~32.3 hours | ~75-120 hours |
-| Verbose maximal Path E | `support/path-e-script-verbose/full-script.md` | 317,567 | ~44.1 hours | ~105-165 hours |
+| Minimum full Path E | `support/path-e-script-minimum/scripts/*.md` | 88,581 | ~12.3 hours | ~30-50 hours |
+| Medium full Path E | `support/path-e-script-medium/scripts/*.md` | 229,026 | ~31.8 hours | ~75-120 hours |
+| Verbose maximal Path E | `support/path-e-script-verbose/scripts/*.md` | 313,892 | ~43.6 hours | ~105-165 hours |
 
-The verbose tier is the best match when there is truly no time limit and the handoff can run for months. The modular script pack is the practical minimum for a live human handoff. The minimum and medium generated tiers sit between those two extremes.
+The verbose tier is the best match when there is truly no time limit and the handoff can run for months. The modular script pack is the practical minimum for a live human handoff. The generated minimum, medium, and verbose tiers are split into module files under their `scripts/` directories.
 
 ## Weekly Rollout Estimates
 
