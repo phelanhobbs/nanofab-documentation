@@ -1,0 +1,359 @@
+#!/usr/bin/env bash
+# audit.sh — mechanical-check pass over the handoff deliverables.
+#
+# Run from this directory. Prints a starter report to stdout.
+# The output is intended to be a first-pass aid for an LLM evaluator
+# (see EVALUATE.md). It catches the easy mechanical stuff —
+# missing files, broken markdown links, stale string references —
+# so the LLM can focus on substance.
+#
+# Read-only. Modifies nothing.
+
+set +e
+cd "$(dirname "$0")" || exit 1
+
+c_red()   { printf '\033[31m%s\033[0m' "$1"; }
+c_yel()   { printf '\033[33m%s\033[0m' "$1"; }
+c_grn()   { printf '\033[32m%s\033[0m' "$1"; }
+c_bold()  { printf '\033[1m%s\033[0m' "$1"; }
+
+# Disable color if not on a terminal
+if [ ! -t 1 ]; then
+  c_red()  { printf '%s' "$1"; }
+  c_yel()  { printf '%s' "$1"; }
+  c_grn()  { printf '%s' "$1"; }
+  c_bold() { printf '%s' "$1"; }
+fi
+
+sec() { printf '\n\n%s\n' "$(c_bold "===== $1 =====")"; }
+
+# ----------------------------------------------------------------------
+# 0. Where are we?
+# ----------------------------------------------------------------------
+sec "0. CONTEXT"
+echo "  pwd:       $(pwd)"
+echo "  date:      $(date)"
+echo "  hostname:  $(hostname 2>/dev/null)"
+echo
+echo "  Top-level trees:"
+for d in presentation documentation known-issues UNanofabTools NanofabToolkit; do
+  if [ -d "$d" ]; then
+    echo "    $(c_grn '✓') $d/"
+  else
+    echo "    $(c_red '✗') $d/  (MISSING)"
+  fi
+done
+echo
+echo "  Top-level orchestrator files:"
+for f in START-HERE.md EVALUATE.md audit.sh; do
+  if [ -f "$f" ]; then
+    echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
+  else
+    echo "    $(c_red '✗') $f  (MISSING)"
+  fi
+done
+
+# ----------------------------------------------------------------------
+# 1. Coverage matrix
+# ----------------------------------------------------------------------
+sec "1. COVERAGE MATRIX"
+
+UNANOFAB_TOOLS=(flaskserver serveraccess liveserver hscdownloader filetransfer dattools utilities picofirmware particlepctools hscdisplayerserver)
+NANOFABKIT_TOOLS=(PicoHelperTools ParticleSensor ParalyneReader ALDPeakCounter DentonDecoder PreciousMetalReader)
+
+check_tool() {
+  local repo="$1" tool="$2" needs_issues="$3"
+  local layman="presentation/$repo/$tool/README.md"
+  local slidesdir="presentation/$repo/$tool/slides"
+  local docdir="documentation/$repo/$tool"
+  local issues="known-issues/$repo/$tool.md"
+
+  local layman_ok slides_ok docs_ok issues_ok pptx_count
+
+  [ -f "$layman" ] && layman_ok="$(c_grn '✓')" || layman_ok="$(c_red '✗')"
+  if [ -d "$slidesdir" ]; then
+    pptx_count=$(find "$slidesdir" -maxdepth 1 -name "*.pptx" 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$pptx_count" -ge 1 ]; then
+      slides_ok="$(c_grn '✓') ($pptx_count)"
+    else
+      slides_ok="$(c_yel 'dir-no-pptx')"
+    fi
+  else
+    slides_ok="$(c_red '✗')"
+  fi
+  if [ -d "$docdir" ]; then
+    local mdcount; mdcount=$(find "$docdir" -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+    docs_ok="$(c_grn '✓') ($mdcount md)"
+  else
+    docs_ok="$(c_red '✗')"
+  fi
+  if [ "$needs_issues" = "yes" ]; then
+    [ -f "$issues" ] && issues_ok="$(c_grn '✓')" || issues_ok="$(c_red '✗')"
+  else
+    issues_ok="(n/a)"
+  fi
+
+  printf '  %-16s %-22s %-12s %-16s %-12s %s\n' "$repo" "$tool" "$layman_ok" "$slides_ok" "$docs_ok" "$issues_ok"
+}
+
+printf '  %-16s %-22s %-12s %-16s %-12s %s\n' "Repo" "Tool" "Layman" "Slides" "Dev docs" "Issues"
+printf '  %-16s %-22s %-12s %-16s %-12s %s\n' "----" "----" "------" "------" "--------" "------"
+for t in "${UNANOFAB_TOOLS[@]}"; do
+  check_tool "UNanofabTools" "$t" "yes"
+done
+for t in "${NANOFABKIT_TOOLS[@]}"; do
+  check_tool "NanofabToolkit" "$t" "no"
+done
+
+echo
+echo "  Master indexes:"
+for p in \
+  presentation/UNanofabTools/README.md \
+  documentation/UNanofabTools/README.md \
+  known-issues/UNanofabTools/README.md \
+  presentation/NanofabToolkit/README.md \
+  documentation/NanofabToolkit/README.md ; do
+  if [ -f "$p" ]; then
+    echo "    $(c_grn '✓') $p"
+  else
+    echo "    $(c_red '✗') $p  (MISSING)"
+  fi
+done
+
+# ----------------------------------------------------------------------
+# 2. Stale-string checks
+# ----------------------------------------------------------------------
+sec "2. STALE STRINGS (should be zero hits, or only in snapshots/known-issues meta)"
+
+# Search scope: handoff content only, not the snapshots (raw output) or this
+# evaluator prompt (which intentionally contains stale examples to search for).
+SEARCH=(presentation documentation known-issues START-HERE.md)
+EXCLUDE_DIR=(--exclude-dir=snapshots)
+
+run_check() {
+  local label="$1" pat="$2" extra="$3"
+  printf '\n  Check: %s\n' "$(c_bold "$label")"
+  local out
+  out=$(grep -rn "${EXCLUDE_DIR[@]}" -E "$pat" "${SEARCH[@]}" 2>/dev/null)
+  if [ -z "$out" ]; then
+    echo "    $(c_grn 'clean — 0 hits')"
+  else
+    local n; n=$(echo "$out" | wc -l | tr -d ' ')
+    echo "    $(c_yel "$n hits — review the surrounding context")"
+    echo "$out" | sed 's/^/    /' | head -25
+    [ "$n" -gt 25 ] && echo "    ... (showing first 25 of $n)"
+  fi
+  [ -n "$extra" ] && echo "    note: $extra"
+}
+
+# Old install path
+run_check "Stale ~/UNanofabTools path (should be ~/server/UNanofabTools after the 2026-06-01 phelan snapshot)" \
+  '~/UNanofabTools[/ ]' \
+  "any hit outside snapshots/ is stale; the install lives at ~/server/UNanofabTools/"
+
+# Stale separate HSCDownloader
+run_check "Stale ~/HSCDownloader references (HSCDownloader.py lives in the same install dir, no separate folder)" \
+  '~/HSCDownloader[/ ]|cd ~/HSCDownloader' \
+  "should be 0 hits in human-authored content"
+
+# Chem-external
+run_check "Stale chem-external references (chem PostgreSQL is LOCAL on 127.0.0.1:5432)" \
+  'external.*PostgreSQL|external chem|chem.*external|external server.*chem|separate PostgreSQL' \
+  "any hit outside snapshots/ should be reframed as local"
+
+# "No backups" without IT framing
+run_check "Stale 'no backups' framing (backups are IT-handled — find any place that says 'no backups' without that context)" \
+  'no backups|No backups|nothing backs up|backups are missing' \
+  "context-check: every hit should be followed within ~5 lines by 'IT' or 'University IT' or 'off-box'"
+
+# "Per-person UNIX account" without IT-ticket framing
+run_check "Stale 'create UNIX users' recommendations (Nanofab can't useradd — must be tagged as IT ticket)" \
+  'create UNIX|create per-person|per-person UNIX account|useradd' \
+  "context-check: every hit should be followed within ~10 lines by 'IT' or 'IT ticket'"
+
+# "Tighten root SSH" as Nanofab finding
+run_check "Stale 'tighten root SSH' as Nanofab to-do (root SSH is IT's path; chmod is an IT ticket)" \
+  'tighten root|disable.*root SSH|PermitRootLogin prohibit|PermitRootLogin no' \
+  "should be 0 hits as a Nanofab recommendation — context should always say IT-bound"
+
+# iceolate context — should always be tagged IT
+echo
+printf '  Check: %s\n' "$(c_bold "Every iceolate mention should be tagged as IT's host")"
+ic_hits=$(grep -rn "${EXCLUDE_DIR[@]}" -E 'iceolate' "${SEARCH[@]}" 2>/dev/null)
+if [ -z "$ic_hits" ]; then
+  echo "    $(c_yel 'no hits — surprising; iceolate should be documented as IT host')"
+else
+  it_tagged=$(echo "$ic_hits" | grep -i -c 'IT\|university' | tr -d ' ')
+  total=$(echo "$ic_hits" | wc -l | tr -d ' ')
+  echo "    $total iceolate references found; $it_tagged on the same line mention IT"
+  echo "    (lines without 'IT' may still be correctly tagged in surrounding context — verify manually)"
+  echo "$ic_hits" | sed 's/^/    /' | head -10
+fi
+
+# ----------------------------------------------------------------------
+# 3. Internal markdown link check
+# ----------------------------------------------------------------------
+sec "3. BROKEN INTERNAL MARKDOWN LINKS"
+
+# Extract markdown links of the form [text](path) where path is relative and points at a .md/.pptx/.sh/etc.
+# We only check links that look like local paths (no http(s)://, no mailto:, no computer://).
+total_links=0
+broken_links=0
+broken_list=$(mktemp)
+
+find presentation documentation known-issues -name "*.md" 2>/dev/null > /tmp/md_files_$$
+# include the orchestrator + evaluator files too
+echo "START-HERE.md" >> /tmp/md_files_$$
+echo "EVALUATE.md" >> /tmp/md_files_$$
+
+while IFS= read -r mdfile; do
+  [ -f "$mdfile" ] || continue
+  dir=$(dirname "$mdfile")
+  # extract paths inside ](...) that don't start with a scheme
+  perl -ne 'while (/\[([^\]]+)\]\(([^)]+)\)/g) { print "$2\n"; }' "$mdfile" 2>/dev/null \
+    | grep -v -E '^(https?|mailto|computer|tel|ftp)://' \
+    | grep -v '^#' \
+    | while IFS= read -r link; do
+      [ -z "$link" ] && continue
+      # strip any #anchor
+      target="${link%%#*}"
+      [ -z "$target" ] && continue
+      # resolve relative to mdfile's directory
+      if [[ "$target" = /* ]]; then
+        full="$target"
+      else
+        full="$dir/$target"
+      fi
+      total_links=$((total_links + 1))
+      if [ ! -e "$full" ]; then
+        broken_links=$((broken_links + 1))
+        echo "    $mdfile  →  $link" >> "$broken_list"
+      fi
+    done
+done < /tmp/md_files_$$
+
+# Re-count after the subshell (since the while-loop ran in a subshell, the counts above didn't persist)
+broken_count=$(wc -l < "$broken_list" | tr -d ' ')
+if [ "$broken_count" -eq 0 ]; then
+  echo "  $(c_grn 'No broken internal links found.')"
+else
+  echo "  $(c_red "$broken_count broken internal links:")"
+  head -50 "$broken_list"
+  [ "$broken_count" -gt 50 ] && echo "  ... (showing first 50)"
+fi
+rm -f "$broken_list" /tmp/md_files_$$
+
+# ----------------------------------------------------------------------
+# 4. Snapshot presence
+# ----------------------------------------------------------------------
+sec "4. LIVESERVER SNAPSHOTS"
+
+snapdir=documentation/UNanofabTools/liveserver/snapshots
+if [ -d "$snapdir" ]; then
+  echo "  Snapshots present:"
+  ls -la "$snapdir"/*.txt 2>/dev/null | sed 's/^/    /'
+  snap_count=$(find "$snapdir" -maxdepth 1 -name "*.txt" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$snap_count" -eq 0 ]; then
+    echo "  $(c_yel 'No snapshots in snapdir — the live-server doc cannot be verified against fresh data.')"
+  fi
+else
+  echo "  $(c_red 'snapshots/ directory missing')"
+fi
+
+# ----------------------------------------------------------------------
+# 5. Source vs docs spot-checks
+# ----------------------------------------------------------------------
+sec "5. SOURCE vs DOCS SPOT-CHECKS"
+
+# 5a. env var schema
+echo "  5a. Env var names in config/config.py vs documented in 03-configuration-reference.md"
+if [ -f UNanofabTools/config/config.py ]; then
+  src_envs=$(grep -oE "os\.getenv\(['\"]([A-Z_][A-Z0-9_]+)['\"]" UNanofabTools/config/config.py | sed -E "s/os.getenv\(['\"]//; s/['\"]$//" | sort -u)
+  doc_file=documentation/UNanofabTools/flaskserver/03-configuration-reference.md
+  if [ -f "$doc_file" ]; then
+    missing_in_doc=0
+    while IFS= read -r e; do
+      [ -z "$e" ] && continue
+      if ! grep -q "$e" "$doc_file"; then
+        echo "    $(c_yel "env var $e is in config.py but not mentioned in 03-configuration-reference.md")"
+        missing_in_doc=$((missing_in_doc + 1))
+      fi
+    done <<< "$src_envs"
+    [ "$missing_in_doc" -eq 0 ] && echo "    $(c_grn 'All config.py env vars are mentioned in the docs.')"
+  else
+    echo "    $(c_red "03-configuration-reference.md missing")"
+  fi
+else
+  echo "    $(c_yel 'UNanofabTools/config/config.py not present — skipping')"
+fi
+
+# 5b. Route count
+echo
+echo "  5b. Number of @app.route / blueprint route decorators"
+if [ -d UNanofabTools/app/blueprints ]; then
+  route_count=$(
+    {
+      grep -h -E '^[[:space:]]*@[a-z_]+\.route\(' \
+        UNanofabTools/app/blueprints/auth.py \
+        UNanofabTools/app/blueprints/tasks.py \
+        UNanofabTools/app/blueprints/admin.py \
+        UNanofabTools/app/blueprints/machines.py \
+        UNanofabTools/app/blueprints/api.py \
+        UNanofabTools/app/blueprints/chem_inventory.py \
+        UNanofabTools/app/blueprints/particle_demo_will.py 2>/dev/null
+      grep -h -E '^[[:space:]]*@app\.route\(' UNanofabTools/app/__init__.py 2>/dev/null
+    } | wc -l | tr -d ' '
+  )
+  echo "    Registered route decorators in source: $route_count"
+  echo "    (Excludes unregistered duplicate blueprints and commented-out decorators.)"
+fi
+
+# 5c. NanofabToolkit canonical content
+echo
+echo "  5c. NanofabToolkit canonical content (PicoHelperTools, ParticleSensor)"
+for sub in PicoHelperTools ParticleSensor; do
+  d=NanofabToolkit/$sub
+  if [ -d "$d" ]; then
+    fc=$(find "$d" -maxdepth 2 -type f \( -name "*.py" -o -name "*.md" \) | wc -l | tr -d ' ')
+    if [ "$fc" -gt 0 ]; then
+      echo "    $(c_grn '✓') NanofabToolkit/$sub has $fc .py/.md files (canonical, as claimed)"
+    else
+      echo "    $(c_red '✗') NanofabToolkit/$sub is empty or near-empty (claimed canonical, but no content)"
+    fi
+  else
+    echo "    $(c_red '✗') NanofabToolkit/$sub directory missing"
+  fi
+done
+
+# ----------------------------------------------------------------------
+# 6. Quick line/file count summary
+# ----------------------------------------------------------------------
+sec "6. SIZE SUMMARY"
+
+count_md() {
+  local dir="$1"
+  if [ -d "$dir" ]; then
+    local f l
+    f=$(find "$dir" -name "*.md" | wc -l | tr -d ' ')
+    l=$(find "$dir" -name "*.md" -exec cat {} + 2>/dev/null | wc -l | tr -d ' ')
+    printf '  %-40s %4s files, %7s lines\n' "$dir" "$f" "$l"
+  fi
+}
+
+count_md presentation/UNanofabTools
+count_md documentation/UNanofabTools
+count_md known-issues/UNanofabTools
+count_md presentation/NanofabToolkit
+count_md documentation/NanofabToolkit
+
+deck_count=$(find presentation -name "*.pptx" 2>/dev/null | wc -l | tr -d ' ')
+echo
+echo "  Total .pptx decks: $deck_count"
+
+# ----------------------------------------------------------------------
+# 7. Done
+# ----------------------------------------------------------------------
+sec "7. DONE"
+echo "  This is a mechanical pass. An LLM evaluator should now read EVALUATE.md"
+echo "  and use this report as a starting point. Refer to sections by number."
+echo
