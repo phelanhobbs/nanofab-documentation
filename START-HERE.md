@@ -240,8 +240,9 @@ Use Path D when the goal is not just onboarding, but independent ownership. This
 The full playbook is here:
 
 - [`PATH-D-DEEP-DIVE.md`](PATH-D-DEEP-DIVE.md)
+- [`SUPER-IN-DEPTH-PRESENTER-GUIDE.md`](SUPER-IN-DEPTH-PRESENTER-GUIDE.md) — if Faith is presenting Path D live with slides on a screen
 
-Path D deliberately goes beyond Path C. It is evidence-based, not just reading-based: clone or locate both source repos, compare the docs against the current code, refresh the live-server snapshot, rerun the mechanical audit, triage every known issue, and leave behind an updated decision trail for the next maintainer.
+Path D deliberately goes beyond Path C. It is evidence-based, not just reading-based: clone or locate both source repos, compare the docs against the current code, refresh the live-server snapshot, rerun the mechanical audit, triage every known issue, and leave behind an updated decision trail for the next maintainer. If this happens live, use the presenter guide to drive the exhaustive slide walkthrough.
 
 Expected outputs:
 

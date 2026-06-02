@@ -6,6 +6,8 @@ Use it when the maintainer is not just trying to understand the system, but must
 
 Path C is a reading path. Path D is an evidence path. Do not just read the docs. Confirm the docs against the source repos, the live server, the current known-issues files, and the operational boundary with University IT.
 
+If Faith is presenting this path live with the slide decks on a screen, use [SUPER-IN-DEPTH-PRESENTER-GUIDE.md](SUPER-IN-DEPTH-PRESENTER-GUIDE.md) as the speaker script.
+
 ## What Path D Is For
 
 Use Path D when any of these are true:

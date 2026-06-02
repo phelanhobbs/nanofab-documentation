@@ -16,6 +16,7 @@ The directory you're in contains the documentation bundle:
 |------|-----------|
 | `START-HERE.md` | The umbrella orchestrator. Lists every deliverable and four audience-specific reading orders. **Read this first.** |
 | `PATH-D-DEEP-DIVE.md` | Long-term maintainer / no-human-context audit playbook. |
+| `SUPER-IN-DEPTH-PRESENTER-GUIDE.md` | Speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |
