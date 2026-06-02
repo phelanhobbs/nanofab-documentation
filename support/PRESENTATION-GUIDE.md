@@ -8,6 +8,8 @@ This is a presenter script, not another slide deck. Keep the slides visible, but
 
 For a literal read-aloud version with one script per module, use [`path-e-script/README.md`](path-e-script/README.md). That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks.
 
+For longer generated tiers, use [`path-e-script-minimum/README.md`](path-e-script-minimum/README.md), [`path-e-script-medium/README.md`](path-e-script-medium/README.md), or [`path-e-script-verbose/README.md`](path-e-script-verbose/README.md).
+
 ## Presentation Philosophy
 
 Take longer than feels necessary.

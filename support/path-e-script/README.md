@@ -10,6 +10,12 @@ Read [`00-operator-protocol.md`](00-operator-protocol.md) before presenting anyt
 
 Use [`weekly-rollout-plan.md`](weekly-rollout-plan.md) to spread the modules across weeks or months.
 
+Longer generated tiers are available beside this directory:
+
+- [`../path-e-script-minimum/README.md`](../path-e-script-minimum/README.md) — 50k-100k target tier.
+- [`../path-e-script-medium/README.md`](../path-e-script-medium/README.md) — 100k-250k target tier.
+- [`../path-e-script-verbose/README.md`](../path-e-script-verbose/README.md) — 250k+ target tier.
+
 Then run the module scripts in order:
 
 | Module | Script | Primary Outcome |

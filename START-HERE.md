@@ -1264,6 +1264,9 @@ The guide and verbatim script set are here:
 
 - [`support/PRESENTATION-GUIDE.md`](support/PRESENTATION-GUIDE.md)
 - [`support/path-e-script/README.md`](support/path-e-script/README.md)
+- [`support/path-e-script-minimum/README.md`](support/path-e-script-minimum/README.md) — 50k-100k target tier
+- [`support/path-e-script-medium/README.md`](support/path-e-script-medium/README.md) — 100k-250k target tier
+- [`support/path-e-script-verbose/README.md`](support/path-e-script-verbose/README.md) — 250k+ target tier
 
 Use Path E when there is no time limit and the goal is complete maintainer independence. Prefer too much coverage over too little. If the live presentation uncovers missing context, update this `START-HERE.md`, the relevant developer docs, or the relevant `known-issues/` file before the handoff is considered complete.
 
