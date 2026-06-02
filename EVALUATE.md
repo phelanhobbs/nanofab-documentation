@@ -4,23 +4,31 @@ You are evaluating a body of documentation, presentations, and known-issues file
 
 You have **no prior context** beyond what's in this directory. Read this prompt fully, then run the suggested checks, then read whatever files you need to substantiate your findings.
 
+This GitHub repository is the documentation bundle. It intentionally excludes the application source repos. Source-code checks require sibling checkouts named `../UNanofabTools/` and `../NanofabToolkit/`, or equivalent recovered source trees.
+
 ---
 
 ## 1. What's being evaluated
 
-The directory you're in (`work/`) contains:
+The directory you're in contains the documentation bundle:
 
 | Path | What it is |
 |------|-----------|
-| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable and three audience-specific reading orders. **Read this first.** |
+| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable and four audience-specific reading orders. **Read this first.** |
+| `PATH-D-DEEP-DIVE.md` | Long-term maintainer / no-human-context audit playbook. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |
 | `presentation/NanofabToolkit/<tool>/` | Same layman + slides structure for the sibling NanofabToolkit repo |
 | `documentation/NanofabToolkit/<tool>/` | Developer reference for NanofabToolkit |
-| `UNanofabTools/` | The actual source code of the Flask web app |
-| `NanofabToolkit/` | The actual source code of the desktop tools and Pico firmware |
 | `audit.sh` | Mechanical-check script. Run it first; it produces a starter report. |
+
+For source-code comparison, use sibling source repos:
+
+| Path | What it is |
+|------|-----------|
+| `../UNanofabTools/` | The actual source code of the Flask web app |
+| `../NanofabToolkit/` | The actual source code of the desktop tools and Pico firmware |
 
 The handoff is **for a successor** to a Flask-based cleanroom server system at the University of Utah Nanofab. The server is named `nfhistory`. There are also several desktop tools, Raspberry Pi firmware, and data pipelines tied to it.
 
@@ -140,12 +148,12 @@ For each pair below, read both and confirm they agree on the facts:
 
 ### Task 5 — Source code vs. documentation
 
-The source code is in `UNanofabTools/` and `NanofabToolkit/`. Spot-check:
+The source code is expected in sibling directories `../UNanofabTools/` and `../NanofabToolkit/`. If those repos are missing, report that source-code verification could not be completed and treat it as a handoff risk. Spot-check:
 
-- Does the env-var schema in `documentation/UNanofabTools/flaskserver/03-configuration-reference.md` match `UNanofabTools/config/config.py`?
-- Do the HTTP routes in `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` match the actual `@app.route(...)` decorators in `UNanofabTools/app/blueprints/`?
-- Do the chem env-var names (`CHEM_PGHOST` etc.) match in the docs and `UNanofabTools/config/config.py`?
-- Are any "canonical lives in NanofabToolkit" claims accurate? Check that `NanofabToolkit/PicoHelperTools/` and `NanofabToolkit/ParticleSensor/` exist and have substantive content (not stub README pointers).
+- Does the env-var schema in `documentation/UNanofabTools/flaskserver/03-configuration-reference.md` match `../UNanofabTools/config/config.py`?
+- Do the HTTP routes in `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` match the actual `@app.route(...)` decorators in `../UNanofabTools/app/blueprints/`?
+- Do the chem env-var names (`CHEM_PGHOST` etc.) match in the docs and `../UNanofabTools/config/config.py`?
+- Are any "canonical lives in NanofabToolkit" claims accurate? Check that `../NanofabToolkit/PicoHelperTools/` and `../NanofabToolkit/ParticleSensor/` exist and have substantive content (not stub README pointers).
 
 ### Task 6 — Find contradictions
 
@@ -163,7 +171,7 @@ Read enough to surface internal contradictions. Examples of the kind of thing to
 
 - Every file path it links to **exists** at that path.
 - Every path A → presented order (Sessions 1–5) names decks/docs that actually exist with those filenames.
-- Path B (45-min talk) and Path C (solo successor reading order) reference real files.
+- Path B (45-min talk), Path C (solo successor reading order), and Path D (deep-dive maintainer playbook) reference real files.
 - The "Quick reference" section at the bottom is accurate.
 
 ### Task 8 — Stylistic / quality assessment

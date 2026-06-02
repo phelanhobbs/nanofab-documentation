@@ -2,15 +2,15 @@
 
 **You're the person reading this so I can hand it off.** This file is the orchestrator over everything in this folder. It says, *for your situation*, which materials to open in which order so you don't waste time wandering.
 
-The handoff materials live in three parallel trees plus two source repos:
+This documentation bundle lives in three parallel trees. For any development work or Path D audit, keep the two source repos next to this folder in the same parent directory:
 
 | Folder | What it is |
 |--------|-----------|
 | `presentation/` | Plain-English READMEs + slide decks (`.pptx`) for every tool. For people who don't need to read code. |
 | `documentation/` | Formal developer reference for every tool. For the next maintainer. |
 | `known-issues/` | The to-do list — bugs, tech debt, security concerns, recommended fixes. Kept out of the docs so the docs stay clean. |
-| `UNanofabTools/` | The actual Flask web app's source code. |
-| `NanofabToolkit/` | Sibling repo with the desktop tools and Pico firmware that talk to the Flask app. |
+| `../UNanofabTools/` | The actual Flask web app's source code. Not stored in this GitHub documentation bundle; clone or locate it adjacent to this folder before auditing code. |
+| `../NanofabToolkit/` | Sibling repo with the desktop tools and Pico firmware that talk to the Flask app. Not stored in this GitHub documentation bundle; clone or locate it adjacent to this folder before auditing code. |
 
 Both repos have a master `README.md` in each tree (`presentation/UNanofabTools/README.md`, `documentation/NanofabToolkit/README.md`, etc.) listing every tool with one-line descriptions. Once you know which tool you care about, the per-tool folder always has the same shape:
 
@@ -32,8 +32,9 @@ known-issues/<repo>/<tool>.md          ← punch list for that tool
 | **A live in-person handoff session(s)** between me (Faith) and the next maintainer | [Path A](#path-a-live-multi-session-handoff) | 4–5 sessions of ~60–90 min each |
 | **Presenting to lab management or non-technical stakeholders** (advisor, lab director, the rest of the team) | [Path B](#path-b-lab-management--non-technical-stakeholders) | 45 min, one session |
 | **A solo successor** walking in after I've left, reading at your own pace | [Path C](#path-c-solo-successor-self-paced) | Multi-week, self-paced |
+| **The long-term maintainer** who needs to own, audit, extend, or rescue the system without contacting me | [Path D](#path-d-long-term-maintainer-deep-dive) | 1-2 focused weeks, repeatable as an audit |
 
-Each path orders the materials so they tell the story in the right sequence. If you're not sure, **Path A is the canonical full handoff** — if you're going to do this in person, do it that way.
+Each path orders the materials so they tell the story in the right sequence. If you're not sure, **Path A is the canonical full handoff** — if you're going to do this in person, do it that way. If there is no person left to ask and the system has to be maintained independently, use **Path D**.
 
 ---
 
@@ -229,6 +230,28 @@ The punch list. Open these in this order; severity is right at the top of each f
 You're current. Re-run the live-server survey every quarter (or after any major change) and update `documentation/UNanofabTools/liveserver/README.md` §17 with the new snapshot. The script is at [`documentation/UNanofabTools/liveserver/survey_nfhistory.sh`](documentation/UNanofabTools/liveserver/survey_nfhistory.sh).
 
 When you find a bug, update the relevant `known-issues/UNanofabTools/<tool>.md` file. When you fix something, remove it from there and mention it in the next snapshot.
+
+---
+
+# Path D: Long-term maintainer deep dive
+
+Use Path D when the goal is not just onboarding, but independent ownership. This is the route for a future maintainer who must be able to answer "what is this, where is the truth, what is safe to change, what is broken, and what do I do next?" without contacting Faith.
+
+The full playbook is here:
+
+- [`PATH-D-DEEP-DIVE.md`](PATH-D-DEEP-DIVE.md)
+
+Path D deliberately goes beyond Path C. It is evidence-based, not just reading-based: clone or locate both source repos, compare the docs against the current code, refresh the live-server snapshot, rerun the mechanical audit, triage every known issue, and leave behind an updated decision trail for the next maintainer.
+
+Expected outputs:
+
+- A current live-server survey snapshot.
+- An updated `known-issues/` tree with obsolete items removed and new findings added.
+- A short written maintenance plan: next 7 days, next 30 days, next quarter.
+- A list of IT tickets needed vs Nanofab-actionable fixes.
+- A doc/code drift report for anything discovered during the audit.
+
+Completion rule: Path D is done only when a maintainer can explain the system from source code, live state, and documentation, and can safely make or defer the next change without needing undocumented context.
 
 ---
 

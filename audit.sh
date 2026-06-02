@@ -12,6 +12,9 @@
 set +e
 cd "$(dirname "$0")" || exit 1
 
+UNANOFABTOOLS_SRC="${UNANOFABTOOLS_SRC:-../UNanofabTools}"
+NANOFABTOOLKIT_SRC="${NANOFABTOOLKIT_SRC:-../NanofabToolkit}"
+
 c_red()   { printf '\033[31m%s\033[0m' "$1"; }
 c_yel()   { printf '\033[33m%s\033[0m' "$1"; }
 c_grn()   { printf '\033[32m%s\033[0m' "$1"; }
@@ -35,8 +38,8 @@ echo "  pwd:       $(pwd)"
 echo "  date:      $(date)"
 echo "  hostname:  $(hostname 2>/dev/null)"
 echo
-echo "  Top-level trees:"
-for d in presentation documentation known-issues UNanofabTools NanofabToolkit; do
+echo "  Documentation trees:"
+for d in presentation documentation known-issues; do
   if [ -d "$d" ]; then
     echo "    $(c_grn '✓') $d/"
   else
@@ -44,8 +47,17 @@ for d in presentation documentation known-issues UNanofabTools NanofabToolkit; d
   fi
 done
 echo
+echo "  Adjacent source repos for source-code verification:"
+for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
+  if [ -d "$d/.git" ] || [ -d "$d" ]; then
+    echo "    $(c_grn '✓') $d/"
+  else
+    echo "    $(c_yel '!') $d/  (not present beside this docs repo)"
+  fi
+done
+echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md EVALUATE.md audit.sh; do
+for f in START-HERE.md PATH-D-DEEP-DIVE.md EVALUATE.md audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
@@ -204,7 +216,9 @@ broken_list=$(mktemp)
 find presentation documentation known-issues -name "*.md" 2>/dev/null > /tmp/md_files_$$
 # include the orchestrator + evaluator files too
 echo "START-HERE.md" >> /tmp/md_files_$$
+echo "PATH-D-DEEP-DIVE.md" >> /tmp/md_files_$$
 echo "EVALUATE.md" >> /tmp/md_files_$$
+echo "README.md" >> /tmp/md_files_$$
 
 while IFS= read -r mdfile; do
   [ -f "$mdfile" ] || continue
@@ -264,11 +278,15 @@ fi
 # 5. Source vs docs spot-checks
 # ----------------------------------------------------------------------
 sec "5. SOURCE vs DOCS SPOT-CHECKS"
+echo "  Source roots:"
+echo "    UNanofabTools:  $UNANOFABTOOLS_SRC"
+echo "    NanofabToolkit: $NANOFABTOOLKIT_SRC"
+echo
 
 # 5a. env var schema
 echo "  5a. Env var names in config/config.py vs documented in 03-configuration-reference.md"
-if [ -f UNanofabTools/config/config.py ]; then
-  src_envs=$(grep -oE "os\.getenv\(['\"]([A-Z_][A-Z0-9_]+)['\"]" UNanofabTools/config/config.py | sed -E "s/os.getenv\(['\"]//; s/['\"]$//" | sort -u)
+if [ -f "$UNANOFABTOOLS_SRC/config/config.py" ]; then
+  src_envs=$(grep -oE "os\.getenv\(['\"]([A-Z_][A-Z0-9_]+)['\"]" "$UNANOFABTOOLS_SRC/config/config.py" | sed -E "s/os.getenv\(['\"]//; s/['\"]$//" | sort -u)
   doc_file=documentation/UNanofabTools/flaskserver/03-configuration-reference.md
   if [ -f "$doc_file" ]; then
     missing_in_doc=0
@@ -284,44 +302,46 @@ if [ -f UNanofabTools/config/config.py ]; then
     echo "    $(c_red "03-configuration-reference.md missing")"
   fi
 else
-  echo "    $(c_yel 'UNanofabTools/config/config.py not present — skipping')"
+  echo "    $(c_yel "$UNANOFABTOOLS_SRC/config/config.py not present — skipping")"
 fi
 
 # 5b. Route count
 echo
 echo "  5b. Number of @app.route / blueprint route decorators"
-if [ -d UNanofabTools/app/blueprints ]; then
+if [ -d "$UNANOFABTOOLS_SRC/app/blueprints" ]; then
   route_count=$(
     {
       grep -h -E '^[[:space:]]*@[a-z_]+\.route\(' \
-        UNanofabTools/app/blueprints/auth.py \
-        UNanofabTools/app/blueprints/tasks.py \
-        UNanofabTools/app/blueprints/admin.py \
-        UNanofabTools/app/blueprints/machines.py \
-        UNanofabTools/app/blueprints/api.py \
-        UNanofabTools/app/blueprints/chem_inventory.py \
-        UNanofabTools/app/blueprints/particle_demo_will.py 2>/dev/null
-      grep -h -E '^[[:space:]]*@app\.route\(' UNanofabTools/app/__init__.py 2>/dev/null
+        "$UNANOFABTOOLS_SRC/app/blueprints/auth.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/tasks.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/admin.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/machines.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/api.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/chem_inventory.py" \
+        "$UNANOFABTOOLS_SRC/app/blueprints/particle_demo_will.py" 2>/dev/null
+      grep -h -E '^[[:space:]]*@app\.route\(' "$UNANOFABTOOLS_SRC/app/__init__.py" 2>/dev/null
     } | wc -l | tr -d ' '
   )
   echo "    Registered route decorators in source: $route_count"
   echo "    (Excludes unregistered duplicate blueprints and commented-out decorators.)"
+else
+  echo "    $(c_yel "$UNANOFABTOOLS_SRC/app/blueprints not present — skipping")"
 fi
 
 # 5c. NanofabToolkit canonical content
 echo
 echo "  5c. NanofabToolkit canonical content (PicoHelperTools, ParticleSensor)"
 for sub in PicoHelperTools ParticleSensor; do
-  d=NanofabToolkit/$sub
+  d="$NANOFABTOOLKIT_SRC/$sub"
   if [ -d "$d" ]; then
     fc=$(find "$d" -maxdepth 2 -type f \( -name "*.py" -o -name "*.md" \) | wc -l | tr -d ' ')
     if [ "$fc" -gt 0 ]; then
-      echo "    $(c_grn '✓') NanofabToolkit/$sub has $fc .py/.md files (canonical, as claimed)"
+      echo "    $(c_grn '✓') $NANOFABTOOLKIT_SRC/$sub has $fc .py/.md files (canonical, as claimed)"
     else
-      echo "    $(c_red '✗') NanofabToolkit/$sub is empty or near-empty (claimed canonical, but no content)"
+      echo "    $(c_red '✗') $NANOFABTOOLKIT_SRC/$sub is empty or near-empty (claimed canonical, but no content)"
     fi
   else
-    echo "    $(c_red '✗') NanofabToolkit/$sub directory missing"
+    echo "    $(c_red '✗') $NANOFABTOOLKIT_SRC/$sub directory missing"
   fi
 done
 
