@@ -54,9 +54,8 @@ If you have to choose between finishing the deck list and letting the maintainer
 Before starting, prepare:
 
 - A screen with slides open in presenter mode if possible.
-- This file open beside the slides.
-- [START-HERE.md](../START-HERE.md) open.
-- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive) open to Path D.
+- This presentation guide open beside the slides.
+- [START-HERE.md](../START-HERE.md) open, with [Path D](../START-HERE.md#path-d-long-term-maintainer-deep-dive) bookmarked.
 - The documentation repo checked out on the current handoff branch.
 - The source repos available as sibling directories: `../UNanofabTools` and `../NanofabToolkit`.
 - A terminal in `nanofab-documentation/`.
@@ -163,9 +162,8 @@ Use this as the master order. It intentionally covers more than Path A.
 
 ### Show
 
-- [START-HERE.md](../START-HERE.md)
-- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive)
-- This file.
+- [START-HERE.md](../START-HERE.md), especially [Path D](../START-HERE.md#path-d-long-term-maintainer-deep-dive).
+- This presentation guide.
 
 ### Say
 
@@ -1431,11 +1429,9 @@ Maintenance:
 
 Leave them with:
 
-- This documentation repo.
-- The `super-in-depth` branch.
-- [START-HERE.md](../START-HERE.md).
-- [START-HERE.md](../START-HERE.md#path-d-long-term-maintainer-deep-dive).
-- This presenter guide.
+- The current handoff branch of this documentation repo.
+- The [START-HERE.md](../START-HERE.md) entry point, with [Path D](../START-HERE.md#path-d-long-term-maintainer-deep-dive) marked for audit work.
+- The [PRESENTATION-GUIDE.md](PRESENTATION-GUIDE.md) script if they need to replay or repeat the handoff.
 - Current source repo locations and commits.
 - Current live-server survey snapshot.
 - Their access status and revocation procedure.

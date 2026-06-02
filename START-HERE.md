@@ -1146,7 +1146,7 @@ Goal: leave the repo better than you found it.
 - Update known-issues.
 - Add or update live-server snapshot.
 - Remove any accidental secret values.
-- Run `bash support/audit.sh`.
+- Run the support audit (`bash support/audit.sh`).
 - Run `git diff --check`.
 - Review `git diff`.
 - Commit documentation changes.

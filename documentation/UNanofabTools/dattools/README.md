@@ -25,7 +25,7 @@ Install: `pip install matplotlib numpy`.
 ### 3.1 Entry points
 
 - `clean_event_log(input_file, output_file=None, preserve_formatting=True, pretty_format=True, add_commas=True, create_graph=False) -> bool`
-- `main()` — argparse CLI wrapper.
+- `main()` — `DATfixer.py` argparse CLI wrapper.
 
 ### 3.2 The `.DAT` binary format (reverse-engineered)
 
@@ -101,7 +101,7 @@ Returns `True` on success, `False` on exception (errors are caught and printed, 
 ### 4.1 Entry points
 
 - `create_pressure_graph(input_file, output_file=None, show_graph=True, log_scale=False) -> bool`
-- `main()` — argparse CLI wrapper.
+- `main()` — `DATgrapher.py` argparse CLI wrapper.
 
 ### 4.2 Behavior
 
