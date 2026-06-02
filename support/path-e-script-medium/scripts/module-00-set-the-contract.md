@@ -1583,14 +1583,29 @@ The first maintainer-hours should go to reliability, recoverability, security, a
 
 Use Path E when Faith is presenting the exhaustive maintainer handoff live with slides on a screen. Path E is not a separate audit path; it is the speaker-run version of the handoff. It tells the presenter what deck to show, what to say, what docs or source files to open, when to pause for live demonstrations, and what the future maintainer must be able to explain back before moving on.
 
-The guide and verbatim script set are here:
+Start here before opening any module:
 
+- `support/path-e-script/OPERATOR-CHECKLIST.md` (reference path: support/path-e-script/OPERATOR-CHECKLIST.md) — the short before/during/after checklist and tier chooser
 - `support/PRESENTATION-GUIDE.md` (reference path: support/PRESENTATION-GUIDE.md)
 - `support/path-e-script/README.md` (reference path: support/path-e-script/README.md)
 - `support/path-e-script/TIMING.md` (reference path: support/path-e-script/TIMING.md) — estimated read-aloud and real presentation time by version, week, and module
-- `support/path-e-script-minimum/README.md` (reference path: support/path-e-script-minimum/README.md) — 50k-100k target tier
-- `support/path-e-script-medium/README.md` (reference path: support/path-e-script-medium/README.md) — 100k-250k target tier
-- `support/path-e-script-verbose/README.md` (reference path: support/path-e-script-verbose/README.md) — 250k+ target tier
+
+Choose one script tier:
+
+| Tier | Start file | Use when | Words |
+|---|---|---|---:|
+| Practical modular pack | `support/path-e-script/OPERATOR-CHECKLIST.md` (reference path: support/path-e-script/OPERATOR-CHECKLIST.md) | You want the human-sized Path E script with one file per module. | 17,108 |
+| Minimum generated full Path E | `support/path-e-script-minimum/scripts/00-operator-and-session-plan.md` (reference path: support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 88,794 |
+| Medium generated full Path E | `support/path-e-script-medium/scripts/00-operator-and-session-plan.md` (reference path: support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 229,239 |
+| Verbose generated full Path E | `support/path-e-script-verbose/scripts/00-operator-and-session-plan.md` (reference path: support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 314,105 |
+
+For the practical modular pack, read `support/path-e-script/OPERATOR-CHECKLIST.md`, then `00-operator-protocol.md`, then `module-00-set-the-contract.md` through `module-21-final-no-contact-check.md` in filename order.
+
+For the generated tiers, read the files under the tier's `scripts/` directory in filename order. Each generated tier also has its own README and word-count manifest:
+
+- `support/path-e-script-minimum/README.md` (reference path: support/path-e-script-minimum/README.md) and `WORDCOUNT.md` (reference path: support/path-e-script-minimum/WORDCOUNT.md)
+- `support/path-e-script-medium/README.md` (reference path: support/path-e-script-medium/README.md) and `WORDCOUNT.md` (reference path: support/path-e-script-medium/WORDCOUNT.md)
+- `support/path-e-script-verbose/README.md` (reference path: support/path-e-script-verbose/README.md) and `WORDCOUNT.md` (reference path: support/path-e-script-verbose/WORDCOUNT.md)
 
 Use Path E when there is no time limit and the goal is complete maintainer independence. Prefer too much coverage over too little. If the live presentation uncovers missing context, update this `START-HERE.md`, the relevant developer docs, or the relevant `known-issues/` file before the handoff is considered complete.
 
@@ -1704,8 +1719,8 @@ Private documentation bundle for the Utah Nanofab software/tooling handoff.
 
 ## Contents
 
-- `START-HERE.md` — orientation, recommended reading order, and the full Path D deep-audit playbook.
-- `support/` — presentation guide, Path E script packs, evaluation prompt, audit script, and redaction note.
+- `START-HERE.md` — orientation, recommended reading order, Path D audit playbook, and Path E presenter route.
+- `support/` — presentation guide, Path E operator checklist and script packs, evaluation prompt, audit script, and redaction note.
 - `documentation/` — developer-facing technical documentation.
 - `presentation/` — plain-English guides and slide decks.
 - `known-issues/` — known bugs, risks, and technical debt.
@@ -1727,7 +1742,7 @@ Use this when the goal is not a quick briefing. Use it when the next maintainer 
 
 This is a presenter script, not another slide deck. Keep the slides visible, but use this file to decide what to emphasize, when to pause, what to demonstrate, and what the maintainer must explain back before moving on.
 
-For a literal read-aloud version with one script per module, use `path-e-script/README.md` (reference path: path-e-script/README.md). That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks. Timing estimates are in `path-e-script/TIMING.md` (reference path: path-e-script/TIMING.md).
+For a literal read-aloud version with one script per module, use `path-e-script/README.md` (reference path: path-e-script/README.md). Start with `path-e-script/OPERATOR-CHECKLIST.md` (reference path: path-e-script/OPERATOR-CHECKLIST.md) if you need the short tier chooser and before/during/after checklist. That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks. Timing estimates are in `path-e-script/TIMING.md` (reference path: path-e-script/TIMING.md).
 
 For longer generated tiers, use `path-e-script-minimum/README.md` (reference path: path-e-script-minimum/README.md), `path-e-script-medium/README.md` (reference path: path-e-script-medium/README.md), or `path-e-script-verbose/README.md` (reference path: path-e-script-verbose/README.md).
 
@@ -1781,6 +1796,7 @@ Before starting, prepare:
 - A screen with slides open in presenter mode if possible.
 - This presentation guide open beside the slides.
 - START-HERE.md (reference path: ../START-HERE.md) open, with Path D (reference path: ../START-HERE.md#path-d-long-term-maintainer-deep-dive) bookmarked.
+- Path E operator checklist (reference path: path-e-script/OPERATOR-CHECKLIST.md) open, with the chosen script tier identified.
 - The documentation repo checked out on the current handoff branch.
 - The source repos available as sibling directories: `../UNanofabTools` and `../NanofabToolkit`.
 - A terminal in `nanofab-documentation/`.

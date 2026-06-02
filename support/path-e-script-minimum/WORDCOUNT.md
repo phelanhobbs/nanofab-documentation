@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-minimum/`
 - Script files directory: `scripts/`
-- Total script word count: **88,581**
+- Total script word count: **88,794**
 - Target minimum: **50,000**
 - Target maximum: **100,000**
 - Source docs included: **34**
@@ -14,7 +14,7 @@
 | File | Words |
 |---|---:|
 | `scripts/00-operator-and-session-plan.md` | 2,656 |
-| `scripts/module-00-set-the-contract.md` | 17,593 |
+| `scripts/module-00-set-the-contract.md` | 17,806 |
 | `scripts/module-01-big-picture-of-the-server.md` | 4,299 |
 | `scripts/module-02-live-server.md` | 10,706 |
 | `scripts/module-03-server-access.md` | 7,117 |

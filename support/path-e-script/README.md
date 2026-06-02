@@ -6,6 +6,8 @@ The shorter guide at [`../PRESENTATION-GUIDE.md`](../PRESENTATION-GUIDE.md) tell
 
 ## How To Use This Pack
 
+Start with [`OPERATOR-CHECKLIST.md`](OPERATOR-CHECKLIST.md) if you need the short before/during/after checklist or need to choose between the practical, minimum, medium, and verbose Path E versions.
+
 Read [`00-operator-protocol.md`](00-operator-protocol.md) before presenting anything. It defines the rules for reading, pausing, demos, safety, evidence logging, and explain-back checks.
 
 Use [`TIMING.md`](TIMING.md) for read-aloud and real presentation-time estimates by version, week, and module.
@@ -14,9 +16,9 @@ Use [`weekly-rollout-plan.md`](weekly-rollout-plan.md) to spread the modules acr
 
 Longer generated tiers are available beside this directory:
 
-- [`../path-e-script-minimum/README.md`](../path-e-script-minimum/README.md) — 50k-100k target tier.
-- [`../path-e-script-medium/README.md`](../path-e-script-medium/README.md) — 100k-250k target tier.
-- [`../path-e-script-verbose/README.md`](../path-e-script-verbose/README.md) — 250k+ target tier.
+- [`../path-e-script-minimum/README.md`](../path-e-script-minimum/README.md) — 88,794-word tier, split under `scripts/`.
+- [`../path-e-script-medium/README.md`](../path-e-script-medium/README.md) — 229,239-word tier, split under `scripts/`.
+- [`../path-e-script-verbose/README.md`](../path-e-script-verbose/README.md) — 314,105-word tier, split under `scripts/`.
 
 Then run the module scripts in order:
 

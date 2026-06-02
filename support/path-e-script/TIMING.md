@@ -11,10 +11,10 @@ Use presentation time for scheduling. Use read-aloud time only as a lower bound.
 
 | Version | File(s) | Words | Read-aloud time | Real presentation time |
 |---|---:|---:|---:|---:|
-| Modular script pack | operator protocol, Modules 0-21, and weekly rollout plan; excludes this timing guide | 17,249 | ~2.4 hours | ~15-23 hours |
-| Minimum full Path E | `support/path-e-script-minimum/scripts/*.md` | 88,581 | ~12.3 hours | ~30-50 hours |
-| Medium full Path E | `support/path-e-script-medium/scripts/*.md` | 229,026 | ~31.8 hours | ~75-120 hours |
-| Verbose maximal Path E | `support/path-e-script-verbose/scripts/*.md` | 313,892 | ~43.6 hours | ~105-165 hours |
+| Modular script pack | checklist, operator protocol, Modules 0-21, and weekly rollout plan; excludes this timing guide | 17,108 | ~2.4 hours | ~15-23 hours |
+| Minimum full Path E | `support/path-e-script-minimum/scripts/*.md` | 88,794 | ~12.3 hours | ~30-50 hours |
+| Medium full Path E | `support/path-e-script-medium/scripts/*.md` | 229,239 | ~31.8 hours | ~75-120 hours |
+| Verbose maximal Path E | `support/path-e-script-verbose/scripts/*.md` | 314,105 | ~43.6 hours | ~105-165 hours |
 
 The verbose tier is the best match when there is truly no time limit and the handoff can run for months. The modular script pack is the practical minimum for a live human handoff. The generated minimum, medium, and verbose tiers are split into module files under their `scripts/` directories.
 
@@ -22,7 +22,7 @@ The verbose tier is the best match when there is truly no time limit and the han
 
 | Rollout portion | Files | Words | Read-aloud time | Real presentation time |
 |---|---|---:|---:|---:|
-| Week 1 - Orientation and access | operator protocol + Modules 0-3 | 4,384 | ~37 min | ~2.5-4.5 hours |
+| Week 1 - Orientation and access | checklist + operator protocol + Modules 0-3 | 4,920 | ~41 min | ~2.5-4.5 hours |
 | Week 2 - Flask internals and access control | Modules 4-6 | 1,940 | ~16 min | ~1.75-2.75 hours |
 | Week 3 - User workflows and data flow | Modules 7-9 | 1,622 | ~14 min | ~1.5-2.5 hours |
 | Week 4 - Chemical inventory and endpoint drift | Modules 10-11 | 1,259 | ~10 min | ~1.5-2.25 hours |
@@ -37,6 +37,7 @@ These weekly estimates are for the modular script pack. The generated minimum, m
 
 | Module | Words | Read-aloud time | Real presentation time |
 |---|---:|---:|---:|
+| Operator checklist | 536 | ~4 min | ~10-15 min |
 | Operator protocol | 1,047 | ~9 min | ~25-35 min |
 | Module 0 - Set the contract | 860 | ~7 min | ~25-35 min |
 | Module 1 - Big picture of the server | 886 | ~7 min | ~35-50 min |

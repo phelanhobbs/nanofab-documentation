@@ -488,9 +488,12 @@ def build_tier(dirname: str, cfg: dict) -> dict:
     readme += (
         "\nRead the files in `scripts/` in filename order. The tier is split by "
         "operator/session material plus one file per Path E module.\n\n"
+        "Before presenting this tier, read "
+        "[`../path-e-script/OPERATOR-CHECKLIST.md`](../path-e-script/OPERATOR-CHECKLIST.md) "
+        "and [`../path-e-script/TIMING.md`](../path-e-script/TIMING.md).\n\n"
         "Start here:\n\n"
-        "- `scripts/00-operator-and-session-plan.md`\n"
-        "- `scripts/module-00-set-the-contract.md`\n"
+        "- [`scripts/00-operator-and-session-plan.md`](scripts/00-operator-and-session-plan.md)\n"
+        "- [`scripts/module-00-set-the-contract.md`](scripts/module-00-set-the-contract.md)\n"
     )
     (out / "README.md").write_text(readme)
 

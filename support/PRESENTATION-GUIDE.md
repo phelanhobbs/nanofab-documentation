@@ -6,7 +6,7 @@ Use this when the goal is not a quick briefing. Use it when the next maintainer 
 
 This is a presenter script, not another slide deck. Keep the slides visible, but use this file to decide what to emphasize, when to pause, what to demonstrate, and what the maintainer must explain back before moving on.
 
-For a literal read-aloud version with one script per module, use [`path-e-script/README.md`](path-e-script/README.md). That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks. Timing estimates are in [`path-e-script/TIMING.md`](path-e-script/TIMING.md).
+For a literal read-aloud version with one script per module, use [`path-e-script/README.md`](path-e-script/README.md). Start with [`path-e-script/OPERATOR-CHECKLIST.md`](path-e-script/OPERATOR-CHECKLIST.md) if you need the short tier chooser and before/during/after checklist. That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks. Timing estimates are in [`path-e-script/TIMING.md`](path-e-script/TIMING.md).
 
 For longer generated tiers, use [`path-e-script-minimum/README.md`](path-e-script-minimum/README.md), [`path-e-script-medium/README.md`](path-e-script-medium/README.md), or [`path-e-script-verbose/README.md`](path-e-script-verbose/README.md).
 
@@ -60,6 +60,7 @@ Before starting, prepare:
 - A screen with slides open in presenter mode if possible.
 - This presentation guide open beside the slides.
 - [START-HERE.md](../START-HERE.md) open, with [Path D](../START-HERE.md#path-d-long-term-maintainer-deep-dive) bookmarked.
+- [Path E operator checklist](path-e-script/OPERATOR-CHECKLIST.md) open, with the chosen script tier identified.
 - The documentation repo checked out on the current handoff branch.
 - The source repos available as sibling directories: `../UNanofabTools` and `../NanofabToolkit`.
 - A terminal in `nanofab-documentation/`.

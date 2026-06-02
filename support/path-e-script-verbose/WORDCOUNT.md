@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-verbose/`
 - Script files directory: `scripts/`
-- Total script word count: **313,892**
+- Total script word count: **314,105**
 - Target minimum: **250,000**
 - Target maximum: none
 - Source docs included: **85**
@@ -14,7 +14,7 @@
 | File | Words |
 |---|---:|
 | `scripts/00-operator-and-session-plan.md` | 3,816 |
-| `scripts/module-00-set-the-contract.md` | 22,266 |
+| `scripts/module-00-set-the-contract.md` | 22,479 |
 | `scripts/module-01-big-picture-of-the-server.md` | 35,401 |
 | `scripts/module-02-live-server.md` | 19,030 |
 | `scripts/module-03-server-access.md` | 15,616 |
