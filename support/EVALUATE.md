@@ -16,6 +16,7 @@ The repository root contains the documentation bundle:
 |------|-----------|
 | `START-HERE.md` | The umbrella orchestrator. Lists every deliverable, includes Paths A-E, and contains the full Path D no-human-context audit playbook. **Read this first.** |
 | `support/PRESENTATION-GUIDE.md` | Path E speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
+| `support/path-e-script/` | Expanded Path E read-aloud script pack, with one script per module plus operator protocol. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |

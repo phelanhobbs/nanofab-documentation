@@ -63,7 +63,7 @@ for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
 done
 echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md support/PRESENTATION-GUIDE.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
+for f in START-HERE.md support/PRESENTATION-GUIDE.md support/path-e-script/README.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
@@ -219,12 +219,9 @@ total_links=0
 broken_links=0
 broken_list=$(mktemp)
 
-find presentation documentation known-issues -name "*.md" 2>/dev/null > /tmp/md_files_$$
-# include the orchestrator + evaluator files too
+find presentation documentation known-issues support -name "*.md" 2>/dev/null > /tmp/md_files_$$
+# include the root orchestrator files too
 echo "START-HERE.md" >> /tmp/md_files_$$
-echo "support/PRESENTATION-GUIDE.md" >> /tmp/md_files_$$
-echo "support/EVALUATE.md" >> /tmp/md_files_$$
-echo "support/REDACTION-NOTE.md" >> /tmp/md_files_$$
 echo "README.md" >> /tmp/md_files_$$
 
 while IFS= read -r mdfile; do

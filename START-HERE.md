@@ -1260,9 +1260,10 @@ The first maintainer-hours should go to reliability, recoverability, security, a
 
 Use Path E when Faith is presenting the exhaustive maintainer handoff live with slides on a screen. Path E is not a separate audit path; it is the speaker-run version of the handoff. It tells the presenter what deck to show, what to say, what docs or source files to open, when to pause for live demonstrations, and what the future maintainer must be able to explain back before moving on.
 
-The guide is here:
+The guide and verbatim script set are here:
 
 - [`support/PRESENTATION-GUIDE.md`](support/PRESENTATION-GUIDE.md)
+- [`support/path-e-script/README.md`](support/path-e-script/README.md)
 
 Use Path E when there is no time limit and the goal is complete maintainer independence. Prefer too much coverage over too little. If the live presentation uncovers missing context, update this `START-HERE.md`, the relevant developer docs, or the relevant `known-issues/` file before the handoff is considered complete.
 

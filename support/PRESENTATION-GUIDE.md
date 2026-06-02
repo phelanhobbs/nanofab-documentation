@@ -6,6 +6,8 @@ Use this when the goal is not a quick briefing. Use it when the next maintainer 
 
 This is a presenter script, not another slide deck. Keep the slides visible, but use this file to decide what to emphasize, when to pause, what to demonstrate, and what the maintainer must explain back before moving on.
 
+For a literal read-aloud version with one script per module, use [`path-e-script/README.md`](path-e-script/README.md). That pack is written for a presenter with no private context and includes operator notes, stop points, demo prompts, and explain-back checks.
+
 ## Presentation Philosophy
 
 Take longer than feels necessary.
