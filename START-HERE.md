@@ -1296,8 +1296,12 @@ Use Path F when the goal is not just handoff, audit, or presentation, but recons
 Path F is generated from the current working-tree source state of the sibling repos and is intentionally much larger than Path E:
 
 - [`support/path-f-reconstruction/README.md`](support/path-f-reconstruction/README.md) — start here
+- [`support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md`](support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md) — one-hour orientation path for a new or stressed maintainer
 - [`support/path-f-reconstruction/NAVIGATOR.md`](support/path-f-reconstruction/NAVIGATOR.md) — first file to open when choosing the right reconstruction folder
+- [`support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md`](support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md) — symptom-to-folder routing table with ownership and proof checks
+- [`support/path-f-reconstruction/GLOSSARY.md`](support/path-f-reconstruction/GLOSSARY.md) — names, acronyms, accounts, hosts, tools, and data paths
 - [`support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md`](support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md) — proof gates for deciding whether a rebuild is complete
+- [`support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md`](support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md) — copyable evidence log for rebuilds, repairs, and blocked work
 - [`support/path-f-reconstruction/WORDCOUNT.md`](support/path-f-reconstruction/WORDCOUNT.md) — tool-folder and file word-count manifest
 - [`support/path-f-reconstruction/SOURCE-MANIFEST.json`](support/path-f-reconstruction/SOURCE-MANIFEST.json) — source files included, dirty/untracked state, and total count metadata
 - [`support/path-f-reconstruction/tools/INDEX.md`](support/path-f-reconstruction/tools/INDEX.md) — compact index of every reconstruction folder
@@ -1308,9 +1312,9 @@ Current generated size:
 
 | Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 3,648,863 | 159 | 17 |
+| Path F ultra-deep reconstruction manual | 3,659,652 | 159 | 17 |
 
-Start with `NAVIGATOR.md`, then `RECONSTRUCTION-CHECKLIST.md`, then `tools/INDEX.md` if the target folder is not obvious. After that, read `tools/00-system-map/README.md` and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. The generated tool folders include sanitized source excerpts, per-file summaries, line-by-line reconstruction notes, and edge-case matrices.
+Start with `MAINTAINER-FIRST-HOUR.md` if you are new or responding under stress. Otherwise start with `NAVIGATOR.md`, use `TROUBLESHOOTING-ROUTES.md` when you have a symptom, and use `GLOSSARY.md` when a name or acronym is unclear. Before declaring work complete, use `RECONSTRUCTION-CHECKLIST.md` and fill out `REBUILD-EVIDENCE-TEMPLATE.md`. After that, read `tools/INDEX.md`, `tools/00-system-map/README.md`, and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. Every generated source-file page has breadcrumbs back to the navigator, checklist, glossary, evidence template, tool index, system map, and owning tool README.
 
 Important limits:
 

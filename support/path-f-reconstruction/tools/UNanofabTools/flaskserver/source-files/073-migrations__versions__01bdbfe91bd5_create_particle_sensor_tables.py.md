@@ -2,6 +2,12 @@
 
 # Source Reconstruction: UNanofabTools/migrations/versions/01bdbfe91bd5_create_particle_sensor_tables.py
 
+## Breadcrumbs
+
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+
+If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
+
 - Repository: `UNanofabTools`
 - Relative path: `migrations/versions/01bdbfe91bd5_create_particle_sensor_tables.py`
 - Lines read: `55`

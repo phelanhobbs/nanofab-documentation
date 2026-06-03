@@ -2,6 +2,12 @@
 
 # Source Reconstruction: UNanofabTools/peakCount.py
 
+## Breadcrumbs
+
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+
+If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
+
 - Repository: `UNanofabTools`
 - Relative path: `peakCount.py`
 - Lines read: `220`

@@ -8,7 +8,8 @@ This is the first file to open when Path F feels too large. Path F is intentiona
 2. Do not read the Flask folder linearly unless you are rebuilding the entire server.
 3. Do not treat redacted values as recoverable secrets; supply them from approved local configuration.
 4. Do not treat Path F as live-state truth; production and fresh surveys can override generated documentation.
-5. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete.
+5. Use `TROUBLESHOOTING-ROUTES.md` when you have a symptom but not a tool name.
+6. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete and `REBUILD-EVIDENCE-TEMPLATE.md` is filled in.
 
 ## Fast Route Chooser
 
@@ -27,33 +28,36 @@ This is the first file to open when Path F feels too large. Path F is intentiona
 
 ## Required Reading Sequence
 
-1. Read this navigator.
-2. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).
-3. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.
-4. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.
-5. Read one tool `README.md` at a time.
-6. Open source-file pages only when implementing or verifying that specific file.
+1. Read [`MAINTAINER-FIRST-HOUR.md`](MAINTAINER-FIRST-HOUR.md) if you are new or responding under stress.
+2. Read this navigator.
+3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if you have a symptom.
+4. Read [`GLOSSARY.md`](GLOSSARY.md) for unfamiliar terms before guessing.
+5. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).
+6. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.
+7. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.
+8. Read one tool `README.md` at a time.
+9. Open source-file pages only when implementing or verifying that specific file; use their breadcrumbs to climb back out.
 
 ## Tool Map
 
 | Tool folder | Source files | Words | Open when |
 |---|---:|---:|---|
-| [`UNanofabTools/repo-overview-and-entrypoints`](tools/UNanofabTools/repo-overview-and-entrypoints/README.md) | 6 | 156,497 | Open this when you need the original repo story before choosing a specific tool folder. |
-| [`UNanofabTools/flaskserver`](tools/UNanofabTools/flaskserver/README.md) | 79 | 1,428,369 | Open this first for any server rebuild, browser bug, route behavior, database schema, auth, task, machine-data, chem-inventory, or particle API question. |
-| [`UNanofabTools/hscdownloader`](tools/UNanofabTools/hscdownloader/README.md) | 1 | 110,857 | Open this when machine pages stop updating, service IDs change, CORES changes payloads, or HSCDATA CSVs need to be recreated. |
-| [`UNanofabTools/filetransfer`](tools/UNanofabTools/filetransfer/README.md) | 6 | 65,556 | Open this when a machine control PC stops uploading logs or a transfer path/account/key needs replacement. |
-| [`UNanofabTools/picofirmware`](tools/UNanofabTools/picofirmware/README.md) | 6 | 183,991 | Open this for historical Pico code, unique unfinished scripts, WiFi diagnostics, or comparison against the canonical NanofabToolkit PicoHelperTools folder. |
-| [`UNanofabTools/particlepctools`](tools/UNanofabTools/particlepctools/README.md) | 3 | 171,062 | Open this for historical desktop viewer behavior, test particle-data generation, or comparison with NanofabToolkit/ParticleSensor. |
-| [`UNanofabTools/dattools`](tools/UNanofabTools/dattools/README.md) | 3 | 58,158 | Open this when a raw Denton `.DAT` log needs decoding or a cleaned log needs a pressure graph. |
-| [`UNanofabTools/utilities`](tools/UNanofabTools/utilities/README.md) | 6 | 53,287 | Open this for one-off helper rebuilds or to decide whether a helper should be retained, replaced, or retired. |
-| [`UNanofabTools/hscdisplayerserver`](tools/UNanofabTools/hscdisplayerserver/README.md) | 1 | 282,790 | Open this when you find old server behavior that predates the Flask app or need to compare a legacy route to the modern implementation. |
-| [`NanofabToolkit/PicoHelperTools`](tools/NanofabToolkit/PicoHelperTools/README.md) | 8 | 281,288 | Open this first for Pico firmware rebuilds, sensor device setup, MAC discovery, network diagnostics, and MicroPython deployment. |
-| [`NanofabToolkit/ParticleSensor`](tools/NanofabToolkit/ParticleSensor/README.md) | 7 | 237,677 | Open this for maintained particle desktop GUI behavior, API processing, packaging, or current-vs-historical particle data workflows. |
-| [`NanofabToolkit/ALDPeakCounter`](tools/NanofabToolkit/ALDPeakCounter/README.md) | 7 | 86,906 | Open this when ALD pressure files need a GUI workflow or the shared peak-count algorithm must be rebuilt. |
-| [`NanofabToolkit/DentonDecoder`](tools/NanofabToolkit/DentonDecoder/README.md) | 7 | 154,408 | Open this for GUI Denton conversion/viewing workflows distinct from command-line DATfixer/DATgrapher. |
-| [`NanofabToolkit/ParalyneReader`](tools/NanofabToolkit/ParalyneReader/README.md) | 6 | 192,889 | Open this for Parylene log viewing, time-series parsing, GUI behavior, or packaging reconstruction. |
-| [`NanofabToolkit/PreciousMetalReader`](tools/NanofabToolkit/PreciousMetalReader/README.md) | 5 | 123,205 | Open this for precious metal monthly retrieval, CORES-style data access, GUI behavior, or packaging reconstruction. |
-| [`NanofabToolkit/packaging-root`](tools/NanofabToolkit/packaging-root/README.md) | 8 | 56,607 | Open this when rebuilding packaging infrastructure, GitHub Actions, PyInstaller hooks, or repo-level metadata. |
+| [`UNanofabTools/repo-overview-and-entrypoints`](tools/UNanofabTools/repo-overview-and-entrypoints/README.md) | 6 | 156,839 | Open this when you need the original repo story before choosing a specific tool folder. |
+| [`UNanofabTools/flaskserver`](tools/UNanofabTools/flaskserver/README.md) | 79 | 1,432,872 | Open this first for any server rebuild, browser bug, route behavior, database schema, auth, task, machine-data, chem-inventory, or particle API question. |
+| [`UNanofabTools/hscdownloader`](tools/UNanofabTools/hscdownloader/README.md) | 1 | 110,914 | Open this when machine pages stop updating, service IDs change, CORES changes payloads, or HSCDATA CSVs need to be recreated. |
+| [`UNanofabTools/filetransfer`](tools/UNanofabTools/filetransfer/README.md) | 6 | 65,898 | Open this when a machine control PC stops uploading logs or a transfer path/account/key needs replacement. |
+| [`UNanofabTools/picofirmware`](tools/UNanofabTools/picofirmware/README.md) | 6 | 184,333 | Open this for historical Pico code, unique unfinished scripts, WiFi diagnostics, or comparison against the canonical NanofabToolkit PicoHelperTools folder. |
+| [`UNanofabTools/particlepctools`](tools/UNanofabTools/particlepctools/README.md) | 3 | 171,233 | Open this for historical desktop viewer behavior, test particle-data generation, or comparison with NanofabToolkit/ParticleSensor. |
+| [`UNanofabTools/dattools`](tools/UNanofabTools/dattools/README.md) | 3 | 58,329 | Open this when a raw Denton `.DAT` log needs decoding or a cleaned log needs a pressure graph. |
+| [`UNanofabTools/utilities`](tools/UNanofabTools/utilities/README.md) | 6 | 53,629 | Open this for one-off helper rebuilds or to decide whether a helper should be retained, replaced, or retired. |
+| [`UNanofabTools/hscdisplayerserver`](tools/UNanofabTools/hscdisplayerserver/README.md) | 1 | 282,847 | Open this when you find old server behavior that predates the Flask app or need to compare a legacy route to the modern implementation. |
+| [`NanofabToolkit/PicoHelperTools`](tools/NanofabToolkit/PicoHelperTools/README.md) | 8 | 281,744 | Open this first for Pico firmware rebuilds, sensor device setup, MAC discovery, network diagnostics, and MicroPython deployment. |
+| [`NanofabToolkit/ParticleSensor`](tools/NanofabToolkit/ParticleSensor/README.md) | 7 | 238,076 | Open this for maintained particle desktop GUI behavior, API processing, packaging, or current-vs-historical particle data workflows. |
+| [`NanofabToolkit/ALDPeakCounter`](tools/NanofabToolkit/ALDPeakCounter/README.md) | 7 | 87,305 | Open this when ALD pressure files need a GUI workflow or the shared peak-count algorithm must be rebuilt. |
+| [`NanofabToolkit/DentonDecoder`](tools/NanofabToolkit/DentonDecoder/README.md) | 7 | 154,807 | Open this for GUI Denton conversion/viewing workflows distinct from command-line DATfixer/DATgrapher. |
+| [`NanofabToolkit/ParalyneReader`](tools/NanofabToolkit/ParalyneReader/README.md) | 6 | 193,231 | Open this for Parylene log viewing, time-series parsing, GUI behavior, or packaging reconstruction. |
+| [`NanofabToolkit/PreciousMetalReader`](tools/NanofabToolkit/PreciousMetalReader/README.md) | 5 | 123,490 | Open this for precious metal monthly retrieval, CORES-style data access, GUI behavior, or packaging reconstruction. |
+| [`NanofabToolkit/packaging-root`](tools/NanofabToolkit/packaging-root/README.md) | 8 | 57,063 | Open this when rebuilding packaging infrastructure, GitHub Actions, PyInstaller hooks, or repo-level metadata. |
 
 ## External Inputs That Path F Cannot Invent
 
@@ -69,7 +73,10 @@ Use this test whenever the documentation has changed substantially:
 ```sh
 bash support/audit.sh
 sed -n '1,220p' support/path-f-reconstruction/NAVIGATOR.md
+sed -n '1,220p' support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md
+sed -n '1,180p' support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md
 sed -n '1,220p' support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md
+sed -n '1,160p' support/path-f-reconstruction/GLOSSARY.md
 sed -n '1,120p' support/path-f-reconstruction/tools/INDEX.md
 ```
 

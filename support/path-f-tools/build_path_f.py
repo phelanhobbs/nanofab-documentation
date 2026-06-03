@@ -12,6 +12,7 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -24,6 +25,15 @@ OUT = ROOT / "support" / "path-f-reconstruction"
 TOOL_DIR = OUT / "tools"
 TARGET_WORDS = 2_500_000
 TARGET_PAD_WORDS = 2_575_000
+
+NAVIGATION_FILES = {
+    "NAVIGATOR.md",
+    "RECONSTRUCTION-CHECKLIST.md",
+    "TROUBLESHOOTING-ROUTES.md",
+    "MAINTAINER-FIRST-HOUR.md",
+    "GLOSSARY.md",
+    "REBUILD-EVIDENCE-TEMPLATE.md",
+}
 
 SOURCE_REPOS = {
     "UNanofabTools": ROOT.parent / "UNanofabTools",
@@ -290,6 +300,10 @@ def title_from_key(key: tuple[str, str, str, str]) -> str:
 def tool_folder(key: tuple[str, str, str, str]) -> Path:
     _num, repo, slug, _title = key
     return TOOL_DIR / repo / slug
+
+
+def rel_link(from_dir: Path, target: Path) -> str:
+    return os.path.relpath(target, from_dir).replace(os.sep, "/")
 
 
 def source_doc_name(sf: SourceFile, index: int) -> str:
@@ -734,6 +748,30 @@ def line_explanation(sf: SourceFile, number: int, line: str, prior_kind: str | N
     return common + body + " " + context
 
 
+def source_breadcrumbs(sf: SourceFile) -> str:
+    key = tool_key(sf)
+    source_dir = tool_folder(key) / "source-files"
+    tool_readme = tool_folder(key) / "README.md"
+    links = [
+        ("Path F Home", OUT / "README.md"),
+        ("Navigator", OUT / "NAVIGATOR.md"),
+        ("Troubleshooting Routes", OUT / "TROUBLESHOOTING-ROUTES.md"),
+        ("Reconstruction Checklist", OUT / "RECONSTRUCTION-CHECKLIST.md"),
+        ("First Hour", OUT / "MAINTAINER-FIRST-HOUR.md"),
+        ("Glossary", OUT / "GLOSSARY.md"),
+        ("Evidence Template", OUT / "REBUILD-EVIDENCE-TEMPLATE.md"),
+        ("Tool Index", TOOL_DIR / "INDEX.md"),
+        ("System Map", TOOL_DIR / "00-system-map" / "README.md"),
+        ("Owning Tool README", tool_readme),
+    ]
+    return (
+        "## Breadcrumbs\n\n"
+        + " | ".join(f"[{label}]({rel_link(source_dir, target)})" for label, target in links)
+        + "\n\n"
+        "If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.\n\n"
+    )
+
+
 def file_reconstruction_intro(sf: SourceFile, text: str, sanitized: str) -> str:
     line_count = len(text.splitlines())
     digest = hashlib.sha256(sanitized.encode()).hexdigest()[:16]
@@ -741,6 +779,7 @@ def file_reconstruction_intro(sf: SourceFile, text: str, sanitized: str) -> str:
     untracked = "yes" if sf.untracked else "no"
     chunks = [
         f"\n\n# Source Reconstruction: {sf.display}\n\n",
+        source_breadcrumbs(sf),
         f"- Repository: `{sf.repo}`\n",
         f"- Relative path: `{sf.rel.as_posix()}`\n",
         f"- Lines read: `{line_count}`\n",
@@ -962,7 +1001,7 @@ def group_totals_from_counts(counts: dict[str, int]) -> dict[str, int]:
     totals: dict[str, int] = {}
     for name, count in counts.items():
         parts = Path(name).parts
-        if name in {"NAVIGATOR.md", "RECONSTRUCTION-CHECKLIST.md"}:
+        if name in NAVIGATION_FILES:
             group = "navigation/"
         elif name == "tools/INDEX.md":
             group = "tools/INDEX.md"
@@ -1096,17 +1135,21 @@ def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, in
         "2. Do not read the Flask folder linearly unless you are rebuilding the entire server.\n"
         "3. Do not treat redacted values as recoverable secrets; supply them from approved local configuration.\n"
         "4. Do not treat Path F as live-state truth; production and fresh surveys can override generated documentation.\n"
-        "5. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete.\n\n"
+        "5. Use `TROUBLESHOOTING-ROUTES.md` when you have a symptom but not a tool name.\n"
+        "6. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete and `REBUILD-EVIDENCE-TEMPLATE.md` is filled in.\n\n"
         "## Fast Route Chooser\n\n"
         "| Need | Open | Done when |\n|---|---|---|\n"
         f"{route_rows}\n\n"
         "## Required Reading Sequence\n\n"
-        "1. Read this navigator.\n"
-        "2. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).\n"
-        "3. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.\n"
-        "4. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.\n"
-        "5. Read one tool `README.md` at a time.\n"
-        "6. Open source-file pages only when implementing or verifying that specific file.\n\n"
+        "1. Read [`MAINTAINER-FIRST-HOUR.md`](MAINTAINER-FIRST-HOUR.md) if you are new or responding under stress.\n"
+        "2. Read this navigator.\n"
+        "3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if you have a symptom.\n"
+        "4. Read [`GLOSSARY.md`](GLOSSARY.md) for unfamiliar terms before guessing.\n"
+        "5. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).\n"
+        "6. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.\n"
+        "7. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.\n"
+        "8. Read one tool `README.md` at a time.\n"
+        "9. Open source-file pages only when implementing or verifying that specific file; use their breadcrumbs to climb back out.\n\n"
         "## Tool Map\n\n"
         "| Tool folder | Source files | Words | Open when |\n|---|---:|---:|---|\n"
         + "\n".join(tool_rows)
@@ -1121,7 +1164,10 @@ def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, in
         "```sh\n"
         "bash support/audit.sh\n"
         "sed -n '1,220p' support/path-f-reconstruction/NAVIGATOR.md\n"
+        "sed -n '1,220p' support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md\n"
+        "sed -n '1,180p' support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md\n"
         "sed -n '1,220p' support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md\n"
+        "sed -n '1,160p' support/path-f-reconstruction/GLOSSARY.md\n"
         "sed -n '1,120p' support/path-f-reconstruction/tools/INDEX.md\n"
         "```\n\n"
         "A fresh consumer should be able to choose a folder for their task without opening `WORDCOUNT.md` or browsing every generated source page.\n"
@@ -1173,6 +1219,251 @@ def render_reconstruction_checklist(tool_entries: list[dict[str, object]]) -> st
         "A future maintainer passes Path F only when they can pick any one tool folder, state what it owns, identify what external values must come from outside the repo, rebuild or simulate the tool, run the proof checks, and explain whether remaining work belongs to Nanofab engineering or University IT.\n"
     )
     return "".join(chunks)
+
+
+def tool_lookup_from_entries(tool_entries: list[dict[str, object]]) -> dict[str, Path]:
+    return {f"{tool_entry_parts(entry)[0][1]}/{tool_entry_parts(entry)[0][2]}": tool_entry_parts(entry)[2] for entry in tool_entries}
+
+
+def root_tool_link(tool_lookup: dict[str, Path], tool_id: str, label: str | None = None) -> str:
+    text = label or tool_id
+    return f"[`{text}`]({tool_lookup[tool_id].relative_to(OUT).as_posix()}/README.md)"
+
+
+def render_troubleshooting_routes(tool_entries: list[dict[str, object]]) -> str:
+    lookup = tool_lookup_from_entries(tool_entries)
+    rows = [
+        (
+            "Website down or blank",
+            "Nanofab for Flask process; IT for VM/nginx/root-owned service state",
+            f"{root_tool_link(lookup, 'UNanofabTools/flaskserver')} and [`tools/00-system-map`](tools/00-system-map/README.md)",
+            "`tmux ls`, Flask process logs, nginx status if accessible, disk space, Python import/run behavior",
+            "Local import/run works or live process is restored; any root/nginx/VM action is written as an IT ticket.",
+        ),
+        (
+            "Login, signup, reset, or Duo broken",
+            "Nanofab for Flask/auth code; IT only if network/VM/certificate state blocks auth",
+            root_tool_link(lookup, "UNanofabTools/flaskserver"),
+            "Auth blueprint, auth service, `.env` values, Duo config, session DB behavior, browser redirects",
+            "Expected login/reset route behavior works in a test path and secrets remain outside source.",
+        ),
+        (
+            "Chemical inventory broken",
+            "Nanofab for Flask/chem schema; IT only for VM/PostgreSQL service actions outside `phelan` authority",
+            root_tool_link(lookup, "UNanofabTools/flaskserver"),
+            "Chem routes, chem service, local PostgreSQL schema, barcode templates, transaction tables, upload scans",
+            "Add/edit/move/remove/report/scan workflows preserve database state and visible output.",
+        ),
+        (
+            "Machine pages stale or missing data",
+            "Nanofab for downloader/code/HSCDATA; CORES owner for upstream payload/token; IT for network/VM failures",
+            f"{root_tool_link(lookup, 'UNanofabTools/hscdownloader')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')}",
+            "CORES token, service IDs, downloader output, `small_` CSV columns, Flask machine readers",
+            "Fresh test data writes expected CSVs and the machine page renders matching tables/graphs.",
+        ),
+        (
+            "Machine control PC upload failed",
+            "Nanofab for script paths/keys; IT for service account or UNIX account creation",
+            root_tool_link(lookup, "UNanofabTools/filetransfer"),
+            "Windows path, SSH key, destination directory, quoting, network reachability, account ownership",
+            "A test file transfers to the expected server path with visible success/failure output.",
+        ),
+        (
+            "Particle sensor not reporting",
+            "Nanofab for firmware/API; local facilities/network owner for WiFi/hardware; IT only for VM/network boundaries",
+            f"{root_tool_link(lookup, 'NanofabToolkit/PicoHelperTools')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')}",
+            "Pico power, WiFi credentials, MAC/device identity, endpoint URL, API payload shape, server logs",
+            "Hardware posts a payload accepted by Flask and visible to the particle data consumer.",
+        ),
+        (
+            "Particle desktop GUI will not launch or display data",
+            "Nanofab for desktop code/API URL/dependencies",
+            root_tool_link(lookup, "NanofabToolkit/ParticleSensor"),
+            "Python environment, PyQt/matplotlib imports, API URL, TLS behavior, current/historical JSON shape",
+            "GUI launches and renders current plus historical data from a test or production-safe endpoint.",
+        ),
+        (
+            "Pico cannot connect to WiFi",
+            "Nanofab for firmware/provisioning; network owner for WiFi availability",
+            root_tool_link(lookup, "NanofabToolkit/PicoHelperTools"),
+            "WiFi SSID/password source, Pico MAC, signal/power, network-check script, endpoint DNS",
+            "Network diagnostic gives a clear pass/fail and no WiFi secret is committed.",
+        ),
+        (
+            "Denton/ALD/Parylene data will not parse",
+            "Nanofab for desktop/CLI parser behavior",
+            f"{root_tool_link(lookup, 'UNanofabTools/dattools')}, {root_tool_link(lookup, 'NanofabToolkit/DentonDecoder')}, {root_tool_link(lookup, 'NanofabToolkit/ALDPeakCounter')}, or {root_tool_link(lookup, 'NanofabToolkit/ParalyneReader')}",
+            "Representative input file, parser assumptions, graph backend, GUI dependency stack",
+            "Known input produces expected cleaned output, plot, count, or explicit malformed-file error.",
+        ),
+        (
+            "Packaging build failed",
+            "Nanofab for packaging files/dependencies; GitHub/admin owner for CI secrets or runner issues",
+            root_tool_link(lookup, "NanofabToolkit/packaging-root"),
+            "PyInstaller spec, hooks, assets, workflow paths, dependency versions, release artifacts",
+            "Build can reproduce the expected executable/artifact or the failure is isolated to CI environment.",
+        ),
+        (
+            "Root account, UNIX accounts, backups, firewall, or VM patching question",
+            "University IT",
+            "[`tools/00-system-map`](tools/00-system-map/README.md) and [`../../documentation/UNanofabTools/liveserver/README.md`](../../documentation/UNanofabTools/liveserver/README.md)",
+            "Live-server docs, snapshots, IT ownership notes, root boundary, backup notes",
+            "Nanofab action is limited to documentation, read-only verification, or an IT ticket.",
+        ),
+    ]
+    table = "\n".join(
+        "| "
+        f"{markdown_escape(problem)} | {markdown_escape(owner)} | {open_first} | {markdown_escape(checks)} | {markdown_escape(done)} |"
+        for problem, owner, open_first, checks, done in rows
+    )
+    return (
+        "# Path F Troubleshooting Routes\n\n"
+        "Use this file when the maintainer starts with a symptom rather than a tool name. "
+        "Each row says who likely owns the fix, where to start reading, what to check live, and what proof closes the issue.\n\n"
+        "## Symptom Routes\n\n"
+        "| Problem | Likely owner | Open first | Live checks | Proof of fix |\n|---|---|---|---|---|\n"
+        f"{table}\n\n"
+        "## Escalation Rule\n\n"
+        "If the row names University IT, do not turn it into a Nanofab code task. Record the evidence, preserve the read-only findings, and open or update the appropriate IT ticket.\n"
+    )
+
+
+def render_first_hour(tool_entries: list[dict[str, object]]) -> str:
+    lookup = tool_lookup_from_entries(tool_entries)
+    return (
+        "# Path F Maintainer First Hour\n\n"
+        "This is the stress-case entry point for a new maintainer. "
+        "Use it before touching code, restarting services, editing firmware, or rewriting documentation.\n\n"
+        "## Minute 0-10: Establish The Map\n\n"
+        "1. Read [`README.md`](README.md).\n"
+        "2. Read [`NAVIGATOR.md`](NAVIGATOR.md), especially the Do Not Get Lost rules.\n"
+        "3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if there is an active failure.\n"
+        "4. Read [`GLOSSARY.md`](GLOSSARY.md) for any unfamiliar names before guessing.\n\n"
+        "## Minute 10-25: Identify Ownership\n\n"
+        "1. Decide whether the task is Nanofab-owned, IT-owned, CORES-owned, hardware/network-owned, or mixed.\n"
+        "2. If it involves root, UNIX accounts, VM backups, firewall, or base patching, stop and write it as an IT-bound item.\n"
+        "3. If it involves a redacted value, identify the approved source for that value before running code.\n\n"
+        "## Minute 25-40: Choose One Folder\n\n"
+        "Use this shortcut list:\n\n"
+        f"- Server/browser/auth/chem/API: {root_tool_link(lookup, 'UNanofabTools/flaskserver')}\n"
+        f"- CORES to machine pages: {root_tool_link(lookup, 'UNanofabTools/hscdownloader')}\n"
+        f"- Machine PC uploads: {root_tool_link(lookup, 'UNanofabTools/filetransfer')}\n"
+        f"- Pico firmware: {root_tool_link(lookup, 'NanofabToolkit/PicoHelperTools')}\n"
+        f"- Particle desktop GUI: {root_tool_link(lookup, 'NanofabToolkit/ParticleSensor')}\n"
+        f"- Denton/ALD/Parylene/Precious Metal desktop tools: [`tools/INDEX.md`](tools/INDEX.md)\n"
+        f"- Legacy server context: {root_tool_link(lookup, 'UNanofabTools/hscdisplayerserver')}\n\n"
+        "## Minute 40-55: Read Only The Right Evidence\n\n"
+        "1. Read the chosen tool `README.md`.\n"
+        "2. Write down the external inputs that cannot be recovered from Path F.\n"
+        "3. Open source-file pages only for the files directly involved.\n"
+        "4. Use the breadcrumbs at the top of each source page if you land there from search.\n\n"
+        "## Minute 55-60: Decide The Next Action\n\n"
+        "Choose exactly one:\n\n"
+        "- Continue with a Nanofab code/documentation fix and fill out [`REBUILD-EVIDENCE-TEMPLATE.md`](REBUILD-EVIDENCE-TEMPLATE.md).\n"
+        "- Collect live evidence and create an IT/CORES/hardware ticket.\n"
+        "- Stop because a required secret, hardware device, or live system is unavailable.\n\n"
+        "Do not spend the first hour reading random source-file pages. The first hour is for orientation, ownership, and choosing the narrowest useful evidence path.\n"
+    )
+
+
+def render_glossary() -> str:
+    terms = [
+        ("nfhistory", "Production VM/host for the Nanofab history web app and related data workflows."),
+        ("UNanofabTools", "Source repo for the Flask server, HSC downloader, file-transfer scripts, older Pico copies, DAT tools, utilities, and legacy server context."),
+        ("NanofabToolkit", "Sibling source repo for the maintained desktop tools and canonical Pico helper tools."),
+        ("Path F", "Ultra-deep generated reconstruction manual intended to support rebuilding behavior from sanitized documentation."),
+        ("Path E", "All-encompassing presentation/script path for live maintainer handoff, not a source reconstruction corpus."),
+        ("phelan", "Shared UNIX account used by Nanofab-side maintenance on nfhistory; not root."),
+        ("root", "University IT-owned administrative account on the VM. Nanofab maintainers should not modify root-owned paths."),
+        ("iceolate", "University IT administrative host referenced in root SSH context."),
+        ("CADE", "University access hop used in the documented SSH path to nfhistory."),
+        ("tmux", "Terminal multiplexer used to keep long-running server/downloader sessions alive."),
+        ("CORES", "Upstream system providing machine form data through n8n webhooks."),
+        ("n8n", "Webhook automation service used by CORES data exports."),
+        ("HSCDATA", "CSV data tree written by HSCDownloader and read by machine pages."),
+        ("small_ CSV", "Trimmed per-machine CSV variant consumed by the web portal tables and graphs."),
+        ("LogData", "Server-side data tree for logged cleanroom data, separate from generated documentation."),
+        ("Flask server", "Modern web app under `UNanofabTools/app` plus `run.py`, config, templates, services, and models."),
+        ("Blueprint", "Flask route grouping such as auth, tasks, machines, API, or chem inventory."),
+        ("Duo", "Two-factor authentication integration used by the Flask auth flow."),
+        ("SQLite instance files", "Local database files for users, sessions, tasks, and particle sensor data."),
+        ("local PostgreSQL chem database", "Chemical inventory database running locally on the VM, not an external PostgreSQL host."),
+        ("Particle API", "Flask API contract used by Pico firmware and particle desktop viewers."),
+        ("Pico", "Raspberry Pi Pico W device running MicroPython firmware for sensor workflows."),
+        ("PicoHelperTools", "Canonical NanofabToolkit folder for Pico firmware and setup helpers."),
+        ("ParticleSensor", "NanofabToolkit desktop particle data viewer/API client."),
+        ("DAT", "Denton binary or cleaned log data handled by DATfixer/DATgrapher and related desktop tools."),
+        ("DentonDecoder", "NanofabToolkit GUI workflow for Denton data conversion/viewing."),
+        ("ALDPeakCounter", "NanofabToolkit GUI for ALD pressure peak counting."),
+        ("ParalyneReader", "NanofabToolkit Parylene log reader; spelling follows existing repo naming."),
+        ("PreciousMetalReader", "NanofabToolkit tool for retrieving and presenting precious metal usage data."),
+        ("PyInstaller", "Packaging tool used for desktop app builds and hooks."),
+        ("redacted value", "A secret-looking value replaced with a placeholder in generated excerpts. It must come from secure configuration, never from guessing."),
+        ("IT boundary", "Responsibility line where root, VM patching, backups, firewall, and UNIX account creation belong to University IT."),
+    ]
+    rows = "\n".join(f"| `{markdown_escape(term)}` | {markdown_escape(definition)} |" for term, definition in terms)
+    return (
+        "# Path F Glossary\n\n"
+        "Use this when a maintainer sees a name, acronym, host, account, tool, or data path and needs to know what it means before reading source pages.\n\n"
+        "| Term | Meaning |\n|---|---|\n"
+        f"{rows}\n"
+    )
+
+
+def render_evidence_template() -> str:
+    return (
+        "# Path F Rebuild Evidence Template\n\n"
+        "Copy this structure into an issue, PR description, handoff note, or maintenance log whenever a tool is rebuilt, simulated, repaired, or deliberately not rebuilt.\n\n"
+        "## Summary\n\n"
+        "- Tool or workflow rebuilt:\n"
+        "- Date:\n"
+        "- Maintainer:\n"
+        "- Reason for rebuild or investigation:\n"
+        "- Final status: completed / partial / blocked / IT ticket / retired\n\n"
+        "## Scope\n\n"
+        "- Path F folder used:\n"
+        "- Source-file pages used:\n"
+        "- Live systems touched:\n"
+        "- Systems intentionally not touched:\n\n"
+        "## External Inputs Supplied\n\n"
+        "- Secrets/config values supplied from approved storage:\n"
+        "- Hardware or sample files used:\n"
+        "- Live server/database paths used:\n"
+        "- IT/CORES/network assumptions verified:\n\n"
+        "## Commands And Actions\n\n"
+        "```sh\n"
+        "# paste commands here\n"
+        "```\n\n"
+        "## Evidence Collected\n\n"
+        "- Logs:\n"
+        "- Screenshots:\n"
+        "- Output files:\n"
+        "- Database checks:\n"
+        "- Browser/API checks:\n"
+        "- Hardware observations:\n\n"
+        "## Edge Cases Tested\n\n"
+        "- Empty input:\n"
+        "- Malformed input:\n"
+        "- Missing file:\n"
+        "- Permission denied:\n"
+        "- Stale credential:\n"
+        "- Schema drift:\n"
+        "- Partial write or network interruption:\n"
+        "- Wrong working directory/account:\n"
+        "- Production versus development configuration:\n\n"
+        "## Compatibility And Drift\n\n"
+        "- Behavior preserved exactly:\n"
+        "- Deliberate compatibility breaks:\n"
+        "- Differences from live production:\n"
+        "- Differences from sibling source repo state:\n"
+        "- Documentation updates needed:\n\n"
+        "## Ownership And Follow-Up\n\n"
+        "- Nanofab-owned follow-up:\n"
+        "- University IT ticket needed:\n"
+        "- CORES/upstream ticket needed:\n"
+        "- Hardware/network follow-up:\n"
+        "- No-contact handoff note for the next maintainer:\n"
+    )
 
 
 def build() -> dict[str, int]:
@@ -1261,13 +1552,29 @@ def build() -> dict[str, int]:
     write_generated(tools_index_path, render_tools_index(tool_entries, counts))
     generated.append(tools_index_path)
 
+    first_hour_path = OUT / "MAINTAINER-FIRST-HOUR.md"
+    write_generated(first_hour_path, render_first_hour(tool_entries))
+    generated.append(first_hour_path)
+
     navigator_path = OUT / "NAVIGATOR.md"
     write_generated(navigator_path, render_navigator(tool_entries, counts))
     generated.append(navigator_path)
 
+    troubleshooting_path = OUT / "TROUBLESHOOTING-ROUTES.md"
+    write_generated(troubleshooting_path, render_troubleshooting_routes(tool_entries))
+    generated.append(troubleshooting_path)
+
     checklist_path = OUT / "RECONSTRUCTION-CHECKLIST.md"
     write_generated(checklist_path, render_reconstruction_checklist(tool_entries))
     generated.append(checklist_path)
+
+    glossary_path = OUT / "GLOSSARY.md"
+    write_generated(glossary_path, render_glossary())
+    generated.append(glossary_path)
+
+    evidence_path = OUT / "REBUILD-EVIDENCE-TEMPLATE.md"
+    write_generated(evidence_path, render_evidence_template())
+    generated.append(evidence_path)
 
     counts = {str(p.relative_to(OUT)): wc_words(p) for p in generated}
     total = sum(counts.values())
@@ -1285,11 +1592,15 @@ def build() -> dict[str, int]:
         "- Generator: `support/path-f-tools/build_path_f.py`\n"
         "- Secret policy: secret-looking literal values are redacted in generated excerpts.\n\n"
         "## Start Here\n\n"
-        "1. [`NAVIGATOR.md`](NAVIGATOR.md) - choose the right tool folder without reading the corpus linearly.\n"
-        "2. [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md) - use this to prove a rebuild is complete.\n"
-        "3. [`tools/INDEX.md`](tools/INDEX.md) - dense index of every tool folder.\n"
-        "4. [`tools/00-system-map/README.md`](tools/00-system-map/README.md) - source-of-truth and universal edge-case rules.\n"
-        "5. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n\n"
+        "1. [`MAINTAINER-FIRST-HOUR.md`](MAINTAINER-FIRST-HOUR.md) - use this first if you are new, under stress, or responding to a live issue.\n"
+        "2. [`NAVIGATOR.md`](NAVIGATOR.md) - choose the right tool folder without reading the corpus linearly.\n"
+        "3. [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) - map symptoms to likely owner, live checks, and proof of fix.\n"
+        "4. [`GLOSSARY.md`](GLOSSARY.md) - resolve names, acronyms, hosts, accounts, and data paths before guessing.\n"
+        "5. [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md) - use this to prove a rebuild is complete.\n"
+        "6. [`REBUILD-EVIDENCE-TEMPLATE.md`](REBUILD-EVIDENCE-TEMPLATE.md) - copy this into maintenance notes, issues, or PRs.\n"
+        "7. [`tools/INDEX.md`](tools/INDEX.md) - dense index of every tool folder.\n"
+        "8. [`tools/00-system-map/README.md`](tools/00-system-map/README.md) - source-of-truth and universal edge-case rules.\n"
+        "9. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n\n"
         "## Generated Group Word Counts\n\n"
         "| Group | Words |\n|---|---:|\n"
         f"{group_rows}\n"
@@ -1302,7 +1613,7 @@ def build() -> dict[str, int]:
         f"- Target minimum: **{TARGET_WORDS:,}**\n"
         f"- Files included from source repos: **{len(files)}**\n"
         f"- Generated reconstruction files counted: **{len(generated)}**\n"
-        "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"
+        "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"
         "## Generated Group Totals\n\n"
         "| Group | Words |\n|---|---:|\n"
         f"{group_rows}\n\n"
