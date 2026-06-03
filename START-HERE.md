@@ -32,7 +32,7 @@ known-issues/<repo>/<tool>.md          ← punch list for that tool
 | **A solo successor** walking in after I've left, reading at your own pace | [Path C](#path-c-solo-successor-self-paced) | Multi-week, self-paced |
 | **The long-term maintainer** who needs to own, audit, extend, or rescue the system without contacting me | [Path D](#path-d-long-term-maintainer-deep-dive) | 1-2 focused weeks, repeatable as an audit |
 | **Faith presenting an unlimited, all-encompassing live walkthrough** with slides on a screen | [Path E](#path-e-presentation-guide) | No fixed limit; prefer too long over too short |
-| **A future maintainer rebuilding the server/tools from documentation alone** with no source tree available | [Path F](#path-f-ultra-deep-reconstruction-manual) | 3.6M+ words, split by module |
+| **A future maintainer rebuilding the server/tools from documentation alone** with no source tree available | [Path F](#path-f-ultra-deep-reconstruction-manual) | 3.6M+ words, split by tool folder |
 
 Each path orders the materials so they tell the story in the right sequence. If you're not sure, **Path A is the canonical full handoff** — if you're going to do this in person, do it that way. If there is no person left to ask and the system has to be maintained independently, use **Path D**. If Faith is presenting the complete slide-driven handoff live, use **Path E**. If the maintainer needs a reconstruction-grade manual that explains the repos deeply enough to recreate them from sanitized documentation, use **Path F**.
 
@@ -1296,18 +1296,18 @@ Use Path F when the goal is not just handoff, audit, or presentation, but recons
 Path F is generated from the current working-tree source state of the sibling repos and is intentionally much larger than Path E:
 
 - [`support/path-f-reconstruction/README.md`](support/path-f-reconstruction/README.md) — start here
-- [`support/path-f-reconstruction/WORDCOUNT.md`](support/path-f-reconstruction/WORDCOUNT.md) — module word-count manifest
+- [`support/path-f-reconstruction/WORDCOUNT.md`](support/path-f-reconstruction/WORDCOUNT.md) — tool-folder and file word-count manifest
 - [`support/path-f-reconstruction/SOURCE-MANIFEST.json`](support/path-f-reconstruction/SOURCE-MANIFEST.json) — source files included, dirty/untracked state, and total count metadata
-- [`support/path-f-reconstruction/modules/`](support/path-f-reconstruction/modules/) — 18 split reconstruction modules
+- [`support/path-f-reconstruction/tools/`](support/path-f-reconstruction/tools/) — per-tool reconstruction folders
 - [`support/path-f-tools/build_path_f.py`](support/path-f-tools/build_path_f.py) — reproducible generator
 
 Current generated size:
 
-| Path | Words | Source files | Modules |
+| Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 3,639,241 | 159 | 18 |
+| Path F ultra-deep reconstruction manual | 3,642,124 | 159 | 17 |
 
-Start with `modules/00-reconstruction-contract-and-system-map.md`, then read the numbered module files in filename order. The generated modules include sanitized source excerpts, per-file summaries, line-by-line reconstruction notes, and repeated edge-case rehearsal passes.
+Start with `tools/00-system-map/README.md`, then read the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. The generated tool folders include sanitized source excerpts, per-file summaries, line-by-line reconstruction notes, and edge-case matrices.
 
 Important limits:
 

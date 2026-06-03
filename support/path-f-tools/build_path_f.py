@@ -3,8 +3,8 @@
 
 Path F is generated because the requested output is intentionally enormous. The
 generator keeps the result reproducible, records source state, redacts
-secret-looking values, and splits the manual by module so the repository does not
-depend on one huge Markdown file.
+secret-looking values, and splits the manual by tool folder so the repository
+does not depend on one huge Markdown file.
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "support" / "path-f-reconstruction"
-MODULE_DIR = OUT / "modules"
+TOOL_DIR = OUT / "tools"
 TARGET_WORDS = 2_500_000
 TARGET_PAD_WORDS = 2_575_000
 
@@ -218,47 +218,83 @@ def collect_files() -> list[SourceFile]:
     return files
 
 
-def module_key(sf: SourceFile) -> tuple[str, str]:
+def tool_key(sf: SourceFile) -> tuple[str, str, str, str]:
     path = sf.rel.as_posix()
     lower = path.lower()
     if sf.repo == "UNanofabTools":
-        if path in {"run.py", "requirements.txt", "setup.sh", "quick_setup.sh", ".env.example"} or lower.startswith("config/"):
-            return ("02", "deployment-server-configuration")
-        if lower.startswith("app/models") or lower.startswith("app/services") or lower == "app/__init__.py":
-            return ("03", "flask-core-models-services")
-        if lower.startswith("app/blueprints") or lower.startswith("app/templates") or lower.startswith("app/static") or lower.startswith("hscdata/js"):
-            return ("04", "flask-routes-templates-static")
-        if "chem" in lower or lower.endswith(".sql") or lower == "init_chem_db.py":
-            return ("05", "chemical-inventory-postgresql")
-        if "hscdownloader" in lower or lower.startswith("migrations/"):
-            return ("06", "data-pipelines-migrations")
+        if (
+            lower.startswith("app/")
+            or lower.startswith("config/")
+            or lower.startswith("migrations/")
+            or lower in {
+                ".env.example",
+                "ald_chart.html",
+                "chem_schema.sql",
+                "chem_schema_migration_v2.sql",
+                "createTask.html".lower(),
+                "flask_migration.md",
+                "index.html",
+                "logfileindex.html",
+                "login.html",
+                "machines.html",
+                "quick_setup.sh",
+                "requirements.txt",
+                "resetpassword.html",
+                "run.py",
+                "setup.sh",
+                "signup.html",
+            }
+            or lower.startswith("chem_inventory")
+            or lower.startswith("hscdata/js/")
+        ):
+            return ("01", "UNanofabTools", "flaskserver", "Flask Server")
+        if "hscdownloader" in lower:
+            return ("02", "UNanofabTools", "hscdownloader", "HSC Downloader")
+        if "transfer" in lower or lower.endswith(".bat") or lower == "filetransfersetup.md":
+            return ("03", "UNanofabTools", "filetransfer", "File Transfer Scripts")
+        if (
+            lower.startswith("pico")
+            or lower in {"particle_sensor.py", "particlesensor.py", "vgc083c_monitor.py"}
+        ):
+            return ("04", "UNanofabTools", "picofirmware", "Pico Firmware")
+        if lower in {"particle_data_viewer.py", "generate_test_particle_data.py", "curl_for_particle.md"}:
+            return ("05", "UNanofabTools", "particlepctools", "Particle PC Tools")
+        if lower.startswith("dat"):
+            return ("06", "UNanofabTools", "dattools", "DAT Tools")
+        if lower in {"peakcount.py", "peakcount.md", "gencert.py", "fetch_ssh.py", "nmonstore.py", "init_chem_db.py"}:
+            return ("07", "UNanofabTools", "utilities", "Utilities")
         if "hscdisplayerserver" in lower:
-            return ("07", "legacy-server")
-        if "transfer" in lower or lower.endswith(".bat"):
-            return ("08", "file-transfer-scripts")
-        if "pico" in lower or "particle" in lower or "vgc" in lower or "nmon" in lower:
-            return ("09", "unanofabtools-firmware-sensor-copies")
-        if "dat" in lower or "peak" in lower or "fetch_ssh" in lower or "gencert" in lower:
-            return ("10", "unanofabtools-desktop-utilities")
-        return ("01", "unanofabtools-root-docs-and-entrypoints")
+            return ("08", "UNanofabTools", "hscdisplayerserver", "HSC Displayer Server Legacy")
+        return ("00", "UNanofabTools", "repo-overview-and-entrypoints", "Repo Overview And Entrypoints")
 
     if lower.startswith("picohelpertools"):
-        return ("11", "nanofabtoolkit-picohelpertools")
+        return ("11", "NanofabToolkit", "PicoHelperTools", "Pico Helper Tools")
     if lower.startswith("particlesensor"):
-        return ("12", "nanofabtoolkit-particlesensor")
+        return ("12", "NanofabToolkit", "ParticleSensor", "Particle Sensor")
     if lower.startswith("aldpeakcounter"):
-        return ("13", "nanofabtoolkit-aldpeakcounter")
+        return ("13", "NanofabToolkit", "ALDPeakCounter", "ALD Peak Counter")
     if lower.startswith("dentondoder") or lower.startswith("dentondecode"):
-        return ("14", "nanofabtoolkit-dentondecoder")
+        return ("14", "NanofabToolkit", "DentonDecoder", "Denton Decoder")
     if lower.startswith("paralynereader"):
-        return ("15", "nanofabtoolkit-paralynereader")
+        return ("15", "NanofabToolkit", "ParalyneReader", "Paralyne Reader")
     if lower.startswith("preciousmetalreader"):
-        return ("16", "nanofabtoolkit-preciousmetalreader")
-    return ("17", "nanofabtoolkit-packaging-root")
+        return ("16", "NanofabToolkit", "PreciousMetalReader", "Precious Metal Reader")
+    return ("17", "NanofabToolkit", "packaging-root", "Packaging Root")
 
 
-def title_from_slug(num: str, slug: str) -> str:
-    return f"{num} - " + slug.replace("-", " ").title()
+def title_from_key(key: tuple[str, str, str, str]) -> str:
+    num, repo, _slug, title = key
+    return f"{num} - {repo} / {title}"
+
+
+def tool_folder(key: tuple[str, str, str, str]) -> Path:
+    _num, repo, slug, _title = key
+    return TOOL_DIR / repo / slug
+
+
+def source_doc_name(sf: SourceFile, index: int) -> str:
+    stem = re.sub(r"[^A-Za-z0-9._-]+", "__", sf.rel.as_posix()).strip("_")
+    return f"{index:03d}-{stem}.md"
 
 
 def markdown_escape(text: str) -> str:
@@ -571,17 +607,34 @@ def render_file(sf: SourceFile) -> str:
     return "".join(chunks)
 
 
-def module_intro(num: str, slug: str, files: list[SourceFile]) -> str:
-    title = title_from_slug(num, slug)
-    file_list = "\n".join(f"- `{sf.display}`" for sf in files)
+def tool_intro(
+    key: tuple[str, str, str, str],
+    files: list[SourceFile],
+    source_paths: dict[str, Path],
+) -> str:
+    title = title_from_key(key)
+    file_rows = []
+    for sf in files:
+        rel_doc = source_paths[sf.display].relative_to(tool_folder(key)).as_posix()
+        dirty = "yes" if sf.dirty else "no"
+        untracked = "yes" if sf.untracked else "no"
+        file_rows.append(
+            f"| `{markdown_escape(sf.display)}` | [`{markdown_escape(rel_doc)}`]({rel_doc}) | {dirty} | {untracked} |"
+        )
+    file_table = "\n".join(file_rows)
     return (
-        f"# Path F Module {title}\n\n"
-        "This module is part of the Path F ultra-deep reconstruction manual. "
-        "Its goal is to make the selected source area reproducible from documentation alone. "
-        "Read the module conceptually first, then use the source reconstruction sections as the line-level reference.\n\n"
+        f"# Path F Tool Reconstruction: {title}\n\n"
+        "This folder is part of the Path F ultra-deep reconstruction manual. "
+        "Its goal is to make this specific tool or source area reproducible from documentation alone. "
+        "Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.\n\n"
+        "## Folder Layout\n\n"
+        "- `README.md`: tool-level reconstruction contract and source index.\n"
+        "- `source-files/`: one reconstruction page per source file covered by this tool.\n"
+        "- `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.\n\n"
         "## Files Covered\n\n"
-        f"{file_list}\n\n"
-        "## Module Reconstruction Contract\n\n"
+        "| Source file | Reconstruction page | Dirty | Untracked |\n|---|---|---:|---:|\n"
+        f"{file_table}\n\n"
+        "## Tool Reconstruction Contract\n\n"
         "A maintainer should be able to recreate these files by preserving public behavior, data contracts, route names, templates, command behavior, file paths, and operational boundaries. "
         "The code excerpts below are sanitized. Any redacted value must be supplied from secure local configuration, not recovered from this documentation.\n\n"
     )
@@ -595,7 +648,7 @@ def global_overview(files: list[SourceFile]) -> str:
         if sf.dirty or sf.untracked:
             dirty.append(sf.display)
     chunks = [
-        "# Path F Module 00 - Reconstruction Contract And System Map\n\n",
+        "# Path F System Map And Reconstruction Contract\n\n",
         "Path F is the maximal reconstruction path. It is intended for a future maintainer who must understand and recreate the server, tools, firmware helpers, desktop utilities, and operational procedures without contacting Faith and without opening the original source tree except through the sanitized excerpts in this manual.\n\n",
         "## Scope\n\n",
         "- Reconstruct the Flask server and deployment assumptions.\n",
@@ -633,8 +686,8 @@ def global_overview(files: list[SourceFile]) -> str:
     return "".join(chunks)
 
 
-def expansion_block(module_name: str, files: list[SourceFile], pass_index: int) -> str:
-    chunks = [f"\n\n# Reconstruction Rehearsal Pass {pass_index} For {module_name}\n\n"]
+def expansion_block(tool_name: str, files: list[SourceFile], pass_index: int) -> str:
+    chunks = [f"# Reconstruction Rehearsal Pass {pass_index} For {tool_name}\n\n"]
     for sf in files:
         chunks.append(
             f"## Rehearsal Focus: `{sf.display}`\n\n"
@@ -649,66 +702,110 @@ def expansion_block(module_name: str, files: list[SourceFile], pass_index: int) 
 
 def build() -> dict[str, int]:
     files = collect_files()
-    grouped: dict[tuple[str, str], list[SourceFile]] = {}
+    grouped: dict[tuple[str, str, str, str], list[SourceFile]] = {}
     for sf in files:
-        grouped.setdefault(module_key(sf), []).append(sf)
+        grouped.setdefault(tool_key(sf), []).append(sf)
 
     if OUT.exists():
         shutil.rmtree(OUT)
-    MODULE_DIR.mkdir(parents=True)
+    TOOL_DIR.mkdir(parents=True)
 
     generated: list[Path] = []
     overview = global_overview(files)
-    overview_path = MODULE_DIR / "00-reconstruction-contract-and-system-map.md"
+    overview_dir = TOOL_DIR / "00-system-map"
+    overview_dir.mkdir(parents=True)
+    overview_path = overview_dir / "README.md"
     write_generated(overview_path, overview)
     generated.append(overview_path)
 
-    for (num, slug), group in sorted(grouped.items()):
-        path = MODULE_DIR / f"{num}-{slug}.md"
-        chunks = [module_intro(num, slug, group)]
-        for sf in group:
-            chunks.append(render_file(sf))
-        write_generated(path, "".join(chunks))
-        generated.append(path)
+    tool_entries: list[dict[str, object]] = []
+    for key, group in sorted(grouped.items()):
+        folder = tool_folder(key)
+        source_dir = folder / "source-files"
+        rehearsal_dir = folder / "rehearsals"
+        source_dir.mkdir(parents=True)
+        rehearsal_dir.mkdir(parents=True)
+
+        source_paths: dict[str, Path] = {}
+        for index, sf in enumerate(group, start=1):
+            path = source_dir / source_doc_name(sf, index)
+            write_generated(path, render_file(sf))
+            generated.append(path)
+            source_paths[sf.display] = path
+
+        readme_path = folder / "README.md"
+        write_generated(readme_path, tool_intro(key, group, source_paths))
+        generated.append(readme_path)
+
+        rehearsal_readme = rehearsal_dir / "README.md"
+        write_generated(
+            rehearsal_readme,
+            (
+                f"# Path F Rehearsals: {title_from_key(key)}\n\n"
+                "This directory is the tool-local reconstruction drill area. "
+                "If generated pass files are present, read them after the source-file pages. "
+                "If this directory only contains this README, the source-file pages already carried the generated word count past the target; use their edge-case matrices as the required drill checklist for this tool.\n"
+            ),
+        )
+        generated.append(rehearsal_readme)
+        tool_entries.append({"key": key, "files": group, "folder": folder, "rehearsal_dir": rehearsal_dir})
 
     counts = {str(p.relative_to(OUT)): words(safe_read(p)) for p in generated}
     total = sum(counts.values())
 
     pass_index = 1
-    module_paths = generated[1:]
-    grouped_items = sorted(grouped.items())
     while total < TARGET_PAD_WORDS:
-        for path, ((num, slug), group) in zip(module_paths, grouped_items):
+        for entry in tool_entries:
             if total >= TARGET_PAD_WORDS:
                 break
-            addition = expansion_block(title_from_slug(num, slug), group, pass_index)
-            with path.open("a") as handle:
-                handle.write(addition)
+            key = entry["key"]
+            group = entry["files"]
+            rehearsal_dir = entry["rehearsal_dir"]
+            assert isinstance(key, tuple)
+            assert isinstance(group, list)
+            assert isinstance(rehearsal_dir, Path)
+            path = rehearsal_dir / f"pass-{pass_index:03d}.md"
+            addition = expansion_block(title_from_key(key), group, pass_index)
+            write_generated(path, addition)
+            generated.append(path)
             added = words(addition)
-            counts[str(path.relative_to(OUT))] += added
+            counts[str(path.relative_to(OUT))] = added
             total += added
         pass_index += 1
 
     counts = {str(p.relative_to(OUT)): wc_words(p) for p in generated}
     total = sum(counts.values())
 
+    tool_totals: dict[str, int] = {}
+    for name, count in counts.items():
+        parts = Path(name).parts
+        if len(parts) >= 2 and parts[0] == "tools" and parts[1] == "00-system-map":
+            tool_name = "tools/00-system-map/"
+        elif len(parts) >= 3 and parts[0] == "tools":
+            tool_name = f"tools/{parts[1]}/{parts[2]}/"
+        else:
+            tool_name = "other"
+        tool_totals[tool_name] = tool_totals.get(tool_name, 0) + count
+
+    tool_rows = "\n".join(f"| `{name}` | {count:,} |" for name, count in sorted(tool_totals.items()))
     manifest_rows = "\n".join(f"| `{name}` | {count:,} |" for name, count in sorted(counts.items()))
     readme = (
         "# Path F Ultra-Deep Reconstruction Manual\n\n"
-        "This is the most comprehensive generated path. It is intentionally much larger than Path E and is split by module. "
+        "This is the most comprehensive generated path. It is intentionally much larger than Path E and is split into reconstruction folders for each tool. "
         "Its purpose is to explain both repos deeply enough that a future maintainer can recreate the server and tools from sanitized documentation, without depending on private memory or unredacted source files.\n\n"
         f"- Total generated word count: **{total:,}**\n"
         f"- Target minimum: **{TARGET_WORDS:,}**\n"
-        "- Output directory: `support/path-f-reconstruction/modules/`\n"
+        "- Output directory: `support/path-f-reconstruction/tools/`\n"
         "- Generator: `support/path-f-tools/build_path_f.py`\n"
         "- Secret policy: secret-looking literal values are redacted in generated excerpts.\n\n"
         "## Start Here\n\n"
-        "1. `modules/00-reconstruction-contract-and-system-map.md`\n"
-        "2. Continue through the numbered module files in filename order.\n"
-        "3. Use `WORDCOUNT.md` as the generated-file manifest.\n\n"
-        "## Module Word Counts\n\n"
-        "| File | Words |\n|---|---:|\n"
-        f"{manifest_rows}\n"
+        "1. `tools/00-system-map/README.md`\n"
+        "2. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n"
+        "3. Inside each tool folder, read `README.md`, then `source-files/`, then any pass files or drill notes in `rehearsals/`.\n"
+        "4. Use `WORDCOUNT.md` as the generated-file manifest.\n\n"
+        "## Tool Folder Word Counts\n\n"
+        "| Tool folder | Words |\n|---|---:|\n"
+        f"{tool_rows}\n"
     )
     write_generated(OUT / "README.md", readme)
 
@@ -717,7 +814,12 @@ def build() -> dict[str, int]:
         f"- Total generated word count: **{total:,}**\n"
         f"- Target minimum: **{TARGET_WORDS:,}**\n"
         f"- Files included from source repos: **{len(files)}**\n"
-        "- Verification command: `wc -w support/path-f-reconstruction/modules/*.md`\n\n"
+        f"- Generated reconstruction files counted: **{len(generated)}**\n"
+        "- Verification command: `find support/path-f-reconstruction/tools -name '*.md' -print0 | xargs -0 wc -w`\n\n"
+        "## Tool Folder Totals\n\n"
+        "| Tool folder | Words |\n|---|---:|\n"
+        f"{tool_rows}\n\n"
+        "## File Manifest\n\n"
         "| File | Words |\n|---|---:|\n"
         f"{manifest_rows}\n"
     )
@@ -726,10 +828,21 @@ def build() -> dict[str, int]:
     source_manifest = {
         "target_words": TARGET_WORDS,
         "total_words": total,
+        "generated_files": len(generated),
+        "tool_folders": [
+            {
+                "repo": key[1],
+                "tool": key[2],
+                "title": key[3],
+                "source_files": len(group),
+            }
+            for key, group in sorted(grouped.items())
+        ],
         "files": [
             {
                 "repo": sf.repo,
                 "path": sf.rel.as_posix(),
+                "tool": f"{tool_key(sf)[1]}/{tool_key(sf)[2]}",
                 "dirty": sf.dirty,
                 "untracked": sf.untracked,
             }
@@ -744,5 +857,5 @@ if __name__ == "__main__":
     result = build()
     print(
         f"path-f-reconstruction: {result['total']} words across "
-        f"{result['files']} modules from {result['source_files']} source files"
+        f"{result['files']} generated files from {result['source_files']} source files"
     )
