@@ -85,7 +85,7 @@ A custom widget that represents one cleanroom room/bay on the map.
 These are the meaningful changes; preserve them when porting any future patches:
 
 - **Env-data sub-boxes inside each `RoomFrame`.** New; the older copy had a single-color room.
-- **Real `pytz` timezone handling.** Newer; the older copy uses a hand-rolled `timedelta(hours=7)`.
+- **Uses `pytz` objects but still carries the fixed +7 h workaround.** Newer than the older copy's hand-rolled conversion, but not a complete timezone fix. Treat the +7 h offset in both `src/ParticleSensor.py` and `src/gui.py` as an active correctness issue until server timestamps become timezone-aware.
 - **Standard matplotlib `NavigationToolbar2QT`** in the historical window. Replaces the custom click-drag zoom in the older copy.
 - **Cleaner separation** between API/processing (`ParticleSensor.py`) and the GUI (`gui.py`). The older copy mixed concerns.
 - **Better exception messages** from `ParticleDataAPI` (includes the underlying transport error).

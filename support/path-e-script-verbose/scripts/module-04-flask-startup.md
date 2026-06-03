@@ -16,10 +16,10 @@ The maintainer understands the startup path from `run.py` through the app factor
 
 SHOW:
 
-- `../../presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx)
-- `../../presentation/UNanofabTools/flaskserver/02-How-It-Starts.md` (reference path: ../../presentation/UNanofabTools/flaskserver/02-How-It-Starts.md)
-- `../../documentation/UNanofabTools/flaskserver/01-architecture.md` (reference path: ../../documentation/UNanofabTools/flaskserver/01-architecture.md)
-- `../../documentation/UNanofabTools/flaskserver/02-getting-started.md` (reference path: ../../documentation/UNanofabTools/flaskserver/02-getting-started.md)
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx)
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md` (repo path: presentation/UNanofabTools/flaskserver/02-How-It-Starts.md)
+- `documentation/UNanofabTools/flaskserver/01-architecture.md` (repo path: documentation/UNanofabTools/flaskserver/01-architecture.md)
+- `documentation/UNanofabTools/flaskserver/02-getting-started.md` (repo path: documentation/UNanofabTools/flaskserver/02-getting-started.md)
 - Source files in `../UNanofabTools`
 
 ## Verbatim Script
@@ -64,7 +64,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../documentation/UNanofabTools/flaskserver/01-architecture.md` (reference path: ../../documentation/UNanofabTools/flaskserver/01-architecture.md).
+Open `documentation/UNanofabTools/flaskserver/01-architecture.md` (repo path: documentation/UNanofabTools/flaskserver/01-architecture.md).
 
 READ ALOUD:
 
@@ -116,11 +116,10 @@ We are now doing the orientation pass for Flask Startup. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -155,11 +154,10 @@ We are now doing the evidence pass for Flask Startup. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -194,11 +192,10 @@ We are now doing the source-code pass for Flask Startup. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -233,11 +230,10 @@ We are now doing the live-state pass for Flask Startup. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -272,11 +268,10 @@ We are now doing the failure-mode pass for Flask Startup. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -311,11 +306,10 @@ We are now doing the maintenance-planning pass for Flask Startup. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -350,11 +344,10 @@ We are now doing the security pass for Flask Startup. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -389,11 +382,10 @@ We are now doing the recovery pass for Flask Startup. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -428,11 +420,10 @@ We are now doing the documentation-drift pass for Flask Startup. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -467,11 +458,10 @@ We are now doing the teach-back pass for Flask Startup. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -506,11 +496,10 @@ We are now doing the homework-review pass for Flask Startup. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -545,11 +534,10 @@ We are now doing the quarterly-audit pass for Flask Startup. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -584,11 +572,10 @@ We are now doing the backup-and-restore pass for Flask Startup. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -623,11 +610,10 @@ We are now doing the ownership-boundary pass for Flask Startup. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -662,11 +648,10 @@ We are now doing the no-contact rehearsal pass for Flask Startup. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -701,11 +686,10 @@ We are now doing the operator-error pass for Flask Startup. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -740,11 +724,10 @@ We are now doing the data-integrity pass for Flask Startup. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -779,11 +762,10 @@ We are now doing the final-repetition pass for Flask Startup. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx`
+- `presentation/UNanofabTools/flaskserver/02-How-It-Starts.md`
+- `documentation/UNanofabTools/flaskserver/01-architecture.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

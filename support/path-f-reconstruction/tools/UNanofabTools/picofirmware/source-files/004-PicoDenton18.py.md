@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `85`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `adaf3530f8fd7e6b`
+- Sanitized SHA-256 prefix: `16d15f91d5033a21`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
+- Imports: `import network`, `import urequests`, `import time`, `import json`, `from machine import ADC, Pin`
 - Classes: none detected
-- Functions: none detected
+- Functions: `send_data`, `sendEndRequest`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -46,7 +46,7 @@ from machine import ADC, Pin
 
 # Wi-Fi credentials
 SSID = 'ULink'
-PASSWORD = <redacted-secret-value> #TODO
+PASSWORD = '<redacted-secret-value>' #TODO
 
 # Server URL
 SERVER_URL = 'http://nfhistory.nanofab.utah.edu/denton18pump'
@@ -250,7 +250,7 @@ Reconstruction rule: in `UNanofabTools/PicoDenton18.py`, line 16 is classified a
 ### Line 17
 
 ```text
-PASSWORD = <redacted-secret-value> #TODO
+PASSWORD = '<redacted-secret-value>' #TODO
 ```
 
 Reconstruction rule: in `UNanofabTools/PicoDenton18.py`, line 17 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

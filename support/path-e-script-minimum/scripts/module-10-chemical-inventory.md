@@ -16,11 +16,11 @@ The maintainer understands the chemical inventory as the largest and most databa
 
 SHOW:
 
-- `../../presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx)
-- `../../presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx)
-- `../../presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md` (reference path: ../../presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md)
-- `../../documentation/UNanofabTools/flaskserver/04-database-schema.md` (reference path: ../../documentation/UNanofabTools/flaskserver/04-database-schema.md)
-- `../../known-issues/UNanofabTools/flaskserver.md` (reference path: ../../known-issues/UNanofabTools/flaskserver.md)
+- `presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx)
+- `presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx)
+- `presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md` (repo path: presentation/UNanofabTools/flaskserver/09-Chemical-Inventory.md)
+- `documentation/UNanofabTools/flaskserver/04-database-schema.md` (repo path: documentation/UNanofabTools/flaskserver/04-database-schema.md)
+- `known-issues/UNanofabTools/flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md)
 
 ## Verbatim Script
 
@@ -70,7 +70,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../documentation/UNanofabTools/flaskserver/04-database-schema.md` (reference path: ../../documentation/UNanofabTools/flaskserver/04-database-schema.md).
+Open `documentation/UNanofabTools/flaskserver/04-database-schema.md` (repo path: documentation/UNanofabTools/flaskserver/04-database-schema.md).
 
 READ ALOUD:
 
@@ -101,7 +101,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../known-issues/UNanofabTools/flaskserver.md` (reference path: ../../known-issues/UNanofabTools/flaskserver.md).
+Open `known-issues/UNanofabTools/flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md).
 
 READ ALOUD:
 
@@ -147,11 +147,10 @@ We are now doing the orientation pass for Chemical Inventory. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx`
+- `documentation/UNanofabTools/flaskserver/04-database-schema.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -186,11 +185,10 @@ We are now doing the evidence pass for Chemical Inventory. The maintainer should
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx`
+- `documentation/UNanofabTools/flaskserver/04-database-schema.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -241,7 +239,7 @@ The server uses five databases: four SQLite files (managed via Flask-SQLAlchemy 
 | Sessions | SQLite | `instance/sessioninfo.db` | `sessions` | ORM + Alembic |
 | Tasks | SQLite | `instance/tasks.db` | `tasks` | ORM (DDL) + raw `sqlite3` (DML) |
 | Particle sensors | SQLite | `instance/particle_sensors.db` | `particle_sensors` | ORM + Alembic |
-| Chemical inventory | PostgreSQL | **local** `cheminventory` (postgresql@17-main on `127.0.0.1:5432`, same host as the Flask app — confirmed by the live-server survey in `../liveserver/README.md` (reference path: ../liveserver/README.md) §10) | `chem_inventory` (declared but unused at runtime) | `init_chem_db.py` + SQL files + ad-hoc DDL |
+| Chemical inventory | PostgreSQL | **local** `cheminventory` (postgresql@17-main on `127.0.0.1:5432`, same host as the Flask app — confirmed by the live-server survey in `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §10) | `chem_inventory` (declared but unused at runtime) | `init_chem_db.py` + SQL files + ad-hoc DDL |
 
 ## 4.2 SQLite models (`app/models/__init__.py` and `app/models/particle_sensor.py`)
 
@@ -566,4 +564,4 @@ Several features persist to CSV under `LOG_DATA_DIR` (`LogData/`). These are doc
 | `HSCDATA/small_<Machine>_DataCollection.csv` | `HSCDownloader.py` (pulls from CORES n8n on a schedule) — see `documentation/UNanofabTools/hscdownloader/` | Per-machine summary tables |
 | `LogData/<MACHINE>/...` (raw machine logs) | per-machine transfer scripts on the tool's PC — see `documentation/UNanofabTools/filetransfer/` | Raw run-log files pushed via `pscp` over SSH |
 
-Continue to 05-http-api-reference.md (reference path: 05-http-api-reference.md).
+Continue to 05-http-api-reference.md (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md).

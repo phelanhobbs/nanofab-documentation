@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `709`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `f2565af7f9c8227b`
+- Sanitized SHA-256 prefix: `02da6798c6b45166`
 - Code fence language: `markdown`
 
 ## Reconstruction Purpose
@@ -502,7 +502,7 @@ echo "CHEM_PGHOST=localhost" >> .env && \
 echo "CHEM_PGPORT=5432" >> .env && \
 echo "CHEM_POSTGRES_DB=cheminventory" >> .env && \
 echo "CHEM_POSTGRES_USER=chemadmin" >> .env && \
-echo "CHEM_POSTGRES_PASSWORD=<redacted-secret-value> >> .env && \
+echo "CHEM_POSTGRES_PASSWORD=YourSecurePassword" >> .env && \
 pip install psycopg2-binary xlsxwriter && \
 python3 init_chem_db.py && \
 echo "Setup complete! Start server with: python3 run.py"
@@ -4571,7 +4571,7 @@ Reconstruction rule: in `UNanofabTools/FLASK_MIGRATION.md`, line 479 is classifi
 ### Line 480
 
 ```text
-echo "CHEM_POSTGRES_PASSWORD=<redacted-secret-value> >> .env && \
+echo "CHEM_POSTGRES_PASSWORD=YourSecurePassword" >> .env && \
 ```
 
 Reconstruction rule: in `UNanofabTools/FLASK_MIGRATION.md`, line 480 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

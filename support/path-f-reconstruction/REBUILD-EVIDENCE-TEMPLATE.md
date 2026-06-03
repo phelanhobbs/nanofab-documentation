@@ -14,13 +14,17 @@ Copy this structure into an issue, PR description, handoff note, or maintenance 
 
 - Path F folder used:
 - Source-file pages used:
+- Source state basis: clean commit / dirty working tree / generated excerpt only / live drift:
+- Dirty or untracked source files acknowledged:
 - Live systems touched:
 - Systems intentionally not touched:
 
 ## External Inputs Supplied
 
 - Secrets/config values supplied from approved storage:
+- Fixture index entries used:
 - Hardware or sample files used:
+- Sample file hashes or expected-output identifiers:
 - Live server/database paths used:
 - IT/CORES/network assumptions verified:
 

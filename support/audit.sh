@@ -63,7 +63,7 @@ for d in "$UNANOFABTOOLS_SRC" "$NANOFABTOOLKIT_SRC"; do
 done
 echo
 echo "  Top-level orchestrator files:"
-for f in START-HERE.md support/PRESENTATION-GUIDE.md support/path-e-script/README.md support/path-e-script/TIMING.md support/path-e-script-minimum/README.md support/path-e-script-medium/README.md support/path-e-script-verbose/README.md support/path-f-reconstruction/README.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md support/path-f-reconstruction/tools/INDEX.md support/path-f-reconstruction/WORDCOUNT.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
+for f in START-HERE.md support/PRESENTATION-GUIDE.md support/path-e-script/README.md support/path-e-script/TIMING.md support/path-e-script-minimum/README.md support/path-e-script-medium/README.md support/path-e-script-verbose/README.md support/path-f-reconstruction/README.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md support/path-f-reconstruction/tools/INDEX.md support/path-f-reconstruction/WORDCOUNT.md support/EVALUATE.md support/REDACTION-NOTE.md support/audit.sh; do
   if [ -f "$f" ]; then
     echo "    $(c_grn '✓') $f  ($(wc -l <"$f" | tr -d ' ') lines)"
   else
@@ -120,7 +120,7 @@ for t in "${UNANOFAB_TOOLS[@]}"; do
   check_tool "UNanofabTools" "$t" "yes"
 done
 for t in "${NANOFABKIT_TOOLS[@]}"; do
-  check_tool "NanofabToolkit" "$t" "no"
+  check_tool "NanofabToolkit" "$t" "yes"
 done
 
 echo
@@ -130,7 +130,8 @@ for p in \
   documentation/UNanofabTools/README.md \
   known-issues/UNanofabTools/README.md \
   presentation/NanofabToolkit/README.md \
-  documentation/NanofabToolkit/README.md ; do
+  documentation/NanofabToolkit/README.md \
+  known-issues/NanofabToolkit/README.md ; do
   if [ -f "$p" ]; then
     echo "    $(c_grn '✓') $p"
   else
@@ -146,13 +147,13 @@ sec "2. STALE STRINGS (should be zero hits, or only in snapshots/known-issues me
 # Search scope: handoff content only, not the snapshots (raw output) or this
 # evaluator prompt (which intentionally contains stale examples to search for).
 SEARCH=(presentation documentation known-issues START-HERE.md)
-EXCLUDE_DIR=(--exclude-dir=snapshots)
+EXCLUDE_GREP=(--exclude-dir=snapshots --exclude-dir=_build --exclude='*.pptx' --exclude='.DS_Store')
 
 run_check() {
   local label="$1" pat="$2" extra="$3"
   printf '\n  Check: %s\n' "$(c_bold "$label")"
   local out
-  out=$(grep -rn "${EXCLUDE_DIR[@]}" -E "$pat" "${SEARCH[@]}" 2>/dev/null)
+  out=$(grep -rn "${EXCLUDE_GREP[@]}" -E "$pat" "${SEARCH[@]}" 2>/dev/null)
   if [ -z "$out" ]; then
     echo "    $(c_grn 'clean — 0 hits')"
   else
@@ -197,7 +198,7 @@ run_check "Stale 'tighten root SSH' as Nanofab to-do (root SSH is IT's path; chm
 # iceolate context — should always be tagged IT
 echo
 printf '  Check: %s\n' "$(c_bold "Every iceolate mention should be tagged as IT's host")"
-ic_hits=$(grep -rn "${EXCLUDE_DIR[@]}" -E 'iceolate' "${SEARCH[@]}" 2>/dev/null)
+ic_hits=$(grep -rn "${EXCLUDE_GREP[@]}" -E 'iceolate' "${SEARCH[@]}" 2>/dev/null)
 if [ -z "$ic_hits" ]; then
   echo "    $(c_yel 'no hits — surprising; iceolate should be documented as IT host')"
 else
@@ -211,7 +212,7 @@ fi
 # ----------------------------------------------------------------------
 # 3. Internal markdown link check
 # ----------------------------------------------------------------------
-sec "3. BROKEN INTERNAL MARKDOWN LINKS"
+sec "3. BROKEN INTERNAL MARKDOWN LINKS AND ANCHORS"
 
 # Extract markdown links of the form [text](path) where path is relative and points at a .md/.pptx/.sh/etc.
 # We only check links that look like local paths (no http(s)://, no mailto:, no computer://).
@@ -251,7 +252,75 @@ while IFS= read -r mdfile; do
 done < /tmp/md_files_$$
 
 # Re-count after the subshell (since the while-loop ran in a subshell, the counts above didn't persist)
+anchor_list=$(mktemp)
+python3 - "$anchor_list" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+out = Path(sys.argv[1])
+roots = [Path("presentation"), Path("documentation"), Path("known-issues"), Path("support")]
+files = []
+for root in roots:
+    if root.exists():
+        files.extend(root.rglob("*.md"))
+for extra in (Path("START-HERE.md"), Path("README.md")):
+    if extra.exists():
+        files.append(extra)
+
+def slugify(text: str) -> str:
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"[^\w\s-]", "", text.lower())
+    text = re.sub(r"\s+", "-", text.strip())
+    text = re.sub(r"-+", "-", text)
+    return text
+
+def anchors_for(path: Path) -> set[str]:
+    anchors = set()
+    counts = {}
+    try:
+        lines = path.read_text(errors="ignore").splitlines()
+    except OSError:
+        return anchors
+    for line in lines:
+        m = re.match(r"^(#{1,6})\s+(.+?)\s*$", line)
+        if not m:
+            continue
+        base = slugify(m.group(2).strip())
+        if not base:
+            continue
+        count = counts.get(base, 0)
+        counts[base] = count + 1
+        anchors.add(base if count == 0 else f"{base}-{count}")
+    return anchors
+
+cache: dict[Path, set[str]] = {}
+bad = []
+link_re = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+for mdfile in sorted(set(files)):
+    text = mdfile.read_text(errors="ignore")
+    for _label, raw in link_re.findall(text):
+        if re.match(r"^(https?|mailto|computer|tel|ftp)://", raw):
+            continue
+        if "#" not in raw:
+            continue
+        target, anchor = raw.split("#", 1)
+        if not anchor:
+            continue
+        target_path = mdfile if not target else (Path(target) if target.startswith("/") else mdfile.parent / target)
+        if not target_path.exists() or target_path.suffix.lower() != ".md":
+            continue
+        target_path = target_path.resolve()
+        if target_path not in cache:
+            cache[target_path] = anchors_for(target_path)
+        if anchor not in cache[target_path]:
+            bad.append(f"    {mdfile}  ->  {raw}")
+
+out.write_text("\n".join(bad) + ("\n" if bad else ""))
+PY
+
 broken_count=$(wc -l < "$broken_list" | tr -d ' ')
+anchor_count=$(wc -l < "$anchor_list" | tr -d ' ')
 if [ "$broken_count" -eq 0 ]; then
   echo "  $(c_grn 'No broken internal links found.')"
 else
@@ -259,7 +328,14 @@ else
   head -50 "$broken_list"
   [ "$broken_count" -gt 50 ] && echo "  ... (showing first 50)"
 fi
-rm -f "$broken_list" /tmp/md_files_$$
+if [ "$anchor_count" -eq 0 ]; then
+  echo "  $(c_grn 'No broken internal markdown anchors found.')"
+else
+  echo "  $(c_red "$anchor_count broken internal markdown anchors:")"
+  head -50 "$anchor_list"
+  [ "$anchor_count" -gt 50 ] && echo "  ... (showing first 50)"
+fi
+rm -f "$broken_list" "$anchor_list" /tmp/md_files_$$
 
 # ----------------------------------------------------------------------
 # 4. Snapshot presence
@@ -328,6 +404,7 @@ if [ -d "$UNANOFABTOOLS_SRC/app/blueprints" ]; then
   )
   echo "    Registered route decorators in source: $route_count"
   echo "    (Excludes unregistered duplicate blueprints and commented-out decorators.)"
+  echo "    Compare against documentation/UNanofabTools/flaskserver/05-http-api-reference.md and 15-Endpoint-Reference presentation material; this count is informational unless paired with a route-by-route audit."
 else
   echo "    $(c_yel "$UNANOFABTOOLS_SRC/app/blueprints not present — skipping")"
 fi
@@ -369,6 +446,7 @@ count_md documentation/UNanofabTools
 count_md known-issues/UNanofabTools
 count_md presentation/NanofabToolkit
 count_md documentation/NanofabToolkit
+count_md known-issues/NanofabToolkit
 
 deck_count=$(find presentation -name "*.pptx" 2>/dev/null | wc -l | tr -d ' ')
 echo

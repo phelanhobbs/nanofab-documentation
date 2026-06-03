@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `771`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `c1943c451d9047d9`
+- Sanitized SHA-256 prefix: `dbb883a3a7edd40e`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `import time`, `import struct`, `import ujson`, `import urequests`, `import network`, `from machine import I2C, Pin`, `import socket`
+- Classes: `SPS30`
+- Functions: `_crc8_word`, `format_row`, `scan_i2c_devices`, `test_i2c_connection`, `test_dns_resolution`, `test_network_connectivity`, `configure_dns`, `calculate_next_send_time`, `format_local_time`, `connect_wifi`, `send_to_api`, `blink_led_startup`, `led_error_code`, `main`, `__init__`, `_write_ptr`, `_write_ptr_with_data`, `start_measurement_float`, `stop_measurement`, `read_data_ready`, `read_measured_values_float`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -57,7 +57,7 @@ SEND_INTERVAL_MINUTES = 15  # Send data every 15 minutes (at :00, :15, :30, :45)
 
 # WiFi credentials
 WIFI_SSID = "ULink"
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 
 # API endpoint configuration
 API_URL = "https://nfhistory.nanofab.utah.edu/particle-data"  # Production API endpoint URL
@@ -1024,7 +1024,7 @@ Reconstruction rule: in `UNanofabTools/Particle_sensor.py`, line 27 is classifie
 ### Line 28
 
 ```text
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 ```
 
 Reconstruction rule: in `UNanofabTools/Particle_sensor.py`, line 28 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

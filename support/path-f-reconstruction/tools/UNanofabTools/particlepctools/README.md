@@ -32,6 +32,14 @@ Preserve API URLs, JSON parsing, room map behavior, historical charting, and saf
 - Canonical maintained viewer behavior is in NanofabToolkit/ParticleSensor.
 - Timezone conversion has known drift risk.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## TLS And Endpoint Policy
+
+The historical tools may disable TLS verification or include production and test endpoints. Before running generators or viewers, explicitly choose production-safe, localhost, or test-server mode and record the target URL.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

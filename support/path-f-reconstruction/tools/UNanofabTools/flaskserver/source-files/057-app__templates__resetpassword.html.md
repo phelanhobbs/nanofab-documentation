@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `37`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `ea000dd27ac680fd`
+- Sanitized SHA-256 prefix: `1af4472444279443`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -34,10 +34,10 @@ This section is written so a maintainer can recreate the file's behavior without
 {% block title %}Reset Password - UNanofab Tools{% endblock %}
 
 {% block content %}
-<div class= <redacted-secret-value>>
+<div class="reset-password-container">
     <h1>Reset Password</h1>
 
-    <form action= <redacted-secret-value> method= <redacted-secret-value>>
+    <form action="{{ url_for('auth.reset_password') }}" method="POST">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -49,8 +49,8 @@ This section is written so a maintainer can recreate the file's behavior without
         </div>
 
         <div class="form-group">
-            <label for= <redacted-secret-value>>New Password:</label>
-            <input type= <redacted-secret-value> id= <redacted-secret-value> name= <redacted-secret-value> required>
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
 
         <button type="submit">Submit</button>
@@ -113,7 +113,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 5
 ### Line 6
 
 ```text
-<div class= <redacted-secret-value>>
+<div class="reset-password-container">
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 6 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -137,7 +137,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 8
 ### Line 9
 
 ```text
-    <form action= <redacted-secret-value> method= <redacted-secret-value>>
+    <form action="{{ url_for('auth.reset_password') }}" method="POST">
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 9 is classified as `html-form`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -233,7 +233,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 2
 ### Line 21
 
 ```text
-            <label for= <redacted-secret-value>>New Password:</label>
+            <label for="password">New Password:</label>
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 21 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -241,7 +241,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 2
 ### Line 22
 
 ```text
-            <input type= <redacted-secret-value> id= <redacted-secret-value> name= <redacted-secret-value> required>
+            <input type="password" id="password" name="password" required>
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/resetpassword.html`, line 22 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

@@ -32,6 +32,14 @@ Preserve month retrieval behavior, API contracts, CSV/table output, GUI controls
 - Network/API failures need visible operator feedback.
 - Do not embed tokens in source.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## CORES Credential Contract Required
+
+`auth.py`/`HSCCode` must be replaced by a documented external secret source before this tool is considered reconstructable. Record service IDs, request timeout policy, response shape, and expected CSV columns for one month.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

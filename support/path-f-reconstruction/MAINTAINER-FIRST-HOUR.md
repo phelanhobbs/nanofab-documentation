@@ -8,6 +8,7 @@ This is the stress-case entry point for a new maintainer. Use it before touching
 2. Read [`NAVIGATOR.md`](NAVIGATOR.md), especially the Do Not Get Lost rules.
 3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if there is an active failure.
 4. Read [`GLOSSARY.md`](GLOSSARY.md) for any unfamiliar names before guessing.
+5. Read [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md) before trusting any proof check that depends on sample data.
 
 ## Minute 10-25: Identify Ownership
 
@@ -31,8 +32,9 @@ Use this shortcut list:
 
 1. Read the chosen tool `README.md`.
 2. Write down the external inputs that cannot be recovered from Path F.
-3. Open source-file pages only for the files directly involved.
-4. Use the breadcrumbs at the top of each source page if you land there from search.
+3. Name the fixture, sample file, expected output, or acceptable substitute needed for proof.
+4. Open source-file pages only for the files directly involved.
+5. Use the breadcrumbs at the top of each source page if you land there from search.
 
 ## Minute 55-60: Decide The Next Action
 

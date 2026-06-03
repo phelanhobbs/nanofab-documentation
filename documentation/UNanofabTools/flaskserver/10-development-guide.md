@@ -176,4 +176,4 @@ def test_login_page(client):
 | Startup/extension wiring | `app/__init__.py` |
 | Templates/UI | `app/templates/**`, `app/static/**` |
 
-This concludes the developer documentation set. See the index in [README.md](README.md). Known bugs and technical debt are tracked in a separate file outside this folder (`SERVER-KNOWN-ISSUES.md`).
+This concludes the developer documentation set. See the index in [README.md](README.md). Known bugs and technical debt are tracked in [`../../../known-issues/UNanofabTools/flaskserver.md`](../../../known-issues/UNanofabTools/flaskserver.md).

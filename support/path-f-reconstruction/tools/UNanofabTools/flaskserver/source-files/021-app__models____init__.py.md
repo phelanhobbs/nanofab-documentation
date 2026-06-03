@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `90`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `7125523ee48b6e36`
+- Sanitized SHA-256 prefix: `99501a0a42a1892b`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `from datetime import datetime`, `from flask_login import UserMixin`, `from flask_sqlalchemy import SQLAlchemy`, `from .particle_sensor import ParticleSensorData`
+- Classes: `User`, `Session`, `Task`, `TaskAssignee`, `TaskFile`
+- Functions: `__repr__`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -46,7 +46,7 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False, name= <redacted-secret-value>)
+    password_hash = db.Column(db.String(255), nullable=False, name='passwordHash')
     unid = db.Column(db.String(255), unique=True, nullable=False, name='uNID')
     is_admin = db.Column(db.Boolean, default=False, name='isAdmin')
     can_assign = db.Column(db.Boolean, default=False, name='canAssign')
@@ -255,7 +255,7 @@ Reconstruction rule: in `UNanofabTools/app/models/__init__.py`, line 16 is class
 ### Line 17
 
 ```text
-    password_hash = db.Column(db.String(255), nullable=False, name= <redacted-secret-value>)
+    password_hash = db.Column(db.String(255), nullable=False, name='passwordHash')
 ```
 
 Reconstruction rule: in `UNanofabTools/app/models/__init__.py`, line 17 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

@@ -31,6 +31,14 @@ Preserve binary marker parsing, cleaned text format, timestamp extraction, press
 - DATfixer and DATgrapher duplicate parsing assumptions.
 - Graph display behavior differs on headless hosts.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## File-Format Evidence Required
+
+A DAT rebuild needs representative raw and cleaned files. Record magic-byte assumptions, empty-file behavior, malformed-record behavior, and graph backend expectations before changing parser code.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

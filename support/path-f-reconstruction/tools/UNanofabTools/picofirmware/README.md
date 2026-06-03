@@ -32,6 +32,14 @@ Preserve MicroPython imports, sensor read loops, WiFi handling, HTTP POST payloa
 - Canonical Pico firmware lives in NanofabToolkit/PicoHelperTools.
 - Some UNanofabTools Pico scripts are incomplete or historical.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Bootability Warning
+
+This folder contains older or historical Pico copies. Some files may be incomplete or non-bootable as written. Before deploying, identify the specific firmware file, required constants, sensor wiring, MicroPython version, endpoint URL, and serial-console acceptance output.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

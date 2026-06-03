@@ -16,10 +16,10 @@ The maintainer understands the system's security strengths, known gaps, secret-h
 
 SHOW:
 
-- `../../presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx)
-- `../../presentation/UNanofabTools/flaskserver/14-Security-Model.md` (reference path: ../../presentation/UNanofabTools/flaskserver/14-Security-Model.md)
-- `../../documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md` (reference path: ../../documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
-- `../../known-issues/UNanofabTools/README.md` (reference path: ../../known-issues/UNanofabTools/README.md)
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx)
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md` (repo path: presentation/UNanofabTools/flaskserver/14-Security-Model.md)
+- `documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md` (repo path: documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md)
+- `known-issues/UNanofabTools/README.md` (repo path: known-issues/UNanofabTools/README.md)
 
 ## Verbatim Script
 
@@ -37,7 +37,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../known-issues/UNanofabTools/README.md` (reference path: ../../known-issues/UNanofabTools/README.md).
+Open `known-issues/UNanofabTools/README.md` (repo path: known-issues/UNanofabTools/README.md).
 
 READ ALOUD:
 
@@ -107,11 +107,10 @@ We are now doing the orientation pass for Security Model. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -146,11 +145,10 @@ We are now doing the evidence pass for Security Model. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -185,11 +183,10 @@ We are now doing the source-code pass for Security Model. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -224,11 +221,10 @@ We are now doing the live-state pass for Security Model. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -263,11 +259,10 @@ We are now doing the failure-mode pass for Security Model. The maintainer should
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -302,11 +297,10 @@ We are now doing the maintenance-planning pass for Security Model. The maintaine
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -341,11 +335,10 @@ We are now doing the security pass for Security Model. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -380,11 +373,10 @@ We are now doing the recovery pass for Security Model. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -419,11 +411,10 @@ We are now doing the documentation-drift pass for Security Model. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -458,11 +449,10 @@ We are now doing the teach-back pass for Security Model. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -497,11 +487,10 @@ We are now doing the homework-review pass for Security Model. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -536,11 +525,10 @@ We are now doing the quarterly-audit pass for Security Model. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -575,11 +563,10 @@ We are now doing the backup-and-restore pass for Security Model. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -614,11 +601,10 @@ We are now doing the ownership-boundary pass for Security Model. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -653,11 +639,10 @@ We are now doing the no-contact rehearsal pass for Security Model. The maintaine
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -692,11 +677,10 @@ We are now doing the operator-error pass for Security Model. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -731,11 +715,10 @@ We are now doing the data-integrity pass for Security Model. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -770,11 +753,10 @@ We are now doing the final-repetition pass for Security Model. The maintainer sh
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx`
+- `presentation/UNanofabTools/flaskserver/14-Security-Model.md`
+- `support/REDACTION-NOTE.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `1018`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `793a54b98dbb3c59`
+- Sanitized SHA-256 prefix: `50bdf490415c972f`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `import time`, `import struct`, `import ujson`, `import urequests`, `import network`, `import gc`, `import sys`, `import os`, `import machine`, `from machine import I2C, Pin, WDT`, `import ntptime`, `import socket`
+- Classes: `SPS30`
+- Functions: `safe_print`, `log_error`, `_crc8_word`, `format_row`, `scan_i2c_devices`, `test_i2c_connection`, `test_dns_resolution`, `test_network_connectivity`, `configure_dns`, `clock_looks_valid`, `sync_time_ntp`, `calculate_next_send_time`, `format_local_time`, `connect_wifi`, `reset_wifi`, `send_to_api`, `blink_led_startup`, `led_error_code`, `main`, `__init__`, `_write_ptr`, `_write_ptr_with_data`, `start_measurement_float`, `stop_measurement`, `read_data_ready`, `read_measured_values_float`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -104,7 +104,7 @@ NTP_SERVERS = (
 
 # WiFi credentials
 WIFI_SSID = "ULink"
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 
 # API endpoint configuration
 API_URL = "https://nfhistory.nanofab.utah.edu/particle-data"  # Production API endpoint URL
@@ -407,13 +407,13 @@ def connect_wifi(max_attempts=3):
     status_names = {
         0: "STAT_IDLE",
         1: "STAT_CONNECTING",
-        2: <redacted-secret-value>,
+        2: "STAT_WRONG_PASSWORD",
         3: "STAT_NO_AP_FOUND",
         4: "STAT_CONNECT_FAIL",
         5: "STAT_GOT_IP",
         -1: "STAT_CONNECT_FAIL",
         -2: "STAT_NO_AP_FOUND",
-        -3: <redacted-secret-value>,
+        -3: "STAT_WRONG_PASSWORD",
     }
 
     # Give the CYW43 WiFi chip time to initialise (critical for headless boot)
@@ -1647,7 +1647,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, lin
 ### Line 75
 
 ```text
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 ```
 
 Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, line 75 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -4071,7 +4071,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, lin
 ### Line 378
 
 ```text
-        2: <redacted-secret-value>,
+        2: "STAT_WRONG_PASSWORD",
 ```
 
 Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, line 378 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -4119,7 +4119,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, lin
 ### Line 384
 
 ```text
-        -3: <redacted-secret-value>,
+        -3: "STAT_WRONG_PASSWORD",
 ```
 
 Reconstruction rule: in `NanofabToolkit/PicoHelperTools/Particle_sensor.py`, line 384 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

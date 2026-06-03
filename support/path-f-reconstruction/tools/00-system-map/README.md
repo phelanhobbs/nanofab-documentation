@@ -13,8 +13,8 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 
 ## Source State Used
 
-- `UNanofabTools`: branch `dev`, commit `ac6c67f`, root `/Users/phe/code/work/UNanofabTools`
-- `NanofabToolkit`: branch `master`, commit `cedd4b7`, root `/Users/phe/code/work/NanofabToolkit`
+- `UNanofabTools`: branch `dev`, commit `ac6c67f0299e5fe62befed8b4de9bc822320f53e`, root `/Users/phe/code/work/UNanofabTools`, dirty files `3`, untracked files `1`
+- `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `/Users/phe/code/work/NanofabToolkit`, dirty files `1`, untracked files `0`
 
 ## Readable Source Files Included
 
@@ -29,9 +29,11 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 - `UNanofabTools/requirements.txt`
 - `NanofabToolkit/ParticleSensor/src/gui.py`
 
+If this section lists any files, a clean checkout at the recorded commits will not reproduce this manual exactly. Either preserve the working-tree diffs as patch artifacts, commit the source changes in the sibling repos, or regenerate Path F from a deliberately clean source state and review the diff.
+
 ## Source Of Truth Rule
 
-When this manual disagrees with live production, production wins. When production disagrees with committed source, write the drift down before changing anything. When source disagrees with this manual, regenerate Path F and inspect the diff. When a secret-looking value is redacted, supply it through `.env`, secure firmware configuration, University IT, or another approved secret channel.
+For reconstruction without the original source tree, use this manual's sanitized excerpts and notes as the available evidence. For maintenance with sibling source repos present, current source and live production can reveal drift; write that drift down before changing anything. When this manual disagrees with live production, production wins. When source disagrees with this manual, regenerate Path F and inspect the diff. When a secret-looking value is redacted, supply it through `.env`, secure firmware configuration, University IT, or another approved secret channel.
 
 ### Universal Edge Case 1: Empty Input
 

@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `26`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `1817e10d64fe3c35`
+- Sanitized SHA-256 prefix: `41f13c0a2a29be83`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -44,15 +44,15 @@ This section is written so a maintainer can recreate the file's behavior without
         </div>
 
         <div class="form-group">
-            <label for= <redacted-secret-value>>Password:</label>
-            <input type= <redacted-secret-value> id= <redacted-secret-value> name= <redacted-secret-value> required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
 
         <button type="submit">Login</button>
     </form>
 
     <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up</a></p>
-    <p>Forgot password? <a href= <redacted-secret-value>>Reset password</a></p>
+    <p>Forgot password? <a href="{{ url_for('auth.reset_password') }}">Reset password</a></p>
 </div>
 {% endblock %}
 ```
@@ -182,7 +182,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 1
 ### Line 16
 
 ```text
-            <label for= <redacted-secret-value>>Password:</label>
+            <label for="password">Password:</label>
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 16 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -190,7 +190,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 1
 ### Line 17
 
 ```text
-            <input type= <redacted-secret-value> id= <redacted-secret-value> name= <redacted-secret-value> required>
+            <input type="password" id="password" name="password" required>
 ```
 
 Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 17 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -241,15 +241,15 @@ Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 2
     <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up</a></p>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 23 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 23 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 24
 
 ```text
-    <p>Forgot password? <a href= <redacted-secret-value>>Reset password</a></p>
+    <p>Forgot password? <a href="{{ url_for('auth.reset_password') }}">Reset password</a></p>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 24 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 24 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 25
 
@@ -257,7 +257,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 2
 </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 25 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/templates/login_example.html`, line 25 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 26
 

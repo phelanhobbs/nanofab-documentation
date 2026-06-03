@@ -16,10 +16,10 @@ The maintainer understands the difference between the ideal deployment and the v
 
 SHOW:
 
-- `../../presentation/UNanofabTools/liveserver/slides/Live-Server.pptx` (reference path: ../../presentation/UNanofabTools/liveserver/slides/Live-Server.pptx)
-- `../../presentation/UNanofabTools/liveserver/README.md` (reference path: ../../presentation/UNanofabTools/liveserver/README.md)
-- `../../documentation/UNanofabTools/liveserver/README.md` (reference path: ../../documentation/UNanofabTools/liveserver/README.md)
-- `../../known-issues/UNanofabTools/liveserver.md` (reference path: ../../known-issues/UNanofabTools/liveserver.md)
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx` (repo path: presentation/UNanofabTools/liveserver/slides/Live-Server.pptx)
+- `presentation/UNanofabTools/liveserver/README.md` (repo path: presentation/UNanofabTools/liveserver/README.md)
+- `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md)
+- `known-issues/UNanofabTools/liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md)
 
 ## Verbatim Script
 
@@ -39,7 +39,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../documentation/UNanofabTools/liveserver/README.md` (reference path: ../../documentation/UNanofabTools/liveserver/README.md).
+Open `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md).
 
 READ ALOUD:
 
@@ -47,7 +47,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../known-issues/UNanofabTools/liveserver.md` (reference path: ../../known-issues/UNanofabTools/liveserver.md).
+Open `known-issues/UNanofabTools/liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md).
 
 READ ALOUD:
 
@@ -129,11 +129,10 @@ We are now doing the orientation pass for Live Server. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx`
+- `presentation/UNanofabTools/liveserver/README.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -168,11 +167,10 @@ We are now doing the evidence pass for Live Server. The maintainer should connec
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx`
+- `presentation/UNanofabTools/liveserver/README.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -207,11 +205,10 @@ We are now doing the source-code pass for Live Server. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx`
+- `presentation/UNanofabTools/liveserver/README.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -246,11 +243,10 @@ We are now doing the live-state pass for Live Server. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx`
+- `presentation/UNanofabTools/liveserver/README.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -285,11 +281,10 @@ We are now doing the failure-mode pass for Live Server. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/liveserver/slides/Live-Server.pptx`
+- `presentation/UNanofabTools/liveserver/README.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -334,7 +329,7 @@ This guide is a tour of the **live cleanroom server** (`nfhistory`) — what's o
 
 If `serveraccess/` answers *"how do I log in?"*, this answers *"once you're in, what's actually there?"*
 
-Everything below comes from real read-only surveys of the server on **May 29, 2026** (root-side system view) and **June 1, 2026** (`phelan`-side user view). The raw snapshots live in `../../../documentation/UNanofabTools/liveserver/snapshots/` (reference path: ../../../documentation/UNanofabTools/liveserver/snapshots/) for reference.
+Everything below comes from real read-only surveys of the server on **May 29, 2026** (root-side system view) and **June 1, 2026** (`phelan`-side user view). The raw snapshots live in `documentation/UNanofabTools/liveserver/snapshots/` (repo path: documentation/UNanofabTools/liveserver/snapshots) for reference.
 
 ## The server in 30 seconds
 
@@ -484,18 +479,18 @@ The following source document is included directly in this tier so the presenter
 
 Formal reference for **what is currently running on the cleanroom server**, as opposed to what the source code says *should* be there. Companion to:
 
-- the access procedure: `../serveraccess/README.md` (reference path: ../serveraccess/README.md)
-- the layman version of this doc: `../../../presentation/UNanofabTools/liveserver/README.md` (reference path: ../../../presentation/UNanofabTools/liveserver/README.md)
-- the deployment intent: `../flaskserver/09-deployment-and-operations.md` (reference path: ../flaskserver/09-deployment-and-operations.md)
-- the maintenance to-do list surfaced by this snapshot: `../../../known-issues/UNanofabTools/liveserver.md` (reference path: ../../../known-issues/UNanofabTools/liveserver.md)
+- the access procedure: `documentation/UNanofabTools/serveraccess/README.md` (repo path: documentation/UNanofabTools/serveraccess/README.md)
+- the layman version of this doc: `presentation/UNanofabTools/liveserver/README.md` (repo path: presentation/UNanofabTools/liveserver/README.md)
+- the deployment intent: `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md` (repo path: documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md)
+- the maintenance to-do list surfaced by this snapshot: `known-issues/UNanofabTools/liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md)
 
-The values below combine two real survey captures by `survey_nfhistory.sh` (reference path: survey_nfhistory.sh): a **2026-05-29** run as `root` (`snapshots/nfhistory_survey_root_2026-05-29.txt` (reference path: snapshots/nfhistory_survey_root_2026-05-29.txt)) and a **2026-06-01** run as `phelan` (`snapshots/nfhistory_survey_phelan_2026-06-01.txt` (reference path: snapshots/nfhistory_survey_phelan_2026-06-01.txt)). Use the raw outputs to re-check any populated table.
+The values below combine two real survey captures by `survey_nfhistory.sh` (repo path: documentation/UNanofabTools/liveserver/survey_nfhistory.sh): a **2026-05-29** run as `root` (`snapshots/nfhistory_survey_root_2026-05-29.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt)) and a **2026-06-01** run as `phelan` (`snapshots/nfhistory_survey_phelan_2026-06-01.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt)). Use the raw outputs to re-check any populated table.
 
 > **Caveat about the current snapshots.** The root run could not inspect `phelan`'s home. The 2026-06-01 `phelan` run discovered the live install path and tmux state, but still missed the venv / `.env` / SQLite / data-tree sections because the script still had the older install path baked in. The script has since been patched; re-run it as `phelan` and fold the missing sections into this doc — see §11 and §17 below.
 
 ## 0. Findings at the top
 
-A condensed mirror of `known-issues/UNanofabTools/liveserver.md` (reference path: ../../../known-issues/UNanofabTools/liveserver.md). The numbers below intentionally match that file so cross-references stay stable.
+A condensed mirror of `known-issues/UNanofabTools/liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md). The numbers below intentionally match that file so cross-references stay stable.
 
 > **Boundary of responsibility.** `nfhistory` is jointly operated. University IT owns the VM, root, the off-host backup pipeline, and unattended-upgrades-style patching. The Nanofab team owns the Flask app, the HSCDownloader, the local PostgreSQL chem database, the cleanroom data trees, and everything under `/home/phelan/`. Nanofab admin actions run as `phelan` with `sudo`; the Nanofab team **cannot** create UNIX accounts and **cannot** modify `/root/`. Several findings below land on IT's side of the line and are flagged that way — they're not Nanofab to-do items, they're IT tickets.
 
@@ -986,10 +981,10 @@ When re-running:
 bash ~/survey_nfhistory.sh | tee /tmp/nfhistory_survey_phelan_$(date +%F).txt
 
 # back to laptop, then pull via CADE (mirror the snapshot-fetch command):
-mkdir -p ~/code/work/documentation/UNanofabTools/liveserver/snapshots && \
+mkdir -p ~/code/work/nanofab-documentation/documentation/UNanofabTools/liveserver/snapshots && \
 ssh -i ~/.ssh/CADE phelanh@lab1-10.eng.utah.edu 'scp nfhistory:/tmp/nfhistory_survey_phelan_\*.txt ~/' && \
 scp -i ~/.ssh/CADE 'phelanh@lab1-10.eng.utah.edu:~/nfhistory_survey_phelan_*.txt' \
-    ~/code/work/documentation/UNanofabTools/liveserver/snapshots/
+    ~/code/work/nanofab-documentation/documentation/UNanofabTools/liveserver/snapshots/
 ```
 
 Then add a row to this table describing what changed.
@@ -998,11 +993,11 @@ Then add a row to this table describing what changed.
 
 ## Related
 
-- Access procedure: `../serveraccess/README.md` (reference path: ../serveraccess/README.md)
-- Layman version: `../../../presentation/UNanofabTools/liveserver/README.md` (reference path: ../../../presentation/UNanofabTools/liveserver/README.md)
-- Findings to fix: `../../../known-issues/UNanofabTools/liveserver.md` (reference path: ../../../known-issues/UNanofabTools/liveserver.md)
-- The script that produces these snapshots: `survey_nfhistory.sh` (reference path: survey_nfhistory.sh)
-- Raw snapshots used here: `snapshots/nfhistory_survey_root_2026-05-29.txt` (reference path: snapshots/nfhistory_survey_root_2026-05-29.txt) and `snapshots/nfhistory_survey_phelan_2026-06-01.txt` (reference path: snapshots/nfhistory_survey_phelan_2026-06-01.txt)
+- Access procedure: `documentation/UNanofabTools/serveraccess/README.md` (repo path: documentation/UNanofabTools/serveraccess/README.md)
+- Layman version: `presentation/UNanofabTools/liveserver/README.md` (repo path: presentation/UNanofabTools/liveserver/README.md)
+- Findings to fix: `known-issues/UNanofabTools/liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md)
+- The script that produces these snapshots: `survey_nfhistory.sh` (repo path: documentation/UNanofabTools/liveserver/survey_nfhistory.sh)
+- Raw snapshots used here: `snapshots/nfhistory_survey_root_2026-05-29.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt) and `snapshots/nfhistory_survey_phelan_2026-06-01.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt)
 
 
 # Read-Aloud Documentation Corpus: known-issues/UNanofabTools/liveserver.md
@@ -1013,7 +1008,7 @@ The following source document is included directly in this tier so the presenter
 
 # Live Server — Known Issues & Findings from Snapshot
 
-Issues surfaced by the read-only surveys of `nfhistory` on **2026-05-29** as `root` (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt` (reference path: ../../documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt)) and **2026-06-01** as `phelan` (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt` (reference path: ../../documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt)).
+Issues surfaced by the read-only surveys of `nfhistory` on **2026-05-29** as `root` (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_root_2026-05-29.txt)) and **2026-06-01** as `phelan` (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt` (repo path: documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt)).
 
 Severity: **High** = breaks functionality, security exposure, or operational silent-failure · **Medium** = correctness / maintainability problem · **Low** = cleanup / cosmetic.
 
@@ -1125,7 +1120,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 ### 17. Survey path mismatch — partially captured — Low (snapshot completeness; script now patched)
 - **History:** the first survey ran as root and missed the `phelan`-side files. The second ran as `phelan` (2026-06-01) but **still** missed venvs / `.env` / SQLite tables / data trees because the script hardcoded the pre-correction home-level install path whereas the actual install is at `~/server/UNanofabTools/` (discovered via tmux `cwd` in that same snapshot).
 - **Status:** the script has been patched to auto-discover `INSTALL_ROOT` from the live `~/server/UNanofabTools` path and the `/opt`/`/srv` deployment candidates. The next `phelan`-side run will populate the gaps.
-- **Fix:** re-run the patched script as `phelan` (no sudo), save to `documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_<date>.txt`, and fold the new venv/`.env`/SQLite/chem-DB/data-tree sections into `documentation/UNanofabTools/liveserver/README.md` (reference path: ../../documentation/UNanofabTools/liveserver/README.md) §10, §11, §13.
+- **Fix:** re-run the patched script as `phelan` (no sudo), save to `documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_<date>.txt`, and fold the new venv/`.env`/SQLite/chem-DB/data-tree sections into `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §10, §11, §13.
 
 ### 18. Root SSH ingress from 155.98.110.9 = IT — Info
 - **Where:** `last` shows `root pts/0 155.98.110.9` three times in May 2026 (9 min, 25 min, 3 min sessions). The `phelan` logins come from `155.98.111.*` (CADE-pool); root logins come from a different subnet.

@@ -50,8 +50,8 @@ READ ALOUD:
 
 SHOW:
 
-- `../../START-HERE.md` (reference path: ../../START-HERE.md)
-- `../PRESENTATION-GUIDE.md` (reference path: ../PRESENTATION-GUIDE.md)
+- `START-HERE.md` (repo path: START-HERE.md)
+- `support/PRESENTATION-GUIDE.md` (repo path: support/PRESENTATION-GUIDE.md)
 - this script pack
 
 DO:
@@ -218,11 +218,11 @@ DO:
 
 Run:
 
-- `00-operator-protocol.md` (reference path: 00-operator-protocol.md)
-- `module-00-set-the-contract.md` (reference path: module-00-set-the-contract.md)
-- `module-01-big-picture.md` (reference path: module-01-big-picture.md)
-- `module-02-live-server.md` (reference path: module-02-live-server.md)
-- `module-03-server-access.md` (reference path: module-03-server-access.md)
+- `00-operator-protocol.md` (repo path: support/path-e-script/00-operator-protocol.md)
+- `module-00-set-the-contract.md` (repo path: support/path-e-script/module-00-set-the-contract.md)
+- `module-01-big-picture.md` (repo path: support/path-e-script/module-01-big-picture.md)
+- `module-02-live-server.md` (repo path: support/path-e-script/module-02-live-server.md)
+- `module-03-server-access.md` (repo path: support/path-e-script/module-03-server-access.md)
 
 Expected outcome:
 
@@ -243,9 +243,9 @@ Homework:
 
 Run:
 
-- `module-04-flask-startup.md` (reference path: module-04-flask-startup.md)
-- `module-05-configuration-local-dev.md` (reference path: module-05-configuration-local-dev.md)
-- `module-06-auth-admin.md` (reference path: module-06-auth-admin.md)
+- `module-04-flask-startup.md` (repo path: support/path-e-script/module-04-flask-startup.md)
+- `module-05-configuration-local-dev.md` (repo path: support/path-e-script/module-05-configuration-local-dev.md)
+- `module-06-auth-admin.md` (repo path: support/path-e-script/module-06-auth-admin.md)
 
 Expected outcome:
 
@@ -265,9 +265,9 @@ Homework:
 
 Run:
 
-- `module-07-tasks.md` (reference path: module-07-tasks.md)
-- `module-08-machines-logs.md` (reference path: module-08-machines-logs.md)
-- `module-09-device-apis.md` (reference path: module-09-device-apis.md)
+- `module-07-tasks.md` (repo path: support/path-e-script/module-07-tasks.md)
+- `module-08-machines-logs.md` (repo path: support/path-e-script/module-08-machines-logs.md)
+- `module-09-device-apis.md` (repo path: support/path-e-script/module-09-device-apis.md)
 
 Expected outcome:
 
@@ -286,8 +286,8 @@ Homework:
 
 Run:
 
-- `module-10-chemical-inventory.md` (reference path: module-10-chemical-inventory.md)
-- `module-11-request-lifecycle-endpoints.md` (reference path: module-11-request-lifecycle-endpoints.md)
+- `module-10-chemical-inventory.md` (repo path: support/path-e-script/module-10-chemical-inventory.md)
+- `module-11-request-lifecycle-endpoints.md` (repo path: support/path-e-script/module-11-request-lifecycle-endpoints.md)
 
 Expected outcome:
 
@@ -305,9 +305,9 @@ Homework:
 
 Run:
 
-- `module-12-security-model.md` (reference path: module-12-security-model.md)
-- `module-13-hscdownloader.md` (reference path: module-13-hscdownloader.md)
-- `module-14-file-transfers.md` (reference path: module-14-file-transfers.md)
+- `module-12-security-model.md` (repo path: support/path-e-script/module-12-security-model.md)
+- `module-13-hscdownloader.md` (repo path: support/path-e-script/module-13-hscdownloader.md)
+- `module-14-file-transfers.md` (repo path: support/path-e-script/module-14-file-transfers.md)
 
 Expected outcome:
 
@@ -325,9 +325,9 @@ Homework:
 
 Run:
 
-- `module-15-pico-particle.md` (reference path: module-15-pico-particle.md)
-- `module-16-other-tools.md` (reference path: module-16-other-tools.md)
-- `module-17-legacy-server.md` (reference path: module-17-legacy-server.md)
+- `module-15-pico-particle.md` (repo path: support/path-e-script/module-15-pico-particle.md)
+- `module-16-other-tools.md` (repo path: support/path-e-script/module-16-other-tools.md)
+- `module-17-legacy-server.md` (repo path: support/path-e-script/module-17-legacy-server.md)
 
 Expected outcome:
 
@@ -344,8 +344,8 @@ Homework:
 
 Run:
 
-- `module-18-known-issues-triage.md` (reference path: module-18-known-issues-triage.md)
-- `module-19-path-d-audit-practice.md` (reference path: module-19-path-d-audit-practice.md)
+- `module-18-known-issues-triage.md` (repo path: support/path-e-script/module-18-known-issues-triage.md)
+- `module-19-path-d-audit-practice.md` (repo path: support/path-e-script/module-19-path-d-audit-practice.md)
 
 Expected outcome:
 
@@ -363,8 +363,8 @@ Homework:
 
 Run:
 
-- `module-20-operational-scenarios.md` (reference path: module-20-operational-scenarios.md)
-- `module-21-final-no-contact-check.md` (reference path: module-21-final-no-contact-check.md)
+- `module-20-operational-scenarios.md` (repo path: support/path-e-script/module-20-operational-scenarios.md)
+- `module-21-final-no-contact-check.md` (repo path: support/path-e-script/module-21-final-no-contact-check.md)
 
 Expected outcome:
 

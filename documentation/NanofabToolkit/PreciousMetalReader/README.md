@@ -10,7 +10,7 @@ Reference for the `PreciousMetalReader` desktop app: a Tkinter GUI that download
 | `src/RetrieveMonthsMetals.py` | `download_Metal(endpoint, month, year)` plus helpers (`daysinMonth`, `summarize_metal_charges`, `save_summary_to_csv`). Calls the CORES n8n webhook. |
 | `src/gui.py` (`PreciousMetalReaderGui`) | The Tk UI: month/year picker, mode (specific vs all), machine + metal dropdowns, download action, progress/results text. |
 | `src/assets/icon.ico` | Windowed executable icon. |
-| `src/auth.py` (referenced as `from auth import HSCCode`) | Holds the CORES Bearer token. |
+| `src/auth.py` (referenced as `from auth import HSCCode`) | Local secret module expected at runtime. It supplies the CORES Bearer token but is not present in the reviewed checkout. Do not commit it. |
 
 Dependencies: `requests`, `tkinter` (stdlib), `csv` (stdlib), `collections.defaultdict`, `logging`. Frozen with PyInstaller.
 
@@ -63,11 +63,11 @@ Group the raw line items by metal/tool, sum charges, and write a CSV alongside t
 
 - Logs to `logs/precious_metal_reader.log` (frozen) or `src/logs/...` (dev).
 - Downloaded CSVs land in `downloads/` adjacent to the app.
-- Internet access required; CORES authentication uses a Bearer token from `auth.py`.
+- Internet access required; CORES authentication uses a Bearer token from local `auth.py` or an equivalent replacement secrets mechanism.
 - The app is read-only against CORES.
 
 ## 7. Maintenance / recommendations
-- **Move `HSCCode`/Bearer out of `auth.py`** into env / OS keychain; rotate the token. It's a real credential.
+- **Replace local `auth.py` with a documented secrets mechanism** such as an environment variable, OS keychain entry, or protected per-machine config. Rotate the token if there is any evidence that `auth.py` or the token was committed, shared, or copied into logs.
 - **Hard-coded service-ID map**: lift the `[768, 808…818]` list into a documented config / table (machine → metal → service_id) so re-numbering at CORES is one place to update.
 - **Retry + timeout on `requests.get`**: today there's no `timeout=`, so a slow CORES can hang the UI.
 - **Progress reporting for "all"**: looping ~12 endpoints can take a while; surface per-endpoint progress in the UI.

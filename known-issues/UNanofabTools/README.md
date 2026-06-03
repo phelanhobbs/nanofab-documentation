@@ -23,6 +23,16 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 Each file lists items with severity (High / Medium / Low), a brief description, the risk, and a suggested fix — plus a priority order at the bottom. Nothing in these files has been changed in the code yet; they're recommendations, not changelogs.
 
+For new items, or when rewriting an existing item before implementation, use this closeable format:
+
+- **Owner:** Nanofab / University IT / CORES / facilities-network / mixed.
+- **Evidence or reproduction:** exact source path, live snapshot, command output, UI workflow, or hardware observation that proves the issue exists.
+- **Remediation:** what should change, including the file, config, ticket, or operational procedure.
+- **Validation / proof of fix:** command, screenshot, test input/output, live check, or documentation diff that proves the item can be closed.
+- **Dependencies:** required secret, live access, hardware, CORES change, or IT ticket.
+
+Older items may still use a shorter `Where/Risk/Fix` format. Before closing one of those, add the missing owner/evidence/validation details so the next maintainer can audit the closure without asking the original author.
+
 A few items recur across tools and may be worth treating as cross-cutting initiatives:
 
 - **Secrets in source.** Hard-coded WiFi passwords (`picofirmware`), a CORES Bearer token (`hscdownloader`), and Duo keys imported from a Python module (`hscdisplayerserver`) all belong in environment variables / a protected store, with the secrets themselves rotated.

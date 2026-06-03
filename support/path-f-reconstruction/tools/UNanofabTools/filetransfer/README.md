@@ -32,6 +32,14 @@ Preserve source directories, destination paths, SSH/SCP behavior, Windows quotin
 - Personal-account dependencies are not a long-term operational model.
 - Windows quoting failures can look like authentication failures.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Production Truth Warning
+
+Committed scripts preserve `phelanh` and `/Users/phelanh/Desktop/Logs/...` because that is what the source says. That is not proof that current production should keep using a personal account or macOS-style destination. Start maintenance by verifying where recent machine-control-PC uploads actually land, then choose either an IT-created service account or a Nanofab-managed purpose-bound `phelan` key.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

@@ -16,11 +16,11 @@ The maintainer recognizes deprecated `hscdisplayerserver`, understands why it ex
 
 SHOW:
 
-- `../../presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx` (reference path: ../../presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx)
-- `../../presentation/UNanofabTools/hscdisplayerserver/README.md` (reference path: ../../presentation/UNanofabTools/hscdisplayerserver/README.md)
-- `../../documentation/UNanofabTools/hscdisplayerserver/README.md` (reference path: ../../documentation/UNanofabTools/hscdisplayerserver/README.md)
-- `../../documentation/UNanofabTools/hscdisplayerserver/ROUTES.md` (reference path: ../../documentation/UNanofabTools/hscdisplayerserver/ROUTES.md)
-- `../../known-issues/UNanofabTools/hscdisplayerserver.md` (reference path: ../../known-issues/UNanofabTools/hscdisplayerserver.md)
+- `presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx` (repo path: presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx)
+- `presentation/UNanofabTools/hscdisplayerserver/README.md` (repo path: presentation/UNanofabTools/hscdisplayerserver/README.md)
+- `documentation/UNanofabTools/hscdisplayerserver/README.md` (repo path: documentation/UNanofabTools/hscdisplayerserver/README.md)
+- `documentation/UNanofabTools/hscdisplayerserver/ROUTES.md` (repo path: documentation/UNanofabTools/hscdisplayerserver/ROUTES.md)
+- `known-issues/UNanofabTools/hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md)
 
 ## Verbatim Script
 
@@ -38,7 +38,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../known-issues/UNanofabTools/hscdisplayerserver.md` (reference path: ../../known-issues/UNanofabTools/hscdisplayerserver.md).
+Open `known-issues/UNanofabTools/hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md).
 
 READ ALOUD:
 
@@ -81,11 +81,10 @@ We are now doing the orientation pass for Legacy Server. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx`
+- `presentation/UNanofabTools/hscdisplayerserver/README.md`
+- `documentation/UNanofabTools/hscdisplayerserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -120,11 +119,10 @@ We are now doing the evidence pass for Legacy Server. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx`
+- `presentation/UNanofabTools/hscdisplayerserver/README.md`
+- `documentation/UNanofabTools/hscdisplayerserver/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

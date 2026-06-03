@@ -4,6 +4,113 @@ This generated module file is part of the split Path E tier. Read it as a self-c
 
 
 
+# Existing Path E v1 Module Script: module-11-request-lifecycle-endpoints.md
+
+# Module 11 - Request Lifecycle And Endpoint Reference
+
+## Goal
+
+The maintainer can trace one request from browser or device to nginx, Flask, blueprint, service code, persistence, response, and documentation, then use that skill to audit route drift.
+
+## Required Screen
+
+SHOW:
+
+- `presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx)
+- `presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx)
+- `presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md` (repo path: presentation/UNanofabTools/flaskserver/13-Request-Lifecycle-Walkthrough.md)
+- `presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md` (repo path: presentation/UNanofabTools/flaskserver/15-Endpoint-Reference.md)
+- `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+
+## Verbatim Script
+
+READ ALOUD:
+
+"This module ties together everything we have covered so far. A request is not magic. It enters through a network path, reaches Flask, passes through routing and guards, calls code, touches data, and returns a response."
+
+SHOW:
+
+Open `13-Request-Lifecycle-Walkthrough.pptx`.
+
+READ ALOUD:
+
+"For a browser request, the public user talks to `nfhistory` over HTTPS. nginx receives the request and proxies to Flask. Flask matches a route. Decorators and route logic enforce login or admin requirements where applicable. The route calls service functions or direct helpers. The app reads or writes SQLite, PostgreSQL, or file trees. Then Flask returns HTML, JSON, a redirect, a file, or an error."
+
+"For a device request, the shape is similar but the guard model may differ. Device endpoints can be unauthenticated. That makes payload validation and network exposure especially important."
+
+SHOW:
+
+Open `15-Endpoint-Reference.pptx`.
+
+READ ALOUD:
+
+"The endpoint reference exists so a maintainer can audit what the app exposes. For each route family, we want method, path, guard, inputs, behavior, response, and known risks. If source changes, this reference must change."
+
+## Source Demo
+
+DO:
+
+Run:
+
+```sh
+rg -n "@.*route|Blueprint|login_required|admin_required" ../UNanofabTools/app/blueprints
+```
+
+READ ALOUD:
+
+"This command finds route decorators and guards. The source is the starting point for a route drift audit."
+
+DO:
+
+Pick one endpoint from `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md). For that endpoint, identify:
+
+```text
+method
+path
+guard
+source file
+function name
+input
+service calls
+data side effects
+response
+known issue, if any
+```
+
+READ ALOUD:
+
+"This is the basic endpoint audit pattern. If you can do this for one endpoint, you can do it for all endpoints. This is how future route changes stay documented."
+
+## Drift Rule
+
+READ ALOUD:
+
+"If an endpoint exists in source but not in docs, docs are incomplete. If an endpoint exists in docs but not source, docs are stale. If the docs say a route requires login but the source has no guard, that is potentially high severity. If the docs say an endpoint writes one data store but source writes another, that can be a data-integrity finding."
+
+## Explain-Back
+
+ASK:
+
+| Question | Expected answer |
+|---|---|
+| What are the stages in a browser request? | Browser to HTTPS/nginx, proxy to Flask, route/blueprint match, auth guard, service/data work, response. |
+| What are the stages in a device request? | Device POST/GET to API endpoint, Flask route, validation, storage or lookup, JSON response; auth may differ from browser routes. |
+| How do you find all route decorators? | Run `rg -n "@.*route|Blueprint|login_required|admin_required" ../UNanofabTools/app/blueprints`. |
+| What does the endpoint reference need to say for each route? | Method, path, guard, inputs, behavior, side effects, response, and known risks/issues. |
+| What is route drift? | A mismatch between documented endpoints and actual source behavior. |
+| Which route-drift cases are high severity? | Missing auth in source, undocumented write routes, docs claiming wrong guards, source writing different data stores, or recovery/security commands pointing to wrong paths. |
+
+REQUIRE:
+
+The maintainer can audit one endpoint from docs to source to data side effects.
+
+## Stop Point
+
+STOP POINT:
+
+Stop here if the maintainer cannot perform one route audit. Assign a second endpoint as homework.
+
+
 # Expanded Module 11: Request Lifecycle And Endpoints
 
 READ ALOUD:
@@ -18,11 +125,10 @@ We are now doing the orientation pass for Request Lifecycle And Endpoints. The m
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx`
+- `documentation/UNanofabTools/flaskserver/05-http-api-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -57,11 +163,10 @@ We are now doing the evidence pass for Request Lifecycle And Endpoints. The main
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx`
+- `documentation/UNanofabTools/flaskserver/05-http-api-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -417,7 +522,7 @@ All routes are effectively **Public** — `login_required` is imported but never
 
 79 registered live routes: auth 4, tasks 6, admin 4, machines 27, api 12, chem 21, particle-demo 2, inline 3. `app/blueprints/chem_inventory_remote.py` defines duplicate `/chem/*` routes but is not imported or registered, so it is excluded.
 
-Continue to 06-service-layer-reference.md (reference path: 06-service-layer-reference.md).
+Continue to 06-service-layer-reference.md (repo path: documentation/UNanofabTools/flaskserver/06-service-layer-reference.md).
 
 
 # Read-Aloud Documentation Corpus: documentation/UNanofabTools/flaskserver/06-service-layer-reference.md
@@ -622,4 +727,4 @@ Sets `self.engine = get_chem_engine()`.
 
 > Also note: `get_reports(self)` exists in the module but is **not** used by the live `/chem/report` route, which calls the individual `report_*` methods instead.
 
-Continue to 07-authentication-and-authorization.md (reference path: 07-authentication-and-authorization.md).
+Continue to 07-authentication-and-authorization.md (repo path: documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md).

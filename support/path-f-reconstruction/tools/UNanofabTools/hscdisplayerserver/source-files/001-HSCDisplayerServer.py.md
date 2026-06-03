@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `2664`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `aa8b1e651d5c1ffe`
+- Sanitized SHA-256 prefix: `5123d572a827b1dd`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `import cgi`, `import html`, `from http.server import BaseHTTPRequestHandler, HTTPServer`, `import http.cookies`, `import logging`, `import random`, `import socketserver`, `import csv`, `import ssl`, `import sqlite3`, `import bcrypt`, `import uuid`, `import json`, `import datetime`, `from urllib.parse import parse_qs, unquote`, `import os`, `from datetime import datetime, timedelta`, `import io`, `import threading`, `import duo_client`, `import asyncio`, `import urllib.parse`, `from DuoKeys import DUO_IKEY, DUO_SKEY, DUO_HOST`, `import pandas`, `import re`, `import time`, `import traceback`
+- Classes: `MyServer`
+- Functions: `create_db`, `addUser`, `create_session_db`, `create_task_db`, `delete_old_sessions`, `getUserFromSession`, `hash_password`, `verify_userInfo`, `verify_userUnid`, `isUserAdmin`, `canUserAssign`, `createUserSession`, `sanitize_input`, `fetchUserTasks`, `generateHTMLfromUserTasks`, `generateHTMLfromTasks`, `duo_authenticate`, `cleanup_old_sessions`, `start_cleanup_thread`, `csv_to_html_table`, `getAndDisplay`, `graphLogs`, `preparetoGraph`, `graphCSV`, `graphTXT`, `handleHSCData`, `getMachineData`, `handle_error`, `getCurrUser`, `setSessionCookie`, `serveAdminPanel`, `fetchAdminPanelData`, `generateAdminPanelHTML`, `toggleAssign`, `deleteUser`, `is_secureConnection`, `redirect_to_https`, `sortByTime`, `getLogFiles`, `change_task_status`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -1817,7 +1817,7 @@ class MyServer(BaseHTTPRequestHandler):
 
                 #sanitize the input to prevent attacks
                 username = sanitize_input(postvars.get('username', [''])[0])
-                password = <redacted-secret-value>, [''])[0])
+                password = sanitize_input(postvars.get('password', [''])[0])
 
                 asyncio.run(self.handle_login(username, password))
 
@@ -1835,7 +1835,7 @@ class MyServer(BaseHTTPRequestHandler):
 
                 # Sanitize the input to prevent attacks
                 username = sanitize_input(postvars.get('username', [''])[0])
-                password = <redacted-secret-value>, [''])[0])
+                password = sanitize_input(postvars.get('password', [''])[0])
                 uNID = sanitize_input(postvars.get('unid', [''])[0])
 
                 # Handle signup asynchronously
@@ -1852,7 +1852,7 @@ class MyServer(BaseHTTPRequestHandler):
 
         #post request for changing password
         #TODO IMPLEMENT DUO HERE
-        elif self.path == <redacted-secret-value>:
+        elif self.path == '/resetpassword':
             try:
                 #determine content type of the data
                 ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
@@ -16997,7 +16997,7 @@ Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1787 is clas
 ### Line 1788
 
 ```text
-                password = <redacted-secret-value>, [''])[0])
+                password = sanitize_input(postvars.get('password', [''])[0])
 ```
 
 Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1788 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -17141,7 +17141,7 @@ Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1805 is clas
 ### Line 1806
 
 ```text
-                password = <redacted-secret-value>, [''])[0])
+                password = sanitize_input(postvars.get('password', [''])[0])
 ```
 
 Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1806 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -17277,7 +17277,7 @@ Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1822 is clas
 ### Line 1823
 
 ```text
-        elif self.path == <redacted-secret-value>:
+        elif self.path == '/resetpassword':
 ```
 
 Reconstruction rule: in `UNanofabTools/HSCDisplayerServer.py`, line 1823 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

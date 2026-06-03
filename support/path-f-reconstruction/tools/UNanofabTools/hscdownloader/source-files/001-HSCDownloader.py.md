@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `1024`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `3f6b6cfbfc173729`
+- Sanitized SHA-256 prefix: `e86d901a604a86a7`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
+- Imports: `import numpy`, `import requests`, `import schedule`, `import os`, `import pandas`, `import json`, `from io import StringIO`, `import logging`, `import time`, `import signal`, `import sys`
 - Classes: none detected
-- Functions: none detected
+- Functions: `downloadFile`, `ensureExists`, `changedData`, `retrieveData`, `shortenStr`, `combineCells`, `saveALD`, `saveEbeam`, `saveMOCVD`, `saveParylene`, `savePECVD`, `saveDenton635`, `saveDenton18`, `saveTMV`, `saveDRIE`, `saveIsotropic`, `savePlasmalab`, `savePlasmaTherm`, `saveTechnics`, `saveCleanOx`, `saveDopedOx`, `saveLTO`, `saveNitride`, `savePoly`, `saveAllwin`, `save`, `graceful_exit`, `runForever`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -55,7 +55,7 @@ breakLoop = 0
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
 DATA_DIR = os.path.join(script_dir, 'HSCDATA')
 #DATA_DIR = "C:\\Users\\Phelan\\NMon\\HSCDATA"
-AUTH = <redacted-secret-value>
+AUTH = 'Bearer <redacted-secret-value>'
 URLBASE = 'https://n8n.cores.utah.edu/webhook/custom_form_data_dump?service_ids='
 
 # Setup basic logging
@@ -1261,7 +1261,7 @@ Reconstruction rule: in `UNanofabTools/HSCDownloader.py`, line 25 is classified 
 ### Line 26
 
 ```text
-AUTH = <redacted-secret-value>
+AUTH = 'Bearer <redacted-secret-value>'
 ```
 
 Reconstruction rule: in `UNanofabTools/HSCDownloader.py`, line 26 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

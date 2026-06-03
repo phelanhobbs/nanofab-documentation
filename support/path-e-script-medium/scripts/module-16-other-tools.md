@@ -16,12 +16,12 @@ The maintainer can identify each remaining desktop/data tool, explain its purpos
 
 SHOW:
 
-- `../../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx` (reference path: ../../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
-- `../../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx` (reference path: ../../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
-- `../../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx` (reference path: ../../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
-- `../../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx` (reference path: ../../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
-- `../../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx` (reference path: ../../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
-- `../../presentation/UNanofabTools/utilities/slides/Utilities.pptx` (reference path: ../../presentation/UNanofabTools/utilities/slides/Utilities.pptx)
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx` (repo path: presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx` (repo path: presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx` (repo path: presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx` (repo path: presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx` (repo path: presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx` (repo path: presentation/UNanofabTools/utilities/slides/Utilities.pptx)
 
 ## Verbatim Script
 
@@ -122,11 +122,15 @@ We are now doing the orientation pass for Other Tools. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -161,11 +165,15 @@ We are now doing the evidence pass for Other Tools. The maintainer should connec
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -200,11 +208,15 @@ We are now doing the source-code pass for Other Tools. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -239,11 +251,15 @@ We are now doing the live-state pass for Other Tools. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -278,11 +294,15 @@ We are now doing the failure-mode pass for Other Tools. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -607,7 +627,7 @@ Reference for the `PreciousMetalReader` desktop app: a Tkinter GUI that download
 | `src/RetrieveMonthsMetals.py` | `download_Metal(endpoint, month, year)` plus helpers (`daysinMonth`, `summarize_metal_charges`, `save_summary_to_csv`). Calls the CORES n8n webhook. |
 | `src/gui.py` (`PreciousMetalReaderGui`) | The Tk UI: month/year picker, mode (specific vs all), machine + metal dropdowns, download action, progress/results text. |
 | `src/assets/icon.ico` | Windowed executable icon. |
-| `src/auth.py` (referenced as `from auth import HSCCode`) | Holds the CORES Bearer token. |
+| `src/auth.py` (referenced as `from auth import HSCCode`) | Local secret module expected at runtime. It supplies the CORES Bearer token but is not present in the reviewed checkout. Do not commit it. |
 
 Dependencies: `requests`, `tkinter` (stdlib), `csv` (stdlib), `collections.defaultdict`, `logging`. Frozen with PyInstaller.
 
@@ -660,11 +680,11 @@ Group the raw line items by metal/tool, sum charges, and write a CSV alongside t
 
 - Logs to `logs/precious_metal_reader.log` (frozen) or `src/logs/...` (dev).
 - Downloaded CSVs land in `downloads/` adjacent to the app.
-- Internet access required; CORES authentication uses a Bearer token from `auth.py`.
+- Internet access required; CORES authentication uses a Bearer token from local `auth.py` or an equivalent replacement secrets mechanism.
 - The app is read-only against CORES.
 
 ## 7. Maintenance / recommendations
-- **Move `HSCCode`/Bearer out of `auth.py`** into env / OS keychain; rotate the token. It's a real credential.
+- **Replace local `auth.py` with a documented secrets mechanism** such as an environment variable, OS keychain entry, or protected per-machine config. Rotate the token if there is any evidence that `auth.py` or the token was committed, shared, or copied into logs.
 - **Hard-coded service-ID map**: lift the `[768, 808…818]` list into a documented config / table (machine → metal → service_id) so re-numbering at CORES is one place to update.
 - **Retry + timeout on `requests.get`**: today there's no `timeout=`, so a slow CORES can hang the UI.
 - **Progress reporting for "all"**: looping ~12 endpoints can take a while; surface per-endpoint progress in the UI.
@@ -688,12 +708,12 @@ Formal reference for the desktop tools and Pico firmware that live in the `Nanof
 
 | Folder | Component | Notes |
 |--------|-----------|-------|
-| `ALDPeakCounter/` (reference path: ALDPeakCounter/README.md) | Tkinter GUI wrapping a SciPy peak counter; per-file time alignment, box zoom. | **Active** |
-| `DentonDecoder/` (reference path: DentonDecoder/README.md) | Tkinter GUI that accepts Denton `.dat` or CSV logs, converts `.dat` to temporary CSV, and plots any column against time (log-scale option). Distinct from UNanofabTools' command-line DAT tools. | **Active** |
-| `ParalyneReader/` (reference path: ParalyneReader/README.md) | Tkinter GUI client of the Flask app's `GET /api/paralyne/analog/...` endpoints; background downloads, smoothing/normalization/alignment. | **Active** |
-| `PreciousMetalReader/` (reference path: PreciousMetalReader/README.md) | Tkinter GUI that downloads month-of precious-metal usage records from the CORES `n8n` webhook and writes summarized CSVs. **Talks to CORES, not to the cleanroom server.** | **Active** |
-| `PicoHelperTools/` (reference path: PicoHelperTools/README.md) | MicroPython firmware (SPS30 / DHT22 / combined). The current, canonical copies. Older copies exist in `UNanofabTools/`. | **Active — canonical** |
-| `ParticleSensor/` (reference path: ParticleSensor/README.md) | PyQt desktop particle-data viewer with env-data sub-boxes and the standard matplotlib toolbar. The current, canonical copy. Older copy exists in `UNanofabTools/`. | **Active — canonical** |
+| `ALDPeakCounter/` (repo path: documentation/NanofabToolkit/ALDPeakCounter/README.md) | Tkinter GUI wrapping a SciPy peak counter; per-file time alignment, box zoom. | **Active** |
+| `DentonDecoder/` (repo path: documentation/NanofabToolkit/DentonDecoder/README.md) | Tkinter GUI that accepts Denton `.dat` or CSV logs, converts `.dat` to temporary CSV, and plots any column against time (log-scale option). Distinct from UNanofabTools' command-line DAT tools. | **Active** |
+| `ParalyneReader/` (repo path: documentation/NanofabToolkit/ParalyneReader/README.md) | Tkinter GUI client of the Flask app's `GET /api/paralyne/analog/...` endpoints; background downloads, smoothing/normalization/alignment. | **Active** |
+| `PreciousMetalReader/` (repo path: documentation/NanofabToolkit/PreciousMetalReader/README.md) | Tkinter GUI that downloads month-of precious-metal usage records from the CORES `n8n` webhook and writes summarized CSVs. **Talks to CORES, not to the cleanroom server.** | **Active** |
+| `PicoHelperTools/` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md) | MicroPython firmware (SPS30 / DHT22 / combined). The current, canonical copies. Older copies exist in `UNanofabTools/`. | **Active — canonical** |
+| `ParticleSensor/` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md) | PyQt desktop particle-data viewer with env-data sub-boxes and the standard matplotlib toolbar. The current, canonical copy. Older copy exists in `UNanofabTools/`. | **Active — canonical** |
 
 ## How the tree is laid out
 
@@ -712,7 +732,7 @@ For each tool you'll find:
 
 ## See also
 
-The sibling `UNanofabTools` repository is documented in parallel at `../UNanofabTools/` (this tree), `../../presentation/UNanofabTools/`, and `../../known-issues/UNanofabTools/`. Cross-references run between the two for shared firmware, the particle viewer, and the CORES integrations.
+The sibling `UNanofabTools` repository is documented in parallel at `documentation/UNanofabTools/` (this tree), `presentation/UNanofabTools/`, and `known-issues/UNanofabTools/`. Cross-references run between the two for shared firmware, the particle viewer, and the CORES integrations.
 
 
 # Read-Aloud Documentation Corpus: documentation/UNanofabTools/README.md
@@ -729,16 +749,16 @@ Formal reference for every component in the UNanofabTools repository, organized 
 
 | Folder | Component | Status |
 |--------|-----------|--------|
-| `flaskserver/` (reference path: flaskserver/README.md) | The current Flask web application — auth, tasks, machine portal, sensor API, chemical inventory. Detailed multi-document set (architecture, getting started, configuration reference, schema, HTTP/service references, security, deployment, dev guide). | **Active — primary** |
-| `hscdownloader/` (reference path: hscdownloader/README.md) | Scheduled ETL: pulls per-machine run forms from the CORES n8n webhook and writes the `HSCDATA` summary CSVs the Flask machines portal reads. | **Active** |
-| `picofirmware/` (reference path: picofirmware/README.md) | MicroPython firmware for the Raspberry Pi Pico W boards (SPS30 particle sensors, Parylene/Denton ADC streamers, plus diagnostics). | **Older copies** *(canonical: `NanofabToolkit/PicoHelperTools` (reference path: ../NanofabToolkit/PicoHelperTools/README.md))*; two unique scripts (`PicoDenton18.py`, `VGC083C_Monitor.py`) are incomplete |
-| `particlepctools/` (reference path: particlepctools/README.md) | The PyQt desktop viewer and a synthetic-data generator. | Viewer is the **older copy** *(canonical: `NanofabToolkit/ParticleSensor` (reference path: ../NanofabToolkit/ParticleSensor/README.md))*; generator is canonical here |
-| `filetransfer/` (reference path: filetransfer/README.md) | PowerShell / batch scripts running on each tool's Windows control PC; push log files to the server over SSH via `pscp`. | **Active** |
-| `dattools/` (reference path: dattools/README.md) | `DATfixer.py` (Denton 635 binary `.DAT` → cleaned text) and `DATgrapher.py` (pressure-vs-time charts from cleaned files). | **Active** |
-| `utilities/` (reference path: utilities/README.md) | Standalone helpers: `peakCount.py`, `gencert.py`, `init_chem_db.py`, `fetch_ssh.py`, `NMonStore.py`. Mixed status. | **Active** (one unfinished stub) |
-| `serveraccess/` (reference path: serveraccess/README.md) | The SSH access pattern (laptop → CADE → `nfhistory`), the shared `phelan` account model, and the `flaskserver` / `downloader` tmux sessions: attach, detach, recover. Includes both user procedure and admin runbook. | **Active** |
-| `liveserver/` (reference path: liveserver/README.md) | Populated inventory of the live `nfhistory` server (OS, network, certs, services, packages, data trees), plus the `survey_nfhistory.sh` script that produces the snapshots and a folder of captured snapshots. | **Active** |
-| `hscdisplayerserver/` (reference path: hscdisplayerserver/README.md) | The original monolithic server (Python `http.server`-based) that predates the Flask rewrite. Documented for historical reference; not maintained. | **Deprecated** |
+| `flaskserver/` (repo path: documentation/UNanofabTools/flaskserver/README.md) | The current Flask web application — auth, tasks, machine portal, sensor API, chemical inventory. Detailed multi-document set (architecture, getting started, configuration reference, schema, HTTP/service references, security, deployment, dev guide). | **Active — primary** |
+| `hscdownloader/` (repo path: documentation/UNanofabTools/hscdownloader/README.md) | Scheduled ETL: pulls per-machine run forms from the CORES n8n webhook and writes the `HSCDATA` summary CSVs the Flask machines portal reads. | **Active** |
+| `picofirmware/` (repo path: documentation/UNanofabTools/picofirmware/README.md) | MicroPython firmware for the Raspberry Pi Pico W boards (SPS30 particle sensors, Parylene/Denton ADC streamers, plus diagnostics). | **Older copies** *(canonical: `NanofabToolkit/PicoHelperTools` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md))*; two unique scripts (`PicoDenton18.py`, `VGC083C_Monitor.py`) are incomplete |
+| `particlepctools/` (repo path: documentation/UNanofabTools/particlepctools/README.md) | The PyQt desktop viewer and a synthetic-data generator. | Viewer is the **older copy** *(canonical: `NanofabToolkit/ParticleSensor` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md))*; generator is canonical here |
+| `filetransfer/` (repo path: documentation/UNanofabTools/filetransfer/README.md) | PowerShell / batch scripts running on each tool's Windows control PC; push log files to the server over SSH via `pscp`. | **Active** |
+| `dattools/` (repo path: documentation/UNanofabTools/dattools/README.md) | `DATfixer.py` (Denton 635 binary `.DAT` → cleaned text) and `DATgrapher.py` (pressure-vs-time charts from cleaned files). | **Active** |
+| `utilities/` (repo path: documentation/UNanofabTools/utilities/README.md) | Standalone helpers: `peakCount.py`, `gencert.py`, `init_chem_db.py`, `fetch_ssh.py`, `NMonStore.py`. Mixed status. | **Active** (one unfinished stub) |
+| `serveraccess/` (repo path: documentation/UNanofabTools/serveraccess/README.md) | The SSH access pattern (laptop → CADE → `nfhistory`), the shared `phelan` account model, and the `flaskserver` / `downloader` tmux sessions: attach, detach, recover. Includes both user procedure and admin runbook. | **Active** |
+| `liveserver/` (repo path: documentation/UNanofabTools/liveserver/README.md) | Populated inventory of the live `nfhistory` server (OS, network, certs, services, packages, data trees), plus the `survey_nfhistory.sh` script that produces the snapshots and a folder of captured snapshots. | **Active** |
+| `hscdisplayerserver/` (repo path: documentation/UNanofabTools/hscdisplayerserver/README.md) | The original monolithic server (Python `http.server`-based) that predates the Flask rewrite. Documented for historical reference; not maintained. | **Deprecated** |
 
 ## How the tree is laid out
 
@@ -1240,12 +1260,12 @@ The companion developer documentation lives at `../documentation/NanofabToolkit/
 
 | Folder | What it is | Slides |
 |--------|------------|--------|
-| `ALDPeakCounter/` (reference path: ALDPeakCounter/README.md) | Desktop GUI that counts pressure peaks in ALD log files, with per-file time alignment and a comparison chart. | yes |
-| `DentonDecoder/` (reference path: DentonDecoder/README.md) | Desktop GUI that opens Denton `.dat` or CSV logs and charts any column against time. | yes |
-| `ParalyneReader/` (reference path: ParalyneReader/README.md) | Desktop GUI that lists, downloads, and visualizes Parylene-coater run files from the cleanroom server. | yes |
-| `PreciousMetalReader/` (reference path: PreciousMetalReader/README.md) | Desktop GUI that pulls a month's precious-metal usage records from CORES and writes a CSV summary. | yes |
-| `PicoHelperTools/` (reference path: PicoHelperTools/README.md) | Pico firmware (particle / env / combined) — the current, canonical copies. Older copies exist in UNanofabTools. | yes |
-| `ParticleSensor/` (reference path: ParticleSensor/README.md) | PyQt desktop particle-data viewer with env-data sub-boxes — the current, canonical copy. Older copy exists in UNanofabTools. | yes |
+| `ALDPeakCounter/` (repo path: presentation/NanofabToolkit/ALDPeakCounter/README.md) | Desktop GUI that counts pressure peaks in ALD log files, with per-file time alignment and a comparison chart. | yes |
+| `DentonDecoder/` (repo path: presentation/NanofabToolkit/DentonDecoder/README.md) | Desktop GUI that opens Denton `.dat` or CSV logs and charts any column against time. | yes |
+| `ParalyneReader/` (repo path: presentation/NanofabToolkit/ParalyneReader/README.md) | Desktop GUI that lists, downloads, and visualizes Parylene-coater run files from the cleanroom server. | yes |
+| `PreciousMetalReader/` (repo path: presentation/NanofabToolkit/PreciousMetalReader/README.md) | Desktop GUI that pulls a month's precious-metal usage records from CORES and writes a CSV summary. | yes |
+| `PicoHelperTools/` (repo path: presentation/NanofabToolkit/PicoHelperTools/README.md) | Pico firmware (particle / env / combined) — the current, canonical copies. Older copies exist in UNanofabTools. | yes |
+| `ParticleSensor/` (repo path: presentation/NanofabToolkit/ParticleSensor/README.md) | PyQt desktop particle-data viewer with env-data sub-boxes — the current, canonical copy. Older copy exists in UNanofabTools. | yes |
 
 ## A note on the overlap with UNanofabTools
 
@@ -1263,7 +1283,7 @@ A separate `known-issues/NanofabToolkit/<tool>.md` file lists bugs and tech debt
 
 ## See also
 
-The sibling UNanofabTools repository is documented in parallel at `../UNanofabTools/` (this tree), `../../documentation/UNanofabTools/`, and `../../known-issues/UNanofabTools/`. Cross-references between the two are used wherever a tool spans both repos (firmware, particle viewer, CORES integrations).
+The sibling UNanofabTools repository is documented in parallel at `presentation/UNanofabTools/` (this tree), `documentation/UNanofabTools/`, and `known-issues/UNanofabTools/`. Cross-references between the two are used wherever a tool spans both repos (firmware, particle viewer, CORES integrations).
 
 
 # Read-Aloud Documentation Corpus: presentation/UNanofabTools/README.md
@@ -1282,16 +1302,16 @@ The companion developer documentation lives in a parallel tree at `../documentat
 
 | Folder | What it is | Status |
 |--------|------------|--------|
-| `flaskserver/` (reference path: flaskserver/README.md) | The current website's server — auth, tasks, machine pages, sensor API, chemical inventory. The largest module; 16 layman docs + 16 decks. | **Active** |
-| `hscdownloader/` (reference path: hscdownloader/README.md) | The supply line that pulls each machine's run data from CORES and writes the spreadsheets the website displays. | **Active** |
-| `picofirmware/` (reference path: picofirmware/README.md) | The small programs running on the Raspberry Pi sensors (particles, vacuum gauges, Parylene streams) that feed the server. | **Active** — Pico firmware *(older copies; canonical: NanofabToolkit/PicoHelperTools)* |
-| `particlepctools/` (reference path: particlepctools/README.md) | The desktop particle-data viewer and the test-data generator. | **Active** — viewer is the older copy *(canonical: NanofabToolkit/ParticleSensor)*; generator is canonical here |
-| `filetransfer/` (reference path: filetransfer/README.md) | The per-machine PowerShell/batch scripts that ship each tool's logs up to the server. | **Active** |
-| `dattools/` (reference path: dattools/README.md) | DATfixer + DATgrapher: convert the Denton 635's binary logs into readable text and pressure-vs-time charts. | **Active** |
-| `utilities/` (reference path: utilities/README.md) | A handful of small helpers — peak counter, certificate converter, chem-DB setup, a developer file fetcher, and one unfinished stub. | **Active** (mixed) |
-| `serveraccess/` (reference path: serveraccess/README.md) | How to actually log in to the server — the two-hop SSH route through CADE, the shared `phelan` account, and how to use the `flaskserver` / `downloader` tmux sessions safely. | **Active** |
-| `liveserver/` (reference path: liveserver/README.md) | What's actually running on `nfhistory` right now — a plain-English tour from a real read-only survey: TLS certs, services, what's healthy, what's weird. | **Active** |
-| `hscdisplayerserver/` (reference path: hscdisplayerserver/README.md) | The original all-in-one server from before the modern site existed. | **Deprecated — kept for historical reference** |
+| `flaskserver/` (repo path: presentation/UNanofabTools/flaskserver/README.md) | The current website's server — auth, tasks, machine pages, sensor API, chemical inventory. The largest module; 16 layman docs + 16 decks. | **Active** |
+| `hscdownloader/` (repo path: presentation/UNanofabTools/hscdownloader/README.md) | The supply line that pulls each machine's run data from CORES and writes the spreadsheets the website displays. | **Active** |
+| `picofirmware/` (repo path: presentation/UNanofabTools/picofirmware/README.md) | The small programs running on the Raspberry Pi sensors (particles, vacuum gauges, Parylene streams) that feed the server. | **Active** — Pico firmware *(older copies; canonical: NanofabToolkit/PicoHelperTools)* |
+| `particlepctools/` (repo path: presentation/UNanofabTools/particlepctools/README.md) | The desktop particle-data viewer and the test-data generator. | **Active** — viewer is the older copy *(canonical: NanofabToolkit/ParticleSensor)*; generator is canonical here |
+| `filetransfer/` (repo path: presentation/UNanofabTools/filetransfer/README.md) | The per-machine PowerShell/batch scripts that ship each tool's logs up to the server. | **Active** |
+| `dattools/` (repo path: presentation/UNanofabTools/dattools/README.md) | DATfixer + DATgrapher: convert the Denton 635's binary logs into readable text and pressure-vs-time charts. | **Active** |
+| `utilities/` (repo path: presentation/UNanofabTools/utilities/README.md) | A handful of small helpers — peak counter, certificate converter, chem-DB setup, a developer file fetcher, and one unfinished stub. | **Active** (mixed) |
+| `serveraccess/` (repo path: presentation/UNanofabTools/serveraccess/README.md) | How to actually log in to the server — the two-hop SSH route through CADE, the shared `phelan` account, and how to use the `flaskserver` / `downloader` tmux sessions safely. | **Active** |
+| `liveserver/` (repo path: presentation/UNanofabTools/liveserver/README.md) | What's actually running on `nfhistory` right now — a plain-English tour from a real read-only survey: TLS certs, services, what's healthy, what's weird. | **Active** |
+| `hscdisplayerserver/` (repo path: presentation/UNanofabTools/hscdisplayerserver/README.md) | The original all-in-one server from before the modern site existed. | **Deprecated — kept for historical reference** |
 
 ## How the materials fit together
 
@@ -1305,7 +1325,7 @@ A separate `known-issues/UNanofabTools/<tool>.md` file lists bugs and tech debt 
 
 ## Where to start
 
-- New to the system? Open `flaskserver/README.md` (reference path: flaskserver/README.md) and the **Start Here** deck in `flaskserver/slides/`.
+- New to the system? Open `flaskserver/README.md` (repo path: presentation/UNanofabTools/flaskserver/README.md) and the **Start Here** deck in `flaskserver/slides/`.
 - Looking for a specific tool? Jump straight to its folder above.
 - Maintaining the code? Use the developer documentation tree instead.
 

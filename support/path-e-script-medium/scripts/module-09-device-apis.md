@@ -16,11 +16,11 @@ The maintainer understands device-facing routes, Pico sensor data flow, unauthen
 
 SHOW:
 
-- `../../presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx)
-- `../../presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx)
-- `../../presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md` (reference path: ../../presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md)
-- `../../presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md` (reference path: ../../presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md)
-- `../../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md` (reference path: ../../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx)
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx)
+- `presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md` (repo path: presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md)
+- `presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md` (repo path: presentation/UNanofabTools/flaskserver/12-Consumers-NanofabToolkit.md)
+- `documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md` (repo path: documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md)
 
 ## Verbatim Script
 
@@ -60,7 +60,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md` (reference path: ../../documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md).
+Open `documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md` (repo path: documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md).
 
 READ ALOUD:
 
@@ -111,11 +111,10 @@ We are now doing the orientation pass for Device APIs. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -150,11 +149,10 @@ We are now doing the evidence pass for Device APIs. The maintainer should connec
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -189,11 +187,10 @@ We are now doing the source-code pass for Device APIs. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -228,11 +225,10 @@ We are now doing the live-state pass for Device APIs. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -267,11 +263,10 @@ We are now doing the failure-mode pass for Device APIs. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx`
+- `presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -312,7 +307,7 @@ The following source document is included directly in this tier so the presenter
 
 # 08 — Integrations & Data Contracts
 
-The server integrates with device/desktop tools over HTTP, plus two backend services (Duo and the local PostgreSQL chem database). This document specifies the **data contracts** so a maintainer can change either side without breaking the other. The canonical, currently-maintained device/desktop clients live in the sibling `NanofabToolkit` repository — see `documentation/NanofabToolkit/PicoHelperTools/` (reference path: ../../NanofabToolkit/PicoHelperTools/README.md) (the producers) and `documentation/NanofabToolkit/ParticleSensor/` (reference path: ../../NanofabToolkit/ParticleSensor/README.md) (the desktop viewer). Older copies retained in *this* repository are documented at `documentation/UNanofabTools/picofirmware/` and `documentation/UNanofabTools/particlepctools/` for historical reference.
+The server integrates with device/desktop tools over HTTP, plus two backend services (Duo and the local PostgreSQL chem database). This document specifies the **data contracts** so a maintainer can change either side without breaking the other. The canonical, currently-maintained device/desktop clients live in the sibling `NanofabToolkit` repository — see `documentation/NanofabToolkit/PicoHelperTools/` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md) (the producers) and `documentation/NanofabToolkit/ParticleSensor/` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md) (the desktop viewer). Older copies retained in *this* repository are documented at `documentation/UNanofabTools/picofirmware/` and `documentation/UNanofabTools/particlepctools/` for historical reference.
 
 ## 8.1 Integration map
 
@@ -475,7 +470,7 @@ There is no explicit API versioning. To evolve a contract safely:
 - **CSV header changes** affect both the on-disk historical files and the desktop readers; migrate existing files or version the filename.
 - When adding a new device type, prefer a new endpoint + its own CSV/table over overloading an existing one.
 
-Continue to 09-deployment-and-operations.md (reference path: 09-deployment-and-operations.md).
+Continue to 09-deployment-and-operations.md (repo path: documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md).
 
 
 # Read-Aloud Documentation Corpus: presentation/UNanofabTools/flaskserver/08-IoT-API-Endpoints.md

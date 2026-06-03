@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `541`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `bf9c5949896f160c`
+- Sanitized SHA-256 prefix: `0b11bc773b6fa8a7`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
+- Imports: `import network`, `import urequests`, `import time`, `import json`, `from machine import ADC, Pin`, `import ubinascii`, `import machine`, `import gc`
 - Classes: none detected
-- Functions: none detected
+- Functions: `_flash_signal`, `_morse_element`, `_flash_morse_code_for_char`, `flash_morse_for_number`, `flash_morse_for_message`, `connect_wifi`, `check_auto_send`, `add_data_to_csv`, `send_csv_in_batches`, `send_complete_csv`, `send_data`, `sendEndRequest`, `main_loop`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -49,7 +49,7 @@ import gc
 
 # Wi-Fi credentials
 SSID = 'ULink'
-PASSWORD = <redacted-secret-value>
+PASSWORD = '<redacted-secret-value>'
 
 # Server URL
 SERVER_URL = 'https://nfhistory.nanofab.utah.edu/sdsanalog'
@@ -730,7 +730,7 @@ Reconstruction rule: in `UNanofabTools/PicoParylene.py`, line 19 is classified a
 ### Line 20
 
 ```text
-PASSWORD = <redacted-secret-value>
+PASSWORD = '<redacted-secret-value>'
 ```
 
 Reconstruction rule: in `UNanofabTools/PicoParylene.py`, line 20 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

@@ -16,10 +16,10 @@ The maintainer rehearses real maintenance scenarios: website down, stale data, d
 
 SHOW:
 
-- `../../documentation/UNanofabTools/serveraccess/README.md` (reference path: ../../documentation/UNanofabTools/serveraccess/README.md)
-- `../../documentation/UNanofabTools/liveserver/README.md` (reference path: ../../documentation/UNanofabTools/liveserver/README.md)
-- `../../documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md` (reference path: ../../documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md)
-- `../../known-issues/UNanofabTools/README.md` (reference path: ../../known-issues/UNanofabTools/README.md)
+- `documentation/UNanofabTools/serveraccess/README.md` (repo path: documentation/UNanofabTools/serveraccess/README.md)
+- `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md)
+- `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md` (repo path: documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md)
+- `known-issues/UNanofabTools/README.md` (repo path: known-issues/UNanofabTools/README.md)
 
 ## Verbatim Script
 
@@ -175,11 +175,10 @@ We are now doing the orientation pass for Operational Scenarios. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-20-operational-scenarios.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- `known-issues/UNanofabTools/liveserver.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -214,11 +213,10 @@ We are now doing the evidence pass for Operational Scenarios. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-20-operational-scenarios.md`
+- `documentation/UNanofabTools/liveserver/README.md`
+- `known-issues/UNanofabTools/liveserver.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -280,7 +278,7 @@ Internet/LAN ──443/HTTPS──► nginx (TLS termination, static, proxy)
 - gunicorn runs the WSGI callable `run:app`.
 - nginx owns TLS and forwards to gunicorn.
 
-> **Live-state note:** as of the 2026-06-01 `nfhistory` survey, the production box has not yet been migrated to this target shape. The live Flask process is `python run.py` inside the `flaskserver` tmux session, and there is no systemd unit for Flask or HSCDownloader yet. Treat the gunicorn/systemd material below as the recommended migration target, not a description of the current live service. See `../liveserver/README.md` (reference path: ../liveserver/README.md) §6.5.
+> **Live-state note:** as of the 2026-06-01 `nfhistory` survey, the production box has not yet been migrated to this target shape. The live Flask process is `python run.py` inside the `flaskserver` tmux session, and there is no systemd unit for Flask or HSCDownloader yet. Treat the gunicorn/systemd material below as the recommended migration target, not a description of the current live service. See `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §6.5.
 
 **Legacy alternative (still referenced by `setup.sh`/`.env.example`):** gunicorn binding `0.0.0.0:443` directly with `--certfile/--keyfile`, no nginx:
 
@@ -294,9 +292,9 @@ Prefer the nginx model for new deployments (better TLS handling, static serving,
 
 - Linux host with Python 3.10+ and `python3-venv`.
 - nginx.
-- PostgreSQL 12+. On the live `nfhistory` deployment, Postgres runs **locally on the same VM** (see `../liveserver/README.md` (reference path: ../liveserver/README.md) §10); a fresh deployment can do the same or point at a reachable remote Postgres via `CHEM_PGHOST`.
-- A TLS certificate + key. Live deployment uses **Let's Encrypt + certbot** with the `certbot.timer` systemd unit handling auto-renewal (see `../liveserver/README.md` (reference path: ../liveserver/README.md) §4).
-- A UNIX account to own the process and files. On `nfhistory`, this is the shared `phelan` account (the Nanofab team cannot create new UNIX users — IT does — see `../serveraccess/README.md` §5.5). On a greenfield install, you can either reuse a shared account or — if you have root — create a dedicated `untools` service user.
+- PostgreSQL 12+. On the live `nfhistory` deployment, Postgres runs **locally on the same VM** (see `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §10); a fresh deployment can do the same or point at a reachable remote Postgres via `CHEM_PGHOST`.
+- A TLS certificate + key. Live deployment uses **Let's Encrypt + certbot** with the `certbot.timer` systemd unit handling auto-renewal (see `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §4).
+- A UNIX account to own the process and files. On `nfhistory`, this is the shared `phelan` account (the Nanofab team cannot create new UNIX users — IT does — see `documentation/UNanofabTools/serveraccess/README.md` §5.5). On a greenfield install, you can either reuse a shared account or — if you have root — create a dedicated `untools` service user.
 
 ## 9.3 Application install
 
@@ -474,12 +472,12 @@ Growth hot spots: `LogData/particle_sensors/` and `LogData/env_sensors/` grow un
 
 ## 9.9 Backups
 
-**On the production deployment, the base backup is run off the box by University IT** — a VM-level snapshot the Nanofab team does not operate (see `../liveserver/README.md` (reference path: ../liveserver/README.md) §13). Confirm IT's scope and SLA, then write the result there. The table below applies to any **secondary Nanofab-owned tier** (a Nanofab admin running their own backups in addition to IT's), or to a non-production deployment where IT isn't doing it.
+**On the production deployment, the base backup is run off the box by University IT** — a VM-level snapshot the Nanofab team does not operate (see `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §13). Confirm IT's scope and SLA, then write the result there. The table below applies to any **secondary Nanofab-owned tier** (a Nanofab admin running their own backups in addition to IT's), or to a non-production deployment where IT isn't doing it.
 
 | Data | How |
 |------|-----|
 | SQLite DBs | Stop writes or use `sqlite3 <db> ".backup"`; or copy `instance/*.db` during low traffic. They are small. |
-| PostgreSQL (local on the same host — see `../liveserver/README.md` §10) | `pg_dump cheminventory > backup.sql` on a schedule (cron). |
+| PostgreSQL (local on the same host — see `documentation/UNanofabTools/liveserver/README.md` §10) | `pg_dump cheminventory > backup.sql` on a schedule (cron). |
 | CSV tree | `tar`/`rsync` `LogData/`, `HSCDATA/`, `uploads/`. These are authoritative for sensor/machine history. |
 | Config | Securely back up `.env` (contains secrets) separately. |
 
@@ -514,4 +512,4 @@ Consider adding a lightweight `/healthz` route that pings each datastore.
 | `GET /sensor-data` always 404 | POST writes elsewhere than the GET reads | use `/particle-data` + `/env-data` history; see known-issues |
 | Cookies dropped | `SESSION_COOKIE_SECURE=True` over HTTP | ensure TLS end-to-end in prod |
 
-Continue to 10-development-guide.md (reference path: 10-development-guide.md).
+Continue to 10-development-guide.md (repo path: documentation/UNanofabTools/flaskserver/10-development-guide.md).

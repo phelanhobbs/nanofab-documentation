@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `34`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `71e936d2a6252008`
+- Sanitized SHA-256 prefix: `6418f483cc5cea6c`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -39,7 +39,7 @@ from cryptography.hazmat.backends import default_backend
 
 # Load the PFX file
 pfx_path = 'C:\\ProgramData\\certify\\assets\\nfhistory.nanofab.utah.edu\\20241218_0a7b46ef.pfx'
-#pfx_password = <redacted-secret-value>  # Replace with your PFX password
+#pfx_password = '<redacted-secret-value>'  # Replace with your PFX password
 
 with open(pfx_path, 'rb') as pfx_file:
     pfx_data = pfx_file.read()
@@ -143,7 +143,7 @@ Reconstruction rule: in `UNanofabTools/gencert.py`, line 9 is classified as `fil
 ### Line 10
 
 ```text
-#pfx_password = <redacted-secret-value>  # Replace with your PFX password
+#pfx_password = '<redacted-secret-value>'  # Replace with your PFX password
 ```
 
 Reconstruction rule: in `UNanofabTools/gencert.py`, line 10 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

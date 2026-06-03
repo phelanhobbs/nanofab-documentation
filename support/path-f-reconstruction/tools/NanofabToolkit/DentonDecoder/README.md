@@ -30,6 +30,14 @@ Preserve decoder behavior, graphing behavior, GUI actions, package entrypoint, a
 
 - Do not confuse this GUI workflow with UNanofabTools command-line DAT tools.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Denton Input Contract Required
+
+Record the byte/chunk assumptions, output column count, timestamp rollover behavior, and expected cleaned CSV shape for at least one representative `.dat` file.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

@@ -6,10 +6,11 @@ Severity: **High** = security/correctness · **Medium** = robustness/maintainabi
 
 ---
 
-### 1. CORES Bearer token committed to `auth.py` — High (security)
+### 1. CORES Bearer token handled through local `auth.py` — High (security)
 - **Where:** `from auth import HSCCode` in `RetrieveMonthsMetals.py`.
-- **Risk:** a live credential to CORES sits in a Python module on disk (and, depending on practice, possibly in version control). Anyone with repo/checkout access has it.
-- **Fix:** move the token to an environment variable or a per-machine secrets file outside the repo; rotate the token.
+- **Current repo status:** `src/auth.py` is required by the code but is not present in the adjacent source checkout used during documentation review. Treat this as a missing local-secret setup step unless history proves the file was committed earlier.
+- **Risk:** the tool depends on an out-of-band CORES credential. If `auth.py` was ever committed or shared, rotate the token; if it only exists locally, document the setup contract so the app can run without putting the token in source.
+- **Fix:** move the token to an environment variable, keychain entry, or a per-machine secrets file outside the repo; document the required variable/file name; rotate the token if there is any evidence it was committed or exposed.
 
 ### 2. Hard-coded service-ID list — Medium
 - **Where:** the embedded list (`[768, 808, 809, ..., 818]`) inside `download_Metal("all", ...)`.
@@ -53,7 +54,7 @@ Severity: **High** = security/correctness · **Medium** = robustness/maintainabi
 ---
 
 ## Suggested priority order
-1. #1 + #2 move the CORES token out of source; document and centralize service IDs — High / Medium
+1. #1 + #2 document and externalize the CORES credential contract; centralize service IDs — High / Medium
 2. #3 + #4 timeouts, retries, and a worker-thread download path — Medium
 3. #10 + #5 add tests and surface per-endpoint failure detail — Medium
 4. #6, #7, #8, #9 — Low

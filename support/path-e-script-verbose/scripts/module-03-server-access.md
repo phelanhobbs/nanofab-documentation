@@ -16,10 +16,10 @@ The maintainer can explain and perform safe server access: two-hop SSH, shared `
 
 SHOW:
 
-- `../../presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx` (reference path: ../../presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx)
-- `../../presentation/UNanofabTools/serveraccess/README.md` (reference path: ../../presentation/UNanofabTools/serveraccess/README.md)
-- `../../documentation/UNanofabTools/serveraccess/README.md` (reference path: ../../documentation/UNanofabTools/serveraccess/README.md)
-- `../../known-issues/UNanofabTools/serveraccess.md` (reference path: ../../known-issues/UNanofabTools/serveraccess.md)
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx` (repo path: presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx)
+- `presentation/UNanofabTools/serveraccess/README.md` (repo path: presentation/UNanofabTools/serveraccess/README.md)
+- `documentation/UNanofabTools/serveraccess/README.md` (repo path: documentation/UNanofabTools/serveraccess/README.md)
+- `known-issues/UNanofabTools/serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md)
 
 ## Verbatim Script
 
@@ -114,7 +114,7 @@ READ ALOUD:
 
 SHOW:
 
-The recovery commands in `../../documentation/UNanofabTools/serveraccess/README.md` (reference path: ../../documentation/UNanofabTools/serveraccess/README.md).
+The recovery commands in `documentation/UNanofabTools/serveraccess/README.md` (repo path: documentation/UNanofabTools/serveraccess/README.md).
 
 ## Explain-Back
 
@@ -156,11 +156,10 @@ We are now doing the orientation pass for Server Access. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -195,11 +194,10 @@ We are now doing the evidence pass for Server Access. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -234,11 +232,10 @@ We are now doing the source-code pass for Server Access. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -273,11 +270,10 @@ We are now doing the live-state pass for Server Access. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -312,11 +308,10 @@ We are now doing the failure-mode pass for Server Access. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -351,11 +346,10 @@ We are now doing the maintenance-planning pass for Server Access. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -390,11 +384,10 @@ We are now doing the security pass for Server Access. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -429,11 +422,10 @@ We are now doing the recovery pass for Server Access. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -468,11 +460,10 @@ We are now doing the documentation-drift pass for Server Access. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -507,11 +498,10 @@ We are now doing the teach-back pass for Server Access. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -546,11 +536,10 @@ We are now doing the homework-review pass for Server Access. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -585,11 +574,10 @@ We are now doing the quarterly-audit pass for Server Access. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -624,11 +612,10 @@ We are now doing the backup-and-restore pass for Server Access. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -663,11 +650,10 @@ We are now doing the ownership-boundary pass for Server Access. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -702,11 +688,10 @@ We are now doing the no-contact rehearsal pass for Server Access. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -741,11 +726,10 @@ We are now doing the operator-error pass for Server Access. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -780,11 +764,10 @@ We are now doing the data-integrity pass for Server Access. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -819,11 +802,10 @@ We are now doing the final-repetition pass for Server Access. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx`
+- `presentation/UNanofabTools/serveraccess/README.md`
+- `documentation/UNanofabTools/serveraccess/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -875,7 +857,7 @@ You can't reach the server directly from outside the lab. To get to it you have 
 
 Once you're on `nfhistory`, the two long-running programs — the website (`flaskserver`) and the data downloader (`downloader`) — are each kept running inside a **tmux session**. You attach to a session to look at it, then detach without killing it.
 
-This page walks through all of that. There is a strict, separate developer reference at `../../../documentation/UNanofabTools/serveraccess/` (reference path: ../../../documentation/UNanofabTools/serveraccess/README.md); use it once you've read this.
+This page walks through all of that. There is a strict, separate developer reference at `documentation/UNanofabTools/serveraccess/` (repo path: documentation/UNanofabTools/serveraccess/README.md); use it once you've read this.
 
 ## Why two hops?
 
@@ -1050,7 +1032,7 @@ The following source document is included directly in this tier so the presenter
 
 # Server Access — Developer / Admin Reference
 
-Formal reference for logging into the cleanroom server `nfhistory` (155.98.11.8) and operating the two long-running tmux sessions that host the website and the HSCDownloader. The layman companion lives at `../../../presentation/UNanofabTools/serveraccess/README.md` (reference path: ../../../presentation/UNanofabTools/serveraccess/README.md). Known issues and recommended hardening are tracked in `../../../known-issues/UNanofabTools/serveraccess.md` (reference path: ../../../known-issues/UNanofabTools/serveraccess.md).
+Formal reference for logging into the cleanroom server `nfhistory` (155.98.11.8) and operating the two long-running tmux sessions that host the website and the HSCDownloader. The layman companion lives at `presentation/UNanofabTools/serveraccess/README.md` (repo path: presentation/UNanofabTools/serveraccess/README.md). Known issues and recommended hardening are tracked in `known-issues/UNanofabTools/serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md).
 
 This document is the canonical step-by-step for both **end users** (new staff and developers who need to attach to a session and read logs) and the **admin** (the cleanroom team member responsible for onboarding new users, restarting the services, and rotating keys).
 
@@ -1291,7 +1273,7 @@ Because all Nanofab users share the `phelan` account, key removal is the *only* 
 
 The Nanofab team **cannot** rebuild `nfhistory` from scratch — VM creation, OS install, user creation, and base configuration are all IT operations. If the VM is ever lost or reinstalled, the sequence is:
 
-1. **Open a ticket with University IT** to restore `nfhistory` from their backup pipeline (see [`../liveserver/README.md` (reference path: ../liveserver/README.md) §13). Confirm with IT which point-in-time snapshot to restore.
+1. **Open a ticket with University IT** to restore `nfhistory` from their backup pipeline (see [`documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §13). Confirm with IT which point-in-time snapshot to restore.
 2. After IT confirms the VM is back, the Nanofab admin logs in as `phelan` and verifies:
    - the four SQLite DBs in `~/server/UNanofabTools/instance/` are present,
    - `~/server/UNanofabTools/uploads/`, `LogData/`, `HSCDATA/` are present,
@@ -1362,7 +1344,7 @@ cd ~/server/UNanofabTools && source venv/bin/activate && python3 HSCDownloader.p
 - **Both sessions must always be alive.** A missing `flaskserver` means the website is down; a missing `downloader` means new CORES data is not arriving. The §4.3 recovery procedure is the response in either case.
 - **Detach, never exit.** `Ctrl-b d` is the only safe way to leave a session.
 - **CADE homes are NFS-shared.** Whatever you put in `~/.ssh/config` and `~/.ssh/nfhistory` on `lab1-10` is visible on `lab2-23` and vice versa.
-- **Root SSH access is IT's, from `iceolate.eng.utah.edu`.** Do not touch `/root/.ssh/authorized_keys` or change `PermitRootLogin` without coordinating with IT — see `../liveserver/README.md` §9.1.
+- **Root SSH access is IT's, from `iceolate.eng.utah.edu`.** Do not touch `/root/.ssh/authorized_keys` or change `PermitRootLogin` without coordinating with IT — see `documentation/UNanofabTools/liveserver/README.md` §9.1.
 
 ---
 
@@ -1370,7 +1352,7 @@ cd ~/server/UNanofabTools && source venv/bin/activate && python3 HSCDownloader.p
 
 - Layman companion: `presentation/UNanofabTools/serveraccess/README.md`.
 - Known issues / tech debt: `known-issues/UNanofabTools/serveraccess.md`.
-- **Live server inventory** (what is actually running on `nfhistory` right now — TLS certs, services, packages, what's surprising about the install): `../liveserver/` (reference path: ../liveserver/README.md). The survey script lives there too.
+- **Live server inventory** (what is actually running on `nfhistory` right now — TLS certs, services, packages, what's surprising about the install): `documentation/UNanofabTools/liveserver/` (repo path: documentation/UNanofabTools/liveserver/README.md). The survey script lives there too.
 - The two services hosted in the tmux sessions: `documentation/UNanofabTools/flaskserver/` and `documentation/UNanofabTools/hscdownloader/`.
 - Deployment runbook for `flaskserver` (gunicorn, nginx, env vars): `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`.
 

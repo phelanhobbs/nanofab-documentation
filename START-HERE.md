@@ -28,7 +28,7 @@ known-issues/<repo>/<tool>.md          ← punch list for that tool
 | If you are… | Go to | Time |
 |------|-------|------|
 | **A live in-person handoff session(s)** between me (Faith) and the next maintainer | [Path A](#path-a-live-multi-session-handoff) | 4–5 sessions of ~60–90 min each |
-| **Presenting to lab management or non-technical stakeholders** (advisor, lab director, the rest of the team) | [Path B](#path-b-lab-management--non-technical-stakeholders) | 45 min, one session |
+| **Presenting to lab management or non-technical stakeholders** (advisor, lab director, the rest of the team) | [Path B](#path-b-lab-management-non-technical-stakeholders) | 45 min, one session |
 | **A solo successor** walking in after I've left, reading at your own pace | [Path C](#path-c-solo-successor-self-paced) | Multi-week, self-paced |
 | **The long-term maintainer** who needs to own, audit, extend, or rescue the system without contacting me | [Path D](#path-d-long-term-maintainer-deep-dive) | 1-2 focused weeks, repeatable as an audit |
 | **Faith presenting an unlimited, all-encompassing live walkthrough** with slides on a screen | [Path E](#path-e-presentation-guide) | No fixed limit; prefer too long over too short |
@@ -125,7 +125,8 @@ The goal: the maintainer leaves with a clear punch list, knows which items they 
 | 3 | Read together: [`known-issues/UNanofabTools/serveraccess.md`](known-issues/UNanofabTools/serveraccess.md) | The access pattern's tech debt. |
 | 4 | Read together: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md) | The Flask app's tech debt. The biggest items: chem schema drift, chem write routes unauthenticated. |
 | 5 | Spot-check the other known-issues files | `filetransfer.md`, `hscdownloader.md`, `picofirmware.md`, `dattools.md`, `utilities.md`, `particlepctools.md`, `hscdisplayerserver.md`. Five minutes each, just so they know what's in there. |
-| 6 | [`HSC-Displayer-Server-Legacy.pptx`](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) (briefly) | The legacy monolithic server. **Deprecated.** Show it so they recognize it if they ever stumble across it; the directive is "leave it alone, ship to the Flask app." |
+| 6 | Walk [`known-issues/NanofabToolkit/README.md`](known-issues/NanofabToolkit/README.md) | The sibling repo punch list. Do this before ending the handoff because it includes high-severity client/firmware items such as CORES-token handling and WiFi credential exposure. |
+| 7 | [`HSC-Displayer-Server-Legacy.pptx`](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) (briefly) | The legacy monolithic server. **Deprecated.** Show it so they recognize it if they ever stumble across it; the directive is "leave it alone, ship to the Flask app." |
 
 **End-of-handoff deliverables to the new maintainer:**
 - Their own CADE account + nfhistory SSH key issued per `documentation/UNanofabTools/serveraccess/README.md` §5.1
@@ -1302,6 +1303,7 @@ Path F is generated from the current working-tree source state of the sibling re
 - [`support/path-f-reconstruction/GLOSSARY.md`](support/path-f-reconstruction/GLOSSARY.md) — names, acronyms, accounts, hosts, tools, and data paths
 - [`support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md`](support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md) — proof gates for deciding whether a rebuild is complete
 - [`support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md`](support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md) — copyable evidence log for rebuilds, repairs, and blocked work
+- [`support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md`](support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md) — fixture/sample/evidence registry for known inputs, expected outputs, hashes, and acceptable substitutes
 - [`support/path-f-reconstruction/WORDCOUNT.md`](support/path-f-reconstruction/WORDCOUNT.md) — tool-folder and file word-count manifest
 - [`support/path-f-reconstruction/SOURCE-MANIFEST.json`](support/path-f-reconstruction/SOURCE-MANIFEST.json) — source files included, dirty/untracked state, and total count metadata
 - [`support/path-f-reconstruction/tools/INDEX.md`](support/path-f-reconstruction/tools/INDEX.md) — compact index of every reconstruction folder
@@ -1312,14 +1314,14 @@ Current generated size:
 
 | Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 3,659,652 | 159 | 17 |
+| Path F ultra-deep reconstruction manual | 3,663,176 | 159 | 17 |
 
-Start with `MAINTAINER-FIRST-HOUR.md` if you are new or responding under stress. Otherwise start with `NAVIGATOR.md`, use `TROUBLESHOOTING-ROUTES.md` when you have a symptom, and use `GLOSSARY.md` when a name or acronym is unclear. Before declaring work complete, use `RECONSTRUCTION-CHECKLIST.md` and fill out `REBUILD-EVIDENCE-TEMPLATE.md`. After that, read `tools/INDEX.md`, `tools/00-system-map/README.md`, and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. Every generated source-file page has breadcrumbs back to the navigator, checklist, glossary, evidence template, tool index, system map, and owning tool README.
+Start with `MAINTAINER-FIRST-HOUR.md` if you are new or responding under stress. Otherwise start with `NAVIGATOR.md`, use `TROUBLESHOOTING-ROUTES.md` when you have a symptom, and use `GLOSSARY.md` when a name or acronym is unclear. Before declaring work complete, use `RECONSTRUCTION-CHECKLIST.md`, consult `FIXTURE-AND-EVIDENCE-INDEX.md`, and fill out `REBUILD-EVIDENCE-TEMPLATE.md`. After that, read `tools/INDEX.md`, `tools/00-system-map/README.md`, and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. Every generated source-file page has breadcrumbs back to the navigator, checklist, glossary, fixture index, evidence template, tool index, system map, and owning tool README.
 
 Important limits:
 
 - Path F intentionally redacts secret-looking literal values. It explains where secrets belong, but it is not a secret store.
-- Path F records dirty/untracked source files at generation time. If either source repo changes, regenerate Path F and inspect the diff.
+- Path F records dirty/untracked source files at generation time. If either source repo changes, regenerate Path F and inspect the diff. If Path F was generated from dirty sibling repos, exact regeneration requires either the same working-tree diffs or a clean committed replacement.
 - Path F is not a substitute for live-state verification. If the manual disagrees with production, production wins and the manual must be regenerated or corrected.
 
 ---
@@ -1391,17 +1393,21 @@ Use this section to find anything by name.
 - Layman: [`presentation/NanofabToolkit/PicoHelperTools/README.md`](presentation/NanofabToolkit/PicoHelperTools/README.md)
 - Slides: [`PicoHelperTools.pptx`](presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx)
 - Developer reference: [`documentation/NanofabToolkit/PicoHelperTools/README.md`](documentation/NanofabToolkit/PicoHelperTools/README.md)
+- Punch list: [`known-issues/NanofabToolkit/PicoHelperTools.md`](known-issues/NanofabToolkit/PicoHelperTools.md)
 
 ### `ParticleSensor` (canonical) — desktop particle viewer
 - Layman: [`presentation/NanofabToolkit/ParticleSensor/README.md`](presentation/NanofabToolkit/ParticleSensor/README.md)
 - Slides: [`ParticleSensor.pptx`](presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx)
 - Developer reference: [`documentation/NanofabToolkit/ParticleSensor/README.md`](documentation/NanofabToolkit/ParticleSensor/README.md)
+- Punch list: [`known-issues/NanofabToolkit/ParticleSensor.md`](known-issues/NanofabToolkit/ParticleSensor.md)
 
 ### `ParalyneReader` — desktop tool for Parylene analog logs
 - Layman + slides + developer reference: under [`presentation/NanofabToolkit/ParalyneReader/`](presentation/NanofabToolkit/ParalyneReader/) and [`documentation/NanofabToolkit/ParalyneReader/`](documentation/NanofabToolkit/ParalyneReader/)
+- Punch list: [`known-issues/NanofabToolkit/ParalyneReader.md`](known-issues/NanofabToolkit/ParalyneReader.md)
 
 ### `ALDPeakCounter`, `DentonDecoder`, `PreciousMetalReader`
 - Each has its own folder under both `presentation/NanofabToolkit/` and `documentation/NanofabToolkit/`
+- Punch lists: [`known-issues/NanofabToolkit/`](known-issues/NanofabToolkit/)
 
 ## Cross-cutting / master indexes
 

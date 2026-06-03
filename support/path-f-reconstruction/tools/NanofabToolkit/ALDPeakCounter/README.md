@@ -31,6 +31,14 @@ Preserve file parsing, peak detection parameters, end-peak heuristic, plotting, 
 - The peak algorithm overlaps UNanofabTools/peakCount.py.
 - Boundary peaks are easy to miss.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## ALD Input Contract Required
+
+Record whether accepted files are tab-separated text, CSV, or tool-export text; include the header rule, required columns, units, and expected peak count for at least one sample.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

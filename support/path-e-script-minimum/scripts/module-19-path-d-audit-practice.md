@@ -16,8 +16,8 @@ The maintainer practices the evidence-based audit process that they will use aft
 
 SHOW:
 
-- `../../START-HERE.md` (reference path: ../../START-HERE.md#path-d-long-term-maintainer-deep-dive)
-- `../EVALUATE.md` (reference path: ../EVALUATE.md)
+- `START-HERE.md` (repo path: START-HERE.md#path-d-long-term-maintainer-deep-dive)
+- `support/EVALUATE.md` (repo path: support/EVALUATE.md)
 - the support audit script, run from the repository root as `bash support/audit.sh`
 
 ## Verbatim Script
@@ -58,7 +58,7 @@ READ ALOUD:
 
 DO:
 
-Pick one route from `../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (reference path: ../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
+Pick one route from `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
 
 Find it in source:
 
@@ -147,11 +147,10 @@ We are now doing the orientation pass for Path D Audit Practice. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `START-HERE.md#path-d-long-term-maintainer-deep-dive`
+- `support/EVALUATE.md`
+- `support/audit.sh`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -186,11 +185,10 @@ We are now doing the evidence pass for Path D Audit Practice. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `START-HERE.md#path-d-long-term-maintainer-deep-dive`
+- `support/EVALUATE.md`
+- `support/audit.sh`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -245,15 +243,18 @@ The repository root contains the documentation bundle:
 
 | Path | What it is |
 |------|-----------|
-| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable, includes Paths A-E, and contains the full Path D no-human-context audit playbook. **Read this first.** |
+| `START-HERE.md` | The umbrella orchestrator. Lists every deliverable, includes Paths A-F, and contains the full Path D no-human-context audit playbook plus Path E presentation and Path F reconstruction routes. **Read this first.** |
 | `support/PRESENTATION-GUIDE.md` | Path E speaker script for presenting the exhaustive maintainer walkthrough with the slide decks. |
 | `support/path-e-script/` | Expanded Path E read-aloud script pack, with one script per module plus operator protocol. |
 | `support/path-e-script-minimum/`, `support/path-e-script-medium/`, `support/path-e-script-verbose/` | Generated Path E script tiers targeting 50k-100k, 100k-250k, and 250k+ words. |
+| `support/path-f-reconstruction/` | Generated Path F reconstruction manual, split by tool folder, with sanitized source excerpts, navigator, troubleshooting routes, glossary, checklist, and evidence template. |
+| `support/path-f-tools/build_path_f.py` | Generator for the Path F reconstruction manual. |
 | `presentation/UNanofabTools/<tool>/` | Plain-English "layman" READMEs + slide decks (`.pptx`) for each tool in the UNanofabTools repo |
 | `documentation/UNanofabTools/<tool>/` | Formal developer reference for each UNanofabTools tool |
 | `known-issues/UNanofabTools/<tool>.md` | Bugs / tech debt / recommended fixes for each UNanofabTools tool |
 | `presentation/NanofabToolkit/<tool>/` | Same layman + slides structure for the sibling NanofabToolkit repo |
 | `documentation/NanofabToolkit/<tool>/` | Developer reference for NanofabToolkit |
+| `known-issues/NanofabToolkit/<tool>.md` | Bugs / tech debt / recommended fixes for each NanofabToolkit tool |
 | `support/audit.sh` | Mechanical-check script. Run it first; it produces a starter report. |
 
 For source-code comparison, use sibling source repos:
@@ -292,7 +293,7 @@ Every tool in each repo is expected to have **four deliverables**:
 1. A layman README at `presentation/<repo>/<tool>/README.md`
 2. A slide deck at `presentation/<repo>/<tool>/slides/<Name>.pptx`
 3. A developer README (or numbered docs) at `documentation/<repo>/<tool>/`
-4. A known-issues file at `known-issues/<repo>/<tool>.md` *(UNanofabTools only — NanofabToolkit is client-side and may not need known-issues)*
+4. A known-issues file at `known-issues/<repo>/<tool>.md`
 
 Tools you should expect to find for UNanofabTools:
 
@@ -323,6 +324,21 @@ Master indexes you should find:
 - `known-issues/UNanofabTools/README.md`
 - `presentation/NanofabToolkit/README.md`
 - `documentation/NanofabToolkit/README.md`
+- `known-issues/NanofabToolkit/README.md`
+
+Path F indexes you should find:
+
+- `support/path-f-reconstruction/README.md`
+- `support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md`
+- `support/path-f-reconstruction/NAVIGATOR.md`
+- `support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md`
+- `support/path-f-reconstruction/GLOSSARY.md`
+- `support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md`
+- `support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md`
+- `support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md`
+- `support/path-f-reconstruction/WORDCOUNT.md`
+- `support/path-f-reconstruction/SOURCE-MANIFEST.json`
+- `support/path-f-reconstruction/tools/INDEX.md`
 
 ---
 

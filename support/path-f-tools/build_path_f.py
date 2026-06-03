@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -33,6 +34,7 @@ NAVIGATION_FILES = {
     "MAINTAINER-FIRST-HOUR.md",
     "GLOSSARY.md",
     "REBUILD-EVIDENCE-TEMPLATE.md",
+    "FIXTURE-AND-EVIDENCE-INDEX.md",
 }
 
 SOURCE_REPOS = {
@@ -115,7 +117,22 @@ BASE64ISH = re.compile(
     r")(?![A-Za-z0-9+/=])"
 )
 ASSIGNMENT_QUOTED = re.compile(r"(=|:)\s*(['\"])(.*?)(\2)")
+SECRET_ASSIGNMENT_QUOTED = re.compile(r"(\b[A-Za-z_][A-Za-z0-9_]*\b\s*(?:=|:)\s*)(['\"])(.*?)(\2)")
+QUOTED_SECRET_KEY_VALUE = re.compile(r"(['\"])([^'\"]*(?:password|passwd|secret|token|api_key|apikey|private_key|duo_skey|wifi_password)[^'\"]*)\1\s*:\s*(['\"])(.*?)\3", re.I)
 TOKEN_SECRET_CONTEXT = re.compile(r"\b(api|access|refresh|auth|duo)_?token\b|\btoken\s*=", re.I)
+SAFE_STRUCTURAL_SECRET_CONTEXT = (
+    "<input",
+    "request.form",
+    "request.args",
+    "request.get_json",
+    "db.column",
+    "column(",
+    "hide_password",
+    "type=\"password\"",
+    "type='password'",
+    "name=\"password\"",
+    "name='password'",
+)
 
 
 @dataclass(frozen=True)
@@ -137,6 +154,20 @@ def run(cmd: list[str], cwd: Path | None = None) -> str:
     if result.returncode not in (0, 1):
         raise RuntimeError(f"command failed: {' '.join(cmd)}\n{result.stderr}")
     return result.stdout.rstrip("\n")
+
+
+def repo_state(repo: str, root: Path) -> dict[str, object]:
+    status_lines = run(["git", "status", "--porcelain"], root).splitlines()
+    return {
+        "repo": repo,
+        "root": str(root),
+        "branch": run(["git", "branch", "--show-current"], root),
+        "commit": run(["git", "rev-parse", "HEAD"], root),
+        "short_commit": run(["git", "rev-parse", "--short", "HEAD"], root),
+        "dirty_files": sum(1 for line in status_lines if line and not line.startswith("??")),
+        "untracked_files": sum(1 for line in status_lines if line.startswith("??")),
+        "status_sha256": hashlib.sha256("\n".join(status_lines).encode()).hexdigest(),
+    }
 
 
 def words(text: str) -> int:
@@ -174,11 +205,36 @@ def redact_line(line: str) -> str:
         redacted = pattern.sub("<redacted-secret-value>", redacted)
 
     lower = redacted.lower()
+    structural_context = any(marker in lower for marker in SAFE_STRUCTURAL_SECRET_CONTEXT)
     secret_context = any(word in lower for word in SECRET_WORDS) or bool(TOKEN_SECRET_CONTEXT.search(redacted))
+
+    def redact_assignment(match: re.Match[str]) -> str:
+        prefix, quote, value, _ = match.groups()
+        key = prefix.split("=", 1)[0].split(":", 1)[0].strip().lower()
+        if structural_context:
+            return match.group(0)
+        if any(word in key for word in SECRET_WORDS) or TOKEN_SECRET_CONTEXT.search(key):
+            return f'{prefix}{quote}<redacted-secret-value>{quote}'
+        return match.group(0)
+
+    def redact_quoted_key(match: re.Match[str]) -> str:
+        if structural_context:
+            return match.group(0)
+        key_quote, key, value_quote, _value = match.groups()
+        return f'{key_quote}{key}{key_quote}: {value_quote}<redacted-secret-value>{value_quote}'
+
     if secret_context:
-        redacted = ASSIGNMENT_QUOTED.sub(r"\1 <redacted-secret-value>", redacted)
+        redacted = SECRET_ASSIGNMENT_QUOTED.sub(redact_assignment, redacted)
+        redacted = QUOTED_SECRET_KEY_VALUE.sub(redact_quoted_key, redacted)
         redacted = re.sub(r"(Bearer\s+)[A-Za-z0-9+/=._:-]+", r"\1<redacted-bearer-token>", redacted, flags=re.I)
-        redacted = re.sub(r"(PASSWORD\s*=\s*)[^,\s)]+", r"\1<redacted-secret-value>", redacted, flags=re.I)
+        if not structural_context:
+            redacted = re.sub(
+                r"^(\s*(?:export\s+)?[A-Za-z_][A-Za-z0-9_]*(?:PASSWORD|PASSWD|PWD|SECRET|TOKEN|API_KEY|APIKEY|PRIVATE_KEY|DUO_SKEY|WIFI_PASSWORD)[A-Za-z0-9_]*\s*=\s*)"
+                r"(?!(?:os\.getenv\(|['\"]|<redacted))([^#\s,)]+)",
+                r"\1<redacted-secret-value>",
+                redacted,
+                flags=re.I,
+            )
 
     redacted = BASE64ISH.sub("<redacted-long-token>", redacted)
     return redacted.rstrip()
@@ -537,6 +593,81 @@ def playbook_for(key: tuple[str, str, str, str]) -> dict[str, object]:
     return TOOL_PLAYBOOKS.get(f"{repo}/{slug}", DEFAULT_PLAYBOOK)
 
 
+def tool_operational_addendum(key: tuple[str, str, str, str]) -> str:
+    tool_id = f"{key[1]}/{key[2]}"
+    common = (
+        "## Fixture And Validation Gap\n\n"
+        "Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) "
+        "or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. "
+        "If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.\n\n"
+    )
+    notes: dict[str, str] = {
+        "UNanofabTools/flaskserver": (
+            "## Operational Inputs That Must Be Recovered Outside Path F\n\n"
+            "A Flask rebuild needs more than source excerpts: `.env`, approved Duo values, SQLite instance files or migrations, local PostgreSQL chem credentials/schema/data, HSCDATA/LogData contents, and live nginx/TLS/service facts. "
+            "If `init_chem_db.py` or a schema bootstrap file is referenced but not present in this tool folder, use the utilities folder and conventional docs to locate it before claiming a database rebuild is complete.\n\n"
+            "## Conflicting Historical Instructions To Resolve\n\n"
+            "Some historical setup and migration prose may describe direct Gunicorn-on-443 or older chem environment variable names. Treat `run.py`, `config/config.py`, live-server docs, and current source as stronger evidence. "
+            "When deployment, database, or auth instructions conflict, record the conflict in the rebuild evidence and do not silently merge the instructions.\n\n"
+        ),
+        "UNanofabTools/hscdownloader": (
+            "## Machine Matrix Required\n\n"
+            "Before changing downloader behavior, extract a table of active service IDs, inactive IDs, output CSV names, `small_` file names, and columns. "
+            "That table is the acceptance target for CORES and machine-page fixes.\n\n"
+        ),
+        "UNanofabTools/filetransfer": (
+            "## Production Truth Warning\n\n"
+            "Committed scripts preserve `phelanh` and `/Users/phelanh/Desktop/Logs/...` because that is what the source says. That is not proof that current production should keep using a personal account or macOS-style destination. "
+            "Start maintenance by verifying where recent machine-control-PC uploads actually land, then choose either an IT-created service account or a Nanofab-managed purpose-bound `phelan` key.\n\n"
+        ),
+        "UNanofabTools/picofirmware": (
+            "## Bootability Warning\n\n"
+            "This folder contains older or historical Pico copies. Some files may be incomplete or non-bootable as written. Before deploying, identify the specific firmware file, required constants, sensor wiring, MicroPython version, endpoint URL, and serial-console acceptance output.\n\n"
+        ),
+        "UNanofabTools/particlepctools": (
+            "## TLS And Endpoint Policy\n\n"
+            "The historical tools may disable TLS verification or include production and test endpoints. Before running generators or viewers, explicitly choose production-safe, localhost, or test-server mode and record the target URL.\n\n"
+        ),
+        "UNanofabTools/dattools": (
+            "## File-Format Evidence Required\n\n"
+            "A DAT rebuild needs representative raw and cleaned files. Record magic-byte assumptions, empty-file behavior, malformed-record behavior, and graph backend expectations before changing parser code.\n\n"
+        ),
+        "UNanofabTools/hscdisplayerserver": (
+            "## Legacy Reconstruction Limit\n\n"
+            "This is legacy context. Do not revive it as production without first proving which behavior is absent from Flask and writing a migration reason. If redaction removes behavior-critical password or reset logic, treat that section as non-reconstructable from Path F alone and use source/live evidence if available.\n\n"
+        ),
+        "NanofabToolkit/PicoHelperTools": (
+            "## Hardware Provisioning Contract Required\n\n"
+            "A Pico rebuild needs a bill of materials, MicroPython version, upload method, secret provisioning method, MAC/device identity, wiring notes, endpoint URL, and serial-console pass/fail output. Do not accept `change the password in source` as a production provisioning method.\n\n"
+        ),
+        "NanofabToolkit/ParticleSensor": (
+            "## Desktop Runtime And API Contract Required\n\n"
+            "Record the exact Python/Qt/matplotlib dependency set, API base URL, TLS policy, current/historical JSON response shape, timezone expectation, and screenshot or table output used to verify the GUI.\n\n"
+        ),
+        "NanofabToolkit/ALDPeakCounter": (
+            "## ALD Input Contract Required\n\n"
+            "Record whether accepted files are tab-separated text, CSV, or tool-export text; include the header rule, required columns, units, and expected peak count for at least one sample.\n\n"
+        ),
+        "NanofabToolkit/DentonDecoder": (
+            "## Denton Input Contract Required\n\n"
+            "Record the byte/chunk assumptions, output column count, timestamp rollover behavior, and expected cleaned CSV shape for at least one representative `.dat` file.\n\n"
+        ),
+        "NanofabToolkit/ParalyneReader": (
+            "## Network And GUI Contract Required\n\n"
+            "Record API availability, TLS policy, representative file list response, malformed-log behavior, GUI selection workflow, and expected plot state before accepting a rebuild.\n\n"
+        ),
+        "NanofabToolkit/PreciousMetalReader": (
+            "## CORES Credential Contract Required\n\n"
+            "`auth.py`/`HSCCode` must be replaced by a documented external secret source before this tool is considered reconstructable. Record service IDs, request timeout policy, response shape, and expected CSV columns for one month.\n\n"
+        ),
+        "NanofabToolkit/packaging-root": (
+            "## Packaging Working Directory Rule\n\n"
+            "Before running PyInstaller, verify whether each spec assumes execution from the tool directory or repo root. If a spec uses `main.py`, `pathex=['.']`, or relative asset paths, run from that tool directory or adjust the spec deliberately. Record PyInstaller, NumPy, SciPy, Qt, and hook versions used.\n\n"
+        ),
+    }
+    return common + notes.get(tool_id, "")
+
+
 def markdown_escape(text: str) -> str:
     return text.replace("|", "\\|")
 
@@ -760,6 +891,7 @@ def source_breadcrumbs(sf: SourceFile) -> str:
         ("First Hour", OUT / "MAINTAINER-FIRST-HOUR.md"),
         ("Glossary", OUT / "GLOSSARY.md"),
         ("Evidence Template", OUT / "REBUILD-EVIDENCE-TEMPLATE.md"),
+        ("Fixture Index", OUT / "FIXTURE-AND-EVIDENCE-INDEX.md"),
         ("Tool Index", TOOL_DIR / "INDEX.md"),
         ("System Map", TOOL_DIR / "00-system-map" / "README.md"),
         ("Owning Tool README", tool_readme),
@@ -793,7 +925,7 @@ def file_reconstruction_intro(sf: SourceFile, text: str, sanitized: str) -> str:
         "The line-by-line notes explain the operational reason for each line, the behavior that must survive a rewrite, and the edge cases to test.\n\n",
     ]
     if sf.rel.suffix == ".py":
-        summary = py_summary(sanitized)
+        summary = py_summary(text)
         chunks.append("## Python Structure Summary\n\n")
         for key in ["imports", "classes", "functions", "routes"]:
             items = summary[key]
@@ -909,6 +1041,7 @@ def tool_intro(
         f"{bullet_list(playbook['proof'])}\n"
         "## Common Ways To Get Lost\n\n"
         f"{bullet_list(playbook['pitfalls'])}\n"
+        f"{tool_operational_addendum(key)}"
         "## Folder Layout\n\n"
         "- `README.md`: tool-level reconstruction contract and source index.\n"
         "- `source-files/`: one reconstruction page per source file covered by this tool.\n"
@@ -947,9 +1080,11 @@ def global_overview(files: list[SourceFile]) -> str:
         "## Source State Used\n\n",
     ]
     for repo, root in SOURCE_REPOS.items():
-        commit = run(["git", "rev-parse", "--short", "HEAD"], root)
-        branch = run(["git", "branch", "--show-current"], root)
-        chunks.append(f"- `{repo}`: branch `{branch}`, commit `{commit}`, root `{root}`\n")
+        state = repo_state(repo, root)
+        chunks.append(
+            f"- `{repo}`: branch `{state['branch']}`, commit `{state['commit']}`, root `{root}`, "
+            f"dirty files `{state['dirty_files']}`, untracked files `{state['untracked_files']}`\n"
+        )
     chunks.append("\n## Readable Source Files Included\n\n")
     for repo, count in sorted(counts.items()):
         chunks.append(f"- `{repo}`: {count} readable tracked or explicitly untracked source/documentation files\n")
@@ -960,9 +1095,13 @@ def global_overview(files: list[SourceFile]) -> str:
     else:
         chunks.append("- none\n")
     chunks.append(
+        "\nIf this section lists any files, a clean checkout at the recorded commits will not reproduce this manual exactly. "
+        "Either preserve the working-tree diffs as patch artifacts, commit the source changes in the sibling repos, or regenerate Path F from a deliberately clean source state and review the diff.\n"
         "\n## Source Of Truth Rule\n\n"
-        "When this manual disagrees with live production, production wins. When production disagrees with committed source, write the drift down before changing anything. "
-        "When source disagrees with this manual, regenerate Path F and inspect the diff. When a secret-looking value is redacted, supply it through `.env`, secure firmware configuration, University IT, or another approved secret channel.\n\n"
+        "For reconstruction without the original source tree, use this manual's sanitized excerpts and notes as the available evidence. "
+        "For maintenance with sibling source repos present, current source and live production can reveal drift; write that drift down before changing anything. "
+        "When this manual disagrees with live production, production wins. When source disagrees with this manual, regenerate Path F and inspect the diff. "
+        "When a secret-looking value is redacted, supply it through `.env`, secure firmware configuration, University IT, or another approved secret channel.\n\n"
     )
     for idx, theme in enumerate(EDGE_CASE_THEMES, start=1):
         chunks.append(
@@ -1136,7 +1275,7 @@ def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, in
         "3. Do not treat redacted values as recoverable secrets; supply them from approved local configuration.\n"
         "4. Do not treat Path F as live-state truth; production and fresh surveys can override generated documentation.\n"
         "5. Use `TROUBLESHOOTING-ROUTES.md` when you have a symptom but not a tool name.\n"
-        "6. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete and `REBUILD-EVIDENCE-TEMPLATE.md` is filled in.\n\n"
+        "6. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete, fixture/evidence requirements are named in `FIXTURE-AND-EVIDENCE-INDEX.md`, and `REBUILD-EVIDENCE-TEMPLATE.md` is filled in.\n\n"
         "## Fast Route Chooser\n\n"
         "| Need | Open | Done when |\n|---|---|---|\n"
         f"{route_rows}\n\n"
@@ -1146,10 +1285,11 @@ def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, in
         "3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if you have a symptom.\n"
         "4. Read [`GLOSSARY.md`](GLOSSARY.md) for unfamiliar terms before guessing.\n"
         "5. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).\n"
-        "6. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.\n"
-        "7. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.\n"
-        "8. Read one tool `README.md` at a time.\n"
-        "9. Open source-file pages only when implementing or verifying that specific file; use their breadcrumbs to climb back out.\n\n"
+        "6. Read [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md) before trusting any `known input` or `expected output` proof.\n"
+        "7. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.\n"
+        "8. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.\n"
+        "9. Read one tool `README.md` at a time.\n"
+        "10. Open source-file pages only when implementing or verifying that specific file; use their breadcrumbs to climb back out.\n\n"
         "## Tool Map\n\n"
         "| Tool folder | Source files | Words | Open when |\n|---|---:|---:|---|\n"
         + "\n".join(tool_rows)
@@ -1168,6 +1308,7 @@ def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, in
         "sed -n '1,180p' support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md\n"
         "sed -n '1,220p' support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md\n"
         "sed -n '1,160p' support/path-f-reconstruction/GLOSSARY.md\n"
+        "sed -n '1,180p' support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md\n"
         "sed -n '1,120p' support/path-f-reconstruction/tools/INDEX.md\n"
         "```\n\n"
         "A fresh consumer should be able to choose a folder for their task without opening `WORDCOUNT.md` or browsing every generated source page.\n"
@@ -1186,10 +1327,14 @@ def render_reconstruction_checklist(tool_entries: list[dict[str, object]]) -> st
         "4. **Evidence gate**: save command output, screenshots, generated files, database diffs, logs, or written observations that prove the rebuilt behavior matches the documented contract.\n",
         "5. **Handoff gate**: write down any deliberate compatibility break, unresolved live-state difference, redacted value location, or IT ticket.\n\n",
         "## Source-Of-Truth Order\n\n",
-        "1. Live production evidence wins over generated documentation.\n",
-        "2. Current sibling source repo state wins over old prose in the documentation bundle.\n",
-        "3. Generated Path F source excerpts win over memory and guesses.\n",
-        "4. Historical notes explain why something exists, but they do not override current source or live state.\n\n",
+        "1. Live production evidence wins over generated documentation for operational reality.\n",
+        "2. If sibling source repos are present, current source can reveal drift; record that drift before overriding this manual.\n",
+        "3. If the source tree is unavailable, generated Path F source excerpts win over memory and guesses.\n",
+        "4. Historical notes explain why something exists, but they do not override current source or live state.\n",
+        "5. Dirty/untracked source listed in `SOURCE-MANIFEST.json` must be acknowledged before claiming exact regeneration.\n\n",
+        "## Fixture And Evidence Rule\n\n",
+        "Every proof check that mentions a known input, representative file, expected output, screenshot, live response, or hardware observation must be tied to [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md). "
+        "If no fixture exists yet, record an acceptable substitute and mark the proof as partial rather than silently passing it.\n\n",
         "## Secret And Configuration Rule\n\n",
         "Every redacted value must be supplied through approved configuration, a local `.env`, secure firmware provisioning, University IT, or another approved secret channel. "
         "Never reconstruct a live secret by guessing from placeholder length, surrounding prose, old screenshots, generated excerpts, or shell history.\n\n",
@@ -1232,53 +1377,65 @@ def root_tool_link(tool_lookup: dict[str, Path], tool_id: str, label: str | None
 
 def render_troubleshooting_routes(tool_entries: list[dict[str, object]]) -> str:
     lookup = tool_lookup_from_entries(tool_entries)
+    source_lookup: dict[str, Path] = {}
+    for entry in tool_entries:
+        source_paths = entry["source_paths"]
+        assert isinstance(source_paths, dict)
+        source_lookup.update(source_paths)
+
+    def source_link(display: str, label: str | None = None) -> str:
+        path = source_lookup.get(display)
+        if path is None:
+            return f"`{display}`"
+        return f"[`{markdown_escape(label or display)}`]({path.relative_to(OUT).as_posix()})"
+
     rows = [
         (
             "Website down or blank",
             "Nanofab for Flask process; IT for VM/nginx/root-owned service state",
-            f"{root_tool_link(lookup, 'UNanofabTools/flaskserver')} and [`tools/00-system-map`](tools/00-system-map/README.md)",
+            f"{root_tool_link(lookup, 'UNanofabTools/flaskserver')}; start with {source_link('UNanofabTools/run.py', 'run.py')}, {source_link('UNanofabTools/app/__init__.py', 'app/__init__.py')}, {source_link('UNanofabTools/config/config.py', 'config/config.py')}, and [`tools/00-system-map`](tools/00-system-map/README.md)",
             "`tmux ls`, Flask process logs, nginx status if accessible, disk space, Python import/run behavior",
             "Local import/run works or live process is restored; any root/nginx/VM action is written as an IT ticket.",
         ),
         (
             "Login, signup, reset, or Duo broken",
             "Nanofab for Flask/auth code; IT only if network/VM/certificate state blocks auth",
-            root_tool_link(lookup, "UNanofabTools/flaskserver"),
+            f"{root_tool_link(lookup, 'UNanofabTools/flaskserver')}; start with {source_link('UNanofabTools/app/blueprints/auth.py', 'auth blueprint')}, {source_link('UNanofabTools/app/services/auth_service.py', 'auth service')}, and {source_link('UNanofabTools/app/templates/login.html', 'login template')}",
             "Auth blueprint, auth service, `.env` values, Duo config, session DB behavior, browser redirects",
             "Expected login/reset route behavior works in a test path and secrets remain outside source.",
         ),
         (
             "Chemical inventory broken",
             "Nanofab for Flask/chem schema; IT only for VM/PostgreSQL service actions outside `phelan` authority",
-            root_tool_link(lookup, "UNanofabTools/flaskserver"),
+            f"{root_tool_link(lookup, 'UNanofabTools/flaskserver')}; start with {source_link('UNanofabTools/app/blueprints/chem_inventory.py', 'chem blueprint')}, {source_link('UNanofabTools/app/services/chem_service.py', 'chem service')}, {source_link('UNanofabTools/chem_schema.sql', 'chem schema')}, and {source_link('UNanofabTools/chem_schema_migration_v2.sql', 'chem v2 migration')}",
             "Chem routes, chem service, local PostgreSQL schema, barcode templates, transaction tables, upload scans",
             "Add/edit/move/remove/report/scan workflows preserve database state and visible output.",
         ),
         (
             "Machine pages stale or missing data",
             "Nanofab for downloader/code/HSCDATA; CORES owner for upstream payload/token; IT for network/VM failures",
-            f"{root_tool_link(lookup, 'UNanofabTools/hscdownloader')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')}",
+            f"{root_tool_link(lookup, 'UNanofabTools/hscdownloader')} at {source_link('UNanofabTools/HSCDownloader.py', 'HSCDownloader.py')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')} at {source_link('UNanofabTools/app/blueprints/machines.py', 'machines blueprint')} and {source_link('UNanofabTools/app/services/data_service.py', 'data service')}",
             "CORES token, service IDs, downloader output, `small_` CSV columns, Flask machine readers",
             "Fresh test data writes expected CSVs and the machine page renders matching tables/graphs.",
         ),
         (
             "Machine control PC upload failed",
             "Nanofab for script paths/keys; IT for service account or UNIX account creation",
-            root_tool_link(lookup, "UNanofabTools/filetransfer"),
+            f"{root_tool_link(lookup, 'UNanofabTools/filetransfer')}; compare {source_link('UNanofabTools/FileTransferTemplate.ps1', 'template')}, {source_link('UNanofabTools/ALDTransfer.ps1', 'ALD script')}, and {source_link('UNanofabTools/Dent635Transfer.ps1', 'Denton script')}",
             "Windows path, SSH key, destination directory, quoting, network reachability, account ownership",
             "A test file transfers to the expected server path with visible success/failure output.",
         ),
         (
             "Particle sensor not reporting",
             "Nanofab for firmware/API; local facilities/network owner for WiFi/hardware; IT only for VM/network boundaries",
-            f"{root_tool_link(lookup, 'NanofabToolkit/PicoHelperTools')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')}",
+            f"{root_tool_link(lookup, 'NanofabToolkit/PicoHelperTools')} at {source_link('NanofabToolkit/PicoHelperTools/sensor_combined.py', 'sensor_combined.py')} then {root_tool_link(lookup, 'UNanofabTools/flaskserver')} at {source_link('UNanofabTools/app/blueprints/api.py', 'API blueprint')}",
             "Pico power, WiFi credentials, MAC/device identity, endpoint URL, API payload shape, server logs",
             "Hardware posts a payload accepted by Flask and visible to the particle data consumer.",
         ),
         (
             "Particle desktop GUI will not launch or display data",
             "Nanofab for desktop code/API URL/dependencies",
-            root_tool_link(lookup, "NanofabToolkit/ParticleSensor"),
+            f"{root_tool_link(lookup, 'NanofabToolkit/ParticleSensor')}; start with {source_link('NanofabToolkit/ParticleSensor/src/ParticleSensor.py', 'API helper')}, {source_link('NanofabToolkit/ParticleSensor/src/gui.py', 'GUI')}, and {source_link('NanofabToolkit/ParticleSensor/requirements.txt', 'requirements')}",
             "Python environment, PyQt/matplotlib imports, API URL, TLS behavior, current/historical JSON shape",
             "GUI launches and renders current plus historical data from a test or production-safe endpoint.",
         ),
@@ -1338,7 +1495,8 @@ def render_first_hour(tool_entries: list[dict[str, object]]) -> str:
         "1. Read [`README.md`](README.md).\n"
         "2. Read [`NAVIGATOR.md`](NAVIGATOR.md), especially the Do Not Get Lost rules.\n"
         "3. Read [`TROUBLESHOOTING-ROUTES.md`](TROUBLESHOOTING-ROUTES.md) if there is an active failure.\n"
-        "4. Read [`GLOSSARY.md`](GLOSSARY.md) for any unfamiliar names before guessing.\n\n"
+        "4. Read [`GLOSSARY.md`](GLOSSARY.md) for any unfamiliar names before guessing.\n"
+        "5. Read [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md) before trusting any proof check that depends on sample data.\n\n"
         "## Minute 10-25: Identify Ownership\n\n"
         "1. Decide whether the task is Nanofab-owned, IT-owned, CORES-owned, hardware/network-owned, or mixed.\n"
         "2. If it involves root, UNIX accounts, VM backups, firewall, or base patching, stop and write it as an IT-bound item.\n"
@@ -1355,8 +1513,9 @@ def render_first_hour(tool_entries: list[dict[str, object]]) -> str:
         "## Minute 40-55: Read Only The Right Evidence\n\n"
         "1. Read the chosen tool `README.md`.\n"
         "2. Write down the external inputs that cannot be recovered from Path F.\n"
-        "3. Open source-file pages only for the files directly involved.\n"
-        "4. Use the breadcrumbs at the top of each source page if you land there from search.\n\n"
+        "3. Name the fixture, sample file, expected output, or acceptable substitute needed for proof.\n"
+        "4. Open source-file pages only for the files directly involved.\n"
+        "5. Use the breadcrumbs at the top of each source page if you land there from search.\n\n"
         "## Minute 55-60: Decide The Next Action\n\n"
         "Choose exactly one:\n\n"
         "- Continue with a Nanofab code/documentation fix and fill out [`REBUILD-EVIDENCE-TEMPLATE.md`](REBUILD-EVIDENCE-TEMPLATE.md).\n"
@@ -1423,11 +1582,15 @@ def render_evidence_template() -> str:
         "## Scope\n\n"
         "- Path F folder used:\n"
         "- Source-file pages used:\n"
+        "- Source state basis: clean commit / dirty working tree / generated excerpt only / live drift:\n"
+        "- Dirty or untracked source files acknowledged:\n"
         "- Live systems touched:\n"
         "- Systems intentionally not touched:\n\n"
         "## External Inputs Supplied\n\n"
         "- Secrets/config values supplied from approved storage:\n"
+        "- Fixture index entries used:\n"
         "- Hardware or sample files used:\n"
+        "- Sample file hashes or expected-output identifiers:\n"
         "- Live server/database paths used:\n"
         "- IT/CORES/network assumptions verified:\n\n"
         "## Commands And Actions\n\n"
@@ -1464,6 +1627,42 @@ def render_evidence_template() -> str:
         "- Hardware/network follow-up:\n"
         "- No-contact handoff note for the next maintainer:\n"
     )
+
+
+def render_fixture_index(tool_entries: list[dict[str, object]]) -> str:
+    chunks = [
+        "# Path F Fixture And Evidence Index\n\n",
+        "Use this file before accepting any proof check that depends on a `known`, `representative`, or `expected` input. "
+        "Path F includes sanitized source excerpts, not a complete fixture corpus. A maintainer must either point to an approved sample/evidence artifact or explicitly document the substitute used.\n\n",
+        "## Required Fields For Every Fixture\n\n",
+        "| Field | Required content |\n|---|---|\n",
+        "| Fixture ID | Stable name such as `ALD-pressure-sample-001` or `flask-login-flow-2026-06-03`. |\n",
+        "| Owner | Nanofab / University IT / CORES / hardware owner / mixed. |\n",
+        "| Storage location | Repository path, secure storage path, live snapshot path, or reason it cannot be stored here. |\n",
+        "| Hash or identifier | SHA-256 for files, API request/response ID, screenshot filename, database snapshot ID, or hardware serial/MAC. |\n",
+        "| Expected result | Exact count, CSV shape, route status, rendered page, GUI state, log line, or hardware observation. |\n",
+        "| Secret handling | Confirm no secret value is stored in the fixture; if redacted, name the approved source. |\n",
+        "| Last verified | Date, maintainer, and command or workflow used. |\n\n",
+        "## Current Fixture Status\n\n",
+        "No binary/sample fixture files are stored in this documentation repo by default. The table below records the fixture class each tool needs before its proof checks can be considered complete.\n\n",
+        "| Tool | Needed fixtures or evidence | Acceptable substitute when fixture is unavailable |\n|---|---|---|\n",
+    ]
+    for entry in tool_entries:
+        key, _files, folder = tool_entry_parts(entry)
+        tool_id = f"{key[1]}/{key[2]}"
+        playbook = playbook_for(key)
+        needed = "; ".join(playbook["external_inputs"])
+        substitute = "Written evidence in `REBUILD-EVIDENCE-TEMPLATE.md` naming why the fixture is unavailable, what live/sample evidence was used instead, and what risk remains."
+        chunks.append(
+            f"| [`{markdown_escape(tool_id)}`]({folder.relative_to(OUT).as_posix()}/README.md) | "
+            f"{markdown_escape(needed)} | {markdown_escape(substitute)} |\n"
+        )
+    chunks.append(
+        "\n## Closure Rule\n\n"
+        "If a proof check says `known input`, `representative file`, `expected output`, `sample response`, or `hardware observation`, do not close the task until this file or the rebuild evidence template names the exact artifact used. "
+        "If the artifact contains secrets or regulated data, store only a redacted derivative, hash, owner, and retrieval procedure here.\n"
+    )
+    return "".join(chunks)
 
 
 def build() -> dict[str, int]:
@@ -1576,6 +1775,10 @@ def build() -> dict[str, int]:
     write_generated(evidence_path, render_evidence_template())
     generated.append(evidence_path)
 
+    fixture_path = OUT / "FIXTURE-AND-EVIDENCE-INDEX.md"
+    write_generated(fixture_path, render_fixture_index(tool_entries))
+    generated.append(fixture_path)
+
     counts = {str(p.relative_to(OUT)): wc_words(p) for p in generated}
     total = sum(counts.values())
 
@@ -1598,9 +1801,10 @@ def build() -> dict[str, int]:
         "4. [`GLOSSARY.md`](GLOSSARY.md) - resolve names, acronyms, hosts, accounts, and data paths before guessing.\n"
         "5. [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md) - use this to prove a rebuild is complete.\n"
         "6. [`REBUILD-EVIDENCE-TEMPLATE.md`](REBUILD-EVIDENCE-TEMPLATE.md) - copy this into maintenance notes, issues, or PRs.\n"
-        "7. [`tools/INDEX.md`](tools/INDEX.md) - dense index of every tool folder.\n"
-        "8. [`tools/00-system-map/README.md`](tools/00-system-map/README.md) - source-of-truth and universal edge-case rules.\n"
-        "9. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n\n"
+        "7. [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md) - registry for sample inputs, expected outputs, hashes, and acceptable substitutes.\n"
+        "8. [`tools/INDEX.md`](tools/INDEX.md) - dense index of every tool folder.\n"
+        "9. [`tools/00-system-map/README.md`](tools/00-system-map/README.md) - source-of-truth and universal edge-case rules.\n"
+        "10. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n\n"
         "## Generated Group Word Counts\n\n"
         "| Group | Words |\n|---|---:|\n"
         f"{group_rows}\n"
@@ -1613,7 +1817,7 @@ def build() -> dict[str, int]:
         f"- Target minimum: **{TARGET_WORDS:,}**\n"
         f"- Files included from source repos: **{len(files)}**\n"
         f"- Generated reconstruction files counted: **{len(generated)}**\n"
-        "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"
+        "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"
         "## Generated Group Totals\n\n"
         "| Group | Words |\n|---|---:|\n"
         f"{group_rows}\n\n"
@@ -1623,10 +1827,18 @@ def build() -> dict[str, int]:
     )
     write_generated(OUT / "WORDCOUNT.md", manifest)
 
+    source_doc_lookup: dict[str, Path] = {}
+    for entry in tool_entries:
+        source_paths = entry["source_paths"]
+        assert isinstance(source_paths, dict)
+        source_doc_lookup.update(source_paths)
+
     source_manifest = {
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "target_words": TARGET_WORDS,
         "total_words": total,
         "generated_files": len(generated),
+        "source_repos": [repo_state(repo, root) for repo, root in SOURCE_REPOS.items()],
         "tool_folders": [
             {
                 "repo": key[1],
@@ -1643,6 +1855,8 @@ def build() -> dict[str, int]:
                 "tool": f"{tool_key(sf)[1]}/{tool_key(sf)[2]}",
                 "dirty": sf.dirty,
                 "untracked": sf.untracked,
+                "generated_page": source_doc_lookup[sf.display].relative_to(OUT).as_posix(),
+                "sanitized_sha256": hashlib.sha256(sanitize_text(safe_read(sf.abs)).encode()).hexdigest(),
             }
             for sf in files
         ],

@@ -32,6 +32,14 @@ Preserve MicroPython boot behavior, sensor drivers, WiFi setup, payload schemas,
 - Hard-coded secrets must be replaced by approved configuration.
 - Hardware failures can masquerade as firmware failures.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Hardware Provisioning Contract Required
+
+A Pico rebuild needs a bill of materials, MicroPython version, upload method, secret provisioning method, MAC/device identity, wiring notes, endpoint URL, and serial-console pass/fail output. Do not accept `change the password in source` as a production provisioning method.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

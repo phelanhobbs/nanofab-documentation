@@ -31,6 +31,10 @@ Preserve the setup sequence, repo-level assumptions, migration history, and rela
 - Old README claims may predate the Flask refactor.
 - Treat live production as stronger evidence than historical migration notes.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

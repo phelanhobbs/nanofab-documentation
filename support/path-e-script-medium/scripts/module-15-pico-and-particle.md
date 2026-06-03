@@ -4,6 +4,95 @@ This generated module file is part of the split Path E tier. Read it as a self-c
 
 
 
+# Existing Path E v1 Module Script: module-15-pico-particle.md
+
+# Module 15 - Pico Firmware And Particle Sensor Ecosystem
+
+## Goal
+
+The maintainer understands the Pico firmware and ParticleSensor ecosystem, especially the canonical-source rule: NanofabToolkit is canonical for PicoHelperTools and ParticleSensor.
+
+## Required Screen
+
+SHOW:
+
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx` (repo path: presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx)
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx` (repo path: presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx)
+- `presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx` (repo path: presentation/UNanofabTools/picofirmware/slides/Pico-Firmware.pptx)
+- `presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx` (repo path: presentation/UNanofabTools/particlepctools/slides/Particle-PC-Tools.pptx)
+- `documentation/NanofabToolkit/PicoHelperTools/README.md` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md)
+- `documentation/NanofabToolkit/ParticleSensor/README.md` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md)
+
+## Verbatim Script
+
+READ ALOUD:
+
+"This module is about source-code ownership and data contracts. Pico devices produce sensor data. ParticleSensor is a desktop viewer. The important repository rule is that NanofabToolkit is canonical for PicoHelperTools and ParticleSensor. UNanofabTools contains older copies for historical context."
+
+SHOW:
+
+Open `PicoHelperTools.pptx`.
+
+READ ALOUD:
+
+"PicoHelperTools is the canonical firmware area. If you need to update the firmware or understand what payload a Pico sends, start in NanofabToolkit. Do not patch an older copy in UNanofabTools and assume you changed the real firmware."
+
+SHOW:
+
+Open `ParticleSensor.pptx`.
+
+READ ALOUD:
+
+"ParticleSensor is the canonical desktop viewer. It depends on room labels, sensor numbers, server data contracts, and expected response shapes. If room names or sensor numbers drift between firmware, server, and desktop viewer, the system can silently stop matching data."
+
+SHOW:
+
+Open the older-copy decks for `picofirmware` and `particlepctools`.
+
+READ ALOUD:
+
+"These older UNanofabTools copies are included so a maintainer recognizes them. They are historical context unless live evidence shows they are still in use. The correct default is to update canonical NanofabToolkit versions."
+
+## Source Demo
+
+DO:
+
+Run:
+
+```sh
+find ../NanofabToolkit/PicoHelperTools ../NanofabToolkit/ParticleSensor -maxdepth 2 -type f | sort
+rg -n "room_name|sensor_number|sensor-data|env-data|requests|wifi|password|SSID" ../NanofabToolkit ../UNanofabTools
+```
+
+READ ALOUD:
+
+"The first command proves substantive canonical content exists. The second connects firmware, desktop viewer, and server data-contract names. If secret-like strings appear in source, do not project their values. The point is to identify risk and where secrets should move, not to expose them."
+
+## Explain-Back
+
+ASK:
+
+| Question | Expected answer |
+|---|---|
+| Which repo is canonical for PicoHelperTools? | `NanofabToolkit`. |
+| Which repo is canonical for ParticleSensor? | `NanofabToolkit`. |
+| Why do older copies exist in UNanofabTools? | Historical context/reference; they should not be treated as canonical unless live evidence proves otherwise. |
+| What fields identify a sensor? | `room_name` and `sensor_number`. |
+| What can break if room labels drift? | Server matching, map coloring, viewer display, and data lookup can silently fail or mislabel sensors. |
+| Where should firmware changes be made? | `../NanofabToolkit/PicoHelperTools/`. |
+| Where should desktop viewer changes be made? | `../NanofabToolkit/ParticleSensor/`. |
+
+REQUIRE:
+
+The maintainer can state the canonical-copy rule without hesitation.
+
+## Stop Point
+
+STOP POINT:
+
+Stop here if the maintainer wants to patch the older UNanofabTools copies first. Revisit the canonical-source rule.
+
+
 # Expanded Module 15: Pico And Particle
 
 READ ALOUD:
@@ -18,11 +107,11 @@ We are now doing the orientation pass for Pico And Particle. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx`
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx`
+- `documentation/NanofabToolkit/PicoHelperTools/README.md`
+- `documentation/NanofabToolkit/ParticleSensor/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -57,11 +146,11 @@ We are now doing the evidence pass for Pico And Particle. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx`
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx`
+- `documentation/NanofabToolkit/PicoHelperTools/README.md`
+- `documentation/NanofabToolkit/ParticleSensor/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -96,11 +185,11 @@ We are now doing the source-code pass for Pico And Particle. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx`
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx`
+- `documentation/NanofabToolkit/PicoHelperTools/README.md`
+- `documentation/NanofabToolkit/ParticleSensor/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -135,11 +224,11 @@ We are now doing the live-state pass for Pico And Particle. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx`
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx`
+- `documentation/NanofabToolkit/PicoHelperTools/README.md`
+- `documentation/NanofabToolkit/ParticleSensor/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -174,11 +263,11 @@ We are now doing the failure-mode pass for Pico And Particle. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx`
+- `presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx`
+- `documentation/NanofabToolkit/PicoHelperTools/README.md`
+- `documentation/NanofabToolkit/ParticleSensor/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -370,7 +459,7 @@ The server writes particle history to `LogData/particle_sensors/<id>_historical.
 
 ## 7. Relationship to other tools
 
-- **Consumer:** the `ParticleSensor` (reference path: ../ParticleSensor/README.md) desktop viewer reads the same `(room, sensor)` keys these Picos populate.
+- **Consumer:** the `ParticleSensor` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md) desktop viewer reads the same `(room, sensor)` keys these Picos populate.
 - **Server side:** see `documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md` §8.2–§8.4 for the matching endpoints.
 - **Older versions:** `UNanofabTools/Particle_sensor.py` (and similar) are earlier copies retained for historical reference. The NanofabToolkit files are the ones to flash today.
 
@@ -470,7 +559,7 @@ A custom widget that represents one cleanroom room/bay on the map.
 These are the meaningful changes; preserve them when porting any future patches:
 
 - **Env-data sub-boxes inside each `RoomFrame`.** New; the older copy had a single-color room.
-- **Real `pytz` timezone handling.** Newer; the older copy uses a hand-rolled `timedelta(hours=7)`.
+- **Uses `pytz` objects but still carries the fixed +7 h workaround.** Newer than the older copy's hand-rolled conversion, but not a complete timezone fix. Treat the +7 h offset in both `src/ParticleSensor.py` and `src/gui.py` as an active correctness issue until server timestamps become timezone-aware.
 - **Standard matplotlib `NavigationToolbar2QT`** in the historical window. Replaces the custom click-drag zoom in the older copy.
 - **Cleaner separation** between API/processing (`ParticleSensor.py`) and the GUI (`gui.py`). The older copy mixed concerns.
 - **Better exception messages** from `ParticleDataAPI` (includes the underlying transport error).
@@ -491,7 +580,7 @@ These are the meaningful changes; preserve them when porting any future patches:
 
 ## 8. Relationship to other tools
 
-- **Producers:** `PicoHelperTools` (reference path: ../PicoHelperTools/README.md) — the Pico firmware that populates the data this viewer displays.
+- **Producers:** `PicoHelperTools` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md) — the Pico firmware that populates the data this viewer displays.
 - **Server side:** `documentation/UNanofabTools/flaskserver/` — the Flask app that holds the data and serves the endpoints.
 - **Older sibling:** `UNanofabTools/particle_data_viewer.py` — historical reference only.
 
@@ -508,7 +597,7 @@ The following source document is included directly in this tier so the presenter
 
 Working list for the Raspberry Pi Pico firmware copies in this repository. Kept separate from the successor docs. Nothing here has been changed in the code.
 
-> **Heads-up:** the canonical, currently-maintained versions of this firmware live in `NanofabToolkit/PicoHelperTools/`. Their issues list at `known-issues/NanofabToolkit/PicoHelperTools.md` (reference path: ../NanofabToolkit/PicoHelperTools.md) is the **primary** place to track cross-cutting items (cleartext WiFi credentials, DST handling, watchdog default, driver duplication). The items below apply to the older copies retained here for historical reference; fix in the NanofabToolkit copies first.
+> **Heads-up:** the canonical, currently-maintained versions of this firmware live in `NanofabToolkit/PicoHelperTools/`. Their issues list at `known-issues/NanofabToolkit/PicoHelperTools.md` (repo path: known-issues/NanofabToolkit/PicoHelperTools.md) is the **primary** place to track cross-cutting items (cleartext WiFi credentials, DST handling, watchdog default, driver duplication). The items below apply to the older copies retained here for historical reference; fix in the NanofabToolkit copies first.
 
 Severity: **High** = doesn't work / security exposure · **Medium** = robustness/maintainability · **Low** = cleanup.
 
@@ -575,7 +664,7 @@ The following source document is included directly in this tier so the presenter
 
 Working list for `particle_data_viewer.py` (older copy) and `generate_test_particle_data.py`. Separate from the successor docs. Nothing here has been changed in the code.
 
-> **Heads-up:** the canonical, currently-maintained version of the particle viewer lives in `NanofabToolkit/ParticleSensor/`. Its issues list at `known-issues/NanofabToolkit/ParticleSensor.md` (reference path: ../NanofabToolkit/ParticleSensor.md) is the **primary** place to track cross-cutting viewer items (the +7h timezone hack, the hard-coded layout/URL). The items below apply to the older viewer copy retained here and to the test-data generator (which has no NanofabToolkit twin). Fix viewer issues in the NanofabToolkit copy first.
+> **Heads-up:** the canonical, currently-maintained version of the particle viewer lives in `NanofabToolkit/ParticleSensor/`. Its issues list at `known-issues/NanofabToolkit/ParticleSensor.md` (repo path: known-issues/NanofabToolkit/ParticleSensor.md) is the **primary** place to track cross-cutting viewer items (the +7h timezone hack, the hard-coded layout/URL). The items below apply to the older viewer copy retained here and to the test-data generator (which has no NanofabToolkit twin). Fix viewer issues in the NanofabToolkit copy first.
 
 Severity: **High** = correctness/data risk · **Medium** = robustness/maintainability · **Low** = cleanup.
 
@@ -633,7 +722,7 @@ The following source document is included directly in this tier so the presenter
 
 Reference for the two PC-side particle programs: a PyQt desktop viewer and a synthetic-data generator. Bugs/tech debt: `known-issues/UNanofabTools/particlepctools.md`.
 
-> **Heads-up — the viewer has a newer home.** The canonical, currently-maintained version of `particle_data_viewer.py` lives in `NanofabToolkit/ParticleSensor/` (with env-data sub-boxes, the standard matplotlib navigation toolbar, and cleaner API/GUI separation) and is documented at `documentation/NanofabToolkit/ParticleSensor/` (reference path: ../../NanofabToolkit/ParticleSensor/README.md). The viewer in this folder is the older copy, retained for historical reference. The test-data generator (`generate_test_particle_data.py`) has no NanofabToolkit twin and remains documented here. Cross-cutting bugs are tracked primarily at `known-issues/NanofabToolkit/ParticleSensor.md` (reference path: ../../../known-issues/NanofabToolkit/ParticleSensor.md).
+> **Heads-up — the viewer has a newer home.** The canonical, currently-maintained version of `particle_data_viewer.py` lives in `NanofabToolkit/ParticleSensor/` (with env-data sub-boxes, the standard matplotlib navigation toolbar, and cleaner API/GUI separation) and is documented at `documentation/NanofabToolkit/ParticleSensor/` (repo path: documentation/NanofabToolkit/ParticleSensor/README.md). The viewer in this folder is the older copy, retained for historical reference. The test-data generator (`generate_test_particle_data.py`) has no NanofabToolkit twin and remains documented here. Cross-cutting bugs are tracked primarily at `known-issues/NanofabToolkit/ParticleSensor.md` (repo path: known-issues/NanofabToolkit/ParticleSensor.md).
 
 ## 1. Overview
 
@@ -707,7 +796,7 @@ The following source document is included directly in this tier so the presenter
 
 Reference for the MicroPython firmware that runs on the Raspberry Pi Pico W boards feeding the server. Assumes Python familiarity. Bugs/tech debt: `known-issues/UNanofabTools/picofirmware.md`.
 
-> **Heads-up — these files have a newer home.** The canonical, currently-maintained versions of this firmware live in `NanofabToolkit/PicoHelperTools/` and are documented at `documentation/NanofabToolkit/PicoHelperTools/` (reference path: ../../NanofabToolkit/PicoHelperTools/README.md). The files in this folder are older copies retained for historical reference; new work should target the NanofabToolkit copies. Cross-cutting bugs (e.g. cleartext WiFi credentials) are tracked primarily at `known-issues/NanofabToolkit/PicoHelperTools.md` (reference path: ../../../known-issues/NanofabToolkit/PicoHelperTools.md).
+> **Heads-up — these files have a newer home.** The canonical, currently-maintained versions of this firmware live in `NanofabToolkit/PicoHelperTools/` and are documented at `documentation/NanofabToolkit/PicoHelperTools/` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md). The files in this folder are older copies retained for historical reference; new work should target the NanofabToolkit copies. Cross-cutting bugs (e.g. cleartext WiFi credentials) are tracked primarily at `known-issues/NanofabToolkit/PicoHelperTools.md` (repo path: known-issues/NanofabToolkit/PicoHelperTools.md).
 
 ## 1. Overview
 
@@ -1096,7 +1185,7 @@ The following source document is included directly in this tier so the presenter
 
 This guide explains two desktop programs that work with the particle-sensor data: **particle_data_viewer.py** and **generate_test_particle_data.py**. Written for a non-coder; terms are defined as they appear.
 
-> **Note:** the `particle_data_viewer.py` covered below is the *older* copy. The current, currently-maintained version lives in the sibling NanofabToolkit repository — see `presentation/NanofabToolkit/ParticleSensor/README.md` (reference path: ../../NanofabToolkit/ParticleSensor/README.md) for the up-to-date guide. The test-data generator has no NanofabToolkit twin and remains the canonical copy here.
+> **Note:** the `particle_data_viewer.py` covered below is the *older* copy. The current, currently-maintained version lives in the sibling NanofabToolkit repository — see `presentation/NanofabToolkit/ParticleSensor/README.md` (repo path: presentation/NanofabToolkit/ParticleSensor/README.md) for the up-to-date guide. The test-data generator has no NanofabToolkit twin and remains the canonical copy here.
 
 ## The two tools
 
@@ -1155,7 +1244,7 @@ The following source document is included directly in this tier so the presenter
 
 This guide explains the small programs that run on the **Raspberry Pi Pico** boards in the cleanroom. Written for someone without a coding background; terms are defined as they appear.
 
-> **Note:** the files in *this* folder are older copies. The current, currently-maintained versions of the firmware live in the sibling `NanofabToolkit` repository — see `presentation/NanofabToolkit/PicoHelperTools/README.md` (reference path: ../../NanofabToolkit/PicoHelperTools/README.md) for the up-to-date guide. The material below is preserved for historical reference.
+> **Note:** the files in *this* folder are older copies. The current, currently-maintained versions of the firmware live in the sibling `NanofabToolkit` repository — see `presentation/NanofabToolkit/PicoHelperTools/README.md` (repo path: presentation/NanofabToolkit/PicoHelperTools/README.md) for the up-to-date guide. The material below is preserved for historical reference.
 
 ## What is a Pico, and what is "firmware"?
 

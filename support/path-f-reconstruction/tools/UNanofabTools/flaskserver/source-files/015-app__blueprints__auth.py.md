@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `120`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `dfafb9359d9f02c4`
+- Sanitized SHA-256 prefix: `9f346420532d086e`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
+- Imports: `import asyncio`, `from flask import Blueprint, render_template, request, redirect, url_for, flash, session, current_app`, `from flask_login import login_user, logout_user, login_required, current_user`, `from app.models import db, User`, `from app.services import auth_service`
 - Classes: none detected
-- Functions: none detected
+- Functions: `login`, `signup`, `logout`, `reset_password`
 - Routes: `@auth_bp.route('/login', methods=['GET', 'POST'])`, `@auth_bp.route('/signup', methods=['GET', 'POST'])`, `@auth_bp.route('/logout')`, `@auth_bp.route('/resetpassword', methods=['GET', 'POST'])`
 
 ## Sanitized Source Excerpt
@@ -47,7 +47,7 @@ def login():
     """Handle user login"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = <redacted-secret-value>, ''))
+        password = auth_service.sanitize_input(request.form.get('password', ''))
 
         # Verify user credentials
         user = auth_service.verify_user_credentials(username, password)
@@ -83,7 +83,7 @@ def signup():
     """Handle user signup"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = <redacted-secret-value>, ''))
+        password = auth_service.sanitize_input(request.form.get('password', ''))
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 
         # Check if user already exists
@@ -135,7 +135,7 @@ def reset_password():
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
-        new_password = <redacted-secret-value>, ''))
+        new_password = auth_service.sanitize_input(request.form.get('password', ''))
 
         # Verify username and UNID
         if auth_service.verify_user_unid(username, unid):
@@ -288,15 +288,15 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 16 is class
         username = auth_service.sanitize_input(request.form.get('username', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 17 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 17 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 18
 
 ```text
-        password = <redacted-secret-value>, ''))
+        password = auth_service.sanitize_input(request.form.get('password', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 18 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 18 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 19
 
@@ -304,7 +304,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 18 is class
 <blank line>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 19 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 19 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 20
 
@@ -576,15 +576,15 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 52 is class
         username = auth_service.sanitize_input(request.form.get('username', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 53 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 53 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 54
 
 ```text
-        password = <redacted-secret-value>, ''))
+        password = auth_service.sanitize_input(request.form.get('password', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 54 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 54 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 55
 
@@ -592,7 +592,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 54 is class
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 55 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 55 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 56
 
@@ -992,15 +992,15 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 104 is clas
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 105 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 105 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 106
 
 ```text
-        new_password = <redacted-secret-value>, ''))
+        new_password = auth_service.sanitize_input(request.form.get('password', ''))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 106 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 106 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 107
 
@@ -1008,7 +1008,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 106 is clas
 <blank line>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 107 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+Reconstruction rule: in `UNanofabTools/app/blueprints/auth.py`, line 107 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
 
 ### Line 108
 

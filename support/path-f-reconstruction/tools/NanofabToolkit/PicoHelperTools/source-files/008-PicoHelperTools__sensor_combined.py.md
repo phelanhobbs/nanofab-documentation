@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `913`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `c013ad863c26aee9`
+- Sanitized SHA-256 prefix: `8bdc48ee7fb56e4d`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `import time`, `import struct`, `import ujson`, `import urequests`, `import network`, `import gc`, `import os`, `import machine`, `import dht`, `from machine import I2C, Pin, WDT`, `import socket`, `import ntptime`
+- Classes: `SPS30`, `NoopWDT`
+- Functions: `safe_print`, `log_error`, `sleep_with_wdt`, `_crc8_word`, `clock_looks_valid`, `format_local_time`, `sync_time_ntp`, `calculate_next_send_time`, `connect_wifi`, `reset_wifi`, `read_dht22`, `check_api_dns`, `is_timeout_oserror`, `create_watchdog`, `send_to_api`, `blink_led_startup`, `led_error_code`, `main`, `__init__`, `_write_ptr`, `_write_ptr_with_data`, `start_measurement_float`, `stop_measurement`, `read_data_ready`, `read_measured_values_float`, `feed`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -142,7 +142,7 @@ NTP_SERVERS = (
 
 # WiFi credentials
 WIFI_SSID = "ULink"
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 
 # API endpoint — combined sensor data
 API_URL = "https://nfhistory.nanofab.utah.edu/sensor-data"
@@ -292,7 +292,7 @@ def connect_wifi(max_attempts=3):
         _wdt.feed()
 
     status_names = {
-        0: <redacted-secret-value>, 1: <redacted-secret-value>, 2: <redacted-secret-value>,
+        0: "IDLE", 1: "CONNECTING", 2: "WRONG_PASSWORD",
         3: "NO_AP_FOUND", 4: "CONNECT_FAIL", 5: "GOT_IP",
     }
 
@@ -1846,7 +1846,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/sensor_combined.py`, lin
 ### Line 113
 
 ```text
-WIFI_PASSWORD = <redacted-secret-value>
+WIFI_PASSWORD = "<redacted-secret-value>"
 ```
 
 Reconstruction rule: in `NanofabToolkit/PicoHelperTools/sensor_combined.py`, line 113 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
@@ -3046,7 +3046,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/sensor_combined.py`, lin
 ### Line 263
 
 ```text
-        0: <redacted-secret-value>, 1: <redacted-secret-value>, 2: <redacted-secret-value>,
+        0: "IDLE", 1: "CONNECTING", 2: "WRONG_PASSWORD",
 ```
 
 Reconstruction rule: in `NanofabToolkit/PicoHelperTools/sensor_combined.py`, line 263 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.

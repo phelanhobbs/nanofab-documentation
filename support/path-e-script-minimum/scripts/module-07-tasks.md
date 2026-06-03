@@ -16,10 +16,10 @@ The maintainer understands the task tracker as a complete example of a normal us
 
 SHOW:
 
-- `../../presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx` (reference path: ../../presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx)
-- `../../presentation/UNanofabTools/flaskserver/06-Tasks.md` (reference path: ../../presentation/UNanofabTools/flaskserver/06-Tasks.md)
-- `../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (reference path: ../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
-- `../../documentation/UNanofabTools/flaskserver/06-service-layer-reference.md` (reference path: ../../documentation/UNanofabTools/flaskserver/06-service-layer-reference.md)
+- `presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx)
+- `presentation/UNanofabTools/flaskserver/06-Tasks.md` (repo path: presentation/UNanofabTools/flaskserver/06-Tasks.md)
+- `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md)
+- `documentation/UNanofabTools/flaskserver/06-service-layer-reference.md` (repo path: documentation/UNanofabTools/flaskserver/06-service-layer-reference.md)
 
 ## Verbatim Script
 
@@ -61,7 +61,7 @@ READ ALOUD:
 
 SHOW:
 
-Open the task routes in `../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (reference path: ../../documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
+Open the task routes in `documentation/UNanofabTools/flaskserver/05-http-api-reference.md` (repo path: documentation/UNanofabTools/flaskserver/05-http-api-reference.md).
 
 READ ALOUD:
 
@@ -113,11 +113,9 @@ We are now doing the orientation pass for Tasks. The maintainer should connect t
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx`
+- `presentation/UNanofabTools/flaskserver/06-Tasks.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -152,11 +150,9 @@ We are now doing the evidence pass for Tasks. The maintainer should connect this
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx`
+- `presentation/UNanofabTools/flaskserver/06-Tasks.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

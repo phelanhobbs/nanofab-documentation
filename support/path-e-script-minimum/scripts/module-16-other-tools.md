@@ -16,12 +16,12 @@ The maintainer can identify each remaining desktop/data tool, explain its purpos
 
 SHOW:
 
-- `../../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx` (reference path: ../../presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
-- `../../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx` (reference path: ../../presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
-- `../../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx` (reference path: ../../presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
-- `../../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx` (reference path: ../../presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
-- `../../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx` (reference path: ../../presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
-- `../../presentation/UNanofabTools/utilities/slides/Utilities.pptx` (reference path: ../../presentation/UNanofabTools/utilities/slides/Utilities.pptx)
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx` (repo path: presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx)
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx` (repo path: presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx)
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx` (repo path: presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx)
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx` (repo path: presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx)
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx` (repo path: presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx)
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx` (repo path: presentation/UNanofabTools/utilities/slides/Utilities.pptx)
 
 ## Verbatim Script
 
@@ -122,11 +122,15 @@ We are now doing the orientation pass for Other Tools. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -161,11 +165,15 @@ We are now doing the evidence pass for Other Tools. The maintainer should connec
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx`
+- `presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx`
+- `presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx`
+- `presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx`
+- `presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx`
+- `presentation/UNanofabTools/utilities/slides/Utilities.pptx`
+- `documentation/UNanofabTools/utilities/README.md`
+- `known-issues/UNanofabTools/utilities.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

@@ -28,6 +28,14 @@ Preserve only enough behavior to understand migration history unless an explicit
 
 - Do not revive legacy server code as the primary path without a written migration reason.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Legacy Reconstruction Limit
+
+This is legacy context. Do not revive it as production without first proving which behavior is absent from Flask and writing a migration reason. If redaction removes behavior-critical password or reset logic, treat that section as non-reconstructable from Path F alone and use source/live evidence if available.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

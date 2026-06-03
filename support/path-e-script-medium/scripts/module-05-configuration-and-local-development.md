@@ -4,6 +4,113 @@ This generated module file is part of the split Path E tier. Read it as a self-c
 
 
 
+# Existing Path E v1 Module Script: module-05-configuration-local-dev.md
+
+# Module 5 - Configuration And Local Development
+
+## Goal
+
+The maintainer understands configuration as an operational contract: environment variables, paths, database settings, Duo settings, local development behavior, and secret handling.
+
+## Required Screen
+
+SHOW:
+
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx)
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md` (repo path: presentation/UNanofabTools/flaskserver/03-Configuration.md)
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md` (repo path: documentation/UNanofabTools/flaskserver/03-configuration-reference.md)
+- `documentation/UNanofabTools/flaskserver/02-getting-started.md` (repo path: documentation/UNanofabTools/flaskserver/02-getting-started.md)
+- `../UNanofabTools/config/config.py`
+
+## Verbatim Script
+
+READ ALOUD:
+
+"Configuration is not decoration. Configuration determines what database files are used, where uploads go, whether Duo is enabled, how sessions behave, how large uploads can be, and how the app finds operational data. A maintainer who does not understand configuration will misdiagnose failures."
+
+SHOW:
+
+Open `03-Configuration.pptx`.
+
+READ ALOUD:
+
+"The live app uses environment-backed settings. Some settings are safe to document as values, such as non-secret paths or hostnames. Some settings are secret and must never be shown on screen or committed. We document key names and behavior. We do not document secret values."
+
+SHOW:
+
+Open `documentation/UNanofabTools/flaskserver/03-configuration-reference.md` (repo path: documentation/UNanofabTools/flaskserver/03-configuration-reference.md).
+
+READ ALOUD:
+
+"This configuration reference should match the source. It should mention every environment variable used by `config.py`. If source uses an environment variable that the docs omit, a future maintainer may miss a required production setting. If docs list a variable source no longer uses, that is stale documentation."
+
+## Source Demo
+
+DO:
+
+Run:
+
+```sh
+rg -n "os.getenv|CHEM_|DUO|SECRET|SESSION|SQLALCHEMY|UPLOAD|DATA" ../UNanofabTools/config
+```
+
+READ ALOUD:
+
+"This command searches for configuration inputs. We are not reading `.env` secret values. We are reading the code that names the keys. This is safe and it is exactly how to verify docs against source."
+
+SHOW:
+
+Compare `../UNanofabTools/config/config.py` with `documentation/UNanofabTools/flaskserver/03-configuration-reference.md` (repo path: documentation/UNanofabTools/flaskserver/03-configuration-reference.md).
+
+READ ALOUD:
+
+"Pay special attention to `SECRET_KEY`, Duo settings, SQLAlchemy settings, upload/data paths, and chemical database settings. The chemical database is local on `nfhistory`, not an external database server. The relevant host is `127.0.0.1` in the live deployment. That fact affects firewall assumptions, backup assumptions, and restore planning."
+
+## Local Development
+
+READ ALOUD:
+
+"Local development is a different environment from production. Development defaults are useful for getting started, but they are not a security model. A local app can use local files and development settings. Production must use strong secrets, correct database paths, correct Duo settings, and durable operational data paths."
+
+SHOW:
+
+Open `documentation/UNanofabTools/flaskserver/02-getting-started.md` (repo path: documentation/UNanofabTools/flaskserver/02-getting-started.md).
+
+READ ALOUD:
+
+"The getting-started doc should let a maintainer create a local environment without guessing. If a step fails because dependencies changed or a file moved, that is documentation drift. The fix is not to memorize the workaround. The fix is to update the doc."
+
+## Secret Boundary
+
+READ ALOUD:
+
+"When discussing `.env`, we show key names only. For example, it is acceptable to say there is a `SECRET_KEY` setting or a `CHEM_PGHOST` setting. It is not acceptable to show the secret value. For old hard-coded secrets found in source, the documentation should preserve the fact that the secret exists and should be rotated, but the GitHub documentation bundle must not contain the literal secret."
+
+## Explain-Back
+
+ASK:
+
+| Question | Expected answer |
+|---|---|
+| Which configuration values are secrets? | `SECRET_KEY`, Duo secrets/keys, database passwords, bearer tokens, WiFi passwords, private keys, and any credential-like value. |
+| Which configuration values point to databases? | SQLAlchemy/SQLite settings plus chemical PostgreSQL settings such as `CHEM_*` variables. |
+| Which values control session or login behavior? | `SECRET_KEY`, session/cookie settings, login/auth config, and Duo-related settings. |
+| What breaks if chemical database settings are wrong? | Chemical inventory routes cannot connect correctly; reads/writes, barcode operations, reports, and inventory pages can fail or hit the wrong database. |
+| Why is local PostgreSQL an important fact? | Backup, firewall, restore, service health, and troubleshooting assumptions depend on PostgreSQL running locally on `nfhistory`. |
+| What can be safely shown from `.env`? | Key names and non-secret operational metadata, not values. |
+| What must never be shown or committed? | Literal secret values, tokens, passwords, Duo secrets, private keys, session cookies, and database passwords. |
+
+REQUIRE:
+
+The maintainer can identify production-sensitive config without seeing secret values and can explain how to compare env-var docs against `config.py`.
+
+## Stop Point
+
+STOP POINT:
+
+Stop here if source and docs disagree on configuration. Log the mismatch, update docs later, and do not proceed as if configuration is understood.
+
+
 # Expanded Module 05: Configuration And Local Development
 
 READ ALOUD:
@@ -18,11 +125,10 @@ We are now doing the orientation pass for Configuration And Local Development. T
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx`
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md`
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -57,11 +163,10 @@ We are now doing the evidence pass for Configuration And Local Development. The 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx`
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md`
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -96,11 +201,10 @@ We are now doing the source-code pass for Configuration And Local Development. T
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx`
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md`
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -135,11 +239,10 @@ We are now doing the live-state pass for Configuration And Local Development. Th
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx`
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md`
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -174,11 +277,10 @@ We are now doing the failure-mode pass for Configuration And Local Development. 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx`
+- `presentation/UNanofabTools/flaskserver/03-Configuration.md`
+- `documentation/UNanofabTools/flaskserver/03-configuration-reference.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -219,7 +321,7 @@ The following source document is included directly in this tier so the presenter
 
 # 02 — Getting Started (Local Development)
 
-This document gets a new developer from a fresh clone to a running development server. Production deployment is covered separately in 09-deployment-and-operations.md (reference path: 09-deployment-and-operations.md).
+This document gets a new developer from a fresh clone to a running development server. Production deployment is covered separately in 09-deployment-and-operations.md (repo path: documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md).
 
 ## 2.1 Prerequisites
 
@@ -227,7 +329,7 @@ This document gets a new developer from a fresh clone to a running development s
 |-------------|-------|
 | Python 3.10+ | The repo's virtualenvs use 3.14; any modern 3.x works. `python3 --version` to check. |
 | `pip` + `venv` | Standard library; bundled with CPython. |
-| PostgreSQL 12+ | Required **only** for the chemical-inventory module. The rest of the app runs without it. The production deployment on `nfhistory` runs Postgres **locally on the same VM** (see `../liveserver/README.md` (reference path: ../liveserver/README.md) §10). A development install can point at any reachable Postgres via the `CHEM_PGHOST` env var; local is the simplest. |
+| PostgreSQL 12+ | Required **only** for the chemical-inventory module. The rest of the app runs without it. The production deployment on `nfhistory` runs Postgres **locally on the same VM** (see `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §10). A development install can point at any reachable Postgres via the `CHEM_PGHOST` env var; local is the simplest. |
 | Build headers for `psycopg2` (optional) | `requirements.txt` pins `psycopg2-binary`, which ships wheels, so no compiler is normally needed. |
 | Duo account (optional) | Only needed to exercise real 2FA. In development you run with `DEBUG_MODE=True`, which bypasses Duo entirely. |
 
@@ -283,7 +385,7 @@ SECRET_KEY=any-non-empty-dev-value
 DEBUG_MODE=True
 ```
 
-`DEBUG_MODE=True` is what makes local development practical: it bypasses Duo 2FA and enables Flask's reloader and verbose error pages. Every key in `.env` is documented in 03-configuration-reference.md (reference path: 03-configuration-reference.md).
+`DEBUG_MODE=True` is what makes local development practical: it bypasses Duo 2FA and enables Flask's reloader and verbose error pages. Every key in `.env` is documented in 03-configuration-reference.md (repo path: documentation/UNanofabTools/flaskserver/03-configuration-reference.md).
 
 > The committed `.env.example` sets `HOST=155.98.11.6` and `PORT=443` (a legacy production-direct configuration). For local development, either remove those lines (so the `127.0.0.1:5000` defaults apply) or set `HOST=127.0.0.1` and `PORT=5000` explicitly.
 
@@ -372,7 +474,7 @@ sqlite3 instance/signininfo.db \
 
 ## 2.5 Running tests
 
-There is no automated test suite in the repository at present. Verification is manual. When adding tests, see 10-development-guide.md (reference path: 10-development-guide.md) §10.7 for the recommended approach (pytest + the application factory with a test config).
+There is no automated test suite in the repository at present. Verification is manual. When adding tests, see 10-development-guide.md (repo path: documentation/UNanofabTools/flaskserver/10-development-guide.md) §10.7 for the recommended approach (pytest + the application factory with a test config).
 
 ## 2.6 Common first-run issues
 
@@ -384,7 +486,7 @@ There is no automated test suite in the repository at present. Verification is m
 | Cookies not persisting over HTTP | `SESSION_COOKIE_SECURE=True` while testing on `http://` | Use `DevelopmentConfig` (sets it `False`) or set the env var |
 | Static JS/CSS 404 | Files not under `app/static/js` or `app/static/css` | Confirm the static layout (`02.3 Step 4`) |
 
-Continue to 03-configuration-reference.md (reference path: 03-configuration-reference.md).
+Continue to 03-configuration-reference.md (repo path: documentation/UNanofabTools/flaskserver/03-configuration-reference.md).
 
 
 # Read-Aloud Documentation Corpus: documentation/UNanofabTools/flaskserver/03-configuration-reference.md
@@ -617,7 +719,7 @@ FLASK_ENV → config class (Development/Production) class-attribute overrides
 
 Note the subtlety: class-attribute overrides in `DevelopmentConfig`/`ProductionConfig` (e.g. `DEBUG_MODE = True`) take effect because `from_object` reads the class attributes *after* the base class computed them from env vars. So in development, `DEBUG_MODE` is `True` regardless of the `.env` value, because `DevelopmentConfig` hardcodes it. If you need env-var control of debug in a given environment, account for this.
 
-Continue to 04-database-schema.md (reference path: 04-database-schema.md).
+Continue to 04-database-schema.md (repo path: documentation/UNanofabTools/flaskserver/04-database-schema.md).
 
 
 # Read-Aloud Documentation Corpus: documentation/UNanofabTools/flaskserver/10-development-guide.md
@@ -804,7 +906,7 @@ def test_login_page(client):
 | Startup/extension wiring | `app/__init__.py` |
 | Templates/UI | `app/templates/**`, `app/static/**` |
 
-This concludes the developer documentation set. See the index in README.md (reference path: README.md). Known bugs and technical debt are tracked in a separate file outside this folder (`SERVER-KNOWN-ISSUES.md`).
+This concludes the developer documentation set. See the index in README.md (repo path: documentation/UNanofabTools/flaskserver/README.md). Known bugs and technical debt are tracked in `known-issues/UNanofabTools/flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md).
 
 
 # Read-Aloud Documentation Corpus: presentation/UNanofabTools/flaskserver/03-Configuration.md

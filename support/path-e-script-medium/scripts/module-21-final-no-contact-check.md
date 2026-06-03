@@ -16,9 +16,9 @@ Confirm that the maintainer can continue without Faith. This is the final exit e
 
 SHOW:
 
-- `../../START-HERE.md` (reference path: ../../START-HERE.md)
-- `../PRESENTATION-GUIDE.md` (reference path: ../PRESENTATION-GUIDE.md)
-- `README.md` (reference path: README.md)
+- `START-HERE.md` (repo path: START-HERE.md)
+- `support/PRESENTATION-GUIDE.md` (repo path: support/PRESENTATION-GUIDE.md)
+- `README.md` (repo path: support/path-e-script/README.md)
 - current handoff notes
 - current known-issues tree
 - current maintenance plan
@@ -192,11 +192,10 @@ We are now doing the orientation pass for Final No-Contact Check. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-21-final-no-contact-check.md`
+- `START-HERE.md`
+- `support/path-e-script/OPERATOR-CHECKLIST.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -231,11 +230,10 @@ We are now doing the evidence pass for Final No-Contact Check. The maintainer sh
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-21-final-no-contact-check.md`
+- `START-HERE.md`
+- `support/path-e-script/OPERATOR-CHECKLIST.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -270,11 +268,10 @@ We are now doing the source-code pass for Final No-Contact Check. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-21-final-no-contact-check.md`
+- `START-HERE.md`
+- `support/path-e-script/OPERATOR-CHECKLIST.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -309,11 +306,10 @@ We are now doing the live-state pass for Final No-Contact Check. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-21-final-no-contact-check.md`
+- `START-HERE.md`
+- `support/path-e-script/OPERATOR-CHECKLIST.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -348,11 +344,10 @@ We are now doing the failure-mode pass for Final No-Contact Check. The maintaine
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `support/path-e-script/module-21-final-no-contact-check.md`
+- `START-HERE.md`
+- `support/path-e-script/OPERATOR-CHECKLIST.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

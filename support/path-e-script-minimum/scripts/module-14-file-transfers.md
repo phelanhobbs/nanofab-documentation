@@ -16,10 +16,10 @@ The maintainer understands how machine-control-PC scripts upload logs, why perso
 
 SHOW:
 
-- `../../presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx` (reference path: ../../presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx)
-- `../../presentation/UNanofabTools/filetransfer/README.md` (reference path: ../../presentation/UNanofabTools/filetransfer/README.md)
-- `../../documentation/UNanofabTools/filetransfer/README.md` (reference path: ../../documentation/UNanofabTools/filetransfer/README.md)
-- `../../known-issues/UNanofabTools/filetransfer.md` (reference path: ../../known-issues/UNanofabTools/filetransfer.md)
+- `presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx` (repo path: presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx)
+- `presentation/UNanofabTools/filetransfer/README.md` (repo path: presentation/UNanofabTools/filetransfer/README.md)
+- `documentation/UNanofabTools/filetransfer/README.md` (repo path: documentation/UNanofabTools/filetransfer/README.md)
+- `known-issues/UNanofabTools/filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md)
 
 ## Verbatim Script
 
@@ -44,7 +44,7 @@ DO:
 Run:
 
 ```sh
-rg -n "scp|ssh|phelan|CADE|LogData|mutex|powershell|bat" ../UNanofabTools ../../documentation/UNanofabTools/filetransfer ../../known-issues/UNanofabTools/filetransfer.md
+rg -n "scp|ssh|phelan|CADE|LogData|mutex|powershell|bat" ../UNanofabTools documentation/UNanofabTools/filetransfer known-issues/UNanofabTools/filetransfer.md
 ```
 
 READ ALOUD:
@@ -53,7 +53,7 @@ READ ALOUD:
 
 SHOW:
 
-Open `../../known-issues/UNanofabTools/filetransfer.md` (reference path: ../../known-issues/UNanofabTools/filetransfer.md).
+Open `known-issues/UNanofabTools/filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md).
 
 READ ALOUD:
 
@@ -98,11 +98,10 @@ We are now doing the orientation pass for File Transfers. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx`
+- `presentation/UNanofabTools/filetransfer/README.md`
+- `documentation/UNanofabTools/filetransfer/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -137,11 +136,10 @@ We are now doing the evidence pass for File Transfers. The maintainer should con
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx`
+- `presentation/UNanofabTools/filetransfer/README.md`
+- `documentation/UNanofabTools/filetransfer/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -194,7 +192,9 @@ Reference for the per-machine log-shipping scripts. They run on each tool's Wind
 | `CTRFurnaceTransfer.ps1` | PowerShell | self-loop | Furnace instance |
 | `CTRFurnaceTransfer.bat` | Batch (cmd) | Windows Task Scheduler (run-once) | Windows XP-compatible furnace version |
 
-Destination: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. The legacy server's `/download` route (and the Flask `machines` blueprint) read from a `LogData/`/`Desktop/Logs/` tree fed by these uploads.
+Destination as committed in the scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model.
+
+**Production-truth warning:** do not assume these scripts are feeding the current Flask deployment until live evidence proves it. Start file-transfer maintenance by checking a recent control-PC run, the server-side destination directory, and the Flask machine-page read path. If current uploads still land under `phelanh` or `/Users/...`, treat that as the high-priority issue tracked in `known-issues/UNanofabTools/filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) #1.
 
 ## 2. Common structure (PowerShell template)
 

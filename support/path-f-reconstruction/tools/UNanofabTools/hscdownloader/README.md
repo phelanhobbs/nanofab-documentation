@@ -32,6 +32,14 @@ Preserve the bearer-authenticated CORES calls, machine-to-service-ID mapping, pe
 - A rotated token looks like stale machine data.
 - Changing CSV columns can silently break graph rendering.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Machine Matrix Required
+
+Before changing downloader behavior, extract a table of active service IDs, inactive IDs, output CSV names, `small_` file names, and columns. That table is the acceptance target for CORES and machine-page fixes.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

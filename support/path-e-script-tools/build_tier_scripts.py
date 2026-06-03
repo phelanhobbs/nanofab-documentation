@@ -55,9 +55,6 @@ TIERS = {
 }
 
 CORE_DOCS = [
-    "START-HERE.md",
-    "README.md",
-    "support/PRESENTATION-GUIDE.md",
     "support/EVALUATE.md",
     "support/REDACTION-NOTE.md",
     "presentation/UNanofabTools/flaskserver/README.md",
@@ -91,6 +88,12 @@ CORE_DOCS = [
     "known-issues/NanofabToolkit/README.md",
 ]
 
+ORCHESTRATOR_DOCS = {
+    ROOT / "START-HERE.md",
+    ROOT / "README.md",
+    ROOT / "support" / "PRESENTATION-GUIDE.md",
+}
+
 MODULES = [
     ("00", "Set The Contract", "workspace, source-of-truth order, safety, and documentation layout"),
     ("01", "Big Picture Of The Server", "the system map, data producers, and ownership boundaries"),
@@ -115,6 +118,56 @@ MODULES = [
     ("20", "Operational Scenarios", "outage, stale data, chem DB, access, secrets, and docs/live drift"),
     ("21", "Final No-Contact Check", "exit exam, leave-behind artifacts, and independence criteria"),
 ]
+
+V1_MODULE_FILENAMES = {
+    "00": "module-00-set-the-contract.md",
+    "01": "module-01-big-picture.md",
+    "02": "module-02-live-server.md",
+    "03": "module-03-server-access.md",
+    "04": "module-04-flask-startup.md",
+    "05": "module-05-configuration-local-dev.md",
+    "06": "module-06-auth-admin.md",
+    "07": "module-07-tasks.md",
+    "08": "module-08-machines-logs.md",
+    "09": "module-09-device-apis.md",
+    "10": "module-10-chemical-inventory.md",
+    "11": "module-11-request-lifecycle-endpoints.md",
+    "12": "module-12-security-model.md",
+    "13": "module-13-hscdownloader.md",
+    "14": "module-14-file-transfers.md",
+    "15": "module-15-pico-particle.md",
+    "16": "module-16-other-tools.md",
+    "17": "module-17-legacy-server.md",
+    "18": "module-18-known-issues-triage.md",
+    "19": "module-19-path-d-audit-practice.md",
+    "20": "module-20-operational-scenarios.md",
+    "21": "module-21-final-no-contact-check.md",
+}
+
+MODULE_SCREEN_PATHS = {
+    "00": ["START-HERE.md", "support/PRESENTATION-GUIDE.md", "support/path-e-script/00-operator-protocol.md"],
+    "01": ["presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx", "presentation/UNanofabTools/flaskserver/01-Server-Overview.md"],
+    "02": ["presentation/UNanofabTools/liveserver/slides/Live-Server.pptx", "presentation/UNanofabTools/liveserver/README.md", "documentation/UNanofabTools/liveserver/README.md"],
+    "03": ["presentation/UNanofabTools/serveraccess/slides/Server-Access.pptx", "presentation/UNanofabTools/serveraccess/README.md", "documentation/UNanofabTools/serveraccess/README.md"],
+    "04": ["presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx", "presentation/UNanofabTools/flaskserver/02-How-It-Starts.md", "documentation/UNanofabTools/flaskserver/01-architecture.md"],
+    "05": ["presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx", "presentation/UNanofabTools/flaskserver/03-Configuration.md", "documentation/UNanofabTools/flaskserver/03-configuration-reference.md"],
+    "06": ["presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx", "presentation/UNanofabTools/flaskserver/slides/05-Admin-Panel.pptx", "documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md"],
+    "07": ["presentation/UNanofabTools/flaskserver/slides/06-Tasks.pptx", "presentation/UNanofabTools/flaskserver/06-Tasks.md"],
+    "08": ["presentation/UNanofabTools/flaskserver/slides/07-Machines-and-Logs.pptx", "presentation/UNanofabTools/flaskserver/07-Machines-and-Logs.md", "documentation/UNanofabTools/liveserver/README.md"],
+    "09": ["presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx", "presentation/UNanofabTools/flaskserver/slides/11-Particle-Demo.pptx", "presentation/UNanofabTools/flaskserver/slides/12-Consumers-NanofabToolkit.pptx"],
+    "10": ["presentation/UNanofabTools/flaskserver/slides/09-Chemical-Inventory.pptx", "presentation/UNanofabTools/flaskserver/slides/10-Database-Models.pptx", "documentation/UNanofabTools/flaskserver/04-database-schema.md"],
+    "11": ["presentation/UNanofabTools/flaskserver/slides/13-Request-Lifecycle-Walkthrough.pptx", "presentation/UNanofabTools/flaskserver/slides/15-Endpoint-Reference.pptx", "documentation/UNanofabTools/flaskserver/05-http-api-reference.md"],
+    "12": ["presentation/UNanofabTools/flaskserver/slides/14-Security-Model.pptx", "presentation/UNanofabTools/flaskserver/14-Security-Model.md", "support/REDACTION-NOTE.md"],
+    "13": ["presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx", "presentation/UNanofabTools/hscdownloader/README.md", "documentation/UNanofabTools/hscdownloader/README.md"],
+    "14": ["presentation/UNanofabTools/filetransfer/slides/File-Transfer-Scripts.pptx", "presentation/UNanofabTools/filetransfer/README.md", "documentation/UNanofabTools/filetransfer/README.md"],
+    "15": ["presentation/NanofabToolkit/PicoHelperTools/slides/PicoHelperTools.pptx", "presentation/NanofabToolkit/ParticleSensor/slides/ParticleSensor.pptx", "documentation/NanofabToolkit/PicoHelperTools/README.md", "documentation/NanofabToolkit/ParticleSensor/README.md"],
+    "16": ["presentation/NanofabToolkit/ParalyneReader/slides/ParalyneReader.pptx", "presentation/UNanofabTools/dattools/slides/DAT-Tools.pptx", "presentation/NanofabToolkit/DentonDecoder/slides/DentonDecoder.pptx", "presentation/NanofabToolkit/ALDPeakCounter/slides/ALDPeakCounter.pptx", "presentation/NanofabToolkit/PreciousMetalReader/slides/PreciousMetalReader.pptx", "presentation/UNanofabTools/utilities/slides/Utilities.pptx", "documentation/UNanofabTools/utilities/README.md", "known-issues/UNanofabTools/utilities.md"],
+    "17": ["presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx", "presentation/UNanofabTools/hscdisplayerserver/README.md", "documentation/UNanofabTools/hscdisplayerserver/README.md"],
+    "18": ["known-issues/UNanofabTools/README.md", "known-issues/NanofabToolkit/README.md"],
+    "19": ["START-HERE.md#path-d-long-term-maintainer-deep-dive", "support/EVALUATE.md", "support/audit.sh"],
+    "20": ["support/path-e-script/module-20-operational-scenarios.md", "documentation/UNanofabTools/liveserver/README.md", "known-issues/UNanofabTools/liveserver.md"],
+    "21": ["support/path-e-script/module-21-final-no-contact-check.md", "START-HERE.md", "support/path-e-script/OPERATOR-CHECKLIST.md"],
+}
 
 PASS_NAMES = [
     "Orientation pass",
@@ -146,9 +199,54 @@ def read(path: Path) -> str:
     return path.read_text(errors="ignore")
 
 
-def sanitize(text: str) -> str:
+def repo_relative(path: Path) -> str | None:
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return None
+
+
+def resolve_reference(ref: str, source_path: Path | None) -> str:
+    if re.match(r"^(https?|mailto|computer|tel|ftp)://", ref):
+        return ref
+    if ref.startswith("#"):
+        if source_path is None:
+            return ref
+        rel = repo_relative(source_path)
+        return f"{rel}{ref}" if rel else ref
+    target, sep, anchor = ref.partition("#")
+    if not target:
+        return ref
+    if source_path is None:
+        candidate = ROOT / target
+    else:
+        candidate = (source_path.parent / target).resolve()
+    rel = repo_relative(candidate)
+    if rel is None or not candidate.exists():
+        return ref
+    return f"{rel}{sep}{anchor}" if sep else rel
+
+
+def normalize_inline_relative_paths(text: str, source_path: Path | None) -> str:
+    if source_path is None:
+        return text
+
+    def repl(match: re.Match[str]) -> str:
+        ref = match.group(0)
+        resolved = resolve_reference(ref, source_path)
+        return resolved
+
+    return re.sub(r"(?<![\w/])(?:\.\./)+(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+(?:#[A-Za-z0-9_.-]+)?", repl, text)
+
+
+def sanitize(text: str, source_path: Path | None = None) -> str:
     text = text.replace("\r\n", "\n")
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 (reference path: \2)", text)
+    text = re.sub(
+        r"\[([^\]]+)\]\(([^)]+)\)",
+        lambda m: f"{m.group(1)} (repo path: {resolve_reference(m.group(2), source_path)})",
+        text,
+    )
+    text = normalize_inline_relative_paths(text, source_path)
     return "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
 
 
@@ -194,7 +292,7 @@ def selected_docs(limit: int | None) -> list[Path]:
     seen = set()
     for rel in CORE_DOCS:
         p = ROOT / rel
-        if p.exists() and p not in seen:
+        if p.exists() and p not in seen and p not in ORCHESTRATOR_DOCS:
             paths.append(p)
             seen.add(p)
     if limit is None:
@@ -206,11 +304,11 @@ def selected_docs(limit: int | None) -> list[Path]:
 
 
 def v1_module_text(module_num: str, title: str) -> str:
-    specific = SCRIPT_SRC / module_filename(module_num, title)
+    specific = SCRIPT_SRC / V1_MODULE_FILENAMES.get(module_num, module_filename(module_num, title))
     if specific.exists():
         return (
             f"\n\n# Existing Path E v1 Module Script: {specific.name}\n\n"
-            + sanitize(read(specific))
+            + sanitize(read(specific), specific)
         )
     return ""
 
@@ -227,7 +325,7 @@ def docs_text(paths: list[Path]) -> str:
             "Read it slowly, then pause and ask the maintainer to identify the "
             "operational facts, risks, and owner boundaries it establishes.\n\n"
         )
-        chunks.append(sanitize(read(p)))
+        chunks.append(sanitize(read(p), p))
     return "".join(chunks)
 
 
@@ -246,8 +344,18 @@ def slide_notes_text() -> str:
         rel = p.relative_to(ROOT)
         chunks.append(f"\n\n# Slide Note Corpus: {rel}\n\n")
         chunks.append("READ ALOUD OR USE AS SPEAKER NOTES:\n\n")
-        chunks.append(sanitize(extracted))
+        chunks.append(sanitize(extracted, p))
     return "".join(chunks)
+
+
+def module_screen_text(module_num: str) -> str:
+    paths = MODULE_SCREEN_PATHS.get(module_num, [])
+    if not paths:
+        return "- Use the practical module's Required Screen list and record the exact file or deck shown.\n"
+    lines = []
+    for path in paths:
+        lines.append(f"- `{path}`")
+    return "\n".join(lines) + "\n"
 
 
 def deep_pass_text_for_module(module_num: str, title: str, focus: str, pass_count: int) -> str:
@@ -272,11 +380,8 @@ def deep_pass_text_for_module(module_num: str, title: str, focus: str, pass_coun
         )
         chunks.append(
             "SHOW:\n\n"
-            "- The corresponding slide deck from the Path E deck order.\n"
-            "- The matching layman README.\n"
-            "- The matching developer reference.\n"
-            "- The matching known-issues file if the module has one.\n"
-            "- The source repo path if this pass requires code evidence.\n\n"
+            f"{module_screen_text(module_num)}"
+            "- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.\n\n"
         )
         chunks.append(
             "DO:\n\n"
@@ -435,9 +540,9 @@ def build_tier(dirname: str, cfg: dict) -> dict:
         f"Target word count: {cfg['target_min']}"
         + (f" to {cfg['target_max']} words.\n\n" if cfg["target_max"] else " words minimum.\n\n")
         + "\n\n# Existing Operator Protocol\n\n"
-        + sanitize(read(SCRIPT_SRC / "00-operator-protocol.md"))
+        + sanitize(read(SCRIPT_SRC / "00-operator-protocol.md"), SCRIPT_SRC / "00-operator-protocol.md")
         + "\n\n# Existing Weekly Rollout Plan\n\n"
-        + sanitize(read(SCRIPT_SRC / "weekly-rollout-plan.md"))
+        + sanitize(read(SCRIPT_SRC / "weekly-rollout-plan.md"), SCRIPT_SRC / "weekly-rollout-plan.md")
         + session_plan_text(cfg["session_count"])
     )
     intro_file = scripts / "00-operator-and-session-plan.md"
@@ -466,7 +571,7 @@ def build_tier(dirname: str, cfg: dict) -> dict:
                 rel = p.relative_to(ROOT)
                 chunks.append(f"\n\n## Slide Notes From {rel}\n\n")
                 chunks.append("READ ALOUD OR USE AS SPEAKER NOTES:\n\n")
-                chunks.append(sanitize(extracted))
+                chunks.append(sanitize(extracted, p))
 
         module_file = scripts / module_filename(module_num, title)
         module_file.write_text("".join(chunks))
@@ -491,6 +596,15 @@ def build_tier(dirname: str, cfg: dict) -> dict:
         "Before presenting this tier, read "
         "[`../path-e-script/OPERATOR-CHECKLIST.md`](../path-e-script/OPERATOR-CHECKLIST.md) "
         "and [`../path-e-script/TIMING.md`](../path-e-script/TIMING.md).\n\n"
+        "## Maintenance Policy\n\n"
+        "Do not edit generated tier files directly. Update the practical source scripts, "
+        "documentation, known-issues files, or `support/path-e-script-tools/build_tier_scripts.py`, "
+        "then regenerate with:\n\n"
+        "```sh\n"
+        "python3 support/path-e-script-tools/build_tier_scripts.py\n"
+        "bash support/audit.sh\n"
+        "```\n\n"
+        "After regeneration, verify this tier's `WORDCOUNT.md` and review the diff before committing.\n\n"
         "Start here:\n\n"
         "- [`scripts/00-operator-and-session-plan.md`](scripts/00-operator-and-session-plan.md)\n"
         "- [`scripts/module-00-set-the-contract.md`](scripts/module-00-set-the-contract.md)\n"

@@ -12,10 +12,15 @@ Use this checklist to decide whether a rebuild is actually complete. The source-
 
 ## Source-Of-Truth Order
 
-1. Live production evidence wins over generated documentation.
-2. Current sibling source repo state wins over old prose in the documentation bundle.
-3. Generated Path F source excerpts win over memory and guesses.
+1. Live production evidence wins over generated documentation for operational reality.
+2. If sibling source repos are present, current source can reveal drift; record that drift before overriding this manual.
+3. If the source tree is unavailable, generated Path F source excerpts win over memory and guesses.
 4. Historical notes explain why something exists, but they do not override current source or live state.
+5. Dirty/untracked source listed in `SOURCE-MANIFEST.json` must be acknowledged before claiming exact regeneration.
+
+## Fixture And Evidence Rule
+
+Every proof check that mentions a known input, representative file, expected output, screenshot, live response, or hardware observation must be tied to [`FIXTURE-AND-EVIDENCE-INDEX.md`](FIXTURE-AND-EVIDENCE-INDEX.md). If no fixture exists yet, record an acceptable substitute and mark the proof as partial rather than silently passing it.
 
 ## Secret And Configuration Rule
 

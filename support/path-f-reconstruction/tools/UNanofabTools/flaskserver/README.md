@@ -36,6 +36,18 @@ Recreate the Flask app package, routes, templates, services, models, config load
 - Device ingest routes have different auth expectations than browser routes.
 - Templates and JavaScript rely on exact route names and field names.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Operational Inputs That Must Be Recovered Outside Path F
+
+A Flask rebuild needs more than source excerpts: `.env`, approved Duo values, SQLite instance files or migrations, local PostgreSQL chem credentials/schema/data, HSCDATA/LogData contents, and live nginx/TLS/service facts. If `init_chem_db.py` or a schema bootstrap file is referenced but not present in this tool folder, use the utilities folder and conventional docs to locate it before claiming a database rebuild is complete.
+
+## Conflicting Historical Instructions To Resolve
+
+Some historical setup and migration prose may describe direct Gunicorn-on-443 or older chem environment variable names. Treat `run.py`, `config/config.py`, live-server docs, and current source as stronger evidence. When deployment, database, or auth instructions conflict, record the conflict in the rebuild evidence and do not silently merge the instructions.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

@@ -31,6 +31,14 @@ Preserve package workflow behavior, hook names, asset inclusion rules, license t
 - Packaging fixes can affect multiple desktop tools.
 - Generated release artifacts are not source files.
 
+## Fixture And Validation Gap
+
+Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVIDENCE-INDEX.md`](../../../FIXTURE-AND-EVIDENCE-INDEX.md) or the rebuild evidence template names the sample inputs, hashes, expected outputs, screenshots, API responses, or acceptable substitutes used for this tool. If no canonical fixture exists, mark the proof partial and create one as part of the maintenance work.
+
+## Packaging Working Directory Rule
+
+Before running PyInstaller, verify whether each spec assumes execution from the tool directory or repo root. If a spec uses `main.py`, `pathex=['.']`, or relative asset paths, run from that tool directory or adjust the spec deliberately. Record PyInstaller, NumPy, SciPy, Qt, and hook versions used.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.

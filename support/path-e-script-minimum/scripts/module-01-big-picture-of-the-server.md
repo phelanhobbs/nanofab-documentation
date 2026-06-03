@@ -4,6 +4,126 @@ This generated module file is part of the split Path E tier. Read it as a self-c
 
 
 
+# Existing Path E v1 Module Script: module-01-big-picture.md
+
+# Module 1 - Big Picture Of The Server
+
+## Goal
+
+The maintainer can describe the whole system in plain English before seeing implementation detail: who uses it, what data enters it, what data leaves it, where it runs, and what the major ownership boundaries are.
+
+## Required Screen
+
+SHOW:
+
+- `presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/00-Start-Here-Index.pptx)
+- `presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx` (repo path: presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx)
+- `presentation/UNanofabTools/flaskserver/README.md` (repo path: presentation/UNanofabTools/flaskserver/README.md)
+- `documentation/UNanofabTools/flaskserver/01-architecture.md` (repo path: documentation/UNanofabTools/flaskserver/01-architecture.md)
+
+## Verbatim Script
+
+READ ALOUD:
+
+"We start with the big picture because code is easier to understand after the system has a shape. `nfhistory` is not just a Flask app. It is the hub where cleanroom users, machine logs, CORES data, chemical inventory, sensor devices, desktop tools, and University IT-owned infrastructure meet."
+
+SHOW:
+
+Open `00-Start-Here-Index.pptx`.
+
+READ ALOUD:
+
+"This first deck tells us how the slide series is organized. Treat it as the table of contents. We are not trying to memorize every deck. We are learning where truth lives and how each deck maps to a specific part of the documentation and source code."
+
+SHOW:
+
+Open `01-Server-Overview.pptx`.
+
+READ ALOUD:
+
+"The user-facing story is simple. Cleanroom users open a website. They log in. They see tasks, machine pages, machine logs, chemical inventory, and sensor views. Some of that data is entered by people. Some is uploaded by devices. Some is copied from machine-control PCs. Some is pulled from CORES by `HSCDownloader.py`. Some is stored in SQLite. The chemical inventory uses a local PostgreSQL database. A lot of operational data is also stored as file trees: `HSCDATA`, `LogData`, and `uploads`."
+
+"The technical story is that public HTTPS traffic reaches nginx on `nfhistory`. nginx terminates TLS and proxies to the Flask app on loopback. Flask routes requests through blueprints. User-facing routes use login and session checks. Device routes are different: some are intentionally unauthenticated because Pico devices post data to them. The app reads and writes databases and file trees. The result is a website that looks like one application but is actually a coordination point for several data sources."
+
+SHOW:
+
+Open `documentation/UNanofabTools/flaskserver/01-architecture.md` (repo path: documentation/UNanofabTools/flaskserver/01-architecture.md).
+
+READ ALOUD:
+
+"This architecture document is the technical version of the overview deck. The deck is useful for presentation. This document is useful when something breaks. Notice that the docs should name real paths, real modules, real databases, and real dependencies. We want documentation that can be acted on, not just understood abstractly."
+
+## System Map Exercise
+
+DO:
+
+On a whiteboard or notes file, write:
+
+```text
+Users and browsers
+  -> nginx and TLS on nfhistory
+  -> Flask app
+  -> blueprints and services
+  -> SQLite, local PostgreSQL, HSCDATA, LogData, uploads
+
+CORES and n8n
+  -> HSCDownloader.py
+  -> HSCDATA
+  -> machine pages
+
+Machine control PCs
+  -> file-transfer scripts
+  -> LogData
+  -> machine pages and plots
+
+Pico devices
+  -> device API routes
+  -> sensor storage and views
+
+NanofabToolkit desktop tools
+  -> local files or nfhistory APIs, depending on tool
+```
+
+READ ALOUD:
+
+"This map is intentionally plain. A future maintainer should be able to redraw it without the slides. If they cannot, they are not ready to debug the system. Most operational confusion comes from mixing up the website, the live server, the data pipelines, and the desktop tools."
+
+## Ownership Frame
+
+READ ALOUD:
+
+"There are four boundaries we will repeat constantly. First, user-facing website versus background data supply. Second, application code versus live production state. Third, Nanofab-owned operational surface versus University IT-owned infrastructure. Fourth, current canonical code versus historical or deprecated code."
+
+"University IT owns the VM, root, root SSH, OS-level backup, and base patching. Nanofab owns the Flask app, `HSCDownloader.py`, the chemical inventory's use of PostgreSQL, cleanroom data trees, and everything under `/home/phelan/`. The Nanofab admin has `sudo` as `phelan`, not root. Nanofab cannot create UNIX users. That fact matters because it changes what counts as a fix."
+
+## Explain-Back
+
+ASK:
+
+| Question | Expected answer |
+|---|---|
+| What does `nfhistory` do for a normal cleanroom user? | It provides the cleanroom website: login, tasks, machine pages/logs, chemical inventory, and sensor views. |
+| What data comes from CORES? | Machine usage data pulled by `HSCDownloader.py` and written into `HSCDATA`. |
+| What data comes from machine-control PCs? | Tool log files uploaded by file-transfer scripts into `LogData`. |
+| What data comes from Pico devices? | Particle/environment sensor payloads posted to device API routes. |
+| What is nginx doing? | It handles public HTTPS/TLS and proxies requests to the Flask app on loopback. |
+| What is Flask doing? | It routes browser/device requests through blueprints, auth checks, services, templates, databases, and file trees. |
+| Which data stores are databases? | Several SQLite databases plus the local PostgreSQL database used for chemical inventory. |
+| Which data stores are file trees? | `HSCDATA`, `LogData`, `uploads`, and sensor/log file directories. |
+| What does University IT own? | The VM, root, root SSH, base patching, VM-level/off-box backup, and UNIX account creation. |
+| What does Nanofab own? | The Flask app, downloader, application docs, app/data behavior, chem DB usage, data trees, and `/home/phelan/` operational surface. |
+
+REQUIRE:
+
+The maintainer can draw the system map from memory and identify at least one data producer, one web-facing component, one database, one file tree, and one IT-owned component.
+
+## Stop Point
+
+STOP POINT:
+
+Stop here if the maintainer cannot explain the system map without looking. Assign them to reread the server overview README and architecture doc before the next session.
+
+
 # Expanded Module 01: Big Picture Of The Server
 
 READ ALOUD:
@@ -18,11 +138,9 @@ We are now doing the orientation pass for Big Picture Of The Server. The maintai
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx`
+- `presentation/UNanofabTools/flaskserver/01-Server-Overview.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -57,11 +175,9 @@ We are now doing the evidence pass for Big Picture Of The Server. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/flaskserver/slides/01-Server-Overview.pptx`
+- `presentation/UNanofabTools/flaskserver/01-Server-Overview.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -344,7 +460,7 @@ Python target: 3.x (the development virtualenvs in the repo use 3.14; any 3.10+ 
    └──────────────────────────────────────┘
 ```
 
-All five datastores live on the same VM. Browsers, devices, and desktop apps reach the box only through nginx on `:443`; nginx forwards to Flask on `127.0.0.1:5000`; Flask talks to the SQLite files directly and to PostgreSQL over `127.0.0.1:5432`. This was confirmed by the live-server survey (`../liveserver/README.md` (reference path: ../liveserver/README.md) §3.1 and §10); older diagrams that placed chem PostgreSQL off-box have been corrected.
+All five datastores live on the same VM. Browsers, devices, and desktop apps reach the box only through nginx on `:443`; nginx forwards to Flask on `127.0.0.1:5000`; Flask talks to the SQLite files directly and to PostgreSQL over `127.0.0.1:5432`. This was confirmed by the live-server survey (`documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §3.1 and §10); older diagrams that placed chem PostgreSQL off-box have been corrected.
 
 The diagram shows the live network shape and the intended production process boundary. The current `nfhistory` snapshot still has Flask running as `python run.py` inside tmux, not gunicorn/systemd; see the live-server inventory for that operational gap.
 
@@ -471,8 +587,8 @@ Detailed scenario walkthroughs (browser page, device POST, chem page) are in `05
 | `sessioninfo.db` (sessions) | `instance/sessioninfo.db` | `auth_service` | ORM (`sessions` bind) |
 | `tasks.db` (tasks) | `instance/tasks.db` | `task_service` | **raw `sqlite3`** |
 | `particle_sensors.db` | `instance/particle_sensors.db` | `api` blueprint | ORM (`particle_sensors` bind) |
-| PostgreSQL `cheminventory` | **local on this same VM** (`postgresql@17-main`, bound to `127.0.0.1:5432`; see `../liveserver/README.md` (reference path: ../liveserver/README.md) §10) | `chem_service` | SQLAlchemy Core (`text()`) |
-| `LogData/` tree | filesystem | `api`, `machines`, `data_service` (raw machine logs uploaded by the `filetransfer` scripts; sensor CSVs written by the `api` blueprint from posts originated by the `NanofabToolkit/PicoHelperTools` (reference path: ../../NanofabToolkit/PicoHelperTools/README.md) firmware) | direct file I/O |
+| PostgreSQL `cheminventory` | **local on this same VM** (`postgresql@17-main`, bound to `127.0.0.1:5432`; see `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §10) | `chem_service` | SQLAlchemy Core (`text()`) |
+| `LogData/` tree | filesystem | `api`, `machines`, `data_service` (raw machine logs uploaded by the `filetransfer` scripts; sensor CSVs written by the `api` blueprint from posts originated by the `NanofabToolkit/PicoHelperTools` (repo path: documentation/NanofabToolkit/PicoHelperTools/README.md) firmware) | direct file I/O |
 | `HSCDATA/` | filesystem | `machines`, `data_service` (CSVs populated by the external `hscdownloader` tool pulling from CORES) | CSV via `csv`/pandas |
 | `uploads/` | filesystem | `task_service` | direct file I/O |
 
@@ -504,4 +620,4 @@ UNanofabTools/
 
 Everything else at the repo root (`*.ps1`, `*.zip`, standalone machine `.py` files, miscellaneous `.md` notes) is outside the Flask application and outside this documentation's scope.
 
-Continue to 02-getting-started.md (reference path: 02-getting-started.md).
+Continue to 02-getting-started.md (repo path: documentation/UNanofabTools/flaskserver/02-getting-started.md).

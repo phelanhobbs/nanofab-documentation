@@ -16,10 +16,10 @@ The maintainer understands `HSCDownloader.py`, where it lives, what it pulls, wh
 
 SHOW:
 
-- `../../presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx` (reference path: ../../presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx)
-- `../../presentation/UNanofabTools/hscdownloader/README.md` (reference path: ../../presentation/UNanofabTools/hscdownloader/README.md)
-- `../../documentation/UNanofabTools/hscdownloader/README.md` (reference path: ../../documentation/UNanofabTools/hscdownloader/README.md)
-- `../../known-issues/UNanofabTools/hscdownloader.md` (reference path: ../../known-issues/UNanofabTools/hscdownloader.md)
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx` (repo path: presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx)
+- `presentation/UNanofabTools/hscdownloader/README.md` (repo path: presentation/UNanofabTools/hscdownloader/README.md)
+- `documentation/UNanofabTools/hscdownloader/README.md` (repo path: documentation/UNanofabTools/hscdownloader/README.md)
+- `known-issues/UNanofabTools/hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md)
 
 ## Verbatim Script
 
@@ -45,8 +45,8 @@ Show:
 
 ```text
 ../UNanofabTools/HSCDownloader.py
-../../documentation/UNanofabTools/hscdownloader/README.md
-../../known-issues/UNanofabTools/hscdownloader.md
+documentation/UNanofabTools/hscdownloader/README.md
+known-issues/UNanofabTools/hscdownloader.md
 ```
 
 DO:
@@ -54,7 +54,7 @@ DO:
 Run:
 
 ```sh
-rg -n "save|CORES|HSCDATA|requests|Bearer|time|schedule|while" ../UNanofabTools/HSCDownloader.py ../../documentation/UNanofabTools/hscdownloader/README.md ../../known-issues/UNanofabTools/hscdownloader.md
+rg -n "save|CORES|HSCDATA|requests|Bearer|time|schedule|while" ../UNanofabTools/HSCDownloader.py documentation/UNanofabTools/hscdownloader/README.md known-issues/UNanofabTools/hscdownloader.md
 ```
 
 READ ALOUD:
@@ -108,11 +108,10 @@ We are now doing the orientation pass for HSCDownloader. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -147,11 +146,10 @@ We are now doing the evidence pass for HSCDownloader. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -186,11 +184,10 @@ We are now doing the source-code pass for HSCDownloader. The maintainer should c
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -225,11 +222,10 @@ We are now doing the live-state pass for HSCDownloader. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -264,11 +260,10 @@ We are now doing the failure-mode pass for HSCDownloader. The maintainer should 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -303,11 +298,10 @@ We are now doing the maintenance-planning pass for HSCDownloader. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -342,11 +336,10 @@ We are now doing the security pass for HSCDownloader. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -381,11 +374,10 @@ We are now doing the recovery pass for HSCDownloader. The maintainer should conn
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -420,11 +412,10 @@ We are now doing the documentation-drift pass for HSCDownloader. The maintainer 
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -459,11 +450,10 @@ We are now doing the teach-back pass for HSCDownloader. The maintainer should co
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -498,11 +488,10 @@ We are now doing the homework-review pass for HSCDownloader. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -537,11 +526,10 @@ We are now doing the quarterly-audit pass for HSCDownloader. The maintainer shou
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -576,11 +564,10 @@ We are now doing the backup-and-restore pass for HSCDownloader. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -615,11 +602,10 @@ We are now doing the ownership-boundary pass for HSCDownloader. The maintainer s
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -654,11 +640,10 @@ We are now doing the no-contact rehearsal pass for HSCDownloader. The maintainer
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -693,11 +678,10 @@ We are now doing the operator-error pass for HSCDownloader. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -732,11 +716,10 @@ We are now doing the data-integrity pass for HSCDownloader. The maintainer shoul
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 
@@ -771,11 +754,10 @@ We are now doing the final-repetition pass for HSCDownloader. The maintainer sho
 
 SHOW:
 
-- The corresponding slide deck from the Path E deck order.
-- The matching layman README.
-- The matching developer reference.
-- The matching known-issues file if the module has one.
-- The source repo path if this pass requires code evidence.
+- `presentation/UNanofabTools/hscdownloader/slides/HSC-Downloader.pptx`
+- `presentation/UNanofabTools/hscdownloader/README.md`
+- `documentation/UNanofabTools/hscdownloader/README.md`
+- If this pass requires source evidence, also open the matching sibling source repo path and name the file shown.
 
 DO:
 

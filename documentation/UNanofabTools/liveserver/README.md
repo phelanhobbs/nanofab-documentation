@@ -504,10 +504,10 @@ When re-running:
 bash ~/survey_nfhistory.sh | tee /tmp/nfhistory_survey_phelan_$(date +%F).txt
 
 # back to laptop, then pull via CADE (mirror the snapshot-fetch command):
-mkdir -p ~/code/work/documentation/UNanofabTools/liveserver/snapshots && \
+mkdir -p ~/code/work/nanofab-documentation/documentation/UNanofabTools/liveserver/snapshots && \
 ssh -i ~/.ssh/CADE phelanh@lab1-10.eng.utah.edu 'scp nfhistory:/tmp/nfhistory_survey_phelan_\*.txt ~/' && \
 scp -i ~/.ssh/CADE 'phelanh@lab1-10.eng.utah.edu:~/nfhistory_survey_phelan_*.txt' \
-    ~/code/work/documentation/UNanofabTools/liveserver/snapshots/
+    ~/code/work/nanofab-documentation/documentation/UNanofabTools/liveserver/snapshots/
 ```
 
 Then add a row to this table describing what changed.

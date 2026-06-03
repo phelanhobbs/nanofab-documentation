@@ -12,7 +12,9 @@ Reference for the per-machine log-shipping scripts. They run on each tool's Wind
 | `CTRFurnaceTransfer.ps1` | PowerShell | self-loop | Furnace instance |
 | `CTRFurnaceTransfer.bat` | Batch (cmd) | Windows Task Scheduler (run-once) | Windows XP-compatible furnace version |
 
-Destination: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. The legacy server's `/download` route (and the Flask `machines` blueprint) read from a `LogData/`/`Desktop/Logs/` tree fed by these uploads.
+Destination as committed in the scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model.
+
+**Production-truth warning:** do not assume these scripts are feeding the current Flask deployment until live evidence proves it. Start file-transfer maintenance by checking a recent control-PC run, the server-side destination directory, and the Flask machine-page read path. If current uploads still land under `phelanh` or `/Users/...`, treat that as the high-priority issue tracked in [`../../../known-issues/UNanofabTools/filetransfer.md`](../../../known-issues/UNanofabTools/filetransfer.md) #1.
 
 ## 2. Common structure (PowerShell template)
 

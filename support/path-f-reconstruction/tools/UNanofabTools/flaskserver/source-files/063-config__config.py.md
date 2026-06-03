@@ -4,7 +4,7 @@
 
 ## Breadcrumbs
 
-[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
+[Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
 
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `113`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `a1eed1b49dd3b441`
+- Sanitized SHA-256 prefix: `0cbfb39fe4a5ffb8`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,9 +22,9 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: none detected
-- Classes: none detected
-- Functions: none detected
+- Imports: `import os`, `from dotenv import load_dotenv`, `import logging`, `from logging.handlers import RotatingFileHandler`
+- Classes: `Config`, `DevelopmentConfig`, `ProductionConfig`
+- Functions: `init_app`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -72,7 +72,7 @@ class Config:
     CHEM_PGPORT = os.getenv('CHEM_PGPORT', os.getenv('PGPORT', '5432'))
     CHEM_POSTGRES_DB = os.getenv('CHEM_POSTGRES_DB', os.getenv('POSTGRES_DB', 'cheminventory'))
     CHEM_POSTGRES_USER = os.getenv('CHEM_POSTGRES_USER', os.getenv('POSTGRES_USER', 'postgres'))
-    CHEM_POSTGRES_PASSWORD = <redacted-secret-value>, os.getenv('POSTGRES_PASSWORD', 'changeme'))
+    CHEM_POSTGRES_PASSWORD = os.getenv('CHEM_POSTGRES_PASSWORD', os.getenv('POSTGRES_PASSWORD', 'changeme'))
 
     # Duo Security Configuration
     DUO_IKEY = os.getenv('DUO_IKEY')
@@ -486,7 +486,7 @@ Reconstruction rule: in `UNanofabTools/config/config.py`, line 42 is classified 
 ### Line 43
 
 ```text
-    CHEM_POSTGRES_PASSWORD = <redacted-secret-value>, os.getenv('POSTGRES_PASSWORD', 'changeme'))
+    CHEM_POSTGRES_PASSWORD = os.getenv('CHEM_POSTGRES_PASSWORD', os.getenv('POSTGRES_PASSWORD', 'changeme'))
 ```
 
 Reconstruction rule: in `UNanofabTools/config/config.py`, line 43 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
