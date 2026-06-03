@@ -2,11 +2,48 @@
 
 This folder is part of the Path F ultra-deep reconstruction manual. Its goal is to make this specific tool or source area reproducible from documentation alone. Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.
 
+## When To Open This Folder
+
+Open this for one-off helper rebuilds or to decide whether a helper should be retained, replaced, or retired.
+
+## What This Tool Does
+
+Standalone helpers including peak counting, certificate conversion, SSH fetch helper, chem DB init, and unfinished monitor storage.
+
+## Rebuild Focus
+
+Preserve CLI flags, file formats, certificate output expectations, SSH behavior, database bootstrap behavior, and explicit unfinished status.
+
+## External Inputs You Must Supply
+
+- Input data files
+- PFX/certificate password from secure storage
+- SSH host/key material
+- database credentials
+
+## Proof That The Rebuild Works
+
+- Peak counting returns the same cycle count on known input.
+- Certificate conversion writes files in the expected format without exposing passwords.
+- SSH fetch behavior is either recreated as a personal dev helper or replaced by a documented safer flow.
+
+## Common Ways To Get Lost
+
+- Do not promote personal helper credentials to production.
+- Some files are intentionally stubs or one-off scripts.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.
 - `source-files/`: one reconstruction page per source file covered by this tool.
 - `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.
+
+## Recommended Reading Order
+
+1. Read this README and write a one-paragraph contract for the tool.
+2. Open only the source-file pages needed for that contract.
+3. For each edited or recreated file, complete the file's edge-case matrix.
+4. Run the proof checks above before declaring the tool rebuilt.
 
 ## Files Covered
 

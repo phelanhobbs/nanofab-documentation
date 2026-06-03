@@ -2,11 +2,47 @@
 
 This folder is part of the Path F ultra-deep reconstruction manual. Its goal is to make this specific tool or source area reproducible from documentation alone. Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.
 
+## When To Open This Folder
+
+Open this when rebuilding packaging infrastructure, GitHub Actions, PyInstaller hooks, or repo-level metadata.
+
+## What This Tool Does
+
+NanofabToolkit root docs, shared packaging hooks, license, and CI workflow.
+
+## Rebuild Focus
+
+Preserve package workflow behavior, hook names, asset inclusion rules, license text, and root README expectations.
+
+## External Inputs You Must Supply
+
+- GitHub Actions environment
+- PyInstaller dependency versions
+- release artifact expectations
+
+## Proof That The Rebuild Works
+
+- Packaging hooks are discoverable by PyInstaller.
+- The ParticleSensor build workflow still names the right paths.
+- Root metadata matches the tool folders.
+
+## Common Ways To Get Lost
+
+- Packaging fixes can affect multiple desktop tools.
+- Generated release artifacts are not source files.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.
 - `source-files/`: one reconstruction page per source file covered by this tool.
 - `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.
+
+## Recommended Reading Order
+
+1. Read this README and write a one-paragraph contract for the tool.
+2. Open only the source-file pages needed for that contract.
+3. For each edited or recreated file, complete the file's edge-case matrix.
+4. Run the proof checks above before declaring the tool rebuilt.
 
 ## Files Covered
 

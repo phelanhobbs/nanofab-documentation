@@ -2,11 +2,48 @@
 
 This folder is part of the Path F ultra-deep reconstruction manual. Its goal is to make this specific tool or source area reproducible from documentation alone. Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.
 
+## When To Open This Folder
+
+Open this for historical Pico code, unique unfinished scripts, WiFi diagnostics, or comparison against the canonical NanofabToolkit PicoHelperTools folder.
+
+## What This Tool Does
+
+Older UNanofabTools copies of Pico firmware and Pico diagnostics.
+
+## Rebuild Focus
+
+Preserve MicroPython imports, sensor read loops, WiFi handling, HTTP POST payload shape, endpoint URLs, and diagnostic LED behavior.
+
+## External Inputs You Must Supply
+
+- WiFi SSID and password from secure local config
+- Pico MAC/device identity
+- server endpoint URL
+- sensor wiring
+
+## Proof That The Rebuild Works
+
+- A Pico can boot the recreated firmware without import errors.
+- WiFi diagnostics succeed or fail with clear output.
+- Sensor payloads match the Flask particle or machine API contracts.
+
+## Common Ways To Get Lost
+
+- Canonical Pico firmware lives in NanofabToolkit/PicoHelperTools.
+- Some UNanofabTools Pico scripts are incomplete or historical.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.
 - `source-files/`: one reconstruction page per source file covered by this tool.
 - `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.
+
+## Recommended Reading Order
+
+1. Read this README and write a one-paragraph contract for the tool.
+2. Open only the source-file pages needed for that contract.
+3. For each edited or recreated file, complete the file's edge-case matrix.
+4. Run the proof checks above before declaring the tool rebuilt.
 
 ## Files Covered
 

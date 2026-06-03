@@ -1,39 +1,44 @@
 # Path F Word Count Manifest
 
-- Total generated word count: **3,642,124**
+- Total generated word count: **3,648,863**
 - Target minimum: **2,500,000**
 - Files included from source repos: **159**
-- Generated reconstruction files counted: **192**
-- Verification command: `find support/path-f-reconstruction/tools -name '*.md' -print0 | xargs -0 wc -w`
+- Generated reconstruction files counted: **195**
+- Verification command: `{ printf '%s\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`
 
-## Tool Folder Totals
+## Generated Group Totals
 
-| Tool folder | Words |
+| Group | Words |
 |---|---:|
+| `navigation/` | 3,002 |
 | `tools/00-system-map/` | 1,637 |
-| `tools/NanofabToolkit/ALDPeakCounter/` | 86,734 |
-| `tools/NanofabToolkit/DentonDecoder/` | 154,250 |
-| `tools/NanofabToolkit/ParalyneReader/` | 192,730 |
-| `tools/NanofabToolkit/ParticleSensor/` | 237,493 |
-| `tools/NanofabToolkit/PicoHelperTools/` | 281,092 |
-| `tools/NanofabToolkit/PreciousMetalReader/` | 123,029 |
-| `tools/NanofabToolkit/packaging-root/` | 56,436 |
-| `tools/UNanofabTools/dattools/` | 57,972 |
-| `tools/UNanofabTools/filetransfer/` | 65,360 |
-| `tools/UNanofabTools/flaskserver/` | 1,428,079 |
-| `tools/UNanofabTools/hscdisplayerserver/` | 282,612 |
-| `tools/UNanofabTools/hscdownloader/` | 110,652 |
-| `tools/UNanofabTools/particlepctools/` | 170,877 |
-| `tools/UNanofabTools/picofirmware/` | 183,797 |
-| `tools/UNanofabTools/repo-overview-and-entrypoints/` | 156,297 |
-| `tools/UNanofabTools/utilities/` | 53,077 |
+| `tools/INDEX.md` | 677 |
+| `tools/NanofabToolkit/ALDPeakCounter/` | 86,906 |
+| `tools/NanofabToolkit/DentonDecoder/` | 154,408 |
+| `tools/NanofabToolkit/ParalyneReader/` | 192,889 |
+| `tools/NanofabToolkit/ParticleSensor/` | 237,677 |
+| `tools/NanofabToolkit/PicoHelperTools/` | 281,288 |
+| `tools/NanofabToolkit/PreciousMetalReader/` | 123,205 |
+| `tools/NanofabToolkit/packaging-root/` | 56,607 |
+| `tools/UNanofabTools/dattools/` | 58,158 |
+| `tools/UNanofabTools/filetransfer/` | 65,556 |
+| `tools/UNanofabTools/flaskserver/` | 1,428,369 |
+| `tools/UNanofabTools/hscdisplayerserver/` | 282,790 |
+| `tools/UNanofabTools/hscdownloader/` | 110,857 |
+| `tools/UNanofabTools/particlepctools/` | 171,062 |
+| `tools/UNanofabTools/picofirmware/` | 183,991 |
+| `tools/UNanofabTools/repo-overview-and-entrypoints/` | 156,497 |
+| `tools/UNanofabTools/utilities/` | 53,287 |
 
 ## File Manifest
 
 | File | Words |
 |---|---:|
+| `NAVIGATOR.md` | 1,008 |
+| `RECONSTRUCTION-CHECKLIST.md` | 1,994 |
 | `tools/00-system-map/README.md` | 1,637 |
-| `tools/NanofabToolkit/ALDPeakCounter/README.md` | 220 |
+| `tools/INDEX.md` | 677 |
+| `tools/NanofabToolkit/ALDPeakCounter/README.md` | 392 |
 | `tools/NanofabToolkit/ALDPeakCounter/rehearsals/README.md` | 62 |
 | `tools/NanofabToolkit/ALDPeakCounter/source-files/001-ALDPeakCounter__ALDPeakCounter.spec.md` | 6,639 |
 | `tools/NanofabToolkit/ALDPeakCounter/source-files/002-ALDPeakCounter__main.py.md` | 11,705 |
@@ -42,7 +47,7 @@
 | `tools/NanofabToolkit/ALDPeakCounter/source-files/005-ALDPeakCounter__src__gui.py.md` | 35,321 |
 | `tools/NanofabToolkit/ALDPeakCounter/source-files/006-ALDPeakCounter__src__hook-matplotlib.py.md` | 2,723 |
 | `tools/NanofabToolkit/ALDPeakCounter/source-files/007-ALDPeakCounter__src__peakCount.py.md` | 25,135 |
-| `tools/NanofabToolkit/DentonDecoder/README.md` | 219 |
+| `tools/NanofabToolkit/DentonDecoder/README.md` | 377 |
 | `tools/NanofabToolkit/DentonDecoder/rehearsals/README.md` | 61 |
 | `tools/NanofabToolkit/DentonDecoder/source-files/001-DentonDecoder__DentonDecoder.spec.md` | 6,639 |
 | `tools/NanofabToolkit/DentonDecoder/source-files/002-DentonDecoder__main.py.md` | 12,512 |
@@ -51,7 +56,7 @@
 | `tools/NanofabToolkit/DentonDecoder/source-files/005-DentonDecoder__src__DentonDecoder.py.md` | 17,559 |
 | `tools/NanofabToolkit/DentonDecoder/source-files/006-DentonDecoder__src__DentonGrapher.py.md` | 18,231 |
 | `tools/NanofabToolkit/DentonDecoder/source-files/007-DentonDecoder__src__gui.py.md` | 94,362 |
-| `tools/NanofabToolkit/ParalyneReader/README.md` | 210 |
+| `tools/NanofabToolkit/ParalyneReader/README.md` | 369 |
 | `tools/NanofabToolkit/ParalyneReader/rehearsals/README.md` | 61 |
 | `tools/NanofabToolkit/ParalyneReader/source-files/001-ParalyneReader__ParalyneReader.spec.md` | 6,930 |
 | `tools/NanofabToolkit/ParalyneReader/source-files/002-ParalyneReader__main.py.md` | 18,432 |
@@ -59,7 +64,7 @@
 | `tools/NanofabToolkit/ParalyneReader/source-files/004-ParalyneReader__src__ParalyneReader.py.md` | 7,596 |
 | `tools/NanofabToolkit/ParalyneReader/source-files/005-ParalyneReader__src__assets__icon.py.md` | 2,827 |
 | `tools/NanofabToolkit/ParalyneReader/source-files/006-ParalyneReader__src__gui.py.md` | 154,572 |
-| `tools/NanofabToolkit/ParticleSensor/README.md` | 219 |
+| `tools/NanofabToolkit/ParticleSensor/README.md` | 403 |
 | `tools/NanofabToolkit/ParticleSensor/rehearsals/README.md` | 61 |
 | `tools/NanofabToolkit/ParticleSensor/source-files/001-ParticleSensor__INTEGRATION_SUMMARY.md.md` | 13,077 |
 | `tools/NanofabToolkit/ParticleSensor/source-files/002-ParticleSensor__ParticleSensor.spec.md` | 6,734 |
@@ -68,7 +73,7 @@
 | `tools/NanofabToolkit/ParticleSensor/source-files/005-ParticleSensor__src__ParticleSensor.py.md` | 39,849 |
 | `tools/NanofabToolkit/ParticleSensor/source-files/006-ParticleSensor__src__assets__icon.py.md` | 8,923 |
 | `tools/NanofabToolkit/ParticleSensor/source-files/007-ParticleSensor__src__gui.py.md` | 156,618 |
-| `tools/NanofabToolkit/PicoHelperTools/README.md` | 229 |
+| `tools/NanofabToolkit/PicoHelperTools/README.md` | 425 |
 | `tools/NanofabToolkit/PicoHelperTools/rehearsals/README.md` | 62 |
 | `tools/NanofabToolkit/PicoHelperTools/source-files/001-PicoHelperTools__DHT22_sensor.py.md` | 48,499 |
 | `tools/NanofabToolkit/PicoHelperTools/source-files/002-PicoHelperTools__GetPicoMAC.py.md` | 5,406 |
@@ -78,14 +83,14 @@
 | `tools/NanofabToolkit/PicoHelperTools/source-files/006-PicoHelperTools__boot.py.md` | 7,180 |
 | `tools/NanofabToolkit/PicoHelperTools/source-files/007-PicoHelperTools__picopass.py.md` | 1,839 |
 | `tools/NanofabToolkit/PicoHelperTools/source-files/008-PicoHelperTools__sensor_combined.py.md` | 95,923 |
-| `tools/NanofabToolkit/PreciousMetalReader/README.md` | 202 |
+| `tools/NanofabToolkit/PreciousMetalReader/README.md` | 378 |
 | `tools/NanofabToolkit/PreciousMetalReader/rehearsals/README.md` | 62 |
 | `tools/NanofabToolkit/PreciousMetalReader/source-files/001-PreciousMetalReader__PreciousMetalReader.spec.md` | 6,160 |
 | `tools/NanofabToolkit/PreciousMetalReader/source-files/002-PreciousMetalReader__main.py.md` | 11,738 |
 | `tools/NanofabToolkit/PreciousMetalReader/source-files/003-PreciousMetalReader__requirements.txt.md` | 1,690 |
 | `tools/NanofabToolkit/PreciousMetalReader/source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md` | 56,214 |
 | `tools/NanofabToolkit/PreciousMetalReader/source-files/005-PreciousMetalReader__src__gui.py.md` | 46,963 |
-| `tools/NanofabToolkit/packaging-root/README.md` | 228 |
+| `tools/NanofabToolkit/packaging-root/README.md` | 399 |
 | `tools/NanofabToolkit/packaging-root/rehearsals/README.md` | 61 |
 | `tools/NanofabToolkit/packaging-root/source-files/001-.github__workflows__build-particle-sensor.yml.md` | 15,986 |
 | `tools/NanofabToolkit/packaging-root/source-files/002-.gitignore.md` | 7,169 |
@@ -95,12 +100,12 @@
 | `tools/NanofabToolkit/packaging-root/source-files/006-pyinstaller__hooks__hook-numpy.f2py.py.md` | 2,138 |
 | `tools/NanofabToolkit/packaging-root/source-files/007-pyinstaller__hooks__hook-runtime.py.md` | 2,565 |
 | `tools/NanofabToolkit/packaging-root/source-files/008-pyinstaller__hooks__hook-scipy.py.md` | 2,573 |
-| `tools/UNanofabTools/dattools/README.md` | 183 |
+| `tools/UNanofabTools/dattools/README.md` | 369 |
 | `tools/UNanofabTools/dattools/rehearsals/README.md` | 61 |
 | `tools/UNanofabTools/dattools/source-files/001-DATInstructions.md.md` | 7,539 |
 | `tools/UNanofabTools/dattools/source-files/002-DATfixer.py.md` | 33,349 |
 | `tools/UNanofabTools/dattools/source-files/003-DATgrapher.py.md` | 16,840 |
-| `tools/UNanofabTools/filetransfer/README.md` | 211 |
+| `tools/UNanofabTools/filetransfer/README.md` | 407 |
 | `tools/UNanofabTools/filetransfer/rehearsals/README.md` | 62 |
 | `tools/UNanofabTools/filetransfer/source-files/001-ALDTransfer.ps1.md` | 10,282 |
 | `tools/UNanofabTools/filetransfer/source-files/002-CTRFurnaceTransfer.bat.md` | 10,208 |
@@ -108,7 +113,7 @@
 | `tools/UNanofabTools/filetransfer/source-files/004-Dent635Transfer.ps1.md` | 12,266 |
 | `tools/UNanofabTools/filetransfer/source-files/005-FileTransferSetup.md.md` | 13,231 |
 | `tools/UNanofabTools/filetransfer/source-files/006-FileTransferTemplate.ps1.md` | 9,445 |
-| `tools/UNanofabTools/flaskserver/README.md` | 867 |
+| `tools/UNanofabTools/flaskserver/README.md` | 1,157 |
 | `tools/UNanofabTools/flaskserver/rehearsals/README.md` | 61 |
 | `tools/UNanofabTools/flaskserver/source-files/001-.env.example.md` | 5,551 |
 | `tools/UNanofabTools/flaskserver/source-files/002-ALD_chart.html.md` | 7,330 |
@@ -189,18 +194,18 @@
 | `tools/UNanofabTools/flaskserver/source-files/077-run.py.md` | 3,754 |
 | `tools/UNanofabTools/flaskserver/source-files/078-setup.sh.md` | 11,252 |
 | `tools/UNanofabTools/flaskserver/source-files/079-signup.html.md` | 4,116 |
-| `tools/UNanofabTools/hscdisplayerserver/README.md` | 167 |
+| `tools/UNanofabTools/hscdisplayerserver/README.md` | 345 |
 | `tools/UNanofabTools/hscdisplayerserver/rehearsals/README.md` | 63 |
 | `tools/UNanofabTools/hscdisplayerserver/source-files/001-HSCDisplayerServer.py.md` | 282,382 |
-| `tools/UNanofabTools/hscdownloader/README.md` | 165 |
+| `tools/UNanofabTools/hscdownloader/README.md` | 370 |
 | `tools/UNanofabTools/hscdownloader/rehearsals/README.md` | 61 |
 | `tools/UNanofabTools/hscdownloader/source-files/001-HSCDownloader.py.md` | 110,426 |
-| `tools/UNanofabTools/particlepctools/README.md` | 184 |
+| `tools/UNanofabTools/particlepctools/README.md` | 369 |
 | `tools/UNanofabTools/particlepctools/rehearsals/README.md` | 62 |
 | `tools/UNanofabTools/particlepctools/source-files/001-curl_for_particle.md.md` | 22,511 |
 | `tools/UNanofabTools/particlepctools/source-files/002-generate_test_particle_data.py.md` | 32,415 |
 | `tools/UNanofabTools/particlepctools/source-files/003-particle_data_viewer.py.md` | 115,705 |
-| `tools/UNanofabTools/picofirmware/README.md` | 210 |
+| `tools/UNanofabTools/picofirmware/README.md` | 404 |
 | `tools/UNanofabTools/picofirmware/rehearsals/README.md` | 61 |
 | `tools/UNanofabTools/picofirmware/source-files/001-ParticleSensor.py.md` | 17,615 |
 | `tools/UNanofabTools/picofirmware/source-files/002-Particle_sensor.py.md` | 82,470 |
@@ -208,7 +213,7 @@
 | `tools/UNanofabTools/picofirmware/source-files/004-PicoDenton18.py.md` | 10,535 |
 | `tools/UNanofabTools/picofirmware/source-files/005-PicoParylene.py.md` | 58,272 |
 | `tools/UNanofabTools/picofirmware/source-files/006-VGC083C_Monitor.py.md` | 9,228 |
-| `tools/UNanofabTools/repo-overview-and-entrypoints/README.md` | 212 |
+| `tools/UNanofabTools/repo-overview-and-entrypoints/README.md` | 412 |
 | `tools/UNanofabTools/repo-overview-and-entrypoints/rehearsals/README.md` | 63 |
 | `tools/UNanofabTools/repo-overview-and-entrypoints/source-files/001-.gitignore.md` | 8,410 |
 | `tools/UNanofabTools/repo-overview-and-entrypoints/source-files/002-INTEGRATION_SUMMARY.md.md` | 36,376 |
@@ -216,7 +221,7 @@
 | `tools/UNanofabTools/repo-overview-and-entrypoints/source-files/004-REFACTORING_SUMMARY.md.md` | 19,537 |
 | `tools/UNanofabTools/repo-overview-and-entrypoints/source-files/005-SETUP_GUIDE.md.md` | 37,695 |
 | `tools/UNanofabTools/repo-overview-and-entrypoints/source-files/006-START_HERE.md.md` | 30,845 |
-| `tools/UNanofabTools/utilities/README.md` | 209 |
+| `tools/UNanofabTools/utilities/README.md` | 419 |
 | `tools/UNanofabTools/utilities/rehearsals/README.md` | 60 |
 | `tools/UNanofabTools/utilities/source-files/001-NMonStore.py.md` | 6,181 |
 | `tools/UNanofabTools/utilities/source-files/002-fetch_ssh.py.md` | 3,741 |

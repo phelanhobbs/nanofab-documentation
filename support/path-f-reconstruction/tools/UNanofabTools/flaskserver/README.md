@@ -2,11 +2,52 @@
 
 This folder is part of the Path F ultra-deep reconstruction manual. Its goal is to make this specific tool or source area reproducible from documentation alone. Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.
 
+## When To Open This Folder
+
+Open this first for any server rebuild, browser bug, route behavior, database schema, auth, task, machine-data, chem-inventory, or particle API question.
+
+## What This Tool Does
+
+Modern Flask web application, including auth, tasks, machine pages, particle-data API, chemical inventory, templates, static assets, config, and migrations.
+
+## Rebuild Focus
+
+Recreate the Flask app package, routes, templates, services, models, config loading, SQLite files, local PostgreSQL chem schema, HSCDATA readers, and deployment entrypoint.
+
+## External Inputs You Must Supply
+
+- .env values for Flask secret, Duo, database, and production host behavior
+- local SQLite instance files or migrations
+- local PostgreSQL chem database credentials
+- HSCDATA and LogData directory contents
+- nginx/TLS/service configuration from live server docs
+
+## Proof That The Rebuild Works
+
+- A clean virtualenv can install requirements and import `app` plus `run.py` without missing local modules.
+- A local Flask instance serves login, tasks, machines, and chem pages with the expected templates.
+- Particle POST and GET contracts match the firmware and desktop viewers.
+- Chem inventory operations use local PostgreSQL assumptions and preserve barcode, transaction, and scan flows.
+- Route inventory and configuration names match the source and the formal developer docs.
+
+## Common Ways To Get Lost
+
+- Chem PostgreSQL is local to the VM, not an external database server.
+- Device ingest routes have different auth expectations than browser routes.
+- Templates and JavaScript rely on exact route names and field names.
+
 ## Folder Layout
 
 - `README.md`: tool-level reconstruction contract and source index.
 - `source-files/`: one reconstruction page per source file covered by this tool.
 - `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.
+
+## Recommended Reading Order
+
+1. Read this README and write a one-paragraph contract for the tool.
+2. Open only the source-file pages needed for that contract.
+3. For each edited or recreated file, complete the file's edge-case matrix.
+4. Run the proof checks above before declaring the tool rebuilt.
 
 ## Files Covered
 

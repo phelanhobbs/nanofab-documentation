@@ -297,6 +297,232 @@ def source_doc_name(sf: SourceFile, index: int) -> str:
     return f"{index:03d}-{stem}.md"
 
 
+DEFAULT_PLAYBOOK = {
+    "role": "Source area without a more specific generated playbook.",
+    "open_when": "Open this folder when the source file path is the closest match for the behavior being rebuilt.",
+    "rebuild_focus": "Preserve file names, imports, command behavior, public interfaces, on-disk paths, and operator-facing output.",
+    "proof": [
+        "Recreate the listed files from the sanitized excerpts.",
+        "Run the recreated entry points or import checks in a clean environment.",
+        "Compare outputs, logs, files, and failure behavior against the reconstruction notes.",
+    ],
+    "external_inputs": ["Any redacted secret, local path, host-specific account, or live database value must come from approved local configuration."],
+    "pitfalls": ["Do not infer a secret from redacted text.", "Do not treat stale local paths as production truth without checking live state."],
+}
+
+
+TOOL_PLAYBOOKS = {
+    "UNanofabTools/repo-overview-and-entrypoints": {
+        "role": "Repository-level orientation, setup notes, migration summaries, and legacy handoff context.",
+        "open_when": "Open this when you need the original repo story before choosing a specific tool folder.",
+        "rebuild_focus": "Preserve the setup sequence, repo-level assumptions, migration history, and relationship between old and modern server code.",
+        "proof": [
+            "A new maintainer can explain which code is modern, which code is historical, and where each tool lives.",
+            "The recreated repo has the same top-level entrypoint and setup expectations.",
+            "No repo-level note contradicts the current Path F navigator or source manifest.",
+        ],
+        "external_inputs": ["Adjacent repo location", "Python environment", "production host facts from live verification"],
+        "pitfalls": ["Old README claims may predate the Flask refactor.", "Treat live production as stronger evidence than historical migration notes."],
+    },
+    "UNanofabTools/flaskserver": {
+        "role": "Modern Flask web application, including auth, tasks, machine pages, particle-data API, chemical inventory, templates, static assets, config, and migrations.",
+        "open_when": "Open this first for any server rebuild, browser bug, route behavior, database schema, auth, task, machine-data, chem-inventory, or particle API question.",
+        "rebuild_focus": "Recreate the Flask app package, routes, templates, services, models, config loading, SQLite files, local PostgreSQL chem schema, HSCDATA readers, and deployment entrypoint.",
+        "proof": [
+            "A clean virtualenv can install requirements and import `app` plus `run.py` without missing local modules.",
+            "A local Flask instance serves login, tasks, machines, and chem pages with the expected templates.",
+            "Particle POST and GET contracts match the firmware and desktop viewers.",
+            "Chem inventory operations use local PostgreSQL assumptions and preserve barcode, transaction, and scan flows.",
+            "Route inventory and configuration names match the source and the formal developer docs.",
+        ],
+        "external_inputs": [
+            ".env values for Flask secret, Duo, database, and production host behavior",
+            "local SQLite instance files or migrations",
+            "local PostgreSQL chem database credentials",
+            "HSCDATA and LogData directory contents",
+            "nginx/TLS/service configuration from live server docs",
+        ],
+        "pitfalls": [
+            "Chem PostgreSQL is local to the VM, not an external database server.",
+            "Device ingest routes have different auth expectations than browser routes.",
+            "Templates and JavaScript rely on exact route names and field names.",
+        ],
+    },
+    "UNanofabTools/hscdownloader": {
+        "role": "CORES n8n data downloader that writes HSCDATA CSVs consumed by the machine portal.",
+        "open_when": "Open this when machine pages stop updating, service IDs change, CORES changes payloads, or HSCDATA CSVs need to be recreated.",
+        "rebuild_focus": "Preserve the bearer-authenticated CORES calls, machine-to-service-ID mapping, per-machine CSV transforms, scheduler loop, and HSCDATA output file names.",
+        "proof": [
+            "A test CORES response can be normalized into the expected full and `small_` CSV files.",
+            "Every active `save<Machine>()` path writes the expected columns.",
+            "The Flask machines page can read the recreated `small_` files.",
+        ],
+        "external_inputs": ["CORES bearer token from secure storage", "CORES service IDs", "HSCDATA directory permissions", "network access to n8n"],
+        "pitfalls": ["A rotated token looks like stale machine data.", "Changing CSV columns can silently break graph rendering."],
+    },
+    "UNanofabTools/filetransfer": {
+        "role": "Windows and shell transfer scripts that move machine-controller files to the server.",
+        "open_when": "Open this when a machine control PC stops uploading logs or a transfer path/account/key needs replacement.",
+        "rebuild_focus": "Preserve source directories, destination paths, SSH/SCP behavior, Windows quoting, retry/error output, and account boundaries.",
+        "proof": [
+            "A dry run or test file transfer reaches the expected server directory.",
+            "Paths with spaces and missing source directories fail visibly.",
+            "The recreated script does not depend on undocumented personal credentials.",
+        ],
+        "external_inputs": ["Machine control PC paths", "SSH key or service account approved for transfer", "server destination path", "network reachability"],
+        "pitfalls": ["Personal-account dependencies are not a long-term operational model.", "Windows quoting failures can look like authentication failures."],
+    },
+    "UNanofabTools/picofirmware": {
+        "role": "Older UNanofabTools copies of Pico firmware and Pico diagnostics.",
+        "open_when": "Open this for historical Pico code, unique unfinished scripts, WiFi diagnostics, or comparison against the canonical NanofabToolkit PicoHelperTools folder.",
+        "rebuild_focus": "Preserve MicroPython imports, sensor read loops, WiFi handling, HTTP POST payload shape, endpoint URLs, and diagnostic LED behavior.",
+        "proof": [
+            "A Pico can boot the recreated firmware without import errors.",
+            "WiFi diagnostics succeed or fail with clear output.",
+            "Sensor payloads match the Flask particle or machine API contracts.",
+        ],
+        "external_inputs": ["WiFi SSID and password from secure local config", "Pico MAC/device identity", "server endpoint URL", "sensor wiring"],
+        "pitfalls": ["Canonical Pico firmware lives in NanofabToolkit/PicoHelperTools.", "Some UNanofabTools Pico scripts are incomplete or historical."],
+    },
+    "UNanofabTools/particlepctools": {
+        "role": "Older PC-side particle data viewer and synthetic particle-data generator.",
+        "open_when": "Open this for historical desktop viewer behavior, test particle-data generation, or comparison with NanofabToolkit/ParticleSensor.",
+        "rebuild_focus": "Preserve API URLs, JSON parsing, room map behavior, historical charting, and safe test-data generation behavior.",
+        "proof": [
+            "The viewer can fetch current and historical particle data from a test server.",
+            "Room labels color correctly from API `room_name` and `sensor_number` values.",
+            "The generator can target localhost without accidentally writing to production.",
+        ],
+        "external_inputs": ["Particle API URL", "TLS behavior", "test server target", "room naming convention"],
+        "pitfalls": ["Canonical maintained viewer behavior is in NanofabToolkit/ParticleSensor.", "Timezone conversion has known drift risk."],
+    },
+    "UNanofabTools/dattools": {
+        "role": "DATfixer and DATgrapher command-line tools for Denton 635 log conversion and plotting.",
+        "open_when": "Open this when a raw Denton `.DAT` log needs decoding or a cleaned log needs a pressure graph.",
+        "rebuild_focus": "Preserve binary marker parsing, cleaned text format, timestamp extraction, pressure extraction, graph options, and CLI flags.",
+        "proof": [
+            "A representative `.DAT` file produces the same cleaned text shape.",
+            "A cleaned text file produces the expected pressure/time plot.",
+            "Malformed or incomplete logs fail with a documented message.",
+        ],
+        "external_inputs": ["Representative Denton `.DAT` logs", "matplotlib backend", "local filesystem write permission"],
+        "pitfalls": ["DATfixer and DATgrapher duplicate parsing assumptions.", "Graph display behavior differs on headless hosts."],
+    },
+    "UNanofabTools/utilities": {
+        "role": "Standalone helpers including peak counting, certificate conversion, SSH fetch helper, chem DB init, and unfinished monitor storage.",
+        "open_when": "Open this for one-off helper rebuilds or to decide whether a helper should be retained, replaced, or retired.",
+        "rebuild_focus": "Preserve CLI flags, file formats, certificate output expectations, SSH behavior, database bootstrap behavior, and explicit unfinished status.",
+        "proof": [
+            "Peak counting returns the same cycle count on known input.",
+            "Certificate conversion writes files in the expected format without exposing passwords.",
+            "SSH fetch behavior is either recreated as a personal dev helper or replaced by a documented safer flow.",
+        ],
+        "external_inputs": ["Input data files", "PFX/certificate password from secure storage", "SSH host/key material", "database credentials"],
+        "pitfalls": ["Do not promote personal helper credentials to production.", "Some files are intentionally stubs or one-off scripts."],
+    },
+    "UNanofabTools/hscdisplayerserver": {
+        "role": "Legacy monolithic HSC displayer server retained for historical reference.",
+        "open_when": "Open this when you find old server behavior that predates the Flask app or need to compare a legacy route to the modern implementation.",
+        "rebuild_focus": "Preserve only enough behavior to understand migration history unless an explicit legacy rescue is required.",
+        "proof": [
+            "A maintainer can identify which behavior moved to the Flask server.",
+            "Any recreated legacy behavior is isolated from the production Flask path.",
+        ],
+        "external_inputs": ["Historical HSCDATA files", "legacy server host assumptions"],
+        "pitfalls": ["Do not revive legacy server code as the primary path without a written migration reason."],
+    },
+    "NanofabToolkit/PicoHelperTools": {
+        "role": "Canonical Pico firmware and helper scripts for sensor devices.",
+        "open_when": "Open this first for Pico firmware rebuilds, sensor device setup, MAC discovery, network diagnostics, and MicroPython deployment.",
+        "rebuild_focus": "Preserve MicroPython boot behavior, sensor drivers, WiFi setup, payload schemas, endpoint URLs, and device setup instructions.",
+        "proof": [
+            "A Pico can run the recreated boot and sensor script without missing modules.",
+            "Network check and MAC discovery work on hardware.",
+            "Payloads accepted by the Flask API are byte-for-byte compatible in field names and units.",
+        ],
+        "external_inputs": ["WiFi credentials from secure storage", "Pico device identity", "server URL", "sensor wiring and power"],
+        "pitfalls": ["Hard-coded secrets must be replaced by approved configuration.", "Hardware failures can masquerade as firmware failures."],
+    },
+    "NanofabToolkit/ParticleSensor": {
+        "role": "Canonical desktop particle sensor viewer and API client.",
+        "open_when": "Open this for maintained particle desktop GUI behavior, API processing, packaging, or current-vs-historical particle data workflows.",
+        "rebuild_focus": "Preserve GUI layout, API client behavior, data processing, room map semantics, package entrypoint, and environment data display.",
+        "proof": [
+            "The GUI launches from a clean environment.",
+            "Current and historical API responses render with the expected rooms, tables, and charts.",
+            "Packaging inputs still produce an executable with the expected assets.",
+        ],
+        "external_inputs": ["Particle API URL", "TLS/certificate behavior", "PyQt/matplotlib dependencies", "packaging assets"],
+        "pitfalls": ["Keep API processing and GUI copies synchronized.", "Timezone handling is a known risk area."],
+    },
+    "NanofabToolkit/ALDPeakCounter": {
+        "role": "Desktop GUI for ALD pressure peak counting.",
+        "open_when": "Open this when ALD pressure files need a GUI workflow or the shared peak-count algorithm must be rebuilt.",
+        "rebuild_focus": "Preserve file parsing, peak detection parameters, end-peak heuristic, plotting, GUI controls, and packaging behavior.",
+        "proof": [
+            "Known ALD data returns the same peak count.",
+            "The GUI can load one file and multiple files.",
+            "Packaged app includes required plotting hooks and assets.",
+        ],
+        "external_inputs": ["Representative ALD data files", "PyQt/matplotlib/scipy stack", "packaging icon/assets"],
+        "pitfalls": ["The peak algorithm overlaps UNanofabTools/peakCount.py.", "Boundary peaks are easy to miss."],
+    },
+    "NanofabToolkit/DentonDecoder": {
+        "role": "Desktop Denton decoder and graphing tool.",
+        "open_when": "Open this for GUI Denton conversion/viewing workflows distinct from command-line DATfixer/DATgrapher.",
+        "rebuild_focus": "Preserve decoder behavior, graphing behavior, GUI actions, package entrypoint, and PyInstaller hooks.",
+        "proof": [
+            "Known Denton input converts to the expected readable output.",
+            "Graphs render without blocking or missing dependencies.",
+            "The GUI and packaged executable launch successfully.",
+        ],
+        "external_inputs": ["Representative Denton logs", "GUI dependencies", "packaging hooks/assets"],
+        "pitfalls": ["Do not confuse this GUI workflow with UNanofabTools command-line DAT tools."],
+    },
+    "NanofabToolkit/ParalyneReader": {
+        "role": "Desktop Parylene analog log reader and plotting GUI.",
+        "open_when": "Open this for Parylene log viewing, time-series parsing, GUI behavior, or packaging reconstruction.",
+        "rebuild_focus": "Preserve log parsing, GUI state, plotting, file selection, error messages, and package assets.",
+        "proof": [
+            "Known Parylene logs load and plot correctly.",
+            "Malformed logs produce useful errors.",
+            "The GUI launches from source and packaged form.",
+        ],
+        "external_inputs": ["Representative Parylene logs", "GUI dependencies", "packaging icon/assets"],
+        "pitfalls": ["Local logs and generated artifacts should not become source-of-truth documentation."],
+    },
+    "NanofabToolkit/PreciousMetalReader": {
+        "role": "Desktop tool for retrieving and presenting precious metal usage data.",
+        "open_when": "Open this for precious metal monthly retrieval, CORES-style data access, GUI behavior, or packaging reconstruction.",
+        "rebuild_focus": "Preserve month retrieval behavior, API contracts, CSV/table output, GUI controls, and packaging entrypoints.",
+        "proof": [
+            "A test retrieval returns the expected month data shape.",
+            "The GUI presents results without blocking or crashing on empty months.",
+            "Packaging includes required dependencies and assets.",
+        ],
+        "external_inputs": ["Approved data endpoint credentials", "month/date inputs", "GUI dependencies", "packaging assets"],
+        "pitfalls": ["Network/API failures need visible operator feedback.", "Do not embed tokens in source."],
+    },
+    "NanofabToolkit/packaging-root": {
+        "role": "NanofabToolkit root docs, shared packaging hooks, license, and CI workflow.",
+        "open_when": "Open this when rebuilding packaging infrastructure, GitHub Actions, PyInstaller hooks, or repo-level metadata.",
+        "rebuild_focus": "Preserve package workflow behavior, hook names, asset inclusion rules, license text, and root README expectations.",
+        "proof": [
+            "Packaging hooks are discoverable by PyInstaller.",
+            "The ParticleSensor build workflow still names the right paths.",
+            "Root metadata matches the tool folders.",
+        ],
+        "external_inputs": ["GitHub Actions environment", "PyInstaller dependency versions", "release artifact expectations"],
+        "pitfalls": ["Packaging fixes can affect multiple desktop tools.", "Generated release artifacts are not source files."],
+    },
+}
+
+
+def playbook_for(key: tuple[str, str, str, str]) -> dict[str, object]:
+    _num, repo, slug, _title = key
+    return TOOL_PLAYBOOKS.get(f"{repo}/{slug}", DEFAULT_PLAYBOOK)
+
+
 def markdown_escape(text: str) -> str:
     return text.replace("|", "\\|")
 
@@ -607,12 +833,17 @@ def render_file(sf: SourceFile) -> str:
     return "".join(chunks)
 
 
+def bullet_list(items: list[str]) -> str:
+    return "".join(f"- {item}\n" for item in items)
+
+
 def tool_intro(
     key: tuple[str, str, str, str],
     files: list[SourceFile],
     source_paths: dict[str, Path],
 ) -> str:
     title = title_from_key(key)
+    playbook = playbook_for(key)
     file_rows = []
     for sf in files:
         rel_doc = source_paths[sf.display].relative_to(tool_folder(key)).as_posix()
@@ -627,10 +858,27 @@ def tool_intro(
         "This folder is part of the Path F ultra-deep reconstruction manual. "
         "Its goal is to make this specific tool or source area reproducible from documentation alone. "
         "Read this tool README conceptually first, then use the source-file reconstruction pages as the line-level reference.\n\n"
+        "## When To Open This Folder\n\n"
+        f"{playbook['open_when']}\n\n"
+        "## What This Tool Does\n\n"
+        f"{playbook['role']}\n\n"
+        "## Rebuild Focus\n\n"
+        f"{playbook['rebuild_focus']}\n\n"
+        "## External Inputs You Must Supply\n\n"
+        f"{bullet_list(playbook['external_inputs'])}\n"
+        "## Proof That The Rebuild Works\n\n"
+        f"{bullet_list(playbook['proof'])}\n"
+        "## Common Ways To Get Lost\n\n"
+        f"{bullet_list(playbook['pitfalls'])}\n"
         "## Folder Layout\n\n"
         "- `README.md`: tool-level reconstruction contract and source index.\n"
         "- `source-files/`: one reconstruction page per source file covered by this tool.\n"
         "- `rehearsals/`: tool-local reconstruction drill instructions and any generated overflow pass files for this tool.\n\n"
+        "## Recommended Reading Order\n\n"
+        "1. Read this README and write a one-paragraph contract for the tool.\n"
+        "2. Open only the source-file pages needed for that contract.\n"
+        "3. For each edited or recreated file, complete the file's edge-case matrix.\n"
+        "4. Run the proof checks above before declaring the tool rebuilt.\n\n"
         "## Files Covered\n\n"
         "| Source file | Reconstruction page | Dirty | Untracked |\n|---|---|---:|---:|\n"
         f"{file_table}\n\n"
@@ -700,6 +948,233 @@ def expansion_block(tool_name: str, files: list[SourceFile], pass_index: int) ->
     return "".join(chunks)
 
 
+def tool_entry_parts(entry: dict[str, object]) -> tuple[tuple[str, str, str, str], list[SourceFile], Path]:
+    key = entry["key"]
+    files = entry["files"]
+    folder = entry["folder"]
+    assert isinstance(key, tuple)
+    assert isinstance(files, list)
+    assert isinstance(folder, Path)
+    return key, files, folder
+
+
+def group_totals_from_counts(counts: dict[str, int]) -> dict[str, int]:
+    totals: dict[str, int] = {}
+    for name, count in counts.items():
+        parts = Path(name).parts
+        if name in {"NAVIGATOR.md", "RECONSTRUCTION-CHECKLIST.md"}:
+            group = "navigation/"
+        elif name == "tools/INDEX.md":
+            group = "tools/INDEX.md"
+        elif len(parts) >= 2 and parts[0] == "tools" and parts[1] == "00-system-map":
+            group = "tools/00-system-map/"
+        elif len(parts) >= 3 and parts[0] == "tools":
+            group = f"tools/{parts[1]}/{parts[2]}/"
+        else:
+            group = "other"
+        totals[group] = totals.get(group, 0) + count
+    return totals
+
+
+def tool_word_count(counts: dict[str, int], folder: Path) -> int:
+    prefix = folder.relative_to(OUT).as_posix() + "/"
+    return sum(count for name, count in counts.items() if name.startswith(prefix))
+
+
+def render_tools_index(tool_entries: list[dict[str, object]], counts: dict[str, int]) -> str:
+    rows = []
+    for entry in tool_entries:
+        key, files, folder = tool_entry_parts(entry)
+        playbook = playbook_for(key)
+        rel = folder.relative_to(TOOL_DIR).as_posix()
+        rows.append(
+            "| "
+            f"[`{markdown_escape(key[1] + '/' + key[2])}`]({rel}/README.md) | "
+            f"{markdown_escape(playbook['role'])} | "
+            f"{len(files)} | "
+            f"{tool_word_count(counts, folder):,} | "
+            f"{markdown_escape(playbook['open_when'])} |"
+        )
+    return (
+        "# Path F Tool Index\n\n"
+        "Use this file as the table of contents for the reconstruction body. "
+        "It exists so a maintainer can choose a tool folder directly instead of opening the 3.6M-word corpus linearly.\n\n"
+        "## How To Use This Index\n\n"
+        "1. Find the behavior, failure, or rebuild target in the table.\n"
+        "2. Open that tool folder's `README.md` first.\n"
+        "3. Open only the source-file pages named by that tool README.\n"
+        "4. Return to `../RECONSTRUCTION-CHECKLIST.md` before declaring the rebuild complete.\n\n"
+        "## Tool Folders\n\n"
+        "| Tool folder | Role | Source files | Words | Open when |\n|---|---|---:|---:|---|\n"
+        + "\n".join(rows)
+        + "\n"
+    )
+
+
+def render_navigator(tool_entries: list[dict[str, object]], counts: dict[str, int]) -> str:
+    tool_lookup = {f"{tool_entry_parts(entry)[0][1]}/{tool_entry_parts(entry)[0][2]}": tool_entry_parts(entry)[2] for entry in tool_entries}
+
+    def tool_link(tool_id: str, label: str | None = None) -> str:
+        folder = tool_lookup[tool_id]
+        text = label or tool_id
+        return f"[`{text}`]({folder.relative_to(OUT).as_posix()}/README.md)"
+
+    quick_routes = [
+        (
+            "Rebuild or debug the production web app",
+            f"{tool_link('UNanofabTools/flaskserver')} plus [`tools/00-system-map`](tools/00-system-map/README.md)",
+            "Local Flask import/run succeeds; route, template, database, API, and config contracts match the source pages.",
+        ),
+        (
+            "Machine pages stopped updating",
+            f"{tool_link('UNanofabTools/hscdownloader')} then {tool_link('UNanofabTools/flaskserver')}",
+            "CORES data becomes full and `small_` HSCDATA CSVs; Flask machine pages read and graph the expected columns.",
+        ),
+        (
+            "Particle sensors or particle GUI need rebuilding",
+            f"{tool_link('NanofabToolkit/PicoHelperTools')} then {tool_link('UNanofabTools/flaskserver')} then {tool_link('NanofabToolkit/ParticleSensor')}",
+            "Pico payloads are accepted by the API; desktop GUI renders current and historical data.",
+        ),
+        (
+            "Machine control PC upload broke",
+            f"{tool_link('UNanofabTools/filetransfer')} plus [`../../documentation/UNanofabTools/liveserver/README.md`](../../documentation/UNanofabTools/liveserver/README.md)",
+            "A test file transfers from the control PC path to the expected server destination with visible failure modes.",
+        ),
+        (
+            "Denton raw logs need decoding",
+            f"{tool_link('UNanofabTools/dattools')} for CLI flow or {tool_link('NanofabToolkit/DentonDecoder')} for GUI flow",
+            "Known Denton input produces the expected cleaned output and graph behavior.",
+        ),
+        (
+            "ALD peak counting needs rebuilding",
+            f"{tool_link('NanofabToolkit/ALDPeakCounter')} and {tool_link('UNanofabTools/utilities')}",
+            "Known pressure files return the same peak counts in CLI and GUI contexts.",
+        ),
+        (
+            "Parylene logs need a desktop reader",
+            tool_link("NanofabToolkit/ParalyneReader"),
+            "Known Parylene logs load, parse, and plot; malformed logs produce clear errors.",
+        ),
+        (
+            "Precious metal data retrieval needs rebuilding",
+            tool_link("NanofabToolkit/PreciousMetalReader"),
+            "Known month/date inputs return the expected table shape without embedded credentials.",
+        ),
+        (
+            "Packaging, hooks, or GitHub Actions broke",
+            tool_link("NanofabToolkit/packaging-root"),
+            "PyInstaller hooks and workflow paths match the tool entrypoints and assets.",
+        ),
+        (
+            "You found historical server behavior",
+            tool_link("UNanofabTools/hscdisplayerserver"),
+            "The legacy behavior is mapped to modern Flask behavior or explicitly isolated as historical.",
+        ),
+    ]
+
+    route_rows = "\n".join(f"| {need} | {folder} | {proof} |" for need, folder, proof in quick_routes)
+
+    tool_rows = []
+    for entry in tool_entries:
+        key, files, folder = tool_entry_parts(entry)
+        playbook = playbook_for(key)
+        tool_rows.append(
+            "| "
+            f"[`{markdown_escape(key[1] + '/' + key[2])}`]({folder.relative_to(OUT).as_posix()}/README.md) | "
+            f"{len(files)} | "
+            f"{tool_word_count(counts, folder):,} | "
+            f"{markdown_escape(playbook['open_when'])} |"
+        )
+
+    return (
+        "# Path F Navigator\n\n"
+        "This is the first file to open when Path F feels too large. "
+        "Path F is intentionally exhaustive, but it is not meant to be read like a novel. "
+        "Choose the failing system, open the matching tool README, then use the source-file pages only as evidence.\n\n"
+        "## Do Not Get Lost Rules\n\n"
+        "1. Do not start with `source-files/` unless a tool README points you there.\n"
+        "2. Do not read the Flask folder linearly unless you are rebuilding the entire server.\n"
+        "3. Do not treat redacted values as recoverable secrets; supply them from approved local configuration.\n"
+        "4. Do not treat Path F as live-state truth; production and fresh surveys can override generated documentation.\n"
+        "5. Do not close a rebuild until the proof checks in `RECONSTRUCTION-CHECKLIST.md` are complete.\n\n"
+        "## Fast Route Chooser\n\n"
+        "| Need | Open | Done when |\n|---|---|---|\n"
+        f"{route_rows}\n\n"
+        "## Required Reading Sequence\n\n"
+        "1. Read this navigator.\n"
+        "2. Read [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md).\n"
+        "3. Read [`tools/INDEX.md`](tools/INDEX.md) if your target is not obvious from the route chooser.\n"
+        "4. Read [`tools/00-system-map/README.md`](tools/00-system-map/README.md) to understand source-of-truth and edge-case rules.\n"
+        "5. Read one tool `README.md` at a time.\n"
+        "6. Open source-file pages only when implementing or verifying that specific file.\n\n"
+        "## Tool Map\n\n"
+        "| Tool folder | Source files | Words | Open when |\n|---|---:|---:|---|\n"
+        + "\n".join(tool_rows)
+        + "\n\n"
+        "## External Inputs That Path F Cannot Invent\n\n"
+        "- Live secret values: Flask secret, Duo values, CORES bearer token, WiFi password, SSH keys, certificate passwords, and endpoint credentials.\n"
+        "- Live server state: active tmux sessions, nginx state, TLS renewal state, PostgreSQL state, SQLite instance files, HSCDATA contents, and IT-managed backup status.\n"
+        "- Hardware state: Pico wiring, machine control PC paths, cleanroom network reachability, sensor identity, and representative log files.\n"
+        "- University IT decisions: root access, VM patching, root-owned SSH keys, off-box backups, firewall changes, and UNIX account creation.\n\n"
+        "## Fresh-Consumer Test\n\n"
+        "Use this test whenever the documentation has changed substantially:\n\n"
+        "```sh\n"
+        "bash support/audit.sh\n"
+        "sed -n '1,220p' support/path-f-reconstruction/NAVIGATOR.md\n"
+        "sed -n '1,220p' support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md\n"
+        "sed -n '1,120p' support/path-f-reconstruction/tools/INDEX.md\n"
+        "```\n\n"
+        "A fresh consumer should be able to choose a folder for their task without opening `WORDCOUNT.md` or browsing every generated source page.\n"
+    )
+
+
+def render_reconstruction_checklist(tool_entries: list[dict[str, object]]) -> str:
+    chunks = [
+        "# Path F Reconstruction Checklist\n\n",
+        "Use this checklist to decide whether a rebuild is actually complete. "
+        "The source-file pages explain line-level behavior; this file defines the proof gates that prevent a maintainer from getting buried in detail without finishing the system.\n\n",
+        "## Universal Completion Gates\n\n",
+        "1. **Scope gate**: name the exact tool folder, source files, external inputs, and live systems involved.\n",
+        "2. **Recreate gate**: rebuild the files, commands, routes, templates, schemas, or firmware behavior from the sanitized excerpts and notes.\n",
+        "3. **Edge-case gate**: test the universal edge cases that apply: empty input, malformed input, missing file, permission denied, stale credential, schema drift, partial write, concurrent request, wrong working directory, wrong user account, IT boundary, and production-vs-development configuration.\n",
+        "4. **Evidence gate**: save command output, screenshots, generated files, database diffs, logs, or written observations that prove the rebuilt behavior matches the documented contract.\n",
+        "5. **Handoff gate**: write down any deliberate compatibility break, unresolved live-state difference, redacted value location, or IT ticket.\n\n",
+        "## Source-Of-Truth Order\n\n",
+        "1. Live production evidence wins over generated documentation.\n",
+        "2. Current sibling source repo state wins over old prose in the documentation bundle.\n",
+        "3. Generated Path F source excerpts win over memory and guesses.\n",
+        "4. Historical notes explain why something exists, but they do not override current source or live state.\n\n",
+        "## Secret And Configuration Rule\n\n",
+        "Every redacted value must be supplied through approved configuration, a local `.env`, secure firmware provisioning, University IT, or another approved secret channel. "
+        "Never reconstruct a live secret by guessing from placeholder length, surrounding prose, old screenshots, generated excerpts, or shell history.\n\n",
+        "## Per-Tool Proof Checklist\n\n",
+    ]
+
+    for entry in tool_entries:
+        key, files, folder = tool_entry_parts(entry)
+        playbook = playbook_for(key)
+        chunks.append(f"### `{key[1]}/{key[2]}`\n\n")
+        chunks.append(f"- Folder: [`{folder.relative_to(OUT).as_posix()}/README.md`]({folder.relative_to(OUT).as_posix()}/README.md)\n")
+        chunks.append(f"- Source files covered: `{len(files)}`\n")
+        chunks.append(f"- Role: {playbook['role']}\n")
+        chunks.append("- External inputs to identify before rebuilding:\n")
+        for item in playbook["external_inputs"]:
+            chunks.append(f"  - {item}\n")
+        chunks.append("- Proof checks:\n")
+        for item in playbook["proof"]:
+            chunks.append(f"  - {item}\n")
+        chunks.append("- Drift traps to check:\n")
+        for item in playbook["pitfalls"]:
+            chunks.append(f"  - {item}\n")
+        chunks.append("\n")
+
+    chunks.append(
+        "## Final No-Contact Test\n\n"
+        "A future maintainer passes Path F only when they can pick any one tool folder, state what it owns, identify what external values must come from outside the repo, rebuild or simulate the tool, run the proof checks, and explain whether remaining work belongs to Nanofab engineering or University IT.\n"
+    )
+    return "".join(chunks)
+
+
 def build() -> dict[str, int]:
     files = collect_files()
     grouped: dict[tuple[str, str, str, str], list[SourceFile]] = {}
@@ -748,7 +1223,15 @@ def build() -> dict[str, int]:
             ),
         )
         generated.append(rehearsal_readme)
-        tool_entries.append({"key": key, "files": group, "folder": folder, "rehearsal_dir": rehearsal_dir})
+        tool_entries.append(
+            {
+                "key": key,
+                "files": group,
+                "folder": folder,
+                "rehearsal_dir": rehearsal_dir,
+                "source_paths": source_paths,
+            }
+        )
 
     counts = {str(p.relative_to(OUT)): words(safe_read(p)) for p in generated}
     total = sum(counts.values())
@@ -774,20 +1257,23 @@ def build() -> dict[str, int]:
         pass_index += 1
 
     counts = {str(p.relative_to(OUT)): wc_words(p) for p in generated}
+    tools_index_path = TOOL_DIR / "INDEX.md"
+    write_generated(tools_index_path, render_tools_index(tool_entries, counts))
+    generated.append(tools_index_path)
+
+    navigator_path = OUT / "NAVIGATOR.md"
+    write_generated(navigator_path, render_navigator(tool_entries, counts))
+    generated.append(navigator_path)
+
+    checklist_path = OUT / "RECONSTRUCTION-CHECKLIST.md"
+    write_generated(checklist_path, render_reconstruction_checklist(tool_entries))
+    generated.append(checklist_path)
+
+    counts = {str(p.relative_to(OUT)): wc_words(p) for p in generated}
     total = sum(counts.values())
 
-    tool_totals: dict[str, int] = {}
-    for name, count in counts.items():
-        parts = Path(name).parts
-        if len(parts) >= 2 and parts[0] == "tools" and parts[1] == "00-system-map":
-            tool_name = "tools/00-system-map/"
-        elif len(parts) >= 3 and parts[0] == "tools":
-            tool_name = f"tools/{parts[1]}/{parts[2]}/"
-        else:
-            tool_name = "other"
-        tool_totals[tool_name] = tool_totals.get(tool_name, 0) + count
-
-    tool_rows = "\n".join(f"| `{name}` | {count:,} |" for name, count in sorted(tool_totals.items()))
+    group_totals = group_totals_from_counts(counts)
+    group_rows = "\n".join(f"| `{name}` | {count:,} |" for name, count in sorted(group_totals.items()))
     manifest_rows = "\n".join(f"| `{name}` | {count:,} |" for name, count in sorted(counts.items()))
     readme = (
         "# Path F Ultra-Deep Reconstruction Manual\n\n"
@@ -799,13 +1285,14 @@ def build() -> dict[str, int]:
         "- Generator: `support/path-f-tools/build_path_f.py`\n"
         "- Secret policy: secret-looking literal values are redacted in generated excerpts.\n\n"
         "## Start Here\n\n"
-        "1. `tools/00-system-map/README.md`\n"
-        "2. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n"
-        "3. Inside each tool folder, read `README.md`, then `source-files/`, then any pass files or drill notes in `rehearsals/`.\n"
-        "4. Use `WORDCOUNT.md` as the generated-file manifest.\n\n"
-        "## Tool Folder Word Counts\n\n"
-        "| Tool folder | Words |\n|---|---:|\n"
-        f"{tool_rows}\n"
+        "1. [`NAVIGATOR.md`](NAVIGATOR.md) - choose the right tool folder without reading the corpus linearly.\n"
+        "2. [`RECONSTRUCTION-CHECKLIST.md`](RECONSTRUCTION-CHECKLIST.md) - use this to prove a rebuild is complete.\n"
+        "3. [`tools/INDEX.md`](tools/INDEX.md) - dense index of every tool folder.\n"
+        "4. [`tools/00-system-map/README.md`](tools/00-system-map/README.md) - source-of-truth and universal edge-case rules.\n"
+        "5. Continue through the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`.\n\n"
+        "## Generated Group Word Counts\n\n"
+        "| Group | Words |\n|---|---:|\n"
+        f"{group_rows}\n"
     )
     write_generated(OUT / "README.md", readme)
 
@@ -815,10 +1302,10 @@ def build() -> dict[str, int]:
         f"- Target minimum: **{TARGET_WORDS:,}**\n"
         f"- Files included from source repos: **{len(files)}**\n"
         f"- Generated reconstruction files counted: **{len(generated)}**\n"
-        "- Verification command: `find support/path-f-reconstruction/tools -name '*.md' -print0 | xargs -0 wc -w`\n\n"
-        "## Tool Folder Totals\n\n"
-        "| Tool folder | Words |\n|---|---:|\n"
-        f"{tool_rows}\n\n"
+        "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"
+        "## Generated Group Totals\n\n"
+        "| Group | Words |\n|---|---:|\n"
+        f"{group_rows}\n\n"
         "## File Manifest\n\n"
         "| File | Words |\n|---|---:|\n"
         f"{manifest_rows}\n"

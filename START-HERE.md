@@ -1296,8 +1296,11 @@ Use Path F when the goal is not just handoff, audit, or presentation, but recons
 Path F is generated from the current working-tree source state of the sibling repos and is intentionally much larger than Path E:
 
 - [`support/path-f-reconstruction/README.md`](support/path-f-reconstruction/README.md) — start here
+- [`support/path-f-reconstruction/NAVIGATOR.md`](support/path-f-reconstruction/NAVIGATOR.md) — first file to open when choosing the right reconstruction folder
+- [`support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md`](support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md) — proof gates for deciding whether a rebuild is complete
 - [`support/path-f-reconstruction/WORDCOUNT.md`](support/path-f-reconstruction/WORDCOUNT.md) — tool-folder and file word-count manifest
 - [`support/path-f-reconstruction/SOURCE-MANIFEST.json`](support/path-f-reconstruction/SOURCE-MANIFEST.json) — source files included, dirty/untracked state, and total count metadata
+- [`support/path-f-reconstruction/tools/INDEX.md`](support/path-f-reconstruction/tools/INDEX.md) — compact index of every reconstruction folder
 - [`support/path-f-reconstruction/tools/`](support/path-f-reconstruction/tools/) — per-tool reconstruction folders
 - [`support/path-f-tools/build_path_f.py`](support/path-f-tools/build_path_f.py) — reproducible generator
 
@@ -1305,9 +1308,9 @@ Current generated size:
 
 | Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 3,642,124 | 159 | 17 |
+| Path F ultra-deep reconstruction manual | 3,648,863 | 159 | 17 |
 
-Start with `tools/00-system-map/README.md`, then read the per-tool folders under `tools/UNanofabTools/` and `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. The generated tool folders include sanitized source excerpts, per-file summaries, line-by-line reconstruction notes, and edge-case matrices.
+Start with `NAVIGATOR.md`, then `RECONSTRUCTION-CHECKLIST.md`, then `tools/INDEX.md` if the target folder is not obvious. After that, read `tools/00-system-map/README.md` and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. The generated tool folders include sanitized source excerpts, per-file summaries, line-by-line reconstruction notes, and edge-case matrices.
 
 Important limits:
 
