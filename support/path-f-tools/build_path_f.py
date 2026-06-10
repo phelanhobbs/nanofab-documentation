@@ -1202,7 +1202,7 @@ def render_tools_index(tool_entries: list[dict[str, object]], counts: dict[str, 
     return (
         "# Path F Tool Index\n\n"
         "Use this file as the table of contents for the reconstruction body. "
-        "It exists so a maintainer can choose a tool folder directly instead of opening the 3.6M-word corpus linearly.\n\n"
+        "It exists so a maintainer can choose a tool folder directly instead of opening the 1.5M-word corpus linearly.\n\n"
         "## How To Use This Index\n\n"
         "1. Find the behavior, failure, or rebuild target in the table.\n"
         "2. Open that tool folder's `README.md` first.\n"

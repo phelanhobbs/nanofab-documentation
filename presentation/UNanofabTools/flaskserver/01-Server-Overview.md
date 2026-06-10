@@ -10,7 +10,7 @@ Almost everything you do on the internet works this way:
 
 - You open `https://nfhistory.nanofab.utah.edu` in a browser → the browser is the client, your laptop sends a request, the server sends back an HTML page as the response, and the browser draws it.
 - A Raspberry Pi out in the cleanroom takes a particle-sensor reading and POSTs it as JSON → the Pi is the client, our server is on the receiving end, and it stores the reading in a database.
-- The PrecioiusMetalReader desktop app fetches the latest reagent prices → the desktop app is the client, an internal web service is the server.
+- The PreciousMetalReader desktop app fetches monthly precious-metal usage records from CORES → the desktop app is the client, the CORES web service is the server.
 
 The server is always-on; the clients come and go.
 

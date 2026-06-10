@@ -1,6 +1,6 @@
 # Path F Tool Index
 
-Use this file as the table of contents for the reconstruction body. It exists so a maintainer can choose a tool folder directly instead of opening the 3.6M-word corpus linearly.
+Use this file as the table of contents for the reconstruction body. It exists so a maintainer can choose a tool folder directly instead of opening the 1.5M-word corpus linearly.
 
 ## How To Use This Index
 

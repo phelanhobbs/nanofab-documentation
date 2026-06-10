@@ -32,7 +32,7 @@ known-issues/<repo>/<tool>.md          ← punch list for that tool
 | **A solo successor** walking in after I've left, reading at your own pace | [Path C](#path-c-solo-successor-self-paced) | Multi-week, self-paced |
 | **The long-term maintainer** who needs to own, audit, extend, or rescue the system without contacting me | [Path D](#path-d-long-term-maintainer-deep-dive) | 1-2 focused weeks, repeatable as an audit |
 | **Faith presenting an unlimited, all-encompassing live walkthrough** with slides on a screen | [Path E](#path-e-presentation-guide) | No fixed limit; prefer too long over too short |
-| **A future maintainer rebuilding the server/tools from documentation alone** with no source tree available | [Path F](#path-f-ultra-deep-reconstruction-manual) | 3.6M+ words, split by tool folder |
+| **A future maintainer rebuilding the server/tools from documentation alone** with no source tree available | [Path F](#path-f-ultra-deep-reconstruction-manual) | 1.5M+ words, split by tool folder |
 
 Each path orders the materials so they tell the story in the right sequence. If you're not sure, **Path A is the canonical full handoff** — if you're going to do this in person, do it that way. If there is no person left to ask and the system has to be maintained independently, use **Path D**. If Faith is presenting the complete slide-driven handoff live, use **Path E**. If the maintainer needs a reconstruction-grade manual that explains the repos deeply enough to recreate them from sanitized documentation, use **Path F**.
 
@@ -80,7 +80,7 @@ The goal: the maintainer understands how the Flask app is laid out, how a reques
 
 | # | Show | Why |
 |---|------|-----|
-| 1 | [`02-How-it-Starts.pptx`](presentation/UNanofabTools/flaskserver/slides/02-How-it-Starts.pptx) | Application factory, blueprints, the entrypoint. Skip if they already know Flask deeply. |
+| 1 | [`02-How-It-Starts.pptx`](presentation/UNanofabTools/flaskserver/slides/02-How-It-Starts.pptx) | Application factory, blueprints, the entrypoint. Skip if they already know Flask deeply. |
 | 2 | [`03-Configuration.pptx`](presentation/UNanofabTools/flaskserver/slides/03-Configuration.pptx) | The `.env` keys, the config classes, what changes between dev and prod. |
 | 3 | [`04-Authentication-and-Login.pptx`](presentation/UNanofabTools/flaskserver/slides/04-Authentication-and-Login.pptx) | Auth, sessions, Duo. The most security-sensitive part of the app. |
 | 4 | [`08-IoT-API-Endpoints.pptx`](presentation/UNanofabTools/flaskserver/slides/08-IoT-API-Endpoints.pptx) | The unauthenticated device-data routes — where the Pico sensors POST to. The other half of the Nanofab story. |
@@ -1274,9 +1274,11 @@ Choose one script tier:
 | Tier | Start file | Use when | Words |
 |---|---|---|---:|
 | Practical modular pack | [`support/path-e-script/OPERATOR-CHECKLIST.md`](support/path-e-script/OPERATOR-CHECKLIST.md) | You want the human-sized Path E script with one file per module. | 17,108 |
-| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 88,794 |
-| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 229,239 |
-| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 314,105 |
+| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 76,409 |
+| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 215,932 |
+| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 296,300 |
+
+> **How the generated tiers add length:** each generated tier embeds the same practical module script and then appends structured *drill passes* per module (2 in minimum, 5 in medium, 18 in verbose — orientation, evidence, source-code, live-state, failure-mode, and so on). The passes reuse a fixed rehearsal template per module, so the longer tiers add repetition-based drilling rather than new narrative content. The distinct explanatory material lives in the practical modular pack. Word counts above match each tier's `WORDCOUNT.md` (`wc -w` over `scripts/*.md`).
 
 For the practical modular pack, read `support/path-e-script/OPERATOR-CHECKLIST.md`, then `00-operator-protocol.md`, then `module-00-set-the-contract.md` through `module-21-final-no-contact-check.md` in filename order.
 
@@ -1314,7 +1316,7 @@ Current generated size:
 
 | Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 3,663,176 | 159 | 17 |
+| Path F ultra-deep reconstruction manual | 1,515,981 | 159 | 17 |
 
 Start with `MAINTAINER-FIRST-HOUR.md` if you are new or responding under stress. Otherwise start with `NAVIGATOR.md`, use `TROUBLESHOOTING-ROUTES.md` when you have a symptom, and use `GLOSSARY.md` when a name or acronym is unclear. Before declaring work complete, use `RECONSTRUCTION-CHECKLIST.md`, consult `FIXTURE-AND-EVIDENCE-INDEX.md`, and fill out `REBUILD-EVIDENCE-TEMPLATE.md`. After that, read `tools/INDEX.md`, `tools/00-system-map/README.md`, and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. Every generated source-file page has breadcrumbs back to the navigator, checklist, glossary, fixture index, evidence template, tool index, system map, and owning tool README.
 
@@ -1333,7 +1335,7 @@ Use this section to find anything by name.
 ## UNanofabTools
 
 ### `flaskserver` — the Flask web app (the main thing)
-- Layman: [`presentation/UNanofabTools/flaskserver/README.md`](presentation/UNanofabTools/flaskserver/README.md) (and 16 layman section docs in the same folder)
+- Layman: [`presentation/UNanofabTools/flaskserver/README.md`](presentation/UNanofabTools/flaskserver/README.md) (and 15 layman section docs in the same folder)
 - Slides (16 decks): [`presentation/UNanofabTools/flaskserver/slides/`](presentation/UNanofabTools/flaskserver/slides/)
 - Developer reference (10 numbered docs): [`documentation/UNanofabTools/flaskserver/`](documentation/UNanofabTools/flaskserver/)
 - Punch list: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md)
@@ -1385,7 +1387,7 @@ Use this section to find anything by name.
 - Layman: [`presentation/UNanofabTools/hscdisplayerserver/README.md`](presentation/UNanofabTools/hscdisplayerserver/README.md)
 - Slides: [`HSC-Displayer-Server-Legacy.pptx`](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx)
 - Developer reference: [`documentation/UNanofabTools/hscdisplayerserver/README.md`](documentation/UNanofabTools/hscdisplayerserver/README.md) (+ `ROUTES.md`)
-- Punch list: [`known-issues/UNanofabTools/hscdisplayerserver.md`](known-issues/UNanofabTools/hscdisplayerserver.md) — **only entry: retire it**
+- Punch list: [`known-issues/UNanofabTools/hscdisplayerserver.md`](known-issues/UNanofabTools/hscdisplayerserver.md) — **headline item: retire it; plus 10 secondary tech-debt notes**
 
 ## NanofabToolkit
 

@@ -32,7 +32,7 @@ A condensed mirror of [`known-issues/UNanofabTools/liveserver.md`](../../../know
 13. **Vestigial desktop daemons are running.** Low-priority cleanup.
 14. **A hand-installed `python3.12` exists in `/usr/local/bin`.** Trace ownership before removing or documenting it.
 15. **Long uptime / no recent reboot.** Coordinate a controlled reboot with IT after #2 is fixed so services return automatically.
-16. **`wtmpdb` history starts only in May 2026.** Low-priority retention note.
+16. **`wtmpdb` *login* history starts only in May 2026.** The *reboot* scan in §1 goes back further (Jan 7 2026); the two scans have different retention windows. Low-priority retention note.
 17. **Survey path mismatch left some `phelan`-side sections blank.** The script is patched; re-run it as `phelan` and fold in venv / `.env` / SQLite / data-tree details.
 18. **Root SSH ingress from `155.98.110.9` is IT.** This matches `iceolate.eng.utah.edu`; no action.
 19. **A stale `vim HSCDownloader.py` is open in the `downloader` tmux session.** Close it on the next attach.
@@ -51,7 +51,7 @@ Highest Nanofab-owned priorities: #2, #7, #11, and #17. Batch cleanup/audit item
 | Timezone | `America/Denver` (MDT, -0600) |
 | NTP service | Active (`systemd-timesyncd`); system clock synchronized |
 | Uptime at capture | 290 days, 23h 37m (so last boot: ~2025-08-12) |
-| Last reboots visible in `wtmpdb` | `wtmpdb begins Wed Jan 7 13:59:11 2026` — older history not retained |
+| Last reboots visible in `wtmpdb` | reboot scan: `wtmpdb begins Wed Jan 7 13:59:11 2026` — older history not retained. (The *login* scan in §9.2 begins later, May 8 2026; the two scans have different windows.) |
 
 ## 2. Hardware / resources
 
@@ -259,7 +259,7 @@ The Flask app and HSCDownloader are kept alive by tmux, not systemd. Confirmed l
 | tmux session | Created | Panes / processes | Working dir |
 |--------------|---------|-------------------|-------------|
 | `flaskserver` | Tue Nov 4 2025 16:11:52 | pane 1 → `python` (pid 319076); pane 2 → `bash` (pid 2261577) | `/home/phelan/server/UNanofabTools` (pane 1); `/home/phelan` (pane 2) |
-| `downloader` | Wed Aug 27 2025 16:38:22 | pane 1 → `vim HSCDownloader.py` (pid 71953); pane 2 → `python3` running `HSCDownloader.py` (pid 48188) | `/home/phelan/server/UNanofabTools` |
+| `downloader` | Wed Aug 27 2025 16:38:22 | pane 1 → `vim` (pane pid 48177); pane 2 → `python3` running `HSCDownloader.py` (pane pid 48188) | `/home/phelan/server/UNanofabTools` |
 
 The actual listener processes (live `ps` output filtered to `phelan`):
 
@@ -269,7 +269,7 @@ The actual listener processes (live `ps` output filtered to `phelan`):
 | `323636` | 187d 17h | `python3 HSCDownloader.py` | The downloader. Note: uses `python3`, not `python`. |
 | `71953` | 257d 22h | `vim HSCDownloader.py` | Stale editor session in the `downloader` tmux — see known-issues #19. |
 
-The pid in the listener (2665755) doesn't match the tmux pane pid (319076) for `flaskserver` because the running Flask process predates the current pane's shell — a previous tmux pane that's since been replaced started it. Functionally, the website is alive; structurally, this is normal for a long-running tmux-supervised setup. Once the services are under systemd (finding #2), this kind of pid drift goes away.
+The pids differ between the two tables because they come from two different scans: the tmux table reports *pane* pids (the pane's root process), while the `ps` table reports the long-running processes themselves. For `flaskserver`, the listener (2665755) doesn't match the pane pid (319076) because the running Flask process predates the current pane's shell — a previous tmux pane that's since been replaced started it. For `downloader`, the same applies to the stale editor: the pane pid is 48177 while `ps` shows the `vim HSCDownloader.py` process as 71953. Functionally, the website is alive; structurally, this is normal for a long-running tmux-supervised setup. Once the services are under systemd (finding #2), this kind of pid drift goes away.
 
 ## 7. Log rotation
 
@@ -344,7 +344,7 @@ The file mode is `-rw-rw-r--` (world-readable), which is a small information lea
 - `phelan` from `155.98.111.{59,89,125}` — CADE-pool addresses, consistent with the documented Nanofab access path (laptop → CADE → `nfhistory`).
 - `root` from `155.98.110.9` — this is **IT's administrative host** (the same `iceolate.eng.utah.edu` per the key comment in §9.1). Routine IT maintenance, three sessions in May totaling under 40 minutes. Not unaccounted access.
 
-`wtmpdb begins Fri May 8 13:15:36 2026`, so older login history is not retained. Consider raising the retention if forensic timeline ever matters.
+Login scan: `wtmpdb begins Fri May 8 13:15:36 2026`, so older *login* history is not retained. (The *reboot* scan in §1 begins earlier, Jan 7 2026 — the two scans have different retention windows.) Consider raising the retention if forensic timeline ever matters.
 
 ### 9.3 `phelan`'s authorized keys (from the 2026-06-01 phelan snapshot)
 

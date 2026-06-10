@@ -53,14 +53,15 @@ Severity: **High** = security / correctness / architecture · **Medium** = maint
 - **Risk:** two implementations to keep in sync until this is retired.
 - **Fix:** single-source on the Flask app.
 
-### 10. Unclear which server is actually in production — High (operational)
-- **Risk:** maintainers may patch the wrong one.
-- **Fix:** document and verify the live deployment; make the Flask app authoritative.
+### 10. ~~Unclear which server is actually in production~~ — **Resolved by evidence (2026-06-01), keep verified**
+- **Was:** High (operational) — maintainers might patch the wrong server.
+- **Resolution:** the 2026-06-01 `phelan` survey snapshot (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt`) shows the Flask app (`python run.py`, pid 2665755, in the `flaskserver` tmux session) as the live web process, with nginx proxying to `127.0.0.1:5000`. **No `HSCDisplayerServer.py` process appears anywhere in the snapshot.** The Flask app is production; this legacy server is not running.
+- **Remaining action:** the Flask app is authoritative — patch there. Re-verify with the quarterly survey, and close this item entirely once the legacy code is removed from the production checkout.
 
 ---
 
 ## Suggested priority order
-1. #10 + #1 confirm production and commit to retiring the monolith — High
+1. #1 commit to retiring the monolith (production confirmed: Flask is live per #10's evidence) — High
 2. #8 reconcile routes so the Flask app covers everything still used — Medium/High
 3. #7 ensure DEBUGMODE can't ship True — High (operational)
 4. #2, #4 quick correctness/security fixes if it must keep running — Medium

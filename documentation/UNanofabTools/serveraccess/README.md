@@ -146,8 +146,10 @@ Expected output:
 
 ```
 downloader: 1 windows (created …) [80x24]
-flaskserver: 1 windows (created …) [80x24]
+flaskserver: 2 windows (created …) [80x24]
 ```
+
+(Window counts as of the 2026-06-01 survey; the exact number of windows per session may vary — what matters is that both sessions exist.)
 
 If either session is missing, the program is not running. Proceed to §4.3.
 

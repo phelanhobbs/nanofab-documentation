@@ -2,7 +2,7 @@
 
 Reference for `HSCDisplayerServer.py`, the original monolithic server that predates the Flask `app/` rewrite. This file (`README.md`) covers architecture and behavior; `ROUTES.md` is the route-by-route reference. Bugs/tech debt: `known-issues/UNanofabTools/hscdisplayerserver.md`.
 
-> **Status / scope.** This is the legacy implementation. The maintained codebase is the Flask app under `app/` (documented in `documentation/UNanofabTools/flaskserver/`). Confirm which process is actually running in production before changing anything here. New features should go in the Flask app, not here.
+> **Status / scope.** This is the legacy implementation. The maintained codebase is the Flask app under `app/` (documented in `documentation/UNanofabTools/flaskserver/`). **Production evidence (2026-06-01 `phelan` survey):** the live web process on `nfhistory` is the Flask app (`python run.py` in the `flaskserver` tmux session); no `HSCDisplayerServer.py` process was running. New features go in the Flask app, not here. Re-confirm against the latest survey snapshot before changing anything here.
 
 ## 1. Architecture
 
@@ -71,12 +71,12 @@ HSCDownloader → HSCDATA ─┬─► HSCDisplayerServer (legacy, this file)
 Pico firmware ───────────► (whichever server is live) sensor endpoints
 ```
 
-The legacy server and the Flask app are two implementations of the same system reading the same data. Only one should be live at a time.
+The legacy server and the Flask app are two implementations of the same system reading the same data. Only one should be live at a time — and per the 2026-06-01 survey, the live one is the Flask app.
 
 ## 9. Maintenance guidance
 
 - **Prefer the Flask app for all new work.** Treat this file as reference/fallback.
-- If this is still production, the priority is to migrate fully to the Flask app and retire it.
+- Production is the Flask app (2026-06-01 survey: `python run.py` live, no `HSCDisplayerServer.py` process). The remaining priority is to retire this code from the production checkout — see known-issues #1 and #10.
 - Don't add features here; if you must patch it, mirror the change in the Flask app.
 - See `ROUTES.md` for the endpoint inventory and `known-issues/UNanofabTools/hscdisplayerserver.md` for defects (duplicate `addUser`, monolithic dispatch, in-process TLS, `DuoKeys` import, etc.).
 

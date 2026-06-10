@@ -12,7 +12,7 @@ Reference for the per-machine log-shipping scripts. They run on each tool's Wind
 | `CTRFurnaceTransfer.ps1` | PowerShell | self-loop | Furnace instance |
 | `CTRFurnaceTransfer.bat` | Batch (cmd) | Windows Task Scheduler (run-once) | Windows XP-compatible furnace version |
 
-Destination as committed in the scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model.
+Destination as committed in the per-machine scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model. Note one source wrinkle: `FileTransferTemplate.ps1` itself carries a Windows-style placeholder `$remotePath = "C:\Users\phelanh\Desktop\Logs\MACHINE"` (FileTransferTemplate.ps1:32) that no deployed per-machine copy uses — every actual script (`ALDTransfer.ps1:31`, `Dent635Transfer.ps1:30`, etc.) uses the Unix-style `/Users/phelanh/...` form. Copy a per-machine script, not the template, if creating a new transfer.
 
 **Production-truth warning:** do not assume these scripts are feeding the current Flask deployment until live evidence proves it. Start file-transfer maintenance by checking a recent control-PC run, the server-side destination directory, and the Flask machine-page read path. If current uploads still land under `phelanh` or `/Users/...`, treat that as the high-priority issue tracked in [`../../../known-issues/UNanofabTools/filetransfer.md`](../../../known-issues/UNanofabTools/filetransfer.md) #1.
 
@@ -37,7 +37,9 @@ $sshUsername    = "phelanh"                  # personal account (see known-issue
 $watcherPath    = "C:\...\Logfile"           # folder to watch
 $pscpPath       = "C:\Program Files\PuTTY\pscp.exe"
 $privateKeyPath = "C:\Users\...\.ssh\id_rsa.ppk"
-$remotePath     = "/Users/phelanh/Desktop/Logs/<MACHINE>"
+$remotePath     = "/Users/phelanh/Desktop/Logs/<MACHINE>"   # per-machine scripts; the template's own
+                                                            # placeholder is a Windows-style C:\Users\...
+                                                            # path that nothing deployed uses (see §1)
 ```
 
 ### 2.3 `Send-Files`
