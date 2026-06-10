@@ -116,7 +116,7 @@ exit /b 0
 @echo on
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 1 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `none` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 2
 
@@ -124,7 +124,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 1 is classi
 :: filepath: c:\Users\Phe\Code\Work\UNanofabTools\CTRFurnaceTransferTask.bat
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 2 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 3
 
@@ -132,7 +132,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 2 is classi
 :: Copyright (c) 2024 Phelan Hobbs
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 3 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 4
 
@@ -140,7 +140,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 3 is classi
 :: All rights reserved.
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 4 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `transfer` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 5
 
@@ -148,7 +148,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 4 is classi
 ::
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 5 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 6
 
@@ -156,7 +156,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 5 is classi
 :: Version: 0.4.0
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 6 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 7
 
@@ -164,7 +164,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 6 is classi
 :: Date: 2025-03-07
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 7 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 8
 
@@ -172,7 +172,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 7 is classi
 ::
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 8 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 9
 
@@ -180,7 +180,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 8 is classi
 :: This code was created for the University of Utah Nanofab
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 9 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 10
 
@@ -188,7 +188,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 9 is classi
 :: Windows XP batch version of the furnace transfer script
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 10 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 11
 
@@ -196,15 +196,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 10 is class
 :: Modified for scheduled task execution
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 11 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 13
 
@@ -212,7 +204,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 12 is class
 :: Configuration - MODIFY THESE VALUES
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 13 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 14
 
@@ -220,7 +212,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 13 is class
 set logFilePath=C:\Documents and Settings\user\Desktop\script\log.txt
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 14 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 15
 
@@ -228,7 +220,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 14 is class
 set watcherPath=C:\Program Files\TymkonTools\DataLog
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 15 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 16
 
@@ -236,7 +228,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 15 is class
 set pscpPath=C:\Documents and Settings\user\Desktop\script\PuTTY\pscp.exe
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 16 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 17
 
@@ -244,7 +236,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 16 is class
 set privateKeyPath=C:\Documents and Settings\user\Desktop\script\.ssh\privKey.ppk
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 17 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `transfer` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 18
 
@@ -252,7 +244,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 17 is class
 set remotePath=/Users/phelanh/Desktop/Logs/Furnaces
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 18 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `transfer` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 19
 
@@ -260,7 +252,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 18 is class
 set sshServer=nfhistory.nanofab.utah.edu
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 19 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 20
 
@@ -268,7 +260,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 19 is class
 set sshPort=22
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 20 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `transfer` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 21
 
@@ -276,15 +268,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 20 is class
 set sshUsername=phelanh
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 21 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `transfer` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 22
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 22 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `transfer` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 23
 
@@ -292,7 +276,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 22 is class
 :: Log the script start time
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 23 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 24
 
@@ -300,15 +284,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 23 is class
 echo %date% %time%, Script started >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 24 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 25
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 25 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 26
 
@@ -316,7 +292,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 25 is class
 :: Check for running instance using a lock file
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 26 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 27
 
@@ -324,7 +300,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 26 is class
 if exist "%TEMP%\FurnTransferScript.lock" (
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 27 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 28
 
@@ -332,7 +308,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 27 is class
     echo %date% %time%, Script already running, exiting >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 28 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 29
 
@@ -340,7 +316,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 28 is class
     exit /b 1
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 29 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 30
 
@@ -348,15 +324,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 29 is class
 )
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 30 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 31
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 31 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 32
 
@@ -364,7 +332,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 31 is class
 :: Create lock file
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 32 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 33
 
@@ -372,15 +340,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 32 is class
 echo %date% %time% > "%TEMP%\FurnTransferScript.lock"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 33 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 34
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 34 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 35
 
@@ -388,7 +348,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 34 is class
 :: Set error handling
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 35 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 36
 
@@ -396,15 +356,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 35 is class
 setlocal EnableExtensions EnableDelayedExpansion
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 36 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 37
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 37 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 38
 
@@ -412,7 +364,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 37 is class
 :: Process files and exit
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 38 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 39
 
@@ -420,7 +372,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 38 is class
 call :SendFiles
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 39 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 40
 
@@ -428,7 +380,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 39 is class
 call :CleanUp
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 40 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 41
 
@@ -436,15 +388,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 40 is class
 exit /b 0
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 41 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 42
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 42 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 43
 
@@ -452,7 +396,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 42 is class
 :SendFiles
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 43 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 44
 
@@ -460,15 +404,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 43 is class
     echo %date% %time%, Running SendFiles function >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 44 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 45
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 45 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 46
 
@@ -476,7 +412,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 45 is class
     :: Find all files in the watched directory
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 46 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 47
 
@@ -484,7 +420,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 46 is class
     for /f "tokens=*" %%a in ('dir /s /b /a-d "%watcherPath%"') do (
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 47 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 48
 
@@ -492,7 +428,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 47 is class
         call :ProcessFile "%%a"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 48 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 49
 
@@ -500,7 +436,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 48 is class
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 49 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 50
 
@@ -508,15 +444,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 49 is class
     goto :eof
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 50 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 51
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 51 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 52
 
@@ -524,7 +452,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 51 is class
 :ProcessFile
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 52 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 53
 
@@ -532,7 +460,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 52 is class
     :: Extract filename and path
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 53 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 54
 
@@ -540,7 +468,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 53 is class
     set "filePath=%~1"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 54 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 55
 
@@ -548,15 +476,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 54 is class
     set "fileName=%~nx1"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 55 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 56
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 56 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 57
 
@@ -564,7 +484,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 56 is class
     :: Calculate relative path
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 57 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 58
 
@@ -572,15 +492,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 57 is class
     call set relPath=%%filePath:%watcherPath%=%%
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 58 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 59
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 59 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 60
 
@@ -588,7 +500,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 59 is class
     :: Fix path formatting (replace backslashes with forward slashes)
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 60 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 61
 
@@ -596,15 +508,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 60 is class
     set "remoteFilePath=%remotePath%/%relPath:\=/%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 61 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 62
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 62 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 63
 
@@ -612,7 +516,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 62 is class
     :: Log the operation
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 63 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 64
 
@@ -620,7 +524,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 63 is class
     echo %date% %time%, Processing file: %filePath% >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 64 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 65
 
@@ -628,15 +532,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 64 is class
     echo %date% %time%, Target path: %remoteFilePath% >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 65 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 66
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 66 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 67
 
@@ -644,7 +540,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 66 is class
     :: Transfer the file using PSCP
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 67 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `blank` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 68
 
@@ -652,15 +548,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 67 is class
     "%pscpPath%" -P %sshPort% -i "%privateKeyPath%" "%filePath%" %sshUsername%@%sshServer%:"%remoteFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 68 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `transfer` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 69
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 69 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `transfer` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 70
 
@@ -668,7 +556,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 69 is class
     :: Log the result
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 70 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 71
 
@@ -676,7 +564,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 70 is class
     if %ERRORLEVEL% EQU 0 (
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 71 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 72
 
@@ -684,7 +572,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 71 is class
         echo %date% %time%, Successfully transferred file: %fileName% >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 72 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 73
 
@@ -692,7 +580,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 72 is class
     ) else (
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 73 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 74
 
@@ -700,7 +588,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 73 is class
         echo %date% %time%, ERROR: Failed to transfer file: %fileName%, Error code: %ERRORLEVEL% >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 74 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 75
 
@@ -708,15 +596,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 74 is class
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 75 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 76
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 76 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 77
 
@@ -724,15 +604,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 76 is class
     goto :eof
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 77 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 78
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 78 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 79
 
@@ -740,7 +612,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 78 is class
 :CleanUp
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 79 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 80
 
@@ -748,7 +620,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 79 is class
     :: Remove lock file on exit
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 80 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 81
 
@@ -756,7 +628,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 80 is class
     echo %date% %time%, Script completed >> "%logFilePath%"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 81 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 82
 
@@ -764,7 +636,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 81 is class
     if exist "%TEMP%\FurnTransferScript.lock" del "%TEMP%\FurnTransferScript.lock"
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 82 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 83
 
@@ -772,7 +644,7 @@ Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 82 is class
     goto :eof
 ```
 
-Reconstruction rule: in `UNanofabTools/CTRFurnaceTransfer.bat`, line 83 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 
 

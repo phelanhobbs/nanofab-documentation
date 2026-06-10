@@ -131,7 +131,7 @@ button:hover,.btn:hover{background:var(--nf-red-dark); border-color:var(--nf-red
 :root{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 1 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `none` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 2
 
@@ -139,7 +139,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 1 is 
   --nf-red:#cc0000;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 2 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 3
 
@@ -147,7 +147,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 2 is 
   --nf-red-dark:#a80000;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 3 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 4
 
@@ -155,7 +155,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 3 is 
   --nf-dark:#111;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 4 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 5
 
@@ -163,7 +163,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 4 is 
   --nf-text:#202124;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 5 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 6
 
@@ -171,7 +171,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 5 is 
   --nf-muted:#6b7280;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 6 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 7
 
@@ -179,7 +179,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 6 is 
   --nf-border:#e5e7eb;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 7 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 8
 
@@ -187,7 +187,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 7 is 
   --nf-bg:#f7f7f7;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 8 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 9
 
@@ -195,7 +195,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 8 is 
   --ok:#19a974;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 9 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 10
 
@@ -203,7 +203,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 9 is 
   --warn:#f59e0b;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 10 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 11
 
@@ -211,7 +211,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 10 is
   --bad:#dc2626;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 11 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 12
 
@@ -219,23 +219,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 11 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 12 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 13
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 13 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-*{box-sizing:border-box}
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 14 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 15
 
@@ -243,7 +227,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 14 is
 html,body{height:100%}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 15 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 16
 
@@ -251,7 +235,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 15 is
 body{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 16 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 17
 
@@ -259,7 +243,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 16 is
   margin:0;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 17 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 18
 
@@ -267,7 +251,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 17 is
   font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 18 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 19
 
@@ -275,7 +259,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 18 is
   color:var(--nf-text);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 19 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 20
 
@@ -283,7 +267,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 19 is
   background:var(--nf-bg);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 20 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 21
 
@@ -291,23 +275,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 20 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 21 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 22
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 22 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 23
-
-```text
-/* Header */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 23 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 24
 
@@ -315,7 +283,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 23 is
 .nf-header{background:var(--nf-red); color:#fff; position:sticky; top:0; z-index:10; box-shadow:0 1px 0 rgba(0,0,0,.08)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 24 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 25
 
@@ -323,15 +291,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 24 is
 .nf-bar{max-width:1400px; margin:0 auto; padding:10px 16px; display:flex; gap:16px; align-items:center; justify-content:space-between}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 25 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 26
-
-```text
-/* Header brand spacing — make the U badge sit closer to the text */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 26 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 27
 
@@ -339,7 +299,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 26 is
 .nf-brand{color:#fff; text-decoration:none; font-weight:800; letter-spacing:.02em; display:flex; align-items:center; gap:2px;}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 27 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 28
 
@@ -347,15 +307,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 27 is
 .nf-brand .nf-u{display:inline-grid; place-items:center; width:20px; height:20px; border-radius:2px; background:#fff; color:var(--nf-red); font-weight:900}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 28 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 29
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 29 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 30
 
@@ -363,7 +315,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 29 is
 .nf-nav{display:flex; gap:12px; flex-wrap:wrap}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 30 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 31
 
@@ -371,7 +323,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 30 is
 .nf-link{color:#fff; text-decoration:none; padding:6px 10px; border-radius:6px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 31 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 32
 
@@ -379,7 +331,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 31 is
 .nf-link:hover{background:rgba(255,255,255,.15)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 32 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 33
 
@@ -387,23 +339,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 32 is
 .nf-link.active{background:#fff; color:var(--nf-red); font-weight:700}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 33 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 34
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 34 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 35
-
-```text
-/* Page shell */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 35 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 36
 
@@ -411,7 +347,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 35 is
 .page{max-width:1400px; margin:18px auto 48px; padding:0 16px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 36 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 37
 
@@ -419,7 +355,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 36 is
 .flash-wrap{max-width:1000px; margin:0 auto 10px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 37 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 38
 
@@ -427,7 +363,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 37 is
 .flash{padding:10px 12px; border-radius:8px; background:#fff; border:1px solid var(--nf-border)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 38 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 39
 
@@ -435,7 +371,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 38 is
 .flash.success{border-color:#c7f0d8; background:#f3fdf7}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 39 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 40
 
@@ -443,23 +379,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 39 is
 .flash.error{border-color:#ffd1d1; background:#fff7f7}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 40 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 41
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 41 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 42
-
-```text
-/* Forms + buttons */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 42 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 43
 
@@ -467,7 +387,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 42 is
 input[type="text"],input[type="date"],input[type="number"],input[type="file"],select,textarea{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 43 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 44
 
@@ -475,7 +395,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 43 is
   padding:8px 10px; border:1px solid var(--nf-border); border-radius:8px; background:#fff; width:100%;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 44 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 45
 
@@ -483,7 +403,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 44 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 45 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 46
 
@@ -491,7 +411,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 45 is
 button,.btn{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 46 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 47
 
@@ -499,7 +419,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 46 is
   display:inline-flex; align-items:center; gap:8px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 47 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 48
 
@@ -507,7 +427,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 47 is
   padding:8px 14px; border-radius:999px; border:1px solid var(--nf-red);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 48 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 49
 
@@ -515,7 +435,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 48 is
   background:var(--nf-red); color:#fff; cursor:pointer; text-decoration:none;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 49 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 50
 
@@ -523,7 +443,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 49 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 50 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 51
 
@@ -531,23 +451,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 50 is
 button:hover,.btn:hover{background:var(--nf-red-dark); border-color:var(--nf-red-dark)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 51 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 52
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 52 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 53
-
-```text
-/* Search bar on inventory */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 53 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 54
 
@@ -555,7 +459,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 53 is
 .actions, .searchbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:8px 0 16px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 54 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 55
 
@@ -563,23 +467,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 54 is
 .muted{color:var(--nf-muted); font-size:12px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 55 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 56
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 56 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 57
-
-```text
-/* Table */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 57 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 58
 
@@ -587,7 +475,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 57 is
 .table-wrap{overflow:auto; background:#fff; border:1px solid var(--nf-border); border-radius:12px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 58 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 59
 
@@ -595,7 +483,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 58 is
 .inv-table{width:100%; min-width:1400px; border-collapse:separate; border-spacing:0; font-size:13px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 59 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 60
 
@@ -603,7 +491,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 59 is
 .inv-table thead th{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 60 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 61
 
@@ -611,7 +499,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 60 is
   position:sticky; top:0; z-index:1; background:#fff; text-align:left; font-weight:700;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 61 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 62
 
@@ -619,7 +507,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 61 is
   padding:10px 12px; border-bottom:2px solid var(--nf-red);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 62 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 63
 
@@ -627,7 +515,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 62 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 63 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 64
 
@@ -635,7 +523,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 63 is
 .inv-table tbody td{padding:8px 12px; border-bottom:1px solid var(--nf-border); vertical-align:top}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 64 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 65
 
@@ -643,7 +531,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 64 is
 .inv-table tbody tr:hover{background:#fafafa}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 65 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 66
 
@@ -651,23 +539,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 65 is
 .inv-table code{background:#f3f4f6; padding:2px 6px; border-radius:6px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 66 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 67
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 67 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 68
-
-```text
-/* sticky first column if used */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 68 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 69
 
@@ -675,23 +547,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 68 is
 .inv-table .sticky-col{left:0; position:sticky; background:#fff; box-shadow:1px 0 0 var(--nf-border)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 69 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 70
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 70 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 71
-
-```text
-/* Pills */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 71 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 72
 
@@ -699,7 +555,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 71 is
 .pill{display:inline-block; padding:2px 8px; border-radius:999px; font-weight:700; font-size:12px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 72 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 73
 
@@ -707,7 +563,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 72 is
 .pill.ok{background:rgba(25,169,116,.1); color:var(--ok)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 73 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 74
 
@@ -715,7 +571,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 73 is
 .pill.warn{background:rgba(245,158,11,.12); color:var(--warn)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 74 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 75
 
@@ -723,23 +579,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 74 is
 .pill.bad{background:rgba(220,38,38,.12); color:var(--bad)}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 75 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 76
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 76 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 77
-
-```text
-/* Footer */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 77 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 78
 
@@ -747,23 +587,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 77 is
 .nf-footer{max-width:1400px; margin:24px auto; padding:0 16px; color:var(--nf-muted); font-size:12px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 78 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 79
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 79 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 80
-
-```text
-/* Print */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 80 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 81
 
@@ -771,7 +595,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 80 is
 @media print{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 81 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 82
 
@@ -779,7 +603,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 81 is
   .nf-header,.nf-footer,.actions,.searchbar,.flash-wrap{display:none!important}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 82 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 83
 
@@ -787,7 +611,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 82 is
   .page{margin:0; padding:0}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 83 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 84
 
@@ -795,7 +619,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 83 is
   .table-wrap{border:0}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 84 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 85
 
@@ -803,7 +627,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 84 is
   .inv-table thead th,.inv-table tbody td{padding:6px 8px; font-size:11.5px}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 85 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 86
 
@@ -811,23 +635,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 85 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 86 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 87
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 87 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `css` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 88
-
-```text
-/* Tab controls (override global button styles) */
-```
-
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 88 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 89
 
@@ -835,7 +643,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 88 is
 .tabs .tab{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 89 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `comment` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 90
 
@@ -843,7 +651,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 89 is
   background:#fff;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 90 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 91
 
@@ -851,7 +659,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 90 is
   color:var(--nf-text);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 91 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 92
 
@@ -859,7 +667,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 91 is
   border:1px solid var(--nf-border);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 92 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 93
 
@@ -867,7 +675,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 92 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 93 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 94
 
@@ -875,7 +683,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 93 is
 .tabs .tab.active{
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 94 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 95
 
@@ -883,7 +691,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 94 is
   background:var(--nf-red);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 95 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 96
 
@@ -891,7 +699,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 95 is
   color:#fff;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 96 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 97
 
@@ -899,7 +707,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 96 is
   border-color:var(--nf-red);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 97 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `css`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 ### Line 98
 
@@ -907,7 +715,7 @@ Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 97 is
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/static/css/inventory.css`, line 98 is classified as `css`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls. Neighbor context: previous kind is `css` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`css` — This CSS line contributes presentation. Preserve selectors that JavaScript or templates rely on, layout constraints, print behavior, and responsive behavior; edge cases include long labels, small screens, and overlapping controls.
 
 
 

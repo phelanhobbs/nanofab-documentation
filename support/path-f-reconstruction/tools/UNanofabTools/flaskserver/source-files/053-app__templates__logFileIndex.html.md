@@ -64,15 +64,7 @@ This section is written so a maintainer can recreate the file's behavior without
 {% extends "base.html" %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 1 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 3
 
@@ -80,15 +72,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 2 
 {% block title %}Log Files - UNanofab Tools{% endblock %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 3 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 4 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 5
 
@@ -96,7 +80,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 4 
 {% block content %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 5 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 6
 
@@ -104,7 +88,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 5 
 <div class="logfiles-container">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 6 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 7
 
@@ -112,15 +96,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 6 
     <h1>Select Device</h1>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 7 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 8
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 8 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 9
 
@@ -128,7 +104,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 8 
     <h2>ALD Tools</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 9 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 10
 
@@ -136,7 +112,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 9 
     <div class="log-buttons">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 10 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 11
 
@@ -144,7 +120,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 10
         <a href="{{ url_for('machines.ald_rf_data') }}"><button>RF DATA</button></a>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 11 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 12
 
@@ -152,7 +128,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 11
         <a href="{{ url_for('machines.ald_pressure_data') }}"><button>Pressure Data</button></a>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 12 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 13
 
@@ -160,15 +136,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 12
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 13 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 14 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 15
 
@@ -176,7 +144,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 14
     <h2>Ebeam Tools</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 15 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 16
 
@@ -184,15 +152,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 15
     <div class="log-buttons">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 16 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 17
-
-```text
-        <!-- Add Ebeam log links here when available -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 17 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 18
 
@@ -200,15 +160,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 17
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 18 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 19
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 19 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 20
 
@@ -216,7 +168,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 19
     <h2>Parylene Tools</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 20 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 21
 
@@ -224,7 +176,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 20
     <div class="log-buttons">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 21 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 22
 
@@ -232,7 +184,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 21
         <a href="{{ url_for('machines.parylene_uploads') }}"><button>Parylene Log Data</button></a>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 22 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 23
 
@@ -240,7 +192,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 22
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 23 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 24
 
@@ -248,7 +200,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 23
 </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 24 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 25
 
@@ -256,7 +208,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 24
 {% endblock %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/logFileIndex.html`, line 25 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `html` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 
 

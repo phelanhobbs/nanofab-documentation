@@ -620,15 +620,7 @@ select:focus {
 {% extends "chem/base.html" %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 1 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 3
 
@@ -636,15 +628,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 2 is 
 {% block title %}Edit Chemical Container – Utah Nanofab{% endblock %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 3 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 4 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 5
 
@@ -652,7 +636,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 4 is 
 {% block content %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 5 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 6
 
@@ -660,7 +644,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 5 is 
 <section class="page-head">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 6 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 7
 
@@ -668,7 +652,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 6 is 
   <h1>Edit Chemical Container</h1>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 7 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 8
 
@@ -676,7 +660,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 7 is 
   <p class="muted">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 8 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 9
 
@@ -684,7 +668,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 8 is 
     Scan or enter a <strong>barcode</strong> to load an existing container, then update any fields and save.
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 9 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 10
 
@@ -692,7 +676,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 9 is 
   </p>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 10 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 11
 
@@ -700,15 +684,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 10 is
 </section>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 11 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 13
 
@@ -716,7 +692,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 12 is
 <section class="card">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 13 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html-form`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 14
 
@@ -724,15 +700,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 13 is
   <form method="post" action="{{ url_for('chem.edit_container') }}" autocomplete="off">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 14 is classified as `html-form`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 15
-
-```text
-    <!-- REQUIRED HIDDEN ID -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 15 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `html-form` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-form` — This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names.
 
 ### Line 16
 
@@ -740,23 +708,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 15 is
     <input type="hidden" id="container_id" name="container_id">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 16 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 17
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 17 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html-control` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 18
-
-```text
-    <!-- LOOKUP -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 18 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 19
 
@@ -764,7 +716,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 18 is
     <div class="grid location-grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 19 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 20
 
@@ -772,7 +724,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 19 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 20 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 21
 
@@ -780,7 +732,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 20 is
         <label for="barcode_lookup"><strong>Barcode</strong></label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 21 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 22
 
@@ -788,7 +740,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 21 is
         <input id="barcode_lookup" name="barcode_lookup" type="text" placeholder="Scan or enter barcode" inputmode="text">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 22 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 23
 
@@ -796,7 +748,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 22 is
         <div class="hint">Use barcode to load the existing container record.</div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 23 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 24
 
@@ -804,15 +756,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 23 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 24 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 25
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 25 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 26
 
@@ -820,7 +764,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 25 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 26 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 27
 
@@ -828,7 +772,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 26 is
         <label>&nbsp;</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 27 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 28
 
@@ -836,7 +780,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 27 is
         <button class="btn" type="button" id="lookupBtn">Load Container</button>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 28 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 29
 
@@ -844,15 +788,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 28 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 29 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 30
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 30 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 31
 
@@ -860,7 +796,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 30 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 31 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 32
 
@@ -868,7 +804,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 31 is
         <label for="container_code">Container Code</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 32 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 33
 
@@ -876,7 +812,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 32 is
         <input id="container_code" name="container_code_display" type="text" readonly placeholder="Will autofill">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 33 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 34
 
@@ -884,7 +820,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 33 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 34 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 35
 
@@ -892,15 +828,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 34 is
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 35 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 36
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 36 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 37
 
@@ -908,23 +836,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 36 is
     <hr class="sep">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 37 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 38
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 38 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 39
-
-```text
-    <!-- MATERIAL -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 39 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 40
 
@@ -932,7 +844,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 39 is
     <h2 class="h2">Material</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 40 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 41
 
@@ -940,7 +852,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 40 is
     <div class="grid location-grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 41 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 42
 
@@ -948,7 +860,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 41 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 42 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 43
 
@@ -956,7 +868,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 42 is
         <label for="item_name">Material Name</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 43 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 44
 
@@ -964,7 +876,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 43 is
         <input id="item_name" name="item_name" type="text" placeholder="Chemical name">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 44 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 45
 
@@ -972,15 +884,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 44 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 45 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 46
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 46 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 47
 
@@ -988,7 +892,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 46 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 47 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 48
 
@@ -996,7 +900,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 47 is
         <label for="vendor_name">Vendor</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 48 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 49
 
@@ -1004,7 +908,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 48 is
         <input id="vendor_name" name="vendor_name" type="text" placeholder="Vendor">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 49 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 50
 
@@ -1012,15 +916,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 49 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 50 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 51
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 51 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 52
 
@@ -1028,7 +924,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 51 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 52 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 53
 
@@ -1036,7 +932,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 52 is
         <label for="physical_state">Physical State</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 53 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 54
 
@@ -1044,7 +940,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 53 is
         <input id="physical_state" name="physical_state" type="text" placeholder="Liquid / Solid / Gas">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 54 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 55
 
@@ -1052,15 +948,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 54 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 55 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 56
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 56 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 57
 
@@ -1068,7 +956,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 56 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 57 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 58
 
@@ -1076,7 +964,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 57 is
         <label for="size">Amount per Container</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 58 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 59
 
@@ -1084,7 +972,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 58 is
         <input id="size" name="size" type="text" placeholder="e.g. 1">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 59 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 60
 
@@ -1092,15 +980,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 59 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 60 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 61
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 61 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 62
 
@@ -1108,7 +988,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 61 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 62 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 63
 
@@ -1116,7 +996,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 62 is
         <label for="unit">Unit</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 63 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 64
 
@@ -1124,7 +1004,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 63 is
         <input id="unit" name="unit" type="text" placeholder="e.g. Liter / mL / g">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 64 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 65
 
@@ -1132,15 +1012,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 64 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 65 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 66
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 66 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 67
 
@@ -1148,7 +1020,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 66 is
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 67 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 68
 
@@ -1156,7 +1028,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 67 is
         <label for="system">System</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 68 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 69
 
@@ -1164,7 +1036,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 68 is
         <input id="system" name="system" type="text" placeholder="Open / Closed / etc">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 69 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 70
 
@@ -1172,15 +1044,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 69 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 70 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 71
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 71 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 72
 
@@ -1188,7 +1052,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 71 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 72 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 73
 
@@ -1196,7 +1060,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 72 is
         <label for="catalog_number">Catalog #</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 73 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 74
 
@@ -1204,7 +1068,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 73 is
         <input id="catalog_number" name="catalog_number" type="text" placeholder="Catalog number">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 74 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 75
 
@@ -1212,15 +1076,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 74 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 75 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 76
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 76 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 77
 
@@ -1228,7 +1084,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 76 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 77 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 78
 
@@ -1236,7 +1092,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 77 is
         <label for="description">Description</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 78 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 79
 
@@ -1244,7 +1100,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 78 is
         <textarea id="description" name="description" rows="3" placeholder="Optional description"></textarea>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 79 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 80
 
@@ -1252,15 +1108,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 79 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 80 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 81
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 81 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 82
 
@@ -1268,7 +1116,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 81 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 82 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 83
 
@@ -1276,7 +1124,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 82 is
         <label for="lot_number"><strong>Lot #</strong></label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 83 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 84
 
@@ -1284,7 +1132,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 83 is
         <input id="lot_number" name="lot_number" type="text" placeholder="Lot number">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 84 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 85
 
@@ -1292,7 +1140,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 84 is
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 85 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 86
 
@@ -1300,15 +1148,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 85 is
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 86 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 87
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 87 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 88
 
@@ -1316,23 +1156,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 87 is
     <hr class="sep">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 88 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 89
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 89 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 90
-
-```text
-    <!-- LOCATION -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 90 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 91
 
@@ -1340,7 +1164,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 90 is
     <h2 class="h2">Location</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 91 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 92
 
@@ -1348,7 +1172,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 91 is
     <div class="grid location-grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 92 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 93
 
@@ -1356,7 +1180,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 92 is
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 93 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 94
 
@@ -1364,7 +1188,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 93 is
         <label for="location_template">Location Template</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 94 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 95
 
@@ -1372,7 +1196,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 94 is
         <select id="location_template" name="location_template">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 95 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 96
 
@@ -1380,7 +1204,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 95 is
           <option value="">Select a location...</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 96 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 97
 
@@ -1388,7 +1212,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 96 is
           <option value="gas_chem_room">Gas Chem Room</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 97 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 98
 
@@ -1396,7 +1220,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 97 is
           <option value="pass_through">Pass-Through</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 98 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 99
 
@@ -1404,7 +1228,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 98 is
           <option value="bay_a">Bay A</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 99 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 100
 
@@ -1412,7 +1236,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 99 is
           <option value="bay_b">Bay B</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 100 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 101
 
@@ -1420,7 +1244,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 100 i
           <option value="bay_c">Bay C</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 101 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 102
 
@@ -1428,7 +1252,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 101 i
           <option value="bay_d">Bay D</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 102 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 103
 
@@ -1436,7 +1260,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 102 i
           <option value="bay_e">Bay E</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 103 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 104
 
@@ -1444,7 +1268,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 103 i
           <option value="bay_f">Bay F</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 104 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 105
 
@@ -1452,7 +1276,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 104 i
           <option value="bay_g">Bay G</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 105 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 106
 
@@ -1460,7 +1284,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 105 i
           <option value="student_yellow">Student Yellow</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 106 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 107
 
@@ -1468,7 +1292,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 106 i
           <option value="mocvd">MOCVD</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 107 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 108
 
@@ -1476,7 +1300,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 107 i
           <option value="microfluidics">Microfluidics</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 108 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 109
 
@@ -1484,7 +1308,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 108 i
           <option value="metrology">Metrology</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 109 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 110
 
@@ -1492,7 +1316,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 109 i
           <option value="backend_lab">Backend Lab</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 110 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 111
 
@@ -1500,7 +1324,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 110 i
           <option value="prototyping_lab">Prototyping Lab</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 111 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 112
 
@@ -1508,7 +1332,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 111 i
           <option value="cr_shop">CR Shop</option>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 112 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 113
 
@@ -1516,7 +1340,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 112 i
         </select>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 113 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 114
 
@@ -1524,7 +1348,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 113 i
         <div class="hint">Select a room template or edit room fields manually.</div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 114 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 115
 
@@ -1532,15 +1356,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 114 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 115 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 116
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 116 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 117
 
@@ -1548,7 +1364,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 116 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 117 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 118
 
@@ -1556,7 +1372,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 117 i
         <label for="room_no">Room #</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 118 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 119
 
@@ -1564,7 +1380,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 118 i
         <input id="room_no" name="room_no" type="text" placeholder="e.g. 2025N">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 119 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 120
 
@@ -1572,15 +1388,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 119 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 120 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 121
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 121 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 122
 
@@ -1588,7 +1396,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 121 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 122 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 123
 
@@ -1596,7 +1404,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 122 i
         <label for="room_name">Room Name</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 123 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 124
 
@@ -1604,7 +1412,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 123 i
         <input id="room_name" name="room_name" type="text" placeholder="e.g. Bay A">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 124 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 125
 
@@ -1612,15 +1420,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 124 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 125 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 126
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 126 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 127
 
@@ -1628,7 +1428,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 126 i
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 127 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 128
 
@@ -1636,7 +1436,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 127 i
         <label for="room_desc">Room Description</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 128 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 129
 
@@ -1644,7 +1444,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 128 i
         <input id="room_desc" name="room_desc" type="text" placeholder="Optional room description">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 129 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 130
 
@@ -1652,15 +1452,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 129 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 130 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 131
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 131 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 132
 
@@ -1668,7 +1460,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 131 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 132 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 133
 
@@ -1676,7 +1468,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 132 i
         <label for="area_class">Area Class</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 133 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 134
 
@@ -1684,7 +1476,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 133 i
         <input id="area_class" name="area_class" type="text" placeholder="e.g. H-5">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 134 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 135
 
@@ -1692,15 +1484,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 134 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 135 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 136
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 136 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 137
 
@@ -1708,7 +1492,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 136 i
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 137 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 138
 
@@ -1716,7 +1500,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 137 i
         <label>Selected Room</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 138 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 139
 
@@ -1724,7 +1508,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 138 i
         <input id="room_display" type="text" readonly placeholder="No location selected">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 139 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 140
 
@@ -1732,15 +1516,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 139 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 140 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 141
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 141 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 142
 
@@ -1748,7 +1524,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 141 i
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 142 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 143
 
@@ -1756,7 +1532,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 142 i
         <label for="storage_location">Storage Location</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 143 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 144
 
@@ -1764,7 +1540,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 143 i
         <input id="storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 144 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 145
 
@@ -1772,15 +1548,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 144 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 145 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 146
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 146 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 147
 
@@ -1788,7 +1556,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 146 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 147 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 148
 
@@ -1796,7 +1564,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 147 i
         <label for="storage_sublocation">Sub-Storage Location</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 148 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 149
 
@@ -1804,7 +1572,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 148 i
         <input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 149 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 150
 
@@ -1812,15 +1580,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 149 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 150 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 151
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 151 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 152
 
@@ -1828,7 +1588,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 151 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 152 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 153
 
@@ -1836,7 +1596,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 152 i
         <label for="storage_device">Storage Device</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 153 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 154
 
@@ -1844,7 +1604,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 153 i
         <input id="storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 154 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 155
 
@@ -1852,7 +1612,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 154 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 155 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 156
 
@@ -1860,15 +1620,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 155 i
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 156 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 157
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 157 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 158
 
@@ -1876,23 +1628,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 157 i
     <hr class="sep">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 158 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 159
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 159 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 160
-
-```text
-    <!-- DATES / COMPLIANCE -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 160 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 161
 
@@ -1900,7 +1636,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 160 i
     <h2 class="h2">Dates & Compliance</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 161 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 162
 
@@ -1908,7 +1644,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 161 i
     <div class="grid location-grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 162 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 163
 
@@ -1916,7 +1652,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 162 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 163 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 164
 
@@ -1924,7 +1660,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 163 i
         <label for="manuf_date">Manufacture Date</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 164 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 165
 
@@ -1932,7 +1668,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 164 i
         <input id="manuf_date" name="manuf_date" type="date">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 165 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 166
 
@@ -1940,15 +1676,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 165 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 166 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 167
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 167 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 168
 
@@ -1956,7 +1684,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 167 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 168 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 169
 
@@ -1964,7 +1692,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 168 i
         <label for="expiry_date">Expiration Date</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 169 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 170
 
@@ -1972,7 +1700,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 169 i
         <input id="expiry_date" name="expiry_date" type="date">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 170 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 171
 
@@ -1980,15 +1708,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 170 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 171 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 172
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 172 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 173
 
@@ -1996,7 +1716,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 172 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 173 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 174
 
@@ -2004,7 +1724,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 173 i
         <label for="choice">Choice</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 174 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 175
 
@@ -2012,7 +1732,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 174 i
         <input id="choice" name="choice" type="text" placeholder="">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 175 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 176
 
@@ -2020,7 +1740,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 175 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 176 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 177
 
@@ -2028,15 +1748,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 176 i
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 177 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 178
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 178 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 179
 
@@ -2044,23 +1756,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 178 i
     <hr class="sep">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 179 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 180
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 180 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 181
-
-```text
-    <!-- NMR -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 181 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 182
 
@@ -2068,7 +1764,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 181 i
     <h2 class="h2">NMR</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 182 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 183
 
@@ -2076,7 +1772,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 182 i
     <div class="grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 183 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 184
 
@@ -2084,7 +1780,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 183 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 184 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 185
 
@@ -2092,7 +1788,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 184 i
         <label for="nmr">NMR</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 185 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 186
 
@@ -2100,7 +1796,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 185 i
         <input id="nmr" name="nmr" type="text" placeholder="">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 186 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 187
 
@@ -2108,15 +1804,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 186 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 187 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 188
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 188 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 189
 
@@ -2124,7 +1812,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 188 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 189 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 190
 
@@ -2132,7 +1820,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 189 i
         <label for="nmr_expiry">NMR Expiry</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 190 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 191
 
@@ -2140,7 +1828,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 190 i
         <input id="nmr_expiry" name="nmr_expiry" type="date">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 191 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 192
 
@@ -2148,7 +1836,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 191 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 192 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 193
 
@@ -2156,15 +1844,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 192 i
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 193 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 194
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 194 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 195
 
@@ -2172,23 +1852,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 194 i
     <hr class="sep">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 195 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 196
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 196 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 197
-
-```text
-    <!-- OWNERSHIP / NOTES -->
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 197 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 198
 
@@ -2196,7 +1860,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 197 i
     <h2 class="h2">Ownership</h2>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 198 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `comment` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 199
 
@@ -2204,7 +1868,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 198 i
     <div class="grid">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 199 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 200
 
@@ -2212,7 +1876,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 199 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 200 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 201
 
@@ -2220,7 +1884,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 200 i
         <label for="owner">Owner</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 201 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 202
 
@@ -2228,7 +1892,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 201 i
         <input id="owner" name="owner" type="text" placeholder="">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 202 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 203
 
@@ -2236,15 +1900,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 202 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 203 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 204
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 204 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 205
 
@@ -2252,7 +1908,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 204 i
       <div class="field">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 205 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 206
 
@@ -2260,7 +1916,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 205 i
         <label for="added_by">Added By</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 206 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 207
 
@@ -2268,7 +1924,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 206 i
         <input id="added_by" name="added_by" type="text" placeholder="">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 207 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 208
 
@@ -2276,15 +1932,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 207 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 208 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html-control` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 209
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 209 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 210
 
@@ -2292,7 +1940,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 209 i
       <div class="field field-span-2">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 210 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 211
 
@@ -2300,7 +1948,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 210 i
         <label for="notes">Notes</label>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 211 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 212
 
@@ -2308,7 +1956,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 211 i
         <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 212 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 213
 
@@ -2316,7 +1964,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 212 i
       </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 213 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 214
 
@@ -2324,15 +1972,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 213 i
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 214 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 215
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 215 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 216
 
@@ -2340,7 +1980,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 215 i
     <div class="actions">
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 216 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 217
 
@@ -2348,7 +1988,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 216 i
       <button class="btn" type="submit">Save Changes</button>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 217 is classified as `html-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing. Neighbor context: previous kind is `html` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 218
 
@@ -2356,7 +1996,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 217 i
       <a class="btn btn-secondary" href="{{ url_for('chem.inventory') }}">Cancel</a>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 218 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `html-control` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 219
 
@@ -2364,7 +2004,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 218 i
       <span id="autofillStatus" class="muted"></span>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 219 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 220
 
@@ -2372,7 +2012,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 219 i
     </div>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 220 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 221
 
@@ -2380,7 +2020,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 220 i
   </form>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 221 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 222
 
@@ -2388,15 +2028,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 221 i
 </section>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 222 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 223
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 223 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 224
 
@@ -2404,7 +2036,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 223 i
 <style>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 224 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 225
 
@@ -2412,7 +2044,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 224 i
 .page-head {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 225 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 226
 
@@ -2420,7 +2052,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 225 i
   max-width: 1100px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 226 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 227
 
@@ -2428,7 +2060,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 226 i
   margin: 20px auto 14px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 227 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 228
 
@@ -2436,7 +2068,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 227 i
   padding: 0 12px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 228 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 229
 
@@ -2444,15 +2076,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 228 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 229 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 230
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 230 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 231
 
@@ -2460,7 +2084,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 230 i
 .page-head h1 {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 231 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 232
 
@@ -2468,7 +2092,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 231 i
   margin: 0 0 8px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 232 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 233
 
@@ -2476,7 +2100,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 232 i
   font-size: 28px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 233 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 234
 
@@ -2484,7 +2108,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 233 i
   font-weight: 800;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 234 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 235
 
@@ -2492,7 +2116,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 234 i
   color: #222;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 235 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 236
 
@@ -2500,15 +2124,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 235 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 236 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 237
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 237 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 238
 
@@ -2516,7 +2132,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 237 i
 .muted {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 238 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 239
 
@@ -2524,7 +2140,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 238 i
   opacity: 0.78;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 239 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 240
 
@@ -2532,15 +2148,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 239 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 240 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 241
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 241 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 242
 
@@ -2548,7 +2156,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 241 i
 .card {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 242 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 243
 
@@ -2556,7 +2164,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 242 i
   max-width: 1100px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 243 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 244
 
@@ -2564,7 +2172,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 243 i
   margin: 0 auto 24px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 244 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 245
 
@@ -2572,7 +2180,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 244 i
   background: #fff;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 245 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 246
 
@@ -2580,7 +2188,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 245 i
   border-radius: 14px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 246 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 247
 
@@ -2588,7 +2196,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 246 i
   padding: 18px 18px 22px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 247 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 248
 
@@ -2596,7 +2204,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 247 i
   box-shadow: 0 2px 12px rgba(0,0,0,.06);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 248 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 249
 
@@ -2604,15 +2212,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 248 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 249 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 250
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 250 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 251
 
@@ -2620,7 +2220,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 250 i
 .grid {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 251 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 252
 
@@ -2628,7 +2228,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 251 i
   display: grid;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 252 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 253
 
@@ -2636,7 +2236,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 252 i
   grid-template-columns: repeat(4, minmax(0, 1fr));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 253 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 254
 
@@ -2644,7 +2244,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 253 i
   gap: 16px 14px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 254 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 255
 
@@ -2652,15 +2252,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 254 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 255 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 256
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 256 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 257
 
@@ -2668,7 +2260,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 256 i
 .field {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 257 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 258
 
@@ -2676,7 +2268,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 257 i
   display: flex;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 258 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 259
 
@@ -2684,7 +2276,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 258 i
   flex-direction: column;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 259 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 260
 
@@ -2692,7 +2284,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 259 i
   gap: 7px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 260 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 261
 
@@ -2700,15 +2292,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 260 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 261 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 262
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 262 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 263
 
@@ -2716,7 +2300,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 262 i
 .field-span-2 {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 263 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 264
 
@@ -2724,7 +2308,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 263 i
   grid-column: span 2;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 264 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 265
 
@@ -2732,15 +2316,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 264 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 265 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 266
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 266 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 267
 
@@ -2748,7 +2324,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 266 i
 label {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 267 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 268
 
@@ -2756,7 +2332,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 267 i
   font-weight: 700;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 268 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 269
 
@@ -2764,7 +2340,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 268 i
   font-size: 15px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 269 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 270
 
@@ -2772,7 +2348,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 269 i
   color: #222;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 270 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 271
 
@@ -2780,7 +2356,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 270 i
   line-height: 1.2;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 271 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 272
 
@@ -2788,15 +2364,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 271 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 272 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 273
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 273 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 274
 
@@ -2804,7 +2372,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 273 i
 input,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 274 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 275
 
@@ -2812,7 +2380,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 274 i
 textarea,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 275 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 276
 
@@ -2820,7 +2388,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 275 i
 select,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 276 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 277
 
@@ -2828,7 +2396,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 276 i
 button {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 277 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 278
 
@@ -2836,7 +2404,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 277 i
   padding: 11px 12px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 278 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 279
 
@@ -2844,7 +2412,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 278 i
   border: 1px solid rgba(0,0,0,.16);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 279 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 280
 
@@ -2852,7 +2420,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 279 i
   border-radius: 10px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 280 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 281
 
@@ -2860,7 +2428,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 280 i
   outline: none;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 281 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 282
 
@@ -2868,7 +2436,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 281 i
   background: #fff;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 282 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 283
 
@@ -2876,7 +2444,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 282 i
   font-size: 15px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 283 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 284
 
@@ -2884,7 +2452,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 283 i
   min-height: 46px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 284 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 285
 
@@ -2892,7 +2460,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 284 i
   box-sizing: border-box;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 285 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 286
 
@@ -2900,15 +2468,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 285 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 286 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 287
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 287 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 288
 
@@ -2916,7 +2476,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 287 i
 textarea {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 288 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 289
 
@@ -2924,7 +2484,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 288 i
   min-height: 82px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 289 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 290
 
@@ -2932,7 +2492,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 289 i
   resize: vertical;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 290 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 291
 
@@ -2940,15 +2500,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 290 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 291 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 292
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 292 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 293
 
@@ -2956,7 +2508,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 292 i
 input[readonly] {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 293 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 294
 
@@ -2964,7 +2516,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 293 i
   background: #f5f5f5;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 294 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 295
 
@@ -2972,7 +2524,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 294 i
   color: #555;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 295 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 296
 
@@ -2980,15 +2532,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 295 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 296 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 297
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 297 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 298
 
@@ -2996,7 +2540,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 297 i
 input:focus,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 298 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 299
 
@@ -3004,7 +2548,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 298 i
 textarea:focus,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 299 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 300
 
@@ -3012,7 +2556,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 299 i
 select:focus {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 300 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 301
 
@@ -3020,7 +2564,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 300 i
   border-color: rgba(204,0,0,.55);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 301 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 302
 
@@ -3028,7 +2572,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 301 i
   box-shadow: 0 0 0 3px rgba(204,0,0,.12);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 302 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 303
 
@@ -3036,15 +2580,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 302 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 303 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 304
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 304 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 305
 
@@ -3052,7 +2588,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 304 i
 .sep {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 305 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 306
 
@@ -3060,7 +2596,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 305 i
   border: 0;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 306 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 307
 
@@ -3068,7 +2604,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 306 i
   border-top: 1px solid rgba(0,0,0,.10);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 307 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 308
 
@@ -3076,7 +2612,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 307 i
   margin: 18px 0 18px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 308 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 309
 
@@ -3084,15 +2620,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 308 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 309 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 310
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 310 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 311
 
@@ -3100,7 +2628,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 310 i
 .h2 {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 311 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 312
 
@@ -3108,7 +2636,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 311 i
   margin: 6px 0 14px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 312 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 313
 
@@ -3116,7 +2644,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 312 i
   font-size: 20px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 313 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 314
 
@@ -3124,7 +2652,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 313 i
   font-weight: 800;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 314 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 315
 
@@ -3132,7 +2660,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 314 i
   color: #222;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 315 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 316
 
@@ -3140,7 +2668,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 315 i
   line-height: 1.2;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 316 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 317
 
@@ -3148,15 +2676,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 316 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 317 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 318
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 318 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 319
 
@@ -3164,7 +2684,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 318 i
 .hint {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 319 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 320
 
@@ -3172,7 +2692,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 319 i
   font-size: 13px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 320 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 321
 
@@ -3180,7 +2700,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 320 i
   opacity: .75;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 321 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 322
 
@@ -3188,7 +2708,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 321 i
   margin-top: -1px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 322 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 323
 
@@ -3196,15 +2716,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 322 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 323 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 324
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 324 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 325
 
@@ -3212,7 +2724,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 324 i
 .actions {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 325 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 326
 
@@ -3220,7 +2732,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 325 i
   display: flex;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 326 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 327
 
@@ -3228,7 +2740,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 326 i
   align-items: center;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 327 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 328
 
@@ -3236,7 +2748,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 327 i
   gap: 10px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 328 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 329
 
@@ -3244,7 +2756,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 328 i
   margin-top: 22px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 329 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 330
 
@@ -3252,15 +2764,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 329 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 330 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 331
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 331 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 332
 
@@ -3268,7 +2772,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 331 i
 .btn {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 332 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 333
 
@@ -3276,7 +2780,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 332 i
   background: #c00;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 333 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 334
 
@@ -3284,7 +2788,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 333 i
   color: #fff;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 334 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 335
 
@@ -3292,7 +2796,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 334 i
   border: 0;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 335 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 336
 
@@ -3300,7 +2804,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 335 i
   border-radius: 10px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 336 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 337
 
@@ -3308,7 +2812,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 336 i
   padding: 11px 16px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 337 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 338
 
@@ -3316,7 +2820,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 337 i
   cursor: pointer;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 338 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 339
 
@@ -3324,7 +2828,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 338 i
   font-size: 15px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 339 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 340
 
@@ -3332,7 +2836,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 339 i
   font-weight: 700;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 340 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 341
 
@@ -3340,15 +2844,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 340 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 341 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 342
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 342 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 343
 
@@ -3356,7 +2852,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 342 i
 .btn:hover {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 343 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 344
 
@@ -3364,7 +2860,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 343 i
   filter: brightness(.96);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 344 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 345
 
@@ -3372,15 +2868,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 344 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 345 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 346
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 346 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 347
 
@@ -3388,7 +2876,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 346 i
 .btn-secondary {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 347 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 348
 
@@ -3396,7 +2884,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 347 i
   background: #444;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 348 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 349
 
@@ -3404,15 +2892,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 348 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 349 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 350
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 350 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 351
 
@@ -3420,7 +2900,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 350 i
 .location-grid {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 351 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 352
 
@@ -3428,7 +2908,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 351 i
   margin-bottom: 14px;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 352 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 353
 
@@ -3436,15 +2916,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 352 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 353 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 354
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 354 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 355
 
@@ -3452,7 +2924,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 354 i
 @media (max-width: 900px) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 355 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 356
 
@@ -3460,7 +2932,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 355 i
   .grid {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 356 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 357
 
@@ -3468,7 +2940,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 356 i
     grid-template-columns: repeat(2, minmax(0, 1fr));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 357 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 358
 
@@ -3476,15 +2948,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 357 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 358 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 359
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 359 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 360
 
@@ -3492,7 +2956,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 359 i
   .field-span-2 {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 360 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 361
 
@@ -3500,7 +2964,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 360 i
     grid-column: span 2;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 361 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 362
 
@@ -3508,7 +2972,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 361 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 362 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 363
 
@@ -3516,7 +2980,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 362 i
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 363 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 364
 
@@ -3524,7 +2988,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 363 i
 </style>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 364 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 365
 
@@ -3532,15 +2996,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 364 i
 {% endblock %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 365 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 366
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 366 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `template` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 367
 
@@ -3548,7 +3004,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 366 i
 {% block scripts %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 367 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `blank` and next kind is `asset-link`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 368
 
@@ -3556,7 +3012,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 367 i
 <script>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 368 is classified as `asset-link`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist. Neighbor context: previous kind is `template` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
 
 ### Line 369
 
@@ -3564,7 +3020,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 368 i
 (function () {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 369 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `asset-link` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 370
 
@@ -3572,15 +3028,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 369 i
   const statusEl = document.getElementById("autofillStatus");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 370 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 371
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 371 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 372
 
@@ -3588,7 +3036,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 371 i
   const LOCATION_TEMPLATES = {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 372 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 373
 
@@ -3596,7 +3044,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 372 i
     bay_a: { room_no: "2025N", room_name: "Bay A", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 373 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 374
 
@@ -3604,7 +3052,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 373 i
     bay_b: { room_no: "2022N", room_name: "Bay B", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 374 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 375
 
@@ -3612,7 +3060,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 374 i
     bay_c: { room_no: "2020N", room_name: "Bay C", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 375 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 376
 
@@ -3620,7 +3068,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 375 i
     bay_d: { room_no: "2018N", room_name: "Bay D", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 376 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 377
 
@@ -3628,7 +3076,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 376 i
     bay_e: { room_no: "2016N", room_name: "Bay E", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 377 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 378
 
@@ -3636,7 +3084,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 377 i
     bay_f: { room_no: "2014N", room_name: "Bay F", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 378 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 379
 
@@ -3644,15 +3092,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 378 i
     bay_g: { room_no: "2012N", room_name: "Bay G", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 379 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 380
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 380 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 381
 
@@ -3660,7 +3100,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 380 i
     student_yellow: { room_no: "2010N", room_name: "Student Yellow", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 381 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 382
 
@@ -3668,7 +3108,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 381 i
     mocvd: { room_no: "2006N", room_name: "MOCVD", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 382 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 383
 
@@ -3676,7 +3116,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 382 i
     microfluidics: { room_no: "2008N", room_name: "Microfluidics", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 383 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 384
 
@@ -3684,15 +3124,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 383 i
     metrology: { room_no: "2026N", room_name: "Metrology", area_class: "H-5" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 384 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 385
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 385 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 386
 
@@ -3700,7 +3132,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 385 i
     backend_lab: { room_no: "2223", room_name: "Backend Lab", area_class: "General" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 386 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 387
 
@@ -3708,7 +3140,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 386 i
     prototyping_lab: { room_no: "2237", room_name: "Prototyping Lab", area_class: "General" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 387 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 388
 
@@ -3716,15 +3148,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 387 i
     cr_shop: { room_no: "2237N", room_name: "CR Shop", area_class: "General" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 388 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 389
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 389 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 390
 
@@ -3732,7 +3156,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 389 i
     gas_chem_room: { room_no: "2018N", room_name: "Gas Chem Room", area_class: "H-2,3,4" },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 390 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 391
 
@@ -3740,7 +3164,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 390 i
     pass_through: { room_no: "2018N", room_name: "Pass-Through", area_class: "H-5" }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 391 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 392
 
@@ -3748,15 +3172,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 391 i
   };
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 392 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 393
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 393 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 394
 
@@ -3764,7 +3180,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 393 i
   function setStatus(msg) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 394 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 395
 
@@ -3772,7 +3188,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 394 i
     if (statusEl) statusEl.textContent = msg || "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 395 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 396
 
@@ -3780,15 +3196,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 395 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 396 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 397
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 397 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 398
 
@@ -3796,7 +3204,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 397 i
   function fill(id, value) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 398 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 399
 
@@ -3804,7 +3212,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 398 i
   const el = document.getElementById(id);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 399 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 400
 
@@ -3812,7 +3220,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 399 i
   if (!el) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 400 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 401
 
@@ -3820,7 +3228,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 400 i
     console.log("MISSING ELEMENT ID:", id, "VALUE:", value);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 401 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 402
 
@@ -3828,7 +3236,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 401 i
     return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 402 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 403
 
@@ -3836,7 +3244,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 402 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 403 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 404
 
@@ -3844,7 +3252,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 403 i
   el.value = value == null ? "" : value;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 404 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 405
 
@@ -3852,15 +3260,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 404 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 405 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 406
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 406 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 407
 
@@ -3868,7 +3268,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 406 i
   function updateRoomDisplay() {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 407 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 408
 
@@ -3876,7 +3276,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 407 i
     const roomName = document.getElementById("room_name")?.value || "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 408 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 409
 
@@ -3884,7 +3284,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 408 i
     const roomNo = document.getElementById("room_no")?.value || "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 409 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 410
 
@@ -3892,7 +3292,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 409 i
     const areaClass = document.getElementById("area_class")?.value || "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 410 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 411
 
@@ -3900,7 +3300,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 410 i
     fill("room_display", [roomName, roomNo, areaClass].filter(Boolean).join(" | "));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 411 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 412
 
@@ -3908,15 +3308,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 411 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 412 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 413
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 413 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 414
 
@@ -3924,7 +3316,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 413 i
   function normalizeDate(v) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 414 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 415
 
@@ -3932,7 +3324,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 414 i
     if (!v) return "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 415 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 416
 
@@ -3940,7 +3332,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 415 i
     if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 416 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 417
 
@@ -3948,7 +3340,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 416 i
     const s = String(v).slice(0, 10);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 417 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 418
 
@@ -3956,7 +3348,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 417 i
     if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 418 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 419
 
@@ -3964,7 +3356,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 418 i
     return "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 419 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 420
 
@@ -3972,15 +3364,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 419 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 420 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 421
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 421 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 422
 
@@ -3988,7 +3372,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 421 i
   function detectTemplate(data) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 422 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 423
 
@@ -3996,7 +3380,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 422 i
     const roomNo = (data.room_no || "").trim();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 423 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 424
 
@@ -4004,7 +3388,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 423 i
     const roomName = (data.room_name || "").trim();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 424 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 425
 
@@ -4012,15 +3396,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 424 i
     const areaClass = (data.area_class || "").trim();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 425 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 426
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 426 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 427
 
@@ -4028,7 +3404,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 426 i
     for (const [key, tpl] of Object.entries(LOCATION_TEMPLATES)) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 427 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 428
 
@@ -4036,7 +3412,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 427 i
       if (
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 428 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 429
 
@@ -4044,7 +3420,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 428 i
         (tpl.room_no || "") === roomNo &&
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 429 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 430
 
@@ -4052,7 +3428,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 429 i
         (tpl.room_name || "") === roomName &&
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 430 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 431
 
@@ -4060,7 +3436,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 430 i
         (tpl.area_class || "") === areaClass
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 431 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 432
 
@@ -4068,7 +3444,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 431 i
       ) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 432 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 433
 
@@ -4076,7 +3452,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 432 i
         return key;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 433 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 434
 
@@ -4084,7 +3460,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 433 i
       }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 434 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 435
 
@@ -4092,7 +3468,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 434 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 435 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 436
 
@@ -4100,7 +3476,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 435 i
     return "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 436 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 437
 
@@ -4108,15 +3484,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 436 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 437 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 438
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 438 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 439
 
@@ -4124,7 +3492,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 438 i
   function applyLocationTemplate(templateKey) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 439 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 440
 
@@ -4132,15 +3500,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 439 i
     const tpl = LOCATION_TEMPLATES[templateKey];
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 440 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 441
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 441 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 442
 
@@ -4148,7 +3508,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 441 i
     if (!tpl) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 442 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 443
 
@@ -4156,7 +3516,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 442 i
       updateRoomDisplay();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 443 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 444
 
@@ -4164,7 +3524,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 443 i
       return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 444 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 445
 
@@ -4172,15 +3532,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 444 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 445 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 446
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 446 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 447
 
@@ -4188,7 +3540,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 446 i
     fill("room_no", tpl.room_no || "");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 447 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 448
 
@@ -4196,7 +3548,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 447 i
     fill("room_name", tpl.room_name || "");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 448 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 449
 
@@ -4204,7 +3556,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 448 i
     fill("area_class", tpl.area_class || "");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 449 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 450
 
@@ -4212,15 +3564,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 449 i
     updateRoomDisplay();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 450 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 451
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 451 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 452
 
@@ -4228,7 +3572,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 451 i
     setStatus("Location template applied.");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 452 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 453
 
@@ -4236,7 +3580,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 452 i
     setTimeout(() => setStatus(""), 1200);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 453 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 454
 
@@ -4244,15 +3588,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 453 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 454 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 455
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 455 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 456
 
@@ -4260,7 +3596,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 455 i
   async function loadContainerByBarcode() {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 456 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 457
 
@@ -4268,7 +3604,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 456 i
     const barcode = (document.getElementById("barcode_lookup")?.value || "").trim();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 457 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 458
 
@@ -4276,7 +3612,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 457 i
     if (!barcode) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 458 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 459
 
@@ -4284,7 +3620,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 458 i
       setStatus("Enter a barcode first.");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 459 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 460
 
@@ -4292,7 +3628,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 459 i
       return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 460 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 461
 
@@ -4300,15 +3636,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 460 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 461 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 462
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 462 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 463
 
@@ -4316,15 +3644,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 462 i
     setStatus("Loading container...");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 463 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 464
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 464 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 465
 
@@ -4332,7 +3652,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 464 i
     try {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 465 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 466
 
@@ -4340,7 +3660,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 465 i
       const res = await fetch(`/chem/api/container_lookup?barcode=${encodeURIComponent(barcode)}`);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 466 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 467
 
@@ -4348,15 +3668,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 466 i
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 467 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 468
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 468 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 469
 
@@ -4364,7 +3676,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 468 i
       const payload = await res.json();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 469 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 470
 
@@ -4372,7 +3684,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 469 i
       const data = payload && payload.data ? payload.data : null;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 470 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 471
 
@@ -4380,7 +3692,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 470 i
       console.log("LOOKUP DATA:", data);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 471 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 472
 
@@ -4388,7 +3700,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 471 i
       if (!data) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 472 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 473
 
@@ -4396,7 +3708,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 472 i
         setStatus("No container found for that barcode.");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 473 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 474
 
@@ -4404,7 +3716,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 473 i
         return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 474 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 475
 
@@ -4412,15 +3724,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 474 i
       }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 475 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 476
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 476 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 477
 
@@ -4428,7 +3732,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 476 i
       fill("container_id", data.container_id);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 477 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 478
 
@@ -4436,7 +3740,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 477 i
       fill("container_code", data.container_code);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 478 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 479
 
@@ -4444,7 +3748,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 478 i
       fill("item_name", data.item_name);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 479 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 480
 
@@ -4452,7 +3756,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 479 i
       fill("description", data.description);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 480 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 481
 
@@ -4460,7 +3764,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 480 i
       fill("catalog_number", data.catalog_number);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 481 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 482
 
@@ -4468,7 +3772,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 481 i
       fill("physical_state", data.physical_state);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 482 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 483
 
@@ -4476,7 +3780,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 482 i
       fill("size", data.size);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 483 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 484
 
@@ -4484,7 +3788,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 483 i
       fill("unit", data.unit);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 484 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 485
 
@@ -4492,7 +3796,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 484 i
       fill("system", data.system);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 485 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 486
 
@@ -4500,15 +3804,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 485 i
       fill("vendor_name", data.vendor_name);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 486 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 487
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 487 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 488
 
@@ -4516,7 +3812,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 487 i
       fill("room_no", data.room_no);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 488 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 489
 
@@ -4524,7 +3820,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 488 i
       fill("room_name", data.room_name);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 489 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 490
 
@@ -4532,7 +3828,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 489 i
       fill("room_desc", data.room_desc);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 490 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 491
 
@@ -4540,15 +3836,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 490 i
       fill("area_class", data.area_class);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 491 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 492
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 492 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 493
 
@@ -4556,7 +3844,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 492 i
       fill("storage_location", data.storage_location);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 493 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 494
 
@@ -4564,7 +3852,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 493 i
       fill("storage_sublocation", data.storage_sublocation);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 494 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 495
 
@@ -4572,15 +3860,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 494 i
       fill("storage_device", data.storage_device);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 495 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 496
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 496 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 497
 
@@ -4588,7 +3868,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 496 i
       fill("manuf_date", normalizeDate(data.manuf_date));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 497 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 498
 
@@ -4596,7 +3876,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 497 i
       fill("expiry_date", normalizeDate(data.expiry_date));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 498 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 499
 
@@ -4604,7 +3884,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 498 i
       fill("lot_number", data.lot_number);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 499 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 500
 
@@ -4612,7 +3892,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 499 i
       fill("choice", data.choice);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 500 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 501
 
@@ -4620,7 +3900,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 500 i
       fill("nmr", data.nmr);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 501 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 502
 
@@ -4628,7 +3908,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 501 i
       fill("nmr_expiry", normalizeDate(data.nmr_expiry));
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 502 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 503
 
@@ -4636,7 +3916,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 502 i
       fill("owner", data.owner);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 503 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 504
 
@@ -4644,7 +3924,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 503 i
       fill("notes", data.notes);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 504 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 505
 
@@ -4652,15 +3932,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 504 i
       fill("added_by", data.added_by);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 505 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 506
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 506 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 507
 
@@ -4668,7 +3940,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 506 i
       const detected = detectTemplate(data);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 507 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 508
 
@@ -4676,7 +3948,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 507 i
       fill("location_template", detected);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 508 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 509
 
@@ -4684,15 +3956,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 508 i
       updateRoomDisplay();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 509 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 510
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 510 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 511
 
@@ -4700,7 +3964,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 510 i
       setStatus("Container loaded.");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 511 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 512
 
@@ -4708,7 +3972,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 511 i
       setTimeout(() => setStatus(""), 1500);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 512 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 513
 
@@ -4716,7 +3980,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 512 i
     } catch (err) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 513 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 514
 
@@ -4724,7 +3988,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 513 i
       console.error(err);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 514 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 515
 
@@ -4732,7 +3996,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 514 i
       setStatus("Load failed. Check server logs.");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 515 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 516
 
@@ -4740,7 +4004,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 515 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 516 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 517
 
@@ -4748,15 +4012,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 516 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 517 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 518
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 518 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 519
 
@@ -4764,7 +4020,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 518 i
   function attachSuggest(inputId, fieldName) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 519 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 520
 
@@ -4772,7 +4028,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 519 i
     const el = document.getElementById(inputId);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 520 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 521
 
@@ -4780,15 +4036,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 520 i
     if (!el) return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 521 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 522
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 522 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 523
 
@@ -4796,7 +4044,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 522 i
     const listId = `${inputId}_list`;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 523 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 524
 
@@ -4804,15 +4052,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 523 i
     let dl = document.getElementById(listId);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 524 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 525
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 525 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 526
 
@@ -4820,7 +4060,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 525 i
     if (!dl) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 526 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 527
 
@@ -4828,7 +4068,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 526 i
       dl = document.createElement("datalist");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 527 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 528
 
@@ -4836,7 +4076,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 527 i
       dl.id = listId;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 528 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 529
 
@@ -4844,7 +4084,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 528 i
       document.body.appendChild(dl);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 529 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 530
 
@@ -4852,7 +4092,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 529 i
       el.setAttribute("list", listId);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 530 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 531
 
@@ -4860,15 +4100,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 530 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 531 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 532
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 532 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 533
 
@@ -4876,7 +4108,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 532 i
     let lastQ = "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 533 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 534
 
@@ -4884,7 +4116,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 533 i
     el.addEventListener("input", async () => {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 534 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 535
 
@@ -4892,7 +4124,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 534 i
       const q = (el.value || "").trim();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 535 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 536
 
@@ -4900,7 +4132,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 535 i
       if (q.length < 2 || q === lastQ) return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 536 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 537
 
@@ -4908,15 +4140,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 536 i
       lastQ = q;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 537 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 538
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 538 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 539
 
@@ -4924,7 +4148,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 538 i
       try {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 539 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 540
 
@@ -4932,7 +4156,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 539 i
         const res = await fetch(`/chem/api/suggest?field=${encodeURIComponent(fieldName)}&q=${encodeURIComponent(q)}&limit=12`);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 540 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 541
 
@@ -4940,7 +4164,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 540 i
         if (!res.ok) return;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 541 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 542
 
@@ -4948,7 +4172,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 541 i
         const payload = await res.json();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 542 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 543
 
@@ -4956,7 +4180,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 542 i
         const results = payload && payload.results ? payload.results : [];
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 543 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 544
 
@@ -4964,7 +4188,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 543 i
         dl.innerHTML = "";
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 544 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 545
 
@@ -4972,7 +4196,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 544 i
         results.forEach((v) => {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 545 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 546
 
@@ -4980,7 +4204,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 545 i
           const opt = document.createElement("option");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 546 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 547
 
@@ -4988,7 +4212,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 546 i
           opt.value = v;
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 547 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 548
 
@@ -4996,7 +4220,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 547 i
           dl.appendChild(opt);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 548 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 549
 
@@ -5004,7 +4228,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 548 i
         });
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 549 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 550
 
@@ -5012,7 +4236,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 549 i
       } catch (e) {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 550 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 551
 
@@ -5020,7 +4244,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 550 i
       }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 551 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 552
 
@@ -5028,7 +4252,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 551 i
     });
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 552 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 553
 
@@ -5036,15 +4260,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 552 i
   }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 553 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 554
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 554 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 555
 
@@ -5052,15 +4268,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 554 i
   document.getElementById("lookupBtn")?.addEventListener("click", loadContainerByBarcode);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 555 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 556
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 556 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 557
 
@@ -5068,7 +4276,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 556 i
   document.getElementById("barcode_lookup")?.addEventListener("keydown", (ev) => {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 557 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 558
 
@@ -5076,7 +4284,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 557 i
     if (ev.key === "Enter") {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 558 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 559
 
@@ -5084,7 +4292,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 558 i
       ev.preventDefault();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 559 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 560
 
@@ -5092,7 +4300,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 559 i
       loadContainerByBarcode();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 560 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 561
 
@@ -5100,7 +4308,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 560 i
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 561 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 562
 
@@ -5108,15 +4316,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 561 i
   });
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 562 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 563
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 563 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 564
 
@@ -5124,7 +4324,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 563 i
   document.getElementById("location_template")?.addEventListener("change", function () {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 564 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 565
 
@@ -5132,7 +4332,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 564 i
     applyLocationTemplate(this.value);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 565 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 566
 
@@ -5140,15 +4340,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 565 i
   });
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 566 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 567
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 567 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 568
 
@@ -5156,7 +4348,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 567 i
   ["room_no", "room_name", "area_class"].forEach((id) => {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 568 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 569
 
@@ -5164,7 +4356,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 568 i
     document.getElementById(id)?.addEventListener("input", updateRoomDisplay);
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 569 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 570
 
@@ -5172,15 +4364,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 569 i
   });
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 570 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 571
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 571 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 572
 
@@ -5188,7 +4372,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 571 i
   attachSuggest("item_name", "name");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 572 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `blank` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 573
 
@@ -5196,7 +4380,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 572 i
   attachSuggest("vendor_name", "vendor");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 573 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 574
 
@@ -5204,7 +4388,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 573 i
   attachSuggest("unit", "unit");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 574 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 575
 
@@ -5212,7 +4396,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 574 i
   attachSuggest("system", "system");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 575 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 576
 
@@ -5220,7 +4404,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 575 i
   attachSuggest("storage_device", "storage_device");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 576 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 577
 
@@ -5228,7 +4412,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 576 i
   attachSuggest("storage_location", "storage_location");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 577 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 578
 
@@ -5236,7 +4420,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 577 i
   attachSuggest("storage_sublocation", "storage_sublocation");
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 578 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 579
 
@@ -5244,7 +4428,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 578 i
 })();
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 579 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `html`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 580
 
@@ -5252,7 +4436,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 579 i
 </script>
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 580 is classified as `html`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript. Neighbor context: previous kind is `html` and next kind is `template`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 581
 
@@ -5260,7 +4444,7 @@ Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 580 i
 {% endblock %}
 ```
 
-Reconstruction rule: in `UNanofabTools/app/templates/chem/edit.html`, line 581 is classified as `template`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping. Neighbor context: previous kind is `html` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 
 

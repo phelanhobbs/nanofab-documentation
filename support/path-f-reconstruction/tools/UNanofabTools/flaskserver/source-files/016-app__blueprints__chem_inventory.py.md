@@ -628,7 +628,7 @@ def move_bulk():
 """
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `none` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 2
 
@@ -636,7 +636,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 Chemical Inventory Blueprint
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 3
 
@@ -644,7 +644,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 Routes for managing chemical inventory
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 4
 
@@ -652,7 +652,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 """
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 5
 
@@ -660,7 +660,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify, Response
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `generic` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 6
 
@@ -668,7 +668,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
 from flask_login import login_required, current_user
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 7
 
@@ -676,7 +676,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
 from sqlalchemy import text
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 8
 
@@ -684,15 +684,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
 from app.services.chem_service import ChemInventoryService
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 9
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 10
 
@@ -700,23 +692,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
 chem_bp = Blueprint('chem', __name__, url_prefix='/chem')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 10 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 11
-
-```text
-#barcode image route
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 11 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 13
 
@@ -724,7 +700,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 @chem_bp.route('/')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 13 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 14
 
@@ -732,7 +708,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 @chem_bp.route("/inventory")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 14 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `route` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 15
 
@@ -740,7 +716,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 def inventory():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 15 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 16
 
@@ -748,7 +724,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 16 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 17
 
@@ -756,7 +732,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     q = request.args.get("q", "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 17 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 18
 
@@ -764,7 +740,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     limit = int(request.args.get("limit", 500))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 18 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 19
 
@@ -772,15 +748,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     show_removed = request.args.get("show_removed", "0") == "1"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 19 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 20 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 21
 
@@ -788,15 +756,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     rows = service.search_inventory(q, limit, show_removed=show_removed)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 21 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 22
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 22 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 23
 
@@ -804,7 +764,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return render_template(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 23 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 24
 
@@ -812,7 +772,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         "chem/inventory.html",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 24 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 25
 
@@ -820,7 +780,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         rows=rows,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 25 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 26
 
@@ -828,7 +788,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         q=q,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 26 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 27
 
@@ -836,7 +796,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         limit=limit,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 27 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 28
 
@@ -844,7 +804,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         show_removed=show_removed,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 28 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 29
 
@@ -852,15 +812,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 29 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 30
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 30 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 31
 
@@ -868,7 +820,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 @chem_bp.route('/inventory/print')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 31 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 32
 
@@ -876,7 +828,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 def inventory_print():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 32 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 33
 
@@ -884,7 +836,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     """Print-friendly inventory view"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 33 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 34
 
@@ -892,7 +844,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     q = request.args.get("q", "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 34 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 35
 
@@ -900,15 +852,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     limit = request.args.get("limit", type=int, default=5000)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 35 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 36
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 36 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 37
 
@@ -916,7 +860,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 37 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 38
 
@@ -924,15 +868,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     rows = service.search_inventory(q, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 38 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 39
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 39 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 40
 
@@ -940,23 +876,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     return render_template("chem/inventory_print.html", rows=rows, q=q, limit=limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 40 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 41
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 41 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 42
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 42 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 43
 
@@ -964,7 +884,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 @chem_bp.route('/add', methods=["GET", "POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 43 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 44
 
@@ -972,7 +892,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 def add():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 44 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 45
 
@@ -980,7 +900,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     """Add new chemical containers"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 45 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 46
 
@@ -988,15 +908,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     if request.method == "POST":
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 46 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 47
-
-```text
-        # Extract form data
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 47 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 48
 
@@ -1004,15 +916,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         data = {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 48 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 49
-
-```text
-            # Material
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 49 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 50
 
@@ -1020,7 +924,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
             'name': (request.form.get("name") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 50 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 51
 
@@ -1028,7 +932,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'vendor_name': (request.form.get("vendor") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 51 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 52
 
@@ -1036,7 +940,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'catalog': (request.form.get("catalog") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 52 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 53
 
@@ -1044,7 +948,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'state': (request.form.get("state") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 53 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 54
 
@@ -1052,7 +956,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'size': (request.form.get("size") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 54 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 55
 
@@ -1060,7 +964,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'unit': (request.form.get("unit") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 55 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 56
 
@@ -1068,7 +972,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'system': (request.form.get("system") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 56 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 57
 
@@ -1076,23 +980,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'lot_number': (request.form.get("lot_number") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 57 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 58
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 58 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 59
-
-```text
-            # Quantity
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 59 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 60
 
@@ -1100,23 +988,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             'qty': max(1, min(int(request.form.get("qty") or "1"), 500)),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 60 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 61
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 61 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 62
-
-```text
-            # Location
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 62 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 63
 
@@ -1124,7 +996,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'area_class': (request.form.get("area_class") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 63 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 64
 
@@ -1132,7 +1004,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'room_no': (request.form.get("room_no") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 64 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 65
 
@@ -1140,7 +1012,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'room_name': (request.form.get("room_name") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 65 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 66
 
@@ -1148,7 +1020,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'room_desc': (request.form.get("room_desc") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 66 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 67
 
@@ -1156,7 +1028,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'storage_location': (request.form.get("storage_location") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 67 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 68
 
@@ -1164,7 +1036,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'storage_subloc': (request.form.get("storage_sublocation") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 68 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 69
 
@@ -1172,23 +1044,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 6
             'storage_device': (request.form.get("storage_device") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 69 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 70
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 70 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 71
-
-```text
-            # Dates & compliance
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 71 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 72
 
@@ -1196,7 +1052,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'entry': request.form.get("entry") or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 72 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 73
 
@@ -1204,7 +1060,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'manuf_date': request.form.get("manuf_date") or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 73 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 74
 
@@ -1212,7 +1068,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'expire': request.form.get("expire") or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 74 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 75
 
@@ -1220,7 +1076,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'choice': (request.form.get("choice") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 75 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 76
 
@@ -1228,7 +1084,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'nmr': (request.form.get("nmr") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 76 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 77
 
@@ -1236,23 +1092,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'nmr_exp': request.form.get("nmr_exp") or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 77 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 78
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 78 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 79
-
-```text
-            # Ownership
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 79 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 80
 
@@ -1260,7 +1100,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 7
             'owner': (request.form.get("owner") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 80 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 81
 
@@ -1268,7 +1108,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
             'added_by': (request.form.get("added_by") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 81 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 82
 
@@ -1276,7 +1116,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
             'notes': (request.form.get("notes") or "").strip(),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 82 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 83
 
@@ -1284,15 +1124,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
         }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 83 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 84
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 84 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 85
 
@@ -1300,7 +1132,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
         if not data['name']:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 85 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 86
 
@@ -1308,7 +1140,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
             flash("Material Name is required.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 86 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 87
 
@@ -1316,15 +1148,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
             return redirect(url_for("chem.add"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 87 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 88
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 88 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 89
 
@@ -1332,7 +1156,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
         try:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 89 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 90
 
@@ -1340,7 +1164,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 8
             service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 90 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `exception` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 91
 
@@ -1348,7 +1172,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
             new_barcodes = service.add_containers(data)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 91 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 92
 
@@ -1356,15 +1180,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
             flash(f"Added {len(new_barcodes)} container(s). Unique barcodes assigned.", "success")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 92 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 93
-
-```text
-            # Redirect to barcode queue with new barcodes preselected
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 93 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 94
 
@@ -1372,7 +1188,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
             return redirect(url_for("chem.barcode_queue", preselect=",".join(new_barcodes)))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 94 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 95
 
@@ -1380,7 +1196,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
         except Exception as e:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 95 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `web` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 96
 
@@ -1388,7 +1204,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
             flash(f"Error adding containers: {str(e)}", "error")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 96 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 97
 
@@ -1396,15 +1212,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
             return redirect(url_for("chem.add"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 97 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 98
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 98 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 99
 
@@ -1412,23 +1220,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 9
     return render_template("chem/add.html")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 99 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 100
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 100 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 101
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 101 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 102
 
@@ -1436,7 +1228,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 @chem_bp.route("/report")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 102 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 103
 
@@ -1444,7 +1236,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 def report():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 103 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 104
 
@@ -1452,23 +1244,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 104 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 105
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 105 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 106
-
-```text
-    # old report data
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 106 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 107
 
@@ -1476,7 +1252,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     totals = service.report_totals()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 107 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 108
 
@@ -1484,7 +1260,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     expiring = service.report_expiring()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 108 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 109
 
@@ -1492,7 +1268,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     expired = service.report_expired()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 109 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 110
 
@@ -1500,7 +1276,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     nmr_due = service.report_nmr_due()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 110 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 111
 
@@ -1508,7 +1284,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     by_room = service.report_by_room()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 111 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 112
 
@@ -1516,7 +1292,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     by_vendor = service.report_by_vendor()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 112 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 113
 
@@ -1524,7 +1300,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     by_system = service.report_by_system()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 113 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 114
 
@@ -1532,23 +1308,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     by_owner = service.report_by_owner()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 114 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 115
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 115 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 116
-
-```text
-    # new scan report data
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 116 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 117
 
@@ -1556,7 +1316,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     scan_reports = service.get_scan_reports()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 117 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 118
 
@@ -1564,15 +1324,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     coverage_rows = service.get_inventory_scan_coverage()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 118 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 119
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 119 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 120
 
@@ -1580,7 +1332,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     scanned_count = sum(1 for row in coverage_rows if row["scan_status"] == "SCANNED")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 120 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 121
 
@@ -1588,7 +1340,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     unscanned_count = sum(1 for row in coverage_rows if row["scan_status"] == "UNSCANNED")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 121 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 122
 
@@ -1596,15 +1348,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     total_count = len(coverage_rows)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 122 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 123
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 123 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 124
 
@@ -1612,7 +1356,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     return render_template(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 124 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 125
 
@@ -1620,7 +1364,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         "chem/report.html",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 125 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 126
 
@@ -1628,7 +1372,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         totals=totals,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 126 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 127
 
@@ -1636,7 +1380,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         expiring=expiring,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 127 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 128
 
@@ -1644,7 +1388,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         expired=expired,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 128 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 129
 
@@ -1652,7 +1396,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         nmr_due=nmr_due,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 129 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 130
 
@@ -1660,7 +1404,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         by_room=by_room,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 130 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 131
 
@@ -1668,7 +1412,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         by_vendor=by_vendor,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 131 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 132
 
@@ -1676,7 +1420,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         by_system=by_system,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 132 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 133
 
@@ -1684,7 +1428,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         by_owner=by_owner,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 133 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 134
 
@@ -1692,7 +1436,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         scan_reports=scan_reports,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 134 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 135
 
@@ -1700,7 +1444,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         coverage_rows=coverage_rows,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 135 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 136
 
@@ -1708,7 +1452,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         scanned_count=scanned_count,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 136 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 137
 
@@ -1716,7 +1460,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         unscanned_count=unscanned_count,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 137 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 138
 
@@ -1724,7 +1468,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         total_count=total_count,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 138 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 139
 
@@ -1732,15 +1476,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 139 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 140
-
-```text
-#Updated 4/15/2026
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 140 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `generic` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 141
 
@@ -1748,7 +1484,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 @chem_bp.route("/upload-scans", methods=["GET", "POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 141 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 142
 
@@ -1756,7 +1492,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
 def upload_scans():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 142 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 143
 
@@ -1764,7 +1500,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
     if request.method == "POST":
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 143 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 144
 
@@ -1772,7 +1508,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         user = (request.form.get("user") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 144 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 145
 
@@ -1780,7 +1516,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         report_name = (request.form.get("report_name") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 145 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 146
 
@@ -1788,7 +1524,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         location = (request.form.get("location") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 146 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 147
 
@@ -1796,15 +1532,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         barcode_text = (request.form.get("barcode_text") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 147 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 148
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 148 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 149
 
@@ -1812,15 +1540,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         uploaded_file = request.files.get("file")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 149 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 150
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 150 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 151
 
@@ -1828,23 +1548,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         lines = []
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 151 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 152
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 152 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 153
-
-```text
-        # 1) Barcode textbox input
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 153 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 154
 
@@ -1852,7 +1556,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         if barcode_text:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 154 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 155
 
@@ -1860,7 +1564,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             lines.extend(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 155 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 156
 
@@ -1868,7 +1572,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 [line.strip() for line in barcode_text.splitlines() if line.strip()]
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 156 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 157
 
@@ -1876,23 +1580,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 157 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 158
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 158 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 159
-
-```text
-        # 2) Optional txt file input
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 159 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 160
 
@@ -1900,7 +1588,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         filename = None
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 160 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 161
 
@@ -1908,7 +1596,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         if uploaded_file and uploaded_file.filename:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 161 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 162
 
@@ -1916,7 +1604,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             filename = uploaded_file.filename
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 162 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 163
 
@@ -1924,7 +1612,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             file_text = uploaded_file.read().decode("utf-8", errors="ignore")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 163 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 164
 
@@ -1932,7 +1620,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             lines.extend(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 164 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 165
 
@@ -1940,7 +1628,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 [line.strip() for line in file_text.splitlines() if line.strip()]
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 165 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 166
 
@@ -1948,23 +1636,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 166 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 167
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 167 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 168
-
-```text
-        # Remove duplicates while preserving order
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 168 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 169
 
@@ -1972,7 +1644,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         seen = set()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 169 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 170
 
@@ -1980,7 +1652,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         barcodes = []
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 170 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 171
 
@@ -1988,7 +1660,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         for line in lines:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 171 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 172
 
@@ -1996,7 +1668,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             if line not in seen:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 172 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 173
 
@@ -2004,7 +1676,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 seen.add(line)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 173 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 174
 
@@ -2012,15 +1684,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 barcodes.append(line)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 174 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 175
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 175 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 176
 
@@ -2028,7 +1692,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         if not barcodes:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 176 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 177
 
@@ -2036,7 +1700,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             flash("No barcodes were provided.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 177 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 178
 
@@ -2044,23 +1708,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             return redirect(url_for("chem.upload_scans"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 178 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 179
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 179 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 180
-
-```text
-        # default report name if blank
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 180 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 181
 
@@ -2068,7 +1716,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         if not report_name:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 181 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 182
 
@@ -2076,7 +1724,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             if location:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 182 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 183
 
@@ -2084,7 +1732,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 report_name = f"{location} Scan"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 183 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 184
 
@@ -2092,7 +1740,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             else:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 184 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 185
 
@@ -2100,15 +1748,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
                 report_name = "Unnamed Scan Report"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 185 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 186
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 186 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 187
 
@@ -2116,7 +1756,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 187 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 188
 
@@ -2124,7 +1764,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         result = service.import_scans(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 188 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 189
 
@@ -2132,7 +1772,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             barcodes=barcodes,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 189 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 190
 
@@ -2140,7 +1780,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             filename=filename,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 190 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 191
 
@@ -2148,7 +1788,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             performed_by=user or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 191 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 192
 
@@ -2156,7 +1796,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             report_name=report_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 192 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 193
 
@@ -2164,7 +1804,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             location=location or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 193 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 194
 
@@ -2172,15 +1812,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 194 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 195
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 195 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 196
 
@@ -2188,7 +1820,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         flash(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 196 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 197
 
@@ -2196,7 +1828,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             f"Imported scan report '{report_name}' with {result.get('total', len(barcodes))} barcode(s).",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 197 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 198
 
@@ -2204,7 +1836,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
             "success"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 198 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 199
 
@@ -2212,7 +1844,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 199 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 200
 
@@ -2220,15 +1852,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 1
         return redirect(url_for("chem.report"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 200 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 201
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 201 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 202
 
@@ -2236,15 +1860,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return render_template("chem/upload_scans.html")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 202 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 203
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 203 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 204
 
@@ -2252,7 +1868,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route('/barcodes/queue')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 204 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 205
 
@@ -2260,7 +1876,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def barcode_queue():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 205 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 206
 
@@ -2268,7 +1884,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     """Show unprinted barcodes queue"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 206 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 207
 
@@ -2276,7 +1892,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     q = request.args.get('q', '').strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 207 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 208
 
@@ -2284,7 +1900,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     only_unprinted = request.args.get('only_unprinted', '1')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 208 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 209
 
@@ -2292,7 +1908,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     limit = request.args.get('limit', type=int) or 500
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 209 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `database`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 210
 
@@ -2300,15 +1916,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     preselect = request.args.get('preselect', '').strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 210 is classified as `database`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 211
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 211 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `database` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 212
 
@@ -2316,7 +1924,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 212 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 213
 
@@ -2324,15 +1932,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     rows = service.get_barcode_queue(q, only_unprinted, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 213 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 214
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 214 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 215
 
@@ -2340,15 +1940,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     preselected = set([p.strip() for p in preselect.split(',') if p.strip()])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 215 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 216
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 216 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 217
 
@@ -2356,7 +1948,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return render_template(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 217 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 218
 
@@ -2364,7 +1956,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         "chem/barcode_queue.html",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 218 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 219
 
@@ -2372,7 +1964,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         rows=rows,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 219 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 220
 
@@ -2380,7 +1972,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         q=q,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 220 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 221
 
@@ -2388,7 +1980,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         limit=limit,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 221 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 222
 
@@ -2396,7 +1988,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         only_unprinted=only_unprinted,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 222 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 223
 
@@ -2404,7 +1996,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         preselected=preselected
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 223 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 224
 
@@ -2412,23 +2004,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 224 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 225
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 225 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 226
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 226 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 227
 
@@ -2436,7 +2012,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route('/barcodes/print')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 227 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 228
 
@@ -2444,7 +2020,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def barcode_print():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 228 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 229
 
@@ -2452,7 +2028,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     """Print barcode labels"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 229 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 230
 
@@ -2460,7 +2036,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     q = request.args.get('q', '').strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 230 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 231
 
@@ -2468,7 +2044,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     copies = max(1, int(request.args.get('copies', 1)))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 231 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 232
 
@@ -2476,15 +2052,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     limit = 1000
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 232 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 233
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 233 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 234
 
@@ -2492,7 +2060,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 234 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 235
 
@@ -2500,23 +2068,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     labels = service.get_barcode_labels(q, copies, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 235 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 236
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 236 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 237
-
-```text
-    # Chunk into pages of 30 labels (5 cols x 6 rows)
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 237 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 238
 
@@ -2524,15 +2076,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     pages = [labels[i:i+30] for i in range(0, len(labels), 30)] if labels else [[]]
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 238 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 239
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 239 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 240
 
@@ -2540,23 +2084,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return render_template("chem/barcode_print.html", pages=pages, q=q, copies=copies)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 240 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 241
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 241 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 242
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 242 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 243
 
@@ -2564,7 +2092,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route('/barcodes/mark-printed', methods=['POST'])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 243 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 244
 
@@ -2572,7 +2100,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def barcode_mark_printed():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 244 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 245
 
@@ -2580,7 +2108,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     """Mark selected barcodes as printed"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 245 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 246
 
@@ -2588,15 +2116,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     barcodes = request.form.getlist('barcode')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 246 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 247
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 247 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 248
 
@@ -2604,7 +2124,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     if not barcodes:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 248 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 249
 
@@ -2612,7 +2132,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         flash("No barcodes selected.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 249 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 250
 
@@ -2620,15 +2140,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         return redirect(url_for('chem.barcode_queue'))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 250 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 251
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 251 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 252
 
@@ -2636,7 +2148,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     try:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 252 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 253
 
@@ -2644,7 +2156,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 253 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `exception` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 254
 
@@ -2652,7 +2164,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         count = service.mark_barcodes_printed(barcodes)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 254 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 255
 
@@ -2660,7 +2172,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         flash(f"Marked {count} barcode(s) as printed.", "success")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 255 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 256
 
@@ -2668,7 +2180,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     except Exception as e:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 256 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 257
 
@@ -2676,15 +2188,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         flash(f"Error marking barcodes: {str(e)}", "error")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 257 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 258
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 258 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 259
 
@@ -2692,23 +2196,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return redirect(url_for('chem.barcode_queue'))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 259 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 260
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 260 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 261
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 261 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 262
 
@@ -2716,7 +2204,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route('/api/inventory_json')
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 262 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 263
 
@@ -2724,7 +2212,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def api_inventory():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 263 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 264
 
@@ -2732,7 +2220,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     """API endpoint for inventory data"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 264 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 265
 
@@ -2740,7 +2228,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     q = request.args.get('q', '').strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 265 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 266
 
@@ -2748,15 +2236,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     limit = request.args.get('limit', type=int) or 500
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 266 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 267
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 267 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 268
 
@@ -2764,7 +2244,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 268 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 269
 
@@ -2772,15 +2252,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     rows = service.search_inventory(q, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 269 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 270
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 270 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 271
 
@@ -2788,23 +2260,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return jsonify({'rows': [dict(r) for r in rows]})
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 271 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 272
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 272 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 273
-
-```text
-#Chem Inventory Export 12/18/2025 -WORKS- =)
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 273 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 274
 
@@ -2812,7 +2268,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route("/inventory/export.csv")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 274 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 275
 
@@ -2820,7 +2276,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def inventory_export_csv():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 275 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 276
 
@@ -2828,7 +2284,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     q = request.args.get("q", "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 276 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 277
 
@@ -2836,15 +2292,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     limit = request.args.get("limit", type=int, default=500000)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 277 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 278
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 278 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 279
 
@@ -2852,7 +2300,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 279 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 280
 
@@ -2860,15 +2308,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     csv_text = service.export_inventory_csv(q, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 280 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 281
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 281 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 282
 
@@ -2876,7 +2316,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     return Response(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 282 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 283
 
@@ -2884,7 +2324,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         csv_text,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 283 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `return` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 284
 
@@ -2892,7 +2332,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         mimetype="text/csv",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 284 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 285
 
@@ -2900,7 +2340,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         headers={"Content-Disposition": "attachment; filename=cheminventory_export.csv"},
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 285 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 286
 
@@ -2908,39 +2348,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 286 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 287
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 287 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 288
-
-```text
-#Remove Route 12/18/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 288 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 289
-
-```text
-#Updated 1/13/2026
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 289 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 290
-
-```text
-#Updated 4/20/2026
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 290 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 291
 
@@ -2948,7 +2356,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 @chem_bp.route("/remove", methods=["GET", "POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 291 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 292
 
@@ -2956,7 +2364,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
 def remove():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 292 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 293
 
@@ -2964,15 +2372,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 293 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 294
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 294 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 295
 
@@ -2980,7 +2380,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
     if request.method == "POST":
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 295 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 296
 
@@ -2988,7 +2388,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         raw_barcodes = (request.form.get("barcode") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 296 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 297
 
@@ -2996,7 +2396,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         performed_by = (request.form.get("performed_by") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 297 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 298
 
@@ -3004,7 +2404,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         reason = (request.form.get("reason") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 298 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 299
 
@@ -3012,15 +2412,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 2
         notes = (request.form.get("notes") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 299 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 300
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 300 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 301
 
@@ -3028,7 +2420,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         if not raw_barcodes:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 301 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 302
 
@@ -3036,7 +2428,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash("Please scan or enter at least one barcode.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 302 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 303
 
@@ -3044,15 +2436,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             return redirect(url_for("chem.remove"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 303 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 304
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 304 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 305
 
@@ -3060,7 +2444,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         result = service.remove_containers_by_barcodes(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 305 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 306
 
@@ -3068,7 +2452,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             raw_barcodes=raw_barcodes,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 306 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 307
 
@@ -3076,7 +2460,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             removed_by=performed_by or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 307 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 308
 
@@ -3084,7 +2468,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             reason=reason or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 308 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 309
 
@@ -3092,7 +2476,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             notes=notes or None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 309 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 310
 
@@ -3100,15 +2484,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 310 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 311
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 311 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 312
 
@@ -3116,7 +2492,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         if result["removed_count"] == 0:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 312 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 313
 
@@ -3124,7 +2500,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash("No containers were removed.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 313 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 314
 
@@ -3132,7 +2508,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         else:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 314 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 315
 
@@ -3140,7 +2516,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 315 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 316
 
@@ -3148,7 +2524,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 f"Removed {result['removed_count']} container(s).",
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 316 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 317
 
@@ -3156,7 +2532,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 "success"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 317 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 318
 
@@ -3164,15 +2540,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 318 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 319
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 319 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 320
 
@@ -3180,7 +2548,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         if result["not_found"]:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 320 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 321
 
@@ -3188,7 +2556,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 321 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 322
 
@@ -3196,7 +2564,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 "Not found or already removed: " + ", ".join(result["not_found"]),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 322 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 323
 
@@ -3204,7 +2572,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 "warning"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 323 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 324
 
@@ -3212,15 +2580,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 324 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 325
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 325 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 326
 
@@ -3228,15 +2588,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         return redirect(url_for("chem.remove"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 326 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 327
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 327 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 328
 
@@ -3244,23 +2596,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     return render_template("chem/remove.html")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 328 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 329
-
-```text
-#Move Route 12/18/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 329 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 330
-
-```text
-#Updated 1/13/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 330 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 331
 
@@ -3268,7 +2604,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 @chem_bp.route("/move", methods=["GET", "POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 331 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 332
 
@@ -3276,7 +2612,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 def move_material():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 332 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 333
 
@@ -3284,7 +2620,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     if request.method == "POST":
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 333 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 334
 
@@ -3292,15 +2628,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         barcode = (request.form.get("barcode") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 334 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 335
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 335 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 336
 
@@ -3308,7 +2636,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         room_no = (request.form.get("room_no") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 336 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 337
 
@@ -3316,7 +2644,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         room_desc = (request.form.get("room_desc") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 337 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 338
 
@@ -3324,15 +2652,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         area_class = (request.form.get("area_class") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 338 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 339
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 339 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 340
 
@@ -3340,7 +2660,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         storage_location = (request.form.get("storage_location") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 340 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 341
 
@@ -3348,7 +2668,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         storage_sublocation = (request.form.get("storage_sublocation") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 341 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 342
 
@@ -3356,15 +2676,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         storage_device = (request.form.get("storage_device") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 342 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 343
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 343 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 344
 
@@ -3372,7 +2684,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         user = None
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 344 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 345
 
@@ -3380,7 +2692,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         if current_user.is_authenticated:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 345 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 346
 
@@ -3388,7 +2700,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             user = current_user.username
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 346 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 347
 
@@ -3396,7 +2708,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         else:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 347 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 348
 
@@ -3404,15 +2716,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             user = (request.form.get("performed_by") or "").strip() or None
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 348 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 349
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 349 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 350
 
@@ -3420,7 +2724,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         if not barcode:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 350 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 351
 
@@ -3428,7 +2732,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash("Barcode is required.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 351 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 352
 
@@ -3436,15 +2740,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             return redirect(url_for("chem.move_material"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 352 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 353
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 353 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 354
 
@@ -3452,7 +2748,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         try:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 354 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 355
 
@@ -3460,7 +2756,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 355 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `exception` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 356
 
@@ -3468,7 +2764,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             service.move_container(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 356 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 357
 
@@ -3476,7 +2772,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 barcode=barcode,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 357 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 358
 
@@ -3484,7 +2780,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 room_no=room_no,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 358 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 359
 
@@ -3492,7 +2788,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 room_desc=room_desc,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 359 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 360
 
@@ -3500,7 +2796,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 area_class=area_class,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 360 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 361
 
@@ -3508,7 +2804,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 storage_location=storage_location,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 361 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 362
 
@@ -3516,7 +2812,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 storage_sublocation=storage_sublocation,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 362 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 363
 
@@ -3524,7 +2820,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 storage_device=storage_device,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 363 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 364
 
@@ -3532,7 +2828,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
                 moved_by=user,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 364 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 365
 
@@ -3540,7 +2836,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 365 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 366
 
@@ -3548,7 +2844,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash(f"Moved {barcode}.", "success")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 366 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 367
 
@@ -3556,7 +2852,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             return redirect(url_for("chem.inventory", q=barcode))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 367 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 368
 
@@ -3564,7 +2860,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
         except Exception as e:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 368 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `web` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 369
 
@@ -3572,7 +2868,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             flash(f"Error moving container: {str(e)}", "error")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 369 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 370
 
@@ -3580,15 +2876,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
             return redirect(url_for("chem.move_material"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 370 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 371
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 371 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 372
 
@@ -3596,31 +2884,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     return render_template("chem/move.html")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 372 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 373
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 373 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 374
-
-```text
-#Transactions Route 12/18/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 374 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 375
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 375 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 376
 
@@ -3628,7 +2892,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 @chem_bp.route("/transactions")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 376 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 377
 
@@ -3636,7 +2900,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 def transactions():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 377 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 378
 
@@ -3644,7 +2908,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     q = (request.args.get("q") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 378 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 379
 
@@ -3652,7 +2916,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     limit = 1000
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 379 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 380
 
@@ -3660,7 +2924,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 380 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 381
 
@@ -3668,7 +2932,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     rows = service.get_transactions(q=q, limit=limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 381 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 382
 
@@ -3676,23 +2940,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     return render_template("chem/transactions.html", rows=rows, q=q, limit=limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 382 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 383
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 383 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 384
-
-```text
-#Suggest endpoint for type ahead Lists 1/7/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 384 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 385
 
@@ -3700,7 +2948,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 @chem_bp.route("/api/suggest")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 385 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 386
 
@@ -3708,7 +2956,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 def api_suggest():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 386 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 387
 
@@ -3716,7 +2964,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     field = (request.args.get("field") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 387 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 388
 
@@ -3724,7 +2972,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     q = (request.args.get("q") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 388 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 389
 
@@ -3732,15 +2980,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     limit = request.args.get("limit", type=int, default=10)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 389 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 390
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 390 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 391
 
@@ -3748,7 +2988,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 391 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 392
 
@@ -3756,7 +2996,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     results = service.suggest(field, q, limit)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 392 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 393
 
@@ -3764,23 +3004,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     return jsonify({"results": results})
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 393 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 394
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 394 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 395
-
-```text
-#Auto Fill by catalog or barcode endpoint 1/7/2025
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 395 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 396
 
@@ -3788,7 +3012,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 @chem_bp.route("/api/autofill")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 396 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 397
 
@@ -3796,7 +3020,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
 def api_autofill():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 397 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 398
 
@@ -3804,7 +3028,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     catalog = (request.args.get("catalog") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 398 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 399
 
@@ -3812,15 +3036,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 3
     name = (request.args.get("name") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 399 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 400
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 400 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 401
 
@@ -3828,7 +3044,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 401 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 402
 
@@ -3836,7 +3052,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     data = service.autofill(catalog=catalog, name=name)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 402 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 403
 
@@ -3844,87 +3060,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     return jsonify({"data": data})
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 403 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 404
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 404 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 405
-
-```text
-#container lookup api route added 1/13/2026
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 405 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 406
-
-```text
-#@chem_bp.route("/api/container_lookup")
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 406 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 407
-
-```text
-#def api_container_lookup():
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 407 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 408
-
-```text
-#    barcode = (request.args.get("barcode") or "").strip()
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 408 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 409
-
-```text
-#    service = ChemInventoryService()
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 409 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 410
-
-```text
-#    data = service.get_container_location(barcode)
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 410 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 411
-
-```text
-#    return jsonify({"data": data or {}})
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 411 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 412
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 412 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 413
-
-```text
-#print to np700
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 413 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 414
 
@@ -3932,7 +3068,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 @chem_bp.route("/barcodes/print-selected", methods=["POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 414 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 415
 
@@ -3940,7 +3076,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 def barcode_print_selected():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 415 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 416
 
@@ -3948,7 +3084,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     """Redirect to barcode print page with selected barcodes"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 416 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 417
 
@@ -3956,15 +3092,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     barcodes = request.form.getlist("barcode")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 417 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 418
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 418 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 419
 
@@ -3972,7 +3100,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     if not barcodes:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 419 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 420
 
@@ -3980,7 +3108,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         flash("No barcodes selected to print.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 420 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 421
 
@@ -3988,23 +3116,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         return redirect(url_for("chem.barcode_queue"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 421 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 422
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 422 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 423
-
-```text
-    # Pass as comma-separated list
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 423 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 424
 
@@ -4012,23 +3124,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     return redirect(url_for("chem.barcode_print", barcodes=",".join(barcodes)))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 424 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 425
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 425 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 426
-
-```text
-#4/2/2026 Move Page pushed to live
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 426 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 427
 
@@ -4036,7 +3132,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 @chem_bp.route("/edit", methods=["GET"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 427 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 428
 
@@ -4044,7 +3140,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 def edit():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 428 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 429
 
@@ -4052,23 +3148,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     return render_template("chem/edit.html")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 429 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 430
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 430 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 431
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 431 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 432
 
@@ -4076,7 +3156,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 @chem_bp.route("/edit-container", methods=["POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 432 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 433
 
@@ -4084,7 +3164,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 def edit_container():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 433 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 434
 
@@ -4092,15 +3172,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     container_id = request.form.get("container_id")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 434 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 435
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 435 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 436
 
@@ -4108,7 +3180,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     if not container_id:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 436 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 437
 
@@ -4116,7 +3188,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         flash("Missing container_id", "danger")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 437 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 438
 
@@ -4124,15 +3196,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         return redirect(url_for("chem.edit"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 438 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 439
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 439 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 440
 
@@ -4140,7 +3204,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     try:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 440 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 441
 
@@ -4148,7 +3212,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         container_id = int(container_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 441 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `exception` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 442
 
@@ -4156,7 +3220,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     except ValueError:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 442 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 443
 
@@ -4164,7 +3228,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         flash("Invalid container_id", "danger")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 443 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 444
 
@@ -4172,15 +3236,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         return redirect(url_for("chem.edit"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 444 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 445
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 445 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 446
 
@@ -4188,7 +3244,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     data = {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 446 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 447
 
@@ -4196,7 +3252,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "item_name": request.form.get("item_name"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 447 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 448
 
@@ -4204,7 +3260,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "description": request.form.get("description"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 448 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 449
 
@@ -4212,7 +3268,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "catalog_number": request.form.get("catalog_number"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 449 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 450
 
@@ -4220,7 +3276,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "physical_state": request.form.get("physical_state"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 450 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 451
 
@@ -4228,7 +3284,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "size": request.form.get("size"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 451 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 452
 
@@ -4236,7 +3292,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "unit": request.form.get("unit"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 452 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 453
 
@@ -4244,7 +3300,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "system": request.form.get("system"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 453 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 454
 
@@ -4252,15 +3308,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "vendor_name": request.form.get("vendor_name"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 454 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 455
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 455 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 456
 
@@ -4268,7 +3316,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "room_no": request.form.get("room_no"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 456 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 457
 
@@ -4276,7 +3324,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "room_name": request.form.get("room_name"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 457 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 458
 
@@ -4284,7 +3332,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "room_desc": request.form.get("room_desc"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 458 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 459
 
@@ -4292,15 +3340,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "area_class": request.form.get("area_class"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 459 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 460
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 460 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 461
 
@@ -4308,7 +3348,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "storage_location": request.form.get("storage_location"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 461 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 462
 
@@ -4316,7 +3356,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "storage_sublocation": request.form.get("storage_sublocation"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 462 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 463
 
@@ -4324,15 +3364,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "storage_device": request.form.get("storage_device"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 463 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 464
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 464 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 465
 
@@ -4340,7 +3372,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "manuf_date": request.form.get("manuf_date"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 465 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 466
 
@@ -4348,7 +3380,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "expiry_date": request.form.get("expiry_date"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 466 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 467
 
@@ -4356,7 +3388,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "lot_number": request.form.get("lot_number"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 467 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 468
 
@@ -4364,7 +3396,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "choice": request.form.get("choice"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 468 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 469
 
@@ -4372,7 +3404,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "nmr": request.form.get("nmr"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 469 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 470
 
@@ -4380,7 +3412,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "nmr_expiry": request.form.get("nmr_expiry"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 470 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 471
 
@@ -4388,7 +3420,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "owner": request.form.get("owner"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 471 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 472
 
@@ -4396,7 +3428,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "notes": request.form.get("notes"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 472 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 473
 
@@ -4404,7 +3436,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         "added_by": request.form.get("added_by"),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 473 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 474
 
@@ -4412,15 +3444,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 474 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 475
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 475 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 476
 
@@ -4428,7 +3452,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 476 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 477
 
@@ -4436,15 +3460,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     service.update_container(container_id, data)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 477 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 478
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 478 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 479
 
@@ -4452,7 +3468,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     flash("Updated successfully", "success")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 479 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 480
 
@@ -4460,15 +3476,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     return redirect(url_for("chem.edit"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 480 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 481
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 481 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 482
 
@@ -4476,7 +3484,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 @chem_bp.route("/api/container_lookup")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 482 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 483
 
@@ -4484,7 +3492,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
 def container_lookup():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 483 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 484
 
@@ -4492,7 +3500,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     barcode = (request.args.get("barcode") or "").strip()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 484 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `function` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 485
 
@@ -4500,7 +3508,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     if not barcode:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 485 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 486
 
@@ -4508,15 +3516,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         return jsonify({"data": None})
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 486 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 487
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 487 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 488
 
@@ -4524,15 +3524,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 488 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 489
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 489 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 490
 
@@ -4540,7 +3532,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
     with service.engine.begin() as conn:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 490 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `database`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 491
 
@@ -4548,7 +3540,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
         row = conn.execute(text("""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 491 is classified as `database`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 492
 
@@ -4556,7 +3548,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
             SELECT
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 492 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `database` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 493
 
@@ -4564,7 +3556,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 c.container_id,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 493 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 494
 
@@ -4572,7 +3564,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 c.item_id,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 494 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 495
 
@@ -4580,7 +3572,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 c.room_id,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 495 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 496
 
@@ -4588,7 +3580,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 c.barcode,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 496 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 497
 
@@ -4596,15 +3588,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 c.container_code,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 497 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 498
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 498 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 499
 
@@ -4612,7 +3596,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 i.name AS item_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 499 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 500
 
@@ -4620,7 +3604,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 4
                 i.description AS description,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 500 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 501
 
@@ -4628,7 +3612,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 i.catalog_number AS catalog_number,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 501 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 502
 
@@ -4636,15 +3620,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 i.physical_state AS physical_state,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 502 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 503
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 503 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 504
 
@@ -4652,7 +3628,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 COALESCE(c.size, i.volume_size) AS size,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 504 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 505
 
@@ -4660,7 +3636,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.unit AS unit,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 505 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 506
 
@@ -4668,15 +3644,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.system AS system,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 506 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 507
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 507 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 508
 
@@ -4684,15 +3652,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 v.vendor_name AS vendor_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 508 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 509
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 509 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 510
 
@@ -4700,7 +3660,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 r.room_no AS room_no,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 510 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 511
 
@@ -4708,7 +3668,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 r.room_name AS room_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 511 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 512
 
@@ -4716,7 +3676,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 r.room_desc AS room_desc,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 512 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 513
 
@@ -4724,15 +3684,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 COALESCE(c.area_class, r.area_class) AS area_class,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 513 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 514
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 514 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 515
 
@@ -4740,7 +3692,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.storage_location AS storage_location,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 515 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 516
 
@@ -4748,7 +3700,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.storage_sublocation AS storage_sublocation,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 516 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 517
 
@@ -4756,15 +3708,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.storage_device AS storage_device,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 517 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 518
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 518 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 519
 
@@ -4772,7 +3716,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.manuf_date AS manuf_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 519 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 520
 
@@ -4780,7 +3724,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.expiry_date AS expiry_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 520 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 521
 
@@ -4788,7 +3732,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.lot_number AS lot_number,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 521 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 522
 
@@ -4796,7 +3740,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.choice AS choice,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 522 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 523
 
@@ -4804,7 +3748,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.nmr AS nmr,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 523 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 524
 
@@ -4812,7 +3756,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.nmr_expiry AS nmr_expiry,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 524 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 525
 
@@ -4820,7 +3764,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.owner AS owner,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 525 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 526
 
@@ -4828,7 +3772,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.notes AS notes,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 526 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 527
 
@@ -4836,7 +3780,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
                 c.added_by AS added_by
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 527 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 528
 
@@ -4844,7 +3788,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             FROM containers c
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 528 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 529
 
@@ -4852,7 +3796,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             LEFT JOIN items i   ON c.item_id = i.item_id
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 529 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 530
 
@@ -4860,7 +3804,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 530 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 531
 
@@ -4868,7 +3812,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             LEFT JOIN rooms r   ON c.room_id = r.room_id
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 531 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 532
 
@@ -4876,7 +3820,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             WHERE c.barcode = :barcode
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 532 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 533
 
@@ -4884,7 +3828,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             LIMIT 1
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 533 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 534
 
@@ -4892,15 +3836,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         """), {"barcode": barcode}).mappings().first()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 534 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 535
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 535 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 536
 
@@ -4908,7 +3844,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     print("LOOKUP ROW:", dict(row) if row else None)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 536 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 537
 
@@ -4916,23 +3852,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     return jsonify({"data": dict(row) if row else None})
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 537 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 538
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 538 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 539
-
-```text
-# Added 4/8/2026 Bulk Inventory update to "Move" inventory page
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 539 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `route`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 540
 
@@ -4940,7 +3860,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
 @chem_bp.route("/move-bulk", methods=["POST"])
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 540 is classified as `route`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads. Neighbor context: previous kind is `comment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
 ### Line 541
 
@@ -4948,7 +3868,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
 def move_bulk():
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 541 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `route` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 542
 
@@ -4956,15 +3876,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     service = ChemInventoryService()
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 542 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 543
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 543 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 544
 
@@ -4972,7 +3884,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     raw_barcodes = request.form.get("bulk_barcodes")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 544 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 545
 
@@ -4980,7 +3892,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     room_no = request.form.get("room_no")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 545 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 546
 
@@ -4988,7 +3900,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     room_desc = request.form.get("room_desc")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 546 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 547
 
@@ -4996,7 +3908,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     area_class = request.form.get("area_class")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 547 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 548
 
@@ -5004,7 +3916,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     storage_location = request.form.get("storage_location")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 548 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 549
 
@@ -5012,7 +3924,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     storage_sublocation = request.form.get("storage_sublocation")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 549 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 550
 
@@ -5020,7 +3932,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     storage_device = request.form.get("storage_device")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 550 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 551
 
@@ -5028,15 +3940,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     performed_by = request.form.get("performed_by")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 551 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 552
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 552 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 553
 
@@ -5044,15 +3948,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     print("BULK MOVE FORM:", dict(request.form))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 553 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 554
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 554 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 555
 
@@ -5060,7 +3956,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     result = service.bulk_move_by_barcodes(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 555 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 556
 
@@ -5068,7 +3964,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         raw_barcodes=raw_barcodes,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 556 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 557
 
@@ -5076,7 +3972,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         room_no=room_no,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 557 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 558
 
@@ -5084,7 +3980,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         room_desc=room_desc,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 558 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 559
 
@@ -5092,7 +3988,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         area_class=area_class,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 559 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 560
 
@@ -5100,7 +3996,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         storage_location=storage_location,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 560 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 561
 
@@ -5108,7 +4004,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         storage_sublocation=storage_sublocation,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 561 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 562
 
@@ -5116,7 +4012,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         storage_device=storage_device,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 562 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 563
 
@@ -5124,7 +4020,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         performed_by=performed_by,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 563 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 564
 
@@ -5132,15 +4028,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 564 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 565
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 565 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 566
 
@@ -5148,7 +4036,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     if result["requested_count"] == 0:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 566 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 567
 
@@ -5156,7 +4044,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         flash("No barcodes were provided.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 567 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 568
 
@@ -5164,15 +4052,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         return redirect(url_for("chem.move_material"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 568 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 569
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 569 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 ### Line 570
 
@@ -5180,7 +4060,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     if result["moved_count"] > 0:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 570 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 571
 
@@ -5188,7 +4068,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         flash(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 571 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 572
 
@@ -5196,7 +4076,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             f'Bulk move complete: moved {result["moved_count"]} of {result["requested_count"]} scanned barcode(s).',
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 572 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 573
 
@@ -5204,7 +4084,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             "success"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 573 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 574
 
@@ -5212,7 +4092,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 574 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 575
 
@@ -5220,7 +4100,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     else:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 575 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 576
 
@@ -5228,15 +4108,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         flash("No matching containers were moved.", "warning")
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 576 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 577
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 577 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 578
 
@@ -5244,7 +4116,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     if result["unmatched"]:
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 578 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 579
 
@@ -5252,7 +4124,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         flash(
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 579 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 580
 
@@ -5260,7 +4132,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             "Unmatched barcode(s): " + ", ".join(result["unmatched"][:20]) +
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 580 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 581
 
@@ -5268,7 +4140,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             (" ..." if len(result["unmatched"]) > 20 else ""),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 581 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 582
 
@@ -5276,7 +4148,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
             "warning"
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 582 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 583
 
@@ -5284,15 +4156,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
         )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 583 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 584
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 584 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `web`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 585
 
@@ -5300,31 +4164,7 @@ Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 5
     return redirect(url_for("chem.move_material"))
 ```
 
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 585 is classified as `web`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 586
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 586 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `web` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 587
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 587 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 588
-
-```text
-#report route 4/15/2026
-```
-
-Reconstruction rule: in `UNanofabTools/app/blueprints/chem_inventory.py`, line 588 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
 
 

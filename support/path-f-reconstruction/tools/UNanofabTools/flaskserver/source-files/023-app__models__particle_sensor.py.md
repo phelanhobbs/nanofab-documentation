@@ -148,7 +148,7 @@ class ParticleSensorData(db.Model):
 """
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 1 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `none` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 2
 
@@ -156,7 +156,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 1 is
 Particle Sensor Data Model
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 2 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 3
 
@@ -164,7 +164,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 2 is
 """
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 3 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 4
 
@@ -172,7 +172,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 3 is
 from datetime import datetime
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 4 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `generic` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 5
 
@@ -180,23 +180,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 4 is
 from . import db
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 5 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 6
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 6 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 7
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 7 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `class`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 8
 
@@ -204,7 +188,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 7 is
 class ParticleSensorData(db.Model):
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 8 is classified as `class`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This class boundary groups state and behavior. Recreate the constructor expectations, instance attributes, inheritance, class-level constants, and public methods; edge cases include partially initialized objects, reused instances, and serialization or database mapping assumptions. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`class` — This class boundary groups state and behavior. Recreate the constructor expectations, instance attributes, inheritance, class-level constants, and public methods; edge cases include partially initialized objects, reused instances, and serialization or database mapping assumptions.
 
 ### Line 9
 
@@ -212,7 +196,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 8 is
     """Model for storing the most recent particle sensor data from each sensor"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 9 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `class` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 10
 
@@ -220,7 +204,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 9 is
     __tablename__ = 'particle_sensor_data'
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 10 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 11
 
@@ -228,15 +212,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 10 i
     __bind_key__ = 'particle_sensors'
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 11 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 13
 
@@ -244,7 +220,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 12 i
     id = db.Column(db.Integer, primary_key=True)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 13 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 14
 
@@ -252,7 +228,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 13 i
     room_name = db.Column(db.String(255), nullable=False)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 14 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 15
 
@@ -260,7 +236,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 14 i
     sensor_number = db.Column(db.String(50), nullable=False)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 15 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 16
 
@@ -268,7 +244,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 15 i
     timestamp = db.Column(db.DateTime, nullable=False)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 16 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 17
 
@@ -276,23 +252,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 16 i
     last_updated = db.Column(db.DateTime, default=datetime.utcnow)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 17 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 18
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 18 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 19
-
-```text
-    # Raw measurement data
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 19 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 20
 
@@ -300,7 +260,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 19 i
     mass_pm1 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 20 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 21
 
@@ -308,7 +268,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 20 i
     mass_pm2_5 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 21 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 22
 
@@ -316,7 +276,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 21 i
     mass_pm4 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 22 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 23
 
@@ -324,7 +284,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 22 i
     mass_pm10 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 23 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 24
 
@@ -332,7 +292,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 23 i
     num_pm0_5 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 24 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 25
 
@@ -340,7 +300,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 24 i
     num_pm1 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 25 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 26
 
@@ -348,7 +308,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 25 i
     num_pm2_5 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 26 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 27
 
@@ -356,7 +316,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 26 i
     num_pm4 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 27 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 28
 
@@ -364,7 +324,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 27 i
     num_pm10 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 28 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 29
 
@@ -372,23 +332,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 28 i
     typical_particle_size_um = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 29 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 30
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 30 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 31
-
-```text
-    # Converted values (ft³ measurements)
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 31 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 32
 
@@ -396,7 +340,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 31 i
     num_pm0_5_ft3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 32 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 33
 
@@ -404,7 +348,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 32 i
     num_pm1_ft3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 33 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 34
 
@@ -412,7 +356,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 33 i
     num_pm2_5_ft3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 34 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 35
 
@@ -420,7 +364,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 34 i
     num_pm4_ft3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 35 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 36
 
@@ -428,23 +372,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 35 i
     num_pm10_ft3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 36 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 37
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 37 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 38
-
-```text
-    # Differential bins (ft³)
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 38 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 39
 
@@ -452,7 +380,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 38 i
     bin_0_3_to_0_5 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 39 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 40
 
@@ -460,7 +388,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 39 i
     bin_0_5_to_1_0 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 40 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 41
 
@@ -468,7 +396,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 40 i
     bin_1_0_to_2_5 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 41 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 42
 
@@ -476,7 +404,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 41 i
     bin_2_5_to_4_0 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 42 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 43
 
@@ -484,23 +412,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 42 i
     bin_4_0_to_10 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 43 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 44
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 44 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 45
-
-```text
-    # Mass concentrations (μg/m³)
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 45 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 46
 
@@ -508,7 +420,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 45 i
     mass_pm1_ug_m3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 46 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 47
 
@@ -516,7 +428,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 46 i
     mass_pm2_5_ug_m3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 47 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 48
 
@@ -524,7 +436,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 47 i
     mass_pm4_ug_m3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 48 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 49
 
@@ -532,23 +444,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 48 i
     mass_pm10_ug_m3 = db.Column(db.Float)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 49 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 50
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 50 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 51
-
-```text
-    # Environmental data (from DHT22 sensor, optional)
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 51 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 52
 
@@ -556,7 +452,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 51 i
     temperature_c = db.Column(db.Float, nullable=True)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 52 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 53
 
@@ -564,31 +460,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 52 i
     humidity_pct = db.Column(db.Float, nullable=True)
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 53 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 54
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 54 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 55
-
-```text
-    # Create a unique constraint on room_name and sensor_number
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 55 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 56
-
-```text
-    # This ensures only one record per sensor location
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 56 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 57
 
@@ -596,7 +468,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 56 i
     __table_args__ = (
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 57 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 58
 
@@ -604,7 +476,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 57 i
         db.UniqueConstraint('room_name', 'sensor_number', name='unique_sensor_location'),
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 58 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 59
 
@@ -612,15 +484,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 58 i
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 59 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 60
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 60 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 61
 
@@ -628,7 +492,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 60 i
     def __repr__(self):
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 61 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 62
 
@@ -636,15 +500,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 61 i
         return f'<ParticleSensorData {self.room_name}/{self.sensor_number} @ {self.timestamp}>'
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 62 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `function` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 63
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 63 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 64
 
@@ -652,7 +508,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 63 i
     def to_dict(self):
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 64 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 65
 
@@ -660,7 +516,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 64 i
         """Convert the model to a dictionary for JSON serialization"""
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 65 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 66
 
@@ -668,7 +524,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 65 i
         return {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 66 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 67
 
@@ -676,7 +532,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 66 i
             'id': self.id,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 67 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `return` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 68
 
@@ -684,7 +540,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 67 i
             'room_name': self.room_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 68 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 69
 
@@ -692,7 +548,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 68 i
             'sensor_number': self.sensor_number,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 69 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 70
 
@@ -700,7 +556,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 69 i
             'timestamp': self.timestamp.isoformat() if self.timestamp else None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 70 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 71
 
@@ -708,7 +564,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 70 i
             'last_updated': self.last_updated.isoformat() if self.last_updated else None,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 71 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 72
 
@@ -716,7 +572,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 71 i
             'temperature_c': self.temperature_c,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 72 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 73
 
@@ -724,7 +580,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 72 i
             'humidity_pct': self.humidity_pct,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 73 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 74
 
@@ -732,7 +588,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 73 i
             'raw_measurements': {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 74 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 75
 
@@ -740,7 +596,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 74 i
                 'mass_pm1': self.mass_pm1,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 75 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 76
 
@@ -748,7 +604,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 75 i
                 'mass_pm2_5': self.mass_pm2_5,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 76 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 77
 
@@ -756,7 +612,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 76 i
                 'mass_pm4': self.mass_pm4,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 77 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 78
 
@@ -764,7 +620,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 77 i
                 'mass_pm10': self.mass_pm10,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 78 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 79
 
@@ -772,7 +628,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 78 i
                 'num_pm0_5': self.num_pm0_5,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 79 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 80
 
@@ -780,7 +636,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 79 i
                 'num_pm1': self.num_pm1,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 80 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 81
 
@@ -788,7 +644,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 80 i
                 'num_pm2_5': self.num_pm2_5,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 81 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 82
 
@@ -796,7 +652,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 81 i
                 'num_pm4': self.num_pm4,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 82 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 83
 
@@ -804,7 +660,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 82 i
                 'num_pm10': self.num_pm10,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 83 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 84
 
@@ -812,7 +668,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 83 i
                 'typical_particle_size_um': self.typical_particle_size_um
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 84 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 85
 
@@ -820,7 +676,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 84 i
             },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 85 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 86
 
@@ -828,7 +684,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 85 i
             'converted_values': {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 86 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 87
 
@@ -836,7 +692,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 86 i
                 'number_concentrations_ft3': {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 87 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 88
 
@@ -844,7 +700,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 87 i
                     'pm0_5': self.num_pm0_5_ft3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 88 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 89
 
@@ -852,7 +708,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 88 i
                     'pm1': self.num_pm1_ft3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 89 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 90
 
@@ -860,7 +716,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 89 i
                     'pm2_5': self.num_pm2_5_ft3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 90 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 91
 
@@ -868,7 +724,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 90 i
                     'pm4': self.num_pm4_ft3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 91 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 92
 
@@ -876,7 +732,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 91 i
                     'pm10': self.num_pm10_ft3
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 92 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 93
 
@@ -884,7 +740,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 92 i
                 },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 93 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 94
 
@@ -892,7 +748,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 93 i
                 'differential_bins_ft3': {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 94 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 95
 
@@ -900,7 +756,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 94 i
                     'bin_0_3_to_0_5': self.bin_0_3_to_0_5,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 95 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 96
 
@@ -908,7 +764,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 95 i
                     'bin_0_5_to_1_0': self.bin_0_5_to_1_0,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 96 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 97
 
@@ -916,7 +772,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 96 i
                     'bin_1_0_to_2_5': self.bin_1_0_to_2_5,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 97 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 98
 
@@ -924,7 +780,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 97 i
                     'bin_2_5_to_4_0': self.bin_2_5_to_4_0,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 98 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 99
 
@@ -932,7 +788,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 98 i
                     'bin_4_0_to_10': self.bin_4_0_to_10
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 99 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 100
 
@@ -940,7 +796,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 99 i
                 },
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 100 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 101
 
@@ -948,7 +804,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 100 
                 'mass_concentrations_ug_m3': {
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 101 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 102
 
@@ -956,7 +812,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 101 
                     'pm1': self.mass_pm1_ug_m3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 102 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 103
 
@@ -964,7 +820,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 102 
                     'pm2_5': self.mass_pm2_5_ug_m3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 103 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 104
 
@@ -972,7 +828,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 103 
                     'pm4': self.mass_pm4_ug_m3,
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 104 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 105
 
@@ -980,7 +836,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 104 
                     'pm10': self.mass_pm10_ug_m3
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 105 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 106
 
@@ -988,7 +844,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 105 
                 }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 106 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 107
 
@@ -996,7 +852,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 106 
             }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 107 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 108
 
@@ -1004,7 +860,7 @@ Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 107 
         }
 ```
 
-Reconstruction rule: in `UNanofabTools/app/models/particle_sensor.py`, line 108 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 
 

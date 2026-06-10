@@ -75,21 +75,13 @@ else:
 
 ## Line-By-Line Reconstruction Notes
 
-### Line 1
-
-```text
-# ── WiFi credentials ──────────────────────────────────────────────────────────
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 1 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `none` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
 ### Line 2
 
 ```text
 SSID     = "ULink"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 2 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 3
 
@@ -97,23 +89,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 PASSWORD = "<redacted-secret-value>"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 3 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-# ─────────────────────────────────────────────────────────────────────────────
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 4 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 5
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 5 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 6
 
@@ -121,7 +97,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 import network
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 6 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `blank` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 7
 
@@ -129,7 +105,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 import machine
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 7 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 8
 
@@ -137,15 +113,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 import time
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 8 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 9
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 9 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 10
 
@@ -153,7 +121,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 LED = machine.Pin("LED", machine.Pin.OUT)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 10 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 11
 
@@ -161,15 +129,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 LED.off()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 11 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 13
 
@@ -177,7 +137,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 wlan = network.WLAN(network.STA_IF)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 13 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 14
 
@@ -185,7 +145,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 wlan.active(True)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 14 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 15
 
@@ -193,15 +153,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 wlan.connect(SSID, PASSWORD)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 15 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 16
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 16 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 17
 
@@ -209,15 +161,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 print("Connecting to", SSID, "...")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 17 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 18
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 18 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 19
 
@@ -225,7 +169,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 timeout = 20  # seconds to wait before giving up
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 19 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 20
 
@@ -233,15 +177,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 start = time.time()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 20 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 21
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 21 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 22
 
@@ -249,7 +185,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 while not wlan.isconnected():
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 22 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 23
 
@@ -257,7 +193,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     if time.time() - start > timeout:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 23 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 24
 
@@ -265,7 +201,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         print("✗ Connection timed out – chip may be damaged or credentials are wrong.")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 24 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 25
 
@@ -273,7 +209,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         LED.off()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 25 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 26
 
@@ -281,7 +217,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         break
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 26 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 27
 
@@ -289,7 +225,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     time.sleep(1)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 27 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 28
 
@@ -297,7 +233,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     print("  waiting...")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 28 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 29
 
@@ -305,7 +241,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
 else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 29 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 30
 
@@ -313,7 +249,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     ip, subnet, gateway, dns = wlan.ifconfig()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 30 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 31
 
@@ -321,7 +257,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     print("✓ Connected!")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 31 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 32
 
@@ -329,7 +265,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     print("  IP      :", ip)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 32 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 33
 
@@ -337,7 +273,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     print("  Gateway :", gateway)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 33 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 34
 
@@ -345,15 +281,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     print("  DNS     :", dns)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 34 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 35
-
-```text
-    # Blink LED 3 times to signal success
-```
-
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 35 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `generic` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 36
 
@@ -361,7 +289,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     for _ in range(3):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 36 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 37
 
@@ -369,7 +297,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         LED.on()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 37 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 38
 
@@ -377,7 +305,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         time.sleep(0.2)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 38 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 39
 
@@ -385,7 +313,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         LED.off()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 39 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 40
 
@@ -393,7 +321,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
         time.sleep(0.2)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 40 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 41
 
@@ -401,7 +329,7 @@ Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, li
     LED.on()  # stay on = connected
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/PicoNetworkCheck.py`, line 41 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 
 

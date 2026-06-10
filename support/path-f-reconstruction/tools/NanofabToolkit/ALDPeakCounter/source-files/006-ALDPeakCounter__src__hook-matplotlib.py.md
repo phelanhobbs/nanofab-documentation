@@ -50,23 +50,7 @@ excludedimports = ['matplotlib.backends.backend_qt5agg',
 from PyInstaller.utils.hooks import collect_submodules
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 1 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 3
-
-```text
-# Only include necessary backends
-```
-
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 3 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 4
 
@@ -74,23 +58,7 @@ Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, 
 hiddenimports = ['matplotlib.backends.backend_tkagg']
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 4 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 5
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 5 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 6
-
-```text
-# Exclude unnecessary backends
-```
-
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 6 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 7
 
@@ -98,7 +66,7 @@ Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, 
 excludedimports = ['matplotlib.backends.backend_qt5agg',
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 7 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 8
 
@@ -106,7 +74,7 @@ Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, 
                   'matplotlib.backends.backend_qt4agg',
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 8 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 9
 
@@ -114,7 +82,7 @@ Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, 
                   'matplotlib.backends.backend_cairo',
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 9 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 10
 
@@ -122,7 +90,7 @@ Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, 
                   'matplotlib.backends.backend_gtk3cairo']
 ```
 
-Reconstruction rule: in `NanofabToolkit/ALDPeakCounter/src/hook-matplotlib.py`, line 10 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 
 

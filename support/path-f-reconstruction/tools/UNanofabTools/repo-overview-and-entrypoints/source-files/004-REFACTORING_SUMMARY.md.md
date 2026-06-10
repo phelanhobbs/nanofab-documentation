@@ -196,77 +196,13 @@ The only remaining task is moving and updating your HTML template files, which i
 
 ## Line-By-Line Reconstruction Notes
 
-### Line 1
-
-```text
-# Flask Refactoring Summary
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 1 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 3
-
-```text
-## What Was Done
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 3 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 4 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
 ### Line 5
 
 ```text
 I've successfully refactored your monolithic `HSCDisplayerServer.py` (2660 lines) into a modern, maintainable Flask application.
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 5 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 6
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 6 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 7
-
-```text
-## Files Created
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 7 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 8
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 8 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 9
-
-```text
-### Configuration & Setup
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 9 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 10
 
@@ -274,7 +210,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 9 is classi
 - ✅ `requirements.txt` - Python dependencies
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 10 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 11
 
@@ -282,7 +218,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 10 is class
 - ✅ `.env.example` - Environment variables template
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 11 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 12
 
@@ -290,7 +226,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 11 is class
 - ✅ `config/config.py` - Configuration management for dev/prod environments
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 12 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 13
 
@@ -298,23 +234,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 12 is class
 - ✅ `run.py` - WSGI entry point with SSL support
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 13 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 14 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 15
-
-```text
-### Application Core
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 15 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 16
 
@@ -322,7 +242,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 15 is class
 - ✅ `app/__init__.py` - Flask application factory with blueprint registration
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 16 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 17
 
@@ -330,23 +250,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 16 is class
 - ✅ `app/models/__init__.py` - SQLAlchemy models (User, Session, Task, TaskAssignee, TaskFile)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 17 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 18
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 18 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 19
-
-```text
-### Blueprints (Routes)
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 19 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 20
 
@@ -354,7 +258,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 19 is class
 - ✅ `app/blueprints/auth.py` - Authentication routes (login, signup, logout, password reset)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 20 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 21
 
@@ -362,7 +266,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 20 is class
 - ✅ `app/blueprints/tasks.py` - Task management routes
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 21 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 22
 
@@ -370,7 +274,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 21 is class
 - ✅ `app/blueprints/admin.py` - Admin panel routes
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 22 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 23
 
@@ -378,7 +282,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 22 is class
 - ✅ `app/blueprints/machines.py` - Machine data viewing routes (ALD, E-beam, etc.)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 23 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 24
 
@@ -386,23 +290,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 23 is class
 - ✅ `app/blueprints/api.py` - Raspberry Pi data collection APIs
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 24 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 25
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 25 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 26
-
-```text
-### Services (Business Logic)
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 26 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 27
 
@@ -410,7 +298,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 26 is class
 - ✅ `app/services/auth_service.py` - Authentication, Duo 2FA, user management
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 27 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 28
 
@@ -418,7 +306,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 27 is class
 - ✅ `app/services/task_service.py` - Task operations
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 28 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 29
 
@@ -426,7 +314,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 28 is class
 - ✅ `app/services/admin_service.py` - Admin operations
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 29 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 30
 
@@ -434,23 +322,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 29 is class
 - ✅ `app/services/data_service.py` - CSV processing, graphing, file sorting
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 30 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 31
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 31 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 32
-
-```text
-### Templates
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 32 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 33
 
@@ -458,7 +330,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 32 is class
 - ✅ `app/templates/base.html` - Base template with Jinja2 inheritance
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 33 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 34
 
@@ -466,23 +338,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 33 is class
 - ✅ `app/templates/login_example.html` - Example of how to update existing templates
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 34 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 35
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 35 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 36
-
-```text
-### Documentation
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 36 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 37
 
@@ -490,39 +346,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 36 is class
 - ✅ `FLASK_MIGRATION.md` - Comprehensive migration guide
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 37 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 38
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 38 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 39
-
-```text
-## Key Improvements
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 39 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 40
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 40 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 41
-
-```text
-### 1. **Architecture**
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 41 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 42
 
@@ -530,7 +354,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 41 is class
 - **Before**: 2660-line monolithic file
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 42 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 43
 
@@ -538,23 +362,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 42 is class
 - **After**: Modular structure with 14 focused files
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 43 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 44
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 44 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 45
-
-```text
-### 2. **Separation of Concerns**
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 45 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 46
 
@@ -562,7 +370,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 45 is class
 - **Routes** (blueprints) handle HTTP requests/responses
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 46 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 47
 
@@ -570,7 +378,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 46 is class
 - **Services** contain business logic
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 47 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 48
 
@@ -578,7 +386,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 47 is class
 - **Models** define database schema
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 48 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 49
 
@@ -586,23 +394,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 48 is class
 - **Templates** handle presentation
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 49 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 50
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 50 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 51
-
-```text
-### 3. **Maintainability**
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 51 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 52
 
@@ -610,7 +402,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 51 is class
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 52 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 53
 
@@ -618,7 +410,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 52 is class
 HSCDisplayerServer.py (2660 lines)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 53 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 54
 
@@ -626,7 +418,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 53 is class
 ↓
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 54 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 55
 
@@ -634,7 +426,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 54 is class
 app/
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 55 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 56
 
@@ -642,7 +434,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 55 is class
 ├── blueprints/      (~500 lines total, split into 5 files)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 56 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 57
 
@@ -650,7 +442,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 56 is class
 ├── services/        (~400 lines total, split into 4 files)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 57 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 58
 
@@ -658,7 +450,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 57 is class
 ├── models/          (~80 lines)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 58 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 59
 
@@ -666,7 +458,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 58 is class
 └── __init__.py      (~70 lines)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 59 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 60
 
@@ -674,23 +466,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 59 is class
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 60 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 61
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 61 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 62
-
-```text
-### 4. **Features Preserved**
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 62 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 63
 
@@ -698,7 +474,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 62 is class
 ✅ All authentication (including Duo 2FA)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 63 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 64
 
@@ -706,7 +482,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 63 is class
 ✅ Task management
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 64 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 65
 
@@ -714,7 +490,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 64 is class
 ✅ Admin panel
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 65 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 66
 
@@ -722,7 +498,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 65 is class
 ✅ Machine data viewing
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 66 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 67
 
@@ -730,7 +506,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 66 is class
 ✅ CSV processing & graphing
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 67 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 68
 
@@ -738,7 +514,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 67 is class
 ✅ Raspberry Pi data collection
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 68 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 69
 
@@ -746,7 +522,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 68 is class
 ✅ File uploads/downloads
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 69 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 70
 
@@ -754,7 +530,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 69 is class
 ✅ Session management
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 70 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 71
 
@@ -762,39 +538,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 70 is class
 ✅ SSL support
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 71 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 72
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 72 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 73
-
-```text
-## Next Steps for You
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 73 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 74
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 74 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 75
-
-```text
-### 1. Install Dependencies
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 75 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 76
 
@@ -802,7 +546,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 75 is class
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 76 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 77
 
@@ -810,7 +554,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 76 is class
 pip install -r requirements.txt
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 77 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 78
 
@@ -818,23 +562,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 77 is class
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 78 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 79
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 79 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 80
-
-```text
-### 2. Configure Environment
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 80 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 81
 
@@ -842,7 +570,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 80 is class
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 81 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 82
 
@@ -850,15 +578,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 81 is class
 cp .env.example .env
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 82 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 83
-
-```text
-# Edit .env with your settings
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 83 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 84
 
@@ -866,23 +586,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 83 is class
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 84 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 85
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 85 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 86
-
-```text
-### 3. Migrate HTML Templates
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 86 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 87
 
@@ -890,23 +594,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 86 is class
 Move your existing HTML files to `app/templates/` and update them:
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 87 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 88
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 88 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 89
-
-```text
-**Find & Replace in all HTML files:**
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 89 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 90
 
@@ -914,7 +602,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 89 is class
 - `href="/tasks"` → `href="{{ url_for('tasks.index') }}"`
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 90 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 91
 
@@ -922,7 +610,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 90 is class
 - `href="/login"` → `href="{{ url_for('auth.login') }}"`
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 91 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 92
 
@@ -930,7 +618,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 91 is class
 - `src="/js/` → `src="{{ url_for('static', filename='js/`
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 92 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 93
 
@@ -938,15 +626,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 92 is class
 - etc.
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 93 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 94
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 94 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 95
 
@@ -954,23 +634,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 94 is class
 Use `app/templates/base.html` and `login_example.html` as references.
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 95 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 96
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 96 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 97
-
-```text
-### 4. Move Static Files
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 97 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 98
 
@@ -978,7 +642,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 97 is class
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 98 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 99
 
@@ -986,7 +650,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 98 is class
 mkdir -p app/static/js
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 99 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 100
 
@@ -994,7 +658,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 99 is class
 mv HSCDATA/js/* app/static/js/
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 100 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 101
 
@@ -1002,23 +666,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 100 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 101 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 102
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 102 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 103
-
-```text
-### 5. Test the Application
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 103 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 104
 
@@ -1026,7 +674,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 103 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 104 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 105
 
@@ -1034,7 +682,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 104 is clas
 export FLASK_ENV=development
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 105 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 106
 
@@ -1042,7 +690,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 105 is clas
 python run.py
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 106 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 107
 
@@ -1050,39 +698,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 106 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 107 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 108
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 108 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 109
-
-```text
-## What You Gain
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 109 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 110
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 110 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 111
-
-```text
-### Development Benefits
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 111 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 112
 
@@ -1090,7 +706,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 111 is clas
 - ✅ **Easier Testing**: Each service can be tested independently
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 112 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 113
 
@@ -1098,7 +714,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 112 is clas
 - ✅ **Easier Debugging**: Clear separation makes issues easier to track
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 113 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 114
 
@@ -1106,7 +722,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 113 is clas
 - ✅ **Team Collaboration**: Multiple developers can work on different blueprints
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 114 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 115
 
@@ -1114,23 +730,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 114 is clas
 - ✅ **Code Reuse**: Services can be imported and used anywhere
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 115 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 116
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 116 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 117
-
-```text
-### Production Benefits
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 117 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 118
 
@@ -1138,7 +738,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 117 is clas
 - ✅ **Better Performance**: Can use Gunicorn/uWSGI for production
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 118 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 119
 
@@ -1146,7 +746,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 118 is clas
 - ✅ **Easier Deployment**: Standard Flask app structure
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 119 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 120
 
@@ -1154,7 +754,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 119 is clas
 - ✅ **Better Logging**: Flask's built-in logging
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 120 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 121
 
@@ -1162,23 +762,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 120 is clas
 - ✅ **Better Security**: Flask's built-in protections (CSRF, etc.)
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 121 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 122
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 122 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 123
-
-```text
-### Maintenance Benefits
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 123 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 124
 
@@ -1186,7 +770,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 123 is clas
 - ✅ **Add New Features**: Just create a new blueprint or service
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 124 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 125
 
@@ -1194,7 +778,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 124 is clas
 - ✅ **Update Database**: Modify models, SQLAlchemy handles the rest
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 125 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 126
 
@@ -1202,7 +786,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 125 is clas
 - ✅ **Change Configuration**: Update .env file without code changes
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 126 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 127
 
@@ -1210,39 +794,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 126 is clas
 - ✅ **Code Navigation**: Easy to find where things happen
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 127 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 128
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 128 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 129
-
-```text
-## Example: Adding a New Machine
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 129 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 130
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 130 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 131
-
-```text
-**Before** (in 2660-line file):
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 131 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 132
 
@@ -1250,7 +802,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 131 is clas
 1. Find the right place in do_GET
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 132 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 133
 
@@ -1258,7 +810,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 132 is clas
 2. Add ~50 lines of code
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 133 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 134
 
@@ -1266,23 +818,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 133 is clas
 3. Risk breaking other machines
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 134 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 135
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 135 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 136
-
-```text
-**After** (in Flask):
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 136 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 137
 
@@ -1290,7 +826,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 136 is clas
 1. Add one route in `app/blueprints/machines.py`:
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 137 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 138
 
@@ -1298,7 +834,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 137 is clas
 ```python
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 138 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 139
 
@@ -1306,7 +842,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 138 is clas
 @machines_bp.route('/newmachine')
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 139 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 140
 
@@ -1314,7 +850,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 139 is clas
 @login_required
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 140 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 141
 
@@ -1322,7 +858,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 140 is clas
 def new_machine():
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 141 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 142
 
@@ -1330,7 +866,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 141 is clas
     return render_machine_data('NewMachine', ['Column1', 'Column2'])
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 142 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 143
 
@@ -1338,7 +874,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 142 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 143 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 144
 
@@ -1346,31 +882,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 143 is clas
 That's it! The service layer handles the rest.
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 144 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 145
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 145 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 146
-
-```text
-## Database Compatibility
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 146 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 147
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 147 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 148
 
@@ -1378,7 +890,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 147 is clas
 The new SQLAlchemy models are 100% compatible with your existing SQLite databases:
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 148 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 149
 
@@ -1386,7 +898,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 148 is clas
 - ✅ Table names match exactly
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 149 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 150
 
@@ -1394,7 +906,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 149 is clas
 - ✅ Column names match exactly
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 150 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 151
 
@@ -1402,31 +914,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 150 is clas
 - ✅ No migration needed
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 151 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 152
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 152 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 153
-
-```text
-## Questions?
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 153 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 154
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 154 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 155
 
@@ -1434,7 +922,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 154 is clas
 Refer to:
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 155 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 156
 
@@ -1442,7 +930,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 155 is clas
 1. `FLASK_MIGRATION.md` - Detailed migration guide
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 156 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 157
 
@@ -1450,7 +938,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 156 is clas
 2. Flask docs: https://flask.palletsprojects.com/
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 157 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 158
 
@@ -1458,31 +946,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 157 is clas
 3. The original `HSCDisplayerServer.py` for business logic reference
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 158 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 159
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 159 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 160
-
-```text
-## Status: Ready to Use! 🎉
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 160 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 161
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 161 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 162
 
@@ -1490,7 +954,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 161 is clas
 The refactoring is complete. You now have:
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 162 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 163
 
@@ -1498,7 +962,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 162 is clas
 - ✅ Modern Flask application structure
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 163 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 164
 
@@ -1506,7 +970,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 163 is clas
 - ✅ All original functionality preserved
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 164 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 165
 
@@ -1514,7 +978,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 164 is clas
 - ✅ Better organization and maintainability
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 165 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 166
 
@@ -1522,7 +986,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 165 is clas
 - ✅ Production-ready configuration
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 166 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 167
 
@@ -1530,15 +994,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 166 is clas
 - ✅ Comprehensive documentation
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 167 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 168
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 168 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 169
 
@@ -1546,7 +1002,7 @@ Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 168 is clas
 The only remaining task is moving and updating your HTML template files, which is straightforward following the examples provided.
 ```
 
-Reconstruction rule: in `UNanofabTools/REFACTORING_SUMMARY.md`, line 169 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 
 

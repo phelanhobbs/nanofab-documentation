@@ -204,53 +204,13 @@ Check the full documentation in `FLASK_MIGRATION.md` for:
 
 ## Line-By-Line Reconstruction Notes
 
-### Line 1
-
-```text
-# Chemical Inventory Quick Setup Guide
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 1 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
 ### Line 3
 
 ```text
 This guide will help you quickly set up the chemical inventory system on your Flask server.
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 3 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 4 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 5
-
-```text
-## Prerequisites
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 5 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 6
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 6 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 7
 
@@ -258,7 +218,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 6 is class
 - PostgreSQL 12 or higher installed
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 7 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 8
 
@@ -266,7 +226,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 7 is class
 - Python 3.8 or higher
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 8 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 9
 
@@ -274,55 +234,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 8 is class
 - Your Flask app already running
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 9 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 10
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 10 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 11
-
-```text
-## Quick Start (5 minutes)
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 11 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 13
-
-```text
-### 1. Install PostgreSQL (if not already installed)
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 13 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 14 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 15
-
-```text
-**macOS:**
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 15 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 16
 
@@ -330,7 +242,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 15 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 16 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 17
 
@@ -338,7 +250,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 16 is clas
 brew install postgresql@15
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 17 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 18
 
@@ -346,7 +258,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 17 is clas
 brew services start postgresql@15
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 18 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 19
 
@@ -354,23 +266,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 18 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 19 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 20 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 21
-
-```text
-**Ubuntu/Debian:**
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 21 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 22
 
@@ -378,7 +274,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 21 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 22 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 23
 
@@ -386,7 +282,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 22 is clas
 sudo apt-get update
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 23 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 24
 
@@ -394,7 +290,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 23 is clas
 sudo apt-get install postgresql postgresql-contrib
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 24 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 25
 
@@ -402,7 +298,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 24 is clas
 sudo systemctl start postgresql
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 25 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 26
 
@@ -410,31 +306,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 25 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 26 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 27
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 27 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 28
-
-```text
-### 2. Create Database
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 28 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 29
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 29 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 30
 
@@ -442,15 +314,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 29 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 30 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 31
-
-```text
-# Connect to PostgreSQL
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 31 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 32
 
@@ -458,23 +322,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 31 is clas
 psql postgres
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 32 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 33
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 33 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 34
-
-```text
-# Run these commands:
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 34 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 35
 
@@ -482,7 +330,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 34 is clas
 CREATE DATABASE cheminventory;
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 35 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 36
 
@@ -490,7 +338,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 35 is clas
 CREATE USER chemadmin WITH PASSWORD 'ChangeThisPassword123';
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 36 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 37
 
@@ -498,7 +346,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 36 is clas
 GRANT ALL PRIVILEGES ON DATABASE cheminventory TO chemadmin;
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 37 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 38
 
@@ -506,7 +354,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 37 is clas
 \q
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 38 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 39
 
@@ -514,31 +362,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 38 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 39 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 40
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 40 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 41
-
-```text
-### 3. Configure Environment
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 41 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 42
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 42 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 43
 
@@ -546,15 +370,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 42 is clas
 Add to your `.env` file (or create it in the project root):
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 43 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 44
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 44 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 45
 
@@ -562,15 +378,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 44 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 45 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 46
-
-```text
-# Chemical Inventory Database
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 46 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 47
 
@@ -578,7 +386,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 46 is clas
 CHEM_PGHOST=localhost
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 47 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 48
 
@@ -586,7 +394,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 47 is clas
 CHEM_PGPORT=5432
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 48 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 49
 
@@ -594,7 +402,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 48 is clas
 CHEM_POSTGRES_DB=cheminventory
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 49 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 50
 
@@ -602,7 +410,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 49 is clas
 CHEM_POSTGRES_USER=chemadmin
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 50 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 51
 
@@ -610,7 +418,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 50 is clas
 CHEM_POSTGRES_PASSWORD=<redacted-secret-value>
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 51 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 52
 
@@ -618,31 +426,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 51 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 52 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 53
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 53 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 54
-
-```text
-### 4. Install Python Dependencies
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 54 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 55
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 55 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 56
 
@@ -650,7 +434,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 55 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 56 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 57
 
@@ -658,7 +442,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 56 is clas
 pip install psycopg2-binary xlsxwriter
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 57 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 58
 
@@ -666,15 +450,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 57 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 58 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 59
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 59 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 60
 
@@ -682,7 +458,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 59 is clas
 Or reinstall all requirements:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 60 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 61
 
@@ -690,7 +466,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 60 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 61 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 62
 
@@ -698,7 +474,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 61 is clas
 pip install -r requirements.txt
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 62 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 63
 
@@ -706,31 +482,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 62 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 63 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 64
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 64 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 65
-
-```text
-### 5. Initialize Database
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 65 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 66
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 66 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 67
 
@@ -738,7 +490,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 66 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 67 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 68
 
@@ -746,7 +498,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 67 is clas
 python init_chem_db.py
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 68 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 69
 
@@ -754,15 +506,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 68 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 69 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 70
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 70 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 71
 
@@ -770,7 +514,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 70 is clas
 You should see:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 71 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 72
 
@@ -778,7 +522,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 71 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 72 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 73
 
@@ -786,7 +530,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 72 is clas
 Chemical Inventory Database Initialization
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 73 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 74
 
@@ -794,7 +538,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 73 is clas
 ==================================================
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 74 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 75
 
@@ -802,7 +546,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 74 is clas
 Connecting to: localhost:5432/cheminventory
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 75 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 76
 
@@ -810,7 +554,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 75 is clas
 Reading schema...
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 76 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 77
 
@@ -818,7 +562,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 76 is clas
 Executing schema...
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 77 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 78
 
@@ -826,7 +570,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 77 is clas
 ✓ Database initialized successfully!
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 78 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 79
 
@@ -834,31 +578,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 78 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 79 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 80
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 80 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 81
-
-```text
-### 6. Start Your Flask App
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 81 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 82
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 82 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 83
 
@@ -866,7 +586,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 82 is clas
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 83 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 84
 
@@ -874,7 +594,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 83 is clas
 python run.py
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 84 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 85
 
@@ -882,31 +602,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 84 is clas
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 85 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 86
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 86 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 87
-
-```text
-### 7. Access Chemical Inventory
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 87 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 88
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 88 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 89
 
@@ -914,47 +610,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 88 is clas
 Navigate to: `http://localhost:5000/chem/inventory` (or your server URL)
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 89 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 90
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 90 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 91
-
-```text
-## Testing the Setup
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 91 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 92
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 92 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 93
-
-```text
-### Add a Test Container
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 93 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 94
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 94 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 95
 
@@ -962,7 +618,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 94 is clas
 1. Go to `/chem/add`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 95 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 96
 
@@ -970,7 +626,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 95 is clas
 2. Fill in:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 96 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 97
 
@@ -978,7 +634,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 96 is clas
    - Material Name: `Acetone`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 97 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 98
 
@@ -986,7 +642,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 97 is clas
    - Vendor: `Fisher Scientific`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 98 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 99
 
@@ -994,7 +650,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 98 is clas
    - Size: `500`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 99 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 100
 
@@ -1002,7 +658,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 99 is clas
    - Unit: `mL`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 100 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 101
 
@@ -1010,7 +666,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 100 is cla
    - Quantity: `1`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 101 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 102
 
@@ -1018,7 +674,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 101 is cla
 3. Click "Add Container(s)"
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 102 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 103
 
@@ -1026,31 +682,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 102 is cla
 4. Go to `/chem/inventory` to see your new container with auto-generated barcode
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 103 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 104
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 104 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 105
-
-```text
-### View Reports
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 105 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 106
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 106 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 107
 
@@ -1058,7 +690,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 106 is cla
 1. Go to `/chem/report`
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 107 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 108
 
@@ -1066,7 +698,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 107 is cla
 2. You should see summary statistics
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 108 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 109
 
@@ -1074,47 +706,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 108 is cla
 3. Browse different report tabs
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 109 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 110
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 110 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 111
-
-```text
-## Troubleshooting
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 111 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 112
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 112 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 113
-
-```text
-### "Connection refused" or "could not connect to server"
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 113 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 114
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 114 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 115
 
@@ -1122,7 +714,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 114 is cla
 PostgreSQL is not running. Start it:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 115 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 116
 
@@ -1130,7 +722,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 115 is cla
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 116 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 117
 
@@ -1138,7 +730,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 116 is cla
 brew services start postgresql@15  # macOS
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 117 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 118
 
@@ -1146,7 +738,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 117 is cla
 sudo systemctl start postgresql    # Linux
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 118 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 119
 
@@ -1154,31 +746,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 118 is cla
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 119 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 120
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 120 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 121
-
-```text
-### "FATAL: password authentication failed"
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 121 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 122
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 122 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 123
 
@@ -1186,31 +754,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 122 is cla
 Check your password in `.env` matches what you set in step 2.
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 123 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 124
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 124 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 125
-
-```text
-### "relation does not exist"
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 125 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 126
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 126 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 127
 
@@ -1218,7 +762,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 126 is cla
 Database tables weren't created. Run:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 127 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 128
 
@@ -1226,7 +770,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 127 is cla
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 128 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 129
 
@@ -1234,7 +778,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 128 is cla
 python init_chem_db.py
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 129 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 130
 
@@ -1242,31 +786,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 129 is cla
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 130 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 131
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 131 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 132
-
-```text
-### "ModuleNotFoundError: No module named 'psycopg2'"
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 132 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 133
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 133 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 134
 
@@ -1274,7 +794,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 133 is cla
 Install dependencies:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 134 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 135
 
@@ -1282,7 +802,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 134 is cla
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 135 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 136
 
@@ -1290,7 +810,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 135 is cla
 pip install psycopg2-binary
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 136 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 137
 
@@ -1298,31 +818,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 136 is cla
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 137 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 138
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 138 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 139
-
-```text
-### "OperationalError: FATAL: database does not exist"
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 139 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 140
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 140 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 141
 
@@ -1330,7 +826,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 140 is cla
 Create the database (step 2):
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 141 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 142
 
@@ -1338,7 +834,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 141 is cla
 ```bash
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 142 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 143
 
@@ -1346,7 +842,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 142 is cla
 psql postgres -c "CREATE DATABASE cheminventory;"
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 143 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 144
 
@@ -1354,31 +850,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 143 is cla
 ```
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 144 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 145
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 145 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 146
-
-```text
-## Using an Existing Database
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 146 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 147
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 147 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 148
 
@@ -1386,15 +858,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 147 is cla
 If you already have a chemical inventory database from the standalone app:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 148 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 149
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 149 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 150
 
@@ -1402,7 +866,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 149 is cla
 1. Update `.env` with your existing database credentials
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 150 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 151
 
@@ -1410,7 +874,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 150 is cla
 2. Skip `init_chem_db.py` (tables already exist)
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 151 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 152
 
@@ -1418,31 +882,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 151 is cla
 3. Start your Flask app - it will connect to your existing data
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 152 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 153
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 153 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 154
-
-```text
-## Next Steps
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 154 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 155
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 155 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 156
 
@@ -1450,7 +890,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 155 is cla
 - Add your existing chemicals
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 156 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 157
 
@@ -1458,7 +898,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 156 is cla
 - Set up barcode scanner for inventory cycles
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 157 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 158
 
@@ -1466,7 +906,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 157 is cla
 - Configure email notifications for expiring chemicals
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 158 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 159
 
@@ -1474,7 +914,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 158 is cla
 - Export reports to Excel/CSV
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 159 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 160
 
@@ -1482,31 +922,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 159 is cla
 - Print container labels with barcodes
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 160 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 161
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 161 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 162
-
-```text
-## Need Help?
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 162 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 163
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 163 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 164
 
@@ -1514,7 +930,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 163 is cla
 Check the full documentation in `FLASK_MIGRATION.md` for:
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 164 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 165
 
@@ -1522,7 +938,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 164 is cla
 - Detailed setup instructions
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 165 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 166
 
@@ -1530,7 +946,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 165 is cla
 - Database schema explanation
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 166 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 167
 
@@ -1538,7 +954,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 166 is cla
 - Usage guide
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 167 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 168
 
@@ -1546,7 +962,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 167 is cla
 - Advanced features
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 168 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 169
 
@@ -1554,31 +970,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 168 is cla
 - Migration from standalone app
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 169 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `prose` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 170
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 170 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 171
-
-```text
-## Security Notes
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 171 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 172
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 172 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 173
 
@@ -1586,15 +978,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 172 is cla
 ⚠️ **Change the default password!** The example password `ChangeThisPassword123` is not secure.
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 173 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 174
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 174 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 175
 
@@ -1602,15 +986,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 174 is cla
 ⚠️ **Production deployment:** Use environment variables or secure secret management, never commit passwords to git.
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 175 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 176
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 176 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `prose` and next kind is `prose`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 177
 
@@ -1618,7 +994,7 @@ Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 176 is cla
 ⚠️ **Database backups:** Set up regular PostgreSQL backups for your chemical inventory data.
 ```
 
-Reconstruction rule: in `UNanofabTools/CHEM_INVENTORY_SETUP.md`, line 177 is classified as `prose`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets. Neighbor context: previous kind is `blank` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 
 

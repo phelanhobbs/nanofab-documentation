@@ -24,8 +24,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "support" / "path-f-reconstruction"
 TOOL_DIR = OUT / "tools"
-TARGET_WORDS = 2_500_000
-TARGET_PAD_WORDS = 2_575_000
+# Path F is sized by its real reconstruction content. Synthetic "rehearsal pass"
+# padding is disabled (targets are 0) so trimming low-signal line notes actually
+# shrinks the manual instead of being back-filled with templated passes.
+TARGET_WORDS = 0
+TARGET_PAD_WORDS = 0
 
 NAVIGATION_FILES = {
     "NAVIGATOR.md",
@@ -160,7 +163,7 @@ def repo_state(repo: str, root: Path) -> dict[str, object]:
     status_lines = run(["git", "status", "--porcelain"], root).splitlines()
     return {
         "repo": repo,
-        "root": str(root),
+        "root": os.path.relpath(root, ROOT),
         "branch": run(["git", "branch", "--show-current"], root),
         "commit": run(["git", "rev-parse", "HEAD"], root),
         "short_commit": run(["git", "rev-parse", "--short", "HEAD"], root),
@@ -800,13 +803,7 @@ def line_kind(path: Path, line: str) -> str:
 
 
 def line_explanation(sf: SourceFile, number: int, line: str, prior_kind: str | None, next_kind: str | None) -> str:
-    stripped = line.strip()
     kind = line_kind(sf.rel, line)
-    subject = sf.display
-    common = (
-        f"Reconstruction rule: in `{subject}`, line {number} is classified as `{kind}`. "
-        "A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. "
-    )
     if kind == "blank":
         body = "This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable."
     elif kind == "comment":
@@ -872,11 +869,7 @@ def line_explanation(sf: SourceFile, number: int, line: str, prior_kind: str | N
     else:
         body = "This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production."
 
-    context = (
-        f"Neighbor context: previous kind is `{prior_kind or 'none'}` and next kind is `{next_kind or 'none'}`. "
-        "When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup."
-    )
-    return common + body + " " + context
+    return f"`{kind}` — {body}"
 
 
 def source_breadcrumbs(sf: SourceFile) -> str:
@@ -975,6 +968,34 @@ EDGE_CASE_THEMES = [
 ]
 
 
+EDGE_CASE_SPECIFICS = {
+    "empty input": "HSCDownloader getting an empty CORES payload, or a machine page with no rows, must still write a headers-only `small_` CSV and render an empty table — never a 500 or a half-written file.",
+    "single input": "One CORES record, one task, or one sensor reading must render like many (single-row tables, single-point graphs) with no list-versus-scalar or off-by-one bugs.",
+    "large input": "A large LogData/HSCDATA CSV or a long chem result must page or stream within nginx/Flask limits instead of timing out or exhausting memory on the single VM.",
+    "duplicate input": "Re-POSTed Pico data or a re-run downloader cycle must not double-count rows or duplicate `transactions`; preserve idempotent upserts.",
+    "malformed input": "A corrupt Denton `.DAT`, malformed CORES JSON, or a bad device POST must fail with a specific logged error, not silently write garbage to HSCDATA or the chem DB.",
+    "missing file": "A missing HSCDATA `small_` file, LogData entry, or `uploads/` attachment must give a clear 404 or 'no data yet' state, not a traceback.",
+    "permission denied": "App writes run as `phelan` under `/home/phelan/server/...`; a permission error usually means an IT-owned path or wrong ownership, not an app bug.",
+    "network timeout": "A slow or unreachable CORES n8n endpoint must time out and log, leaving the last good HSCDATA in place rather than overwriting it with partial data.",
+    "stale credential": "A rotated or expired CORES bearer token makes HSCDownloader silently emit stale or empty machine data with no UI error — check the downloader log first.",
+    "rotated secret": "Rotating the Flask `SECRET_KEY` logs out every session; rotating Duo, DB, or WiFi secrets requires matching `.env`/firmware updates or the feature stops working.",
+    "schema drift": "The live chem PostgreSQL has runtime-only columns and tables (for example `transactions` and barcode columns) absent from the committed SQL; a DB built only from `chem_schema*.sql` will 500 on chem write, scan, and report.",
+    "partial database write": "tmux-run Flask has no transaction supervisor; an interrupted chem write or task update must roll back so SQLite and PostgreSQL are never left half-updated.",
+    "concurrent request": "Two simultaneous chem edits or task claims against the single Flask process and SQLite files must not corrupt state; SQLite write-locking and chem transaction scope must hold.",
+    "browser refresh": "Refreshing after a POST (add chemical, create task) must not silently resubmit; the post/redirect/get pattern and session must survive a reload.",
+    "double submit": "A double-clicked form (signup, add container, claim task) must be idempotent or guarded — no duplicate users, containers, or task assignees.",
+    "stale tmux session": "If the `flaskserver` or `downloader` tmux session died or holds a stale editor pane, the site or HSCDATA silently stops; recovery is re-attach and restart per the serveraccess docs, not a code change.",
+    "wrong working directory": "Flask and HSCDownloader assume the install dir `/home/phelan/server/UNanofabTools/`; starting elsewhere breaks relative paths to `instance/`, HSCDATA, and templates.",
+    "wrong user account": "Running as anything other than shared `phelan` breaks file ownership and SSH-key assumptions; per-user UNIX accounts are an IT ticket, not a workaround.",
+    "University IT boundary": "Anything touching root, the VM, nginx, firewall, base patching, off-box backups, or UNIX-account creation is IT-owned — file a ticket; Nanofab's reach stops at `sudo` as `phelan`.",
+    "backup restore": "Restoring nfhistory is an IT VM restore; verify `/home/phelan/`, the local PostgreSQL data directory, and `/etc/letsencrypt/` all returned, then restart Flask and the downloader in tmux.",
+    "disk pressure": "A full disk on the single VM stops HSCDATA writes, SQLite writes, and TLS renewal at once; check `df` and the LogData/HSCDATA/`uploads/` trees before assuming an app bug.",
+    "old source copy": "PicoHelperTools and ParticleSensor have older duplicate copies in UNanofabTools; edit the canonical NanofabToolkit copies and do not reconstruct from the historical ones.",
+    "production versus development configuration": "`.env.example` ships the production HOST and PORT (the live IP and 443); a dev run must override them or it binds to production values — prod serves via nginx to 127.0.0.1:5000, not gunicorn on 443.",
+    "redacted secret reconstruction": "Placeholders like `<redacted-bearer-token>` mark where a secret lives, not its value; supply it from `.env`, firmware provisioning, or IT — never infer it from placeholder length or nearby code.",
+}
+
+
 def file_edge_matrix(sf: SourceFile) -> str:
     chunks = ["\n\n## Edge-Case Matrix For This File\n\n"]
     for idx, theme in enumerate(EDGE_CASE_THEMES, start=1):
@@ -993,11 +1014,15 @@ def render_file(sf: SourceFile) -> str:
     kinds = [line_kind(sf.rel, line) for line in lines]
     chunks = [file_reconstruction_intro(sf, raw, sanitized)]
     for idx, line in enumerate(lines, start=1):
+        kind = kinds[idx - 1]
+        # Skip lines that carry no behavior: their text is already in the full
+        # excerpt above, so a per-line note would just repeat boilerplate.
+        if kind in ("blank", "comment"):
+            continue
         prior_kind = kinds[idx - 2] if idx > 1 else None
         next_kind = kinds[idx] if idx < len(kinds) else None
-        display_line = line if line else "<blank line>"
         chunks.append(f"### Line {idx}\n\n")
-        chunks.append(f"```text\n{display_line}\n```\n\n")
+        chunks.append(f"```text\n{line}\n```\n\n")
         chunks.append(line_explanation(sf, idx, line, prior_kind, next_kind))
         chunks.append("\n\n")
     chunks.append(file_edge_matrix(sf))
@@ -1082,7 +1107,7 @@ def global_overview(files: list[SourceFile]) -> str:
     for repo, root in SOURCE_REPOS.items():
         state = repo_state(repo, root)
         chunks.append(
-            f"- `{repo}`: branch `{state['branch']}`, commit `{state['commit']}`, root `{root}`, "
+            f"- `{repo}`: branch `{state['branch']}`, commit `{state['commit']}`, root `{state['root']}`, "
             f"dirty files `{state['dirty_files']}`, untracked files `{state['untracked_files']}`\n"
         )
     chunks.append("\n## Readable Source Files Included\n\n")
@@ -1106,8 +1131,9 @@ def global_overview(files: list[SourceFile]) -> str:
     for idx, theme in enumerate(EDGE_CASE_THEMES, start=1):
         chunks.append(
             f"### Universal Edge Case {idx}: {theme.title()}\n\n"
-            f"Every module must be checked against the {theme} case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. "
-            "If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.\n\n"
+            f"**In this system:** {EDGE_CASE_SPECIFICS[theme]}\n\n"
+            f"A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the {theme} condition. "
+            "If the original behavior is weak, describe it accurately before recommending a safer replacement.\n\n"
         )
     return "".join(chunks)
 
@@ -1790,7 +1816,7 @@ def build() -> dict[str, int]:
         "This is the most comprehensive generated path. It is intentionally much larger than Path E and is split into reconstruction folders for each tool. "
         "Its purpose is to explain both repos deeply enough that a future maintainer can recreate the server and tools from sanitized documentation, without depending on private memory or unredacted source files.\n\n"
         f"- Total generated word count: **{total:,}**\n"
-        f"- Target minimum: **{TARGET_WORDS:,}**\n"
+        "- Sizing: length reflects real reconstruction content; synthetic padding is disabled.\n"
         "- Output directory: `support/path-f-reconstruction/tools/`\n"
         "- Generator: `support/path-f-tools/build_path_f.py`\n"
         "- Secret policy: secret-looking literal values are redacted in generated excerpts.\n\n"
@@ -1814,7 +1840,7 @@ def build() -> dict[str, int]:
     manifest = (
         "# Path F Word Count Manifest\n\n"
         f"- Total generated word count: **{total:,}**\n"
-        f"- Target minimum: **{TARGET_WORDS:,}**\n"
+        "- Sizing: length reflects real reconstruction content; synthetic padding is disabled.\n"
         f"- Files included from source repos: **{len(files)}**\n"
         f"- Generated reconstruction files counted: **{len(generated)}**\n"
         "- Verification command: `{ printf '%s\\0' support/path-f-reconstruction/NAVIGATOR.md support/path-f-reconstruction/TROUBLESHOOTING-ROUTES.md support/path-f-reconstruction/MAINTAINER-FIRST-HOUR.md support/path-f-reconstruction/RECONSTRUCTION-CHECKLIST.md support/path-f-reconstruction/GLOSSARY.md support/path-f-reconstruction/REBUILD-EVIDENCE-TEMPLATE.md support/path-f-reconstruction/FIXTURE-AND-EVIDENCE-INDEX.md; find support/path-f-reconstruction/tools -name '*.md' -print0; } | xargs -0 wc -w`\n\n"

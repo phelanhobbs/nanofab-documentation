@@ -77,37 +77,13 @@ function sortTable(n){
 
 ## Line-By-Line Reconstruction Notes
 
-### Line 1
-
-```text
-//tableSort.js
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 1 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `none` and next kind is `js-function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
 ### Line 2
 
 ```text
 function sortTable(n){
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 2 is classified as `js-function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript function defines client-side behavior. Preserve parameters, returned promises or values, DOM side effects, and error handling; edge cases include null elements, malformed server data, and browser compatibility. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 3
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 3 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `js-function` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-    //set up variables as empty
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 4 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`js-function` — This JavaScript function defines client-side behavior. Preserve parameters, returned promises or values, DOM side effects, and error handling; edge cases include null elements, malformed server data, and browser compatibility.
 
 ### Line 5
 
@@ -115,7 +91,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 4 is class
     var table, rows, switching, i, x, y, shouldSwitch, dir = "asc", switchcount = 0;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 5 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 6
 
@@ -123,7 +99,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 5 is class
     table = document.getElementById("sortableTable");
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 6 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 7
 
@@ -131,31 +107,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 6 is class
     switching = true;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 7 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 8
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 8 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `javascript` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 9
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 9 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 10
-
-```text
-    //Make a loop that will continue until no switching has been done:
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 10 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 11
 
@@ -163,7 +115,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 10 is clas
     while(switching){
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 11 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 12
 
@@ -171,7 +123,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 11 is clas
         switching = false;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 12 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 13
 
@@ -179,15 +131,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 12 is clas
         rows = table.getElementsByTagName("TR");
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 13 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-        //Loop through all table rows (except the first, which contains table headers):
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 14 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 15
 
@@ -195,7 +139,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 14 is clas
         for(i = 1; i < (rows.length - 1); i++){
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 15 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 16
 
@@ -203,15 +147,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 15 is clas
             shouldSwitch = false;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 16 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 17
-
-```text
-            //Get the two elements you want to compare, one from current row and one from the next:
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 17 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 18
 
@@ -219,7 +155,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 17 is clas
             x = rows[i].getElementsByTagName("TD")[n];
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 18 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 19
 
@@ -227,23 +163,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 18 is clas
             y = rows[i + 1].getElementsByTagName("TD")[n];
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 19 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 20 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `javascript` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 21
-
-```text
-            // Attempt to convert cell values to numbers for comparison, if possible
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 21 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 22
 
@@ -251,7 +171,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 21 is clas
             var xVal = isNaN(parseFloat(x.innerHTML)) ? x.innerHTML.toLowerCase() : parseFloat(x.innerHTML);
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 22 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 23
 
@@ -259,23 +179,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 22 is clas
             var yVal = isNaN(parseFloat(y.innerHTML)) ? y.innerHTML.toLowerCase() : parseFloat(y.innerHTML);
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 23 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 24
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 24 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `javascript` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 25
-
-```text
-            //Check if the two rows should switch place, based on the direction, asc or desc:
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 25 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 26
 
@@ -283,7 +187,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 25 is clas
             if (dir == "asc") {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 26 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 27
 
@@ -291,7 +195,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 26 is clas
                 if (xVal > yVal) {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 27 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 28
 
@@ -299,7 +203,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 27 is clas
                     shouldSwitch = true;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 28 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 29
 
@@ -307,7 +211,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 28 is clas
                     break;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 29 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 30
 
@@ -315,7 +219,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 29 is clas
                 }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 30 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 31
 
@@ -323,7 +227,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 30 is clas
             } else if (dir == "desc") {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 31 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 32
 
@@ -331,7 +235,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 31 is clas
                 if (xVal < yVal) {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 32 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 33
 
@@ -339,7 +243,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 32 is clas
                     shouldSwitch = true;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 33 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 34
 
@@ -347,7 +251,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 33 is clas
                     break;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 34 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 35
 
@@ -355,7 +259,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 34 is clas
                 }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 35 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 36
 
@@ -363,7 +267,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 35 is clas
             }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 36 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 37
 
@@ -371,15 +275,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 36 is clas
         }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 37 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 38
-
-```text
-        //If a switch has been marked, make the switch and mark that a switch has been done:
-```
-
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 38 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 39
 
@@ -387,7 +283,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 38 is clas
         if (shouldSwitch) {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 39 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `comment` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 40
 
@@ -395,7 +291,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 39 is clas
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 40 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 41
 
@@ -403,7 +299,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 40 is clas
             switching = true;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 41 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 42
 
@@ -411,7 +307,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 41 is clas
             switchcount++;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 42 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 43
 
@@ -419,7 +315,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 42 is clas
         } else {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 43 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 44
 
@@ -427,7 +323,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 43 is clas
             if (switchcount == 0 && dir == "asc") {
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 44 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 45
 
@@ -435,7 +331,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 44 is clas
                 dir = "desc";
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 45 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 46
 
@@ -443,7 +339,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 45 is clas
                 switching = true;
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 46 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 47
 
@@ -451,7 +347,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 46 is clas
             }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 47 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 48
 
@@ -459,7 +355,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 47 is clas
         }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 48 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 49
 
@@ -467,7 +363,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 48 is clas
     }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 49 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `javascript`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 ### Line 50
 
@@ -475,7 +371,7 @@ Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 49 is clas
 }
 ```
 
-Reconstruction rule: in `UNanofabTools/HSCDATA/js/tablesort.js`, line 50 is classified as `javascript`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls. Neighbor context: previous kind is `javascript` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`javascript` — This JavaScript line contributes client-side state, rendering, or utilities. Preserve data shape, selector assumptions, timing, and browser-visible behavior; edge cases include stale DOM, missing data attributes, and failed network calls.
 
 
 

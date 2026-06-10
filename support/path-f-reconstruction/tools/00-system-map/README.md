@@ -13,8 +13,8 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 
 ## Source State Used
 
-- `UNanofabTools`: branch `dev`, commit `ac6c67f0299e5fe62befed8b4de9bc822320f53e`, root `/Users/phe/code/work/UNanofabTools`, dirty files `3`, untracked files `1`
-- `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `/Users/phe/code/work/NanofabToolkit`, dirty files `1`, untracked files `0`
+- `UNanofabTools`: branch `dev`, commit `ac6c67f0299e5fe62befed8b4de9bc822320f53e`, root `../UNanofabTools`, dirty files `3`, untracked files `2`
+- `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `../NanofabToolkit`, dirty files `1`, untracked files `0`
 
 ## Readable Source Files Included
 
@@ -37,96 +37,144 @@ For reconstruction without the original source tree, use this manual's sanitized
 
 ### Universal Edge Case 1: Empty Input
 
-Every module must be checked against the empty input case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** HSCDownloader getting an empty CORES payload, or a machine page with no rows, must still write a headers-only `small_` CSV and render an empty table — never a 500 or a half-written file.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the empty input condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 2: Single Input
 
-Every module must be checked against the single input case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** One CORES record, one task, or one sensor reading must render like many (single-row tables, single-point graphs) with no list-versus-scalar or off-by-one bugs.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the single input condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 3: Large Input
 
-Every module must be checked against the large input case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A large LogData/HSCDATA CSV or a long chem result must page or stream within nginx/Flask limits instead of timing out or exhausting memory on the single VM.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the large input condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 4: Duplicate Input
 
-Every module must be checked against the duplicate input case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Re-POSTed Pico data or a re-run downloader cycle must not double-count rows or duplicate `transactions`; preserve idempotent upserts.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the duplicate input condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 5: Malformed Input
 
-Every module must be checked against the malformed input case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A corrupt Denton `.DAT`, malformed CORES JSON, or a bad device POST must fail with a specific logged error, not silently write garbage to HSCDATA or the chem DB.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the malformed input condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 6: Missing File
 
-Every module must be checked against the missing file case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A missing HSCDATA `small_` file, LogData entry, or `uploads/` attachment must give a clear 404 or 'no data yet' state, not a traceback.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the missing file condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 7: Permission Denied
 
-Every module must be checked against the permission denied case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** App writes run as `phelan` under `/home/phelan/server/...`; a permission error usually means an IT-owned path or wrong ownership, not an app bug.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the permission denied condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 8: Network Timeout
 
-Every module must be checked against the network timeout case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A slow or unreachable CORES n8n endpoint must time out and log, leaving the last good HSCDATA in place rather than overwriting it with partial data.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the network timeout condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 9: Stale Credential
 
-Every module must be checked against the stale credential case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A rotated or expired CORES bearer token makes HSCDownloader silently emit stale or empty machine data with no UI error — check the downloader log first.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the stale credential condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 10: Rotated Secret
 
-Every module must be checked against the rotated secret case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Rotating the Flask `SECRET_KEY` logs out every session; rotating Duo, DB, or WiFi secrets requires matching `.env`/firmware updates or the feature stops working.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the rotated secret condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 11: Schema Drift
 
-Every module must be checked against the schema drift case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** The live chem PostgreSQL has runtime-only columns and tables (for example `transactions` and barcode columns) absent from the committed SQL; a DB built only from `chem_schema*.sql` will 500 on chem write, scan, and report.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the schema drift condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 12: Partial Database Write
 
-Every module must be checked against the partial database write case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** tmux-run Flask has no transaction supervisor; an interrupted chem write or task update must roll back so SQLite and PostgreSQL are never left half-updated.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the partial database write condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 13: Concurrent Request
 
-Every module must be checked against the concurrent request case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Two simultaneous chem edits or task claims against the single Flask process and SQLite files must not corrupt state; SQLite write-locking and chem transaction scope must hold.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the concurrent request condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 14: Browser Refresh
 
-Every module must be checked against the browser refresh case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Refreshing after a POST (add chemical, create task) must not silently resubmit; the post/redirect/get pattern and session must survive a reload.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the browser refresh condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 15: Double Submit
 
-Every module must be checked against the double submit case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A double-clicked form (signup, add container, claim task) must be idempotent or guarded — no duplicate users, containers, or task assignees.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the double submit condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 16: Stale Tmux Session
 
-Every module must be checked against the stale tmux session case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** If the `flaskserver` or `downloader` tmux session died or holds a stale editor pane, the site or HSCDATA silently stops; recovery is re-attach and restart per the serveraccess docs, not a code change.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the stale tmux session condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 17: Wrong Working Directory
 
-Every module must be checked against the wrong working directory case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Flask and HSCDownloader assume the install dir `/home/phelan/server/UNanofabTools/`; starting elsewhere breaks relative paths to `instance/`, HSCDATA, and templates.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the wrong working directory condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 18: Wrong User Account
 
-Every module must be checked against the wrong user account case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Running as anything other than shared `phelan` breaks file ownership and SSH-key assumptions; per-user UNIX accounts are an IT ticket, not a workaround.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the wrong user account condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 19: University It Boundary
 
-Every module must be checked against the University IT boundary case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Anything touching root, the VM, nginx, firewall, base patching, off-box backups, or UNIX-account creation is IT-owned — file a ticket; Nanofab's reach stops at `sudo` as `phelan`.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the University IT boundary condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 20: Backup Restore
 
-Every module must be checked against the backup restore case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Restoring nfhistory is an IT VM restore; verify `/home/phelan/`, the local PostgreSQL data directory, and `/etc/letsencrypt/` all returned, then restart Flask and the downloader in tmux.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the backup restore condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 21: Disk Pressure
 
-Every module must be checked against the disk pressure case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** A full disk on the single VM stops HSCDATA writes, SQLite writes, and TLS renewal at once; check `df` and the LogData/HSCDATA/`uploads/` trees before assuming an app bug.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the disk pressure condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 22: Old Source Copy
 
-Every module must be checked against the old source copy case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** PicoHelperTools and ParticleSensor have older duplicate copies in UNanofabTools; edit the canonical NanofabToolkit copies and do not reconstruct from the historical ones.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the old source copy condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 23: Production Versus Development Configuration
 
-Every module must be checked against the production versus development configuration case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** `.env.example` ships the production HOST and PORT (the live IP and 443); a dev run must override them or it binds to production values — prod serves via nginx to 127.0.0.1:5000, not gunicorn on 443.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the production versus development configuration condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 
 ### Universal Edge Case 24: Redacted Secret Reconstruction
 
-Every module must be checked against the redacted secret reconstruction case. A functionally identical rebuild has to preserve what happens to users, files, databases, logs, network calls, and operator decisions under this condition. If the original behavior is weak, the manual should still describe it accurately before recommending a safer replacement.
+**In this system:** Placeholders like `<redacted-bearer-token>` mark where a secret lives, not its value; supply it from `.env`, firmware provisioning, or IT — never infer it from placeholder length or nearby code.
+
+A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the redacted secret reconstruction condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.

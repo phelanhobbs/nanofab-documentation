@@ -169,61 +169,13 @@ echo "For detailed instructions, see SETUP_GUIDE.md"
 
 ## Line-By-Line Reconstruction Notes
 
-### Line 1
-
-```text
-#!/bin/bash
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 1 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `none` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 2
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 2 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 3
-
-```text
-# Flask Application Quick Setup Script
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 3 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 4
-
-```text
-# This automates most of the setup process
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 4 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 5
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 5 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
 ### Line 6
 
 ```text
 set -e  # Exit on error
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 6 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 7
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 7 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 8
 
@@ -231,7 +183,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 7 is classified as 
 echo "╔════════════════════════════════════════════════╗"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 8 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 9
 
@@ -239,7 +191,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 8 is classified as 
 echo "║   UNanofabTools Flask Setup Script           ║"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 9 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 10
 
@@ -247,7 +199,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 9 is classified as 
 echo "║   Automating your migration to Flask          ║"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 10 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 11
 
@@ -255,7 +207,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 10 is classified as
 echo "╚════════════════════════════════════════════════╝"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 11 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 12
 
@@ -263,23 +215,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 11 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 12 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 13
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 13 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 14
-
-```text
-# Colors for output
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 14 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 15
 
@@ -287,7 +223,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 14 is classified as
 RED='\033[0;31m'
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 15 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 16
 
@@ -295,7 +231,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 15 is classified as
 GREEN='\033[0;32m'
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 16 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 17
 
@@ -303,7 +239,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 16 is classified as
 YELLOW='\033[1;33m'
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 17 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 18
 
@@ -311,23 +247,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 17 is classified as
 NC='\033[0m' # No Color
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 18 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 19
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 19 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-# Check if we're in the right directory
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 20 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 21
 
@@ -335,7 +255,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 20 is classified as
 if [ ! -f "run.py" ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 21 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 22
 
@@ -343,7 +263,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 21 is classified as
     echo -e "${RED}❌ Error: run.py not found. Please run this script from the project root.${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 22 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 23
 
@@ -351,7 +271,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 22 is classified as
     exit 1
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 23 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 24
 
@@ -359,15 +279,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 23 is classified as
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 24 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 25
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 25 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 26
 
@@ -375,7 +287,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 25 is classified as
 echo -e "${GREEN}✅ Found project root${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 26 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 27
 
@@ -383,23 +295,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 26 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 27 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 28
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 28 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 29
-
-```text
-# Step 1: Check Python
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 29 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 30
 
@@ -407,7 +303,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 29 is classified as
 echo "Step 1: Checking Python installation..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 30 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 31
 
@@ -415,7 +311,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 30 is classified as
 if ! command -v python3 &> /dev/null; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 31 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 32
 
@@ -423,7 +319,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 31 is classified as
     echo -e "${RED}❌ Python 3 is not installed${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 32 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 33
 
@@ -431,7 +327,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 32 is classified as
     echo "Please install Python 3 and try again"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 33 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 34
 
@@ -439,7 +335,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 33 is classified as
     exit 1
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 34 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 35
 
@@ -447,7 +343,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 34 is classified as
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 35 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 36
 
@@ -455,7 +351,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 35 is classified as
 echo -e "${GREEN}✅ Python found: $(python3 --version)${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 36 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 37
 
@@ -463,23 +359,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 36 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 37 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 38
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 38 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 39
-
-```text
-# Step 2: Install dependencies
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 39 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 40
 
@@ -487,7 +367,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 39 is classified as
 echo "Step 2: Installing Python dependencies..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 40 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 41
 
@@ -495,7 +375,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 40 is classified as
 echo "This may take a few minutes..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 41 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 42
 
@@ -503,7 +383,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 41 is classified as
 pip3 install -r requirements.txt > /dev/null 2>&1
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 42 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 43
 
@@ -511,7 +391,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 42 is classified as
 if [ $? -eq 0 ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 43 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 44
 
@@ -519,7 +399,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 43 is classified as
     echo -e "${GREEN}✅ Dependencies installed${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 44 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 45
 
@@ -527,7 +407,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 44 is classified as
 else
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 45 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 46
 
@@ -535,7 +415,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 45 is classified as
     echo -e "${YELLOW}⚠️  Some dependencies may have failed. Check manually with: pip3 install -r requirements.txt${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 46 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 47
 
@@ -543,7 +423,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 46 is classified as
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 47 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 48
 
@@ -551,23 +431,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 47 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 48 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 49
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 49 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 50
-
-```text
-# Step 3: Check .env file
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 50 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 51
 
@@ -575,7 +439,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 50 is classified as
 echo "Step 3: Checking configuration..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 51 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 52
 
@@ -583,7 +447,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 51 is classified as
 if [ ! -f ".env" ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 52 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 53
 
@@ -591,7 +455,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 52 is classified as
     echo -e "${YELLOW}⚠️  .env file not found, creating from template...${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 53 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 54
 
@@ -599,7 +463,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 53 is classified as
     cp .env.example .env
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 54 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 55
 
@@ -607,7 +471,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 54 is classified as
     echo -e "${GREEN}✅ .env file created${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 55 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 56
 
@@ -615,7 +479,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 55 is classified as
     echo -e "${YELLOW}⚠️  IMPORTANT: You must edit .env with your settings!${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 56 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 57
 
@@ -623,7 +487,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 56 is classified as
     NEEDS_ENV_EDIT=true
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 57 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 58
 
@@ -631,7 +495,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 57 is classified as
 else
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 58 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 59
 
@@ -639,7 +503,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 58 is classified as
     echo -e "${GREEN}✅ .env file exists${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 59 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 60
 
@@ -647,7 +511,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 59 is classified as
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 60 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 61
 
@@ -655,23 +519,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 60 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 61 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 62
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 62 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 63
-
-```text
-# Step 4: Create necessary directories
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 63 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 64
 
@@ -679,7 +527,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 63 is classified as
 echo "Step 4: Creating directories..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 64 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 65
 
@@ -687,7 +535,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 64 is classified as
 mkdir -p app/static/js app/static/css
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 65 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 66
 
@@ -695,7 +543,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 65 is classified as
 mkdir -p uploads
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 66 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 67
 
@@ -703,7 +551,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 66 is classified as
 mkdir -p HSCDATA
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 67 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 68
 
@@ -711,7 +559,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 67 is classified as
 mkdir -p LogData/{ALD/{RF,Pressure},Paralyne/analog,denton18/pumpdata}
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 68 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 69
 
@@ -719,7 +567,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 68 is classified as
 mkdir -p logs
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 69 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 70
 
@@ -727,7 +575,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 69 is classified as
 echo -e "${GREEN}✅ Directories created${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 70 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 71
 
@@ -735,23 +583,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 70 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 71 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 72
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 72 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 73
-
-```text
-# Step 5: Check JavaScript files
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 73 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 74
 
@@ -759,7 +591,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 73 is classified as
 echo "Step 5: Checking static files..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 74 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 75
 
@@ -767,7 +599,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 74 is classified as
 if [ -d "HSCDATA/js" ] && [ "$(ls -A HSCDATA/js)" ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 75 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `transfer`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 76
 
@@ -775,7 +607,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 75 is classified as
     echo "Copying JavaScript files..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 76 is classified as `transfer`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`transfer` — This transfer command moves data between machines or directories. Preserve source path, destination path, authentication identity, retry behavior, and logging; edge cases include network loss, partial copies, personal-account dependency, and files changing while copied.
 
 ### Line 77
 
@@ -783,7 +615,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 76 is classified as
     cp HSCDATA/js/* app/static/js/ 2>/dev/null || true
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 77 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `transfer` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 78
 
@@ -791,7 +623,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 77 is classified as
     echo -e "${GREEN}✅ JavaScript files copied${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 78 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 79
 
@@ -799,7 +631,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 78 is classified as
 else
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 79 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 80
 
@@ -807,7 +639,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 79 is classified as
     echo -e "${YELLOW}⚠️  HSCDATA/js directory is empty or doesn't exist${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 80 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 81
 
@@ -815,7 +647,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 80 is classified as
     echo "   Static files should be placed in app/static/js/"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 81 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 82
 
@@ -823,7 +655,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 81 is classified as
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 82 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 83
 
@@ -831,23 +663,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 82 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 83 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 84
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 84 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 85
-
-```text
-# Step 6: Check databases
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 85 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 86
 
@@ -855,7 +671,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 85 is classified as
 echo "Step 6: Checking databases..."
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 86 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 87
 
@@ -863,7 +679,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 86 is classified as
 DB_COUNT=0
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 87 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 88
 
@@ -871,7 +687,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 87 is classified as
 for db in signininfo.db sessioninfo.db tasks.db; do
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 88 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 89
 
@@ -879,7 +695,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 88 is classified as
     if [ -f "$db" ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 89 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 90
 
@@ -887,7 +703,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 89 is classified as
         echo -e "  ${GREEN}✅ Found $db${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 90 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 91
 
@@ -895,7 +711,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 90 is classified as
         ((DB_COUNT++))
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 91 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 92
 
@@ -903,7 +719,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 91 is classified as
     else
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 92 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 93
 
@@ -911,7 +727,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 92 is classified as
         echo -e "  ${YELLOW}⚠️  $db not found (will be created on first run)${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 93 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 94
 
@@ -919,7 +735,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 93 is classified as
     fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 94 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 95
 
@@ -927,7 +743,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 94 is classified as
 done
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 95 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 96
 
@@ -935,23 +751,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 95 is classified as
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 96 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 97
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 97 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 98
-
-```text
-# Summary
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 98 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 99
 
@@ -959,7 +759,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 98 is classified as
 echo "╔════════════════════════════════════════════════╗"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 99 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 100
 
@@ -967,7 +767,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 99 is classified as
 echo "║            Setup Complete Summary              ║"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 100 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 101
 
@@ -975,7 +775,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 100 is classified a
 echo "╚════════════════════════════════════════════════╝"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 101 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 102
 
@@ -983,7 +783,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 101 is classified a
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 102 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 103
 
@@ -991,7 +791,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 102 is classified a
 echo -e "${GREEN}✅ Project structure is ready${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 103 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 104
 
@@ -999,7 +799,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 103 is classified a
 echo -e "${GREEN}✅ Dependencies installed${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 104 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 105
 
@@ -1007,7 +807,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 104 is classified a
 echo -e "${GREEN}✅ Directories created${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 105 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 106
 
@@ -1015,15 +815,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 105 is classified a
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 106 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 107
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 107 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 108
 
@@ -1031,7 +823,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 107 is classified a
 if [ "$NEEDS_ENV_EDIT" = true ]; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 108 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 109
 
@@ -1039,7 +831,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 108 is classified a
     echo -e "${YELLOW}⚠️  NEXT STEP REQUIRED:${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 109 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 110
 
@@ -1047,7 +839,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 109 is classified a
     echo "   1. Edit .env file with your configuration:"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 110 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 111
 
@@ -1055,7 +847,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 110 is classified a
     echo "      - SECRET_KEY (generate with: python3 -c 'import secrets; print(secrets.token_hex(32))')"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 111 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 112
 
@@ -1063,7 +855,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 111 is classified a
     echo "      - DEBUG_MODE=True (for development)"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 112 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 113
 
@@ -1071,7 +863,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 112 is classified a
     echo "      - HOST=localhost (for development)"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 113 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 114
 
@@ -1079,7 +871,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 113 is classified a
     echo "      - SSL certificate paths"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 114 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 115
 
@@ -1087,7 +879,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 114 is classified a
     echo "      - Duo credentials"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 115 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 116
 
@@ -1095,7 +887,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 115 is classified a
     echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 116 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 117
 
@@ -1103,7 +895,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 116 is classified a
     echo "   2. Then run the application:"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 117 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 118
 
@@ -1111,7 +903,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 117 is classified a
     echo "      export FLASK_ENV=development"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 118 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 119
 
@@ -1119,7 +911,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 118 is classified a
     echo "      python3 run.py"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 119 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 120
 
@@ -1127,7 +919,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 119 is classified a
 else
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 120 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 121
 
@@ -1135,7 +927,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 120 is classified a
     echo -e "${GREEN}You can now start the application:${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 121 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 122
 
@@ -1143,7 +935,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 121 is classified a
     echo "   export FLASK_ENV=development"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 122 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 123
 
@@ -1151,7 +943,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 122 is classified a
     echo "   python3 run.py"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 123 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 124
 
@@ -1159,7 +951,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 123 is classified a
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 124 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 125
 
@@ -1167,15 +959,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 124 is classified a
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 125 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 126
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 126 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 127
 
@@ -1183,7 +967,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 126 is classified a
 echo "📚 Documentation:"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 127 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 128
 
@@ -1191,7 +975,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 127 is classified a
 echo "   - SETUP_GUIDE.md - Detailed setup instructions"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 128 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 129
 
@@ -1199,7 +983,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 128 is classified a
 echo "   - FLASK_MIGRATION.md - Migration guide"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 129 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 130
 
@@ -1207,7 +991,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 129 is classified a
 echo "   - QUICK_START.md - Quick reference"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 130 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 131
 
@@ -1215,23 +999,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 130 is classified a
 echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 131 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 132
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 132 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 133
-
-```text
-# Check if SECRET_KEY needs to be updated
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 133 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 134
 
@@ -1239,7 +1007,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 133 is classified a
 if grep -q "your-secret-key-here" .env 2>/dev/null; then
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 134 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `comment` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 ### Line 135
 
@@ -1247,7 +1015,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 134 is classified a
     echo -e "${YELLOW}🔑 Generate a SECRET_KEY:${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 135 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell-control` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 136
 
@@ -1255,7 +1023,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 135 is classified a
     echo "   Run this command and paste the output into .env:"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 136 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 137
 
@@ -1263,7 +1031,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 136 is classified a
     echo "   python3 -c 'import secrets; print(secrets.token_hex(32))'"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 137 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 138
 
@@ -1271,7 +1039,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 137 is classified a
     echo ""
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 138 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 139
 
@@ -1279,15 +1047,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 138 is classified a
 fi
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 139 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `shell` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 140
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 140 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `shell` and next kind is `shell`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 141
 
@@ -1295,7 +1055,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 140 is classified a
 echo -e "${GREEN}✨ Setup complete!${NC}"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 141 is classified as `shell`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state. Neighbor context: previous kind is `blank` and next kind is `shell-control`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.
 
 ### Line 142
 
@@ -1303,7 +1063,7 @@ Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 141 is classified a
 echo "For detailed instructions, see SETUP_GUIDE.md"
 ```
 
-Reconstruction rule: in `UNanofabTools/quick_setup.sh`, line 142 is classified as `shell-control`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions. Neighbor context: previous kind is `shell` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`shell-control` — This shell-control line decides or repeats operational work. Preserve quoting, variable expansion, error behavior, and whether the script continues after failure; edge cases include paths with spaces, missing commands, and different shell versions.
 
 
 

@@ -560,7 +560,7 @@ if __name__ == "__main__":
 import sys
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 1 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `none` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 2
 
@@ -568,7 +568,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 from auth import HSCCode
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 2 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 3
 
@@ -576,7 +576,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 import requests
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 3 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 4
 
@@ -584,7 +584,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 import os
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 4 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 5
 
@@ -592,7 +592,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 import csv
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 5 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 6
 
@@ -600,23 +600,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 from collections import defaultdict
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 6 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 7
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 7 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 8
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 8 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 9
 
@@ -624,7 +608,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 BaseURL = 'https://n8n.cores.utah.edu/webhook/line_item_batch_pull?service_ids='
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 9 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 10
 
@@ -632,7 +616,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 StartDayAppend = '&start_date='
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 10 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 11
 
@@ -640,15 +624,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 EndDayAppend = '&end_date='
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 11 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 12
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 12 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 13
 
@@ -656,7 +632,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 def daysinMonth(months, yr):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 13 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 14
 
@@ -664,7 +640,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 14 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 15
 
@@ -672,15 +648,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Convert month number to day-month format.
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 15 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 16
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 16 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 17
 
@@ -688,7 +656,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Args:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 17 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 18
 
@@ -696,7 +664,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         months (int): Month number (1-12)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 18 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 19
 
@@ -704,15 +672,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         yr (int): uses the year to determine if leap year or not
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 19 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 20 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 21
 
@@ -720,7 +680,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Returns:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 21 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 22
 
@@ -728,7 +688,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         int days: Number of days in the month
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 22 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 23
 
@@ -736,15 +696,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 23 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 24
-
-```text
-    # Check for leap year
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 24 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 25
 
@@ -752,7 +704,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     leapyear = False
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 25 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 26
 
@@ -760,7 +712,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     if (yr % 4 == 0 and yr % 100 != 0) or (yr % 400 == 0):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 26 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 27
 
@@ -768,15 +720,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         leapyear = True
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 27 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 28
-
-```text
-    #determine number of days in month
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 28 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 29
 
@@ -784,7 +728,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     if months in [1, 3, 5, 7, 8, 10, 12]:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 29 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 30
 
@@ -792,7 +736,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         days = 31
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 30 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 31
 
@@ -800,7 +744,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     elif months in [4, 6, 9, 11]:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 31 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 32
 
@@ -808,7 +752,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         days = 30
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 32 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 33
 
@@ -816,7 +760,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     elif months == 2:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 33 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 34
 
@@ -824,7 +768,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         days = 29 if leapyear else 28
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 34 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 35
 
@@ -832,7 +776,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 35 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 36
 
@@ -840,15 +784,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         raise ValueError("Invalid month number. Must be between 1 and 12.")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 36 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 37
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 37 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 38
 
@@ -856,23 +792,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     return days
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 38 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 39
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 39 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 40
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 40 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `blank` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 41
 
@@ -880,7 +800,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 def download_Metal(endpoint, month, year):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 41 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 42
 
@@ -888,7 +808,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 42 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 43
 
@@ -896,15 +816,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Download data from the specified endpoint and save as CSV.
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 43 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 44
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 44 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 45
 
@@ -912,7 +824,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Args:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 45 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 46
 
@@ -920,7 +832,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         endpoint (int or str): The endpoint to append to the BaseURL, or "all" to download all
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 46 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 47
 
@@ -928,7 +840,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         month (int): Month number (1-12)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 47 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 48
 
@@ -936,15 +848,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         year (int): Year (e.g., 2025)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 48 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 49
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 49 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 50
 
@@ -952,7 +856,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Returns:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 50 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 51
 
@@ -960,7 +864,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         str: Path to the saved file or None if download failed
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 51 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 52
 
@@ -968,7 +872,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 52 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 53
 
@@ -976,7 +880,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     startDay = 1
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 53 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 54
 
@@ -984,23 +888,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     endDay = daysinMonth(month, year)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 54 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 55
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 55 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 56
-
-```text
-    # Determine the base directory for downloads
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 56 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 57
 
@@ -1008,15 +896,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 57 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 58
-
-```text
-        # Running as compiled executable
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 58 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 59
 
@@ -1024,7 +904,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         base_dir = os.path.dirname(sys.executable)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 59 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 60
 
@@ -1032,7 +912,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         download_dir = os.path.join(base_dir, 'downloads')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 60 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 61
 
@@ -1040,7 +920,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"Executable mode: Download directory is {download_dir}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 61 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 62
 
@@ -1048,15 +928,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 62 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 63
-
-```text
-        # Running in a normal Python environment
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 63 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 64
 
@@ -1064,7 +936,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         current_file = os.path.abspath(__file__)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 64 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 65
 
@@ -1072,7 +944,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         src_dir = os.path.dirname(current_file)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 65 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 66
 
@@ -1080,7 +952,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         precious_metal_dir = os.path.dirname(src_dir)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 66 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 67
 
@@ -1088,7 +960,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         project_dir = os.path.dirname(precious_metal_dir)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 67 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 68
 
@@ -1096,7 +968,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         download_dir = os.path.join(project_dir, 'downloads')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 68 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 69
 
@@ -1104,15 +976,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"Development mode: Download directory is {download_dir}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 69 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 70
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 70 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 71
 
@@ -1120,7 +984,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     os.makedirs(download_dir, exist_ok=True)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 71 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 72
 
@@ -1128,23 +992,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     print(f"Ensured download directory exists at {download_dir}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 72 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 73
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 73 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 74
-
-```text
-    # Special case for "all" - download all endpoints and combine results
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 74 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 75
 
@@ -1152,15 +1000,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     if endpoint == "all":
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 75 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 76
-
-```text
-        # List of all endpoints to download
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 76 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 77
 
@@ -1168,7 +1008,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         endpoints = [768, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818]
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 77 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 78
 
@@ -1176,7 +1016,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         all_data = []
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 78 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 79
 
@@ -1184,23 +1024,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         combined_metadata = {}
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 79 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 80
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 80 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 81
-
-```text
-        # First download each endpoint and collect data
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 81 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 82
 
@@ -1208,7 +1032,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         for ep in endpoints:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 82 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 83
 
@@ -1216,7 +1040,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             try:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 83 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 84
 
@@ -1224,7 +1048,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Requesting data for endpoint {ep}...")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 84 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 85
 
@@ -1232,15 +1056,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 header = {'Authorization': HSCCode}
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 85 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 86
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 86 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 87
 
@@ -1248,7 +1064,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 constructedURL = f"{BaseURL}{ep}{StartDayAppend}{year}-{month:02d}-{startDay:02d}{EndDayAppend}{year}-{month:02d}-{endDay:02d}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 87 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 88
 
@@ -1256,15 +1072,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Requesting URL: {constructedURL}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 88 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 89
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 89 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 90
 
@@ -1272,7 +1080,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 response = requests.get(constructedURL, headers=header)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 90 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 91
 
@@ -1280,15 +1088,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Response status code: {response.status_code}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 91 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 92
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 92 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 93
 
@@ -1296,15 +1096,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 if response.status_code == 200:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 93 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 94
-
-```text
-                    # Get JSON data
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 94 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 95
 
@@ -1312,23 +1104,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     json_data = response.json()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 95 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 96
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 96 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 97
-
-```text
-                    # Skip if no data
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 97 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 98
 
@@ -1336,7 +1112,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if not json_data or len(json_data) == 0:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 98 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 99
 
@@ -1344,7 +1120,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         print(f"No data available for endpoint {ep}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 99 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 100
 
@@ -1352,23 +1128,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         continue
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 100 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 101
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 101 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 102
-
-```text
-                    # Determine machine and metal for this endpoint
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 102 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 103
 
@@ -1376,7 +1136,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine = None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 103 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 104
 
@@ -1384,15 +1144,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     metal = None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 104 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 105
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 105 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 106
 
@@ -1400,7 +1152,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if ep == 768:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 106 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 107
 
@@ -1408,7 +1160,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         machine = "Denton635"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 107 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 108
 
@@ -1416,7 +1168,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 108 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 109
 
@@ -1424,7 +1176,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif ep >= 808 and ep <= 810:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 109 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 110
 
@@ -1432,7 +1184,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         machine = "Denton635"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 110 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 111
 
@@ -1440,7 +1192,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         if ep == 808:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 111 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 112
 
@@ -1448,7 +1200,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 112 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 113
 
@@ -1456,7 +1208,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 809:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 113 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 114
 
@@ -1464,7 +1216,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 114 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 115
 
@@ -1472,7 +1224,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 810:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 115 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 116
 
@@ -1480,7 +1232,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 116 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 117
 
@@ -1488,7 +1240,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif ep >= 811 and ep <= 814:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 117 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 118
 
@@ -1496,7 +1248,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         machine = "Denton18"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 118 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 119
 
@@ -1504,7 +1256,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         if ep == 811:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 119 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 120
 
@@ -1512,7 +1264,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 120 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 121
 
@@ -1520,7 +1272,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 812:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 121 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 122
 
@@ -1528,7 +1280,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 122 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 123
 
@@ -1536,7 +1288,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 813:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 123 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 124
 
@@ -1544,7 +1296,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 124 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 125
 
@@ -1552,7 +1304,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 814:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 125 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 126
 
@@ -1560,7 +1312,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 126 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 127
 
@@ -1568,7 +1320,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif ep >= 815 and ep <= 818:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 127 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 128
 
@@ -1576,7 +1328,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         machine = "TMV"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 128 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 129
 
@@ -1584,7 +1336,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         if ep == 815:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 129 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 130
 
@@ -1592,7 +1344,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 130 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 131
 
@@ -1600,7 +1352,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 816:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 131 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 132
 
@@ -1608,7 +1360,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 132 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 133
 
@@ -1616,7 +1368,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 817:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 133 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 134
 
@@ -1624,7 +1376,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 134 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 135
 
@@ -1632,7 +1384,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         elif ep == 818:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 135 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 136
 
@@ -1640,23 +1392,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 136 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 137
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 137 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 138
-
-```text
-                    # Add machine and metal fields to each record
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 138 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 139
 
@@ -1664,7 +1400,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     for record in json_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 139 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 140
 
@@ -1672,7 +1408,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         record['Machine'] = machine
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 140 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 141
 
@@ -1680,7 +1416,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         record['Metal'] = metal
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 141 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 142
 
@@ -1688,23 +1424,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         all_data.append(record)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 142 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 143
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 143 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 144
-
-```text
-                    # Add metadata about this endpoint
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 144 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 145
 
@@ -1712,7 +1432,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     combined_metadata[ep] = {
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 145 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 146
 
@@ -1720,7 +1440,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         'machine': machine,
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 146 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 147
 
@@ -1728,7 +1448,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         'metal': metal,
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 147 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 148
 
@@ -1736,7 +1456,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         'record_count': len(json_data)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 148 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 149
 
@@ -1744,15 +1464,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     }
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 149 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 150
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 150 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 151
 
@@ -1760,7 +1472,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 151 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 152
 
@@ -1768,15 +1480,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     print(f"Download failed for endpoint {ep} with status code: {response.status_code}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 152 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 153
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 153 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 154
 
@@ -1784,7 +1488,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             except Exception as e:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 154 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 155
 
@@ -1792,23 +1496,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Error downloading data for endpoint {ep}: {e}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 155 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 156
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 156 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 157
-
-```text
-        # Create combined filenames
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 157 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 158
 
@@ -1816,23 +1504,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         base_filename = f"all_metals_{month}_{year}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 158 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 159
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 159 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 160
-
-```text
-        # Save combined metadata as JSON
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 160 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 161
 
@@ -1840,7 +1512,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         metadata_filepath = os.path.join(download_dir, f"{base_filename}_metadata.json")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 161 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 162
 
@@ -1848,7 +1520,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         with open(metadata_filepath, 'w') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 162 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 163
 
@@ -1856,7 +1528,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             import json
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 163 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `filesystem` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 164
 
@@ -1864,7 +1536,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             metadata = {
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 164 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `import` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 165
 
@@ -1872,7 +1544,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 'month': month,
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 165 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 166
 
@@ -1880,7 +1552,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 'year': year,
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 166 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 167
 
@@ -1888,7 +1560,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 'endpoints': combined_metadata,
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 167 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 168
 
@@ -1896,7 +1568,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 'total_records': len(all_data)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 168 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 169
 
@@ -1904,7 +1576,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             }
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 169 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 170
 
@@ -1912,7 +1584,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             json.dump(metadata, f, indent=2)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 170 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 171
 
@@ -1920,23 +1592,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"Saved metadata to {metadata_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 171 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 172
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 172 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 173
-
-```text
-        # Save all the data as one combined CSV
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 173 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 174
 
@@ -1944,15 +1600,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         csv_filepath = os.path.join(download_dir, f"{base_filename}.csv")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 174 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 175
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 175 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 176
 
@@ -1960,7 +1608,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         if all_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 176 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 177
 
@@ -1968,7 +1616,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             with open(csv_filepath, 'w', newline='') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 177 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `branch` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 178
 
@@ -1976,15 +1624,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 import csv
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 178 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 179
-
-```text
-                # Get all possible field names from all records
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 179 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `import` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 180
 
@@ -1992,7 +1632,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 fieldnames = set()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 180 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 181
 
@@ -2000,7 +1640,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for record in all_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 181 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 182
 
@@ -2008,23 +1648,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     fieldnames.update(record.keys())
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 182 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 183
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 183 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 184
-
-```text
-                # Convert to sorted list for consistent column order
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 184 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 185
 
@@ -2032,23 +1656,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 fieldnames = sorted(list(fieldnames))
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 185 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 186
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 186 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 187
-
-```text
-                # Ensure Machine and Metal are first columns for easy reading
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 187 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 188
 
@@ -2056,7 +1664,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 if 'Machine' in fieldnames:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 188 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 189
 
@@ -2064,7 +1672,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     fieldnames.remove('Machine')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 189 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 190
 
@@ -2072,7 +1680,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 if 'Metal' in fieldnames:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 190 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 191
 
@@ -2080,23 +1688,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     fieldnames.remove('Metal')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 191 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 192
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 192 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 193
-
-```text
-                # Reorder columns to put Machine and Metal first
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 193 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 194
 
@@ -2104,15 +1696,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 fieldnames = ['Machine', 'Metal'] + fieldnames
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 194 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 195
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 195 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 196
 
@@ -2120,7 +1704,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 196 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 197
 
@@ -2128,7 +1712,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 writer.writeheader()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 197 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 198
 
@@ -2136,7 +1720,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for record in all_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 198 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 199
 
@@ -2144,15 +1728,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     writer.writerow(record)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 199 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 200
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 200 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 201
 
@@ -2160,23 +1736,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print(f"Saved combined CSV data to {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 201 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 202
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 202 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 203
-
-```text
-            # Verify the file was created
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 203 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 204
 
@@ -2184,7 +1744,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             if os.path.exists(csv_filepath):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 204 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 205
 
@@ -2192,7 +1752,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Combined CSV file exists at {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 205 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 206
 
@@ -2200,7 +1760,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 return csv_filepath
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 206 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 207
 
@@ -2208,7 +1768,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 207 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 208
 
@@ -2216,7 +1776,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"ERROR: Combined CSV file was not created at {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 208 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `branch` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 209
 
@@ -2224,7 +1784,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 209 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 210
 
@@ -2232,7 +1792,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 210 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `return` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 211
 
@@ -2240,7 +1800,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print("No data found for any endpoints.")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 211 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 212
 
@@ -2248,23 +1808,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 212 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 213
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 213 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 214
-
-```text
-    # Regular single endpoint download (original functionality)
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 214 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 215
 
@@ -2272,7 +1816,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 215 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 216
 
@@ -2280,7 +1824,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         try:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 216 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 217
 
@@ -2288,15 +1832,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             header = {'Authorization': HSCCode}
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 217 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `exception` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 218
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 218 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 219
 
@@ -2304,7 +1840,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             constructedURL = f"{BaseURL}{endpoint}{StartDayAppend}{year}-{month:02d}-{startDay:02d}{EndDayAppend}{year}-{month:02d}-{endDay:02d}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 219 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 220
 
@@ -2312,15 +1848,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print(f"Requesting URL: {constructedURL}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 220 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 221
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 221 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 222
 
@@ -2328,7 +1856,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             response = requests.get(constructedURL, headers=header)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 222 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 223
 
@@ -2336,15 +1864,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print(f"Response status code: {response.status_code}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 223 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 224
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 224 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 225
 
@@ -2352,15 +1872,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             if response.status_code == 200:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 225 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 226
-
-```text
-                # Determine base filename
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 226 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 227
 
@@ -2368,7 +1880,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 machine = None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 227 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 228
 
@@ -2376,23 +1888,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 metal = None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 228 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 229
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 229 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 230
-
-```text
-                # Determine machine first
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 230 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 231
 
@@ -2400,7 +1896,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 if endpoint == 768:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 231 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 232
 
@@ -2408,7 +1904,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine = "Denton635"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 232 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 233
 
@@ -2416,7 +1912,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     metal = "gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 233 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 234
 
@@ -2424,7 +1920,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 elif endpoint >= 808 and endpoint <= 810:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 234 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 235
 
@@ -2432,7 +1928,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine = "Denton635"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 235 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 236
 
@@ -2440,7 +1936,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if endpoint == 808:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 236 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 237
 
@@ -2448,7 +1944,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 237 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 238
 
@@ -2456,7 +1952,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 809:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 238 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 239
 
@@ -2464,7 +1960,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 239 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 240
 
@@ -2472,7 +1968,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 810:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 240 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 241
 
@@ -2480,7 +1976,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 241 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 242
 
@@ -2488,7 +1984,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 elif endpoint >= 811 and endpoint <= 814:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 242 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 243
 
@@ -2496,7 +1992,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine = "Denton18"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 243 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 244
 
@@ -2504,7 +2000,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if endpoint == 811:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 244 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 245
 
@@ -2512,7 +2008,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 245 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 246
 
@@ -2520,7 +2016,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 812:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 246 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 247
 
@@ -2528,7 +2024,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 247 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 248
 
@@ -2536,7 +2032,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 813:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 248 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 249
 
@@ -2544,7 +2040,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 249 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 250
 
@@ -2552,7 +2048,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 814:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 250 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 251
 
@@ -2560,7 +2056,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 251 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 252
 
@@ -2568,7 +2064,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 elif endpoint >= 815 and endpoint <= 818:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 252 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 253
 
@@ -2576,7 +2072,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine = "TMV"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 253 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 254
 
@@ -2584,7 +2080,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if endpoint == 815:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 254 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 255
 
@@ -2592,7 +2088,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Gold"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 255 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 256
 
@@ -2600,7 +2096,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 816:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 256 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 257
 
@@ -2608,7 +2104,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Iridium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 257 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 258
 
@@ -2616,7 +2112,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 817:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 258 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 259
 
@@ -2624,7 +2120,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Palladium"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 259 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 260
 
@@ -2632,7 +2128,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     elif endpoint == 818:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 260 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 261
 
@@ -2640,23 +2136,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = "Platinum"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 261 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 262
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 262 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 263
-
-```text
-                # Base filename
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 263 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 264
 
@@ -2664,23 +2144,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 base_filename = f"{machine}_{metal}_{month}_{year}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 264 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 265
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 265 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 266
-
-```text
-                # Get JSON data
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 266 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 267
 
@@ -2688,23 +2152,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 json_data = response.json()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 267 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 268
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 268 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 269
-
-```text
-                # Save as JSON (preserve original data)
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 269 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 270
 
@@ -2712,7 +2160,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 json_filepath = os.path.join(download_dir, f"{base_filename}.json")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 270 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 271
 
@@ -2720,7 +2168,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 with open(json_filepath, 'w') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 271 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 272
 
@@ -2728,7 +2176,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     import json
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 272 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `filesystem` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 273
 
@@ -2736,15 +2184,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     json.dump(json_data, f, indent=2)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 273 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 274
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 274 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 275
 
@@ -2752,23 +2192,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Saved JSON data to {json_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 275 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 276
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 276 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 277
-
-```text
-                # Convert to CSV
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 277 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 278
 
@@ -2776,7 +2200,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 csv_filepath = os.path.join(download_dir, f"{base_filename}.csv")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 278 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 279
 
@@ -2784,7 +2208,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 with open(csv_filepath, 'w', newline='') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 279 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 280
 
@@ -2792,7 +2216,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     import csv
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 280 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 281
 
@@ -2800,15 +2224,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if json_data and len(json_data) > 0:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 281 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `import` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 282
-
-```text
-                        # Get field names from the first record
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 282 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 283
 
@@ -2816,7 +2232,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         fieldnames = json_data[0].keys()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 283 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 284
 
@@ -2824,7 +2240,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         writer = csv.DictWriter(f, fieldnames=fieldnames)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 284 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `assignment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 285
 
@@ -2832,7 +2248,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         writer.writeheader()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 285 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 286
 
@@ -2840,7 +2256,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         for record in json_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 286 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 287
 
@@ -2848,15 +2264,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                             writer.writerow(record)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 287 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 288
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 288 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 289
 
@@ -2864,23 +2272,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Saved CSV data to {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 289 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 290
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 290 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 291
-
-```text
-                # Verify the file was actually created
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 291 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 292
 
@@ -2888,7 +2280,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 if os.path.exists(csv_filepath):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 292 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 293
 
@@ -2896,7 +2288,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     print(f"CSV file exists at {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 293 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `branch` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 294
 
@@ -2904,7 +2296,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     return csv_filepath
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 294 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 295
 
@@ -2912,7 +2304,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 295 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 296
 
@@ -2920,7 +2312,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     print(f"ERROR: CSV file was not created at {csv_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 296 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `branch` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 297
 
@@ -2928,7 +2320,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 297 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `filesystem` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 298
 
@@ -2936,7 +2328,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 298 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `return` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 299
 
@@ -2944,7 +2336,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 print(f"Download failed with status code: {response.status_code}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 299 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 300
 
@@ -2952,15 +2344,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 300 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 301
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 301 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 302
 
@@ -2968,7 +2352,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         except Exception as e:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 302 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 303
 
@@ -2976,7 +2360,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print(f"Error downloading file: {e}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 303 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 304
 
@@ -2984,7 +2368,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             import traceback
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 304 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 305
 
@@ -2992,7 +2376,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             traceback.print_exc()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 305 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `import` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 306
 
@@ -3000,15 +2384,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 306 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 307
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 307 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 308
 
@@ -3016,7 +2392,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 def summarize_metal_charges(csv_filepath):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 308 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 309
 
@@ -3024,7 +2400,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """Summarize metal charges by user, machine, and material"""
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 309 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 310
 
@@ -3032,7 +2408,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     import csv
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 310 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `generic` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 311
 
@@ -3040,15 +2416,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     from collections import defaultdict
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 311 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `import` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 312
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 312 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `import` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 313
 
@@ -3056,7 +2424,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     summary = {}
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 313 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 314
 
@@ -3064,7 +2432,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     total_by_material = defaultdict(float)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 314 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 315
 
@@ -3072,23 +2440,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     total_by_machine_material = defaultdict(float)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 315 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 316
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 316 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 317
-
-```text
-    # Ensure all metals are included even with zero values
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 317 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 318
 
@@ -3096,7 +2448,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     all_metals = ['Gold', 'Platinum', 'Palladium', 'Iridium']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 318 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 319
 
@@ -3104,23 +2456,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     machines = ['Denton18', 'Denton635', 'TMV']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 319 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 320
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 320 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 321
-
-```text
-    # Initialize total_by_material with all metals
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 321 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 322
 
@@ -3128,7 +2464,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     for metal in all_metals:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 322 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 323
 
@@ -3136,15 +2472,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         total_by_material[metal] = 0.0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 323 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 324
-
-```text
-        # Initialize all machine-metal combinations
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 324 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `assignment` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 325
 
@@ -3152,7 +2480,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         for machine in machines:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 325 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 326
 
@@ -3160,15 +2488,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             total_by_machine_material[f"{machine} {metal}"] = 0.0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 326 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 327
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 327 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 328
 
@@ -3176,7 +2496,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     with open(csv_filepath, 'r') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 328 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 329
 
@@ -3184,7 +2504,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         reader = csv.DictReader(f)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 329 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 330
 
@@ -3192,7 +2512,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         for row in reader:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 330 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `filesystem` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 331
 
@@ -3200,7 +2520,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             user = row['user_full_name']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 331 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 332
 
@@ -3208,23 +2528,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             amount = float(row['total_charged'])
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 332 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 333
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 333 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 334
-
-```text
-            # Get machine and metal directly from CSV if available
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 334 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 335
 
@@ -3232,7 +2536,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             machine = row.get('Machine', 'Unknown')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 335 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 336
 
@@ -3240,23 +2544,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             metal = row.get('Metal', 'Other')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 336 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 337
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 337 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 338
-
-```text
-            # If metal not available in CSV, try to determine from service name
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 338 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 339
 
@@ -3264,7 +2552,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             if metal == 'Other' and 'service_name' in row:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 339 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 340
 
@@ -3272,7 +2560,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 service = row['service_name']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 340 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 341
 
@@ -3280,7 +2568,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for mat in all_metals:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 341 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `assignment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 342
 
@@ -3288,7 +2576,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     if mat.lower() in service.lower():
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 342 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `loop` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 343
 
@@ -3296,7 +2584,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         metal = mat
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 343 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 344
 
@@ -3304,23 +2592,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         break
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 344 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 345
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 345 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 346
-
-```text
-            # Initialize user in summary if not present
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 346 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 347
 
@@ -3328,7 +2600,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             if user not in summary:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 347 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 348
 
@@ -3336,7 +2608,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 summary[user] = {
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 348 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 349
 
@@ -3344,7 +2616,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     'machine_materials': defaultdict(float),  # For specific machine+material combinations
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 349 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 350
 
@@ -3352,7 +2624,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     'materials': defaultdict(float),          # For material totals
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 350 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 351
 
@@ -3360,7 +2632,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     'total': 0.0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 351 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 352
 
@@ -3368,23 +2640,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 }
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 352 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 353
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 353 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 354
-
-```text
-                # Initialize all metal types and machine-metal combinations for this user
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 354 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 355
 
@@ -3392,7 +2648,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for m in all_metals:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 355 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 356
 
@@ -3400,7 +2656,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     summary[user]['materials'][m] = 0.0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 356 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 357
 
@@ -3408,7 +2664,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     for mac in machines:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 357 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 358
 
@@ -3416,23 +2672,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         summary[user]['machine_materials'][f"{mac} {m}"] = 0.0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 358 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 359
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 359 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 360
-
-```text
-            # Create machine-material key (e.g., "Denton18 Gold")
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 360 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 361
 
@@ -3440,23 +2680,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             machine_material_key = f"{machine} {metal}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 361 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 362
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 362 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 363
-
-```text
-            # Update summaries
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 363 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 364
 
@@ -3464,7 +2688,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             summary[user]['machine_materials'][machine_material_key] += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 364 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 365
 
@@ -3472,7 +2696,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             summary[user]['materials'][metal] += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 365 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 366
 
@@ -3480,23 +2704,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             summary[user]['total'] += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 366 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 367
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 367 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 368
-
-```text
-            # Track overall totals
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 368 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 369
 
@@ -3504,7 +2712,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             total_by_material[metal] += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 369 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 370
 
@@ -3512,15 +2720,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             total_by_machine_material[machine_material_key] += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 370 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 371
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 371 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 372
 
@@ -3528,15 +2728,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     print("\n==== User Charges Summary ====")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 372 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 373
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 373 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 374
 
@@ -3544,15 +2736,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     return summary, total_by_material, total_by_machine_material
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 374 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 375
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 375 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `function`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 376
 
@@ -3560,7 +2744,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 def save_summary_to_csv(summary_data, csv_filepath):
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 376 is classified as `function`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 377
 
@@ -3568,7 +2752,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 377 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `function` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 378
 
@@ -3576,15 +2760,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Save the detailed summary data to a CSV file with machine-specific breakdown.
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 378 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 379
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 379 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 380
 
@@ -3592,7 +2768,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Args:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 380 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 381
 
@@ -3600,7 +2776,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         summary_data (tuple): Tuple containing (summary, total_by_material, total_by_machine_material)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 381 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 382
 
@@ -3608,15 +2784,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         csv_filepath (str): Original CSV filepath to derive output filename
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 382 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 383
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 383 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 384
 
@@ -3624,7 +2792,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     Returns:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 384 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 385
 
@@ -3632,7 +2800,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         str: Path to the saved summary file
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 385 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 386
 
@@ -3640,7 +2808,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     """
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 386 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `filesystem` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 387
 
@@ -3648,23 +2816,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     summary, total_by_material, total_by_machine_material = summary_data
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 387 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 388
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 388 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 389
-
-```text
-    # Generate output filename
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 389 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 390
 
@@ -3672,7 +2824,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     base_path = os.path.splitext(csv_filepath)[0]
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 390 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 391
 
@@ -3680,15 +2832,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     summary_filepath = f"{base_path}_detailed_summary.csv"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 391 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 392
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 392 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 393
 
@@ -3696,15 +2840,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     try:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 393 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 394
-
-```text
-        # Always include these metals in this specific order
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 394 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `exception` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 395
 
@@ -3712,23 +2848,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         required_metals = ['Gold', 'Iridium', 'Palladium', 'Platinum']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 395 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 396
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 396 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 397
-
-```text
-        # Get all other materials (excluding required ones and "Other")
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 397 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 398
 
@@ -3736,7 +2856,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         other_materials = sorted([m for m in total_by_material.keys()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 398 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 399
 
@@ -3744,23 +2864,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                                 if m != 'Other' and m not in required_metals])
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 399 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 400
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 400 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `branch` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 401
-
-```text
-        # Create our ordered materials list
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 401 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 402
 
@@ -3768,23 +2872,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         materials = required_metals + other_materials
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 402 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 403
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 403 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 404
-
-```text
-        # Add "Other" at the end if it exists
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 404 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 405
 
@@ -3792,7 +2880,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         if 'Other' in total_by_material:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 405 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 406
 
@@ -3800,23 +2888,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             materials.append('Other')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 406 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 407
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 407 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 408
-
-```text
-        # Define machines for consistent order
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 408 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 409
 
@@ -3824,23 +2896,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         machines = ['Denton18', 'Denton635', 'TMV']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 409 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 410
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 410 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 411
-
-```text
-        # Create header structure
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 411 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 412
 
@@ -3848,23 +2904,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         header = ['User']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 412 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 413
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 413 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 414
-
-```text
-        # For each material, add columns for each machine and a total
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 414 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 415
 
@@ -3872,7 +2912,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         for material in materials:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 415 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 416
 
@@ -3880,7 +2920,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             for machine in machines:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 416 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 417
 
@@ -3888,7 +2928,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 header.append(f"{machine} {material}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 417 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `loop` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 418
 
@@ -3896,23 +2936,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             header.append(f"Total {material}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 418 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 419
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 419 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 420
-
-```text
-        # Add overall total column
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 420 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 421
 
@@ -3920,23 +2944,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         header.append('Overall Total')
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 421 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 422
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 422 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 423
-
-```text
-        # Write to CSV
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 423 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 424
 
@@ -3944,7 +2952,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         with open(summary_filepath, 'w', newline='') as f:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 424 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 425
 
@@ -3952,23 +2960,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             writer = csv.writer(f)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 425 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 426
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 426 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 427
-
-```text
-            # Write header
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 427 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 428
 
@@ -3976,23 +2968,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             writer.writerow(header)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 428 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 429
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 429 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 430
-
-```text
-            # Write data for each user
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 430 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 431
 
@@ -4000,7 +2976,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             for user, user_data in summary.items():
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 431 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 432
 
@@ -4008,23 +2984,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 row = [user]
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 432 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 433
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 433 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 434
-
-```text
-                # For each material
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 434 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 435
 
@@ -4032,7 +2992,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for material in materials:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 435 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 436
 
@@ -4040,23 +3000,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     material_total = 0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 436 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 437
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 437 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 438
-
-```text
-                    # Add amount for each machine
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 438 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 439
 
@@ -4064,7 +3008,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     for machine in machines:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 439 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 440
 
@@ -4072,7 +3016,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         machine_material_key = f"{machine} {material}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 440 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 441
 
@@ -4080,7 +3024,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         amount = user_data['machine_materials'].get(machine_material_key, 0)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 441 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 442
 
@@ -4088,7 +3032,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         row.append(f"${amount:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 442 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 443
 
@@ -4096,23 +3040,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                         material_total += amount
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 443 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 444
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 444 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 445
-
-```text
-                    # Add material total
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 445 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 446
 
@@ -4120,23 +3048,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     row.append(f"${material_total:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 446 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 447
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 447 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 448
-
-```text
-                # Add overall total for this user
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 448 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 449
 
@@ -4144,7 +3056,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 row.append(f"${user_data['total']:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 449 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 450
 
@@ -4152,23 +3064,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 writer.writerow(row)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 450 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 451
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 451 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 452
-
-```text
-            # Add a row for totals
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 452 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 453
 
@@ -4176,7 +3072,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             total_row = ['TOTAL']
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 453 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 454
 
@@ -4184,23 +3080,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             grand_total = 0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 454 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 455
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 455 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 456
-
-```text
-            # For each material
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 456 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 457
 
@@ -4208,7 +3088,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             for material in materials:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 457 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 458
 
@@ -4216,23 +3096,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 material_grand_total = 0
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 458 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 459
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 459 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 460
-
-```text
-                # Add total for each machine+material combination
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 460 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `loop`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 461
 
@@ -4240,7 +3104,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 for machine in machines:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 461 is classified as `loop`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 462
 
@@ -4248,7 +3112,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine_material_key = f"{machine} {material}"
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 462 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `loop` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 463
 
@@ -4256,7 +3120,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     machine_material_total = total_by_machine_material.get(machine_material_key, 0)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 463 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 464
 
@@ -4264,7 +3128,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     total_row.append(f"${machine_material_total:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 464 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 465
 
@@ -4272,23 +3136,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                     material_grand_total += machine_material_total
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 465 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 466
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 466 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 467
-
-```text
-                # Add material total
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 467 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 468
 
@@ -4296,7 +3144,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 total_row.append(f"${material_grand_total:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 468 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 469
 
@@ -4304,23 +3152,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 grand_total += material_grand_total
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 469 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 470
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 470 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 471
-
-```text
-            # Add grand total
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 471 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 472
 
@@ -4328,7 +3160,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             total_row.append(f"${grand_total:.2f}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 472 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 473
 
@@ -4336,15 +3168,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             writer.writerow(total_row)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 473 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 474
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 474 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 475
 
@@ -4352,7 +3176,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"\nDetailed summary saved to: {summary_filepath}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 475 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `blank` and next kind is `filesystem`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 476
 
@@ -4360,15 +3184,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         return summary_filepath
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 476 is classified as `filesystem`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes. Neighbor context: previous kind is `filesystem` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 477
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 477 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `filesystem` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 478
 
@@ -4376,7 +3192,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     except Exception as e:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 478 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 479
 
@@ -4384,7 +3200,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"Error saving detailed summary to CSV: {e}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 479 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `import`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 480
 
@@ -4392,7 +3208,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         import traceback
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 480 is classified as `import`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 481
 
@@ -4400,7 +3216,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         traceback.print_exc()
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 481 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `import` and next kind is `return`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 482
 
@@ -4408,15 +3224,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         return None
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 482 is classified as `return`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 483
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 483 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `return` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 484
 
@@ -4424,15 +3232,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
 if __name__ == "__main__":
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 484 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 485
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 485 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 486
 
@@ -4440,7 +3240,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     if len(sys.argv) != 4:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 486 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 487
 
@@ -4448,7 +3248,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print("Usage: python RetrieveMonthsMetals.py <endpoint> <month> <year>")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 487 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 488
 
@@ -4456,7 +3256,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print("Example: python RetrieveMonthsMetals.py 768 5 2025")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 488 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 489
 
@@ -4464,23 +3264,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print("Use 'all' as endpoint to download all endpoints")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 489 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 490
-
-```text
-        #sys.exit(1)
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 490 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `generic` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 491
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 491 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `comment` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 492
 
@@ -4488,15 +3272,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     try:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 492 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 493
-
-```text
-        # Handle 'all' as a special case
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 493 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `exception` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 494
 
@@ -4504,7 +3280,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         if sys.argv[1].lower() == 'all':
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 494 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 495
 
@@ -4512,7 +3288,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             endpoint = 'all'
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 495 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 496
 
@@ -4520,7 +3296,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 496 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 497
 
@@ -4528,15 +3304,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             endpoint = int(sys.argv[1])
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 497 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 498
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 498 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 499
 
@@ -4544,7 +3312,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         month = int(sys.argv[2])
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 499 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 500
 
@@ -4552,23 +3320,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         year = int(sys.argv[3])
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 500 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `assignment` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 501
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 501 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 502
-
-```text
-        # Validate inputs
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 502 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 503
 
@@ -4576,7 +3328,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         if month < 1 or month > 12:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 503 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `comment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 504
 
@@ -4584,15 +3336,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             raise ValueError("Month must be between 1 and 12")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 504 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 505
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 505 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 506
 
@@ -4600,7 +3344,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         downloaded_file = download_Metal(endpoint, month, year)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 506 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `blank` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 507
 
@@ -4608,7 +3352,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         if downloaded_file:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 507 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 508
 
@@ -4616,23 +3360,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print(f"File downloaded successfully: {downloaded_file}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 508 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 509
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 509 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 510
-
-```text
-            # Generate summary of metal charges
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 510 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `blank` and next kind is `assignment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 511
 
@@ -4640,7 +3368,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             summary_data = summarize_metal_charges(downloaded_file)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 511 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 512
 
@@ -4648,15 +3376,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             if summary_data:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 512 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `assignment` and next kind is `comment`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 513
-
-```text
-                # Save summary to CSV
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 513 is classified as `comment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This comment or prose line records intent, operator guidance, or historical context. Recreate the underlying behavior from code evidence, but preserve any operational warning because comments here often explain safety boundaries. Neighbor context: previous kind is `branch` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 514
 
@@ -4664,7 +3384,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
                 save_summary_to_csv(summary_data, downloaded_file)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 514 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `comment` and next kind is `branch`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 515
 
@@ -4672,7 +3392,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         else:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 515 is classified as `branch`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production. Neighbor context: previous kind is `generic` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 516
 
@@ -4680,15 +3400,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
             print("File download failed.")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 516 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `branch` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 517
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 517 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `generic` and next kind is `exception`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 518
 
@@ -4696,7 +3408,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
     except ValueError as e:
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 518 is classified as `exception`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state. Neighbor context: previous kind is `blank` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 519
 
@@ -4704,7 +3416,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         print(f"Error: {e}")
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 519 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `exception` and next kind is `generic`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 520
 
@@ -4712,7 +3424,7 @@ Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMe
         sys.exit(1)
 ```
 
-Reconstruction rule: in `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`, line 520 is classified as `generic`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production. Neighbor context: previous kind is `generic` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 
 

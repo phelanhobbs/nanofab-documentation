@@ -2,8 +2,8 @@
 
 This is the most comprehensive generated path. It is intentionally much larger than Path E and is split into reconstruction folders for each tool. Its purpose is to explain both repos deeply enough that a future maintainer can recreate the server and tools from sanitized documentation, without depending on private memory or unredacted source files.
 
-- Total generated word count: **3,663,176**
-- Target minimum: **2,500,000**
+- Total generated word count: **1,515,981**
+- Sizing: length reflects real reconstruction content; synthetic padding is disabled.
 - Output directory: `support/path-f-reconstruction/tools/`
 - Generator: `support/path-f-tools/build_path_f.py`
 - Secret policy: secret-looking literal values are redacted in generated excerpts.
@@ -26,21 +26,21 @@ This is the most comprehensive generated path. It is intentionally much larger t
 | Group | Words |
 |---|---:|
 | `navigation/` | 5,828 |
-| `tools/00-system-map/` | 1,725 |
+| `tools/00-system-map/` | 2,103 |
 | `tools/INDEX.md` | 677 |
-| `tools/NanofabToolkit/ALDPeakCounter/` | 87,414 |
-| `tools/NanofabToolkit/DentonDecoder/` | 154,911 |
-| `tools/NanofabToolkit/ParalyneReader/` | 193,333 |
-| `tools/NanofabToolkit/ParticleSensor/` | 238,187 |
-| `tools/NanofabToolkit/PicoHelperTools/` | 282,001 |
-| `tools/NanofabToolkit/PreciousMetalReader/` | 123,597 |
-| `tools/NanofabToolkit/packaging-root/` | 57,193 |
-| `tools/UNanofabTools/dattools/` | 58,422 |
-| `tools/UNanofabTools/filetransfer/` | 66,028 |
-| `tools/UNanofabTools/flaskserver/` | 1,433,275 |
-| `tools/UNanofabTools/hscdisplayerserver/` | 283,059 |
-| `tools/UNanofabTools/hscdownloader/` | 111,059 |
-| `tools/UNanofabTools/particlepctools/` | 171,333 |
-| `tools/UNanofabTools/picofirmware/` | 184,518 |
-| `tools/UNanofabTools/repo-overview-and-entrypoints/` | 156,913 |
-| `tools/UNanofabTools/utilities/` | 53,703 |
+| `tools/NanofabToolkit/ALDPeakCounter/` | 39,264 |
+| `tools/NanofabToolkit/DentonDecoder/` | 61,338 |
+| `tools/NanofabToolkit/ParalyneReader/` | 73,837 |
+| `tools/NanofabToolkit/ParticleSensor/` | 98,377 |
+| `tools/NanofabToolkit/PicoHelperTools/` | 111,709 |
+| `tools/NanofabToolkit/PreciousMetalReader/` | 50,059 |
+| `tools/NanofabToolkit/packaging-root/` | 30,707 |
+| `tools/UNanofabTools/dattools/` | 23,595 |
+| `tools/UNanofabTools/filetransfer/` | 29,276 |
+| `tools/UNanofabTools/flaskserver/` | 626,966 |
+| `tools/UNanofabTools/hscdisplayerserver/` | 98,922 |
+| `tools/UNanofabTools/hscdownloader/` | 42,448 |
+| `tools/UNanofabTools/particlepctools/` | 66,250 |
+| `tools/UNanofabTools/picofirmware/` | 72,588 |
+| `tools/UNanofabTools/repo-overview-and-entrypoints/` | 56,324 |
+| `tools/UNanofabTools/utilities/` | 25,713 |

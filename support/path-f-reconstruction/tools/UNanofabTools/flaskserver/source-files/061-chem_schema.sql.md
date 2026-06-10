@@ -225,7 +225,7 @@ COMMIT;
 -- Enhanced Chemical Inventory Schema (v2 with barcode printing support)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 1 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `none` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 2
 
@@ -233,15 +233,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 1 is classified as
 -- Includes inventory_view for the Flask application
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 2 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 3
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 3 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 4
 
@@ -249,15 +241,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 3 is classified as
 BEGIN;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 4 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 5
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 5 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 6
 
@@ -265,7 +249,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 5 is classified as
 -- ===== SEQUENCE for system-generated barcodes =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 6 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 7
 
@@ -273,7 +257,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 6 is classified as
 CREATE SEQUENCE IF NOT EXISTS seq_barcode
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 7 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 8
 
@@ -281,15 +265,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 7 is classified as
   START WITH 100001 INCREMENT BY 1 NO MINVALUE NO MAXVALUE;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 8 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 9
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 9 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 10
 
@@ -297,7 +273,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 9 is classified as
 -- ===== LOOKUPS =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 10 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 11
 
@@ -305,7 +281,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 10 is classified a
 CREATE TABLE IF NOT EXISTS categories (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 11 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 12
 
@@ -313,7 +289,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 11 is classified a
   category_id SERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 12 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 13
 
@@ -321,7 +297,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 12 is classified a
   name        TEXT NOT NULL UNIQUE
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 13 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 14
 
@@ -329,15 +305,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 13 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 14 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 15
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 15 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 16
 
@@ -345,7 +313,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 15 is classified a
 CREATE TABLE IF NOT EXISTS vendors (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 16 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 17
 
@@ -353,7 +321,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 16 is classified a
   vendor_id   SERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 17 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 18
 
@@ -361,7 +329,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 17 is classified a
   vendor_name TEXT NOT NULL UNIQUE
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 18 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 19
 
@@ -369,15 +337,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 18 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 19 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 20
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 20 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 21
 
@@ -385,7 +345,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 20 is classified a
 CREATE TABLE IF NOT EXISTS rooms (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 21 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 22
 
@@ -393,7 +353,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 21 is classified a
   room_id     SERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 22 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 23
 
@@ -401,7 +361,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 22 is classified a
   room_no     TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 23 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 24
 
@@ -409,7 +369,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 23 is classified a
   room_name   TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 24 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 25
 
@@ -417,7 +377,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 24 is classified a
   room_desc   TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 25 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 26
 
@@ -425,7 +385,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 25 is classified a
   area_class  TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 26 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 27
 
@@ -433,7 +393,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 26 is classified a
   building    TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 27 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 28
 
@@ -441,7 +401,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 27 is classified a
   lab_code    TEXT
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 28 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 29
 
@@ -449,7 +409,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 28 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 29 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 30
 
@@ -457,15 +417,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 29 is classified a
 CREATE UNIQUE INDEX IF NOT EXISTS idx_rooms_room_no_unique ON rooms(room_no);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 30 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 31
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 31 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 32
 
@@ -473,7 +425,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 31 is classified a
 -- ===== ITEMS (chemical definitions) =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 32 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 33
 
@@ -481,7 +433,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 32 is classified a
 CREATE TABLE IF NOT EXISTS items (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 33 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 34
 
@@ -489,7 +441,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 33 is classified a
   item_id        SERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 34 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 35
 
@@ -497,7 +449,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 34 is classified a
   name           TEXT NOT NULL UNIQUE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 35 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 36
 
@@ -505,7 +457,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 35 is classified a
   description    TEXT NOT NULL,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 36 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 37
 
@@ -513,7 +465,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 36 is classified a
   catalog_number TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 37 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 38
 
@@ -521,7 +473,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 37 is classified a
   physical_state TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 38 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 39
 
@@ -529,7 +481,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 38 is classified a
   volume_size    TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 39 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 40
 
@@ -537,7 +489,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 39 is classified a
   category_id    INTEGER NOT NULL REFERENCES categories(category_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 40 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 41
 
@@ -545,7 +497,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 40 is classified a
                    ON UPDATE CASCADE ON DELETE RESTRICT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 41 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 42
 
@@ -553,7 +505,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 41 is classified a
   vendor_id      INTEGER REFERENCES vendors(vendor_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 42 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 43
 
@@ -561,7 +513,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 42 is classified a
                    ON UPDATE CASCADE ON DELETE SET NULL
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 43 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 44
 
@@ -569,15 +521,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 43 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 44 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 45
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 45 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 46
 
@@ -585,7 +529,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 45 is classified a
 -- ===== CONTAINERS (individual bottles) =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 46 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 47
 
@@ -593,7 +537,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 46 is classified a
 CREATE TABLE IF NOT EXISTS containers (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 47 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 48
 
@@ -601,7 +545,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 47 is classified a
   container_id       BIGSERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 48 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 49
 
@@ -609,7 +553,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 48 is classified a
   item_id            INTEGER NOT NULL REFERENCES items(item_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 49 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 50
 
@@ -617,7 +561,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 49 is classified a
                         ON UPDATE CASCADE ON DELETE CASCADE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 50 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 51
 
@@ -625,7 +569,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 50 is classified a
   barcode            TEXT NOT NULL UNIQUE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 51 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 52
 
@@ -633,7 +577,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 51 is classified a
   container_code     TEXT NOT NULL UNIQUE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 52 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 53
 
@@ -641,7 +585,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 52 is classified a
   room_id            INTEGER REFERENCES rooms(room_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 53 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 54
 
@@ -649,7 +593,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 53 is classified a
                         ON UPDATE CASCADE ON DELETE SET NULL,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 54 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 55
 
@@ -657,7 +601,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 54 is classified a
   entry_date         DATE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 55 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 56
 
@@ -665,7 +609,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 55 is classified a
   manuf_date         DATE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 56 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 57
 
@@ -673,7 +617,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 56 is classified a
   expiry_date        DATE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 57 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 58
 
@@ -681,7 +625,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 57 is classified a
   area_class         TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 58 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 59
 
@@ -689,7 +633,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 58 is classified a
   storage_location   TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 59 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 60
 
@@ -697,7 +641,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 59 is classified a
   storage_sublocation TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 60 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 61
 
@@ -705,7 +649,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 60 is classified a
   storage_device     TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 61 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 62
 
@@ -713,7 +657,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 61 is classified a
   system             TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 62 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 63
 
@@ -721,7 +665,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 62 is classified a
   lot_number         TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 63 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 64
 
@@ -729,7 +673,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 63 is classified a
   choice             TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 64 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 65
 
@@ -737,7 +681,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 64 is classified a
   nmr                TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 65 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 66
 
@@ -745,7 +689,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 65 is classified a
   nmr_expiry         DATE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 66 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 67
 
@@ -753,7 +697,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 66 is classified a
   owner              TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 67 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 68
 
@@ -761,7 +705,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 67 is classified a
   notes              TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 68 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 69
 
@@ -769,7 +713,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 68 is classified a
   status             TEXT NOT NULL DEFAULT 'Active',
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 69 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 70
 
@@ -777,7 +721,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 69 is classified a
   size               TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 70 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 71
 
@@ -785,7 +729,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 70 is classified a
   unit               TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 71 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 72
 
@@ -793,7 +737,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 71 is classified a
   legacy_inventory_no TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 72 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 73
 
@@ -801,7 +745,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 72 is classified a
   added_by           TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 73 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 74
 
@@ -809,7 +753,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 73 is classified a
   created_at         TIMESTAMPTZ DEFAULT NOW(),
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 74 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 75
 
@@ -817,7 +761,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 74 is classified a
   label_printed      BOOLEAN DEFAULT FALSE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 75 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 76
 
@@ -825,7 +769,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 75 is classified a
   label_printed_at   TIMESTAMPTZ
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 76 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 77
 
@@ -833,7 +777,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 76 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 77 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 78
 
@@ -841,7 +785,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 77 is classified a
 CREATE INDEX IF NOT EXISTS idx_containers_item   ON containers(item_id);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 78 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 79
 
@@ -849,7 +793,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 78 is classified a
 CREATE INDEX IF NOT EXISTS idx_containers_room   ON containers(room_id);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 79 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `schema` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 80
 
@@ -857,7 +801,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 79 is classified a
 CREATE INDEX IF NOT EXISTS idx_containers_status ON containers(status);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 80 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `schema` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 81
 
@@ -865,15 +809,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 80 is classified a
 CREATE INDEX IF NOT EXISTS idx_containers_label_printed ON containers(label_printed);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 81 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `schema` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 82
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 82 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 83
 
@@ -881,7 +817,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 82 is classified a
 -- ===== INVENTORY CYCLES & SCANS =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 83 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 84
 
@@ -889,7 +825,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 83 is classified a
 CREATE TABLE IF NOT EXISTS inventory_cycles (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 84 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 85
 
@@ -897,7 +833,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 84 is classified a
   cycle_id   SERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 85 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 86
 
@@ -905,7 +841,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 85 is classified a
   started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 86 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 87
 
@@ -913,7 +849,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 86 is classified a
   ended_at   TIMESTAMPTZ,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 87 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 88
 
@@ -921,7 +857,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 87 is classified a
   created_by TEXT
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 88 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 89
 
@@ -929,15 +865,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 88 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 89 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 90
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 90 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 91
 
@@ -945,7 +873,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 90 is classified a
 CREATE TABLE IF NOT EXISTS scan_raw (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 91 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 92
 
@@ -953,7 +881,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 91 is classified a
   raw_id       BIGSERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 92 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 93
 
@@ -961,7 +889,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 92 is classified a
   cycle_id     INTEGER NOT NULL REFERENCES inventory_cycles(cycle_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 93 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 94
 
@@ -969,7 +897,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 93 is classified a
                  ON UPDATE CASCADE ON DELETE CASCADE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 94 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 95
 
@@ -977,7 +905,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 94 is classified a
   raw_code     TEXT NOT NULL,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 95 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 96
 
@@ -985,7 +913,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 95 is classified a
   import_ts    TIMESTAMPTZ NOT NULL DEFAULT now(),
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 96 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 97
 
@@ -993,7 +921,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 96 is classified a
   matched_container_id BIGINT REFERENCES containers(container_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 97 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 98
 
@@ -1001,7 +929,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 97 is classified a
                  ON UPDATE CASCADE ON DELETE SET NULL
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 98 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 99
 
@@ -1009,7 +937,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 98 is classified a
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 99 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 100
 
@@ -1017,7 +945,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 99 is classified a
 CREATE INDEX IF NOT EXISTS idx_scan_raw_cycle ON scan_raw(cycle_id);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 100 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `sql` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 101
 
@@ -1025,15 +953,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 100 is classified 
 CREATE INDEX IF NOT EXISTS idx_scan_raw_code  ON scan_raw(raw_code);
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 101 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `schema` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 102
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 102 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `schema` and next kind is `schema`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 103
 
@@ -1041,7 +961,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 102 is classified 
 CREATE TABLE IF NOT EXISTS container_scans (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 103 is classified as `schema`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`schema` — This schema line defines persistent database shape. Preserve names, types, constraints, defaults, indexes, and migration order; edge cases include existing production data, nullable changes, unique conflicts, and restore from older snapshots.
 
 ### Line 104
 
@@ -1049,7 +969,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 103 is classified 
   scan_id      BIGSERIAL PRIMARY KEY,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 104 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `schema` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 105
 
@@ -1057,7 +977,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 104 is classified 
   cycle_id     INTEGER NOT NULL REFERENCES inventory_cycles(cycle_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 105 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 106
 
@@ -1065,7 +985,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 105 is classified 
                  ON UPDATE CASCADE ON DELETE CASCADE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 106 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 107
 
@@ -1073,7 +993,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 106 is classified 
   container_id BIGINT NOT NULL REFERENCES containers(container_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 107 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 108
 
@@ -1081,7 +1001,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 107 is classified 
                  ON UPDATE CASCADE ON DELETE CASCADE,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 108 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 109
 
@@ -1089,7 +1009,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 108 is classified 
   scan_ts      TIMESTAMPTZ NOT NULL DEFAULT now(),
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 109 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 110
 
@@ -1097,7 +1017,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 109 is classified 
   source       TEXT,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 110 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 111
 
@@ -1105,7 +1025,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 110 is classified 
   status       TEXT NOT NULL CHECK (status IN ('FOUND','NEW')),
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 111 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 112
 
@@ -1113,7 +1033,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 111 is classified 
   UNIQUE (cycle_id, container_id)
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 112 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 113
 
@@ -1121,15 +1041,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 112 is classified 
 );
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 113 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 114
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 114 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 115
 
@@ -1137,7 +1049,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 114 is classified 
 -- ===== VIEWS =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 115 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 116
 
@@ -1145,7 +1057,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 115 is classified 
 CREATE OR REPLACE VIEW v_all_containers AS
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 116 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 117
 
@@ -1153,7 +1065,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 116 is classified 
 SELECT
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 117 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 118
 
@@ -1161,7 +1073,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 117 is classified 
   c.container_id, c.barcode, c.container_code, c.status,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 118 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 119
 
@@ -1169,7 +1081,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 118 is classified 
   i.description, i.catalog_number, i.physical_state, i.volume_size,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 119 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 120
 
@@ -1177,7 +1089,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 119 is classified 
   v.vendor_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 120 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 121
 
@@ -1185,7 +1097,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 120 is classified 
   r.room_no, r.room_name, r.room_desc, r.area_class,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 121 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 122
 
@@ -1193,7 +1105,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 121 is classified 
   c.entry_date, c.expiry_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 122 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 123
 
@@ -1201,7 +1113,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 122 is classified 
   c.legacy_inventory_no, c.added_by, c.created_at,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 123 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 124
 
@@ -1209,7 +1121,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 123 is classified 
   c.label_printed, c.label_printed_at
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 124 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 125
 
@@ -1217,7 +1129,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 124 is classified 
 FROM containers c
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 125 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 126
 
@@ -1225,7 +1137,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 125 is classified 
 JOIN items i         ON i.item_id  = c.item_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 126 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 127
 
@@ -1233,7 +1145,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 126 is classified 
 LEFT JOIN vendors v  ON v.vendor_id = i.vendor_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 127 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 128
 
@@ -1241,15 +1153,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 127 is classified 
 LEFT JOIN rooms r    ON r.room_id   = c.room_id;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 128 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 129
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 129 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 130
 
@@ -1257,7 +1161,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 129 is classified 
 CREATE OR REPLACE VIEW v_cycle_report AS
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 130 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 131
 
@@ -1265,7 +1169,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 130 is classified 
 SELECT
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 131 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 132
 
@@ -1273,7 +1177,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 131 is classified 
   cy.cycle_id,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 132 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 133
 
@@ -1281,7 +1185,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 132 is classified 
   cy.started_at,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 133 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 134
 
@@ -1289,7 +1193,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 133 is classified 
   COUNT(DISTINCT CASE WHEN cs.status='FOUND' THEN cs.container_id END) AS found_count,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 134 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 135
 
@@ -1297,7 +1201,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 134 is classified 
   COUNT(DISTINCT CASE WHEN cs.status='NEW'   THEN cs.container_id END) AS new_count,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 135 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 136
 
@@ -1305,7 +1209,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 135 is classified 
   (SELECT COUNT(*) FROM containers c WHERE c.status='Active'
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 136 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 137
 
@@ -1313,7 +1217,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 136 is classified 
     AND NOT EXISTS (
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 137 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 138
 
@@ -1321,7 +1225,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 137 is classified 
       SELECT 1 FROM container_scans cs2
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 138 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 139
 
@@ -1329,7 +1233,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 138 is classified 
       WHERE cs2.cycle_id=cy.cycle_id AND cs2.container_id=c.container_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 139 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 140
 
@@ -1337,7 +1241,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 139 is classified 
     )
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 140 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 141
 
@@ -1345,7 +1249,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 140 is classified 
   ) AS missing_count
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 141 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 142
 
@@ -1353,7 +1257,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 141 is classified 
 FROM inventory_cycles cy
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 142 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 143
 
@@ -1361,7 +1265,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 142 is classified 
 LEFT JOIN container_scans cs ON cs.cycle_id = cy.cycle_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 143 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 144
 
@@ -1369,7 +1273,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 143 is classified 
 GROUP BY cy.cycle_id, cy.started_at
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 144 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 145
 
@@ -1377,15 +1281,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 144 is classified 
 ORDER BY cy.started_at DESC;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 145 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 146
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 146 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 147
 
@@ -1393,7 +1289,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 146 is classified 
 -- ===== MAIN INVENTORY VIEW (for Flask app) =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 147 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 148
 
@@ -1401,7 +1297,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 147 is classified 
 CREATE OR REPLACE VIEW inventory_view AS
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 148 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 149
 
@@ -1409,7 +1305,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 148 is classified 
 SELECT
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 149 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 150
 
@@ -1417,7 +1313,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 149 is classified 
   c.container_id,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 150 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 151
 
@@ -1425,7 +1321,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 150 is classified 
   c.barcode,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 151 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 152
 
@@ -1433,7 +1329,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 151 is classified 
   c.container_code,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 152 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 153
 
@@ -1441,7 +1337,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 152 is classified 
   c.entry_date AS inv_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 153 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 154
 
@@ -1449,7 +1345,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 153 is classified 
   c.area_class,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 154 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 155
 
@@ -1457,7 +1353,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 154 is classified 
   r.room_no,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 155 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 156
 
@@ -1465,7 +1361,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 155 is classified 
   r.room_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 156 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 157
 
@@ -1473,7 +1369,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 156 is classified 
   r.room_desc,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 157 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 158
 
@@ -1481,7 +1377,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 157 is classified 
   c.storage_location,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 158 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 159
 
@@ -1489,7 +1385,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 158 is classified 
   c.storage_sublocation,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 159 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 160
 
@@ -1497,7 +1393,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 159 is classified 
   c.storage_device,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 160 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 161
 
@@ -1505,7 +1401,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 160 is classified 
   i.name AS material_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 161 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 162
 
@@ -1513,7 +1409,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 161 is classified 
   i.name AS item_name,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 162 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 163
 
@@ -1521,7 +1417,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 162 is classified 
   i.description AS item_description,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 163 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 164
 
@@ -1529,7 +1425,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 163 is classified 
   c.size,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 164 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 165
 
@@ -1537,7 +1433,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 164 is classified 
   c.unit,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 165 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 166
 
@@ -1545,7 +1441,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 165 is classified 
   c.system,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 166 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 167
 
@@ -1553,7 +1449,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 166 is classified 
   v.vendor_name AS vendor,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 167 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 168
 
@@ -1561,7 +1457,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 167 is classified 
   c.lot_number,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 168 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 169
 
@@ -1569,7 +1465,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 168 is classified 
   c.manuf_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 169 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 170
 
@@ -1577,7 +1473,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 169 is classified 
   c.expiry_date AS exp_date,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 170 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 171
 
@@ -1585,7 +1481,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 170 is classified 
   c.choice,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 171 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 172
 
@@ -1593,7 +1489,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 171 is classified 
   c.nmr,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 172 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 173
 
@@ -1601,7 +1497,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 172 is classified 
   c.nmr_expiry AS nmr_exp,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 173 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 174
 
@@ -1609,7 +1505,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 173 is classified 
   c.owner,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 174 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 175
 
@@ -1617,7 +1513,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 174 is classified 
   c.notes,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 175 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 176
 
@@ -1625,7 +1521,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 175 is classified 
   c.status,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 176 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 177
 
@@ -1633,7 +1529,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 176 is classified 
   cat.name AS category,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 177 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 178
 
@@ -1641,7 +1537,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 177 is classified 
   c.added_by,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 178 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 179
 
@@ -1649,7 +1545,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 178 is classified 
   c.created_at,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 179 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 180
 
@@ -1657,7 +1553,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 179 is classified 
   c.label_printed,
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 180 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 181
 
@@ -1665,7 +1561,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 180 is classified 
   c.label_printed_at
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 181 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 182
 
@@ -1673,7 +1569,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 181 is classified 
 FROM containers c
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 182 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 183
 
@@ -1681,7 +1577,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 182 is classified 
 JOIN items i ON i.item_id = c.item_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 183 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 184
 
@@ -1689,7 +1585,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 183 is classified 
 LEFT JOIN vendors v ON v.vendor_id = i.vendor_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 184 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 185
 
@@ -1697,7 +1593,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 184 is classified 
 LEFT JOIN rooms r ON r.room_id = c.room_id
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 185 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 186
 
@@ -1705,15 +1601,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 185 is classified 
 LEFT JOIN categories cat ON cat.category_id = i.category_id;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 186 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 187
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 187 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 188
 
@@ -1721,7 +1609,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 187 is classified 
 -- ===== SEED =====
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 188 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `sql-data`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 189
 
@@ -1729,7 +1617,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 188 is classified 
 INSERT INTO categories(name) VALUES ('Chemicals')
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 189 is classified as `sql-data`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql-data` — This SQL data operation changes or reads rows. Preserve parameterization, filtering, ordering, and transaction scope; edge cases are no matches, duplicate matches, unexpected nulls, and data that violates later assumptions.
 
 ### Line 190
 
@@ -1737,15 +1625,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 189 is classified 
 ON CONFLICT (name) DO NOTHING;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 190 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `sql-data` and next kind is `blank`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
-
-### Line 191
-
-```text
-<blank line>
-```
-
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 191 is classified as `blank`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This blank line separates neighboring ideas. Keep an equivalent separation when recreating the file so imports, configuration, control flow, and output sections remain reviewable. Neighbor context: previous kind is `sql` and next kind is `sql`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 ### Line 192
 
@@ -1753,7 +1633,7 @@ Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 191 is classified 
 COMMIT;
 ```
 
-Reconstruction rule: in `UNanofabTools/chem_schema.sql`, line 192 is classified as `sql`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions. Neighbor context: previous kind is `blank` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`sql` — This SQL line contributes to database setup or migration. Preserve dialect-specific syntax and execution order; edge cases include running it twice, running against a newer schema, and running with insufficient permissions.
 
 
 

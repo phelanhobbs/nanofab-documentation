@@ -41,7 +41,7 @@ passWD = "<redacted-secret-value>" # Placeholder for the password, change as nee
 passWD = "<redacted-secret-value>" # Placeholder for the password, change as needed
 ```
 
-Reconstruction rule: in `NanofabToolkit/PicoHelperTools/picopass.py`, line 1 is classified as `assignment`. A compatible reimplementation must preserve the same observable contract even if the exact spelling changes. This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production. Neighbor context: previous kind is `none` and next kind is `none`. When rebuilding, check this line together with its neighbors rather than in isolation, because adjacent lines often provide setup, validation, or cleanup.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 
 

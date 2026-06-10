@@ -1,22 +1,22 @@
 {
-  "generated_at_utc": "2026-06-03T22:12:26+00:00",
-  "target_words": 2500000,
-  "total_words": 3663176,
+  "generated_at_utc": "2026-06-10T17:14:09+00:00",
+  "target_words": 0,
+  "total_words": 1515981,
   "generated_files": 200,
   "source_repos": [
     {
       "repo": "UNanofabTools",
-      "root": "/Users/phe/code/work/UNanofabTools",
+      "root": "../UNanofabTools",
       "branch": "dev",
       "commit": "ac6c67f0299e5fe62befed8b4de9bc822320f53e",
       "short_commit": "ac6c67f",
       "dirty_files": 3,
-      "untracked_files": 1,
-      "status_sha256": "8f02cd9cd3cf4fa959cf2f399fc012b1add7b2a3aa509563f1df93d82765c298"
+      "untracked_files": 2,
+      "status_sha256": "c3d51e546f546258c68aec45b1c6f7370b034fd9ff0ff081051947c530f732f5"
     },
     {
       "repo": "NanofabToolkit",
-      "root": "/Users/phe/code/work/NanofabToolkit",
+      "root": "../NanofabToolkit",
       "branch": "master",
       "commit": "cedd4b776009fb6952eb7e0760833fecfbb6674c",
       "short_commit": "cedd4b7",
