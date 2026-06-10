@@ -13,7 +13,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Lines read: `75`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `9949bf2d783e1e5f`
+- Sanitized SHA-256 prefix: `ab79e3e67cf31734`
 - Code fence language: `powershell`
 
 ## Reconstruction Purpose
@@ -54,7 +54,7 @@ try {
     $watcherPath = "C:\\MACHINE\\Desktop\\Logfile"             ####
     $pscpPath = "C:\\Program Files\\PuTTY\\pscp.exe"           ####
     $privateKeyPath = "C:\\Users\\MACHINE\\.ssh\\id_rsa.ppk"   ####
-    $remotePath = "C:\\Users\\phelanh\\Desktop\\Logs\\MACHINE" ####
+    $remotePath = "/Users/phelanh/Desktop/Logs/MACHINE"        ####  # remote (server-side) path: Unix-style, matches deployed per-machine scripts
     ###############################################################
 
     # Function to send files modified in the past 24 hours
@@ -225,7 +225,7 @@ try {
 ### Line 32
 
 ```text
-    $remotePath = "C:\\Users\\phelanh\\Desktop\\Logs\\MACHINE" ####
+    $remotePath = "/Users/phelanh/Desktop/Logs/MACHINE"        ####  # remote (server-side) path: Unix-style, matches deployed per-machine scripts
 ```
 
 `shell` — This script line is part of an operational command path. Preserve environment assumptions, working directory, command availability, and output expectations; edge cases include running as the wrong user, missing permissions, and stale local state.

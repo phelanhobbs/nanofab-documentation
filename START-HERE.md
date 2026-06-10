@@ -1316,7 +1316,7 @@ Current generated size:
 
 | Path | Words | Source files | Tool folders |
 |---|---:|---:|---:|
-| Path F ultra-deep reconstruction manual | 1,515,981 | 159 | 17 |
+| Path F ultra-deep reconstruction manual | 1,515,993 | 159 | 17 |
 
 Start with `MAINTAINER-FIRST-HOUR.md` if you are new or responding under stress. Otherwise start with `NAVIGATOR.md`, use `TROUBLESHOOTING-ROUTES.md` when you have a symptom, and use `GLOSSARY.md` when a name or acronym is unclear. Before declaring work complete, use `RECONSTRUCTION-CHECKLIST.md`, consult `FIXTURE-AND-EVIDENCE-INDEX.md`, and fill out `REBUILD-EVIDENCE-TEMPLATE.md`. After that, read `tools/INDEX.md`, `tools/00-system-map/README.md`, and the specific per-tool folder under `tools/UNanofabTools/` or `tools/NanofabToolkit/`. Inside each tool folder, read `README.md`, then `source-files/`, then any drill notes or pass files in `rehearsals/`. Every generated source-file page has breadcrumbs back to the navigator, checklist, glossary, fixture index, evidence template, tool index, system map, and owning tool README.
 

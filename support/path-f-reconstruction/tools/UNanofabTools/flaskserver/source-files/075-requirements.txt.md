@@ -11,7 +11,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Repository: `UNanofabTools`
 - Relative path: `requirements.txt`
 - Lines read: `14`
-- Dirty in working tree at generation time: `yes`
+- Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
 - Sanitized SHA-256 prefix: `93c550ef13cfe8dc`
 - Code fence language: `text`

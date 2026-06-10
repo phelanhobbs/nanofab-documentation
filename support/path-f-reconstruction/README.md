@@ -2,7 +2,7 @@
 
 This is the most comprehensive generated path. It is intentionally much larger than Path E and is split into reconstruction folders for each tool. Its purpose is to explain both repos deeply enough that a future maintainer can recreate the server and tools from sanitized documentation, without depending on private memory or unredacted source files.
 
-- Total generated word count: **1,515,981**
+- Total generated word count: **1,515,993**
 - Sizing: length reflects real reconstruction content; synthetic padding is disabled.
 - Output directory: `support/path-f-reconstruction/tools/`
 - Generator: `support/path-f-tools/build_path_f.py`
@@ -26,7 +26,7 @@ This is the most comprehensive generated path. It is intentionally much larger t
 | Group | Words |
 |---|---:|
 | `navigation/` | 5,828 |
-| `tools/00-system-map/` | 2,103 |
+| `tools/00-system-map/` | 2,097 |
 | `tools/INDEX.md` | 677 |
 | `tools/NanofabToolkit/ALDPeakCounter/` | 39,264 |
 | `tools/NanofabToolkit/DentonDecoder/` | 61,338 |
@@ -36,7 +36,7 @@ This is the most comprehensive generated path. It is intentionally much larger t
 | `tools/NanofabToolkit/PreciousMetalReader/` | 50,059 |
 | `tools/NanofabToolkit/packaging-root/` | 30,707 |
 | `tools/UNanofabTools/dattools/` | 23,595 |
-| `tools/UNanofabTools/filetransfer/` | 29,276 |
+| `tools/UNanofabTools/filetransfer/` | 29,294 |
 | `tools/UNanofabTools/flaskserver/` | 626,966 |
 | `tools/UNanofabTools/hscdisplayerserver/` | 98,922 |
 | `tools/UNanofabTools/hscdownloader/` | 42,448 |

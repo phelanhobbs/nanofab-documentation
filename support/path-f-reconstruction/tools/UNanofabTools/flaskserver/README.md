@@ -125,8 +125,8 @@ Some historical setup and migration prose may describe direct Gunicorn-on-443 or
 | `UNanofabTools/app/templates/signup.html` | [`source-files/058-app__templates__signup.html.md`](source-files/058-app__templates__signup.html.md) | no | no |
 | `UNanofabTools/app/templates/tasks.html` | [`source-files/059-app__templates__tasks.html.md`](source-files/059-app__templates__tasks.html.md) | no | no |
 | `UNanofabTools/chem_inventory_remote.py` | [`source-files/060-chem_inventory_remote.py.md`](source-files/060-chem_inventory_remote.py.md) | yes | yes |
-| `UNanofabTools/chem_schema.sql` | [`source-files/061-chem_schema.sql.md`](source-files/061-chem_schema.sql.md) | yes | no |
-| `UNanofabTools/chem_schema_migration_v2.sql` | [`source-files/062-chem_schema_migration_v2.sql.md`](source-files/062-chem_schema_migration_v2.sql.md) | yes | no |
+| `UNanofabTools/chem_schema.sql` | [`source-files/061-chem_schema.sql.md`](source-files/061-chem_schema.sql.md) | no | no |
+| `UNanofabTools/chem_schema_migration_v2.sql` | [`source-files/062-chem_schema_migration_v2.sql.md`](source-files/062-chem_schema_migration_v2.sql.md) | no | no |
 | `UNanofabTools/config/config.py` | [`source-files/063-config__config.py.md`](source-files/063-config__config.py.md) | no | no |
 | `UNanofabTools/createTask.html` | [`source-files/064-createTask.html.md`](source-files/064-createTask.html.md) | no | no |
 | `UNanofabTools/index.html` | [`source-files/065-index.html.md`](source-files/065-index.html.md) | no | no |
@@ -139,7 +139,7 @@ Some historical setup and migration prose may describe direct Gunicorn-on-443 or
 | `UNanofabTools/migrations/script.py.mako` | [`source-files/072-migrations__script.py.mako.md`](source-files/072-migrations__script.py.mako.md) | no | no |
 | `UNanofabTools/migrations/versions/01bdbfe91bd5_create_particle_sensor_tables.py` | [`source-files/073-migrations__versions__01bdbfe91bd5_create_particle_sensor_tables.py.md`](source-files/073-migrations__versions__01bdbfe91bd5_create_particle_sensor_tables.py.md) | no | no |
 | `UNanofabTools/quick_setup.sh` | [`source-files/074-quick_setup.sh.md`](source-files/074-quick_setup.sh.md) | no | no |
-| `UNanofabTools/requirements.txt` | [`source-files/075-requirements.txt.md`](source-files/075-requirements.txt.md) | yes | no |
+| `UNanofabTools/requirements.txt` | [`source-files/075-requirements.txt.md`](source-files/075-requirements.txt.md) | no | no |
 | `UNanofabTools/resetpassword.html` | [`source-files/076-resetpassword.html.md`](source-files/076-resetpassword.html.md) | no | no |
 | `UNanofabTools/run.py` | [`source-files/077-run.py.md`](source-files/077-run.py.md) | no | no |
 | `UNanofabTools/setup.sh` | [`source-files/078-setup.sh.md`](source-files/078-setup.sh.md) | no | no |

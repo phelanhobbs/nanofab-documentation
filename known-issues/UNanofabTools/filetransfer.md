@@ -1,6 +1,6 @@
 # File-Transfer Scripts — Known Issues & Technical Debt
 
-Working list for the per-machine log-shipping scripts. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for the per-machine log-shipping scripts. Separate from the successor docs. One code change has been made (2026-06-10): `FileTransferTemplate.ps1`'s divergent Windows-style `$remotePath` placeholder was aligned with the Unix-style form every deployed per-machine script uses. Everything else here is unchanged in code.
 
 Severity: **High** = operational/security risk · **Medium** = robustness/maintainability · **Low** = cleanup.
 

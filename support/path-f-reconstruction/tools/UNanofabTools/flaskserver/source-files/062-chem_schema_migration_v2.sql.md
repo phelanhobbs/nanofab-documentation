@@ -11,7 +11,7 @@ If you opened this page directly from search, stop here first: read the owning t
 - Repository: `UNanofabTools`
 - Relative path: `chem_schema_migration_v2.sql`
 - Lines read: `92`
-- Dirty in working tree at generation time: `yes`
+- Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
 - Sanitized SHA-256 prefix: `0cb5061a86284021`
 - Code fence language: `sql`

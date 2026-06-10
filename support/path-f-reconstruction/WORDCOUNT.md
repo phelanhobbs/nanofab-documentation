@@ -1,6 +1,6 @@
 # Path F Word Count Manifest
 
-- Total generated word count: **1,515,981**
+- Total generated word count: **1,515,993**
 - Sizing: length reflects real reconstruction content; synthetic padding is disabled.
 - Files included from source repos: **159**
 - Generated reconstruction files counted: **200**
@@ -11,7 +11,7 @@
 | Group | Words |
 |---|---:|
 | `navigation/` | 5,828 |
-| `tools/00-system-map/` | 2,103 |
+| `tools/00-system-map/` | 2,097 |
 | `tools/INDEX.md` | 677 |
 | `tools/NanofabToolkit/ALDPeakCounter/` | 39,264 |
 | `tools/NanofabToolkit/DentonDecoder/` | 61,338 |
@@ -21,7 +21,7 @@
 | `tools/NanofabToolkit/PreciousMetalReader/` | 50,059 |
 | `tools/NanofabToolkit/packaging-root/` | 30,707 |
 | `tools/UNanofabTools/dattools/` | 23,595 |
-| `tools/UNanofabTools/filetransfer/` | 29,276 |
+| `tools/UNanofabTools/filetransfer/` | 29,294 |
 | `tools/UNanofabTools/flaskserver/` | 626,966 |
 | `tools/UNanofabTools/hscdisplayerserver/` | 98,922 |
 | `tools/UNanofabTools/hscdownloader/` | 42,448 |
@@ -41,7 +41,7 @@
 | `REBUILD-EVIDENCE-TEMPLATE.md` | 263 |
 | `RECONSTRUCTION-CHECKLIST.md` | 2,069 |
 | `TROUBLESHOOTING-ROUTES.md` | 669 |
-| `tools/00-system-map/README.md` | 2,103 |
+| `tools/00-system-map/README.md` | 2,097 |
 | `tools/INDEX.md` | 677 |
 | `tools/NanofabToolkit/ALDPeakCounter/README.md` | 480 |
 | `tools/NanofabToolkit/ALDPeakCounter/rehearsals/README.md` | 62 |
@@ -117,7 +117,7 @@
 | `tools/UNanofabTools/filetransfer/source-files/003-CTRFurnaceTransfer.ps1.md` | 4,005 |
 | `tools/UNanofabTools/filetransfer/source-files/004-Dent635Transfer.ps1.md` | 4,839 |
 | `tools/UNanofabTools/filetransfer/source-files/005-FileTransferSetup.md.md` | 6,691 |
-| `tools/UNanofabTools/filetransfer/source-files/006-FileTransferTemplate.ps1.md` | 3,907 |
+| `tools/UNanofabTools/filetransfer/source-files/006-FileTransferTemplate.ps1.md` | 3,925 |
 | `tools/UNanofabTools/flaskserver/README.md` | 1,337 |
 | `tools/UNanofabTools/flaskserver/rehearsals/README.md` | 61 |
 | `tools/UNanofabTools/flaskserver/source-files/001-.env.example.md` | 2,729 |

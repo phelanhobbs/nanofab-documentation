@@ -13,7 +13,7 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 
 ## Source State Used
 
-- `UNanofabTools`: branch `dev`, commit `ac6c67f0299e5fe62befed8b4de9bc822320f53e`, root `../UNanofabTools`, dirty files `3`, untracked files `2`
+- `UNanofabTools`: branch `dev`, commit `0114dc5f2fc3d26c6e787eb2ebceb6187412783a`, root `../UNanofabTools`, dirty files `0`, untracked files `2`
 - `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `../NanofabToolkit`, dirty files `1`, untracked files `0`
 
 ## Readable Source Files Included
@@ -24,9 +24,6 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 ## Dirty Or Untracked Source Files At Generation Time
 
 - `UNanofabTools/chem_inventory_remote.py`
-- `UNanofabTools/chem_schema.sql`
-- `UNanofabTools/chem_schema_migration_v2.sql`
-- `UNanofabTools/requirements.txt`
 - `NanofabToolkit/ParticleSensor/src/gui.py`
 
 If this section lists any files, a clean checkout at the recorded commits will not reproduce this manual exactly. Either preserve the working-tree diffs as patch artifacts, commit the source changes in the sibling repos, or regenerate Path F from a deliberately clean source state and review the diff.

@@ -319,8 +319,55 @@ for mdfile in sorted(set(files)):
 out.write_text("\n".join(bad) + ("\n" if bad else ""))
 PY
 
+# Case-sensitivity pass: `[ -e ]` is case-insensitive on default macOS volumes,
+# so a link like 02-How-it-Starts.pptx resolves locally but 404s on Linux.
+# Compare each path component against the actual directory listing instead.
+case_list=$(mktemp)
+python3 - "$case_list" <<'PY'
+from pathlib import Path, PurePath
+import os, re, sys
+
+out = Path(sys.argv[1])
+roots = [Path("presentation"), Path("documentation"), Path("known-issues"), Path("support")]
+files = []
+for root in roots:
+    if root.exists():
+        files.extend(root.rglob("*.md"))
+for extra in (Path("START-HERE.md"), Path("README.md")):
+    if extra.exists():
+        files.append(extra)
+
+def exists_cs(p: str) -> bool:
+    cur = Path(".")
+    for part in PurePath(p).parts:
+        try:
+            entries = os.listdir(cur)
+        except OSError:
+            return False
+        if part not in entries:
+            return False
+        cur = cur / part
+    return True
+
+bad = []
+link_re = re.compile(r"\[([^\]]+)\]\(([^)\s#]+)(?:#[^)]*)?\)")
+for mdfile in sorted(set(files)):
+    text = mdfile.read_text(errors="ignore")
+    for _label, target in link_re.findall(text):
+        if re.match(r"^(https?|mailto|computer|tel|ftp)://", target) or target.startswith("#"):
+            continue
+        rel = os.path.normpath(mdfile.parent / target)
+        if rel.startswith(".."):
+            continue  # outside the repo (sibling source repos); plain existence is checked above
+        if os.path.exists(Path(rel)) and not exists_cs(rel):
+            bad.append(f"    {mdfile}  ->  {target}  (case mismatch vs on-disk name)")
+
+out.write_text("\n".join(bad) + ("\n" if bad else ""))
+PY
+
 broken_count=$(wc -l < "$broken_list" | tr -d ' ')
 anchor_count=$(wc -l < "$anchor_list" | tr -d ' ')
+case_count=$(wc -l < "$case_list" | tr -d ' ')
 if [ "$broken_count" -eq 0 ]; then
   echo "  $(c_grn 'No broken internal links found.')"
 else
@@ -335,7 +382,14 @@ else
   head -50 "$anchor_list"
   [ "$anchor_count" -gt 50 ] && echo "  ... (showing first 50)"
 fi
-rm -f "$broken_list" "$anchor_list" /tmp/md_files_$$
+if [ "$case_count" -eq 0 ]; then
+  echo "  $(c_grn 'No case-mismatched internal links found.')"
+else
+  echo "  $(c_red "$case_count case-mismatched internal links (will 404 on case-sensitive filesystems):")"
+  head -50 "$case_list"
+  [ "$case_count" -gt 50 ] && echo "  ... (showing first 50)"
+fi
+rm -f "$broken_list" "$anchor_list" "$case_list" /tmp/md_files_$$
 
 # ----------------------------------------------------------------------
 # 4. Snapshot presence
