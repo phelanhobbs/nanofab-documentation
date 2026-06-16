@@ -207,6 +207,8 @@ The scrollback shortcut is the main reason to attach in the first place — read
 
 ### 5.1 Onboarding a new user (one-time per person, Nanofab-side)
 
+> **Cold-start note.** Step 3 below assumes someone can already log in as `phelan`. If no current keyholder is available (e.g. the previous admin has left and no working key remains), contact the **CADE IT department** to install the new public key instead — then continue from step 4.
+
 1. **Verify the user has a CADE account.** Confirm via the portal at <https://usertools.eng.utah.edu> that the user can SSH into a CADE machine on their own. If they cannot, send them there first; CADE management is outside the cleanroom team's scope.
 2. **Generate an `nfhistory` key pair** on a trusted workstation:
 

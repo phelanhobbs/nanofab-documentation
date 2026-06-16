@@ -179,7 +179,7 @@ By end of Week 1 you should be able to describe: what `nfhistory` is, what runs 
 ## Week 2 — Get in and look (~3 hours, includes hands-on)
 
 8. [`documentation/UNanofabTools/serveraccess/README.md`](documentation/UNanofabTools/serveraccess/README.md) — the formal access reference. Pay attention to §5 (admin procedure) and §7 (operational invariants). (45 min)
-9. **Hands-on:** follow §3.1 to set up your own access. Get a CADE account, get an nfhistory key issued, place the `~/.ssh/config` block, hop in. Attach to a tmux session, **detach with `Ctrl-b d`**, hop out. (~60 min including waits)
+9. **Hands-on:** follow §3.1 to set up your own access. Get a CADE account, get an nfhistory key issued — by the current admin per §5.1, or by the CADE IT department if no current keyholder is available — place the `~/.ssh/config` block, hop in. Attach to a tmux session, **detach with `Ctrl-b d`**, hop out. (~60 min including waits)
 10. [`documentation/UNanofabTools/liveserver/README.md`](documentation/UNanofabTools/liveserver/README.md) — the populated live-server inventory. Walk through every section. (45 min)
 11. **Hands-on:** run the survey script as `phelan` and check the result against §11 (the "things root couldn't see") to fill in the gaps in the existing snapshot. Save to `documentation/UNanofabTools/liveserver/snapshots/`. (30 min)
 
