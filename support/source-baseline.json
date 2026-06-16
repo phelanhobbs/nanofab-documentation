@@ -1,0 +1,14 @@
+{
+  "description": "Pinned source-repo commits that the documentation in this repo was last reconciled against. Updated by reconcile-docs.md workflow.",
+  "updated": "2026-06-16",
+  "repos": {
+    "UNanofabTools": {
+      "branch": "dev",
+      "sha": "0114dc5f2fc3d26c6e787eb2ebceb6187412783a"
+    },
+    "NanofabToolkit": {
+      "branch": "master",
+      "sha": "cedd4b776009fb6952eb7e0760833fecfbb6674c"
+    }
+  }
+}

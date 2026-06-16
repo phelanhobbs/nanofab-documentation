@@ -1,0 +1,150 @@
+{
+  "description": "Maps source-repo path globs to documentation files that likely need review when those source paths change. Used by the reconcile-docs workflow. Grow this as gaps are found.",
+  "mappings": [
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/__init__.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/01-architecture.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "run.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/01-architecture.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "config/**",
+      "docs": ["documentation/UNanofabTools/flaskserver/03-configuration-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "config.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/03-configuration-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/auth.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/admin.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/07-authentication-and-authorization.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/tasks.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/05-http-api-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/api.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/05-http-api-reference.md", "documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/machines.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/05-http-api-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/chem_inventory*.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/04-database-schema.md", "documentation/UNanofabTools/flaskserver/05-http-api-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "chem_inventory_remote.py",
+      "docs": ["documentation/UNanofabTools/flaskserver/04-database-schema.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "chem_schema*.sql",
+      "docs": ["documentation/UNanofabTools/flaskserver/04-database-schema.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/blueprints/particle*.py",
+      "docs": ["documentation/UNanofabTools/particlepctools/README.md", "documentation/UNanofabTools/flaskserver/08-integrations-and-data-contracts.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/models/**",
+      "docs": ["documentation/UNanofabTools/flaskserver/04-database-schema.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/services/**",
+      "docs": ["documentation/UNanofabTools/flaskserver/06-service-layer-reference.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "app/templates/**",
+      "docs": ["documentation/UNanofabTools/flaskserver/10-development-guide.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "HSCDownloader.py",
+      "docs": ["documentation/UNanofabTools/hscdownloader/README.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "*Transfer*.ps1",
+      "docs": ["documentation/UNanofabTools/filetransfer/README.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "*Transfer*.bat",
+      "docs": ["documentation/UNanofabTools/filetransfer/README.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "DAT*.py",
+      "docs": ["documentation/UNanofabTools/dattools/README.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "DATInstructions.md",
+      "docs": ["documentation/UNanofabTools/dattools/README.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "CHEM_INVENTORY_*.md",
+      "docs": ["documentation/UNanofabTools/flaskserver/04-database-schema.md"]
+    },
+    {
+      "repo": "UNanofabTools",
+      "source_glob": "curl_for_particle.md",
+      "docs": ["documentation/UNanofabTools/particlepctools/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "PicoHelperTools/**",
+      "docs": ["documentation/UNanofabTools/picofirmware/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "ParticleSensor/**",
+      "docs": ["documentation/UNanofabTools/particlepctools/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "ALDPeakCounter/**",
+      "docs": ["documentation/UNanofabTools/utilities/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "DentonDecoder/**",
+      "docs": ["documentation/UNanofabTools/utilities/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "ParalyneReader/**",
+      "docs": ["documentation/UNanofabTools/utilities/README.md"]
+    },
+    {
+      "repo": "NanofabToolkit",
+      "source_glob": "PreciousMetalReader/**",
+      "docs": ["documentation/UNanofabTools/utilities/README.md"]
+    }
+  ]
+}
