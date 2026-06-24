@@ -14,10 +14,11 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 - **What the Nanofab team could add later (optional):** a Nanofab-owned secondary tier so a restore doesn't depend solely on opening a ticket with IT. Examples: a nightly `pg_dump cheminventory` into `/home/phelan/backups/` (also covered by IT's snapshot), plus a periodic `restic`/`borg` push to a Nanofab-owned destination. Worth doing only if the loss tolerance for a restore window matters.
 - **Action:** confirm the IT backup scope with the IT contact, write the answer into `documentation/UNanofabTools/liveserver/README.md` §13 so the next maintainer doesn't re-flag this, and decide whether the Nanofab-side secondary tier is worth building.
 
-### 2. No service supervision for the Flask app or HSCDownloader — High
-- **Where:** `systemctl list-unit-files | grep -iE '(flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn)'` returned nothing. The Flask process (PID 2665755 listening on `127.0.0.1:5000`) is running as `python` directly, not as a systemd service. Same pattern for the downloader.
-- **Risk:** if either process exits, the tmux pane returns to a prompt and the *service is silently down* until a human notices. A reboot loses both. There is no automatic restart and no logging through `journalctl` for either.
-- **Fix:** add two systemd units, e.g. `flaskserver.service` and `hscdownloader.service`, with `Restart=on-failure`, `WantedBy=multi-user.target`, `User=phelan`, and `WorkingDirectory=/home/phelan/server/UNanofabTools`. For the current live layout, use `/home/phelan/server/UNanofabTools/venv/bin/python run.py` (or the gunicorn command from `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`) for Flask, and `/home/phelan/server/UNanofabTools/venv/bin/python3 HSCDownloader.py` for the downloader. `HSCDownloader.py` is co-located with `run.py`; there is no separate HSCDownloader install directory. Keep tmux around as a debugging convenience only.
+### 2. Service supervision for the Flask app or HSCDownloader — ✅ RESOLVED (2026-06-18) *(was High)*
+- **Resolution:** both now run as **user-level systemd** services (`~/.config/systemd/user/{flaskserver,hscdownloader}.service`) with `Restart=on-failure`; lingering is enabled (`loginctl enable-linger`) so they start at boot. Verified `active`/`enabled`, `NRestarts=0`, `Linger=yes`, port 5000 listening, local and public `302`.
+- **Original finding:** a `systemctl list-unit-files` grep for `flask|…|gunicorn` returned nothing; the Flask process ran as bare `python` (PID 2665755 on `127.0.0.1:5000`), same for the downloader — so a crash left the tmux pane at a prompt with the service silently down, and a reboot lost both.
+- **Residual (optional, Low):** still the Flask dev server, not gunicorn. To upgrade: `.venv/bin/python -m pip install gunicorn`, set `ExecStart=…/.venv/bin/python -m gunicorn -w 4 -b 127.0.0.1:5000 run:app`, then `systemctl --user daemon-reload && systemctl --user restart flaskserver`.
+- **Note:** these are *user* units (the account has passwordless sudo for `systemctl` only, not for writing `/etc`); a root `/etc/systemd/system` unit would need IT, but user-unit + linger is equivalent for uptime.
 
 ### 3. Root SSH is IT's access path — Info (boundary of responsibility)
 - **Where:** `sshd -T` shows `permitrootlogin without-password`. `/root/.ssh/authorized_keys` has one active 2048-bit RSA key from `root@iceolate.eng.utah.edu`.
@@ -82,7 +83,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 ### 11. No outbound notification path — Medium
 - **Where:** no MTA installed; `postfix` and `exim4` both `inactive`. No webhook tooling.
 - **Risk:** the server can detect that something is wrong (e.g. cert about to expire, disk filling, service failed) but has no way to tell a human.
-- **Fix:** simplest path is `msmtp` + a `from` set to an alias the team can monitor. More robust: a tiny `curl`-based Slack/Teams webhook sender invoked from cron and from systemd's `OnFailure=`. Once the supervisor in finding #2 is in place, wire `OnFailure=` to it.
+- **Fix:** simplest path is `msmtp` + a `from` set to an alias the team can monitor. More robust: a tiny `curl`-based Slack/Teams webhook sender invoked from cron and from systemd's `OnFailure=`. Now that finding #2's systemd units exist (2026-06-18), wire `OnFailure=` to the notification path.
 
 ### 12. `wpa_supplicant.service` running on a server — Low
 - **Where:** snapshot shows `wpa_supplicant.service active running`. A wired server has no need for a Wi-Fi supplicant.
@@ -102,7 +103,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 ### 15. 290-day uptime / no recent reboot — Low/Medium
 - **Where:** `uptime`: 290 days. Kernel is `6.12.38` from 2025-07-16; Debian 13.4 will likely have shipped a newer kernel by now.
 - **Risk:** running on an old kernel means missed CVE patches. A controlled reboot is needed to load a new one.
-- **Fix:** schedule a maintenance window. Before rebooting, **first** put findings #2 (systemd-managed Flask + downloader) in place so the post-reboot service comes back automatically. Without #2, the reboot leaves the website down until a human re-attaches the tmux session.
+- **Fix:** schedule a maintenance window. Finding #2 (systemd-managed Flask + downloader) is now in place (2026-06-18) with linger enabled, so a controlled reboot brings the services back automatically.
 
 ### 16. `wtmpdb` history starts 2026-05-08 — Low
 - **Where:** `wtmpdb begins Fri May 8 13:15:36 2026`. Earlier login history isn't available.
@@ -145,7 +146,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 
 The Nanofab team has `sudo` as `phelan` but does not have root, cannot create UNIX accounts, and does not own IT's backup / patching paths. Items #1, #3, #4, #5, #15, #18 are bounded by IT and are either already handled or require an IT ticket. Item #6 is retained as a verified live-state fact so future docs keep PostgreSQL on the same VM. The list below is what the Nanofab team can act on directly.
 
-1. **#2** — put the Flask app and HSCDownloader under systemd. The single biggest reliability win the Nanofab team can ship on its own. Eliminates silent-failure mode for the website.
+1. **#2** — ✅ done (2026-06-18): Flask + HSCDownloader now under user-systemd with linger. The single biggest reliability win, shipped. *(Optional follow-up: migrate `python run.py` → gunicorn.)*
 2. **#7** — add the HTTP→HTTPS redirect on `:80` (one-line nginx change via `sudo`).
 3. **#11** — wire up an outbound notification path so future failures find a human.
 4. **#17** — re-run the patched survey as `phelan` and finish populating the live-server doc.

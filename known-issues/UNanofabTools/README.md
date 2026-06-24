@@ -15,8 +15,8 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 | [`filetransfer.md`](filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | [`dattools.md`](dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
 | [`utilities.md`](utilities.md) | Standalone helpers | `init_chem_db.py` doesn't build a complete chem database |
-| [`serveraccess.md`](serveraccess.md) | SSH access + tmux sessions | tmux is the only supervisor; shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
-| [`liveserver.md`](liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader not under systemd; chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
+| [`serveraccess.md`](serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
+| [`liveserver.md`](liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | [`hscdisplayerserver.md`](hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |
 
 ## How to use this folder

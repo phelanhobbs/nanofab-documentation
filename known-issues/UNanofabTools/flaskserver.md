@@ -167,3 +167,8 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Original concern:** `config.py` falls back to a public default, making session cookies forgeable if the env var is unset.
 - **Why closed:** `SECRET_KEY` is present in the live `.env` (verified) — not the default.
 - **Optional hardening:** make `ProductionConfig.init_app` raise if `SECRET_KEY` is unset; drop the `'changeme'` DB-password default; regenerate with `secrets.token_hex(32)` if short.
+
+### R3. No service supervision (tmux only) — was High — CLOSED (2026-06-18)
+- **Original concern:** Flask and HSCDownloader ran as bare `python run.py` / `python HSCDownloader.py` inside tmux — no auto-restart on crash, and a reboot killed both (silent outage).
+- **Why closed:** both now run as **user-level systemd** services (`~/.config/systemd/user/{flaskserver,hscdownloader}.service`) with `Restart=on-failure`; lingering is enabled so they start at boot. Verified `active`/`enabled`, `NRestarts=0`, `Linger=yes`, port 5000 listening, local/public `302`. (Tracked in detail under `serveraccess.md` #3 and `liveserver.md` #2.)
+- **Residual (optional, Low):** still the Flask dev server, not gunicorn — see `09-deployment-and-operations.md`.

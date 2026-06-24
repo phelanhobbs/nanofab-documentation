@@ -168,7 +168,7 @@ python run.py
 
 Then detach with `Ctrl-b` `d`. Verify the website is up by visiting `nfhistory.nanofab.utah.edu`.
 
-> **Production note.** `python run.py` is the development invocation. If the deployment was migrated to `gunicorn` (see `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`), substitute the gunicorn command from that runbook. The shape — `tmux new -s flaskserver`, `cd`, activate, run, detach — is the same.
+> **Production note.** `python run.py` is the development invocation. If the deployment was migrated to `gunicorn` (see `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`), substitute the gunicorn command from that runbook. The shape — `tmux new -s flaskserver`, `cd`, activate, run, detach — is the same. **Update (2026-06-18):** the two services now run under **user-level systemd** (`systemctl --user restart flaskserver` / `hscdownloader`, `Restart=on-failure`, linger enabled), so recovery is normally a `systemctl --user restart` rather than recreating the tmux session; the tmux procedure remains a valid manual fallback.
 
 #### Recreate `downloader`
 

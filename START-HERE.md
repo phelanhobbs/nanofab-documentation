@@ -331,7 +331,7 @@ These facts are load-bearing. Every doc, slide, issue file, and runbook should b
 | The live Flask app install path is `/home/phelan/server/UNanofabTools/`. | Recovery commands and survey scripts must use the real production path. |
 | `HSCDownloader.py` lives in the same install directory as `run.py`. | There is no separate production home-level HSCDownloader checkout to restart. |
 | The chem PostgreSQL database is local to `nfhistory` on `127.0.0.1:5432`. | Architecture, backup, restore, and firewall assumptions depend on this. |
-| The Flask app and HSCDownloader currently run in tmux sessions, not systemd. | This is the top Nanofab-owned reliability risk. |
+| The Flask app and HSCDownloader run under **user-level systemd** (migrated 2026-06-18; `Restart=on-failure` + linger). Still `python run.py`, not gunicorn. | Was the top Nanofab-owned reliability risk — now resolved; the gunicorn upgrade is an optional follow-up. |
 | University IT owns the VM, root, root SSH, base patching, and off-box backups. | Do not assign IT-owned fixes to the Nanofab maintainer. |
 | The Nanofab maintainer has `sudo` as `phelan`, not root, and cannot create UNIX users. | Per-user UNIX accounts and root-owned changes are IT tickets. |
 | Nanofab owns the Flask app, HSCDownloader, local chem DB, data trees, and `/home/phelan/`. | These are the areas the maintainer can actually fix. |

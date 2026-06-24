@@ -18,7 +18,7 @@ A condensed mirror of [`known-issues/UNanofabTools/liveserver.md`](../../../know
 > **Boundary of responsibility.** `nfhistory` is jointly operated. University IT owns the VM, root, the off-host backup pipeline, and unattended-upgrades-style patching. The Nanofab team owns the Flask app, the HSCDownloader, the local PostgreSQL chem database, the cleanroom data trees, and everything under `/home/phelan/`. Nanofab admin actions run as `phelan` with `sudo`; the Nanofab team **cannot** create UNIX accounts and **cannot** modify `/root/`. Several findings below land on IT's side of the line and are flagged that way — they're not Nanofab to-do items, they're IT tickets.
 
 1. **Backups are IT-managed off the box.** No Nanofab-side backup tooling was found locally, but the base VM backup is run by University IT. Confirm IT's scope and document it in §13; a Nanofab-owned secondary tier is optional.
-2. **Neither the Flask app nor HSCDownloader runs under a process supervisor.** Both live in tmux sessions (`flaskserver` and `downloader`), not systemd. This is the top Nanofab-owned reliability fix.
+2. **Neither the Flask app nor HSCDownloader runs under a process supervisor.** As of 2026-06-18 both run as **user-level systemd** services (`Restart=on-failure`, linger enabled); previously they lived in tmux only, which was the top Nanofab-owned reliability fix (now resolved — see §6.5 and known-issues #2).
 3. **Root SSH is IT's access path.** `PermitRootLogin without-password` is enabled with one active key from `root@iceolate.eng.utah.edu`; `iceolate` is IT's administrative host. Do not modify this path without IT.
 4. **`/root/.ssh/authorized_keys` is mode `-rw-rw-r--`.** The Nanofab team does not own `/root/`; open an IT ticket asking for `chmod 600` and a deploying-umask check.
 5. **No `unattended-upgrades` configuration is present on the box itself.** IT likely patches out-of-band; confirm whether they want an on-box unattended-upgrades layer too.
@@ -225,7 +225,7 @@ The Debian stock `default` site is still enabled on port 80. It serves `/var/www
 
 ### 6.2 No cleanroom service units
 
-A grep for `flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn` against `systemctl list-unit-files` returned **no matches**. The Flask app and HSCDownloader are **not** managed by systemd — they live in tmux only. **Finding #2.**
+A grep for `flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn` against `systemctl list-unit-files` returned **no matches**. The Flask app and HSCDownloader are **not** managed by *system-level* systemd — that root scan only sees system units. **Update (2026-06-18): they are now managed as user-level systemd units (`systemctl --user`), which a system `list-unit-files` does not show; Finding #2 resolved — see §6.5.**
 
 ### 6.3 Failed units
 
