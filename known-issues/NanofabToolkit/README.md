@@ -11,7 +11,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 | [`ALDPeakCounter.md`](ALDPeakCounter.md) | ALD peak counter GUI | Duplicate peak-counter logic with UNanofabTools |
 | [`DentonDecoder.md`](DentonDecoder.md) | Denton `.dat`/CSV log viewer | Multi-day timestamp handling limited to one rollover |
 | [`ParalyneReader.md`](ParalyneReader.md) | Parylene file browser/viewer | Dead `return_selected` endpoint client; TLS verify disabled |
-| [`PreciousMetalReader.md`](PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES credential depends on out-of-band local `auth.py` |
+| [`PreciousMetalReader.md`](PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES creds: env-var preference added (2026-06-22), `auth.py` never committed; rollout + rotation deferred |
 | [`PicoHelperTools.md`](PicoHelperTools.md) | Pico firmware (canonical copies) | Cleartext WiFi credentials in source |
 | [`ParticleSensor.md`](ParticleSensor.md) | PyQt desktop viewer (canonical copy) | +7h timezone hack; duplicate `convert_to_mountain` in two modules |
 
@@ -19,7 +19,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 
 A few items show up across more than one tool and are worth treating as cross-cutting initiatives:
 
-- **Secrets and local credentials.** `PreciousMetalReader` imports `HSCCode` from a local `auth.py` that is required at runtime but absent from the adjacent source checkout reviewed here; document that setup contract and rotate if history or local evidence shows the token was ever exposed. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
+- **Secrets and local credentials.** `PreciousMetalReader` now prefers the `CORES_TOKEN` env var (falling back to a local `auth.py`); `auth.py` was verified **never committed**, so there's no history leak — finishing the rollout (set the env var, delete `auth.py`, rebuild) and rotating the token are owner-deferred. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
 - **Divergent copies of shared code.** The Pico firmware and the particle viewer each ship in both `NanofabToolkit/` and `UNanofabTools/`. The NanofabToolkit copies are now canonical (newer versions); the UNanofabTools docs point back here. Track cross-cutting fixes in this tree first.
 - **PyInstaller builds undocumented.** All four desktop apps ship as Windows executables but the build commands aren't captured in repo READMEs. Add a one-page build note per tool.
 - **No timeouts / retries on outbound HTTP.** `ParalyneReader` and `PreciousMetalReader` both call `requests.get` without `timeout=` and freeze the UI on slow servers. Standard fix.

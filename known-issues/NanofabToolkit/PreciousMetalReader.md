@@ -6,11 +6,11 @@ Severity: **High** = security/correctness · **Medium** = robustness/maintainabi
 
 ---
 
-### 1. CORES Bearer token handled through local `auth.py` — High (security)
-- **Where:** `from auth import HSCCode` in `RetrieveMonthsMetals.py`.
-- **Current repo status:** `src/auth.py` is required by the code but is not present in the adjacent source checkout used during documentation review. Treat this as a missing local-secret setup step unless history proves the file was committed earlier.
-- **Risk:** the tool depends on an out-of-band CORES credential. If `auth.py` was ever committed or shared, rotate the token; if it only exists locally, document the setup contract so the app can run without putting the token in source.
-- **Fix:** move the token to an environment variable, keychain entry, or a per-machine secrets file outside the repo; document the required variable/file name; rotate the token if there is any evidence it was committed or exposed.
+### 1. CORES Bearer token via local `auth.py` — Medium *(downgraded from High — verified never committed)*
+- **Status (2026-06-22):** ✅ *env-var preference added.* `RetrieveMonthsMetals.py` now prefers the `CORES_TOKEN` environment variable (`HSCCode = 'Bearer ' + os.environ['CORES_TOKEN']`), falling back to the legacy local `auth.py` only if it's unset. ⏳ **Deferred (owner-planned):** the operational rollout — set `CORES_TOKEN`, rebuild the `.exe`, delete `auth.py` — will be done later, alongside rotating the CORES token. Verified via `git log -- '*auth.py'` that `auth.py` was **never committed**, so there is no history leak here (unlike the HSCDownloader token).
+- **Where:** `from auth import HSCCode` fallback in `RetrieveMonthsMetals.py`, used as the `Authorization` header; `src/auth.py` is gitignored and local-only.
+- **Risk (residual):** the credential still lives in a loose local `auth.py` on each machine until operators switch to `CORES_TOKEN`; the setup contract must be documented so a successor can run it.
+- **Fix (remaining):** document the `CORES_TOKEN` env var in the README; once operators set it, delete the local `auth.py` and rebuild the `.exe`. Rotate only if there's evidence the token was exposed elsewhere. (Same CORES system as `known-issues/UNanofabTools/hscdownloader.md` #1.)
 
 ### 2. Hard-coded service-ID list — Medium
 - **Where:** the embedded list (`[768, 808, 809, ..., 818]`) inside `download_Metal("all", ...)`.
@@ -54,7 +54,7 @@ Severity: **High** = security/correctness · **Medium** = robustness/maintainabi
 ---
 
 ## Suggested priority order
-1. #1 + #2 document and externalize the CORES credential contract; centralize service IDs — High / Medium
+1. #1 finish the CORES env rollout (env-pref code added; set `CORES_TOKEN`, delete `auth.py`, rebuild) + #2 centralize service IDs — Medium
 2. #3 + #4 timeouts, retries, and a worker-thread download path — Medium
 3. #10 + #5 add tests and surface per-endpoint failure detail — Medium
 4. #6, #7, #8, #9 — Low
