@@ -152,3 +152,18 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 6. #11 escape CSV cells — Medium
 7. #19 add a test suite — Medium
 8. Cleanup batch: #13–#18, #20, #21 — Low
+
+---
+
+## ✅ Resolved / Closed
+
+Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Move items here as they're closed.
+
+### R1. Dev-mode auth bypass — was CRITICAL — CLOSED
+- **Original concern:** if `FLASK_ENV` were unset/`development`, auth would skip Duo 2FA, `app.run(debug=True)` would expose the Werkzeug debugger, and `SESSION_COOKIE_SECURE` would be `False`.
+- **Why closed:** the live `.env` sets `FLASK_ENV=production`, `DEBUG_MODE=False`, `SESSION_COOKIE_SECURE=True`; `load_dotenv()` runs before `run.py` reads `FLASK_ENV`, so `ProductionConfig` loads — Duo 2FA active, debugger off, cookies Secure (verified 2026-06-17).
+
+### R2. Weak default `SECRET_KEY` — was High — CLOSED
+- **Original concern:** `config.py` falls back to a public default, making session cookies forgeable if the env var is unset.
+- **Why closed:** `SECRET_KEY` is present in the live `.env` (verified) — not the default.
+- **Optional hardening:** make `ProductionConfig.init_app` raise if `SECRET_KEY` is unset; drop the `'changeme'` DB-password default; regenerate with `secrets.token_hex(32)` if short.
