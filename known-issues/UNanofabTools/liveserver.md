@@ -75,10 +75,10 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
   ```
   Remove `/etc/cron.d/php` if apt leaves it behind.
 
-### 10. Current TLS cert expires 2026-06-23 (24 days at snapshot) — Low/Info
-- **Where:** live `:443` cert `notAfter=Jun 23 02:33:01 2026 GMT`.
-- **Risk:** none today — `certbot.timer` is firing twice daily and the renewal account is in good standing. Flagged so the maintainer has a date to keep an eye on if they're auditing post-snapshot.
-- **Fix:** none required. Tip: `certbot certificates` prints expiry and renewal config; check it after the next renewal to confirm a new `cert<N>.pem`/`fullchain<N>.pem` rotation actually happened.
+### 10. TLS cert expiry / nginx-reload-after-renewal — ✅ RESOLVED (2026-06-23) *(was Low/Info — the predicted miss happened)*
+- **What happened:** the `:443` cert (`notAfter=Jun 23 02:33:01 2026 GMT`) expired and the site showed "connection not private" on 2026-06-23. certbot **had** auto-renewed (new cert valid to 2026-08-22), but **nginx was never reloaded**, so it kept serving the *old* cert from memory until it expired — exactly the renewal-reload gap this item flagged.
+- **Resolution:** `sudo systemctl reload nginx` picked up the current cert (verified `notAfter = Aug 22 2026`); site restored. **Recurrence prevented** with a certbot deploy hook — `/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh` (`#!/bin/sh` + `systemctl reload nginx`, `chmod +x`) — so every future renewal reloads nginx.
+- **Residual:** if writing under `/etc/letsencrypt/` is blocked by the account's sudo scope, that hook is a quick IT follow-up; otherwise done.
 
 ### 11. No outbound notification path — Medium
 - **Where:** no MTA installed; `postfix` and `exim4` both `inactive`. No webhook tooling.

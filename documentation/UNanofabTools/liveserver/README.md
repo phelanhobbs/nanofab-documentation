@@ -135,7 +135,7 @@ The `live/` directory is a symlink farm into `archive/`. Renewals create new `ce
 
 | Item | Value |
 |------|-------|
-| Mechanism | `certbot.timer` (systemd timer) + `/etc/cron.d/certbot` (no-op under systemd) |
+| Mechanism | `certbot.timer` (systemd timer) + `/etc/cron.d/certbot` (no-op under systemd); **deploy hook `/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh` reloads nginx after each renewal (added 2026-06-23 after a missed-reload expiry — see known-issues #10)** |
 | Cadence | Twice daily, randomized within the period |
 | Next firing | `Fri 2026-05-29 12:54:51 MDT` (31 minutes after capture) |
 | Last run | `Fri 2026-05-29 11:10:02 MDT` (1h 13m before capture) |
