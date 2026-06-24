@@ -6,10 +6,12 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 
 ---
 
-### 1. CORES API token hard-coded in source — High (security)
-- **Where:** `AUTH = 'Bearer <redacted-cores-bearer-token>'`.
-- **Risk:** a live credential to the university records system is committed in cleartext; anyone with repo access has it.
-- **Fix:** move it to an environment variable / `.env`; rotate the token.
+### 1. CORES API token — de-sourced to `.env`; **rotation still required** — High (security)
+- **Status (2026-06-22):** ✅ *code de-sourced & deployed.* `HSCDownloader.py` now reads `AUTH = 'Bearer ' + os.environ['CORES_TOKEN']` (commit `4175995`), with `CORES_TOKEN` in the gitignored `.env`; the `hscdownloader` user-systemd service runs on it. ⛔ **Still open — token rotation (owner-planned, not yet done):** the value is unchanged and remains in git history (commits ≤ `0114dc5`), so the leaked credential stays valid until CORES issues a new one.
+- **Where:** was `HSCDownloader.py:26` → `AUTH = 'Bearer <redacted-cores-bearer-token>'`, used as the `Authorization` header.
+- **Risk:** a working credential to the university records system is still in repo history; anyone with repo (or leaked-copy) access has it until rotated.
+- **Remaining fix:** (1) get a new bearer token from the CORES n8n admin, then on the server `sed -i "s|^CORES_TOKEN=.*|CORES_TOKEN=<NEW>|" .env` + `systemctl --user restart hscdownloader`; (2) if the GitHub repo is public, scrub the old token from history (`git filter-repo`/BFG + force-push); (3) apply the same env pattern to PreciousMetalReader if it shares the token.
+- **Validation:** old token no longer authenticates; new value lives in `.env` only; (if scrubbed) `git log -p | grep` finds no token.
 
 ### 2. Minimal error handling on downloads — Medium
 - **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
@@ -57,7 +59,7 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 ---
 
 ## Suggested priority order
-1. #1 move the CORES token out of source + rotate — High
+1. #1 rotate the CORES token with the CORES admin (code de-sourced to `.env` & deployed 2026-06-22; rotation still pending) — High
 2. #2 + #3 robust downloads + staleness alerting — Medium
 3. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
 4. #6 add a portal-column contract test — Medium

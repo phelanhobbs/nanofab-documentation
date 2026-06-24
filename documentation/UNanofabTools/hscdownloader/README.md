@@ -21,7 +21,7 @@ HSCDownloader is the **upstream feeder** for the machine pages. It does not touc
 
 ```python
 DATA_DIR = os.path.join(script_dir, 'HSCDATA')
-AUTH     = 'Bearer <redacted-cores-bearer-token>'        # CORES API token (hard-coded — see known-issues)
+AUTH     = 'Bearer ' + os.environ['CORES_TOKEN']   # CORES API token — read from .env since 2026-06-22 (commit 4175995); see known-issues
 URLBASE  = 'https://n8n.cores.utah.edu/webhook/custom_form_data_dump?service_ids='
 ```
 
@@ -61,7 +61,7 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 
 ## 7. Maintenance / recommendations
 
-- **Move the Bearer token out of source** into an environment variable / `.env` (it's currently committed in cleartext). See known-issues.
+- **Rotate the Bearer token.** It was moved out of source into `.env` / `os.environ['CORES_TOKEN']` (2026-06-22, commit `4175995`), but the old value is unchanged and still in git history, so rotation with the CORES admin is still required. See known-issues.
 - **Centralize the machine→service_id map** (a dict/table) instead of a long if/elif in `retrieveData`; document each ID.
 - **Reduce per-machine duplication**: the `save<Machine>()` functions repeat a lot of structure; a config-driven approach (per-machine column spec) would shrink the file dramatically.
 - **Add retries + logging/alerting** around `downloadFile` so silent data staleness is detected.
