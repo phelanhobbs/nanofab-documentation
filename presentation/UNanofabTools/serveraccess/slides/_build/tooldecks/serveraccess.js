@@ -124,7 +124,10 @@ module.exports = {
       notes:
         "Introduce tmux at a high level: it's a 'saved terminal' — a window with a program running in it that keeps going even when nobody's " +
         "logged in. The cleanroom server uses exactly two of them. The website is the one users see; the downloader is the data pipeline that " +
-        "keeps the website's machine pages fresh. Both must stay alive 24/7.",
+        "keeps the website's machine pages fresh. Both must stay alive 24/7. **Update (2026-06-18):** these two services now run under " +
+        "user-level systemd (systemctl --user, auto-restart on failure, linger), so they survive crashes and reboots on their own. The tmux " +
+        "sessions remain a convenient way to watch live console output, and the detach hygiene below still matters for clean inspection — " +
+        "though an accidental exit no longer takes the website down the way it used to.",
     });
 
     d.code({

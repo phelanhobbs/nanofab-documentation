@@ -67,16 +67,17 @@ module.exports = {
     d.steps({
       title: "TLS certificates: the maintenance story",
       steps: [
-        { h: "Current cert", d: "expires Jun 23, 2026 — about 24 days from the snapshot." },
-        { h: "Auto-renewal", d: "certbot.timer runs twice daily; last ran 1h 13m before snapshot." },
-        { h: "Issuer", d: "Let's Encrypt CN=E7. Standard 90-day cert." },
-        { h: "Verdict", d: "Healthy. No human action needed unless certbot.timer ever stops." },
+        { h: "What happened", d: "the snapshot cert (exp Jun 23, 2026) DID expire — site showed 'not private' that day." },
+        { h: "Root cause", d: "certbot auto-renewed (new cert valid to Aug 22), but nginx was never reloaded, so it served the old cert from memory." },
+        { h: "Fix (2026-06-23)", d: "reload nginx + a certbot deploy hook (reload-nginx.sh) so every future renewal reloads nginx." },
+        { h: "Verdict", d: "Renewal is automatic AND nginx now reloads on renewal. Watch that certbot.timer stays active." },
       ],
       notes:
-        "TLS health. The current certificate is well within its 90-day window, with 24 days remaining at the time of capture. The certbot " +
-        "systemd timer is firing twice a day exactly as it should and ran successfully about an hour before our snapshot. So this part of " +
-        "the system is auto-healing. The thing to watch for is if certbot.timer ever becomes inactive — then renewals stop and 30 days later " +
-        "the website starts throwing browser warnings.",
+        "TLS reality check. The certificate captured in the snapshot expired on Jun 23, 2026 and the site briefly showed a browser warning. " +
+        "The subtle part: certbot HAD auto-renewed on schedule (the new cert was valid to Aug 22), but nothing reloaded nginx, so nginx kept " +
+        "serving the old in-memory cert until it expired. The fix was to reload nginx and add a certbot deploy hook " +
+        "(/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh) so every future renewal reloads nginx automatically. Now both halves are " +
+        "automatic; the thing to watch is that certbot.timer stays active.",
     });
 
     d.twocol({
@@ -90,12 +91,12 @@ module.exports = {
           "Filesystem checks (e2scrub, fstrim)",
           "Time sync (NTP)",
           "VM-level backup (run off-box by IT)",
+          "Service supervision — Flask + downloader (user-systemd, 2026-06-18)",
         ],
       },
       right: {
         heading: "Gaps the Nanofab team can close",
         items: [
-          "Service supervision for Flask / downloader",
           "Outbound failure notifications",
           "HTTP → HTTPS redirect on :80",
           "apache2 ghost, php-fpm leftover",
@@ -104,8 +105,9 @@ module.exports = {
       notes:
         "Quick health table. Left side: things that just work — including the VM-level backup, which runs off the box and is operated by " +
         "University IT, not the Nanofab team. Cert renewal, log rotation, apt's daily update check, filesystem maintenance, NTP. All quiet, " +
-        "all on schedule. Right side: the gaps the Nanofab team can actually close on its own. The Flask app and the downloader have no " +
-        "supervisor. There's no path for the box to alert anyone when something fails. Bare HTTP doesn't redirect to HTTPS. And there are " +
+        "all on schedule — and, as of 2026-06-18, service supervision: the Flask app and downloader now run under user-level systemd, so that " +
+        "gap is closed. Right side: the gaps the Nanofab team can still close on its own. There's no path for the box to alert anyone when " +
+        "something fails. Bare HTTP doesn't redirect to HTTPS. And there are " +
         "small cleanups. Each is fixable with sudo from the Nanofab side; together they're most of the operational risk on this box.",
     });
 
@@ -177,7 +179,7 @@ module.exports = {
         "Don't let the long weirdness list make this look worse than it is. The boring infrastructure is in good shape. OS is current. " +
         "Firewall is conservative and configured correctly. TLS renewal is automatic and the timer is firing as expected. Web server and " +
         "database have clean recent logs. SSH is key-only — no password brute force possible. Disk and memory have plenty of headroom. " +
-        "The gaps are operational — backups, supervision, alerting — not 'the server is on fire'.",
+        "The gaps are operational — mainly alerting and a few cleanups (supervision and backups are now handled) — not 'the server is on fire'.",
     });
 
     d.bullets({
