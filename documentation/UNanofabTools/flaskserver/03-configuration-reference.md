@@ -76,6 +76,8 @@ Each uses a nested default: the `CHEM_*` var first, then a generic Postgres var,
 
 `chem_service.get_chem_engine()` assembles these into `postgresql+psycopg2://user:pwd@host:port/db` and creates a pooled engine (`pool_pre_ping=True, pool_size=5, max_overflow=10, future=True`). These keys are **not** present in `.env.example`; add them yourself when enabling chem.
 
+> **`CHEM_SSO_SECRET` (new, 2026-06-25).** Separate from the Postgres keys: an HMAC shared secret for the WordPress → chem-inventory signed-link gate. `/chem/enter` validates `hmac(CHEM_SSO_SECRET, "chem-inventory|<exp>")` against the `sig` query param before granting a chem session; without it, every `/chem/*` request redirects to the staff-tools page. It must match the value in the WordPress `chem_inventory_link` snippet. **Secret — set it in `.env`, never commit it.**
+
 ### Duo 2FA
 
 | Key | Env var | Default | Meaning |
@@ -186,6 +188,7 @@ CHEM_PGPORT=5432
 CHEM_POSTGRES_DB=cheminventory
 CHEM_POSTGRES_USER=postgres
 CHEM_POSTGRES_PASSWORD=<strong password>
+CHEM_SSO_SECRET=<hmac secret; must match the WordPress chem_inventory_link snippet>
 
 # --- Duo 2FA (required when DEBUG_MODE=False) ---
 DUO_IKEY=<integration key>

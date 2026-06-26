@@ -151,7 +151,7 @@ The main inventory page. Three URL params:
 - **`limit`** — how many rows to show (default 500).
 - **`show_removed`** — if `1`, include removed containers in the list. By default, removed containers are hidden.
 
-Note this route is **not** decorated with `@login_required`. That's likely intentional for read-only inventory views (so visitors at a kiosk can search without a login), but worth flagging as a deliberate exception in the security model.
+Note this route carries no `@login_required` decorator, but as of 2026-06-25 the **entire `/chem` blueprint is gated by a `before_request` hook**: every chem page (this one included) requires a session granted via `/chem/enter`, which validates a signed link from the WordPress staff-tools page. Inventory views are no longer public — read and write are both behind the WordPress SSO gate (separate from the site's Duo login).
 
 ### Print-friendly view
 

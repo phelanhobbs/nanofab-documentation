@@ -25,7 +25,7 @@ Open `14-Security-Model.pptx`.
 
 READ ALOUD:
 
-"The security story should be honest. There are good things: HTTPS through nginx, password hashing, session-based login, Duo where configured, admin checks in code, local PostgreSQL not exposed publicly, and a documented operational boundary. There are also risks: hard-coded or historically hard-coded secrets, unauthenticated device routes, possible chem write-route exposure, tmux-only supervision, shared UNIX account constraints, and IT-owned root access that Nanofab must not change casually."
+"The security story should be honest. There are good things: HTTPS through nginx, password hashing, session-based login, Duo where configured, admin checks in code, local PostgreSQL not exposed publicly, and a documented operational boundary. There are also risks: hard-coded or historically hard-coded secrets, unauthenticated device routes, tmux-only supervision, shared UNIX account constraints, and IT-owned root access that Nanofab must not change casually. (The chem write-route exposure was resolved 2026-06-25 via a WordPress signed-token gate.)"
 
 SHOW:
 

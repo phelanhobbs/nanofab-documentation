@@ -123,7 +123,7 @@ The goal: the maintainer leaves with a clear punch list, knows which items they 
 | 1 | Walk [`known-issues/UNanofabTools/README.md`](known-issues/UNanofabTools/README.md) | The master index of every punch list, with the cross-cutting themes (secrets in source, chem schema drift, personal-account dependencies, the IT/Nanofab boundary). |
 | 2 | Read together: [`known-issues/UNanofabTools/liveserver.md`](known-issues/UNanofabTools/liveserver.md) | The 22 findings, Nanofab-actionable vs IT-ticket split, priority order. |
 | 3 | Read together: [`known-issues/UNanofabTools/serveraccess.md`](known-issues/UNanofabTools/serveraccess.md) | The access pattern's tech debt. |
-| 4 | Read together: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md) | The Flask app's tech debt. The biggest items: chem schema drift, chem write routes unauthenticated. |
+| 4 | Read together: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md) | The Flask app's tech debt. The biggest item now is chem schema drift (chem authentication was resolved 2026-06-25 via a WordPress SSO gate). |
 | 5 | Spot-check the other known-issues files | `filetransfer.md`, `hscdownloader.md`, `picofirmware.md`, `dattools.md`, `utilities.md`, `particlepctools.md`, `hscdisplayerserver.md`. Five minutes each, just so they know what's in there. |
 | 6 | Walk [`known-issues/NanofabToolkit/README.md`](known-issues/NanofabToolkit/README.md) | The sibling repo punch list. Do this before ending the handoff because it includes high-severity client/firmware items such as CORES-token handling and WiFi credential exposure. |
 | 7 | [`HSC-Displayer-Server-Legacy.pptx`](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) (briefly) | The legacy monolithic server. **Deprecated.** Show it so they recognize it if they ever stumble across it; the directive is "leave it alone, ship to the Flask app." |
@@ -929,7 +929,7 @@ This section should include material improvements:
 
 - move Flask app and HSCDownloader under systemd or another supervisor
 - reconcile chem schema and migrations
-- authenticate or otherwise protect chem write routes
+- ~~authenticate or otherwise protect chem write routes~~ — done 2026-06-25 (WordPress SSO `before_request` gate); verify the gate and `CHEM_SSO_SECRET` handling
 - remove production-targeting defaults from test tools
 - replace personal-account file-transfer dependency
 - create a local `pg_dump` routine if appropriate

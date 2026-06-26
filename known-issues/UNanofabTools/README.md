@@ -8,7 +8,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| [`flaskserver.md`](flaskserver.md) | The current Flask website | Chem-inventory schema drift; chem write routes unauthenticated |
+| [`flaskserver.md`](flaskserver.md) | The current Flask website | Chem-inventory schema drift (chem auth resolved 2026-06-25 — WordPress SSO gate) |
 | [`hscdownloader.md`](hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced to `.env` (2026-06-22); **rotation still pending** |
 | [`picofirmware.md`](picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | [`particlepctools.md`](particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |

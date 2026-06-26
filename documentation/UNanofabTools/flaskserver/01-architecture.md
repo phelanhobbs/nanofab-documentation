@@ -79,7 +79,7 @@ The diagram shows the live network shape and the intended production process bou
 Key invariants:
 
 - **Flask binds to `127.0.0.1:5000`** (see `config/config.py` `HOST`/`PORT`). It is not directly reachable from the network. nginx is the only ingress and performs TLS termination. (A legacy alternative — gunicorn binding `0.0.0.0:443` with `--certfile/--keyfile` — is described in `09-deployment-and-operations.md` but the nginx model is the current intent per `run.py`'s docstring.)
-- **Two human-auth tiers and one device tier coexist.** Browser routes are gated by `@login_required` / `@admin_required`; device and chem routes are not (see `05` and `07`).
+- **Two human-auth tiers, a device tier, and a separate chem SSO tier coexist.** Browser routes are gated by `@login_required` / `@admin_required`; device routes are ungated; the chem module is gated by its own WordPress signed-token session (a `before_request` hook, since 2026-06-25), distinct from Flask-Login (see `05` and `07`).
 - **CSV files are an authoritative data store**, not just exports. Particle/environmental history and machine logs live only as CSV; the SQLite `particle_sensor_data` table caches only the latest reading per sensor.
 
 ## 1.4 The application-factory pattern

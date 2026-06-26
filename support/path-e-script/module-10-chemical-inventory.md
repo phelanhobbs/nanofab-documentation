@@ -89,7 +89,7 @@ READ ALOUD:
 
 READ ALOUD:
 
-"The known-issues file calls out chemical inventory risks. Pay attention to unauthenticated or under-protected write routes if present, schema drift, missing migration discipline, and backup/restore coverage. Chemical inventory changes should be approached as data integrity work, not just UI work."
+"The known-issues file calls out chemical inventory risks. The big one — the chem pages being unauthenticated — was resolved on 2026-06-25: the whole `/chem` blueprint is now gated by a WordPress signed-token `before_request` check (`CHEM_SSO_SECRET`, entry via `/chem/enter`), so read and write are both behind that gate. Remaining focus: schema drift, missing migration discipline, and backup/restore coverage. Chemical inventory changes should be approached as data integrity work, not just UI work."
 
 SHOW:
 

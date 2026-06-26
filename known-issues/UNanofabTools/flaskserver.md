@@ -66,10 +66,10 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Security gaps (deliberate trade-offs for an internal tool, but worth closing)
 
-### 6. Entire chemical inventory is unauthenticated — High
-- **Where:** `app/blueprints/chem_inventory.py` imports `login_required` but never applies it to any route.
-- **Effect:** anyone who can reach the server can search, add, move, edit, and remove chemical containers, and view the full audit trail.
-- **Fix:** apply `@login_required` to at least the mutating routes (`add`, `move`, `move-bulk`, `remove`, `edit-container`, `upload-scans`, `barcodes/mark-printed`). Decide whether read routes stay public for kiosk use.
+### 6. Entire chemical inventory is unauthenticated — ✅ RESOLVED (2026-06-25) *(was High; audit CRITICAL — the top open exposure)*
+- **Resolution (commit `f604818`):** the whole `/chem` blueprint is now gated by a `before_request` hook (`_require_chem_token`). Any request without `session['chem_authed']` is redirected to the WordPress staff-tools page; the session is established only via `/chem/enter`, which validates a time-limited HMAC-signed link (`hmac(CHEM_SSO_SECRET, "chem-inventory|<exp>")` vs the `sig` query param). **Both read and write routes are now protected** — there is no public kiosk read anymore.
+- **Note:** this is a WordPress single-sign-on path (the new `CHEM_SSO_SECRET` env var), **separate** from the app's Flask-Login/Duo auth. See R4 below and `07-authentication-and-authorization.md`.
+- **Original finding:** `chem_inventory.py` imported `login_required` but applied it to no route, so anyone who could reach the server could search/add/move/edit/remove containers and read the transaction history.
 
 ### 7. IoT/device endpoints are unauthenticated — Medium (acceptable on private net)
 - **Where:** all of `api.py`.
@@ -172,3 +172,8 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Original concern:** Flask and HSCDownloader ran as bare `python run.py` / `python HSCDownloader.py` inside tmux — no auto-restart on crash, and a reboot killed both (silent outage).
 - **Why closed:** both now run as **user-level systemd** services (`~/.config/systemd/user/{flaskserver,hscdownloader}.service`) with `Restart=on-failure`; lingering is enabled so they start at boot. Verified `active`/`enabled`, `NRestarts=0`, `Linger=yes`, port 5000 listening, local/public `302`. (Tracked in detail under `serveraccess.md` #3 and `liveserver.md` #2.)
 - **Residual (optional, Low):** still the Flask dev server, not gunicorn — see `09-deployment-and-operations.md`.
+
+### R4. Chemical inventory unauthenticated — was High (audit CRITICAL) — CLOSED (2026-06-25)
+- **Original concern:** every `/chem/*` route was open; anyone who could reach the server could read and modify the chemical inventory.
+- **Why closed:** commit `f604818` gates the entire `/chem` blueprint behind a `before_request` token check. Access requires a signed link from the WordPress staff-tools page (`/chem/enter` validates an HMAC over the new `CHEM_SSO_SECRET`, time-limited by `exp`), which sets `session['chem_authed']`; everything else redirects to the staff-tools URL. Read and write routes alike are now gated. (Detail at #6.)
+- **Verify:** logged out / no chem session → `GET /chem/inventory` and `POST /chem/remove` both 302 to the staff-tools URL.
