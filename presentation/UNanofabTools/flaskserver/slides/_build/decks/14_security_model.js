@@ -80,15 +80,15 @@ module.exports = {
       title: "The honest gaps",
       headers: ["Gap", "Why it exists / risk"],
       rows: [
-        ["Inventory has no login", "Convenient kiosk reads, but edit/remove are open"],
         ["Device endpoints have no login", "Trusted via private network, not authentication"],
         ["Cross-origin access is wide open", "Broad by default; could be narrowed"],
         ["Password reset uses only the uNID", "No second factor on reset"],
       ],
       colW: [5.0, 6.9],
       notes:
-        "Be transparent about the trade-offs. The chemical inventory pages, including editing and removing, currently require no login — fine " +
-        "for a read-only kiosk, a real gap for the changing actions. The device endpoints have no login, relying on the private network " +
+        "Be transparent about the trade-offs. The biggest gap here — the chemical inventory pages requiring no login — was closed on 2026-06-25: " +
+        "all /chem pages now sit behind a WordPress single-sign-on (a signed staff-tools link), so reading and editing both require sign-in. " +
+        "The device endpoints have no login, relying on the private network " +
         "instead. Cross-origin access is broad by default. And password reset leans on the university ID without a second factor. None of " +
         "these are catastrophic for an internal tool on a trusted network, but they're the things to fix first if exposure ever increases. " +
         "All are itemized in the separate issues list with recommended fixes.",

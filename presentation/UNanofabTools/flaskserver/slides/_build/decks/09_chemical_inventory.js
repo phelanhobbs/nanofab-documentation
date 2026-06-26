@@ -167,19 +167,19 @@ module.exports = {
         ],
       },
       right: {
-        heading: "Access is open",
+        heading: "Access: WordPress SSO gate",
         items: [
-          "The inventory pages don't currently require login.",
-          "Fine for reading at a kiosk; risky for the edit/remove pages.",
-          "Recommended to gate the changing actions behind login.",
+          "All chem pages require a WordPress staff-tools sign-in (since 2026-06-25).",
+          "Read and edit/remove are both behind the gate.",
+          "Entry is via a signed /chem/enter link; no public access.",
         ],
       },
       notes:
         "Two candid maintenance notes, kept off the main story but recorded for whoever maintains this. First, the type-ahead and " +
         "auto-fill helpers are unfinished stubs that return nothing, so those niceties don't work yet. Second — more important — the " +
-        "inventory pages currently don't require login, including the pages that change or remove data. That's convenient for a read-only " +
-        "kiosk but a real gap for the editing actions; the recommendation is to require login on at least the changing pages. Both items are " +
-        "in the separate issues list.",
+        "chem pages used to require no login, including the pages that change or remove data — but that was resolved on 2026-06-25: they are " +
+        "now gated by a WordPress single-sign-on, so every /chem page requires a session granted via a signed staff-tools link (/chem/enter), " +
+        "covering reads and edits alike. The type-ahead/auto-fill stubs remain on the separate issues list.",
     });
 
     d.steps({
