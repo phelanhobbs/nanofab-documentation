@@ -278,7 +278,7 @@ Internet/LAN ──443/HTTPS──► nginx (TLS termination, static, proxy)
 - gunicorn runs the WSGI callable `run:app`.
 - nginx owns TLS and forwards to gunicorn.
 
-> **Live-state note:** as of the 2026-06-01 `nfhistory` survey, the production box has not yet been migrated to this target shape. The live Flask process is `python run.py` inside the `flaskserver` tmux session, and there is no systemd unit for Flask or HSCDownloader yet. Treat the gunicorn/systemd material below as the recommended migration target, not a description of the current live service. See `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §6.5.
+> **Live-state note:** as of the 2026-06-01 `nfhistory` survey, the production box has not yet been migrated to this target shape. The live Flask process is `python run.py` inside the `flaskserver` tmux session, and there was no systemd unit for Flask or HSCDownloader at that time. **Update (2026-06-18):** both now run as **user-level systemd** services (`systemctl --user`, `~/.config/systemd/user/{flaskserver,hscdownloader}.service`, `Restart=on-failure`, linger enabled) — still `python run.py`, not gunicorn, so the supervisor gap is closed and the gunicorn migration below is the optional next step. Treat the gunicorn/systemd material below as the recommended migration target, not a description of the current live service. See `documentation/UNanofabTools/liveserver/README.md` (repo path: documentation/UNanofabTools/liveserver/README.md) §6.5.
 
 **Legacy alternative (still referenced by `setup.sh`/`.env.example`):** gunicorn binding `0.0.0.0:443` directly with `--certfile/--keyfile`, no nginx:
 

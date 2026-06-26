@@ -201,15 +201,15 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Chem-inventory schema drift; chem write routes unauthenticated |
-| `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token hard-coded in source |
+| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Chem-inventory schema drift (chem auth resolved 2026-06-25 — WordPress SSO gate) |
+| `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced to `.env` (2026-06-22); **rotation still pending** |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | `filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | `dattools.md` (repo path: known-issues/UNanofabTools/dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
 | `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` doesn't build a complete chem database |
-| `serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md) | SSH access + tmux sessions | tmux is the only supervisor; shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
-| `liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader not under systemd; chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
+| `serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
+| `liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | `hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |
 
 ## How to use this folder
@@ -228,11 +228,11 @@ Older items may still use a shorter `Where/Risk/Fix` format. Before closing one 
 
 A few items recur across tools and may be worth treating as cross-cutting initiatives:
 
-- **Secrets in source.** Hard-coded WiFi passwords (`picofirmware`), a CORES Bearer token (`hscdownloader`), and Duo keys imported from a Python module (`hscdisplayerserver`) all belong in environment variables / a protected store, with the secrets themselves rotated.
+- **Secrets in source.** Hard-coded WiFi passwords (`picofirmware`), a CORES Bearer token (`hscdownloader`, now read from `.env` — **rotation still pending**), and Duo keys imported from a Python module (`hscdisplayerserver`) all belong in environment variables / a protected store, with the secrets themselves rotated.
 - **The chem-database schema drift.** The committed `.sql` files are behind the live database; `init_chem_db.py` (in `utilities`) doesn't produce a complete database from scratch; the `flaskserver` issues list enumerates the missing columns/tables. Reconciling this is one project, not several.
 - **Personal-account / individual-developer dependencies.** The `filetransfer` scripts log in as a personal CADE account; `fetch_ssh.py` in `utilities` is a personal dev tool. The Nanofab-side fix is a purpose-bound SSH key authenticating as the shared `phelan` server account (no IT involvement). A cleaner long-term fix — a dedicated UNIX service account — has to come from University IT, since the Nanofab team has `sudo` as `phelan` but cannot `useradd`.
 - **The IT / Nanofab operational boundary.** Several findings (root SSH from `iceolate`, per-user UNIX accounts, the off-host backup, `unattended-upgrades`, kernel patching) sit on **University IT's** side of the line. The Nanofab admin's tools are `sudo` as `phelan` plus an IT ticket; nothing under `/root/` and no `useradd` is available. Each known-issues file tags items "Nanofab-actionable" vs "IT ticket" so the punch list is honest about who has to do what.
-- **The legacy server.** `hscdisplayerserver` is documented for reference but should be retired in favor of the Flask app; until then, confirm which server is actually live so patches go to the right place.
+- **The legacy server.** `hscdisplayerserver` is documented for reference but should be retired in favor of the Flask app. Which server is live is settled by evidence: the 2026-06-01 survey shows the Flask app (`python run.py`) in production and no legacy process running — patch the Flask app. Re-confirm with each quarterly survey until the legacy code is removed.
 
 Severity labels follow a shared convention: **High** = breaks functionality or is a real security exposure · **Medium** = correctness / maintainability problem · **Low** = cosmetic / cleanup. Items that depend on IT cooperation are tagged in-place so they don't muddy the Nanofab-side priority order.
 
@@ -311,10 +311,10 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Security gaps (deliberate trade-offs for an internal tool, but worth closing)
 
-### 6. Entire chemical inventory is unauthenticated — High
-- **Where:** `app/blueprints/chem_inventory.py` imports `login_required` but never applies it to any route.
-- **Effect:** anyone who can reach the server can search, add, move, edit, and remove chemical containers, and view the full audit trail.
-- **Fix:** apply `@login_required` to at least the mutating routes (`add`, `move`, `move-bulk`, `remove`, `edit-container`, `upload-scans`, `barcodes/mark-printed`). Decide whether read routes stay public for kiosk use.
+### 6. Entire chemical inventory is unauthenticated — ✅ RESOLVED (2026-06-25) *(was High; audit CRITICAL — the top open exposure)*
+- **Resolution (commit `f604818`):** the whole `/chem` blueprint is now gated by a `before_request` hook (`_require_chem_token`). Any request without `session['chem_authed']` is redirected to the WordPress staff-tools page; the session is established only via `/chem/enter`, which validates a time-limited HMAC-signed link (`hmac(CHEM_SSO_SECRET, "chem-inventory|<exp>")` vs the `sig` query param). **Both read and write routes are now protected** — there is no public kiosk read anymore.
+- **Note:** this is a WordPress single-sign-on path (the new `CHEM_SSO_SECRET` env var), **separate** from the app's Flask-Login/Duo auth. See R4 below and `07-authentication-and-authorization.md`.
+- **Original finding:** `chem_inventory.py` imported `login_required` but applied it to no route, so anyone who could reach the server could search/add/move/edit/remove containers and read the transaction history.
 
 ### 7. IoT/device endpoints are unauthenticated — Medium (acceptable on private net)
 - **Where:** all of `api.py`.
@@ -398,6 +398,31 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 7. #19 add a test suite — Medium
 8. Cleanup batch: #13–#18, #20, #21 — Low
 
+---
+
+## ✅ Resolved / Closed
+
+Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Move items here as they're closed.
+
+### R1. Dev-mode auth bypass — was CRITICAL — CLOSED
+- **Original concern:** if `FLASK_ENV` were unset/`development`, auth would skip Duo 2FA, `app.run(debug=True)` would expose the Werkzeug debugger, and `SESSION_COOKIE_SECURE` would be `False`.
+- **Why closed:** the live `.env` sets `FLASK_ENV=production`, `DEBUG_MODE=False`, `SESSION_COOKIE_SECURE=True`; `load_dotenv()` runs before `run.py` reads `FLASK_ENV`, so `ProductionConfig` loads — Duo 2FA active, debugger off, cookies Secure (verified 2026-06-17).
+
+### R2. Weak default `SECRET_KEY` — was High — CLOSED
+- **Original concern:** `config.py` falls back to a public default, making session cookies forgeable if the env var is unset.
+- **Why closed:** `SECRET_KEY` is present in the live `.env` (verified) — not the default.
+- **Optional hardening:** make `ProductionConfig.init_app` raise if `SECRET_KEY` is unset; drop the `'changeme'` DB-password default; regenerate with `secrets.token_hex(32)` if short.
+
+### R3. No service supervision (tmux only) — was High — CLOSED (2026-06-18)
+- **Original concern:** Flask and HSCDownloader ran as bare `python run.py` / `python HSCDownloader.py` inside tmux — no auto-restart on crash, and a reboot killed both (silent outage).
+- **Why closed:** both now run as **user-level systemd** services (`~/.config/systemd/user/{flaskserver,hscdownloader}.service`) with `Restart=on-failure`; lingering is enabled so they start at boot. Verified `active`/`enabled`, `NRestarts=0`, `Linger=yes`, port 5000 listening, local/public `302`. (Tracked in detail under `serveraccess.md` #3 and `liveserver.md` #2.)
+- **Residual (optional, Low):** still the Flask dev server, not gunicorn — see `09-deployment-and-operations.md`.
+
+### R4. Chemical inventory unauthenticated — was High (audit CRITICAL) — CLOSED (2026-06-25)
+- **Original concern:** every `/chem/*` route was open; anyone who could reach the server could read and modify the chemical inventory.
+- **Why closed:** commit `f604818` gates the entire `/chem` blueprint behind a `before_request` token check. Access requires a signed link from the WordPress staff-tools page (`/chem/enter` validates an HMAC over the new `CHEM_SSO_SECRET`, time-limited by `exp`), which sets `session['chem_authed']`; everything else redirects to the staff-tools URL. Read and write routes alike are now gated. (Detail at #6.)
+- **Verify:** logged out / no chem session → `GET /chem/inventory` and `POST /chem/remove` both 302 to the staff-tools URL.
+
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md
 
@@ -418,7 +443,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 | `ALDPeakCounter.md` (repo path: known-issues/NanofabToolkit/ALDPeakCounter.md) | ALD peak counter GUI | Duplicate peak-counter logic with UNanofabTools |
 | `DentonDecoder.md` (repo path: known-issues/NanofabToolkit/DentonDecoder.md) | Denton `.dat`/CSV log viewer | Multi-day timestamp handling limited to one rollover |
 | `ParalyneReader.md` (repo path: known-issues/NanofabToolkit/ParalyneReader.md) | Parylene file browser/viewer | Dead `return_selected` endpoint client; TLS verify disabled |
-| `PreciousMetalReader.md` (repo path: known-issues/NanofabToolkit/PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES credential depends on out-of-band local `auth.py` |
+| `PreciousMetalReader.md` (repo path: known-issues/NanofabToolkit/PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES creds: env-var preference added (2026-06-22), `auth.py` never committed; rollout + rotation deferred |
 | `PicoHelperTools.md` (repo path: known-issues/NanofabToolkit/PicoHelperTools.md) | Pico firmware (canonical copies) | Cleartext WiFi credentials in source |
 | `ParticleSensor.md` (repo path: known-issues/NanofabToolkit/ParticleSensor.md) | PyQt desktop viewer (canonical copy) | +7h timezone hack; duplicate `convert_to_mountain` in two modules |
 
@@ -426,7 +451,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 
 A few items show up across more than one tool and are worth treating as cross-cutting initiatives:
 
-- **Secrets and local credentials.** `PreciousMetalReader` imports `HSCCode` from a local `auth.py` that is required at runtime but absent from the adjacent source checkout reviewed here; document that setup contract and rotate if history or local evidence shows the token was ever exposed. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
+- **Secrets and local credentials.** `PreciousMetalReader` now prefers the `CORES_TOKEN` env var (falling back to a local `auth.py`); `auth.py` was verified **never committed**, so there's no history leak — finishing the rollout (set the env var, delete `auth.py`, rebuild) and rotating the token are owner-deferred. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
 - **Divergent copies of shared code.** The Pico firmware and the particle viewer each ship in both `NanofabToolkit/` and `UNanofabTools/`. The NanofabToolkit copies are now canonical (newer versions); the UNanofabTools docs point back here. Track cross-cutting fixes in this tree first.
 - **PyInstaller builds undocumented.** All four desktop apps ship as Windows executables but the build commands aren't captured in repo READMEs. Add a one-page build note per tool.
 - **No timeouts / retries on outbound HTTP.** `ParalyneReader` and `PreciousMetalReader` both call `requests.get` without `timeout=` and freeze the UI on slow servers. Standard fix.

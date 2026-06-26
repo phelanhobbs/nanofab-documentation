@@ -989,7 +989,7 @@ A condensed mirror of `known-issues/UNanofabTools/liveserver.md` (repo path: kno
 > **Boundary of responsibility.** `nfhistory` is jointly operated. University IT owns the VM, root, the off-host backup pipeline, and unattended-upgrades-style patching. The Nanofab team owns the Flask app, the HSCDownloader, the local PostgreSQL chem database, the cleanroom data trees, and everything under `/home/phelan/`. Nanofab admin actions run as `phelan` with `sudo`; the Nanofab team **cannot** create UNIX accounts and **cannot** modify `/root/`. Several findings below land on IT's side of the line and are flagged that way — they're not Nanofab to-do items, they're IT tickets.
 
 1. **Backups are IT-managed off the box.** No Nanofab-side backup tooling was found locally, but the base VM backup is run by University IT. Confirm IT's scope and document it in §13; a Nanofab-owned secondary tier is optional.
-2. **Neither the Flask app nor HSCDownloader runs under a process supervisor.** Both live in tmux sessions (`flaskserver` and `downloader`), not systemd. This is the top Nanofab-owned reliability fix.
+2. **Neither the Flask app nor HSCDownloader runs under a process supervisor.** As of 2026-06-18 both run as **user-level systemd** services (`Restart=on-failure`, linger enabled); previously they lived in tmux only, which was the top Nanofab-owned reliability fix (now resolved — see §6.5 and known-issues #2).
 3. **Root SSH is IT's access path.** `PermitRootLogin without-password` is enabled with one active key from `root@iceolate.eng.utah.edu`; `iceolate` is IT's administrative host. Do not modify this path without IT.
 4. **`/root/.ssh/authorized_keys` is mode `-rw-rw-r--`.** The Nanofab team does not own `/root/`; open an IT ticket asking for `chmod 600` and a deploying-umask check.
 5. **No `unattended-upgrades` configuration is present on the box itself.** IT likely patches out-of-band; confirm whether they want an on-box unattended-upgrades layer too.
@@ -1003,7 +1003,7 @@ A condensed mirror of `known-issues/UNanofabTools/liveserver.md` (repo path: kno
 13. **Vestigial desktop daemons are running.** Low-priority cleanup.
 14. **A hand-installed `python3.12` exists in `/usr/local/bin`.** Trace ownership before removing or documenting it.
 15. **Long uptime / no recent reboot.** Coordinate a controlled reboot with IT after #2 is fixed so services return automatically.
-16. **`wtmpdb` history starts only in May 2026.** Low-priority retention note.
+16. **`wtmpdb` *login* history starts only in May 2026.** The *reboot* scan in §1 goes back further (Jan 7 2026); the two scans have different retention windows. Low-priority retention note.
 17. **Survey path mismatch left some `phelan`-side sections blank.** The script is patched; re-run it as `phelan` and fold in venv / `.env` / SQLite / data-tree details.
 18. **Root SSH ingress from `155.98.110.9` is IT.** This matches `iceolate.eng.utah.edu`; no action.
 19. **A stale `vim HSCDownloader.py` is open in the `downloader` tmux session.** Close it on the next attach.
@@ -1022,7 +1022,7 @@ Highest Nanofab-owned priorities: #2, #7, #11, and #17. Batch cleanup/audit item
 | Timezone | `America/Denver` (MDT, -0600) |
 | NTP service | Active (`systemd-timesyncd`); system clock synchronized |
 | Uptime at capture | 290 days, 23h 37m (so last boot: ~2025-08-12) |
-| Last reboots visible in `wtmpdb` | `wtmpdb begins Wed Jan 7 13:59:11 2026` — older history not retained |
+| Last reboots visible in `wtmpdb` | reboot scan: `wtmpdb begins Wed Jan 7 13:59:11 2026` — older history not retained. (The *login* scan in §9.2 begins later, May 8 2026; the two scans have different windows.) |
 
 ## 2. Hardware / resources
 
@@ -1106,7 +1106,7 @@ The `live/` directory is a symlink farm into `archive/`. Renewals create new `ce
 
 | Item | Value |
 |------|-------|
-| Mechanism | `certbot.timer` (systemd timer) + `/etc/cron.d/certbot` (no-op under systemd) |
+| Mechanism | `certbot.timer` (systemd timer) + `/etc/cron.d/certbot` (no-op under systemd); **deploy hook `/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh` reloads nginx after each renewal (added 2026-06-23 after a missed-reload expiry — see known-issues #10)** |
 | Cadence | Twice daily, randomized within the period |
 | Next firing | `Fri 2026-05-29 12:54:51 MDT` (31 minutes after capture) |
 | Last run | `Fri 2026-05-29 11:10:02 MDT` (1h 13m before capture) |
@@ -1196,7 +1196,7 @@ The Debian stock `default` site is still enabled on port 80. It serves `/var/www
 
 ### 6.2 No cleanroom service units
 
-A grep for `flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn` against `systemctl list-unit-files` returned **no matches**. The Flask app and HSCDownloader are **not** managed by systemd — they live in tmux only. **Finding #2.**
+A grep for `flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn` against `systemctl list-unit-files` returned **no matches**. The Flask app and HSCDownloader are **not** managed by *system-level* systemd — that root scan only sees system units. **Update (2026-06-18): they are now managed as user-level systemd units (`systemctl --user`), which a system `list-unit-files` does not show; Finding #2 resolved — see §6.5.**
 
 ### 6.3 Failed units
 
@@ -1230,7 +1230,7 @@ The Flask app and HSCDownloader are kept alive by tmux, not systemd. Confirmed l
 | tmux session | Created | Panes / processes | Working dir |
 |--------------|---------|-------------------|-------------|
 | `flaskserver` | Tue Nov 4 2025 16:11:52 | pane 1 → `python` (pid 319076); pane 2 → `bash` (pid 2261577) | `/home/phelan/server/UNanofabTools` (pane 1); `/home/phelan` (pane 2) |
-| `downloader` | Wed Aug 27 2025 16:38:22 | pane 1 → `vim HSCDownloader.py` (pid 71953); pane 2 → `python3` running `HSCDownloader.py` (pid 48188) | `/home/phelan/server/UNanofabTools` |
+| `downloader` | Wed Aug 27 2025 16:38:22 | pane 1 → `vim` (pane pid 48177); pane 2 → `python3` running `HSCDownloader.py` (pane pid 48188) | `/home/phelan/server/UNanofabTools` |
 
 The actual listener processes (live `ps` output filtered to `phelan`):
 
@@ -1240,7 +1240,7 @@ The actual listener processes (live `ps` output filtered to `phelan`):
 | `323636` | 187d 17h | `python3 HSCDownloader.py` | The downloader. Note: uses `python3`, not `python`. |
 | `71953` | 257d 22h | `vim HSCDownloader.py` | Stale editor session in the `downloader` tmux — see known-issues #19. |
 
-The pid in the listener (2665755) doesn't match the tmux pane pid (319076) for `flaskserver` because the running Flask process predates the current pane's shell — a previous tmux pane that's since been replaced started it. Functionally, the website is alive; structurally, this is normal for a long-running tmux-supervised setup. Once the services are under systemd (finding #2), this kind of pid drift goes away.
+The pids differ between the two tables because they come from two different scans: the tmux table reports *pane* pids (the pane's root process), while the `ps` table reports the long-running processes themselves. For `flaskserver`, the listener (2665755) doesn't match the pane pid (319076) because the running Flask process predates the current pane's shell — a previous tmux pane that's since been replaced started it. For `downloader`, the same applies to the stale editor: the pane pid is 48177 while `ps` shows the `vim HSCDownloader.py` process as 71953. Functionally, the website is alive; structurally, this is normal for a long-running tmux-supervised setup. Once the services are under systemd (finding #2), this kind of pid drift goes away.
 
 ## 7. Log rotation
 
@@ -1315,7 +1315,7 @@ The file mode is `-rw-rw-r--` (world-readable), which is a small information lea
 - `phelan` from `155.98.111.{59,89,125}` — CADE-pool addresses, consistent with the documented Nanofab access path (laptop → CADE → `nfhistory`).
 - `root` from `155.98.110.9` — this is **IT's administrative host** (the same `iceolate.eng.utah.edu` per the key comment in §9.1). Routine IT maintenance, three sessions in May totaling under 40 minutes. Not unaccounted access.
 
-`wtmpdb begins Fri May 8 13:15:36 2026`, so older login history is not retained. Consider raising the retention if forensic timeline ever matters.
+Login scan: `wtmpdb begins Fri May 8 13:15:36 2026`, so older *login* history is not retained. (The *reboot* scan in §1 begins earlier, Jan 7 2026 — the two scans have different retention windows.) Consider raising the retention if forensic timeline ever matters.
 
 ### 9.3 `phelan`'s authorized keys (from the 2026-06-01 phelan snapshot)
 
@@ -1516,10 +1516,11 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 - **What the Nanofab team could add later (optional):** a Nanofab-owned secondary tier so a restore doesn't depend solely on opening a ticket with IT. Examples: a nightly `pg_dump cheminventory` into `/home/phelan/backups/` (also covered by IT's snapshot), plus a periodic `restic`/`borg` push to a Nanofab-owned destination. Worth doing only if the loss tolerance for a restore window matters.
 - **Action:** confirm the IT backup scope with the IT contact, write the answer into `documentation/UNanofabTools/liveserver/README.md` §13 so the next maintainer doesn't re-flag this, and decide whether the Nanofab-side secondary tier is worth building.
 
-### 2. No service supervision for the Flask app or HSCDownloader — High
-- **Where:** `systemctl list-unit-files | grep -iE '(flask|nanofab|nfhistory|chem|hsc|downloader|gunicorn)'` returned nothing. The Flask process (PID 2665755 listening on `127.0.0.1:5000`) is running as `python` directly, not as a systemd service. Same pattern for the downloader.
-- **Risk:** if either process exits, the tmux pane returns to a prompt and the *service is silently down* until a human notices. A reboot loses both. There is no automatic restart and no logging through `journalctl` for either.
-- **Fix:** add two systemd units, e.g. `flaskserver.service` and `hscdownloader.service`, with `Restart=on-failure`, `WantedBy=multi-user.target`, `User=phelan`, and `WorkingDirectory=/home/phelan/server/UNanofabTools`. For the current live layout, use `/home/phelan/server/UNanofabTools/venv/bin/python run.py` (or the gunicorn command from `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`) for Flask, and `/home/phelan/server/UNanofabTools/venv/bin/python3 HSCDownloader.py` for the downloader. `HSCDownloader.py` is co-located with `run.py`; there is no separate HSCDownloader install directory. Keep tmux around as a debugging convenience only.
+### 2. Service supervision for the Flask app or HSCDownloader — ✅ RESOLVED (2026-06-18) *(was High)*
+- **Resolution:** both now run as **user-level systemd** services (`~/.config/systemd/user/{flaskserver,hscdownloader}.service`) with `Restart=on-failure`; lingering is enabled (`loginctl enable-linger`) so they start at boot. Verified `active`/`enabled`, `NRestarts=0`, `Linger=yes`, port 5000 listening, local and public `302`.
+- **Original finding:** a `systemctl list-unit-files` grep for `flask|…|gunicorn` returned nothing; the Flask process ran as bare `python` (PID 2665755 on `127.0.0.1:5000`), same for the downloader — so a crash left the tmux pane at a prompt with the service silently down, and a reboot lost both.
+- **Residual (optional, Low):** still the Flask dev server, not gunicorn. To upgrade: `.venv/bin/python -m pip install gunicorn`, set `ExecStart=…/.venv/bin/python -m gunicorn -w 4 -b 127.0.0.1:5000 run:app`, then `systemctl --user daemon-reload && systemctl --user restart flaskserver`.
+- **Note:** these are *user* units (the account has passwordless sudo for `systemctl` only, not for writing `/etc`); a root `/etc/systemd/system` unit would need IT, but user-unit + linger is equivalent for uptime.
 
 ### 3. Root SSH is IT's access path — Info (boundary of responsibility)
 - **Where:** `sshd -T` shows `permitrootlogin without-password`. `/root/.ssh/authorized_keys` has one active 2048-bit RSA key from `root@iceolate.eng.utah.edu`.
@@ -1576,15 +1577,15 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
   ```
   Remove `/etc/cron.d/php` if apt leaves it behind.
 
-### 10. Current TLS cert expires 2026-06-23 (24 days at snapshot) — Low/Info
-- **Where:** live `:443` cert `notAfter=Jun 23 02:33:01 2026 GMT`.
-- **Risk:** none today — `certbot.timer` is firing twice daily and the renewal account is in good standing. Flagged so the maintainer has a date to keep an eye on if they're auditing post-snapshot.
-- **Fix:** none required. Tip: `certbot certificates` prints expiry and renewal config; check it after the next renewal to confirm a new `cert<N>.pem`/`fullchain<N>.pem` rotation actually happened.
+### 10. TLS cert expiry / nginx-reload-after-renewal — ✅ RESOLVED (2026-06-23) *(was Low/Info — the predicted miss happened)*
+- **What happened:** the `:443` cert (`notAfter=Jun 23 02:33:01 2026 GMT`) expired and the site showed "connection not private" on 2026-06-23. certbot **had** auto-renewed (new cert valid to 2026-08-22), but **nginx was never reloaded**, so it kept serving the *old* cert from memory until it expired — exactly the renewal-reload gap this item flagged.
+- **Resolution:** `sudo systemctl reload nginx` picked up the current cert (verified `notAfter = Aug 22 2026`); site restored. **Recurrence prevented** with a certbot deploy hook — `/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh` (`#!/bin/sh` + `systemctl reload nginx`, `chmod +x`) — so every future renewal reloads nginx.
+- **Residual:** if writing under `/etc/letsencrypt/` is blocked by the account's sudo scope, that hook is a quick IT follow-up; otherwise done.
 
 ### 11. No outbound notification path — Medium
 - **Where:** no MTA installed; `postfix` and `exim4` both `inactive`. No webhook tooling.
 - **Risk:** the server can detect that something is wrong (e.g. cert about to expire, disk filling, service failed) but has no way to tell a human.
-- **Fix:** simplest path is `msmtp` + a `from` set to an alias the team can monitor. More robust: a tiny `curl`-based Slack/Teams webhook sender invoked from cron and from systemd's `OnFailure=`. Once the supervisor in finding #2 is in place, wire `OnFailure=` to it.
+- **Fix:** simplest path is `msmtp` + a `from` set to an alias the team can monitor. More robust: a tiny `curl`-based Slack/Teams webhook sender invoked from cron and from systemd's `OnFailure=`. Now that finding #2's systemd units exist (2026-06-18), wire `OnFailure=` to the notification path.
 
 ### 12. `wpa_supplicant.service` running on a server — Low
 - **Where:** snapshot shows `wpa_supplicant.service active running`. A wired server has no need for a Wi-Fi supplicant.
@@ -1604,7 +1605,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 ### 15. 290-day uptime / no recent reboot — Low/Medium
 - **Where:** `uptime`: 290 days. Kernel is `6.12.38` from 2025-07-16; Debian 13.4 will likely have shipped a newer kernel by now.
 - **Risk:** running on an old kernel means missed CVE patches. A controlled reboot is needed to load a new one.
-- **Fix:** schedule a maintenance window. Before rebooting, **first** put findings #2 (systemd-managed Flask + downloader) in place so the post-reboot service comes back automatically. Without #2, the reboot leaves the website down until a human re-attaches the tmux session.
+- **Fix:** schedule a maintenance window. Finding #2 (systemd-managed Flask + downloader) is now in place (2026-06-18) with linger enabled, so a controlled reboot brings the services back automatically.
 
 ### 16. `wtmpdb` history starts 2026-05-08 — Low
 - **Where:** `wtmpdb begins Fri May 8 13:15:36 2026`. Earlier login history isn't available.
@@ -1647,7 +1648,7 @@ Where an item also appears in `serveraccess.md` (the more general access-and-ops
 
 The Nanofab team has `sudo` as `phelan` but does not have root, cannot create UNIX accounts, and does not own IT's backup / patching paths. Items #1, #3, #4, #5, #15, #18 are bounded by IT and are either already handled or require an IT ticket. Item #6 is retained as a verified live-state fact so future docs keep PostgreSQL on the same VM. The list below is what the Nanofab team can act on directly.
 
-1. **#2** — put the Flask app and HSCDownloader under systemd. The single biggest reliability win the Nanofab team can ship on its own. Eliminates silent-failure mode for the website.
+1. **#2** — ✅ done (2026-06-18): Flask + HSCDownloader now under user-systemd with linger. The single biggest reliability win, shipped. *(Optional follow-up: migrate `python run.py` → gunicorn.)*
 2. **#7** — add the HTTP→HTTPS redirect on `:80` (one-line nginx change via `sudo`).
 3. **#11** — wire up an outbound notification path so future failures find a human.
 4. **#17** — re-run the patched survey as `phelan` and finish populating the live-server doc.
@@ -1779,23 +1780,25 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - changes how we should think about backups, failure domains, and the deployment story. The architecture diagrams have been updated
 - to match reality. The code itself was already aligned with this, since the Flask config defaults to localhost.
 - TLS certificates: the maintenance story
-- expires Jun 23, 2026 — about 24 days from the snapshot.
-- certbot.timer runs twice daily; last ran 1h 13m before snapshot.
-- Let's Encrypt CN=E7. Standard 90-day cert.
-- Healthy. No human action needed unless certbot.timer ever stops.
-- TLS health. The current certificate is well within its 90-day window, with 24 days remaining at the time of capture. The certbot
-- systemd timer is firing twice a day exactly as it should and ran successfully about an hour before our snapshot. So this part of
-- the system is auto-healing. The thing to watch for is if certbot.timer ever becomes inactive — then renewals stop and 30 days later
-- the website starts throwing browser warnings.
+- the snapshot cert (exp Jun 23, 2026) DID expire — site showed 'not private' that day.
+- certbot auto-renewed (new cert valid to Aug 22), but nginx was never reloaded, so it served the old cert from memory.
+- reload nginx + a certbot deploy hook (reload-nginx.sh) so every future renewal reloads nginx.
+- Renewal is automatic AND nginx now reloads on renewal. Watch that certbot.timer stays active.
+- TLS reality check. The certificate captured in the snapshot expired on Jun 23, 2026 and the site briefly showed a browser warning.
+- The subtle part: certbot HAD auto-renewed on schedule (the new cert was valid to Aug 22), but nothing reloaded nginx, so nginx kept
+- serving the old in-memory cert until it expired. The fix was to reload nginx and add a certbot deploy hook
+- (/etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh) so every future renewal reloads nginx automatically. Now both halves are
+- automatic; the thing to watch is that certbot.timer stays active.
 - Log rotation (nginx, postgres, certbot, php)
 - VM-level backup (run off-box by IT)
+- Service supervision — Flask + downloader (user-systemd, 2026-06-18)
 - Gaps the Nanofab team can close
-- Service supervision for Flask / downloader
 - HTTP → HTTPS redirect on :80
 - Quick health table. Left side: things that just work — including the VM-level backup, which runs off the box and is operated by
 - University IT, not the Nanofab team. Cert renewal, log rotation, apt's daily update check, filesystem maintenance, NTP. All quiet,
-- all on schedule. Right side: the gaps the Nanofab team can actually close on its own. The Flask app and the downloader have no
-- supervisor. There's no path for the box to alert anyone when something fails. Bare HTTP doesn't redirect to HTTPS. And there are
+- all on schedule — and, as of 2026-06-18, service supervision: the Flask app and downloader now run under user-level systemd, so that
+- gap is closed. Right side: the gaps the Nanofab team can still close on its own. There's no path for the box to alert anyone when
+- something fails. Bare HTTP doesn't redirect to HTTPS. And there are
 - small cleanups. Each is fixable with sudo from the Nanofab side; together they're most of the operational risk on this box.
 - Backups: handled by IT (off the box)
 - Original backup-gap finding was wrong — the survey can't see what runs outside the VM.
@@ -1840,7 +1843,7 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - Don't let the long weirdness list make this look worse than it is. The boring infrastructure is in good shape. OS is current.
 - Firewall is conservative and configured correctly. TLS renewal is automatic and the timer is firing as expected. Web server and
 - database have clean recent logs. SSH is key-only — no password brute force possible. Disk and memory have plenty of headroom.
-- The gaps are operational — backups, supervision, alerting — not 'the server is on fire'.
+- The gaps are operational — mainly alerting and a few cleanups (supervision and backups are now handled) — not 'the server is on fire'.
 - Surprise: install lives at ~/server/UNanofabTools
 - Earlier docs assumed a home-level UNanofabTools directory. It's actually ~/server/UNanofabTools.
 - HSCDownloader.py lives in the SAME directory — not a separate HSCDownloader install.

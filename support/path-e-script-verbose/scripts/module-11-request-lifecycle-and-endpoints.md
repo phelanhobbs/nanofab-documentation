@@ -1029,84 +1029,86 @@ All routes are `Device` (no auth). Intended for private-network devices and desk
 
 All routes are effectively **Public** — `login_required` is imported but never applied. (Security implication noted in `07` and the known-issues file.)
 
-### `GET /chem/` and `GET /chem/inventory` — Public
+> **Auth note (since 2026-06-25):** the entire `/chem` blueprint is gated by a `before_request` hook — every route below requires `session['chem_authed']`, set only by `/chem/enter` after it validates a time-limited HMAC-signed link from the WordPress staff-tools page (secret `CHEM_SSO_SECRET`). Unauthenticated requests redirect to the staff-tools URL. The per-route labels below read **Chem session**; they were "Public" before the gate. Separate from Flask-Login.
+
+### `GET /chem/` and `GET /chem/inventory` — Chem session (WordPress SSO)
 - **Query**: `q` (search), `limit` (default 500), `show_removed` (`"1"` to include removed).
 - **Behavior**: `search_inventory(q, limit, show_removed)`; renders `chem/inventory.html`.
 
-### `GET /chem/inventory/print` — Public
+### `GET /chem/inventory/print` — Chem session (WordPress SSO)
 - **Query**: `q`, `limit` (default 5000). Renders `chem/inventory_print.html`.
 
-### `GET /chem/inventory/export.csv` — Public
+### `GET /chem/inventory/export.csv` — Chem session (WordPress SSO)
 - **Query**: `q`, `limit` (default 500000).
 - **Behavior**: `export_inventory_csv` (includes removed). Returns `text/csv` with `Content-Disposition: attachment; filename=cheminventory_export.csv`.
 
-### `GET|POST /chem/add` — Public
+### `GET|POST /chem/add` — Chem session (WordPress SSO)
 - **GET**: renders `chem/add.html`.
 - **POST form** (selected): `name` (required), `vendor`, `catalog`, `state`, `size`, `unit`, `system`, `lot_number`, `qty` (clamped 1–500), location fields (`area_class`, `room_no`, `room_name`, `room_desc`, `storage_location`, `storage_sublocation`, `storage_device`), dates (`entry`, `manuf_date`, `expire`), `choice`, `nmr`, `nmr_exp`, `owner`, `added_by`, `notes`.
 - **Behavior**: `add_containers(data)` (atomic upsert of vendor/category/room/item + N containers + transactions). Redirects to barcode queue with `preselect` of new barcodes.
 - **Responses**: 302 to `/chem/barcodes/queue?preselect=...` on success; 302 back to `/chem/add` on error or missing name.
 
-### `GET /chem/report` — Public
+### `GET /chem/report` — Chem session (WordPress SSO)
 - **Behavior**: runs ten aggregations (`report_totals/expiring/expired/nmr_due/by_room/by_vendor/by_system/by_owner`, `get_scan_reports`, `get_inventory_scan_coverage`) plus scanned/unscanned tallies; renders `chem/report.html`.
 
-### `GET|POST /chem/upload-scans` — Public
+### `GET|POST /chem/upload-scans` — Chem session (WordPress SSO)
 - **GET**: renders `chem/upload_scans.html`.
 - **POST form**: `user`, `report_name`, `location`, `barcode_text` (newline list), optional file `file` (`.txt`). De-dupes preserving order.
 - **Behavior**: `import_scans(...)` creates a cycle, inserts `scan_raw` per code, `container_scans` + `last_scan_at` for matches, updates cycle counts, logs a `SCAN_UPLOAD` transaction.
 - **Responses**: 302 to `/chem/report` (success) or `/chem/upload-scans` (no barcodes).
 
-### `GET /chem/barcodes/queue` — Public
+### `GET /chem/barcodes/queue` — Chem session (WordPress SSO)
 - **Query**: `q`, `only_unprinted` (default `"1"`), `limit` (default 500), `preselect` (CSV of barcodes). `get_barcode_queue`; renders `chem/barcode_queue.html`.
 
-### `GET /chem/barcodes/print` — Public
+### `GET /chem/barcodes/print` — Chem session (WordPress SSO)
 - **Query**: `q`, `copies` (≥1). `get_barcode_labels`; paginates 30/page; renders `chem/barcode_print.html`.
 
-### `POST /chem/barcodes/mark-printed` — Public
+### `POST /chem/barcodes/mark-printed` — Chem session (WordPress SSO)
 - **Form**: `barcode` (multi). `mark_barcodes_printed`; flash; 302 to queue.
 
-### `POST /chem/barcodes/print-selected` — Public
+### `POST /chem/barcodes/print-selected` — Chem session (WordPress SSO)
 - **Form**: `barcode` (multi). 302 to `/chem/barcodes/print?barcodes=<csv>`.
 
-### `GET|POST /chem/remove` — Public
+### `GET|POST /chem/remove` — Chem session (WordPress SSO)
 - **GET**: renders `chem/remove.html`.
 - **POST form**: `barcode` (one or many; comma/newline/tab separated), `performed_by`, `reason`, `notes`.
 - **Behavior**: `remove_containers_by_barcodes` → soft-delete (`status='REMOVED'`), appends a removal note, logs `REMOVE`. Flashes counts + not-found.
 - **Responses**: 302 to `/chem/remove`.
 
-### `GET|POST /chem/move` — Public
+### `GET|POST /chem/move` — Chem session (WordPress SSO)
 - **GET**: renders `chem/move.html`.
 - **POST form**: `barcode` (required), `room_no`, `room_desc`, `area_class`, `storage_location`, `storage_sublocation`, `storage_device`; actor = `current_user.username` if authenticated else `performed_by`.
 - **Behavior**: `move_container(...)` (resolve room, COALESCE-update location, log `MOVE`).
 - **Responses**: 302 to `/chem/inventory?q=<barcode>` (success) or `/chem/move` (error).
 
-### `POST /chem/move-bulk` — Public
+### `POST /chem/move-bulk` — Chem session (WordPress SSO)
 - **Form**: `bulk_barcodes` (many), destination fields, `performed_by`.
 - **Behavior**: `bulk_move_by_barcodes(...)` (one resolved room, per-barcode COALESCE update, log `BULK_MOVE`). Flashes moved/requested + unmatched.
 - **Responses**: 302 to `/chem/move`.
 
-### `GET /chem/edit` — Public
+### `GET /chem/edit` — Chem session (WordPress SSO)
 - Renders `chem/edit.html` (lookup form; populated client-side via `/chem/api/container_lookup`).
 
-### `POST /chem/edit-container` — Public
+### `POST /chem/edit-container` — Chem session (WordPress SSO)
 - **Form**: `container_id` (required int) plus editable fields (`item_name`, `description`, `catalog_number`, `physical_state`, `size`, `unit`, `system`, `vendor_name`, room fields, storage fields, dates, `lot_number`, `choice`, `nmr`, `nmr_expiry`, `owner`, `notes`, `added_by`).
 - **Behavior**: `update_container(container_id, data)` (rename item if provided, resolve room, keep-or-update each field, log `EDIT`).
 - **Responses**: 302 to `/chem/edit`; flashes errors for missing/invalid `container_id`.
 
-### `GET /chem/transactions` — Public
+### `GET /chem/transactions` — Chem session (WordPress SSO)
 - **Query**: `q`. `get_transactions(q, limit=1000)`; renders `chem/transactions.html`.
 
-### `GET /chem/api/inventory_json` — Public
+### `GET /chem/api/inventory_json` — Chem session (WordPress SSO)
 - **Query**: `q`, `limit` (default 500). Returns `{"rows":[...]}`.
 
-### `GET /chem/api/suggest` — Public
+### `GET /chem/api/suggest` — Chem session (WordPress SSO)
 - **Query**: `field`, `q`, `limit` (default 10). Returns `{"results":[...]}`.
 - **Note**: `suggest` is a **stub** returning `[]`; this endpoint always responds with an empty list. (Known issue.)
 
-### `GET /chem/api/autofill` — Public
+### `GET /chem/api/autofill` — Chem session (WordPress SSO)
 - **Query**: `catalog`, `name`. Returns `{"data":{...}}`.
 - **Note**: `autofill` is a **stub** returning `{}`; this endpoint always responds with an empty object. (Known issue.)
 
-### `GET /chem/api/container_lookup` — Public
+### `GET /chem/api/container_lookup` — Chem session (WordPress SSO)
 - **Query**: `barcode`.
 - **Behavior**: inline SQL join over containers/items/vendors/rooms. Returns `{"data": {...} | null}`.
 

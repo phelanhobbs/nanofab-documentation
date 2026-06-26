@@ -6,10 +6,10 @@ Use this before, during, and after any Path E handoff. It is the short operation
 
 | Situation | Use | Expected size |
 |---|---|---:|
-| You need a practical live handoff script with one file per module. | `support/path-e-script/` | 17,108 words |
-| You need the smallest generated full Path E that still meets the requested long-form floor. | `support/path-e-script-minimum/scripts/` | 76,409 words |
-| You need a much deeper generated version, but still below the 250k ceiling. | `support/path-e-script-medium/scripts/` | 215,932 words |
-| You have no time limit and want the maximal generated handoff. | `support/path-e-script-verbose/scripts/` | 296,300 words |
+| You need a practical live handoff script with one file per module. | `support/path-e-script/` | 18,851 words |
+| You need the smallest generated full Path E that still meets the requested long-form floor. | `support/path-e-script-minimum/scripts/` | 77,769 words |
+| You need a much deeper generated version, but still below the 250k ceiling. | `support/path-e-script-medium/scripts/` | 217,669 words |
+| You have no time limit and want the maximal generated handoff. | `support/path-e-script-verbose/scripts/` | 298,037 words |
 
 If the goal is complete maintainer independence and time genuinely does not matter, use the verbose tier. If the goal is a human-run handoff that can actually fit into a few weeks, use the practical script pack first and pull in the longer tiers where a module needs extra depth.
 

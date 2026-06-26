@@ -16,9 +16,9 @@ Use [`weekly-rollout-plan.md`](weekly-rollout-plan.md) to spread the modules acr
 
 Longer generated tiers are available beside this directory:
 
-- [`../path-e-script-minimum/README.md`](../path-e-script-minimum/README.md) — 76,409-word tier, split under `scripts/`.
-- [`../path-e-script-medium/README.md`](../path-e-script-medium/README.md) — 215,932-word tier, split under `scripts/`.
-- [`../path-e-script-verbose/README.md`](../path-e-script-verbose/README.md) — 296,300-word tier, split under `scripts/`.
+- [`../path-e-script-minimum/README.md`](../path-e-script-minimum/README.md) — 77,769-word tier, split under `scripts/`.
+- [`../path-e-script-medium/README.md`](../path-e-script-medium/README.md) — 217,669-word tier, split under `scripts/`.
+- [`../path-e-script-verbose/README.md`](../path-e-script-verbose/README.md) — 298,037-word tier, split under `scripts/`.
 
 Then run the module scripts in order:
 

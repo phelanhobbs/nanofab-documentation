@@ -1273,10 +1273,10 @@ Choose one script tier:
 
 | Tier | Start file | Use when | Words |
 |---|---|---|---:|
-| Practical modular pack | [`support/path-e-script/OPERATOR-CHECKLIST.md`](support/path-e-script/OPERATOR-CHECKLIST.md) | You want the human-sized Path E script with one file per module. | 17,108 |
-| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 76,409 |
-| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 215,932 |
-| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 296,300 |
+| Practical modular pack | [`support/path-e-script/OPERATOR-CHECKLIST.md`](support/path-e-script/OPERATOR-CHECKLIST.md) | You want the human-sized Path E script with one file per module. | 18,851 |
+| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 77,769 |
+| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 217,669 |
+| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 298,037 |
 
 > **How the generated tiers add length:** each generated tier embeds the same practical module script and then appends structured *drill passes* per module (2 in minimum, 5 in medium, 18 in verbose — orientation, evidence, source-code, live-state, failure-mode, and so on). The passes reuse a fixed rehearsal template per module, so the longer tiers add repetition-based drilling rather than new narrative content. The distinct explanatory material lives in the practical modular pack. Word counts above match each tier's `WORDCOUNT.md` (`wc -w` over `scripts/*.md`).
 

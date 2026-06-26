@@ -455,7 +455,7 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 | All `/adminpanel`, `/deleteUser`, `/toggle*` | authenticated + `is_admin` | `@login_required` + `@admin_required` |
 | All machine routes | authenticated | `@login_required` |
 | All `/api/*` device routes | none | public (perimeter trust) |
-| All `/chem/*` routes | none | **public** (`login_required` imported but unused) |
+| All `/chem/*` routes | WordPress signed-token session (`before_request`) | **gated since 2026-06-25** — `/chem/enter` validates an HMAC link (`CHEM_SSO_SECRET`) and sets `session['chem_authed']`; others 302 to staff-tools |
 | `/particle-demo/*` | none | public |
 
 ## 7.10 Transport & cookie security (summary)
@@ -466,7 +466,7 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 
 ## 7.11 Practical guidance for the maintainer
 
-- **To require login on the chem module**, add `@login_required` to the routes in `chem_inventory.py` (the import is already present). Decide whether read routes stay public; the write routes (`add`, `move`, `move-bulk`, `remove`, `edit-container`, `upload-scans`, `mark-printed`) are the priority.
+- **Chem module auth (RESOLVED 2026-06-25, commit `f604818`).** The chem module is gated by a `before_request` hook (`_require_chem_token`) requiring `session['chem_authed']`. The session is established by `/chem/enter`, which validates a time-limited HMAC-signed link (`CHEM_SSO_SECRET`) from the WordPress staff-tools page; all other `/chem/*` requests redirect to the staff-tools URL. **Both read and write routes are now gated** — this is a WordPress SSO path, separate from Flask-Login/Duo.
 - **To add a new permission**, add a boolean column to `User` (via migration), a `can_X(username)` helper in `auth_service`, and either a decorator (mirror `admin_required`) or an inline check.
 - **To enforce server-side session revocation**, add a `before_request` that verifies `flask_session['session_id']` still exists in `sessioninfo` and matches `current_user`; otherwise `logout_user()`.
 - **Never set `DEBUG_MODE=True` in production** — it disables 2FA for both login and signup.

@@ -279,7 +279,7 @@ The following source document is included directly in this tier so the presenter
 
 Reference for `HSCDisplayerServer.py`, the original monolithic server that predates the Flask `app/` rewrite. This file (`README.md`) covers architecture and behavior; `ROUTES.md` is the route-by-route reference. Bugs/tech debt: `known-issues/UNanofabTools/hscdisplayerserver.md`.
 
-> **Status / scope.** This is the legacy implementation. The maintained codebase is the Flask app under `app/` (documented in `documentation/UNanofabTools/flaskserver/`). Confirm which process is actually running in production before changing anything here. New features should go in the Flask app, not here.
+> **Status / scope.** This is the legacy implementation. The maintained codebase is the Flask app under `app/` (documented in `documentation/UNanofabTools/flaskserver/`). **Production evidence (2026-06-01 `phelan` survey):** the live web process on `nfhistory` is the Flask app (`python run.py` in the `flaskserver` tmux session); no `HSCDisplayerServer.py` process was running. New features go in the Flask app, not here. Re-confirm against the latest survey snapshot before changing anything here.
 
 ## 1. Architecture
 
@@ -348,12 +348,12 @@ HSCDownloader → HSCDATA ─┬─► HSCDisplayerServer (legacy, this file)
 Pico firmware ───────────► (whichever server is live) sensor endpoints
 ```
 
-The legacy server and the Flask app are two implementations of the same system reading the same data. Only one should be live at a time.
+The legacy server and the Flask app are two implementations of the same system reading the same data. Only one should be live at a time — and per the 2026-06-01 survey, the live one is the Flask app.
 
 ## 9. Maintenance guidance
 
 - **Prefer the Flask app for all new work.** Treat this file as reference/fallback.
-- If this is still production, the priority is to migrate fully to the Flask app and retire it.
+- Production is the Flask app (2026-06-01 survey: `python run.py` live, no `HSCDisplayerServer.py` process). The remaining priority is to retire this code from the production checkout — see known-issues #1 and #10.
 - Don't add features here; if you must patch it, mirror the change in the Flask app.
 - See `ROUTES.md` for the endpoint inventory and `known-issues/UNanofabTools/hscdisplayerserver.md` for defects (duplicate `addUser`, monolithic dispatch, in-process TLS, `DuoKeys` import, etc.).
 
@@ -478,14 +478,15 @@ Severity: **High** = security / correctness / architecture · **Medium** = maint
 - **Risk:** two implementations to keep in sync until this is retired.
 - **Fix:** single-source on the Flask app.
 
-### 10. Unclear which server is actually in production — High (operational)
-- **Risk:** maintainers may patch the wrong one.
-- **Fix:** document and verify the live deployment; make the Flask app authoritative.
+### 10. ~~Unclear which server is actually in production~~ — **Resolved by evidence (2026-06-01), keep verified**
+- **Was:** High (operational) — maintainers might patch the wrong server.
+- **Resolution:** the 2026-06-01 `phelan` survey snapshot (`documentation/UNanofabTools/liveserver/snapshots/nfhistory_survey_phelan_2026-06-01.txt`) shows the Flask app (`python run.py`, pid 2665755, in the `flaskserver` tmux session) as the live web process, with nginx proxying to `127.0.0.1:5000`. **No `HSCDisplayerServer.py` process appears anywhere in the snapshot.** The Flask app is production; this legacy server is not running.
+- **Remaining action:** the Flask app is authoritative — patch there. Re-verify with the quarterly survey, and close this item entirely once the legacy code is removed from the production checkout.
 
 ---
 
 ## Suggested priority order
-1. #10 + #1 confirm production and commit to retiring the monolith — High
+1. #1 commit to retiring the monolith (production confirmed: Flask is live per #10's evidence) — High
 2. #8 reconcile routes so the Flask app covers everything still used — Medium/High
 3. #7 ensure DEBUGMODE can't ship True — High (operational)
 4. #2, #4 quick correctness/security fixes if it must keep running — Medium

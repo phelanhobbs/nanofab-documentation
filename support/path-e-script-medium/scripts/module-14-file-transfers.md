@@ -306,7 +306,7 @@ Reference for the per-machine log-shipping scripts. They run on each tool's Wind
 | `CTRFurnaceTransfer.ps1` | PowerShell | self-loop | Furnace instance |
 | `CTRFurnaceTransfer.bat` | Batch (cmd) | Windows Task Scheduler (run-once) | Windows XP-compatible furnace version |
 
-Destination as committed in the scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model.
+Destination as committed in the scripts: `pscp` over SSH (port 22) to `nfhistory.nanofab.utah.edu`, authenticating as `phelanh`, into `/Users/phelanh/Desktop/Logs/<MACHINE>`. That path/account pair looks like the older personal-account or legacy-host model, not the current documented `phelan`/VM service model. (Historical note: until 2026-06-10, `FileTransferTemplate.ps1` carried a divergent Windows-style placeholder `C:\Users\phelanh\Desktop\Logs\MACHINE` that no deployed per-machine copy used; the template now matches the per-machine scripts' Unix-style form.)
 
 **Production-truth warning:** do not assume these scripts are feeding the current Flask deployment until live evidence proves it. Start file-transfer maintenance by checking a recent control-PC run, the server-side destination directory, and the Flask machine-page read path. If current uploads still land under `phelanh` or `/Users/...`, treat that as the high-priority issue tracked in `known-issues/UNanofabTools/filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) #1.
 
@@ -331,7 +331,8 @@ $sshUsername    = "phelanh"                  # personal account (see known-issue
 $watcherPath    = "C:\...\Logfile"           # folder to watch
 $pscpPath       = "C:\Program Files\PuTTY\pscp.exe"
 $privateKeyPath = "C:\Users\...\.ssh\id_rsa.ppk"
-$remotePath     = "/Users/phelanh/Desktop/Logs/<MACHINE>"
+$remotePath     = "/Users/phelanh/Desktop/Logs/<MACHINE>"   # server-side path (see §1 on where this
+                                                            # destination actually points)
 ```
 
 ### 2.3 `Send-Files`
@@ -397,7 +398,7 @@ The following source document is included directly in this tier so the presenter
 
 # File-Transfer Scripts — Known Issues & Technical Debt
 
-Working list for the per-machine log-shipping scripts. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for the per-machine log-shipping scripts. Separate from the successor docs. One code change has been made (2026-06-10): `FileTransferTemplate.ps1`'s divergent Windows-style `$remotePath` placeholder was aligned with the Unix-style form every deployed per-machine script uses. Everything else here is unchanged in code.
 
 Severity: **High** = operational/security risk · **Medium** = robustness/maintainability · **Low** = cleanup.
 

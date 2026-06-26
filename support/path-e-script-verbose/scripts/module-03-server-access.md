@@ -1178,8 +1178,10 @@ Expected output:
 
 ```
 downloader: 1 windows (created …) [80x24]
-flaskserver: 1 windows (created …) [80x24]
+flaskserver: 2 windows (created …) [80x24]
 ```
+
+(Window counts as of the 2026-06-01 survey; the exact number of windows per session may vary — what matters is that both sessions exist.)
 
 If either session is missing, the program is not running. Proceed to §4.3.
 
@@ -1198,7 +1200,7 @@ python run.py
 
 Then detach with `Ctrl-b` `d`. Verify the website is up by visiting `nfhistory.nanofab.utah.edu`.
 
-> **Production note.** `python run.py` is the development invocation. If the deployment was migrated to `gunicorn` (see `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`), substitute the gunicorn command from that runbook. The shape — `tmux new -s flaskserver`, `cd`, activate, run, detach — is the same.
+> **Production note.** `python run.py` is the development invocation. If the deployment was migrated to `gunicorn` (see `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md`), substitute the gunicorn command from that runbook. The shape — `tmux new -s flaskserver`, `cd`, activate, run, detach — is the same. **Update (2026-06-18):** the two services now run under **user-level systemd** (`systemctl --user restart flaskserver` / `hscdownloader`, `Restart=on-failure`, linger enabled), so recovery is normally a `systemctl --user restart` rather than recreating the tmux session; the tmux procedure remains a valid manual fallback.
 
 #### Recreate `downloader`
 
@@ -1236,6 +1238,8 @@ The scrollback shortcut is the main reason to attach in the first place — read
 > **Operational boundary.** The Nanofab admin works **as `phelan` with `sudo`**, not as `root`. University IT owns `root` on `nfhistory` and is the only party that can create UNIX accounts, modify `/root/`, change the firewall, or operate the VM-level backup. Several steps below explicitly call out which side of the line each action falls on.
 
 ### 5.1 Onboarding a new user (one-time per person, Nanofab-side)
+
+> **Cold-start note.** Step 3 below assumes someone can already log in as `phelan`. If no current keyholder is available (e.g. the previous admin has left and no working key remains), contact the **CADE IT department** to install the new public key instead — then continue from step 4.
 
 1. **Verify the user has a CADE account.** Confirm via the portal at <https://usertools.eng.utah.edu> that the user can SSH into a CADE machine on their own. If they cannot, send them there first; CADE management is outside the cleanroom team's scope.
 2. **Generate an `nfhistory` key pair** on a trusted workstation:
@@ -1383,15 +1387,15 @@ Severity: **High** = operational/security risk · **Medium** = robustness/mainta
 - **Risk:** if the server is renumbered (planned move, DHCP change, subnet renumber) every user's CADE config must be updated by hand. There is no DNS abstraction layer. The IP is also publicly documented now (here and in onboarding emails), which leaks an internal address.
 - **Fix:** ask College of Engineering IT to register a DNS A record such as `nfhistory.eng.utah.edu` pointing at the internal IP, then change every user's config to use the name. Update this runbook in lockstep. Treat the IP itself as sensitive until the alias exists.
 
-### 3. tmux sessions are the only process supervisor — High
-- **Where:** the website (`flaskserver`) and HSCDownloader (`downloader`) run as plain `python` processes inside tmux. Nothing supervises them.
-- **Risk:** if a process crashes (unhandled exception, OOM, transient bug), tmux keeps the shell open at a prompt — but the *service is down* until a human attaches and notices. A server reboot kills both sessions entirely. There is no automatic restart, no alerting, no health endpoint monitor.
-- **Fix:** convert both services to `systemd` units (`flaskserver.service`, `hscdownloader.service`) with `Restart=on-failure` and a `WantedBy=multi-user.target` so they survive reboots. Keep tmux as a *debugging* convenience (attach to a `journalctl -fu flaskserver` window) rather than the supervisor of record. See `documentation/UNanofabTools/flaskserver/09-deployment-and-operations.md` for the gunicorn unit shape this should follow.
+### 3. tmux sessions are the only process supervisor — ✅ RESOLVED (2026-06-18) *(was High)*
+- **Resolution:** both services now run as **user-level systemd** units (`systemctl --user`, `Restart=on-failure`, linger enabled) rather than bare `python` in tmux, so a crash auto-restarts and a reboot brings them back. (Still `python run.py`, not gunicorn — optional follow-up per #7.)
+- **Original finding:** the website (`flaskserver`) and HSCDownloader (`downloader`) ran as plain `python` inside tmux with nothing supervising them — a crash left the service down until a human noticed, and a reboot killed both sessions.
+- **Note:** these are *user* units (passwordless sudo is scoped to `systemctl`, not `/etc`); a root unit would need IT, but user-unit + linger is equivalent for uptime.
 
 ### 4. Accidental `exit` or `Ctrl-c` inside a session takes the service down — High (impact) / Low (likelihood once trained)
 - **Where:** any attach. There is no guard, no `trap`, no read-only mode.
 - **Risk:** a user attaches to look at logs, hits `Ctrl-c` reflexively, and silently kills the website. The layman README emphasizes `Ctrl-b d` precisely because of this.
-- **Fix:** once #3 is done, this stops being a problem — killing the process triggers an automatic restart. As a stopgap, consider running the services under `tmux` with `set -g remain-on-exit on` so the pane stays visible after a crash and a watcher script can detect it. Also consider a read-only attach pattern for visitors (`tmux attach -r -t flaskserver`).
+- **Fix:** with #3 now resolved (2026-06-18, systemd auto-restart), an accidental kill self-heals. A read-only attach pattern for visitors (`tmux attach -r -t flaskserver`) is still a good stopgap against fat-fingering an interactive pane.
 
 ### 5. Two-hop access depends on CADE availability — Medium
 - **Where:** every login flows through a CADE lab machine.
@@ -1434,7 +1438,7 @@ Severity: **High** = operational/security risk · **Medium** = robustness/mainta
 
 Nanofab-actionable items only. Items the Nanofab team cannot resolve on its own (because they require IT) are listed separately below.
 
-1. **#3** — put both services under `systemd`. Eliminates #4 and most of the operational fragility in one move. Doable with `sudo` from the Nanofab side.
+1. **#3** — ✅ done (2026-06-18): both services under user-systemd (eliminated #4's silent-kill failure mode). *(Optional: migrate to gunicorn per #7.)*
 2. **#7** — confirm the live `flaskserver` command and document the actual one.
 3. **#6, #10** — formalize key issuance, rotation, and delivery (Nanofab can do this with a binder/password manager; no IT involvement needed).
 4. **#5, #8, #9, #11** — robustness and cleanup.
@@ -1590,7 +1594,10 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - HSCDownloader — pulls per-machine data from CORES, writes HSCDATA CSVs
 - Introduce tmux at a high level: it's a 'saved terminal' — a window with a program running in it that keeps going even when nobody's
 - logged in. The cleanroom server uses exactly two of them. The website is the one users see; the downloader is the data pipeline that
-- keeps the website's machine pages fresh. Both must stay alive 24/7.
+- keeps the website's machine pages fresh. Both must stay alive 24/7. **Update (2026-06-18):** these two services now run under
+- user-level systemd (systemctl --user, auto-restart on failure, linger), so they survive crashes and reboots on their own. The tmux
+- sessions remain a convenient way to watch live console output, and the detach hygiene below still matters for clean inspection —
+- though an accidental exit no longer takes the website down the way it used to.
 - Looking at a session (attaching)
 - tmux ls # list all sessions
 - tmux attach -t flaskserver # look at the website's console

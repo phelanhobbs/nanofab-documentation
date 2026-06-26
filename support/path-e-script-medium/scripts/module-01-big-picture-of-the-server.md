@@ -384,7 +384,7 @@ Almost everything you do on the internet works this way:
 
 - You open `https://nfhistory.nanofab.utah.edu` in a browser → the browser is the client, your laptop sends a request, the server sends back an HTML page as the response, and the browser draws it.
 - A Raspberry Pi out in the cleanroom takes a particle-sensor reading and POSTs it as JSON → the Pi is the client, our server is on the receiving end, and it stores the reading in a database.
-- The PreciousMetalReader desktop app fetches the latest reagent prices → the desktop app is the client, an internal web service is the server.
+- The PreciousMetalReader desktop app fetches monthly precious-metal usage records from CORES → the desktop app is the client, the CORES web service is the server.
 
 The server is always-on; the clients come and go.
 
@@ -578,7 +578,7 @@ The diagram shows the live network shape and the intended production process bou
 Key invariants:
 
 - **Flask binds to `127.0.0.1:5000`** (see `config/config.py` `HOST`/`PORT`). It is not directly reachable from the network. nginx is the only ingress and performs TLS termination. (A legacy alternative — gunicorn binding `0.0.0.0:443` with `--certfile/--keyfile` — is described in `09-deployment-and-operations.md` but the nginx model is the current intent per `run.py`'s docstring.)
-- **Two human-auth tiers and one device tier coexist.** Browser routes are gated by `@login_required` / `@admin_required`; device and chem routes are not (see `05` and `07`).
+- **Two human-auth tiers, a device tier, and a separate chem SSO tier coexist.** Browser routes are gated by `@login_required` / `@admin_required`; device routes are ungated; the chem module is gated by its own WordPress signed-token session (a `before_request` hook, since 2026-06-25), distinct from Flask-Login (see `05` and `07`).
 - **CSV files are an authoritative data store**, not just exports. Particle/environmental history and machine logs live only as CSV; the SQLite `particle_sensor_data` table caches only the latest reading per sensor.
 
 ## 1.4 The application-factory pattern
@@ -1254,7 +1254,7 @@ A fair security review names what *isn't* protected and why. These are conscious
 
 1. **The IoT endpoints (`/particle-data`, `/env-data`, `/sensor-data`, `/sdsanalog`, `/denton18pump`, and their `finished` variants) have no authentication.** Any device that can reach the server can POST data. The trust boundary is the private network: the Picos are on a locked-down SSID, and the endpoints aren't publicly advertised. There's no API key or token. If this server were ever exposed to the public internet, these endpoints would need authentication (an API key header at minimum).
 
-2. **The entire chemical inventory (`/chem/*`) is unauthenticated.** The blueprint imports `login_required` but never applies it to any route. That means anyone who can reach the server can search, add, move, edit, and remove chemical containers. For a kiosk-style internal tool this may be acceptable for *reading*, but the **write** routes (add/move/remove/edit) being open is a real gap worth closing — at minimum, gate the mutating routes behind `@login_required`.
+2. **The chemical inventory (`/chem/*`) is gated by a WordPress single-sign-on link (resolved 2026-06-25).** Previously the whole blueprint was open — anyone who could reach the server could search, add, move, edit, and remove containers. It's now protected by a `before_request` check: every `/chem` page requires a session that's granted only after the user follows a signed, time-limited link from the WordPress staff-tools page (`/chem/enter`, HMAC over the new `CHEM_SSO_SECRET`). Both reading and editing are now behind that gate — a separate sign-on from the main site's Duo login.
 
 3. **CORS is wide open** (`CORS(app)` with no origin restriction). Any website's JavaScript can call the JSON endpoints from a browser. Combined with the unauthenticated endpoints, a malicious page a logged-out user visits could POST sensor data or read inventory. Tightening CORS to the known internal origins would reduce this surface.
 
@@ -2244,13 +2244,13 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - The 'suggest' and 'auto-fill' helpers return nothing yet.
 - So those convenience features are effectively off.
 - , ], }, right: { heading:
-- Fine for reading at a kiosk; risky for the edit/remove pages.
-- Recommended to gate the changing actions behind login.
+- Read and edit/remove are both behind the gate.
+- Entry is via a signed /chem/enter link; no public access.
 - Two candid maintenance notes, kept off the main story but recorded for whoever maintains this. First, the type-ahead and
 - auto-fill helpers are unfinished stubs that return nothing, so those niceties don't work yet. Second — more important — the
-- inventory pages currently don't require login, including the pages that change or remove data. That's convenient for a read-only
-- kiosk but a real gap for the editing actions; the recommendation is to require login on at least the changing pages. Both items are
-- in the separate issues list.
+- chem pages used to require no login, including the pages that change or remove data — but that was resolved on 2026-06-25: they are
+- now gated by a WordPress single-sign-on, so every /chem page requires a session granted via a signed staff-tools link (/chem/enter),
+- covering reads and edits alike. The type-ahead/auto-fill stubs remain on the separate issues list.
 - Adding bottles, step by step
 - chemical, vendor, size, location, dates, owner, quantity.
 - Reuse or create the chemical
@@ -2700,15 +2700,15 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - common web vulnerability. The page templates automatically escape values, which blunts cross-site scripting. File downloads use the
 - proper resolve-then-verify path check from the machines session. Uploads are restricted by type and given safe, unique names. The
 - Why it exists / risk
-- Convenient kiosk reads, but edit/remove are open
 - Device endpoints have no login
 - Trusted via private network, not authentication
 - Cross-origin access is wide open
 - Broad by default; could be narrowed
 - Password reset uses only the uNID
 - No second factor on reset
-- Be transparent about the trade-offs. The chemical inventory pages, including editing and removing, currently require no login — fine
-- for a read-only kiosk, a real gap for the changing actions. The device endpoints have no login, relying on the private network
+- Be transparent about the trade-offs. The biggest gap here — the chemical inventory pages requiring no login — was closed on 2026-06-25:
+- all /chem pages now sit behind a WordPress single-sign-on (a signed staff-tools link), so reading and editing both require sign-in.
+- The device endpoints have no login, relying on the private network
 - instead. Cross-origin access is broad by default. And password reset leans on the university ID without a second factor. None of
 - these are catastrophic for an internal tool on a trusted network, but they're the things to fix first if exposure ever increases.
 - All are itemized in the separate issues list with recommended fixes.
