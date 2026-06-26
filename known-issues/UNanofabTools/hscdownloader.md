@@ -64,3 +64,12 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 3. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
 4. #6 add a portal-column contract test — Medium
 5. #7, #8, #9, #10 cleanup / activation decision — Low
+
+---
+
+## ✅ Resolved / Closed
+
+### Ebeam (+ Denton635 / Denton18 / TMV) `Base Pressure` save crashed on string data — was High — CLOSED (commit `8717375`, 2026-06-26)
+- **Original concern:** `Base Pressure` could arrive as a string and was multiplied by a float (`row['Base Pressure'] * 10**(int(powerFactor)+6)`), raising `can't multiply sequence by non-int of type 'float'`. The error was caught and only logged, so the service stayed up while that machine's save aborted and its `small_<Machine>_DataCollection.csv` went stale.
+- **Why closed:** commit `8717375` adds a `scalePressure(value, powerFactor)` helper (`HSCDownloader.py:190`) that casts the value and tolerates bad rows (logs and leaves them unchanged instead of aborting), and routes Ebeam (`:295`), Denton635 (`:455`), Denton18 (`:531`), and TMV (`:625` onward, including its sputter-deposition pressures) through it — removing the fragile in-loop `astype(float)`. Locally validated against the real function: it reproduces the old `TypeError`, returns correct scaled values, and bad rows no longer crash.
+- **Residual:** code is committed but **not yet deployed live** — it lands with the CORES token rotation (push + pull + `systemctl --user restart hscdownloader`).

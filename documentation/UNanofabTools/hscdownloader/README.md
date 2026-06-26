@@ -57,6 +57,7 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 - Runs as a long-lived process (a service / scheduled host), driven by `schedule` + `runForever`.
 - Designed to stop cleanly on signal (`graceful_exit`).
 - Network/auth failures: `downloadFile` does minimal error handling — a CORES outage or token rotation will surface as exceptions / empty data. Add retry/alerting if reliability matters.
+- Per-machine `Base Pressure` scaling is hardened (2026-06-26, commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Code committed; deploys with the CORES token rotation.
 - It writes to the same `HSCDATA` directory the server reads; ensure both run with consistent paths/permissions.
 
 ## 7. Maintenance / recommendations
