@@ -84,7 +84,7 @@ return response['result'] == 'allow'
 - Returns `True` only on explicit `'allow'`. Any exception (missing creds, network, denial, timeout) logs and returns `False`.
 - Bypassed entirely when `DEBUG_MODE` is `True`.
 
-Required config: `DUO_IKEY`, `DUO_SKEY`, `DUO_HOST` (see `03`).
+Required config: `DUO_IKEY`, `DUO_SKEY`, `DUO_HOST` (see `03`). **These must be the real Auth-API values from the Duo Admin Panel, not the `.env.example` placeholders.** Until 2026-07-07 the live `.env` still held the placeholders, so `duo_client.Auth` failed to resolve a non-existent host (`[Errno -3] name resolution`) and main-app login couldn't complete the push; installing the real creds fixed it. Sanity check: `https://<DUO_HOST>/auth/v2/ping` should return `stat: OK`.
 
 ## 7.8 Authorization: decorators and checks
 

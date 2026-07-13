@@ -538,6 +538,11 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Why closed:** corrected the three key lookups; reworked the `items` update to keep-or-update `name`, `description`, `catalog_number`, `physical_state`, and to resolve a submitted `vendor_name` to `items.vendor_id` via the existing `_upsert(conn, "vendors", …)`. The blueprint now wraps `update_container` in try/except and flashes a real error instead of a false success.
 - **Validated (2026-06-30):** ran the real `update_container` against an ephemeral Postgres seeded with a container — all seven previously-dropped fields persist, and blank form fields are preserved (keep-or-update). The dev reference (`documentation/UNanofabTools/flaskserver/06-service-layer-reference.md`, `update_container`) already described this intended behavior, so it now matches the code.
 
+### R6. Production Duo 2FA was never configured (placeholder credentials) — was High — CLOSED (2026-07-07)
+- **Symptom:** main-app login (tasks/machines) failed at the 2FA step with **no Duo push**; the flaskserver log showed `Duo authentication error: [Errno -3] Temporary failure in name resolution`.
+- **Root cause:** `DUO_IKEY` / `DUO_SKEY` / `DUO_HOST` in the server `.env` were still the **template placeholders** (`your-duo-integration-key`, etc.), so `duo_client.Auth` tried to resolve a non-existent host. General DNS was fine — only the fake Duo host failed. (Corrects R1, which confirmed the 2FA *code path* runs in production but not that Duo could complete. Chem inventory was unaffected — it uses the WordPress SSO gate and skips Duo.)
+- **Why closed:** installed the real Auth-API integration key / secret / API hostname from the Duo Admin Panel into `.env` and restarted flaskserver. Verified `https://<DUO_HOST>/auth/v2/ping` → `stat: OK` and login now pushes. (This is a `.env`/ops change — no source commit; the real values live only in the server `.env`.)
+
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md
 
