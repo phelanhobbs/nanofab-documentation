@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-verbose/`
 - Script files directory: `scripts/`
-- Total script word count: **299,800**
+- Total script word count: **299,959**
 - Target minimum: **250,000**
 - Target maximum: none
 - Source docs included: **82**
@@ -15,7 +15,7 @@
 |---|---:|
 | `scripts/00-operator-and-session-plan.md` | 3,816 |
 | `scripts/module-00-set-the-contract.md` | 6,107 |
-| `scripts/module-01-big-picture-of-the-server.md` | 36,079 |
+| `scripts/module-01-big-picture-of-the-server.md` | 36,097 |
 | `scripts/module-02-live-server.md` | 19,052 |
 | `scripts/module-03-server-access.md` | 15,470 |
 | `scripts/module-04-flask-startup.md` | 5,722 |
@@ -32,7 +32,7 @@
 | `scripts/module-15-pico-and-particle.md` | 27,365 |
 | `scripts/module-16-other-tools.md` | 33,994 |
 | `scripts/module-17-legacy-server.md` | 11,369 |
-| `scripts/module-18-known-issues-triage.md` | 13,171 |
+| `scripts/module-18-known-issues-triage.md` | 13,312 |
 | `scripts/module-19-path-d-audit-practice.md` | 8,011 |
 | `scripts/module-20-operational-scenarios.md` | 8,078 |
 | `scripts/module-21-final-no-contact-check.md` | 6,369 |

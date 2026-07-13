@@ -155,7 +155,7 @@ app/
 │   ├── particle_sensor.py     ← ParticleSensorData
 │   ├── chem_inventory.py      ← chem tables (declarative; documentation/parity)
 │   ├── session.py, task.py, user.py  ← EMPTY placeholder files
-├── templates/           ← Jinja2 templates (top-level + chem/ subdir)
+├── templates/           ← Jinja2 templates (top-level + chem/ subdir; machine/graph/log/admin templates rebuilt + committed 2026-07-08, commit d7efcb9 — previously missing, causing TemplateNotFound 500s across all machine pages)
 └── static/              ← css/inventory.css, js/{adminActions,graph,taskActions,tablesort}.js
 ```
 

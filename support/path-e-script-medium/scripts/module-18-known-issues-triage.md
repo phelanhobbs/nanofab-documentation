@@ -543,6 +543,10 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Root cause:** `DUO_IKEY` / `DUO_SKEY` / `DUO_HOST` in the server `.env` were still the **template placeholders** (`your-duo-integration-key`, etc.), so `duo_client.Auth` tried to resolve a non-existent host. General DNS was fine — only the fake Duo host failed. (Corrects R1, which confirmed the 2FA *code path* runs in production but not that Duo could complete. Chem inventory was unaffected — it uses the WordPress SSO gate and skips Duo.)
 - **Why closed:** installed the real Auth-API integration key / secret / API hostname from the Duo Admin Panel into `.env` and restarted flaskserver. Verified `https://<DUO_HOST>/auth/v2/ping` → `stat: OK` and login now pushes. (This is a `.env`/ops change — no source commit; the real values live only in the server `.env`.)
 
+### R7. Machine / graph / log / admin templates were never committed (all routes 500'd) — was High — CLOSED (2026-07-08, commit `d7efcb9` + follow-up)
+- **What was wrong:** `machine_data.html`, `graph.html`, `ald_graph.html`, `log_files.html`, `adminpanel.html` were referenced by the code but existed nowhere — not in git, not on the laptop, not on the live server → `TemplateNotFound` 500s. All 16 machine pages were down (`GET /ald` → `TemplateNotFound: machine_data.html`), plus the graph/log/admin routes.
+- **Why closed:** rebuilt all five from scratch, extending `base.html` — tables from `csv_to_html_table`, Chart.js graphs via `generateLineGraph`, log-file listings, and an admin user table with JSON toggle/delete actions; each validated through real Jinja2. Committed + deployed (`machine_data.html` = `d7efcb9`; the other four in a follow-up). Machine, admin, and log pages all confirmed rendering live. **The site is now reproducible from git** — no more server-only files.
+
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md
 
