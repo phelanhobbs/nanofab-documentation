@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-verbose/`
 - Script files directory: `scripts/`
-- Total script word count: **300,078**
+- Total script word count: **300,213**
 - Target minimum: **250,000**
 - Target maximum: none
 - Source docs included: **82**
@@ -32,7 +32,7 @@
 | `scripts/module-15-pico-and-particle.md` | 27,365 |
 | `scripts/module-16-other-tools.md` | 33,994 |
 | `scripts/module-17-legacy-server.md` | 11,369 |
-| `scripts/module-18-known-issues-triage.md` | 13,431 |
+| `scripts/module-18-known-issues-triage.md` | 13,566 |
 | `scripts/module-19-path-d-audit-practice.md` | 8,011 |
 | `scripts/module-20-operational-scenarios.md` | 8,078 |
 | `scripts/module-21-final-no-contact-check.md` | 6,369 |

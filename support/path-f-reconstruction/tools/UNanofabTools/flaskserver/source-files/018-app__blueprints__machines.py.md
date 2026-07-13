@@ -4,6 +4,8 @@
 
 > **Update (2026-07-08, commit `f177140`):** `render_machine_data` now guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing when a machine's `small_*` CSV is missing. (The machine/graph/log/admin templates were also rebuilt + committed the same week — commit `d7efcb9` — after being absent from git; see `known-issues` R7.) The embedded excerpt predates these fixes.
 
+> **Update (2026-07-08, commits `66b83f8` + `f83caed`):** the Parylene log page now reads `LogData/Paralyne/analog/` (was `Paralyne/uploads/`), `sort_files_by_time` is hardened so one unparseable filename can't blank the whole listing, and `graph_file` derives machine/type from the path relative to `log_dir` (the `Desktop/Logs/` prefix had shifted the column split) and plots the real `pressure`/`vapor`/`temp` columns instead of a hardcoded `'Vacuum pressure'`. See `known-issues` R9.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

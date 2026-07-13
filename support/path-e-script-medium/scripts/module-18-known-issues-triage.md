@@ -548,6 +548,10 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 ### R8. Stored XSS in `csv_to_html_table` + machine pages 500 on a missing CSV — were Medium — CLOSED (2026-07-08, commit `f177140`)
 - See #11 above (marked resolved in place). Every CSV cell now runs through `html.escape()`, and `render_machine_data` guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing. Both effective once the machine templates (R7) were restored.
 
+### R9. Parylene log page empty + graph blank — CLOSED (2026-07-08, commits `66b83f8` + `f83caed`)
+- **Empty listing:** the route read `LogData/Paralyne/uploads`, but the data lives in `Paralyne/analog/` → datatype corrected to `analog`. Also hardened `sort_files_by_time` so a single unparseable filename no longer throws and returns `[]` (which had blanked the whole directory) — the bad file is kept and sorted last.
+- **Blank graph:** `graph_file` chose the plot column by splitting the raw URL, which the `Desktop/Logs/` prefix shifted by one → no column matched → empty datasets → blank chart. It now derives machine/type from the path **relative to** `log_dir`. And the Parylene column was hardcoded `'Vacuum pressure'` while the real CSV header is `timestamp,pressure,vapor,temp` → now plots `pressure`/`vapor`/`temp` (validated against the real format). Listing, download, and chart all confirmed working live.
+
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md
 
