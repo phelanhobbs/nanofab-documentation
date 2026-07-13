@@ -26,6 +26,8 @@
 
 > **Fix:** create `SERVER-KNOWN-ISSUES.md` with the missing `ALTER/CREATE` DDL, or inline a "fresh-install supplement" block in `04` §4.4 and reference it from `09` §9.4.
 
+> **UPDATE (2026-06-29 — RESOLVED):** the underlying drift is fixed in source. `chem_schema_migration_v3.sql` (commit `313e495`) provides the executable DDL — matched column-for-column to a live `pg_dump` — and `init_chem_db.py` now applies v1→v2→v3, so a fresh chem DB matches production. `04-database-schema.md` §4.4 and `09-deployment-and-operations.md` now reflect this. The never-created `SERVER-KNOWN-ISSUES.md` is moot: the DDL lives in the migration file, not a separate doc.
+
 ---
 
 ## 2. Cross-cutting issues (raised independently by ≥2 reviewers)

@@ -1364,7 +1364,7 @@ The survey **confirms** PostgreSQL is on this same machine:
 
 Connection details from the Flask app's `.env` were not captured by either survey run yet. The root-side run couldn't read `phelan`'s home; the first phelan-side run looked for the pre-correction install path instead of `~/server/UNanofabTools/.env`. The script has been patched and the next `phelan`-side run will fill this in. The Flask config (`config/config.py`) defaults `CHEM_PGHOST` to `localhost`, which is consistent with what's bound.
 
-**Live DB inventory (table list, sizes, row counts) was not captured** — re-run as `phelan` to populate. The known-issues file flags the schema-drift question against `chem_schema.sql` + `chem_schema_migration_v2.sql`.
+**Live DB inventory (table list, sizes, row counts) was not captured** — re-run as `phelan` to populate. The chem schema-drift question (committed SQL behind the live DB) was **resolved 2026-06-29** (commit `313e495`: `chem_schema_migration_v3.sql` reconciles it column-for-column; `init_chem_db.py` applies v1→v2→v3).
 
 ## 11. Things the current snapshots still did not capture
 

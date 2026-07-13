@@ -1012,7 +1012,7 @@ flask db downgrade                      # revert one revision
 
 ## 4.4 PostgreSQL chemical-inventory schema
 
-The chem database is provisioned by `init_chem_db.py` (which executes `chem_schema.sql`), then extended by `chem_schema_migration_v2.sql`. At runtime `chem_service.py` uses SQLAlchemy Core (`engine.begin()` + `text()`), not the ORM.
+The chem database is provisioned by `init_chem_db.py`, which applies `chem_schema.sql` (v1) → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (since commit `313e495`, 2026-06-29), so a fresh database matches production. At runtime `chem_service.py` uses SQLAlchemy Core (`engine.begin()` + `text()`), not the ORM.
 
 There are declarative model classes in `app/models/chem_inventory.py` (Category, Vendor, Room, Item, Container, InventoryCycle, ScanRaw, ContainerScan), but they are **parity/documentation artifacts** — the runtime path does not use them.
 
@@ -1081,7 +1081,7 @@ containers (
 
 The central table. `status` drives soft-delete (`'REMOVED'`). Note that `add_containers` inserts `barcode` and `container_code` with the **same** value (the sequence number).
 
-> **Runtime-only columns not in committed SQL:** `chem_service` also reads/writes `containers.last_scan_at` (set on scan import; read by inventory search and coverage). This column is absent from both committed `.sql` files and must exist in the live DB. See the separate known-issues file.
+> **`containers.last_scan_at`** (set on scan import; read by inventory search and coverage) is created by `chem_schema_migration_v3.sql` (commit `313e495`). It was previously a runtime-only column absent from the committed SQL — that drift is now reconciled.
 
 ### 4.4.5 Scan/audit tables
 
@@ -1102,11 +1102,11 @@ container_scans (scan_id BIGSERIAL PK,
                  UNIQUE (cycle_id, container_id))
 ```
 
-> **Runtime-only objects not in committed SQL:** `chem_service.import_scans` inserts into `inventory_cycles` columns `filename, performed_by, report_name, location, total_scanned, matched_count, unmatched_count`, and into `scan_raw`/`container_scans` a `barcode` column. None of these are in the committed `.sql`. Likewise the `transactions` audit table (below) is created out-of-band. The live database has these; a fresh build from the committed files does not.
+> **Reconciled in v3 (commit `313e495`):** the extended `inventory_cycles` columns (`filename, performed_by, report_name, location, total_scanned, matched_count, unmatched_count`), the `scan_raw`/`container_scans` `barcode` columns, and the `transactions` audit table (below) are all created by `chem_schema_migration_v3.sql`. These were previously runtime-only objects absent from the committed SQL; a fresh build from the committed files now matches the live database.
 
-### 4.4.6 `transactions` (audit trail) — runtime-only
+### 4.4.6 `transactions` (audit trail) — added in v3
 
-Not in the committed schema files, but written by `chem_service.log_transaction` and read by `get_transactions`. Inferred shape from the SQL:
+Created by `chem_schema_migration_v3.sql` (commit `313e495`); written by `chem_service.log_transaction` and read by `get_transactions`. Shape (matched to the live `pg_dump`):
 
 ```sql
 transactions (
@@ -1116,13 +1116,13 @@ transactions (
   barcode         TEXT,
   item_id         INTEGER,
   room_id         INTEGER,
-  details         JSON/JSONB,  -- json.dumps(details dict); queried via details::json->>'key'
+  details         TEXT,        -- json.dumps(details dict); v3 defines this as TEXT (confirmed via live pg_dump)
   performed_by    TEXT,
   created_at      TIMESTAMP    -- set to NOW()
 )
 ```
 
-`details` is serialized with `json.dumps` and queried with `t.details::json->>'reason'` etc., so the column must be castable to `json` (TEXT or JSON/JSONB).
+`details` is serialized with `json.dumps`; the live/v3 column type is **`TEXT`** (confirmed against the live `pg_dump`). Report queries that cast `t.details::json->>'reason'` rely on the stored text being valid JSON, while `get_transactions` does a plain `COALESCE(details,'') ILIKE` keyword search.
 
 ### 4.4.7 Views
 
@@ -1241,7 +1241,7 @@ Everything else — barcode printing, expiration reports, transactions log — h
 
 ## The PostgreSQL schema in plain English
 
-The schema lives in `chem_schema.sql`. (There's a v2 migration too, `chem_schema_migration_v2.sql`, that adds fields like `label_printed`.)
+The schema lives in `chem_schema.sql`, with two additive migrations: `chem_schema_migration_v2.sql` (adds fields like `label_printed`) and `chem_schema_migration_v3.sql` (added 2026-06-29 — reconciles the columns and table the live code uses; see the note below).
 
 ### Tables
 
@@ -1255,7 +1255,7 @@ The schema lives in `chem_schema.sql`. (There's a v2 migration too, `chem_schema
 | `inventory_cycles` | One row per scan session ("audit") | Has a start time, end time, and the user who created it |
 | `scan_raw` | Every raw barcode scanned during a cycle | Lets you trace "this label was seen" even if no container matched |
 | `container_scans` | Resolved scans (raw + matched container) with `'FOUND'` or `'NEW'` status | Unique on (cycle, container) so a bottle can't double-count in one cycle |
-| `transactions` (added later) | Every ADD/MOVE/EDIT/REMOVE/SCAN_UPLOAD action | The paper trail. Columns: action, container_id, barcode, item_id, room_id, details (JSON), performed_by, created_at |
+| `transactions` (added in v3) | Every ADD/MOVE/EDIT/REMOVE/SCAN_UPLOAD action | The paper trail. Columns: action, container_id, barcode, item_id, room_id, details (TEXT), performed_by, created_at |
 
 ### The "sequence" for barcodes
 
@@ -1273,17 +1273,17 @@ Two important views are defined:
 - **`inventory_view`** — denormalized join of containers + items + vendors + rooms + categories. Most "list / search inventory" queries point at this so templates don't have to re-write the join every time.
 - **`v_cycle_report`** — per-cycle counts of FOUND, NEW, and MISSING containers.
 
-### A caveat: the committed schema is behind the live database
+### Resolved: the committed schema now matches the live database
 
-Worth knowing if you ever rebuild this database from scratch: the live code in `chem_service.py` reads and writes several columns and one whole table that are **not** present in either committed `.sql` file (`chem_schema.sql` or `chem_schema_migration_v2.sql`). Examples the code relies on but the committed schema doesn't define:
+For a while the live code in `chem_service.py` read and wrote several columns and one whole table that weren't in either committed `.sql` file — the production Postgres had picked up columns over time via ad-hoc `ALTER TABLE`s that were never saved back. **That gap was closed on 2026-06-29** (commit `313e495`): a new `chem_schema_migration_v3.sql` adds all of them, matched column-for-column to a snapshot of the live database:
 
 - `containers.last_scan_at` (set during scan imports, read by inventory search)
-- `containers.removed_at`, `removed_by`, `remove_reason`, `remove_notes` (used by the soft-delete remove flow)
-- The extended `inventory_cycles` columns: `filename`, `performed_by`, `report_name`, `location`, `total_scanned`, `matched_count`, `unmatched_count`
-- A `barcode` column on `scan_raw` and on `container_scans`
-- The entire `transactions` audit table
+- `containers.removed_at`, `removed_by`, `remove_reason`, `remove_notes` (the soft-delete remove flow)
+- the extended `inventory_cycles` columns: `filename`, `performed_by`, `report_name`, `location`, `total_scanned`, `matched_count`, `unmatched_count`
+- a `barcode` column on `scan_raw` and on `container_scans`
+- the entire `transactions` audit table
 
-In other words, the production Postgres database has had columns added over time (via ad-hoc `ALTER TABLE` statements that were never committed back to the `.sql` files). The committed schema captures the original v1 + v2 shape; the live database is a few steps ahead. If someone tried to stand up a fresh database using only the committed `.sql` files, several features would fail until those missing columns/tables were added. This is a maintenance gap worth closing by writing the missing migrations.
+The provisioning script, `init_chem_db.py`, now applies v1 → v2 → v3 in order, so standing up a fresh database reproduces production exactly. The migrations are idempotent, so re-running v3 against the existing production database is a safe no-op (which is exactly what was verified). If anyone adds a column to the live DB by hand again, write it into a `v4` migration so this stays true.
 
 ### Foreign-key behavior
 

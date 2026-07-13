@@ -992,11 +992,11 @@ One-off PKCS12→PEM converter for the server's TLS cert.
 Provisions the chem PostgreSQL schema.
 
 - `get_db_url()`: builds `postgresql+psycopg2://...` from `CHEM_*`/`PG*` env vars (same precedence as the Flask config).
-- `read_schema_sql()`: loads `chem_schema.sql` from the script dir.
-- `init_database()`: creates an engine and executes the schema statement-by-statement (splitting on `;`, skipping `BEGIN`/`COMMIT`).
+- `apply_sql_file(conn, path)`: applies one `.sql` file, executing it statement-by-statement (splitting on `;`, skipping `BEGIN`/`COMMIT`).
+- `init_database()`: creates an engine/connection and applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent).
 - `__main__` runs `init_database()`.
 
-> Important: this applies only `chem_schema.sql` (v1). It does **not** apply `chem_schema_migration_v2.sql` or the runtime-only columns/tables the live `chem_service` uses (`last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). A fresh DB built only with this script will be missing those — see the flaskserver known-issues (#4) and `known-issues/UNanofabTools/utilities.md`.
+> Updated 2026-06-29 (commit `313e495`): it now applies `chem_schema.sql` (v1) → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order via the `apply_sql_file()` helper, so a fresh DB includes every object the live `chem_service` uses (`last_scan_at`, the extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table) and matches production. The migrations are idempotent.
 
 ## 5. `fetch_ssh.py`
 
@@ -1016,7 +1016,7 @@ Non-functional placeholder. Ensures `VOLTDATA.txt` exists, then loops incrementi
 ## 7. Maintenance notes
 - `peakCount.py`: behavior overlaps the NanofabToolkit ALD peak counter and the DAT graphers' parsing — consider consolidating the pressure-file parsing.
 - `gencert.py`: parameterize paths and read the PFX password from the environment; drop the unused HTTP-server import.
-- `init_chem_db.py`: extend to apply all migrations so a fresh DB matches production.
+- `init_chem_db.py`: ✅ now applies all migrations (v1→v2→v3) so a fresh DB matches production (commit `313e495`, 2026-06-29). Remaining nit: the naive `;`-split is still in place (fine for current statements).
 - `fetch_ssh.py`: keep as a personal tool or replace with a documented `scp`/CI step; don't use `AutoAddPolicy` in anything automated.
 - `NMonStore.py`: resolve (finish or delete).
 

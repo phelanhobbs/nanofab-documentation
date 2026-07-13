@@ -2,6 +2,8 @@
 
 # Source Reconstruction: UNanofabTools/init_chem_db.py
 
+> **Update (2026-06-29):** the embedded excerpt predates commit `313e495`, which rewrote `init_chem_db.py` around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order, so a fresh build matches production. See the v3 supplement at [`../../flaskserver/source-files/062b-chem_schema_migration_v3.sql.md`](../../flaskserver/source-files/062b-chem_schema_migration_v3.sql.md).
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

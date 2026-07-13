@@ -213,9 +213,10 @@ UNanofabTools/
 ├── run.py                       ← WSGI entry point / dev launcher
 ├── requirements.txt
 ├── setup.sh / quick_setup.sh    ← bootstrap scripts
-├── init_chem_db.py              ← provisions the PostgreSQL chem schema
+├── init_chem_db.py              ← provisions the chem schema (applies v1→v2→v3)
 ├── chem_schema.sql              ← chem schema (v1 base)
 ├── chem_schema_migration_v2.sql ← chem schema (v2 additive migration)
+├── chem_schema_migration_v3.sql ← chem schema (v3 — reconciles live-DB drift; commit 313e495)
 ├── .env.example                 ← environment-variable template
 ├── config/
 │   └── config.py                ← configuration classes

@@ -7,6 +7,7 @@ This is the most comprehensive generated path. It is intentionally much larger t
 - Output directory: `support/path-f-reconstruction/tools/`
 - Generator: `support/path-f-tools/build_path_f.py`
 - Secret policy: secret-looking literal values are redacted in generated excerpts.
+- **Out-of-band update (2026-06-29):** `chem_schema_migration_v3.sql` (commit `313e495`) reconciled the chem schema drift after this corpus was generated. A manually-added supplement page — `tools/UNanofabTools/flaskserver/source-files/062b-chem_schema_migration_v3.sql.md` — carries the v3 DDL, and the `chem_schema_migration_v2.sql` and `init_chem_db.py` pages link to it. The generator (`build_path_f.py`) now includes v3, so the next full run will fold it into the normal sequence and update `SOURCE-MANIFEST.json` / `WORDCOUNT.md`.
 
 ## Start Here
 

@@ -175,7 +175,7 @@ flask db downgrade                      # revert one revision
 
 ## 4.4 PostgreSQL chemical-inventory schema
 
-The chem database is provisioned by `init_chem_db.py` (which executes `chem_schema.sql`), then extended by `chem_schema_migration_v2.sql`. At runtime `chem_service.py` uses SQLAlchemy Core (`engine.begin()` + `text()`), not the ORM.
+The chem database is provisioned by `init_chem_db.py`, which applies `chem_schema.sql` (v1) → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (since commit `313e495`, 2026-06-29), so a fresh database matches production. At runtime `chem_service.py` uses SQLAlchemy Core (`engine.begin()` + `text()`), not the ORM.
 
 There are declarative model classes in `app/models/chem_inventory.py` (Category, Vendor, Room, Item, Container, InventoryCycle, ScanRaw, ContainerScan), but they are **parity/documentation artifacts** — the runtime path does not use them.
 
@@ -244,7 +244,7 @@ containers (
 
 The central table. `status` drives soft-delete (`'REMOVED'`). Note that `add_containers` inserts `barcode` and `container_code` with the **same** value (the sequence number).
 
-> **Runtime-only columns not in committed SQL:** `chem_service` also reads/writes `containers.last_scan_at` (set on scan import; read by inventory search and coverage). This column is absent from both committed `.sql` files and must exist in the live DB. See the separate known-issues file.
+> **`containers.last_scan_at`** (set on scan import; read by inventory search and coverage) is created by `chem_schema_migration_v3.sql` (commit `313e495`). It was previously a runtime-only column absent from the committed SQL — that drift is now reconciled.
 
 ### 4.4.5 Scan/audit tables
 
@@ -265,11 +265,11 @@ container_scans (scan_id BIGSERIAL PK,
                  UNIQUE (cycle_id, container_id))
 ```
 
-> **Runtime-only objects not in committed SQL:** `chem_service.import_scans` inserts into `inventory_cycles` columns `filename, performed_by, report_name, location, total_scanned, matched_count, unmatched_count`, and into `scan_raw`/`container_scans` a `barcode` column. None of these are in the committed `.sql`. Likewise the `transactions` audit table (below) is created out-of-band. The live database has these; a fresh build from the committed files does not.
+> **Reconciled in v3 (commit `313e495`):** the extended `inventory_cycles` columns (`filename, performed_by, report_name, location, total_scanned, matched_count, unmatched_count`), the `scan_raw`/`container_scans` `barcode` columns, and the `transactions` audit table (below) are all created by `chem_schema_migration_v3.sql`. These were previously runtime-only objects absent from the committed SQL; a fresh build from the committed files now matches the live database.
 
-### 4.4.6 `transactions` (audit trail) — runtime-only
+### 4.4.6 `transactions` (audit trail) — added in v3
 
-Not in the committed schema files, but written by `chem_service.log_transaction` and read by `get_transactions`. Inferred shape from the SQL:
+Created by `chem_schema_migration_v3.sql` (commit `313e495`); written by `chem_service.log_transaction` and read by `get_transactions`. Shape (matched to the live `pg_dump`):
 
 ```sql
 transactions (
@@ -279,13 +279,13 @@ transactions (
   barcode         TEXT,
   item_id         INTEGER,
   room_id         INTEGER,
-  details         JSON/JSONB,  -- json.dumps(details dict); queried via details::json->>'key'
+  details         TEXT,        -- json.dumps(details dict); v3 defines this as TEXT (confirmed via live pg_dump)
   performed_by    TEXT,
   created_at      TIMESTAMP    -- set to NOW()
 )
 ```
 
-`details` is serialized with `json.dumps` and queried with `t.details::json->>'reason'` etc., so the column must be castable to `json` (TEXT or JSON/JSONB).
+`details` is serialized with `json.dumps`; the live/v3 column type is **`TEXT`** (confirmed against the live `pg_dump`). Report queries that cast `t.details::json->>'reason'` rely on the stored text being valid JSON, while `get_transactions` does a plain `COALESCE(details,'') ILIKE` keyword search.
 
 ### 4.4.7 Views
 

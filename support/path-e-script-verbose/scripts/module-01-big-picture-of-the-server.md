@@ -1193,9 +1193,10 @@ UNanofabTools/
 ├── run.py                       ← WSGI entry point / dev launcher
 ├── requirements.txt
 ├── setup.sh / quick_setup.sh    ← bootstrap scripts
-├── init_chem_db.py              ← provisions the PostgreSQL chem schema
+├── init_chem_db.py              ← provisions the chem schema (applies v1→v2→v3)
 ├── chem_schema.sql              ← chem schema (v1 base)
 ├── chem_schema_migration_v2.sql ← chem schema (v2 additive migration)
+├── chem_schema_migration_v3.sql ← chem schema (v3 — reconciles live-DB drift; commit 313e495)
 ├── .env.example                 ← environment-variable template
 ├── config/
 │   └── config.py                ← configuration classes
@@ -2827,12 +2828,12 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - action. We covered how these relate last session; here the point is just that the richness of the inventory comes from this set of
 - New tables are auto-created at startup, but changing an existing table needs a 'migration.'
 - A migration is a recorded, repeatable schema change — the safe way to evolve tables.
-- The live inventory database has a few columns added over time that aren't yet in the saved schema files.
+- The inventory schema files were reconciled with the live database on 2026-06-29 (the v3 migration), so a fresh build now matches production.
 - Two things a successor must know. First, the server auto-creates brand-new tables on startup, but it will not alter an existing
 - table — that requires a 'migration,' which is a recorded, repeatable change script. Always use migrations so every copy of the
-- database stays in step. Second, the live chemical-inventory database has drifted slightly ahead of the saved schema files (a few
-- columns and a table were added directly over time). That's captured in the separate issues list with the exact fixes; it matters
-- if anyone rebuilds the inventory database from scratch.
+- database stays in step. Second, the chemical-inventory schema files used to lag behind the live database (a few columns and a table
+- had been added directly over time); that drift was reconciled on 2026-06-29 by the v3 migration, and the provisioning script now
+- applies v1 through v3 so a fresh build matches production. Keep it that way by writing a migration for any future live change.
 - A table is just a labeled grid
 - username | passwordHash | uNID | isAdmin | canAssign
 - alice | $2b$12$Xk... | u012345 | true | true
@@ -2858,7 +2859,7 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - different jobs, and the system uses each where it makes sense.
 - Users, sessions, tasks, latest sensor readings, and the inventory.
 - Sensor history lives in CSV files; the database keeps only the latest reading.
-- Evolve tables with migrations; mind the inventory's schema drift.
+- Evolve tables with migrations; the inventory's schema drift was reconciled (v3, 2026-06-29).
 - Summarize where data lives and how to change it safely. Next session is short — the standalone particle-counter demo page — before
 - we look at the sensor and desktop programs that talk to the server.
 

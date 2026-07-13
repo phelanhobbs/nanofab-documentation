@@ -793,13 +793,13 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Chem-inventory schema drift (chem auth resolved 2026-06-25 — WordPress SSO gate) |
+| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25) + chem schema drift (2026-06-29, commit `313e495`); next open: `GET /sensor-data` always 404s (High) |
 | `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | `filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | `dattools.md` (repo path: known-issues/UNanofabTools/dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
-| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` doesn't build a complete chem database |
+| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` now applies v1→v2→v3 ✅ (2026-06-29, commit `313e495`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
 | `serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
 | `liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | `hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |
@@ -821,7 +821,7 @@ Older items may still use a shorter `Where/Risk/Fix` format. Before closing one 
 A few items recur across tools and may be worth treating as cross-cutting initiatives:
 
 - **Secrets in source.** Still open: hard-coded WiFi passwords (`picofirmware`) and Duo keys imported from a Python module (`hscdisplayerserver`) — both belong in environment variables / a protected store, with the secrets rotated. **Resolved:** the CORES Bearer token (`hscdownloader`) was moved to `.env` (2026-06-22) and **rotated 2026-06-29** (old value now returns 403; an optional git-history scrub remains). Because the same CORES token is shared by `PreciousMetalReader`, that tool's local `auth.py` now holds the revoked value — finishing its env rollout is required to keep it working (see `known-issues/NanofabToolkit/PreciousMetalReader.md`).
-- **The chem-database schema drift.** The committed `.sql` files are behind the live database; `init_chem_db.py` (in `utilities`) doesn't produce a complete database from scratch; the `flaskserver` issues list enumerates the missing columns/tables. Reconciling this is one project, not several.
+- **The chem-database schema drift — ✅ resolved (2026-06-29, commit `313e495`).** `chem_schema_migration_v3.sql` reconciles the committed schema to the live database column-for-column (idempotent; `transactions.details` confirmed `TEXT`, not JSONB), and `init_chem_db.py` now applies `chem_schema.sql` → v2 → v3 so a fresh build matches production. The `.gitignore` was also fixed (`!chem_schema*.sql`) so the schema files are tracked. (This was the standing "one project, not several" item; the per-item detail is in `flaskserver.md` #4 and `utilities.md` #3.)
 - **Personal-account / individual-developer dependencies.** The `filetransfer` scripts log in as a personal CADE account; `fetch_ssh.py` in `utilities` is a personal dev tool. The Nanofab-side fix is a purpose-bound SSH key authenticating as the shared `phelan` server account (no IT involvement). A cleaner long-term fix — a dedicated UNIX service account — has to come from University IT, since the Nanofab team has `sudo` as `phelan` but cannot `useradd`.
 - **The IT / Nanofab operational boundary.** Several findings (root SSH from `iceolate`, per-user UNIX accounts, the off-host backup, `unattended-upgrades`, kernel patching) sit on **University IT's** side of the line. The Nanofab admin's tools are `sudo` as `phelan` plus an IT ticket; nothing under `/root/` and no `useradd` is available. Each known-issues file tags items "Nanofab-actionable" vs "IT ticket" so the punch list is honest about who has to do what.
 - **The legacy server.** `hscdisplayerserver` is documented for reference but should be retired in favor of the Flask app. Which server is live is settled by evidence: the 2026-06-01 survey shows the Flask app (`python run.py`) in production and no legacy process running — patch the Flask app. Re-confirm with each quarterly survey until the legacy code is removed.
@@ -837,7 +837,7 @@ The following source document is included directly in this tier so the presenter
 
 # UNanofabTools Server — Known Issues & Technical Debt
 
-Private working list for Faith. This file is intentionally **separate** from the `documentation/` folder so the successor handoff docs stay clean. It records bugs, gaps, and tech debt found while reading the code, with severity and suggested fixes. Nothing here has been changed in the code — it's a to-do list.
+Private working list for Faith. This file is intentionally **separate** from the `documentation/` folder so the successor handoff docs stay clean. It records bugs, gaps, and tech debt found while reading the code, with severity and suggested fixes. It's a to-do list; closed items are marked inline and/or moved to the ✅ Resolved / Closed section at the bottom.
 
 Severity legend: **High** = breaks functionality or is a real security exposure · **Medium** = correctness/maintainability problem · **Low** = cosmetic/cleanup.
 
@@ -862,17 +862,17 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ---
 
-## Schema drift (committed SQL behind the live database)
+## Schema management (chem reconciliation ✅ + SQLite/Alembic)
 
-### 4. Runtime uses columns/tables not in the committed schema files — High
+### 4. Runtime uses columns/tables not in the committed schema files — ✅ RESOLVED (2026-06-29, commit `313e495`)
 - **Where:** `chem_service.py` vs `chem_schema.sql` + `chem_schema_migration_v2.sql`.
 - **Missing from committed SQL but used at runtime:**
   - `containers.last_scan_at` — set in `import_scans`; read by `search_inventory` and `get_inventory_scan_coverage`.
   - `inventory_cycles` extended columns: `filename`, `performed_by`, `report_name`, `location`, `total_scanned`, `matched_count`, `unmatched_count` — written by `import_scans`; read by `get_scan_reports`.
   - `scan_raw.barcode` and `container_scans.barcode` — written by `import_scans`.
   - The entire `transactions` table (`transaction_id`, `action`, `container_id`, `barcode`, `item_id`, `room_id`, `details` JSON, `performed_by`, `created_at`) — written by `log_transaction`; read by `get_transactions`.
-- **Effect:** a database built only from the committed `.sql` files is missing these; chem add/scan/report/transaction features will error on a fresh deploy. Production works only because columns were added ad-hoc over time.
-- **Fix:** write a `chem_schema_migration_v3.sql` (and fold into `chem_schema.sql`) that creates all of the above, so a fresh database matches production. Suggested DDL to reconcile:
+- **Was:** a database built only from the committed `.sql` files was missing these, so chem add/scan/report/transaction features errored on a fresh deploy. Production worked only because columns were added ad-hoc over time.
+- **Resolution (commit `313e495`):** added `chem_schema_migration_v3.sql` — idempotent (`IF NOT EXISTS`) DDL matched **column-for-column to a live `pg_dump`** — that creates all of the above, so a fresh database matches production. `init_chem_db.py` now applies `chem_schema.sql` → v2 → v3 (validated on an empty Postgres). A `.gitignore` `*.sql` rule had been hiding the new file — fixed with a `!chem_schema*.sql` exception. The DDL that landed is essentially the block below, **except `transactions.details` is `TEXT`, not the `JSONB` shown here** (confirmed against the live dump):
   ```sql
   ALTER TABLE containers      ADD COLUMN IF NOT EXISTS last_scan_at TIMESTAMPTZ;
   ALTER TABLE inventory_cycles ADD COLUMN IF NOT EXISTS filename TEXT,
@@ -892,7 +892,7 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
     created_at TIMESTAMPTZ DEFAULT NOW()
   );
   ```
-  (Verify column types against the live DB before applying.)
+  (Types verified against the live `pg_dump`; `transactions.details` is `TEXT`. Re-running v3 on prod 2026-06-29 reported every object "already exists, skipping", zero errors, clean COMMIT — the committed schema now matches production object-for-object.)
 
 ### 5. SQLite `db.create_all()` and Alembic can diverge — Medium
 - **Where:** `app/__init__.py` calls `db.create_all()` every boot; `migrations/` has only one revision.
@@ -981,14 +981,14 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Suggested priority order
 
-1. #4 schema drift (write migrations so fresh deploys work) — High
-2. #6 gate chem write routes behind login — High
-3. #1 fix `/sensor-data` GET/POST mismatch — High
-4. #2 implement `suggest`/`autofill` — Medium
-5. #8 tighten CORS, #9 strengthen password reset — Medium
-6. #11 escape CSV cells — Medium
-7. #19 add a test suite — Medium
-8. Cleanup batch: #13–#18, #20, #21 — Low
+1. #1 fix `/sensor-data` GET/POST mismatch — High
+2. #2 implement `suggest`/`autofill` — Medium
+3. #8 tighten CORS, #9 strengthen password reset — Medium
+4. #11 escape CSV cells — Medium
+5. #19 add a test suite — Medium
+6. Cleanup batch: #13–#18, #20, #21 — Low
+
+*(Resolved and removed from this list: #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`.)*
 
 ---
 
@@ -1383,7 +1383,7 @@ The following source document is included directly in this tier so the presenter
 
 # Utilities — Known Issues & Technical Debt
 
-Working list for the standalone helper scripts. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for the standalone helper scripts. Separate from the successor docs. Closed items are marked inline.
 
 Severity: **High** = security / broken · **Medium** = robustness/maintainability · **Low** = cleanup.
 
@@ -1398,10 +1398,9 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 - **Where:** input `.pfx` path and output `.pem` paths are literals; `http.server` imports are unused.
 - **Fix:** take paths as arguments / read the PFX password from the environment; remove the dead HTTP-server import.
 
-### 3. `init_chem_db.py` only applies the v1 schema — High
-- **Where:** runs `chem_schema.sql` only.
-- **Risk:** a fresh chem database is missing the v2 migration and the runtime-only objects (`containers.last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). Chem add/scan/report/transaction features will error on a clean install.
-- **Fix:** extend the script to apply `chem_schema_migration_v2.sql` and the reconciliation DDL listed in `known-issues/UNanofabTools/flaskserver.md` (#4).
+### 3. `init_chem_db.py` only applies the v1 schema — ✅ RESOLVED (2026-06-29, commit `313e495`)
+- **Was:** the script ran `chem_schema.sql` (v1) only, so a fresh chem database was missing the v2 migration and the v3 runtime-only objects (`containers.last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). Chem add/scan/report/transaction features would error on a clean install while the success message claimed the DB was ready.
+- **Resolution (commit `313e495`):** rewrote it around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent, so re-running is safe). Validated: the full v1→v2→v3 sequence on an empty Postgres reproduces the production chem tables (cols + types). See `known-issues/UNanofabTools/flaskserver.md` #4 for the matching schema reconciliation. (The naive `;`-split in #4 below is unchanged — still fine for the current statements.)
 
 ### 4. `init_chem_db.py` naive statement splitting — Low
 - **Where:** splits the SQL on `;` and skips `BEGIN`/`COMMIT`.
@@ -1435,8 +1434,9 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 ---
 
 ## Suggested priority order
-1. #3 make `init_chem_db.py` produce a complete database — High
-2. #1 protect the TLS private key — Medium (security)
-3. #7 resolve the `NMonStore.py` stub — Medium
-4. #5 tighten / scope `fetch_ssh.py` — Medium
-5. #2, #4, #6, #8, #9 cleanup — Low
+1. #1 protect the TLS private key — Medium (security)
+2. #7 resolve the `NMonStore.py` stub — Medium
+3. #5 tighten / scope `fetch_ssh.py` — Medium
+4. #2, #4, #6, #8, #9 cleanup — Low
+
+*(#3 `init_chem_db.py` completeness — ✅ resolved 2026-06-29, commit `313e495`.)*

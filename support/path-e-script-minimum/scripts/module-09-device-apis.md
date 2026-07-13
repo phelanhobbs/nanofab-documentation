@@ -330,7 +330,7 @@ Room labels in the GUI (`"Bay A\n2025N"`, etc.) must correspond to the `room_nam
 - Driver: `psycopg2-binary`; access via SQLAlchemy Core engine (`chem_service.get_chem_engine`).
 - Pooling: `pool_pre_ping=True, pool_size=5, max_overflow=10` (≤15 concurrent connections).
 - Lazy: the engine is created on first `/chem/*` use, so the app boots fine without Postgres if chem is unused.
-- Provisioning: `init_chem_db.py` + `chem_schema.sql` + `chem_schema_migration_v2.sql` (plus the runtime-only objects noted in `04` §4.4).
+- Provisioning: `init_chem_db.py` applies `chem_schema.sql` + `chem_schema_migration_v2.sql` + `chem_schema_migration_v3.sql` (v3 reconciles the formerly runtime-only objects noted in `04` §4.4; commit `313e495`).
 
 ## 8.10 End-to-end example (particle data round trip)
 

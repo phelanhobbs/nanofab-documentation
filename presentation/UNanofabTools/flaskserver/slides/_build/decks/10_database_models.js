@@ -111,14 +111,14 @@ module.exports = {
       bullets: [
         "New tables are auto-created at startup, but changing an existing table needs a 'migration.'",
         "A migration is a recorded, repeatable schema change — the safe way to evolve tables.",
-        "The live inventory database has a few columns added over time that aren't yet in the saved schema files.",
+        "The inventory schema files were reconciled with the live database on 2026-06-29 (the v3 migration), so a fresh build now matches production.",
       ],
       notes:
         "Two things a successor must know. First, the server auto-creates brand-new tables on startup, but it will not alter an existing " +
         "table — that requires a 'migration,' which is a recorded, repeatable change script. Always use migrations so every copy of the " +
-        "database stays in step. Second, the live chemical-inventory database has drifted slightly ahead of the saved schema files (a few " +
-        "columns and a table were added directly over time). That's captured in the separate issues list with the exact fixes; it matters " +
-        "if anyone rebuilds the inventory database from scratch.",
+        "database stays in step. Second, the chemical-inventory schema files used to lag behind the live database (a few columns and a table " +
+        "had been added directly over time); that drift was reconciled on 2026-06-29 by the v3 migration, and the provisioning script now " +
+        "applies v1 through v3 so a fresh build matches production. Keep it that way by writing a migration for any future live change.",
     });
 
     d.code({
@@ -172,7 +172,7 @@ module.exports = {
         "Four small SQLite databases + one PostgreSQL database.",
         "Users, sessions, tasks, latest sensor readings, and the inventory.",
         "Sensor history lives in CSV files; the database keeps only the latest reading.",
-        "Evolve tables with migrations; mind the inventory's schema drift.",
+        "Evolve tables with migrations; the inventory's schema drift was reconciled (v3, 2026-06-29).",
       ],
       notes:
         "Summarize where data lives and how to change it safely. Next session is short — the standalone particle-counter demo page — before " +

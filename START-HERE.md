@@ -120,10 +120,10 @@ The goal: the maintainer leaves with a clear punch list, knows which items they 
 
 | # | Show | Why |
 |---|------|-----|
-| 1 | Walk [`known-issues/UNanofabTools/README.md`](known-issues/UNanofabTools/README.md) | The master index of every punch list, with the cross-cutting themes (secrets in source, chem schema drift, personal-account dependencies, the IT/Nanofab boundary). |
+| 1 | Walk [`known-issues/UNanofabTools/README.md`](known-issues/UNanofabTools/README.md) | The master index of every punch list, with the cross-cutting themes (secrets in source, chem schema reconciliation, personal-account dependencies, the IT/Nanofab boundary). |
 | 2 | Read together: [`known-issues/UNanofabTools/liveserver.md`](known-issues/UNanofabTools/liveserver.md) | The 22 findings, Nanofab-actionable vs IT-ticket split, priority order. |
 | 3 | Read together: [`known-issues/UNanofabTools/serveraccess.md`](known-issues/UNanofabTools/serveraccess.md) | The access pattern's tech debt. |
-| 4 | Read together: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md) | The Flask app's tech debt. The biggest item now is chem schema drift (chem authentication was resolved 2026-06-25 via a WordPress SSO gate). |
+| 4 | Read together: [`known-issues/UNanofabTools/flaskserver.md`](known-issues/UNanofabTools/flaskserver.md) | The Flask app's tech debt. Its two former headline items are both resolved now — chem authentication (2026-06-25, WordPress SSO gate) and chem schema drift (2026-06-29, commit `313e495`, `chem_schema_migration_v3.sql`). The top open item is now `GET /sensor-data` returning 404. |
 | 5 | Spot-check the other known-issues files | `filetransfer.md`, `hscdownloader.md`, `picofirmware.md`, `dattools.md`, `utilities.md`, `particlepctools.md`, `hscdisplayerserver.md`. Five minutes each, just so they know what's in there. |
 | 6 | Walk [`known-issues/NanofabToolkit/README.md`](known-issues/NanofabToolkit/README.md) | The sibling repo punch list. Do this before ending the handoff because it includes high-severity client/firmware items such as CORES-token handling and WiFi credential exposure. |
 | 7 | [`HSC-Displayer-Server-Legacy.pptx`](presentation/UNanofabTools/hscdisplayerserver/slides/HSC-Displayer-Server-Legacy.pptx) (briefly) | The legacy monolithic server. **Deprecated.** Show it so they recognize it if they ever stumble across it; the directive is "leave it alone, ship to the Flask app." |
@@ -712,8 +712,8 @@ Check:
 - application user
 - schema files in `UNanofabTools`
 - live schema vs committed schema
-- whether `chem_schema.sql` and `chem_schema_migration_v2.sql` are current
-- whether `init_chem_db.py` is complete or only partial
+- whether `chem_schema.sql` + `chem_schema_migration_v2.sql` + `chem_schema_migration_v3.sql` are current (v3 reconciled the drift on 2026-06-29, commit `313e495`)
+- whether `init_chem_db.py` applies all three migrations (it does, since `313e495`)
 - whether app write routes are authenticated
 
 Do not paste database passwords into docs. Record key names and access path only.
@@ -928,7 +928,7 @@ This section should include urgent work only:
 This section should include material improvements:
 
 - move Flask app and HSCDownloader under systemd or another supervisor
-- reconcile chem schema and migrations
+- ~~reconcile chem schema and migrations~~ — done 2026-06-29 (commit `313e495`: `chem_schema_migration_v3.sql` + `init_chem_db.py` applies v1→v2→v3)
 - ~~authenticate or otherwise protect chem write routes~~ — done 2026-06-25 (WordPress SSO `before_request` gate); verify the gate and `CHEM_SSO_SECRET` handling
 - remove production-targeting defaults from test tools
 - replace personal-account file-transfer dependency
@@ -1274,9 +1274,9 @@ Choose one script tier:
 | Tier | Start file | Use when | Words |
 |---|---|---|---:|
 | Practical modular pack | [`support/path-e-script/OPERATOR-CHECKLIST.md`](support/path-e-script/OPERATOR-CHECKLIST.md) | You want the human-sized Path E script with one file per module. | 18,851 |
-| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 78,249 |
-| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 218,445 |
-| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 298,813 |
+| Minimum generated full Path E | [`support/path-e-script-minimum/scripts/00-operator-and-session-plan.md`](support/path-e-script-minimum/scripts/00-operator-and-session-plan.md) | You need the smallest generated full tier that still clears the 50k-word floor. | 78,468 |
+| Medium generated full Path E | [`support/path-e-script-medium/scripts/00-operator-and-session-plan.md`](support/path-e-script-medium/scripts/00-operator-and-session-plan.md) | You want a deeper generated script while staying below the 250k ceiling. | 218,793 |
+| Verbose generated full Path E | [`support/path-e-script-verbose/scripts/00-operator-and-session-plan.md`](support/path-e-script-verbose/scripts/00-operator-and-session-plan.md) | There is no time limit and maximal coverage is preferred. | 299,161 |
 
 > **How the generated tiers add length:** each generated tier embeds the same practical module script and then appends structured *drill passes* per module (2 in minimum, 5 in medium, 18 in verbose — orientation, evidence, source-code, live-state, failure-mode, and so on). The passes reuse a fixed rehearsal template per module, so the longer tiers add repetition-based drilling rather than new narrative content. The distinct explanatory material lives in the practical modular pack. Word counts above match each tier's `WORDCOUNT.md` (`wc -w` over `scripts/*.md`).
 

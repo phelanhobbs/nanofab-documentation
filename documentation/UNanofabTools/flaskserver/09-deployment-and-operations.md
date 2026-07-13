@@ -79,12 +79,11 @@ sudo -u postgres createdb cheminventory
 sudo -u postgres psql -c "CREATE USER untools WITH PASSWORD '<strong>';"
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE cheminventory TO untools;"
 
-# provision schema
+# provision schema — init_chem_db.py applies v1 -> v2 -> v3 in order (commit 313e495)
 python init_chem_db.py
-psql "postgresql://untools:<strong>@localhost/cheminventory" -f chem_schema_migration_v2.sql
 ```
 
-> The committed SQL does not create every object the runtime uses (`containers.last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). Until proper migrations exist, apply the additional DDL recorded in the separate known-issues file to a fresh database, or the chem write/scan/report features will error. An existing production database already has these.
+> As of `chem_schema_migration_v3.sql` (commit `313e495`, 2026-06-29) the committed SQL creates every object the runtime uses (`containers.last_scan_at`, the extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, and the `transactions` table). `init_chem_db.py` applies v1 → v2 → v3, so a fresh database matches production; the migrations are idempotent, so re-running v3 against an existing production DB is a safe no-op (verified on prod 2026-06-29).
 
 ## 9.5 Running under gunicorn
 

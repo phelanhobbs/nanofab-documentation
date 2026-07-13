@@ -1,6 +1,6 @@
 # UNanofabTools Server — Known Issues & Technical Debt
 
-Private working list for Faith. This file is intentionally **separate** from the `documentation/` folder so the successor handoff docs stay clean. It records bugs, gaps, and tech debt found while reading the code, with severity and suggested fixes. Nothing here has been changed in the code — it's a to-do list.
+Private working list for Faith. This file is intentionally **separate** from the `documentation/` folder so the successor handoff docs stay clean. It records bugs, gaps, and tech debt found while reading the code, with severity and suggested fixes. It's a to-do list; closed items are marked inline and/or moved to the ✅ Resolved / Closed section at the bottom.
 
 Severity legend: **High** = breaks functionality or is a real security exposure · **Medium** = correctness/maintainability problem · **Low** = cosmetic/cleanup.
 
@@ -25,17 +25,17 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ---
 
-## Schema drift (committed SQL behind the live database)
+## Schema management (chem reconciliation ✅ + SQLite/Alembic)
 
-### 4. Runtime uses columns/tables not in the committed schema files — High
+### 4. Runtime uses columns/tables not in the committed schema files — ✅ RESOLVED (2026-06-29, commit `313e495`)
 - **Where:** `chem_service.py` vs `chem_schema.sql` + `chem_schema_migration_v2.sql`.
 - **Missing from committed SQL but used at runtime:**
   - `containers.last_scan_at` — set in `import_scans`; read by `search_inventory` and `get_inventory_scan_coverage`.
   - `inventory_cycles` extended columns: `filename`, `performed_by`, `report_name`, `location`, `total_scanned`, `matched_count`, `unmatched_count` — written by `import_scans`; read by `get_scan_reports`.
   - `scan_raw.barcode` and `container_scans.barcode` — written by `import_scans`.
   - The entire `transactions` table (`transaction_id`, `action`, `container_id`, `barcode`, `item_id`, `room_id`, `details` JSON, `performed_by`, `created_at`) — written by `log_transaction`; read by `get_transactions`.
-- **Effect:** a database built only from the committed `.sql` files is missing these; chem add/scan/report/transaction features will error on a fresh deploy. Production works only because columns were added ad-hoc over time.
-- **Fix:** write a `chem_schema_migration_v3.sql` (and fold into `chem_schema.sql`) that creates all of the above, so a fresh database matches production. Suggested DDL to reconcile:
+- **Was:** a database built only from the committed `.sql` files was missing these, so chem add/scan/report/transaction features errored on a fresh deploy. Production worked only because columns were added ad-hoc over time.
+- **Resolution (commit `313e495`):** added `chem_schema_migration_v3.sql` — idempotent (`IF NOT EXISTS`) DDL matched **column-for-column to a live `pg_dump`** — that creates all of the above, so a fresh database matches production. `init_chem_db.py` now applies `chem_schema.sql` → v2 → v3 (validated on an empty Postgres). A `.gitignore` `*.sql` rule had been hiding the new file — fixed with a `!chem_schema*.sql` exception. The DDL that landed is essentially the block below, **except `transactions.details` is `TEXT`, not the `JSONB` shown here** (confirmed against the live dump):
   ```sql
   ALTER TABLE containers      ADD COLUMN IF NOT EXISTS last_scan_at TIMESTAMPTZ;
   ALTER TABLE inventory_cycles ADD COLUMN IF NOT EXISTS filename TEXT,
@@ -55,7 +55,7 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
     created_at TIMESTAMPTZ DEFAULT NOW()
   );
   ```
-  (Verify column types against the live DB before applying.)
+  (Types verified against the live `pg_dump`; `transactions.details` is `TEXT`. Re-running v3 on prod 2026-06-29 reported every object "already exists, skipping", zero errors, clean COMMIT — the committed schema now matches production object-for-object.)
 
 ### 5. SQLite `db.create_all()` and Alembic can diverge — Medium
 - **Where:** `app/__init__.py` calls `db.create_all()` every boot; `migrations/` has only one revision.
@@ -144,14 +144,14 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Suggested priority order
 
-1. #4 schema drift (write migrations so fresh deploys work) — High
-2. #6 gate chem write routes behind login — High
-3. #1 fix `/sensor-data` GET/POST mismatch — High
-4. #2 implement `suggest`/`autofill` — Medium
-5. #8 tighten CORS, #9 strengthen password reset — Medium
-6. #11 escape CSV cells — Medium
-7. #19 add a test suite — Medium
-8. Cleanup batch: #13–#18, #20, #21 — Low
+1. #1 fix `/sensor-data` GET/POST mismatch — High
+2. #2 implement `suggest`/`autofill` — Medium
+3. #8 tighten CORS, #9 strengthen password reset — Medium
+4. #11 escape CSV cells — Medium
+5. #19 add a test suite — Medium
+6. Cleanup batch: #13–#18, #20, #21 — Low
+
+*(Resolved and removed from this list: #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`.)*
 
 ---
 

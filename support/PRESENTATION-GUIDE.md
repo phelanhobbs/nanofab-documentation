@@ -774,6 +774,7 @@ Show:
 ../UNanofabTools/app/services/chem_service.py
 ../UNanofabTools/chem_schema.sql
 ../UNanofabTools/chem_schema_migration_v2.sql
+../UNanofabTools/chem_schema_migration_v3.sql
 documentation/UNanofabTools/flaskserver/04-database-schema.md
 ```
 
@@ -796,8 +797,8 @@ Do not show database passwords.
 
 ### Explain These Risks
 
-- Committed schema can drift from live schema.
-- `init_chem_db.py` is not a complete source of truth.
+- Committed schema drift was reconciled by `chem_schema_migration_v3.sql` (2026-06-29, commit `313e495`); watch for *new* drift if columns get added to the live DB without a migration.
+- `init_chem_db.py` now applies v1→v2→v3, so a fresh build matches production.
 - Chem write routes need careful auth review.
 - Database backups matter separately from source code.
 - Room/cabinet/location schema assumptions affect inventory operations.
@@ -815,7 +816,7 @@ Do not show database passwords.
 
 ### Do Not Move On Until
 
-The maintainer can explain the chem inventory's data model and why schema drift is a priority.
+The maintainer can explain the chem inventory's data model and how the v3 migration reconciled the schema drift (and how to avoid reintroducing it).
 
 ## Module 11 - Request Lifecycle And Endpoint Reference
 
@@ -1126,7 +1127,7 @@ PreciousMetalReader:
 Utilities:
 
 - Helper scripts are uneven.
-- `init_chem_db.py` is not a complete chem database solution.
+- `init_chem_db.py` now applies v1→v2→v3, so it builds a complete chem database (commit `313e495`, 2026-06-29).
 - Some utilities are developer helpers, not production tools.
 
 ### Ask The Maintainer
@@ -1201,7 +1202,7 @@ Fix first:
 2. Unauthenticated or weakly protected write routes.
 3. Data-loss or backup uncertainty.
 4. Production reliability issues like tmux-only supervision.
-5. Chem schema drift and incomplete migrations.
+5. Chem schema drift and incomplete migrations *(the chem instance was reconciled 2026-06-29 via `chem_schema_migration_v3.sql`; the principle still applies to any future drift)*.
 6. Personal-account dependencies.
 7. Doc/code drift that could cause bad operations.
 8. Deprecated-code cleanup.
