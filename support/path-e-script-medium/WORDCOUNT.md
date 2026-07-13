@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-medium/`
 - Script files directory: `scripts/`
-- Total script word count: **219,845**
+- Total script word count: **220,008**
 - Target minimum: **100,000**
 - Target maximum: **250,000**
 - Source docs included: **82**
@@ -25,14 +25,14 @@
 | `scripts/module-08-machines-and-logs.md` | 4,110 |
 | `scripts/module-09-device-apis.md` | 8,924 |
 | `scripts/module-10-chemical-inventory.md` | 10,536 |
-| `scripts/module-11-request-lifecycle-and-endpoints.md` | 9,225 |
+| `scripts/module-11-request-lifecycle-and-endpoints.md` | 9,274 |
 | `scripts/module-12-security-model.md` | 2,210 |
 | `scripts/module-13-hscdownloader.md` | 7,596 |
 | `scripts/module-14-file-transfers.md` | 7,353 |
 | `scripts/module-15-pico-and-particle.md` | 23,749 |
 | `scripts/module-16-other-tools.md` | 30,261 |
 | `scripts/module-17-legacy-server.md` | 7,818 |
-| `scripts/module-18-known-issues-triage.md` | 9,976 |
+| `scripts/module-18-known-issues-triage.md` | 10,090 |
 | `scripts/module-19-path-d-audit-practice.md` | 4,356 |
 | `scripts/module-20-operational-scenarios.md` | 4,423 |
 | `scripts/module-21-final-no-contact-check.md` | 2,779 |

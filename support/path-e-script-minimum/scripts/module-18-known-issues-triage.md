@@ -258,10 +258,9 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 - **Resolution (Option b — preserves the intended "combined" semantics):** `sensor_data_post` now also appends the combined per-sensor CSV to `LogData/sensors/` via `_sensor_csv_path`, writing columns in `SENSOR_CSV_HEADER` order (commit `5cc5174`). A follow-up (commit `8712b49`) caps `GET /sensor-data` with an optional `?limit` (default 500 most-recent rows) so large histories don't return everything at once.
 - **Validation:** POST a combined reading, then `GET /sensor-data?room_name=…&sensor_number=…` → 200 with the row(s).
 
-### 2. `suggest()` and `autofill()` are stubs — Medium
-- **Where:** `app/services/chem_service.py` — `suggest(self, field, q, limit=10)` returns `[]`; `autofill(self, catalog="", name="")` returns `{}`.
-- **Effect:** `/chem/api/suggest` always returns `{"results": []}` and `/chem/api/autofill` always returns `{"data": {}}`. The Add/Edit type-ahead and catalog auto-fill UI features are dead.
-- **Fix:** implement `suggest` as a `SELECT DISTINCT <field> ... WHERE <field> ILIKE :q LIMIT :n` (whitelist `field` to valid column names to avoid injection via identifier), and `autofill` as a lookup by catalog number / name returning the item's vendor/state/size/etc.
+### 2. `suggest()` and `autofill()` are stubs — ✅ RESOLVED (2026-07-13, commit `c3da4a2`)
+- **Was:** `app/services/chem_service.py` — `suggest` returned `[]` and `autofill` returned `{}`, so the chem Add/Edit forms' name/vendor/location **type-ahead** and **catalog auto-fill** silently did nothing.
+- **Resolution:** implemented `suggest(field, q, limit)` — `field` **whitelisted** to a fixed `(table, column)` map (identifier can't be injected), value matched case-insensitively (`ILIKE %q%`), `DISTINCT` + capped limit; and `autofill(catalog|name)` — looks up the item (by catalog #, else name), joins its vendor and its newest container, returns `{name, vendor, state, size, unit, system, catalog}` (empty values dropped). The front-end already called these endpoints, so no template change. **Validated (2026-07-13)** against an ephemeral Postgres (16 checks): substring suggestions across the whitelisted fields, a non-whitelisted `field` returns `[]` with no query built (injection-safe), autofill by catalog and by name, newest-container-wins, and no-match / no-input → `{}`.
 
 ### 3. `ParalyneReader` calls a non-existent endpoint — Low
 - **Where:** `NanofabToolkit/ParalyneReader/src/ParalyneReader.py` — `return_selected()` GETs `/api/paralyne/analog/return/<filename>`, which the server does not implement.
@@ -388,10 +387,9 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Suggested priority order
 
-1. #2 implement `suggest`/`autofill` — Medium
-2. #8 tighten CORS, #9 strengthen password reset — Medium
-3. #19 add a test suite — Medium
-4. Cleanup batch: #13–#18, #20, #21 — Low
+1. #8 tighten CORS, #9 strengthen password reset — Medium
+2. #19 add a test suite — Medium
+3. Cleanup batch: #13–#18, #20, #21 — Low
 
 *(Resolved and removed from this list: #1 `/sensor-data` 404 — ✅ 2026-07-01 / 07-07, commits `5cc5174` + `8712b49`; #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`; #11 CSV-cell XSS — ✅ 2026-07-08, commit `f177140`. No High-severity items remain open.)*
 
@@ -440,6 +438,9 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 ### R9. Parylene log page empty + graph blank — CLOSED (2026-07-08, commits `66b83f8` + `f83caed`)
 - **Empty listing:** the route read `LogData/Paralyne/uploads`, but the data lives in `Paralyne/analog/` → datatype corrected to `analog`. Also hardened `sort_files_by_time` so a single unparseable filename no longer throws and returns `[]` (which had blanked the whole directory) — the bad file is kept and sorted last.
 - **Blank graph:** `graph_file` chose the plot column by splitting the raw URL, which the `Desktop/Logs/` prefix shifted by one → no column matched → empty datasets → blank chart. It now derives machine/type from the path **relative to** `log_dir`. And the Parylene column was hardcoded `'Vacuum pressure'` while the real CSV header is `timestamp,pressure,vapor,temp` → now plots `pressure`/`vapor`/`temp` (validated against the real format). Listing, download, and chart all confirmed working live.
+
+### R10. `suggest()` / `autofill()` were dead stubs (no chem type-ahead) — was Medium — CLOSED (2026-07-13, commit `c3da4a2`)
+- See #2 above (marked resolved in place). `suggest` is now a whitelisted-field `ILIKE` DISTINCT query (injection-safe) and `autofill` looks up an item by catalog #/name and returns its vendor/state/size/etc.; validated against an ephemeral Postgres (16 checks). No template change — the front-end already called the endpoints.
 
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md

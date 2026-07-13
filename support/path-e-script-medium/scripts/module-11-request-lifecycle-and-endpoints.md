@@ -837,8 +837,8 @@ Sets `self.engine = get_chem_engine()`.
 
 ### Stubs (not implemented)
 
-- **`suggest(self, field, q, limit=10) -> list`** — returns `[]` (stub). The `/chem/api/suggest` endpoint therefore always returns an empty list.
-- **`autofill(self, catalog="", name="") -> dict`** — returns `{}` (stub). The `/chem/api/autofill` endpoint therefore always returns an empty object.
+- **`suggest(self, field, q, limit=10) -> list`** — implemented 2026-07-13 (commit `c3da4a2`): `DISTINCT <col> ILIKE %q%` with `field` **whitelisted** to a fixed `(table, column)` map (identifier can't be injected), capped by `limit`. Returns `[]` for a non-whitelisted field without building a query. (Was a `[]` stub.)
+- **`autofill(self, catalog="", name="") -> dict`** — implemented 2026-07-13 (commit `c3da4a2`): looks up the item by catalog # (else name), joins its vendor and newest container, returns `{name, vendor, state, size, unit, system, catalog}` with empty values dropped. (Was a `{}` stub.)
 
 > Also note: `get_reports(self)` exists in the module but is **not** used by the live `/chem/report` route, which calls the individual `report_*` methods instead.
 

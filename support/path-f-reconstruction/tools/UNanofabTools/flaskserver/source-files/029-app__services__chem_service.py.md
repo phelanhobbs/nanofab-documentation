@@ -4,6 +4,8 @@
 
 > **Update (2026-06-30, commit `11fd3e4`):** `update_container()` was corrected so every edited field persists — it now reads the form's real keys (`expiry_date`, `nmr_expiry`, `storage_sublocation`) and keeps-or-updates the item's `name`, `description`, `catalog_number`, `physical_state`, and resolves a submitted `vendor_name` to `items.vendor_id` via `_upsert(conn, "vendors", …)`. Previously several of these were silently dropped. The embedded excerpt predates this fix.
 
+> **Update (2026-07-13, commit `c3da4a2`):** `suggest()` and `autofill()` (formerly `[]`/`{}` stubs) are now implemented — `suggest` is a whitelisted-field `DISTINCT ILIKE` query (identifier can't be injected), `autofill` looks up an item by catalog #/name and returns its vendor/state/size/etc. Preserve the field-whitelist in any rewrite. The embedded excerpt predates this.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

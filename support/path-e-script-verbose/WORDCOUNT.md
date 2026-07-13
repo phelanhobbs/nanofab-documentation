@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-verbose/`
 - Script files directory: `scripts/`
-- Total script word count: **300,213**
+- Total script word count: **300,376**
 - Target minimum: **250,000**
 - Target maximum: none
 - Source docs included: **82**
@@ -25,14 +25,14 @@
 | `scripts/module-08-machines-and-logs.md` | 7,726 |
 | `scripts/module-09-device-apis.md` | 12,501 |
 | `scripts/module-10-chemical-inventory.md` | 14,165 |
-| `scripts/module-11-request-lifecycle-and-endpoints.md` | 12,828 |
+| `scripts/module-11-request-lifecycle-and-endpoints.md` | 12,877 |
 | `scripts/module-12-security-model.md` | 5,839 |
 | `scripts/module-13-hscdownloader.md` | 11,160 |
 | `scripts/module-14-file-transfers.md` | 10,930 |
 | `scripts/module-15-pico-and-particle.md` | 27,365 |
 | `scripts/module-16-other-tools.md` | 33,994 |
 | `scripts/module-17-legacy-server.md` | 11,369 |
-| `scripts/module-18-known-issues-triage.md` | 13,566 |
+| `scripts/module-18-known-issues-triage.md` | 13,680 |
 | `scripts/module-19-path-d-audit-practice.md` | 8,011 |
 | `scripts/module-20-operational-scenarios.md` | 8,078 |
 | `scripts/module-21-final-no-contact-check.md` | 6,369 |
