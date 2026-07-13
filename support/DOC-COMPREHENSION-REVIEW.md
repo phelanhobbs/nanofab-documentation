@@ -54,7 +54,7 @@
 
 - **TLS cert expires 2026-06-23** (`known-issues/.../liveserver.md` #10) — ~3 weeks out; sits in a Low/info item with no escalation path if `certbot.timer` fails. Spot-check renewal on the box now.
 - **Chem write routes are unauthenticated** (`07` §7.11) but the route table `05` §5.7 just labels them "Public," reading like a design choice. Surface the flag where routes are consumed.
-- **`GET /sensor-data` always returns 404** (documented in layman `08-IoT-API-Endpoints.md`) — real latent bug; not surfaced in the chapter's TOC entry.
+- **`GET /sensor-data` always returns 404** (documented in layman `08-IoT-API-Endpoints.md`) — real latent bug; not surfaced in the chapter's TOC entry. **✅ RESOLVED 2026-07-01 (commit `5cc5174`):** `POST /sensor-data` now writes the combined CSV, so the GET returns data; the layman doc and known-issues reflect this.
 
 ---
 

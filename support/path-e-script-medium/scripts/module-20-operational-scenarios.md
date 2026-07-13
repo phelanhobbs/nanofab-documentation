@@ -569,7 +569,7 @@ LogData/                      machine logs + sensor histories
   denton18/pumpdata/          Denton 18 pump CSVs + current_run.txt sentinel
   particle_sensors/           <room>_<sensor>_historical.csv (particle time series)
   env_sensors/                <room>_<sensor>_historical.csv (temp/humidity time series)
-  sensors/                    <room>_<sensor>_combined.csv (read by GET /sensor-data; see note)
+  sensors/                    <room>_<sensor>_combined.csv (written by POST /sensor-data, read by GET /sensor-data)
 
 logs/                         untools.log (rotating, production only)
 ```
@@ -622,7 +622,7 @@ Consider adding a lightweight `/healthz` route that pings each datastore.
 | Logins fail in prod | `DUO_*` unset/wrong or Duo unreachable | verify Duo creds/host; check logs for "Duo authentication error" |
 | Uploads rejected (413) | nginx `client_max_body_size` < payload | raise it to ≥16m |
 | Downloads 403 | path outside `LOG_DATA_DIR` (traversal guard) | confirm the file is under `LogData/` |
-| `GET /sensor-data` always 404 | POST writes elsewhere than the GET reads | use `/particle-data` + `/env-data` history; see known-issues |
+| `GET /sensor-data` empty/404 | ~~POST wrote elsewhere than the GET reads~~ — fixed 2026-07-01 (`5cc5174`); POST now writes `sensors/` | if still empty, confirm the sensor has POSTed since the fix; `/particle-data` + `/env-data` also serve history |
 | Cookies dropped | `SESSION_COOKIE_SECURE=True` over HTTP | ensure TLS end-to-end in prod |
 
 Continue to 10-development-guide.md (repo path: documentation/UNanofabTools/flaskserver/10-development-guide.md).

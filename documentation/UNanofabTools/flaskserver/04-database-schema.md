@@ -328,7 +328,7 @@ Several features persist to CSV under `LOG_DATA_DIR` (`LogData/`). These are doc
 |------|-----------|---------|
 | `LogData/particle_sensors/<room>_<sensor>_historical.csv` | `api.log_historical_particle_data` | Particle time series (append-only) |
 | `LogData/env_sensors/<room>_<sensor>_historical.csv` | `api` env/sensor handlers | Temp/humidity time series |
-| `LogData/sensors/<room>_<sensor>_combined.csv` | (read by GET /sensor-data; **not currently written** — see known-issues) | Combined series |
+| `LogData/sensors/<room>_<sensor>_combined.csv` | (written by POST /sensor-data since 2026-07-01, read by GET /sensor-data) | Combined series |
 | `LogData/Paralyne/temp/<session>/batch_NNNN.csv` | `api.handle_csv_batch` | In-flight Parylene batches |
 | `LogData/Paralyne/analog/<ts>_SDSLOG_combined_<session>.csv` | `api.combine_csv_batches_final` | Finalized Parylene runs |
 | `LogData/denton18/pumpdata/<ts>_DENTON18PUMPLOG.csv` | `api.denton18_pump` | Denton 18 vacuum log per run |

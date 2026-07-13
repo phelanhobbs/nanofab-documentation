@@ -312,7 +312,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`); next open: `GET /sensor-data` always 404s (High) |
+| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`), `GET /sensor-data` 404 (2026-07-01, `5cc5174`); **no High items open** — next: `suggest`/`autofill` stubs + CORS (Medium) |
 | `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
@@ -364,10 +364,10 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Functional bugs
 
-### 1. `GET /sensor-data` reads a directory that `POST /sensor-data` never writes — High
-- **Where:** `app/blueprints/api.py` — `sensor_data_get` reads `LogData/sensors/<room>_<sensor>_combined.csv` via `_sensor_csv_path`, but `sensor_data_post` only writes to `LogData/particle_sensors/` (via `log_historical_particle_data`) and `LogData/env_sensors/`. Nothing writes to `LogData/sensors/`.
-- **Effect:** `GET /sensor-data` returns 404 for every sensor, even ones actively posting via `/sensor-data`.
-- **Fix options:** (a) point `_sensor_csv_path` at `particle_sensors/`; or (b) have `sensor_data_post` also append a combined CSV to `sensors/`. Option (b) preserves the intended "combined" semantics.
+### 1. `GET /sensor-data` reads a directory that `POST /sensor-data` never writes — ✅ RESOLVED (2026-07-01, commit `5cc5174`; GET capped 2026-07-07, commit `8712b49`)
+- **Was:** `sensor_data_get` read `LogData/sensors/<room>_<sensor>_combined.csv` via `_sensor_csv_path`, but `sensor_data_post` only wrote to `LogData/particle_sensors/` (via `log_historical_particle_data`) and `LogData/env_sensors/` — nothing wrote `LogData/sensors/`, so `GET /sensor-data` returned 404 for every sensor, even ones actively posting.
+- **Resolution (Option b — preserves the intended "combined" semantics):** `sensor_data_post` now also appends the combined per-sensor CSV to `LogData/sensors/` via `_sensor_csv_path`, writing columns in `SENSOR_CSV_HEADER` order (commit `5cc5174`). A follow-up (commit `8712b49`) caps `GET /sensor-data` with an optional `?limit` (default 500 most-recent rows) so large histories don't return everything at once.
+- **Validation:** POST a combined reading, then `GET /sensor-data?room_name=…&sensor_number=…` → 200 with the row(s).
 
 ### 2. `suggest()` and `autofill()` are stubs — Medium
 - **Where:** `app/services/chem_service.py` — `suggest(self, field, q, limit=10)` returns `[]`; `autofill(self, catalog="", name="")` returns `{}`.
@@ -500,14 +500,13 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 ## Suggested priority order
 
-1. #1 fix `/sensor-data` GET/POST mismatch — High
-2. #2 implement `suggest`/`autofill` — Medium
-3. #8 tighten CORS, #9 strengthen password reset — Medium
-4. #11 escape CSV cells — Medium
-5. #19 add a test suite — Medium
-6. Cleanup batch: #13–#18, #20, #21 — Low
+1. #2 implement `suggest`/`autofill` — Medium
+2. #8 tighten CORS, #9 strengthen password reset — Medium
+3. #11 escape CSV cells — Medium
+4. #19 add a test suite — Medium
+5. Cleanup batch: #13–#18, #20, #21 — Low
 
-*(Resolved and removed from this list: #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`.)*
+*(Resolved and removed from this list: #1 `/sensor-data` 404 — ✅ 2026-07-01 / 07-07, commits `5cc5174` + `8712b49`; #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`. No High-severity items remain open.)*
 
 ---
 

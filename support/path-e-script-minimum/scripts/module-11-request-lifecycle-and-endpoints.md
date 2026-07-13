@@ -397,15 +397,14 @@ All routes are `Device` (no auth). Intended for private-network devices and desk
 
 ### `POST /sensor-data` — Device
 - **JSON body** (`get_json(force=True)`): `room_name`, `sensor_number` (required); optional `timestamp`, `temperature_c`, `humidity_pct`, `raw_measurements`, `converted_values`.
-- **Behavior**: if `raw` present → `log_historical_particle_data` (→ `particle_sensors/`) and upsert `particle_sensor_data` (incl. temp/humidity). If temp+humidity present → append `LogData/env_sensors/<id>_historical.csv`.
+- **Behavior**: if `raw` present → `log_historical_particle_data` (→ `particle_sensors/`) and upsert `particle_sensor_data` (incl. temp/humidity). If temp+humidity present → append `LogData/env_sensors/<id>_historical.csv`. Also appends the combined per-sensor CSV to `LogData/sensors/` (via `_sensor_csv_path`, columns in `SENSOR_CSV_HEADER` order) so `GET /sensor-data` can serve it (commit `5cc5174`, 2026-07-01).
 - **Responses**: `200 {"status":"success"}`; `400` no body / missing room/sensor; `500` (rolls back).
-- **Note**: does **not** write to `LogData/sensors/` — see GET below.
 
 ### `GET /sensor-data` — Device
-- **Query**: `room_name`, `sensor_number` (both required).
+- **Query**: `room_name`, `sensor_number` (both required); optional `limit` (default 500) → most-recent N rows (commit `8712b49`).
 - **Behavior**: reads `LogData/sensors/<room>_<sensor>_combined.csv` via `_sensor_csv_path`.
-- **Responses**: `200 {"status":"success",...,"count":N,"data":[...]}`; `400` missing params; `404` if file absent; `500`.
-- **Known issue**: the POST never writes that file, so this returns 404 in practice. See the separate known-issues file.
+- **Responses**: `200 {"status":"success",...,"count":N,"data":[...]}`; `400` missing params; `404` if no data yet for that sensor; `500`.
+- ✅ **Resolved (2026-07-01, commit `5cc5174`):** `POST /sensor-data` now writes that file, so this returns data instead of a 404-for-every-sensor. See known-issues.
 
 ### `POST /env-data` — Device
 - **JSON body** (all required): `room_name`, `sensor_number`, `timestamp`, `temperature_c`, `humidity_pct`.

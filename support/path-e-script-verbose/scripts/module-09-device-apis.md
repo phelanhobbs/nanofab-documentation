@@ -1591,9 +1591,9 @@ def sensor_data_get():
         return jsonify({...rows...})
 ```
 
-Reads `sensors/<room>_<sensor>_combined.csv` (note: a different directory from `particle_sensors/`). Returns the full history as a JSON array, with values still as strings.
+Reads `sensors/<room>_<sensor>_combined.csv` (a different directory from `particle_sensors/`), which the POST handler now also writes. Returns up to `?limit` most-recent rows (default 500) as a JSON array, values still as strings.
 
-> **Heads-up — a latent bug.** The GET reads from `LogData/sensors/` (via the `_sensor_csv_path` helper), but the matching `POST /sensor-data` handler never writes to that folder — it writes particle data to `particle_sensors/` and environmental data to `env_sensors/`. Nothing in the codebase populates `sensors/`. As a result, `GET /sensor-data` will return a 404 ("No data found for this sensor") for every sensor, even ones that have posted data. The historical data does exist — it's just under `particle_sensors/` and `env_sensors/`, reachable via `GET /particle-data?...` and `GET /env-data?...`. If you want `GET /sensor-data` to work, either point `_sensor_csv_path` at `particle_sensors/`, or have the POST also write a combined CSV to `sensors/`. This is worth flagging in the presentation as a known rough edge.
+> **Resolved (2026-07-01).** This used to be a latent bug: the GET read from `LogData/sensors/` (via `_sensor_csv_path`), but the matching `POST /sensor-data` handler never wrote there — it wrote particle data to `particle_sensors/` and environmental data to `env_sensors/`, so nothing populated `sensors/` and `GET /sensor-data` returned a 404 ("No data found for this sensor") for every sensor. Commit `5cc5174` fixed it: the POST now also appends a combined CSV to `sensors/`, so the GET returns the data. A follow-up (`8712b49`) added an optional `?limit` (default 500 most-recent rows) so a long-running sensor doesn't dump its entire history at once. The per-stream histories under `particle_sensors/` and `env_sensors/` are still reachable via `GET /particle-data?...` and `GET /env-data?...`.
 
 ## Standalone environmental endpoint: `/env-data`
 

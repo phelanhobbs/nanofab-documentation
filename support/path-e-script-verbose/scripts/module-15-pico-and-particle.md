@@ -1510,10 +1510,10 @@ Severity: **High** = breaks functionality or real security exposure · **Medium*
 - **Where:** `DHT22_sensor.py` `API_URL = ".../env-data"`.
 - **Note:** the server endpoint exists today (added to `app/blueprints/api.py`); the comment in the file noting it "must be added" predates that. Update the file's comment to reflect current reality.
 
-### 6. `sensor_combined` POST + GET asymmetry (server side) — Medium (cross-system)
-- **Where:** `sensor_combined.py` POSTs to `/sensor-data`; the matching `GET /sensor-data` reads `LogData/sensors/<id>_combined.csv`, which nothing writes.
-- **Risk:** historical lookups via `GET /sensor-data` return 404 in practice. Surfaces as a viewer/tool issue, not a firmware one.
-- **Fix:** server-side (tracked under `known-issues/UNanofabTools/flaskserver.md` #1). No change here.
+### 6. `sensor_combined` POST + GET asymmetry (server side) — ✅ RESOLVED (2026-07-01, server-side commit `5cc5174`)
+- **Where:** `sensor_combined.py` POSTs to `/sensor-data`; the matching `GET /sensor-data` read `LogData/sensors/<id>_combined.csv`, which the POST used not to write.
+- **Was:** historical lookups via `GET /sensor-data` returned 404 in practice. It surfaced as a viewer/tool issue, not a firmware one.
+- **Resolution:** fixed server-side — `POST /sensor-data` now writes the combined CSV (see `known-issues/UNanofabTools/flaskserver.md` #1). No firmware change was needed.
 
 ### 7. Cleartext per-board identity is easy to miss-edit — Low (process)
 - **Where:** `ROOM_NAME`, `SENSOR_NUMBER` (and `DEVICE_ID` in combined) are bare assignments at the top of each file.
@@ -1537,7 +1537,9 @@ Severity: **High** = breaks functionality or real security exposure · **Medium*
 3. #2 stop the DST drift — Medium
 4. #4 de-duplicate the driver / scheduling helpers — Medium
 5. #8 add tests against the payload contract — Medium
-6. #5, #6, #7, #9 — Low / context
+6. #5, #7, #9 — Low / context
+
+*(#6 `sensor_combined` POST/GET asymmetry — ✅ resolved server-side 2026-07-01, commit `5cc5174`.)*
 
 ## Relationship to UNanofabTools
 The older copies of this firmware in `UNanofabTools/` are not maintained; treat NanofabToolkit as canonical and refer to `known-issues/UNanofabTools/picofirmware.md` only for historical context. Cross-cutting items (e.g. WiFi credential hygiene) appear in both lists; fix here first.

@@ -8,7 +8,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| [`flaskserver.md`](flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`); next open: `GET /sensor-data` always 404s (High) |
+| [`flaskserver.md`](flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`), `GET /sensor-data` 404 (2026-07-01, `5cc5174`); **no High items open** — next: `suggest`/`autofill` stubs + CORS (Medium) |
 | [`hscdownloader.md`](hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | [`picofirmware.md`](picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | [`particlepctools.md`](particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |

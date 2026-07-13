@@ -2,7 +2,7 @@
 
 Generated split Path E tier directory.
 
-- Total script word count: **78,687** words.
+- Total script word count: **78,796** words.
 - Target minimum: **50,000** words.
 - Target maximum: **100,000** words.
 
