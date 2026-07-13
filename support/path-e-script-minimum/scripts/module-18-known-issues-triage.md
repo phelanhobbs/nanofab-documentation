@@ -336,10 +336,9 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 - **Effect:** non-existent usernames respond marginally faster, enabling enumeration.
 - **Fix:** perform a dummy bcrypt compare on the no-user path to equalize timing.
 
-### 11. `csv_to_html_table` does not escape cell values — Medium
-- **Where:** `app/services/data_service.py`.
-- **Effect:** if any machine CSV cell contained HTML/JS, it would render unescaped (stored XSS). Currently mitigated only by trusting machine-generated CSVs.
-- **Fix:** `html.escape` each cell before interpolation.
+### 11. `csv_to_html_table` does not escape cell values — ✅ RESOLVED (2026-07-08, commit `f177140`)
+- **Was:** `app/services/data_service.py` interpolated each header/data cell straight into `<th>/<td>` — if any machine CSV cell contained HTML/JS it rendered unescaped (stored XSS), mitigated only by trusting machine-generated CSVs.
+- **Resolution:** every header/data cell now passes through `html.escape()` (validated: `<script>`, `<img onerror=…>`, and `& < >` all neutralized, table structure intact). The same commit also fixed the related **missing-CSV 500**: `render_machine_data` guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing. Both became fully effective once the machine templates (R7) were restored.
 
 ---
 
@@ -391,11 +390,10 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 1. #2 implement `suggest`/`autofill` — Medium
 2. #8 tighten CORS, #9 strengthen password reset — Medium
-3. #11 escape CSV cells — Medium
-4. #19 add a test suite — Medium
-5. Cleanup batch: #13–#18, #20, #21 — Low
+3. #19 add a test suite — Medium
+4. Cleanup batch: #13–#18, #20, #21 — Low
 
-*(Resolved and removed from this list: #1 `/sensor-data` 404 — ✅ 2026-07-01 / 07-07, commits `5cc5174` + `8712b49`; #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`. No High-severity items remain open.)*
+*(Resolved and removed from this list: #1 `/sensor-data` 404 — ✅ 2026-07-01 / 07-07, commits `5cc5174` + `8712b49`; #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`; #11 CSV-cell XSS — ✅ 2026-07-08, commit `f177140`. No High-severity items remain open.)*
 
 ---
 
@@ -435,6 +433,9 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 ### R7. Machine / graph / log / admin templates were never committed (all routes 500'd) — was High — CLOSED (2026-07-08, commit `d7efcb9` + follow-up)
 - **What was wrong:** `machine_data.html`, `graph.html`, `ald_graph.html`, `log_files.html`, `adminpanel.html` were referenced by the code but existed nowhere — not in git, not on the laptop, not on the live server → `TemplateNotFound` 500s. All 16 machine pages were down (`GET /ald` → `TemplateNotFound: machine_data.html`), plus the graph/log/admin routes.
 - **Why closed:** rebuilt all five from scratch, extending `base.html` — tables from `csv_to_html_table`, Chart.js graphs via `generateLineGraph`, log-file listings, and an admin user table with JSON toggle/delete actions; each validated through real Jinja2. Committed + deployed (`machine_data.html` = `d7efcb9`; the other four in a follow-up). Machine, admin, and log pages all confirmed rendering live. **The site is now reproducible from git** — no more server-only files.
+
+### R8. Stored XSS in `csv_to_html_table` + machine pages 500 on a missing CSV — were Medium — CLOSED (2026-07-08, commit `f177140`)
+- See #11 above (marked resolved in place). Every CSV cell now runs through `html.escape()`, and `render_machine_data` guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing. Both effective once the machine templates (R7) were restored.
 
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md

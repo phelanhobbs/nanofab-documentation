@@ -2,6 +2,8 @@
 
 # Source Reconstruction: UNanofabTools/app/blueprints/machines.py
 
+> **Update (2026-07-08, commit `f177140`):** `render_machine_data` now guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing when a machine's `small_*` CSV is missing. (The machine/graph/log/admin templates were also rebuilt + committed the same week — commit `d7efcb9` — after being absent from git; see `known-issues` R7.) The embedded excerpt predates these fixes.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

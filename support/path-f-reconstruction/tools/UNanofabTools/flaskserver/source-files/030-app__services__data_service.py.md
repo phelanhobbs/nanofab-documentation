@@ -2,6 +2,8 @@
 
 # Source Reconstruction: UNanofabTools/app/services/data_service.py
 
+> **Update (2026-07-08, commit `f177140`):** `csv_to_html_table` now runs every header/data cell through `html.escape()` (was a stored-XSS gap — cells were interpolated raw into `<th>/<td>`). Preserve that escaping in any rewrite. The embedded excerpt predates this fix.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
