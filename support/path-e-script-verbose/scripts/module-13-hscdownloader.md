@@ -819,7 +819,7 @@ HSCDownloader is the **upstream feeder** for the machine pages. It does not touc
 
 ```python
 DATA_DIR = os.path.join(script_dir, 'HSCDATA')
-AUTH     = 'Bearer ' + os.environ['CORES_TOKEN']   # CORES API token — read from .env since 2026-06-22 (commit 4175995); see known-issues
+AUTH     = 'Bearer ' + os.environ['CORES_TOKEN']   # CORES API token — read from .env since 2026-06-22 (commit 4175995); rotated 2026-06-29 (old value now 403). See known-issues.
 URLBASE  = 'https://n8n.cores.utah.edu/webhook/custom_form_data_dump?service_ids='
 ```
 
@@ -855,11 +855,12 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 - Runs as a long-lived process (a service / scheduled host), driven by `schedule` + `runForever`.
 - Designed to stop cleanly on signal (`graceful_exit`).
 - Network/auth failures: `downloadFile` does minimal error handling — a CORES outage or token rotation will surface as exceptions / empty data. Add retry/alerting if reliability matters.
+- Per-machine `Base Pressure` scaling is hardened (commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Deployed live 2026-06-29 (alongside the CORES token rotation) and verified — the crash is gone from `journalctl --user -u hscdownloader` and saves complete.
 - It writes to the same `HSCDATA` directory the server reads; ensure both run with consistent paths/permissions.
 
 ## 7. Maintenance / recommendations
 
-- **Rotate the Bearer token.** It was moved out of source into `.env` / `os.environ['CORES_TOKEN']` (2026-06-22, commit `4175995`), but the old value is unchanged and still in git history, so rotation with the CORES admin is still required. See known-issues.
+- **Bearer token — moved out of source and rotated. ✅** It was moved into `.env` / `os.environ['CORES_TOKEN']` (2026-06-22, commit `4175995`) and **rotated with the CORES admin on 2026-06-29**; the old value now returns `403`. Optional remaining cleanup: scrub the dead token from git history (`git filter-repo`/BFG). See known-issues.
 - **Centralize the machine→service_id map** (a dict/table) instead of a long if/elif in `retrieveData`; document each ID.
 - **Reduce per-machine duplication**: the `save<Machine>()` functions repeat a lot of structure; a config-driven approach (per-machine column spec) would shrink the file dramatically.
 - **Add retries + logging/alerting** around `downloadFile` so silent data staleness is detected.
@@ -870,7 +871,7 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 ## 8. Relationship to other tools
 
 - Feeds the **flaskserver** (and legacy **hscdisplayerserver**) machine pages via `HSCDATA`.
-- Talks to the **same CORES n8n system** as `NanofabToolkit/PreciousMetalReader` (different webhook/service IDs).
+- Talks to the **same CORES n8n system** as `NanofabToolkit/PreciousMetalReader` (different webhook/service IDs, but the **same CORES bearer token** — the 2026-06-29 rotation invalidated PreciousMetalReader's `auth.py` copy too, so that tool must adopt the new token via its env rollout).
 
 See the layman guide at `presentation/UNanofabTools/hscdownloader/README.md`.
 
@@ -883,18 +884,18 @@ The following source document is included directly in this tier so the presenter
 
 # HSC Downloader — Known Issues & Technical Debt
 
-Working list for `HSCDownloader.py`. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for `HSCDownloader.py`. Separate from the successor docs. Resolved items are tracked in the ✅ Resolved / Closed section at the bottom (and marked inline where a numbered item has been closed).
 
 Severity: **High** = security / data correctness · **Medium** = robustness/maintainability · **Low** = cleanup.
 
 ---
 
-### 1. CORES API token — de-sourced to `.env`; **rotation still required** — High (security)
-- **Status (2026-06-22):** ✅ *code de-sourced & deployed.* `HSCDownloader.py` now reads `AUTH = 'Bearer ' + os.environ['CORES_TOKEN']` (commit `4175995`), with `CORES_TOKEN` in the gitignored `.env`; the `hscdownloader` user-systemd service runs on it. ⛔ **Still open — token rotation (owner-planned, not yet done):** the value is unchanged and remains in git history (commits ≤ `0114dc5`), so the leaked credential stays valid until CORES issues a new one.
-- **Where:** was `HSCDownloader.py:26` → `AUTH = 'Bearer <redacted-cores-bearer-token>'`, used as the `Authorization` header.
-- **Risk:** a working credential to the university records system is still in repo history; anyone with repo (or leaked-copy) access has it until rotated.
-- **Remaining fix:** (1) get a new bearer token from the CORES n8n admin, then on the server `sed -i "s|^CORES_TOKEN=.*|CORES_TOKEN=<NEW>|" .env` + `systemctl --user restart hscdownloader`; (2) if the GitHub repo is public, scrub the old token from history (`git filter-repo`/BFG + force-push); (3) apply the same env pattern to PreciousMetalReader if it shares the token.
-- **Validation:** old token no longer authenticates; new value lives in `.env` only; (if scrubbed) `git log -p | grep` finds no token.
+### 1. CORES API token — de-sourced + rotated — ✅ RESOLVED (2026-06-29)
+- **Status:** Closed in two steps. (1) **De-sourced 2026-06-22** (commit `4175995`): `HSCDownloader.py` now reads `AUTH = 'Bearer ' + os.environ['CORES_TOKEN']`, with `CORES_TOKEN` in the gitignored `.env`; the `hscdownloader` user-systemd service runs on it. (2) **Rotated 2026-06-29:** the CORES n8n admin issued a new bearer token (and patched a detached auth credential on the n8n node that had been 500-ing both tokens); the new value went into `.env` and `systemctl --user restart hscdownloader` picked it up.
+- **Where (historical):** was `HSCDownloader.py:26` → `AUTH = 'Bearer <redacted-cores-bearer-token>'`, used as the `Authorization` header.
+- **Verified:** the **old token now returns `403`** (revoked) and the downloader pulls fresh data on the new one (`small_*` CSVs rewrote at the restart timestamp).
+- **Residual (Low, optional cleanup):** the old value still sits in old commits (≤ `0114dc5`), but it is now a **dead credential** (403) — a `git filter-repo`/BFG history scrub is optional hygiene, not a live security need.
+- **Cross-tool note:** `PreciousMetalReader` **shares this CORES token**. Its local `auth.py` now holds the revoked value (403), so that tool needs its env rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) to keep working — see `known-issues/NanofabToolkit/PreciousMetalReader.md` #1.
 
 ### 2. Minimal error handling on downloads — Medium
 - **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
@@ -942,11 +943,22 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 ---
 
 ## Suggested priority order
-1. #1 rotate the CORES token with the CORES admin (code de-sourced to `.env` & deployed 2026-06-22; rotation still pending) — High
-2. #2 + #3 robust downloads + staleness alerting — Medium
-3. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
-4. #6 add a portal-column contract test — Medium
-5. #7, #8, #9, #10 cleanup / activation decision — Low
+1. #2 + #3 robust downloads + staleness alerting — Medium
+2. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
+3. #6 add a portal-column contract test — Medium
+4. #7, #8, #9, #10 cleanup / activation decision — Low
+
+*(#1 CORES token rotation — ✅ resolved 2026-06-29; see above and the Resolved / Closed section.)*
+
+---
+
+## ✅ Resolved / Closed
+
+### Ebeam (+ Denton635 / Denton18 / TMV) `Base Pressure` save crashed on string data — was High — CLOSED (commit `8717375`; deployed live 2026-06-29)
+- **Original concern:** `Base Pressure` could arrive as a string and was multiplied by a float (`row['Base Pressure'] * 10**(int(powerFactor)+6)`), raising `can't multiply sequence by non-int of type 'float'`. The error was caught and only logged, so the service stayed up while that machine's save aborted and its `small_<Machine>_DataCollection.csv` went stale.
+- **Why closed:** commit `8717375` adds a `scalePressure(value, powerFactor)` helper (`HSCDownloader.py:190`) that casts the value and tolerates bad rows (logs and leaves them unchanged instead of aborting), and routes Ebeam (`:295`), Denton635 (`:455`), Denton18 (`:531`), and TMV (`:625` onward, including its sputter-deposition pressures) through it — removing the fragile in-loop `astype(float)`. Locally validated against the real function: it reproduces the old `TypeError`, returns correct scaled values, and bad rows no longer crash.
+- **Deployed:** live 2026-06-29 (commit `8717375`, pulled + `systemctl --user restart hscdownloader`) alongside the CORES token rotation — verified: the `can't multiply sequence` error is gone from `journalctl --user -u hscdownloader` and `save()` runs to completion (a malformed TMV row even logged `Could not scale pressure … leaving as-is` and was skipped instead of aborting).
+- **Residual (Low, new):** removing the in-loop `astype(float)` reintroduced a pandas dtype `FutureWarning` on the TMV `Base Pressure` assignment — non-fatal today (pandas upcasts the column), but coerce it once with `pd.to_numeric(col, errors='coerce')` before a future pandas upgrade turns it into a hard error.
 
 
 # Read-Aloud Documentation Corpus: presentation/UNanofabTools/hscdownloader/README.md
@@ -1000,7 +1012,7 @@ So when you open a machine's page on the website and see a table of recent runs,
 
 - It **only reads** from CORES and **writes** spreadsheets locally; it never changes the original records in CORES.
 - It runs on a **schedule**, automatically and unattended, and is designed to shut down cleanly when asked.
-- It uses a **secret access token** to talk to CORES. That token is currently written into the program itself, which the developer notes flag as something to move into a protected setting.
+- It uses a **secret access token** to talk to CORES. That token now lives in a protected settings file (`.env`), not in the program, and it was **rotated (replaced with a fresh one) on 2026-06-29** after the original had been left in the code's history. (The same token is shared with the Precious Metal Reader, which now needs the new token applied too.)
 - Each machine's formatting lives in its own function, so adding or adjusting a machine is a localized change.
 - A couple of machines are noted in the code as "currently has no data" — expected gaps, not bugs.
 
@@ -1164,13 +1176,14 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - If CORES is down or the token changes, pages quietly go stale (no alert today).
 - Each machine maps to a CORES ID; if an ID changes, that machine stops updating.
 - A couple of machines are marked 'no data yet' — expected, not bugs.
-- Cover the watch-items honestly. The secret token is currently embedded in the code and should be moved into a protected setting and
-- rotated. There's no alerting, so a CORES outage or token change shows up only as stale machine pages — adding failure alerts is
-- recommended. Each machine is tied to a CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few
-- machines are noted as having no data yet, which is expected. All of this is in the developer notes and issues list.
+- Cover the watch-items honestly. The secret token has been moved out of the code into a protected setting (.env) and was rotated on
+- 2026-06-29, so that earlier credential-in-source risk is resolved. The main remaining gap is alerting: there's no alert today, so a
+- CORES outage or token change shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a
+- CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few machines are noted as having no data yet,
+- which is expected. All of this is in the developer notes and issues list.
 - Those spreadsheets are what the website's machine pages display.
 - It runs on a schedule, one recipe per machine, read-only on CORES.
-- Watch the embedded token and the lack of failure alerts.
+- The CORES token is now in a protected setting and rotated; the main remaining watch-item is failure alerts.
 - Wrap up. HSCDownloader is the quiet supply line keeping machine data current: download from CORES, reshape, save, repeat. It's
-- essential but low-profile. The two things to improve are moving the access token into a protected setting and adding alerts so silent
-- staleness gets noticed. Questions welcome.
+- essential but low-profile. The access token has been moved into a protected setting and rotated (2026-06-29); the main thing left to
+- improve is adding alerts so silent staleness gets noticed. Questions welcome.

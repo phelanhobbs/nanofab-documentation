@@ -794,7 +794,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
 | `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Chem-inventory schema drift (chem auth resolved 2026-06-25 — WordPress SSO gate) |
-| `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced to `.env` (2026-06-22); **rotation still pending** |
+| `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | `filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
@@ -820,7 +820,7 @@ Older items may still use a shorter `Where/Risk/Fix` format. Before closing one 
 
 A few items recur across tools and may be worth treating as cross-cutting initiatives:
 
-- **Secrets in source.** Hard-coded WiFi passwords (`picofirmware`), a CORES Bearer token (`hscdownloader`, now read from `.env` — **rotation still pending**), and Duo keys imported from a Python module (`hscdisplayerserver`) all belong in environment variables / a protected store, with the secrets themselves rotated.
+- **Secrets in source.** Still open: hard-coded WiFi passwords (`picofirmware`) and Duo keys imported from a Python module (`hscdisplayerserver`) — both belong in environment variables / a protected store, with the secrets rotated. **Resolved:** the CORES Bearer token (`hscdownloader`) was moved to `.env` (2026-06-22) and **rotated 2026-06-29** (old value now returns 403; an optional git-history scrub remains). Because the same CORES token is shared by `PreciousMetalReader`, that tool's local `auth.py` now holds the revoked value — finishing its env rollout is required to keep it working (see `known-issues/NanofabToolkit/PreciousMetalReader.md`).
 - **The chem-database schema drift.** The committed `.sql` files are behind the live database; `init_chem_db.py` (in `utilities`) doesn't produce a complete database from scratch; the `flaskserver` issues list enumerates the missing columns/tables. Reconciling this is one project, not several.
 - **Personal-account / individual-developer dependencies.** The `filetransfer` scripts log in as a personal CADE account; `fetch_ssh.py` in `utilities` is a personal dev tool. The Nanofab-side fix is a purpose-bound SSH key authenticating as the shared `phelan` server account (no IT involvement). A cleaner long-term fix — a dedicated UNIX service account — has to come from University IT, since the Nanofab team has `sudo` as `phelan` but cannot `useradd`.
 - **The IT / Nanofab operational boundary.** Several findings (root SSH from `iceolate`, per-user UNIX accounts, the off-host backup, `unattended-upgrades`, kernel patching) sit on **University IT's** side of the line. The Nanofab admin's tools are `sudo` as `phelan` plus an IT ticket; nothing under `/root/` and no `useradd` is available. Each known-issues file tags items "Nanofab-actionable" vs "IT ticket" so the punch list is honest about who has to do what.
@@ -1035,7 +1035,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 | `ALDPeakCounter.md` (repo path: known-issues/NanofabToolkit/ALDPeakCounter.md) | ALD peak counter GUI | Duplicate peak-counter logic with UNanofabTools |
 | `DentonDecoder.md` (repo path: known-issues/NanofabToolkit/DentonDecoder.md) | Denton `.dat`/CSV log viewer | Multi-day timestamp handling limited to one rollover |
 | `ParalyneReader.md` (repo path: known-issues/NanofabToolkit/ParalyneReader.md) | Parylene file browser/viewer | Dead `return_selected` endpoint client; TLS verify disabled |
-| `PreciousMetalReader.md` (repo path: known-issues/NanofabToolkit/PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES creds: env-var preference added (2026-06-22), `auth.py` never committed; rollout + rotation deferred |
+| `PreciousMetalReader.md` (repo path: known-issues/NanofabToolkit/PreciousMetalReader.md) | CORES precious-metal billing extractor | CORES creds: env-var preference added (2026-06-22); shared CORES token **rotated 2026-06-29** → local `auth.py` now 403, so the env rollout is **now required** to restore the tool (`auth.py` never committed) |
 | `PicoHelperTools.md` (repo path: known-issues/NanofabToolkit/PicoHelperTools.md) | Pico firmware (canonical copies) | Cleartext WiFi credentials in source |
 | `ParticleSensor.md` (repo path: known-issues/NanofabToolkit/ParticleSensor.md) | PyQt desktop viewer (canonical copy) | +7h timezone hack; duplicate `convert_to_mountain` in two modules |
 
@@ -1043,7 +1043,7 @@ One file per tool, mirroring the per-tool folders in `../presentation/NanofabToo
 
 A few items show up across more than one tool and are worth treating as cross-cutting initiatives:
 
-- **Secrets and local credentials.** `PreciousMetalReader` now prefers the `CORES_TOKEN` env var (falling back to a local `auth.py`); `auth.py` was verified **never committed**, so there's no history leak — finishing the rollout (set the env var, delete `auth.py`, rebuild) and rotating the token are owner-deferred. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
+- **Secrets and local credentials.** `PreciousMetalReader` now prefers the `CORES_TOKEN` env var (falling back to a local `auth.py`); `auth.py` was verified **never committed**, so there's no history leak. The shared CORES token was **rotated 2026-06-29** (see `UNanofabTools/hscdownloader`), which revoked the value in each machine's local `auth.py` (now 403) — so finishing the rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) is **now required** to keep the tool working, not optional. `PicoHelperTools` firmware embeds WiFi credentials in cleartext. Same pattern as `UNanofabTools` — keep secrets out of source-controlled files.
 - **Divergent copies of shared code.** The Pico firmware and the particle viewer each ship in both `NanofabToolkit/` and `UNanofabTools/`. The NanofabToolkit copies are now canonical (newer versions); the UNanofabTools docs point back here. Track cross-cutting fixes in this tree first.
 - **PyInstaller builds undocumented.** All four desktop apps ship as Windows executables but the build commands aren't captured in repo READMEs. Add a one-page build note per tool.
 - **No timeouts / retries on outbound HTTP.** `ParalyneReader` and `PreciousMetalReader` both call `requests.get` without `timeout=` and freeze the UI on slow servers. Standard fix.
@@ -1248,17 +1248,17 @@ The following source document is included directly in this tier so the presenter
 
 # PreciousMetalReader — Known Issues & Technical Debt
 
-Working list for `NanofabToolkit/PreciousMetalReader`. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for `NanofabToolkit/PreciousMetalReader`. Separate from the successor docs. Mostly recommendations; where code or credentials have already changed it's noted inline.
 
 Severity: **High** = security/correctness · **Medium** = robustness/maintainability · **Low** = cleanup.
 
 ---
 
-### 1. CORES Bearer token via local `auth.py` — Medium *(downgraded from High — verified never committed)*
-- **Status (2026-06-22):** ✅ *env-var preference added.* `RetrieveMonthsMetals.py` now prefers the `CORES_TOKEN` environment variable (`HSCCode = 'Bearer ' + os.environ['CORES_TOKEN']`), falling back to the legacy local `auth.py` only if it's unset. ⏳ **Deferred (owner-planned):** the operational rollout — set `CORES_TOKEN`, rebuild the `.exe`, delete `auth.py` — will be done later, alongside rotating the CORES token. Verified via `git log -- '*auth.py'` that `auth.py` was **never committed**, so there is no history leak here (unlike the HSCDownloader token).
+### 1. CORES Bearer token via local `auth.py` — High *(token rotated 2026-06-29 → local `auth.py` value now 403; rollout required to restore the tool)*
+- **Status:** ✅ *env-var preference added 2026-06-22* — `RetrieveMonthsMetals.py` prefers the `CORES_TOKEN` environment variable (`HSCCode = 'Bearer ' + os.environ['CORES_TOKEN']`), falling back to the legacy local `auth.py` only if it's unset. ⚠️ **Now required (was owner-deferred):** the shared CORES token was **rotated 2026-06-29** (see `known-issues/UNanofabTools/hscdownloader.md` #1), so the value baked into each machine's local `auth.py` is now **revoked (403)** — the tool will fail to download until operators set the new `CORES_TOKEN`, rebuild the `.exe`, and delete `auth.py`. `auth.py` was verified **never committed** (`git log -- '*auth.py'`), so there is no git-history leak (unlike the HSCDownloader token).
 - **Where:** `from auth import HSCCode` fallback in `RetrieveMonthsMetals.py`, used as the `Authorization` header; `src/auth.py` is gitignored and local-only.
-- **Risk (residual):** the credential still lives in a loose local `auth.py` on each machine until operators switch to `CORES_TOKEN`; the setup contract must be documented so a successor can run it.
-- **Fix (remaining):** document the `CORES_TOKEN` env var in the README; once operators set it, delete the local `auth.py` and rebuild the `.exe`. Rotate only if there's evidence the token was exposed elsewhere. (Same CORES system as `known-issues/UNanofabTools/hscdownloader.md` #1.)
+- **Risk:** until the new token is rolled out, **the tool is non-functional** (CORES returns 403 to the old `auth.py` value); the credential also still lives in a loose local `auth.py` on each machine. The setup contract must be documented so a successor can run it.
+- **Fix (remaining):** on each machine, set `CORES_TOKEN` to the **new** token, delete the local `auth.py`, and rebuild the `.exe`; document the `CORES_TOKEN` env var in the README. The shared CORES token has already been rotated (see `known-issues/UNanofabTools/hscdownloader.md` #1), so this rollout is what restores the tool.
 
 ### 2. Hard-coded service-ID list — Medium
 - **Where:** the embedded list (`[768, 808, 809, ..., 818]`) inside `download_Metal("all", ...)`.
@@ -1302,7 +1302,7 @@ Severity: **High** = security/correctness · **Medium** = robustness/maintainabi
 ---
 
 ## Suggested priority order
-1. #1 finish the CORES env rollout (env-pref code added; set `CORES_TOKEN`, delete `auth.py`, rebuild) + #2 centralize service IDs — Medium
+1. #1 **finish the CORES env rollout — now required** (token rotated 2026-06-29; set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) — High; then #2 centralize service IDs — Medium
 2. #3 + #4 timeouts, retries, and a worker-thread download path — Medium
 3. #10 + #5 add tests and surface per-endpoint failure detail — Medium
 4. #6, #7, #8, #9 — Low

@@ -21,7 +21,7 @@ HSCDownloader is the **upstream feeder** for the machine pages. It does not touc
 
 ```python
 DATA_DIR = os.path.join(script_dir, 'HSCDATA')
-AUTH     = 'Bearer ' + os.environ['CORES_TOKEN']   # CORES API token — read from .env since 2026-06-22 (commit 4175995); see known-issues
+AUTH     = 'Bearer ' + os.environ['CORES_TOKEN']   # CORES API token — read from .env since 2026-06-22 (commit 4175995); rotated 2026-06-29 (old value now 403). See known-issues.
 URLBASE  = 'https://n8n.cores.utah.edu/webhook/custom_form_data_dump?service_ids='
 ```
 
@@ -57,12 +57,12 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 - Runs as a long-lived process (a service / scheduled host), driven by `schedule` + `runForever`.
 - Designed to stop cleanly on signal (`graceful_exit`).
 - Network/auth failures: `downloadFile` does minimal error handling — a CORES outage or token rotation will surface as exceptions / empty data. Add retry/alerting if reliability matters.
-- Per-machine `Base Pressure` scaling is hardened (2026-06-26, commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Code committed; deploys with the CORES token rotation.
+- Per-machine `Base Pressure` scaling is hardened (commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Deployed live 2026-06-29 (alongside the CORES token rotation) and verified — the crash is gone from `journalctl --user -u hscdownloader` and saves complete.
 - It writes to the same `HSCDATA` directory the server reads; ensure both run with consistent paths/permissions.
 
 ## 7. Maintenance / recommendations
 
-- **Rotate the Bearer token.** It was moved out of source into `.env` / `os.environ['CORES_TOKEN']` (2026-06-22, commit `4175995`), but the old value is unchanged and still in git history, so rotation with the CORES admin is still required. See known-issues.
+- **Bearer token — moved out of source and rotated. ✅** It was moved into `.env` / `os.environ['CORES_TOKEN']` (2026-06-22, commit `4175995`) and **rotated with the CORES admin on 2026-06-29**; the old value now returns `403`. Optional remaining cleanup: scrub the dead token from git history (`git filter-repo`/BFG). See known-issues.
 - **Centralize the machine→service_id map** (a dict/table) instead of a long if/elif in `retrieveData`; document each ID.
 - **Reduce per-machine duplication**: the `save<Machine>()` functions repeat a lot of structure; a config-driven approach (per-machine column spec) would shrink the file dramatically.
 - **Add retries + logging/alerting** around `downloadFile` so silent data staleness is detected.
@@ -73,6 +73,6 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 ## 8. Relationship to other tools
 
 - Feeds the **flaskserver** (and legacy **hscdisplayerserver**) machine pages via `HSCDATA`.
-- Talks to the **same CORES n8n system** as `NanofabToolkit/PreciousMetalReader` (different webhook/service IDs).
+- Talks to the **same CORES n8n system** as `NanofabToolkit/PreciousMetalReader` (different webhook/service IDs, but the **same CORES bearer token** — the 2026-06-29 rotation invalidated PreciousMetalReader's `auth.py` copy too, so that tool must adopt the new token via its env rollout).
 
 See the layman guide at `presentation/UNanofabTools/hscdownloader/README.md`.

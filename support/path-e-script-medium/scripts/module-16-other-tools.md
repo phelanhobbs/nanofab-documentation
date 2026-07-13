@@ -627,7 +627,7 @@ Reference for the `PreciousMetalReader` desktop app: a Tkinter GUI that download
 | `src/RetrieveMonthsMetals.py` | `download_Metal(endpoint, month, year)` plus helpers (`daysinMonth`, `summarize_metal_charges`, `save_summary_to_csv`). Calls the CORES n8n webhook. |
 | `src/gui.py` (`PreciousMetalReaderGui`) | The Tk UI: month/year picker, mode (specific vs all), machine + metal dropdowns, download action, progress/results text. |
 | `src/assets/icon.ico` | Windowed executable icon. |
-| `src/auth.py` (referenced as `from auth import HSCCode`) | Local secret module expected at runtime. It supplies the CORES Bearer token but is not present in the reviewed checkout. Do not commit it. |
+| `src/auth.py` (referenced as `from auth import HSCCode`) | Legacy local secret module — supplies the CORES Bearer token as a fallback. The code now prefers the `CORES_TOKEN` env var. After the 2026-06-29 CORES token rotation, the value in `auth.py` is **revoked (403)**; set `CORES_TOKEN` to the new token instead. Not present in the reviewed checkout; do not commit it. |
 
 Dependencies: `requests`, `tkinter` (stdlib), `csv` (stdlib), `collections.defaultdict`, `logging`. Frozen with PyInstaller.
 
@@ -639,7 +639,7 @@ Auth: Authorization: Bearer <HSCCode>
 Verb: GET; response is JSON
 ```
 
-`HSCCode` is imported from `auth.py` (not committed). This is the **same n8n endpoint family** that `UNanofabTools/HSCDownloader.py` uses, but a different webhook path (`line_item_batch_pull` vs. `custom_form_data_dump`) and different service IDs.
+`HSCCode` is imported from `auth.py` (not committed); the code now prefers the `CORES_TOKEN` env var and only falls back to `auth.py`. The shared CORES token was **rotated 2026-06-29**, so the `auth.py` value is now revoked (403) — supply the new token via `CORES_TOKEN`. This is the **same n8n endpoint family** (and the **same bearer token**) that `UNanofabTools/HSCDownloader.py` uses, but a different webhook path (`line_item_batch_pull` vs. `custom_form_data_dump`) and different service IDs.
 
 `download_Metal("all", month, year)` iterates a hard-coded list of service IDs covering precious-metal charges across Denton 635 / Denton 18 / TMV (observed IDs roughly `768, 808–818`); `download_Metal(<id>, month, year)` pulls a single endpoint.
 
@@ -680,11 +680,11 @@ Group the raw line items by metal/tool, sum charges, and write a CSV alongside t
 
 - Logs to `logs/precious_metal_reader.log` (frozen) or `src/logs/...` (dev).
 - Downloaded CSVs land in `downloads/` adjacent to the app.
-- Internet access required; CORES authentication uses a Bearer token from local `auth.py` or an equivalent replacement secrets mechanism.
+- Internet access required; CORES authentication uses a Bearer token from the `CORES_TOKEN` env var (preferred) or the legacy local `auth.py`. As of the 2026-06-29 rotation the `auth.py` value is revoked (403), so `CORES_TOKEN` must carry the new token.
 - The app is read-only against CORES.
 
 ## 7. Maintenance / recommendations
-- **Replace local `auth.py` with a documented secrets mechanism** such as an environment variable, OS keychain entry, or protected per-machine config. Rotate the token if there is any evidence that `auth.py` or the token was committed, shared, or copied into logs.
+- **Finish the move off local `auth.py`.** The code already prefers the `CORES_TOKEN` env var; the shared CORES token was rotated 2026-06-29 (the old `auth.py` value now returns 403), so on each machine set `CORES_TOKEN` to the new token, delete `auth.py`, and rebuild the `.exe`. (`auth.py` was verified never committed, so no history scrub is needed here.)
 - **Hard-coded service-ID map**: lift the `[768, 808…818]` list into a documented config / table (machine → metal → service_id) so re-numbering at CORES is one place to update.
 - **Retry + timeout on `requests.get`**: today there's no `timeout=`, so a slow CORES can hang the UI.
 - **Progress reporting for "all"**: looping ~12 endpoints can take a while; surface per-endpoint progress in the UI.
@@ -1224,7 +1224,7 @@ A window with:
 ## Good to know
 
 - The app **only reads** from CORES; it never changes anything there.
-- It needs an **internet connection** and a valid access token (the token is built into the app for now).
+- It needs an **internet connection** and a valid access token. The app now reads that token from a setting (`CORES_TOKEN`) rather than baking it in. Note: the shared CORES token was **rotated on 2026-06-29**, so the app needs the new token applied (and a rebuild) before it can download again.
 - All connections are encrypted.
 - A log file records what the app did, which helps if downloads fail.
 - The downloads end up in a `downloads/` folder next to the app — that's where to look for the resulting CSVs.
@@ -2103,12 +2103,13 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - any that returned no data. It then groups the line items by metal, sums the charges, and writes the result as CSV. The raw downloads
 - are also kept in case you need them.
 - CORES requires a secret token to prove the app is allowed to read.
-- The token is currently written into the app itself.
-- Standard expectation: move it into a protected setting and rotate it.
-- On the to-fix list — it's a real credential.
-- Be candid about the security caveat. CORES needs a bearer token to authorize the request. Right now the token is in a Python file
-- shipped with the app, which is a credential leak risk — anyone with a copy of the app has the token. The recommendation in the
-- developer notes is to move it out into a protected setting and rotate it. Same recommendation applies to HSCDownloader.
+- The app now reads the token from a setting (CORES_TOKEN), not baked in.
+- The shared CORES token was rotated 2026-06-29 — the old built-in value no longer works (403).
+- To-do: apply the new token on each machine and rebuild the app.
+- Be candid about the security caveat. CORES needs a bearer token to authorize the request. The app now prefers a protected setting
+- (the CORES_TOKEN environment variable) over the old token baked into a Python file. The shared CORES token was rotated on 2026-06-29,
+- so the old built-in value no longer works (it returns 403) — each machine needs the new token set and the app rebuilt. The sibling
+- HSCDownloader, which shares this token, has already been updated.
 - Diagnostics and where files land
 - Every action goes into a log file in a logs/ folder.
 - Downloaded CSVs land in a downloads/ folder next to the app.
@@ -2120,10 +2121,11 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - Operational summary. Read-only with respect to CORES. Internet required. Encrypted. Output is CSV, so any spreadsheet can open it.
 - There's no special server-side software involved — just CORES on one end and the app on your computer on the other.
 - Talks to CORES, not our cleanroom server.
-- Cousin of HSCDownloader; same source, different data.
-- Watch the embedded access token — move it out for safety.
+- Cousin of HSCDownloader; same source, same token, different data.
+- The shared CORES token was rotated 2026-06-29 — apply the new token and rebuild.
 - Wrap up. PreciousMetalReader is a one-button monthly billing helper that talks to CORES directly. Don't confuse it with HSCDownloader
-- (same source, different data, different purpose). The headline maintenance item is the embedded token. Questions welcome.
+- (same source, different data, different purpose). The headline maintenance item is applying the rotated CORES token (set CORES_TOKEN
+- and rebuild) so downloads work again. Questions welcome.
 
 
 ## Slide Notes From presentation/UNanofabTools/dattools/slides/_build/build_tool.js

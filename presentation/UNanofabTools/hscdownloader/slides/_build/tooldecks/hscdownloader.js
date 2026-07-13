@@ -137,16 +137,17 @@ module.exports = {
     d.bullets({
       title: "Things to watch",
       bullets: [
-        "Its CORES access token is written into the program — should move to a protected setting.",
+        "Its CORES access token now lives in a protected setting (.env) and was rotated 2026-06-29 — no longer in the code.",
         "If CORES is down or the token changes, pages quietly go stale (no alert today).",
         "Each machine maps to a CORES ID; if an ID changes, that machine stops updating.",
         "A couple of machines are marked 'no data yet' — expected, not bugs.",
       ],
       notes:
-        "Cover the watch-items honestly. The secret token is currently embedded in the code and should be moved into a protected setting and " +
-        "rotated. There's no alerting, so a CORES outage or token change shows up only as stale machine pages — adding failure alerts is " +
-        "recommended. Each machine is tied to a CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few " +
-        "machines are noted as having no data yet, which is expected. All of this is in the developer notes and issues list.",
+        "Cover the watch-items honestly. The secret token has been moved out of the code into a protected setting (.env) and was rotated on " +
+        "2026-06-29, so that earlier credential-in-source risk is resolved. The main remaining gap is alerting: there's no alert today, so a " +
+        "CORES outage or token change shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a " +
+        "CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few machines are noted as having no data yet, " +
+        "which is expected. All of this is in the developer notes and issues list.",
     });
 
     d.bullets({
@@ -155,12 +156,12 @@ module.exports = {
         "HSCDownloader pulls machine run data from CORES and writes spreadsheets.",
         "Those spreadsheets are what the website's machine pages display.",
         "It runs on a schedule, one recipe per machine, read-only on CORES.",
-        "Watch the embedded token and the lack of failure alerts.",
+        "The CORES token is now in a protected setting and rotated; the main remaining watch-item is failure alerts.",
       ],
       notes:
         "Wrap up. HSCDownloader is the quiet supply line keeping machine data current: download from CORES, reshape, save, repeat. It's " +
-        "essential but low-profile. The two things to improve are moving the access token into a protected setting and adding alerts so silent " +
-        "staleness gets noticed. Questions welcome.",
+        "essential but low-profile. The access token has been moved into a protected setting and rotated (2026-06-29); the main thing left to " +
+        "improve is adding alerts so silent staleness gets noticed. Questions welcome.",
     });
   },
 };

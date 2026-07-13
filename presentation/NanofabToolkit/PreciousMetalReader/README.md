@@ -35,7 +35,7 @@ A window with:
 ## Good to know
 
 - The app **only reads** from CORES; it never changes anything there.
-- It needs an **internet connection** and a valid access token (the token is built into the app for now).
+- It needs an **internet connection** and a valid access token. The app now reads that token from a setting (`CORES_TOKEN`) rather than baking it in. Note: the shared CORES token was **rotated on 2026-06-29**, so the app needs the new token applied (and a rebuild) before it can download again.
 - All connections are encrypted.
 - A log file records what the app did, which helps if downloads fail.
 - The downloads end up in a `downloads/` folder next to the app — that's where to look for the resulting CSVs.

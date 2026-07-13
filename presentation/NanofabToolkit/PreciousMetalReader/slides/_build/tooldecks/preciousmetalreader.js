@@ -106,14 +106,15 @@ module.exports = {
       title: "About the access token",
       bullets: [
         "CORES requires a secret token to prove the app is allowed to read.",
-        "The token is currently written into the app itself.",
-        "Standard expectation: move it into a protected setting and rotate it.",
-        "On the to-fix list — it's a real credential.",
+        "The app now reads the token from a setting (CORES_TOKEN), not baked in.",
+        "The shared CORES token was rotated 2026-06-29 — the old built-in value no longer works (403).",
+        "To-do: apply the new token on each machine and rebuild the app.",
       ],
       notes:
-        "Be candid about the security caveat. CORES needs a bearer token to authorize the request. Right now the token is in a Python file " +
-        "shipped with the app, which is a credential leak risk — anyone with a copy of the app has the token. The recommendation in the " +
-        "developer notes is to move it out into a protected setting and rotate it. Same recommendation applies to HSCDownloader.",
+        "Be candid about the security caveat. CORES needs a bearer token to authorize the request. The app now prefers a protected setting " +
+        "(the CORES_TOKEN environment variable) over the old token baked into a Python file. The shared CORES token was rotated on 2026-06-29, " +
+        "so the old built-in value no longer works (it returns 403) — each machine needs the new token set and the app rebuilt. The sibling " +
+        "HSCDownloader, which shares this token, has already been updated.",
     });
 
     d.bullets({
@@ -148,12 +149,13 @@ module.exports = {
       bullets: [
         "Pick a month → app pulls precious-metal records from CORES → produces a CSV.",
         "Talks to CORES, not our cleanroom server.",
-        "Cousin of HSCDownloader; same source, different data.",
-        "Watch the embedded access token — move it out for safety.",
+        "Cousin of HSCDownloader; same source, same token, different data.",
+        "The shared CORES token was rotated 2026-06-29 — apply the new token and rebuild.",
       ],
       notes:
         "Wrap up. PreciousMetalReader is a one-button monthly billing helper that talks to CORES directly. Don't confuse it with HSCDownloader " +
-        "(same source, different data, different purpose). The headline maintenance item is the embedded token. Questions welcome.",
+        "(same source, different data, different purpose). The headline maintenance item is applying the rotated CORES token (set CORES_TOKEN " +
+        "and rebuild) so downloads work again. Questions welcome.",
     });
   },
 };

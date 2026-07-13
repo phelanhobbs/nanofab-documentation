@@ -43,7 +43,7 @@ So when you open a machine's page on the website and see a table of recent runs,
 
 - It **only reads** from CORES and **writes** spreadsheets locally; it never changes the original records in CORES.
 - It runs on a **schedule**, automatically and unattended, and is designed to shut down cleanly when asked.
-- It uses a **secret access token** to talk to CORES. That token is currently written into the program itself, which the developer notes flag as something to move into a protected setting.
+- It uses a **secret access token** to talk to CORES. That token now lives in a protected settings file (`.env`), not in the program, and it was **rotated (replaced with a fresh one) on 2026-06-29** after the original had been left in the code's history. (The same token is shared with the Precious Metal Reader, which now needs the new token applied too.)
 - Each machine's formatting lives in its own function, so adding or adjusting a machine is a localized change.
 - A couple of machines are noted in the code as "currently has no data" — expected gaps, not bugs.
 

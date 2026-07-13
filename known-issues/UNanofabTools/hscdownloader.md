@@ -1,17 +1,17 @@
 # HSC Downloader — Known Issues & Technical Debt
 
-Working list for `HSCDownloader.py`. Separate from the successor docs. Nothing here has been changed in the code.
+Working list for `HSCDownloader.py`. Separate from the successor docs. Resolved items are tracked in the ✅ Resolved / Closed section at the bottom (and marked inline where a numbered item has been closed).
 
 Severity: **High** = security / data correctness · **Medium** = robustness/maintainability · **Low** = cleanup.
 
 ---
 
-### 1. CORES API token — de-sourced to `.env`; **rotation still required** — High (security)
-- **Status (2026-06-22):** ✅ *code de-sourced & deployed.* `HSCDownloader.py` now reads `AUTH = 'Bearer ' + os.environ['CORES_TOKEN']` (commit `4175995`), with `CORES_TOKEN` in the gitignored `.env`; the `hscdownloader` user-systemd service runs on it. ⛔ **Still open — token rotation (owner-planned, not yet done):** the value is unchanged and remains in git history (commits ≤ `0114dc5`), so the leaked credential stays valid until CORES issues a new one.
-- **Where:** was `HSCDownloader.py:26` → `AUTH = 'Bearer <redacted-cores-bearer-token>'`, used as the `Authorization` header.
-- **Risk:** a working credential to the university records system is still in repo history; anyone with repo (or leaked-copy) access has it until rotated.
-- **Remaining fix:** (1) get a new bearer token from the CORES n8n admin, then on the server `sed -i "s|^CORES_TOKEN=.*|CORES_TOKEN=<NEW>|" .env` + `systemctl --user restart hscdownloader`; (2) if the GitHub repo is public, scrub the old token from history (`git filter-repo`/BFG + force-push); (3) apply the same env pattern to PreciousMetalReader if it shares the token.
-- **Validation:** old token no longer authenticates; new value lives in `.env` only; (if scrubbed) `git log -p | grep` finds no token.
+### 1. CORES API token — de-sourced + rotated — ✅ RESOLVED (2026-06-29)
+- **Status:** Closed in two steps. (1) **De-sourced 2026-06-22** (commit `4175995`): `HSCDownloader.py` now reads `AUTH = 'Bearer ' + os.environ['CORES_TOKEN']`, with `CORES_TOKEN` in the gitignored `.env`; the `hscdownloader` user-systemd service runs on it. (2) **Rotated 2026-06-29:** the CORES n8n admin issued a new bearer token (and patched a detached auth credential on the n8n node that had been 500-ing both tokens); the new value went into `.env` and `systemctl --user restart hscdownloader` picked it up.
+- **Where (historical):** was `HSCDownloader.py:26` → `AUTH = 'Bearer <redacted-cores-bearer-token>'`, used as the `Authorization` header.
+- **Verified:** the **old token now returns `403`** (revoked) and the downloader pulls fresh data on the new one (`small_*` CSVs rewrote at the restart timestamp).
+- **Residual (Low, optional cleanup):** the old value still sits in old commits (≤ `0114dc5`), but it is now a **dead credential** (403) — a `git filter-repo`/BFG history scrub is optional hygiene, not a live security need.
+- **Cross-tool note:** `PreciousMetalReader` **shares this CORES token**. Its local `auth.py` now holds the revoked value (403), so that tool needs its env rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) to keep working — see `known-issues/NanofabToolkit/PreciousMetalReader.md` #1.
 
 ### 2. Minimal error handling on downloads — Medium
 - **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
@@ -59,17 +59,19 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 ---
 
 ## Suggested priority order
-1. #1 rotate the CORES token with the CORES admin (code de-sourced to `.env` & deployed 2026-06-22; rotation still pending) — High
-2. #2 + #3 robust downloads + staleness alerting — Medium
-3. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
-4. #6 add a portal-column contract test — Medium
-5. #7, #8, #9, #10 cleanup / activation decision — Low
+1. #2 + #3 robust downloads + staleness alerting — Medium
+2. #4 + #5 centralize the machine map and de-duplicate save functions — Medium
+3. #6 add a portal-column contract test — Medium
+4. #7, #8, #9, #10 cleanup / activation decision — Low
+
+*(#1 CORES token rotation — ✅ resolved 2026-06-29; see above and the Resolved / Closed section.)*
 
 ---
 
 ## ✅ Resolved / Closed
 
-### Ebeam (+ Denton635 / Denton18 / TMV) `Base Pressure` save crashed on string data — was High — CLOSED (commit `8717375`, 2026-06-26)
+### Ebeam (+ Denton635 / Denton18 / TMV) `Base Pressure` save crashed on string data — was High — CLOSED (commit `8717375`; deployed live 2026-06-29)
 - **Original concern:** `Base Pressure` could arrive as a string and was multiplied by a float (`row['Base Pressure'] * 10**(int(powerFactor)+6)`), raising `can't multiply sequence by non-int of type 'float'`. The error was caught and only logged, so the service stayed up while that machine's save aborted and its `small_<Machine>_DataCollection.csv` went stale.
 - **Why closed:** commit `8717375` adds a `scalePressure(value, powerFactor)` helper (`HSCDownloader.py:190`) that casts the value and tolerates bad rows (logs and leaves them unchanged instead of aborting), and routes Ebeam (`:295`), Denton635 (`:455`), Denton18 (`:531`), and TMV (`:625` onward, including its sputter-deposition pressures) through it — removing the fragile in-loop `astype(float)`. Locally validated against the real function: it reproduces the old `TypeError`, returns correct scaled values, and bad rows no longer crash.
-- **Residual:** code is committed but **not yet deployed live** — it lands with the CORES token rotation (push + pull + `systemctl --user restart hscdownloader`).
+- **Deployed:** live 2026-06-29 (commit `8717375`, pulled + `systemctl --user restart hscdownloader`) alongside the CORES token rotation — verified: the `can't multiply sequence` error is gone from `journalctl --user -u hscdownloader` and `save()` runs to completion (a malformed TMV row even logged `Could not scale pressure … leaving as-is` and was skipped instead of aborting).
+- **Residual (Low, new):** removing the in-loop `astype(float)` reintroduced a pandas dtype `FutureWarning` on the TMV `Base Pressure` assignment — non-fatal today (pandas upcasts the column), but coerce it once with `pd.to_numeric(col, errors='coerce')` before a future pandas upgrade turns it into a hard error.
