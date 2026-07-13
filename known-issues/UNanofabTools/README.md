@@ -8,13 +8,13 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| [`flaskserver.md`](flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25) + chem schema drift (2026-06-29, commit `313e495`); next open: `GET /sensor-data` always 404s (High) |
+| [`flaskserver.md`](flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`); next open: `GET /sensor-data` always 404s (High) |
 | [`hscdownloader.md`](hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | [`picofirmware.md`](picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | [`particlepctools.md`](particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | [`filetransfer.md`](filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | [`dattools.md`](dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
-| [`utilities.md`](utilities.md) | Standalone helpers | `init_chem_db.py` now applies v1→v2→v3 ✅ (2026-06-29, commit `313e495`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
+| [`utilities.md`](utilities.md) | Standalone helpers | `init_chem_db.py` fully fixed ✅ — applies v1→v2→v3 (2026-06-29, `313e495`) + hardened SQL splitter (2026-06-30, `11fd3e4`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
 | [`serveraccess.md`](serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
 | [`liveserver.md`](liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | [`hscdisplayerserver.md`](hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |

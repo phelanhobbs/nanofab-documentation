@@ -2,6 +2,8 @@
 
 # Source Reconstruction: UNanofabTools/app/blueprints/chem_inventory.py
 
+> **Update (2026-06-30, commit `11fd3e4`):** `edit_container()` previously handed `update_container()` a form dict whose keys didn't match what the service read, so `expiry_date`/`nmr_expiry`/`storage_sublocation` and the item's `catalog_number`/`physical_state`/`vendor_name`/`description` edits were silently dropped while the UI flashed success. Fixed — the key lookups are aligned, all fields persist, and the route now wraps the call in try/except and flashes a real error on failure. The embedded excerpt predates this fix.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

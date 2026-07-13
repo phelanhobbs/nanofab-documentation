@@ -1551,7 +1551,7 @@ One-off PKCS12→PEM converter for the server's TLS cert.
 Provisions the chem PostgreSQL schema.
 
 - `get_db_url()`: builds `postgresql+psycopg2://...` from `CHEM_*`/`PG*` env vars (same precedence as the Flask config).
-- `apply_sql_file(conn, path)`: applies one `.sql` file, executing it statement-by-statement (splitting on `;`, skipping `BEGIN`/`COMMIT`).
+- `apply_sql_file(conn, path)`: applies one `.sql` file, executing it statement-by-statement (strips `--` comments, then splits on `;`, skipping `BEGIN`/`COMMIT`; splitter hardened in commit `11fd3e4`).
 - `init_database()`: creates an engine/connection and applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent).
 - `__main__` runs `init_database()`.
 
@@ -1575,7 +1575,7 @@ Non-functional placeholder. Ensures `VOLTDATA.txt` exists, then loops incrementi
 ## 7. Maintenance notes
 - `peakCount.py`: behavior overlaps the NanofabToolkit ALD peak counter and the DAT graphers' parsing — consider consolidating the pressure-file parsing.
 - `gencert.py`: parameterize paths and read the PFX password from the environment; drop the unused HTTP-server import.
-- `init_chem_db.py`: ✅ now applies all migrations (v1→v2→v3) so a fresh DB matches production (commit `313e495`, 2026-06-29). Remaining nit: the naive `;`-split is still in place (fine for current statements).
+- `init_chem_db.py`: ✅ now applies all migrations (v1→v2→v3) so a fresh DB matches production (commit `313e495`, 2026-06-29); the SQL splitter was also hardened to strip `--` comments before splitting (commit `11fd3e4`, 2026-06-30).
 - `fetch_ssh.py`: keep as a personal tool or replace with a documented `scp`/CI step; don't use `AutoAddPolicy` in anything automated.
 - `NMonStore.py`: resolve (finish or delete).
 

@@ -201,13 +201,13 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25) + chem schema drift (2026-06-29, commit `313e495`); next open: `GET /sensor-data` always 404s (High) |
+| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`); next open: `GET /sensor-data` always 404s (High) |
 | `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | `filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | `dattools.md` (repo path: known-issues/UNanofabTools/dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
-| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` now applies v1→v2→v3 ✅ (2026-06-29, commit `313e495`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
+| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` fully fixed ✅ — applies v1→v2→v3 (2026-06-29, `313e495`) + hardened SQL splitter (2026-06-30, `11fd3e4`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
 | `serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
 | `liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | `hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |
@@ -422,6 +422,11 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Original concern:** every `/chem/*` route was open; anyone who could reach the server could read and modify the chemical inventory.
 - **Why closed:** commit `f604818` gates the entire `/chem` blueprint behind a `before_request` token check. Access requires a signed link from the WordPress staff-tools page (`/chem/enter` validates an HMAC over the new `CHEM_SSO_SECRET`, time-limited by `exp`), which sets `session['chem_authed']`; everything else redirects to the staff-tools URL. Read and write routes alike are now gated. (Detail at #6.)
 - **Verify:** logged out / no chem session → `GET /chem/inventory` and `POST /chem/remove` both 302 to the staff-tools URL.
+
+### R5. Edit-container silently discarded several fields — was High — CLOSED (2026-06-30, commit `11fd3e4`)
+- **Original concern:** `edit_container()` POSTed a form dict that `update_container()` read with **mismatched keys** — `expiry_date`→`expire`, `nmr_expiry`→`nmr_exp`, `storage_sublocation`→`storage_subloc` (all silently dropped) — and never wrote `catalog_number`, `physical_state`, `vendor_name`, or the real `description` (the `items` UPDATE clobbered `description` with the item name). The UI flashed "Updated successfully" regardless, so corrected expiry dates / vendors silently vanished — dangerous for a chemical-safety record. (Found in the later source audit; it was never a numbered item in this file.)
+- **Why closed:** corrected the three key lookups; reworked the `items` update to keep-or-update `name`, `description`, `catalog_number`, `physical_state`, and to resolve a submitted `vendor_name` to `items.vendor_id` via the existing `_upsert(conn, "vendors", …)`. The blueprint now wraps `update_container` in try/except and flashes a real error instead of a false success.
+- **Validated (2026-06-30):** ran the real `update_container` against an ephemeral Postgres seeded with a container — all seven previously-dropped fields persist, and blank form fields are preserved (keep-or-update). The dev reference (`documentation/UNanofabTools/flaskserver/06-service-layer-reference.md`, `update_container`) already described this intended behavior, so it now matches the code.
 
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md

@@ -793,13 +793,13 @@ One file per tool, mirroring the per-tool folders in `../presentation/UNanofabTo
 
 | File | Tool | Highest-severity item |
 |------|------|------------------------|
-| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25) + chem schema drift (2026-06-29, commit `313e495`); next open: `GET /sensor-data` always 404s (High) |
+| `flaskserver.md` (repo path: known-issues/UNanofabTools/flaskserver.md) | The current Flask website | Top items resolved — chem auth (2026-06-25), chem schema drift (2026-06-29, `313e495`), edit-container data-loss (2026-06-30, `11fd3e4`); next open: `GET /sensor-data` always 404s (High) |
 | `hscdownloader.md` (repo path: known-issues/UNanofabTools/hscdownloader.md) | CORES → HSCDATA ETL | CORES Bearer token de-sourced (2026-06-22) + **rotated 2026-06-29** ✅ (old token now 403); next-highest open item: no staleness alerting (Medium) |
 | `picofirmware.md` (repo path: known-issues/UNanofabTools/picofirmware.md) | Raspberry Pi firmware *(older copies — canonical: `NanofabToolkit/PicoHelperTools`)* | WiFi credentials hard-coded; two unique scripts non-functional as written |
 | `particlepctools.md` (repo path: known-issues/UNanofabTools/particlepctools.md) | Desktop particle viewer *(older copy — canonical: `NanofabToolkit/ParticleSensor`)* + test generator | Generator can accidentally target production |
 | `filetransfer.md` (repo path: known-issues/UNanofabTools/filetransfer.md) | Per-machine log uploaders | Transfers depend on a personal SSH account |
 | `dattools.md` (repo path: known-issues/UNanofabTools/dattools.md) | DATfixer + DATgrapher | Binary `.DAT` format parsed by magic bytes with no validation |
-| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` now applies v1→v2→v3 ✅ (2026-06-29, commit `313e495`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
+| `utilities.md` (repo path: known-issues/UNanofabTools/utilities.md) | Standalone helpers | `init_chem_db.py` fully fixed ✅ — applies v1→v2→v3 (2026-06-29, `313e495`) + hardened SQL splitter (2026-06-30, `11fd3e4`); next: `gencert.py` writes an unencrypted TLS key (Medium) |
 | `serveraccess.md` (repo path: known-issues/UNanofabTools/serveraccess.md) | SSH access + tmux sessions | tmux supervisor replaced by user-systemd (2026-06-18); shared `phelan` is a structural constraint (IT controls user creation); hard-coded IP |
 | `liveserver.md` (repo path: known-issues/UNanofabTools/liveserver.md) | Findings from the live `nfhistory` surveys | Flask/downloader now under user-systemd (2026-06-18); chem Postgres verified local on `nfhistory`; a handful of IT-bound items (root `authorized_keys` mode, optional unattended-upgrades) |
 | `hscdisplayerserver.md` (repo path: known-issues/UNanofabTools/hscdisplayerserver.md) | Legacy monolithic server | Run-in-parallel with the Flask app; deprecate and retire |
@@ -1014,6 +1014,11 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 - **Original concern:** every `/chem/*` route was open; anyone who could reach the server could read and modify the chemical inventory.
 - **Why closed:** commit `f604818` gates the entire `/chem` blueprint behind a `before_request` token check. Access requires a signed link from the WordPress staff-tools page (`/chem/enter` validates an HMAC over the new `CHEM_SSO_SECRET`, time-limited by `exp`), which sets `session['chem_authed']`; everything else redirects to the staff-tools URL. Read and write routes alike are now gated. (Detail at #6.)
 - **Verify:** logged out / no chem session → `GET /chem/inventory` and `POST /chem/remove` both 302 to the staff-tools URL.
+
+### R5. Edit-container silently discarded several fields — was High — CLOSED (2026-06-30, commit `11fd3e4`)
+- **Original concern:** `edit_container()` POSTed a form dict that `update_container()` read with **mismatched keys** — `expiry_date`→`expire`, `nmr_expiry`→`nmr_exp`, `storage_sublocation`→`storage_subloc` (all silently dropped) — and never wrote `catalog_number`, `physical_state`, `vendor_name`, or the real `description` (the `items` UPDATE clobbered `description` with the item name). The UI flashed "Updated successfully" regardless, so corrected expiry dates / vendors silently vanished — dangerous for a chemical-safety record. (Found in the later source audit; it was never a numbered item in this file.)
+- **Why closed:** corrected the three key lookups; reworked the `items` update to keep-or-update `name`, `description`, `catalog_number`, `physical_state`, and to resolve a submitted `vendor_name` to `items.vendor_id` via the existing `_upsert(conn, "vendors", …)`. The blueprint now wraps `update_container` in try/except and flashes a real error instead of a false success.
+- **Validated (2026-06-30):** ran the real `update_container` against an ephemeral Postgres seeded with a container — all seven previously-dropped fields persist, and blank form fields are preserved (keep-or-update). The dev reference (`documentation/UNanofabTools/flaskserver/06-service-layer-reference.md`, `update_container`) already described this intended behavior, so it now matches the code.
 
 
 # Read-Aloud Documentation Corpus: known-issues/NanofabToolkit/README.md
@@ -1400,12 +1405,11 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 
 ### 3. `init_chem_db.py` only applies the v1 schema — ✅ RESOLVED (2026-06-29, commit `313e495`)
 - **Was:** the script ran `chem_schema.sql` (v1) only, so a fresh chem database was missing the v2 migration and the v3 runtime-only objects (`containers.last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). Chem add/scan/report/transaction features would error on a clean install while the success message claimed the DB was ready.
-- **Resolution (commit `313e495`):** rewrote it around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent, so re-running is safe). Validated: the full v1→v2→v3 sequence on an empty Postgres reproduces the production chem tables (cols + types). See `known-issues/UNanofabTools/flaskserver.md` #4 for the matching schema reconciliation. (The naive `;`-split in #4 below is unchanged — still fine for the current statements.)
+- **Resolution (commit `313e495`):** rewrote it around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent, so re-running is safe). Validated: the full v1→v2→v3 sequence on an empty Postgres reproduces the production chem tables (cols + types). See `known-issues/UNanofabTools/flaskserver.md` #4 for the matching schema reconciliation. (The naive `;`-split nit — #4 below — was also hardened in commit `11fd3e4`.)
 
-### 4. `init_chem_db.py` naive statement splitting — Low
-- **Where:** splits the SQL on `;` and skips `BEGIN`/`COMMIT`.
-- **Risk:** breaks if any statement legitimately contains a semicolon (e.g. inside a function body or string).
-- **Fix:** execute the whole file via psql, or use a proper SQL parser.
+### 4. `init_chem_db.py` naive statement splitting — ✅ RESOLVED (2026-06-30, commit `11fd3e4`)
+- **Was:** split the SQL on `;` and skipped `BEGIN`/`COMMIT` — fragile if a statement contained a semicolon inside a `--` comment (the chem schema had none, so it worked, but it was brittle).
+- **Resolution:** the splitter now strips `--` line comments before splitting on `;` (still skipping `BEGIN`/`COMMIT`), so a semicolon inside a comment can't terminate a statement. A `;` inside a string literal / function body would still need care, but the chem schema has none.
 
 ### 5. `fetch_ssh.py` uses AutoAddPolicy and hard-coded identity — Medium
 - **Where:** `set_missing_host_key_policy(AutoAddPolicy())`; hard-coded `phelanh`/`phelan`, jump host, and key path.
@@ -1437,6 +1441,6 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 1. #1 protect the TLS private key — Medium (security)
 2. #7 resolve the `NMonStore.py` stub — Medium
 3. #5 tighten / scope `fetch_ssh.py` — Medium
-4. #2, #4, #6, #8, #9 cleanup — Low
+4. #2, #6, #8, #9 cleanup — Low
 
-*(#3 `init_chem_db.py` completeness — ✅ resolved 2026-06-29, commit `313e495`.)*
+*(Resolved: #3 `init_chem_db.py` completeness — ✅ 2026-06-29, commit `313e495`; #4 SQL-splitter fragility — ✅ 2026-06-30, commit `11fd3e4`.)*

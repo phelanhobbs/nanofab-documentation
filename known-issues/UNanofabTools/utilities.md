@@ -17,12 +17,11 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 
 ### 3. `init_chem_db.py` only applies the v1 schema — ✅ RESOLVED (2026-06-29, commit `313e495`)
 - **Was:** the script ran `chem_schema.sql` (v1) only, so a fresh chem database was missing the v2 migration and the v3 runtime-only objects (`containers.last_scan_at`, extended `inventory_cycles` columns, `scan_raw.barcode`, `container_scans.barcode`, the `transactions` table). Chem add/scan/report/transaction features would error on a clean install while the success message claimed the DB was ready.
-- **Resolution (commit `313e495`):** rewrote it around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent, so re-running is safe). Validated: the full v1→v2→v3 sequence on an empty Postgres reproduces the production chem tables (cols + types). See `known-issues/UNanofabTools/flaskserver.md` #4 for the matching schema reconciliation. (The naive `;`-split in #4 below is unchanged — still fine for the current statements.)
+- **Resolution (commit `313e495`):** rewrote it around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order (the migrations are idempotent, so re-running is safe). Validated: the full v1→v2→v3 sequence on an empty Postgres reproduces the production chem tables (cols + types). See `known-issues/UNanofabTools/flaskserver.md` #4 for the matching schema reconciliation. (The naive `;`-split nit — #4 below — was also hardened in commit `11fd3e4`.)
 
-### 4. `init_chem_db.py` naive statement splitting — Low
-- **Where:** splits the SQL on `;` and skips `BEGIN`/`COMMIT`.
-- **Risk:** breaks if any statement legitimately contains a semicolon (e.g. inside a function body or string).
-- **Fix:** execute the whole file via psql, or use a proper SQL parser.
+### 4. `init_chem_db.py` naive statement splitting — ✅ RESOLVED (2026-06-30, commit `11fd3e4`)
+- **Was:** split the SQL on `;` and skipped `BEGIN`/`COMMIT` — fragile if a statement contained a semicolon inside a `--` comment (the chem schema had none, so it worked, but it was brittle).
+- **Resolution:** the splitter now strips `--` line comments before splitting on `;` (still skipping `BEGIN`/`COMMIT`), so a semicolon inside a comment can't terminate a statement. A `;` inside a string literal / function body would still need care, but the chem schema has none.
 
 ### 5. `fetch_ssh.py` uses AutoAddPolicy and hard-coded identity — Medium
 - **Where:** `set_missing_host_key_policy(AutoAddPolicy())`; hard-coded `phelanh`/`phelan`, jump host, and key path.
@@ -54,6 +53,6 @@ Severity: **High** = security / broken · **Medium** = robustness/maintainabilit
 1. #1 protect the TLS private key — Medium (security)
 2. #7 resolve the `NMonStore.py` stub — Medium
 3. #5 tighten / scope `fetch_ssh.py` — Medium
-4. #2, #4, #6, #8, #9 cleanup — Low
+4. #2, #6, #8, #9 cleanup — Low
 
-*(#3 `init_chem_db.py` completeness — ✅ resolved 2026-06-29, commit `313e495`.)*
+*(Resolved: #3 `init_chem_db.py` completeness — ✅ 2026-06-29, commit `313e495`; #4 SQL-splitter fragility — ✅ 2026-06-30, commit `11fd3e4`.)*
