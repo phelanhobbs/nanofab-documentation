@@ -4,6 +4,8 @@
 
 > **Update (2026-07-01, commit `5cc5174`; 2026-07-07, `8712b49`):** `sensor_data_post` now also appends the combined per-sensor CSV to `LogData/sensors/` (via `_sensor_csv_path`, in `SENSOR_CSV_HEADER` column order), so `GET /sensor-data` returns data instead of a 404-for-every-sensor. `sensor_data_get` gained an optional `?limit` (default 500 most-recent rows). The embedded excerpt predates these fixes.
 
+> **Update (2026-07-13, commit `8f048ed`):** the `sds_analog` (Parylene batch) endpoint now normalizes the Content-Type check to `content_type.split(';')[0].strip().lower() == 'text/csv'`, so `text/csv; charset=utf-8` and any casing are accepted (was an exact `== 'text/csv'` that 400'd on a charset suffix).
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

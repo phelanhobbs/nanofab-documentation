@@ -85,10 +85,9 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 - **Effect:** anyone knowing a username + its uNID can reset the password; no Duo step. uNIDs are semi-public.
 - **Fix:** add a Duo push (or email confirmation) to the reset flow before allowing the password change.
 
-### 10. Login timing oracle (username enumeration) — Low
-- **Where:** `auth_service.verify_user_credentials` skips bcrypt when the username is absent.
-- **Effect:** non-existent usernames respond marginally faster, enabling enumeration.
-- **Fix:** perform a dummy bcrypt compare on the no-user path to equalize timing.
+### 10. Login timing oracle (username enumeration) — ✅ RESOLVED (2026-07-13, commit `8f048ed`)
+- **Was:** `auth_service.verify_user_credentials` skipped bcrypt when the username was absent, so non-existent usernames responded measurably faster (enumeration).
+- **Resolution:** it now always runs a bcrypt compare — against a precomputed `_DUMMY_PASSWORD_HASH` on the no-user path — so timing is equalized (validated: no-user 245 ms vs real-user 246 ms, was ~microseconds), and it's wrapped in try/except so a malformed stored hash can't 500 the login.
 
 ### 11. `csv_to_html_table` does not escape cell values — ✅ RESOLVED (2026-07-08, commit `f177140`)
 - **Was:** `app/services/data_service.py` interpolated each header/data cell straight into `<th>/<td>` — if any machine CSV cell contained HTML/JS it rendered unescaped (stored XSS), mitigated only by trusting machine-generated CSVs.
@@ -110,13 +109,11 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 - `config.ALLOWED_EXTENSIONS` vs the hardcoded set in `task_service.allowed_file` (which additionally allows `gif`). The config value is ignored by the uploader.
 - **Fix:** have `allowed_file` read `current_app.config['ALLOWED_EXTENSIONS']`.
 
-### 15. Dead code: `chem_inventory_remote.py` — Low
-- Near-duplicate `chem_bp` not registered anywhere.
-- **Fix:** delete it to avoid confusion (two definitions of the same `/chem/*` routes in the tree).
+### 15. Dead code: `chem_inventory_remote.py` — ✅ RESOLVED (2026-07-13, commit `8f048ed`)
+- Near-duplicate `chem_bp` (524 lines) not registered anywhere; confirmed unimported and **removed** (`git rm`).
 
-### 16. Empty model placeholder files — Low
-- `app/models/session.py`, `task.py`, `user.py` are 0 bytes; real classes live in `app/models/__init__.py`.
-- **Fix:** either split the models into these files or delete the placeholders.
+### 16. Empty model placeholder files — ✅ RESOLVED (2026-07-13, commit `8f048ed`)
+- `app/models/session.py`, `task.py`, `user.py` were 0 bytes (real classes live in `app/models/__init__.py`); confirmed unimported and **removed** (`git rm`).
 
 ### 17. Debug `print()` statements in `chem_service` — Low
 - `resolve_room_id`/`_resolve_room`/`bulk_move_by_barcodes`/`container_lookup` print to stdout on normal operation (e.g. `"USING resolve_room_id"`, `"BULK MOVE FORM:"`, `"LOOKUP ROW:"`).
@@ -144,7 +141,7 @@ Severity legend: **High** = breaks functionality or is a real security exposure 
 
 1. #8 tighten CORS, #9 strengthen password reset — Medium
 2. #19 add a test suite — Medium
-3. Cleanup batch: #13–#18, #20, #21 — Low
+3. Cleanup batch: #13, #14, #17, #18, #20, #21 — Low
 
 *(Resolved and removed from this list: #1 `/sensor-data` 404 — ✅ 2026-07-01 / 07-07, commits `5cc5174` + `8712b49`; #4 chem schema drift — ✅ 2026-06-29, commit `313e495`; #6 chem-inventory auth — ✅ 2026-06-25, commit `f604818`; #11 CSV-cell XSS — ✅ 2026-07-08, commit `f177140`. No High-severity items remain open.)*
 
@@ -196,3 +193,9 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 
 ### R10. `suggest()` / `autofill()` were dead stubs (no chem type-ahead) — was Medium — CLOSED (2026-07-13, commit `c3da4a2`)
 - See #2 above (marked resolved in place). `suggest` is now a whitelisted-field `ILIKE` DISTINCT query (injection-safe) and `autofill` looks up an item by catalog #/name and returns its vendor/state/size/etc.; validated against an ephemeral Postgres (16 checks). No template change — the front-end already called the endpoints.
+
+### R11. Small safe-fixes batch — CLOSED (2026-07-13, commit `8f048ed`)
+- **`sds_analog` exact Content-Type (new finding):** the Parylene batch upload accepted only a bare `text/csv`; it now normalizes `content_type.split(';')[0].strip().lower() == 'text/csv'`, so `text/csv; charset=utf-8` (and any casing) is accepted and a client/library adding a charset can't 400 it. Validated across 8 header variants.
+- **#10 login-timing / username enumeration** — resolved in place above (dummy bcrypt compare on the no-user path).
+- **#15 dead `chem_inventory_remote.py` blueprint** and **#16 empty model placeholders** — confirmed unimported and removed (`git rm`); resolved in place above.
+- Deployed 2026-07-13.

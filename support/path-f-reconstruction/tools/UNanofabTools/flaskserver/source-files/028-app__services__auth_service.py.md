@@ -2,6 +2,8 @@
 
 # Source Reconstruction: UNanofabTools/app/services/auth_service.py
 
+> **Update (2026-07-13, commit `8f048ed`):** `verify_user_credentials` now always runs a bcrypt compare — against a precomputed `_DUMMY_PASSWORD_HASH` when the username doesn't exist — to close the login-timing/username-enumeration oracle (the no-user path used to return before bcrypt). Wrapped in try/except so a malformed stored hash can't 500 the login. Preserve the constant-time behavior in any rewrite. The embedded excerpt predates this fix.
+
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

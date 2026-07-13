@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-minimum/`
 - Script files directory: `scripts/`
-- Total script word count: **79,593**
+- Total script word count: **79,718**
 - Target minimum: **50,000**
 - Target maximum: **100,000**
 - Source docs included: **31**
@@ -32,7 +32,7 @@
 | `scripts/module-15-pico-and-particle.md` | 4,609 |
 | `scripts/module-16-other-tools.md` | 1,239 |
 | `scripts/module-17-legacy-server.md` | 977 |
-| `scripts/module-18-known-issues-triage.md` | 5,798 |
+| `scripts/module-18-known-issues-triage.md` | 5,923 |
 | `scripts/module-19-path-d-audit-practice.md` | 3,514 |
 | `scripts/module-20-operational-scenarios.md` | 3,581 |
 | `scripts/module-21-final-no-contact-check.md` | 1,952 |
