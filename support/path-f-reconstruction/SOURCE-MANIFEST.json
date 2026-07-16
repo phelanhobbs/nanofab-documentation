@@ -1,15 +1,15 @@
 {
-  "generated_at_utc": "2026-06-10T21:55:59+00:00",
+  "generated_at_utc": "2026-07-16T22:49:01+00:00",
   "target_words": 0,
-  "total_words": 1515993,
-  "generated_files": 200,
+  "total_words": 1528949,
+  "generated_files": 202,
   "source_repos": [
     {
       "repo": "UNanofabTools",
       "root": "../UNanofabTools",
       "branch": "dev",
-      "commit": "0114dc5f2fc3d26c6e787eb2ebceb6187412783a",
-      "short_commit": "0114dc5",
+      "commit": "b01eaf6f63f8d8220ab03ed45e0298f787b89578",
+      "short_commit": "b01eaf6",
       "dirty_files": 0,
       "untracked_files": 2,
       "status_sha256": "22db35da733ce56d808ad9ce96b1a88f0e274583e60b9c16d639f6cbb2f9665a"
@@ -20,9 +20,9 @@
       "branch": "master",
       "commit": "cedd4b776009fb6952eb7e0760833fecfbb6674c",
       "short_commit": "cedd4b7",
-      "dirty_files": 1,
+      "dirty_files": 2,
       "untracked_files": 0,
-      "status_sha256": "9a7c12f6aa9d0add37818a0fc359424a10812e38fac7ab48f95609208ec0604c"
+      "status_sha256": "45e1f7c0d857aad8af4f016d277135331aee1f1e0abb48ea328f85d837d7fcda"
     }
   ],
   "tool_folders": [
@@ -36,7 +36,7 @@
       "repo": "UNanofabTools",
       "tool": "flaskserver",
       "title": "Flask Server",
-      "source_files": 79
+      "source_files": 81
     },
     {
       "repo": "UNanofabTools",
@@ -131,7 +131,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/001-.env.example.md",
-      "sanitized_sha256": "5fc564069d36c6c1f118e3bd4dd77d9ceca9d88a4ab1117b4fb2ddf779d37b01"
+      "sanitized_sha256": "3e2239ab110dc3162eca345b6fa0b0b9ff593a105333e6309c9d2f14c11f45a7"
     },
     {
       "repo": "UNanofabTools",
@@ -140,7 +140,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/repo-overview-and-entrypoints/source-files/001-.gitignore.md",
-      "sanitized_sha256": "0fdec20e43fa0699ab7bb2186c65fbde9032e7a6d3e570dfdfcd7c2ae101d4ff"
+      "sanitized_sha256": "11691ef6901944ee25c5ad68fce88600ed9edf72a52e3d19bd94aa9cc3d39673"
     },
     {
       "repo": "UNanofabTools",
@@ -329,7 +329,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/hscdownloader/source-files/001-HSCDownloader.py.md",
-      "sanitized_sha256": "e86d901a604a86a78a9a53bfd175f2ced18b6914693f278ecaf096a190523702"
+      "sanitized_sha256": "04009834f9dd2383ffb6ede957e27061a4482e428561579520ea41f31f6102ee"
     },
     {
       "repo": "UNanofabTools",
@@ -446,7 +446,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/012-app____init__.py.md",
-      "sanitized_sha256": "e1ac240614c0b52f24fddc16ee77da2ca345dc42f34b2a190f00b1e7631a6b52"
+      "sanitized_sha256": "cb070fc787d061382aa6b156af7d9d8851d2c9577ac2c24dd781ccb7019ab9b3"
     },
     {
       "repo": "UNanofabTools",
@@ -455,7 +455,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/013-app__blueprints__admin.py.md",
-      "sanitized_sha256": "6491073d6504ceb11e52dd290f206266f4057a362e181c1daec02f1d1254fdb4"
+      "sanitized_sha256": "4e615fde1ea94815a85640566b1b2f3acef0e55af0ee35824a452edb7f6f4a88"
     },
     {
       "repo": "UNanofabTools",
@@ -464,7 +464,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/014-app__blueprints__api.py.md",
-      "sanitized_sha256": "bde102ba33786ded40d58d0377025493d3bd48d6372fbb6f545f7e2e77a0347d"
+      "sanitized_sha256": "352ba8d63a312eae0e805ad98c2432af21797e44c980b5a614e7925a393305cb"
     },
     {
       "repo": "UNanofabTools",
@@ -473,7 +473,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/015-app__blueprints__auth.py.md",
-      "sanitized_sha256": "9f346420532d086ec4bb749bfbe1e8ddcedf7359363cd0444dcbe10ba2135eec"
+      "sanitized_sha256": "e0a88df0e58013e196121932d394591d67d374158c50a3ae5d51033400a32833"
     },
     {
       "repo": "UNanofabTools",
@@ -482,16 +482,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/016-app__blueprints__chem_inventory.py.md",
-      "sanitized_sha256": "c71a8f99523a71277cb34704435edac66ae0ccd2d08f1a272554270d096f87a5"
-    },
-    {
-      "repo": "UNanofabTools",
-      "path": "app/blueprints/chem_inventory_remote.py",
-      "tool": "UNanofabTools/flaskserver",
-      "dirty": false,
-      "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/017-app__blueprints__chem_inventory_remote.py.md",
-      "sanitized_sha256": "edc60572fd14ea4f2fec37fcf9326391aebaaba1e3c8e0cf5d0c31ae09d254b4"
+      "sanitized_sha256": "64bb9e2a1ed6aa287eb63951a399752e5d8ce50770b58542dc286eae85558f09"
     },
     {
       "repo": "UNanofabTools",
@@ -499,8 +490,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/018-app__blueprints__machines.py.md",
-      "sanitized_sha256": "485e24c352e52b83f925d1dc0ecec83eaca6c36c7c5735f1a6a1ee078f21f009"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/017-app__blueprints__machines.py.md",
+      "sanitized_sha256": "af03a521cc43c8da39ce987273901b38c7a294117a1e37708305c22622b1fbce"
     },
     {
       "repo": "UNanofabTools",
@@ -508,7 +499,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/019-app__blueprints__particle_demo_will.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/018-app__blueprints__particle_demo_will.py.md",
       "sanitized_sha256": "f7255e949f8cbea26631885e6e3fbbf393b4e46c7d418910ec58357c0f9f214c"
     },
     {
@@ -517,7 +508,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/020-app__blueprints__tasks.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/019-app__blueprints__tasks.py.md",
       "sanitized_sha256": "6ea56bcf036a2f9e1943d824814e84bd8c3ac29c2cb802b458cab82ea5f28fb5"
     },
     {
@@ -526,7 +517,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/021-app__models____init__.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/020-app__models____init__.py.md",
       "sanitized_sha256": "99501a0a42a1892b2149cad0492676c6ace5c1b59694ed2308a7da2d4925d420"
     },
     {
@@ -535,7 +526,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/022-app__models__chem_inventory.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/021-app__models__chem_inventory.py.md",
       "sanitized_sha256": "00d777da8aa5361c97d0fefac151fa886abe799409038a9a1cda539707fd7ce9"
     },
     {
@@ -544,35 +535,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/023-app__models__particle_sensor.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/022-app__models__particle_sensor.py.md",
       "sanitized_sha256": "b66a50d5473dd5f901160b2f2b9af5519e1575ac8d943a1df1c101b02489dfaa"
-    },
-    {
-      "repo": "UNanofabTools",
-      "path": "app/models/session.py",
-      "tool": "UNanofabTools/flaskserver",
-      "dirty": false,
-      "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/024-app__models__session.py.md",
-      "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "repo": "UNanofabTools",
-      "path": "app/models/task.py",
-      "tool": "UNanofabTools/flaskserver",
-      "dirty": false,
-      "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/025-app__models__task.py.md",
-      "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "repo": "UNanofabTools",
-      "path": "app/models/user.py",
-      "tool": "UNanofabTools/flaskserver",
-      "dirty": false,
-      "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/026-app__models__user.py.md",
-      "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "repo": "UNanofabTools",
@@ -580,8 +544,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/027-app__services__admin_service.py.md",
-      "sanitized_sha256": "61ff57c8fd7c262816a5791fb9a368264140ab5cf08563fccd528635d29c95bd"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/023-app__services__admin_service.py.md",
+      "sanitized_sha256": "7b462dd38e13b931414b299746154faefb8352a15c93f532d0eae5f87d6793e5"
     },
     {
       "repo": "UNanofabTools",
@@ -589,8 +553,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/028-app__services__auth_service.py.md",
-      "sanitized_sha256": "0e40048b241666c679441623d4efe901f787c6580215d995996f5106b08d01cd"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/024-app__services__auth_service.py.md",
+      "sanitized_sha256": "ddfd41d4db302cf593946607855dc32ea196740f6daa0806abe314ad161af1ec"
     },
     {
       "repo": "UNanofabTools",
@@ -598,8 +562,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/029-app__services__chem_service.py.md",
-      "sanitized_sha256": "a5f1b71afb6dfd52bbfaacccda5d75eeb85ade7ad4b9152576630a94e64b6f9d"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/025-app__services__chem_service.py.md",
+      "sanitized_sha256": "1294433c539455b9f0fd60663660bc76f67283473a7667488e1fc5d3fc32ace7"
     },
     {
       "repo": "UNanofabTools",
@@ -607,8 +571,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/030-app__services__data_service.py.md",
-      "sanitized_sha256": "16e13590d62ab7aefe30d3e8f112b1a72c0516c67fdea64d21079160d8d1b77d"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/026-app__services__data_service.py.md",
+      "sanitized_sha256": "ab30f38a9e113e91fff3d051ca94cecf24eb36d7107a0c309358e155fe5c38f8"
     },
     {
       "repo": "UNanofabTools",
@@ -616,7 +580,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/031-app__services__task_service.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/027-app__services__task_service.py.md",
       "sanitized_sha256": "d83887bff66e1de5f504b5c83c3d2ae406df5a930511e0ce6d90ad9fed199369"
     },
     {
@@ -625,7 +589,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/032-app__static__css__inventory.css.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/028-app__static__css__inventory.css.md",
       "sanitized_sha256": "09ceb8940f1a674f48479de3a9a0adb86d8c2c63b80ff18319fe647bdc48ceaf"
     },
     {
@@ -634,7 +598,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/033-app__static__js__adminActions.js.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/029-app__static__js__adminActions.js.md",
       "sanitized_sha256": "feaa29e63ae1ce018e34942a7089627c459e0331096a222516ebfcbf6c0a6d04"
     },
     {
@@ -643,7 +607,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/034-app__static__js__graph.js.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/030-app__static__js__graph.js.md",
       "sanitized_sha256": "1d560b3621f88cb3872e395a68371d91ad0424774220fdc5ac8998c52fcc2c5f"
     },
     {
@@ -652,7 +616,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/035-app__static__js__tablesort.js.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/031-app__static__js__tablesort.js.md",
       "sanitized_sha256": "1f4228bc82a1173d66c4d8bdf14d7b244d7e46788db1ccb0eff529a2ec0b8383"
     },
     {
@@ -661,8 +625,26 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/036-app__static__js__taskActions.js.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/032-app__static__js__taskActions.js.md",
       "sanitized_sha256": "2c5b33508708b998b681b30d4a1756e1afafb4c15c6cc69f295e8840544e0f51"
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/adminpanel.html",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/033-app__templates__adminpanel.html.md",
+      "sanitized_sha256": "8d25c60a68fbc7591da5e32f0d4efeac0e64f0e6d51698d56329c64408340b6b"
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/ald_graph.html",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/034-app__templates__ald_graph.html.md",
+      "sanitized_sha256": "f6df54c941c41b94eda55004b946f46b182fe02f1542db1a1b6f724181761a9a"
     },
     {
       "repo": "UNanofabTools",
@@ -670,8 +652,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/037-app__templates__base.html.md",
-      "sanitized_sha256": "954c7773acca93b1facda43893dbde799ea6237feb071482e3389aaedc907785"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/035-app__templates__base.html.md",
+      "sanitized_sha256": "90b36cbc7241ba2d96ad5bde713c0834adf6516b7018a1f529b4604e6f97c2df"
     },
     {
       "repo": "UNanofabTools",
@@ -679,7 +661,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/038-app__templates__chem__OLDbcq.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/036-app__templates__chem__OLDbcq.html.md",
       "sanitized_sha256": "4bad62c8dce8e3d10a73f6462983110e0c7e9377b62cb91606cfe6a158d7112b"
     },
     {
@@ -688,8 +670,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/039-app__templates__chem__add.html.md",
-      "sanitized_sha256": "433897d6cd130f0e329c4c1af6e0d34490b201ec487fef371bb829efbdf5ce02"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/037-app__templates__chem__add.html.md",
+      "sanitized_sha256": "bc627876ad8918f086977f0340bc548e4f8cac4aeff0c8ef9c21596999e690f6"
     },
     {
       "repo": "UNanofabTools",
@@ -697,7 +679,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/040-app__templates__chem__barcode_print.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/038-app__templates__chem__barcode_print.html.md",
       "sanitized_sha256": "8251e8120f7834446a343e47a135cee72cd04f5b10b58d71211701f113699f34"
     },
     {
@@ -706,8 +688,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/041-app__templates__chem__barcode_queue.html.md",
-      "sanitized_sha256": "b31aff0e8d226e89b4dacb7e15df5b4945073a1bc3b2fa5e4999cfa4ee242a33"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/039-app__templates__chem__barcode_queue.html.md",
+      "sanitized_sha256": "c5db1047022f852cd675aba1a64a181e0a90a37c601b5186800f75be20c1a94c"
     },
     {
       "repo": "UNanofabTools",
@@ -715,8 +697,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/042-app__templates__chem__base.html.md",
-      "sanitized_sha256": "3e3c022682c807062bf73160fdaaaaee5354b3f34d9bba200b9150bdc80b81d0"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/040-app__templates__chem__base.html.md",
+      "sanitized_sha256": "4294a5e6648cad27b5786feb78ae6e428649c0f60157b59522b90a7fcd2f7fa8"
     },
     {
       "repo": "UNanofabTools",
@@ -724,8 +706,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/043-app__templates__chem__edit.html.md",
-      "sanitized_sha256": "9440ad081013e14e87e596689451b21780fa1c30c93caa3a43ed7220c857d6a3"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/041-app__templates__chem__edit.html.md",
+      "sanitized_sha256": "9875183745dbbd0adbfa62e9c1af3f4a2ca25b07a66680365e908d4c0f705ecf"
     },
     {
       "repo": "UNanofabTools",
@@ -733,7 +715,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/044-app__templates__chem__inventory.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/042-app__templates__chem__inventory.html.md",
       "sanitized_sha256": "1e591a9abcbe209a216d1d7d478da2ba61c0a001ecbcf31c36dcc9acb5aff577"
     },
     {
@@ -742,7 +724,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/045-app__templates__chem__inventory_print.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/043-app__templates__chem__inventory_print.html.md",
       "sanitized_sha256": "b31ad78169d9b7f4e6551667bc14c8d2b1e10b2a7c7735dfb1577305c898c579"
     },
     {
@@ -751,8 +733,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/046-app__templates__chem__move.html.md",
-      "sanitized_sha256": "96b4d60d2aefe7d5ec463c886997df2db60ebe0cb5936f6079de914b813e09db"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/044-app__templates__chem__move.html.md",
+      "sanitized_sha256": "84b7736bd0dcf16663f300b2fd2d0f1661de070f42df2a3b4cd8d212612677fa"
     },
     {
       "repo": "UNanofabTools",
@@ -760,8 +742,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/047-app__templates__chem__remove.html.md",
-      "sanitized_sha256": "14b201b3f1e9887f473fb491d1522f91ea302b390fc5ad3d3237f41682611652"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/045-app__templates__chem__remove.html.md",
+      "sanitized_sha256": "fffca5ccfc33847a6ad5553f553a431c20e4e5c8cb0e5fbdbe9a177bb49c3d06"
     },
     {
       "repo": "UNanofabTools",
@@ -769,7 +751,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/048-app__templates__chem__report.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/046-app__templates__chem__report.html.md",
       "sanitized_sha256": "bb6168f0c2adc694c9fdf281231d36b8e1dceead670154ce55e112b8bd150998"
     },
     {
@@ -778,7 +760,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/049-app__templates__chem__transactions.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/047-app__templates__chem__transactions.html.md",
       "sanitized_sha256": "a796556bd513c3a8c2c421e2961db32f454eaf942803167889366eab5ba4849d"
     },
     {
@@ -787,8 +769,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/050-app__templates__chem__upload_scans.html.md",
-      "sanitized_sha256": "048ef662f325784a2531f43f8e363f183aeafa321a04a2fd231584609744e600"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/048-app__templates__chem__upload_scans.html.md",
+      "sanitized_sha256": "411f9c9845642d1f3377cbb61340015dba3facbc718f9c231fa5ec76e69964c8"
     },
     {
       "repo": "UNanofabTools",
@@ -796,8 +778,17 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/051-app__templates__createTask.html.md",
-      "sanitized_sha256": "3055ac4e529b56a33683fd296c78978cbc4279bafd9f87cfb9a2cafca99a2513"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/049-app__templates__createTask.html.md",
+      "sanitized_sha256": "9b8f7ef19c8a00c73b2a9017545010d1992159ec50628b096e7860c59ce54ef9"
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/graph.html",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/050-app__templates__graph.html.md",
+      "sanitized_sha256": "508473c779ebaa37a1a3e96a5835e12acaa2aeb9937ce6d6bf33455dd30dd5e9"
     },
     {
       "repo": "UNanofabTools",
@@ -805,7 +796,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/052-app__templates__index.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/051-app__templates__index.html.md",
       "sanitized_sha256": "921f1d8c8aa2501a72316019721837b0265a1a97930ea377ded42ee808e2d9c0"
     },
     {
@@ -814,8 +805,17 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/053-app__templates__logFileIndex.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/052-app__templates__logFileIndex.html.md",
       "sanitized_sha256": "46414ef9b4e58ca79c0a82cb755bde1760dba1356beacf1aca74cbb281358eff"
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "app/templates/log_files.html",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/053-app__templates__log_files.html.md",
+      "sanitized_sha256": "c74997abea41f37cb9916f15c6f5521fd582549013e10d6fbe9d0b30a273252b"
     },
     {
       "repo": "UNanofabTools",
@@ -824,7 +824,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/flaskserver/source-files/054-app__templates__login.html.md",
-      "sanitized_sha256": "c7e412d6c695f29e494e873cb4fef15b0d86b51df983b86efdda0c435b8d44c7"
+      "sanitized_sha256": "2d2acb323df9787ff9fb37dfcffc28ce9a773d68f631acf7a7f5da05693cc09f"
     },
     {
       "repo": "UNanofabTools",
@@ -837,11 +837,20 @@
     },
     {
       "repo": "UNanofabTools",
+      "path": "app/templates/machine_data.html",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/056-app__templates__machine_data.html.md",
+      "sanitized_sha256": "5a42e1ba3040edfbc05aa0e9d49214e39a5824e94385860b3ea9ffd0a5cdc9eb"
+    },
+    {
+      "repo": "UNanofabTools",
       "path": "app/templates/machines.html",
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/056-app__templates__machines.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/057-app__templates__machines.html.md",
       "sanitized_sha256": "f41b90bd0177f0fb3dc24dbc84d7eac1ea0cdeb9a42dcab5295ebbb68fbcb7e2"
     },
     {
@@ -850,8 +859,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/057-app__templates__resetpassword.html.md",
-      "sanitized_sha256": "1af44724442794438c401487edae3f43fd535550688b723c1924e2db486f4ae2"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/058-app__templates__resetpassword.html.md",
+      "sanitized_sha256": "c734d013a09b351efde2c19b1d78d29647372b2336721b74f2c5973743c07fd5"
     },
     {
       "repo": "UNanofabTools",
@@ -859,8 +868,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/058-app__templates__signup.html.md",
-      "sanitized_sha256": "2d81f8955067cf1ac3a9df191fb6882f09091e7c262abefb9bb248a564da1aa6"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/059-app__templates__signup.html.md",
+      "sanitized_sha256": "3ce7b351285b06703714639bca1832697d7a367b50474bb40f9e06110debb4de"
     },
     {
       "repo": "UNanofabTools",
@@ -868,7 +877,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/059-app__templates__tasks.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/060-app__templates__tasks.html.md",
       "sanitized_sha256": "b8a3ed4a6ae5ae4a87d5eda7b2e1e39240e3e82e3be876d4521e71e12d1d033a"
     },
     {
@@ -877,7 +886,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": true,
       "untracked": true,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/060-chem_inventory_remote.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/061-chem_inventory_remote.py.md",
       "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
@@ -886,7 +895,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/061-chem_schema.sql.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/062-chem_schema.sql.md",
       "sanitized_sha256": "f76bb65268eaece33cc72fe07f337dd24844be218ff1fcab04728c422deee815"
     },
     {
@@ -895,8 +904,17 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/062-chem_schema_migration_v2.sql.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/063-chem_schema_migration_v2.sql.md",
       "sanitized_sha256": "0cb5061a86284021b8407654e339f4963ef5141193b02026b0497501e7e4788c"
+    },
+    {
+      "repo": "UNanofabTools",
+      "path": "chem_schema_migration_v3.sql",
+      "tool": "UNanofabTools/flaskserver",
+      "dirty": false,
+      "untracked": false,
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/064-chem_schema_migration_v3.sql.md",
+      "sanitized_sha256": "5557d1d69c29181f6814137c62c062cb795c23cb06c5a25b99e9acb6e71d329c"
     },
     {
       "repo": "UNanofabTools",
@@ -904,8 +922,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/063-config__config.py.md",
-      "sanitized_sha256": "0cbfb39fe4a5ffb8b45e3511f59d55bf9acc59f50bc2a5c29719cb1d1baa4212"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/065-config__config.py.md",
+      "sanitized_sha256": "610e24935782d1c52a8d19d88704024adda6488af83ba6a379219ee06109aaed"
     },
     {
       "repo": "UNanofabTools",
@@ -913,7 +931,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/064-createTask.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/066-createTask.html.md",
       "sanitized_sha256": "338ec5e751a271d0988d5f9aa8bd7c3bf3d0c1ae49ed568b343336644503d8fc"
     },
     {
@@ -958,7 +976,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/065-index.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/067-index.html.md",
       "sanitized_sha256": "acb663666a9983dd10cb9fa43ad1ef1428896c321c77a2a0b08f1029f36dd174"
     },
     {
@@ -968,7 +986,7 @@
       "dirty": false,
       "untracked": false,
       "generated_page": "tools/UNanofabTools/utilities/source-files/004-init_chem_db.py.md",
-      "sanitized_sha256": "ca12aeb1ab888c0f2d65d4d76f45eae1ef51a55d607561370fd7e298b43695ab"
+      "sanitized_sha256": "c83f12c04b3a6fdd85147590ca4074eeb1f04ce1ea0c2ac3432f3c309a35eaf2"
     },
     {
       "repo": "UNanofabTools",
@@ -976,7 +994,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/066-logFileIndex.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/068-logFileIndex.html.md",
       "sanitized_sha256": "3fa9411ca5f9219df2bdca3948af934addc30d36d3d77691a07a1a0ed9971a9f"
     },
     {
@@ -985,7 +1003,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/067-login.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/069-login.html.md",
       "sanitized_sha256": "82455fe4543dd82d361d6e4ddd487f3908d4fc4270531557cfc34c0b03d5d256"
     },
     {
@@ -994,7 +1012,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/068-machines.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/070-machines.html.md",
       "sanitized_sha256": "75fa62c805d10e74a4a7e56d0802db097c86529a4785af1fafdd9db24e385b6d"
     },
     {
@@ -1003,7 +1021,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/069-migrations__README.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/071-migrations__README.md",
       "sanitized_sha256": "509019aa43a84dd7c83f7d87b079c480ccfbdf45f4a4e1330ac3ef5531081b88"
     },
     {
@@ -1012,7 +1030,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/070-migrations__alembic.ini.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/072-migrations__alembic.ini.md",
       "sanitized_sha256": "f11e8d6b8dadeaf784f13caea59a8cf6e7a9d03b8bd94b6a92291b0207914cdc"
     },
     {
@@ -1021,7 +1039,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/071-migrations__env.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/073-migrations__env.py.md",
       "sanitized_sha256": "3b826372a32efdde1134474e0992af6469e541c62fe537db958370ba26b24604"
     },
     {
@@ -1030,7 +1048,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/072-migrations__script.py.mako.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/074-migrations__script.py.mako.md",
       "sanitized_sha256": "2e2a82290009d966eaa351d3f87b0532c0eda8f17c9165fb62e773d005c6110e"
     },
     {
@@ -1039,7 +1057,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/073-migrations__versions__01bdbfe91bd5_create_particle_sensor_tables.py.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/075-migrations__versions__01bdbfe91bd5_create_particle_sensor_tables.py.md",
       "sanitized_sha256": "0b689b634d89ad59eec01143d25855b939f5f08655f6cea789137e154072a7e6"
     },
     {
@@ -1075,7 +1093,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/074-quick_setup.sh.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/076-quick_setup.sh.md",
       "sanitized_sha256": "1a8b492b7583802fbf70bfacb4826f4d220839fbb2d8d28664e88ce6f01062fe"
     },
     {
@@ -1084,8 +1102,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/075-requirements.txt.md",
-      "sanitized_sha256": "93c550ef13cfe8dc105bf1595255754f3954c6abc7d89e9667e963915524a4ed"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/077-requirements.txt.md",
+      "sanitized_sha256": "7663e391696b16dbbc2d5794cb94c29fcf7d73c373e8739e4097f6c56d1f28cd"
     },
     {
       "repo": "UNanofabTools",
@@ -1093,7 +1111,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/076-resetpassword.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/078-resetpassword.html.md",
       "sanitized_sha256": "b3ca6739cb3073fed28e63d13fc6d5160a650be696c7fca9a66151783d9e7462"
     },
     {
@@ -1102,8 +1120,8 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/077-run.py.md",
-      "sanitized_sha256": "6a88f88f01f0d9a001e558d2b25232396226198185a3f2b744f22fa2949f893d"
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/079-run.py.md",
+      "sanitized_sha256": "ab6ff8f7d9d34c2ef10af006e9609c08eeb601e2c53f8ec79545512708c48d63"
     },
     {
       "repo": "UNanofabTools",
@@ -1111,7 +1129,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/078-setup.sh.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/080-setup.sh.md",
       "sanitized_sha256": "ed0af7026e76f521dd2027ec92512473ac85d84b721f3f80d51380ed3c809446"
     },
     {
@@ -1120,7 +1138,7 @@
       "tool": "UNanofabTools/flaskserver",
       "dirty": false,
       "untracked": false,
-      "generated_page": "tools/UNanofabTools/flaskserver/source-files/079-signup.html.md",
+      "generated_page": "tools/UNanofabTools/flaskserver/source-files/081-signup.html.md",
       "sanitized_sha256": "162d9879a06c7e43999fd999ba534a3df47a5795b1325c57cc844f703c959c3a"
     },
     {
@@ -1496,10 +1514,10 @@
       "repo": "NanofabToolkit",
       "path": "PreciousMetalReader/src/RetrieveMonthsMetals.py",
       "tool": "NanofabToolkit/PreciousMetalReader",
-      "dirty": false,
+      "dirty": true,
       "untracked": false,
       "generated_page": "tools/NanofabToolkit/PreciousMetalReader/source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md",
-      "sanitized_sha256": "a05cf35b3b22161f957dce0ebb648779830a8020f5f0fa18b1015c2048f038ba"
+      "sanitized_sha256": "6748fecd9313e52d95e9e01f770501146f710afcbb28a70dbc872df6145e9f8b"
     },
     {
       "repo": "NanofabToolkit",

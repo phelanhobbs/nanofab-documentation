@@ -13,18 +13,19 @@ Path F is the maximal reconstruction path. It is intended for a future maintaine
 
 ## Source State Used
 
-- `UNanofabTools`: branch `dev`, commit `0114dc5f2fc3d26c6e787eb2ebceb6187412783a`, root `../UNanofabTools`, dirty files `0`, untracked files `2`
-- `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `../NanofabToolkit`, dirty files `1`, untracked files `0`
+- `UNanofabTools`: branch `dev`, commit `b01eaf6f63f8d8220ab03ed45e0298f787b89578`, root `../UNanofabTools`, dirty files `0`, untracked files `2`
+- `NanofabToolkit`: branch `master`, commit `cedd4b776009fb6952eb7e0760833fecfbb6674c`, root `../NanofabToolkit`, dirty files `2`, untracked files `0`
 
 ## Readable Source Files Included
 
 - `NanofabToolkit`: 48 readable tracked or explicitly untracked source/documentation files
-- `UNanofabTools`: 111 readable tracked or explicitly untracked source/documentation files
+- `UNanofabTools`: 113 readable tracked or explicitly untracked source/documentation files
 
 ## Dirty Or Untracked Source Files At Generation Time
 
 - `UNanofabTools/chem_inventory_remote.py`
 - `NanofabToolkit/ParticleSensor/src/gui.py`
+- `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py`
 
 If this section lists any files, a clean checkout at the recorded commits will not reproduce this manual exactly. Either preserve the working-tree diffs as patch artifacts, commit the source changes in the sibling repos, or regenerate Path F from a deliberately clean source state and review the diff.
 
@@ -94,7 +95,7 @@ A functionally identical rebuild must preserve what happens to users, files, dat
 
 ### Universal Edge Case 11: Schema Drift
 
-**In this system:** The live chem PostgreSQL has runtime-only columns and tables (for example `transactions` and barcode columns) absent from the committed SQL; a DB built only from `chem_schema*.sql` will 500 on chem write, scan, and report.
+**In this system:** Historically the live chem PostgreSQL had runtime-only columns and tables (for example `transactions` and barcode columns) absent from the committed SQL. Reconciled 2026-06-29 by `chem_schema_migration_v3.sql` (commit `313e495`), which `init_chem_db.py` now applies (v1->v2->v3) so a fresh build matches prod; treat any new divergence as fresh drift.
 
 A functionally identical rebuild must preserve what happens to users, files, databases, logs, network calls, and operator decisions under the schema drift condition. If the original behavior is weak, describe it accurately before recommending a safer replacement.
 

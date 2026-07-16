@@ -2,10 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/app/services/chem_service.py
 
-> **Update (2026-06-30, commit `11fd3e4`):** `update_container()` was corrected so every edited field persists — it now reads the form's real keys (`expiry_date`, `nmr_expiry`, `storage_sublocation`) and keeps-or-updates the item's `name`, `description`, `catalog_number`, `physical_state`, and resolves a submitted `vendor_name` to `items.vendor_id` via `_upsert(conn, "vendors", …)`. Previously several of these were silently dropped. The embedded excerpt predates this fix.
-
-> **Update (2026-07-13, commit `c3da4a2`):** `suggest()` and `autofill()` (formerly `[]`/`{}` stubs) are now implemented — `suggest` is a whitelisted-field `DISTINCT ILIKE` query (identifier can't be injected), `autofill` looks up an item by catalog #/name and returns its vendor/state/size/etc. Preserve the field-whitelist in any rewrite. The embedded excerpt predates this.
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
@@ -14,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/services/chem_service.py`
-- Lines read: `1627`
+- Lines read: `1729`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `a5f1b71afb6dfd52`
+- Sanitized SHA-256 prefix: `1294433c539455b9`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -1183,8 +1179,15 @@ class ChemInventoryService:
             if not current:
                 raise ValueError(f"Container {container_id} not found")
 
-            new_name = (data.get("name") or "").strip()
-            current_item_id = current["item_id"]
+            # ---- items (shared chemical definition) ----
+            # Pull the current item row so blank form fields fall back to the
+            # existing values instead of being wiped or ignored.
+            item_cur = conn.execute(text("""
+                SELECT name, description, catalog_number, physical_state, vendor_id
+                FROM items
+                WHERE item_id = :item_id
+            """), {"item_id": current["item_id"]}).mappings().first()
+
             new_name = (
                 data.get("name")
                 or data.get("material_name")
@@ -1193,29 +1196,53 @@ class ChemInventoryService:
                 or ""
             ).strip()
 
-            if new_name:
-                conn.execute(text("""
-                    UPDATE items
-                    SET name = :name,
-                        description = :name
-                    WHERE item_id = :item_id
-                """), {
-                    "name": new_name,
-                    "item_id": current["item_id"]
-                })
-            room_id = self.resolve_room_id(
+            item_name  = keep_or_update(new_name,                   item_cur["name"])
+            item_desc  = keep_or_update(data.get("description"),    item_cur["description"])
+            item_cat   = keep_or_update(data.get("catalog_number"), item_cur["catalog_number"])
+            item_state = keep_or_update(data.get("physical_state"), item_cur["physical_state"])
+
+            # Vendor lives in its own table; resolve a submitted name to an id,
+            # otherwise keep whatever vendor the item already has.
+            vendor_name = (data.get("vendor_name") or "").strip()
+            vendor_id = (
+                self._upsert(conn, "vendors", "vendor_name", vendor_name)
+                if vendor_name else item_cur["vendor_id"]
+            )
+
+            conn.execute(text("""
+                UPDATE items
+                SET name           = :name,
+                    description    = :description,
+                    catalog_number = :catalog_number,
+                    physical_state = :physical_state,
+                    vendor_id      = :vendor_id
+                WHERE item_id = :item_id
+            """), {
+                "name": item_name,
+                "description": item_desc,
+                "catalog_number": item_cat,
+                "physical_state": item_state,
+                "vendor_id": vendor_id,
+                "item_id": current["item_id"],
+            })
+            resolved_room_id = self.resolve_room_id(
                 conn,
                 data.get("room_no"),
                 data.get("room_desc"),
                 data.get("area_class")
             )
+            # Keep the existing room when the edit form supplies no room fields, so
+            # an unrelated edit can't silently NULL the container's location. This
+            # matches the keep_or_update used for every other field here and the
+            # COALESCE guard in move_container().
+            room_id = resolved_room_id if resolved_room_id is not None else current["room_id"]
 
             manuf = keep_or_update(data.get("manuf_date"), current["manuf_date"])
-            exp = keep_or_update(data.get("expire"), current["expiry_date"])
-            nmr_exp = keep_or_update(data.get("nmr_exp"), current["nmr_expiry"])
+            exp = keep_or_update(data.get("expiry_date"), current["expiry_date"])
+            nmr_exp = keep_or_update(data.get("nmr_expiry"), current["nmr_expiry"])
 
             sloc = keep_or_update(data.get("storage_location"), current["storage_location"])
-            ssub = keep_or_update(data.get("storage_subloc"), current["storage_sublocation"])
+            ssub = keep_or_update(data.get("storage_sublocation"), current["storage_sublocation"])
             sdev = keep_or_update(data.get("storage_device"), current["storage_device"])
             size = keep_or_update(data.get("size"), current["size"])
             unit = keep_or_update(data.get("unit"), current["unit"])
@@ -1354,13 +1381,84 @@ class ChemInventoryService:
 
         return rows
 
+    # Type-ahead fields → (table, column). The field name is whitelisted here so
+    # the identifier can never come from user input (the f-string below is safe).
+    _SUGGEST_FIELDS = {
+        "name":                ("items", "name"),
+        "vendor":              ("vendors", "vendor_name"),
+        "unit":                ("containers", "unit"),
+        "system":              ("containers", "system"),
+        "storage_device":      ("containers", "storage_device"),
+        "storage_location":    ("containers", "storage_location"),
+        "storage_sublocation": ("containers", "storage_sublocation"),
+    }
+
     def suggest(self, field, q, limit=10):
-        # Stub implementation
-        return []
+        """Distinct-value type-ahead for the chem Add/Edit forms.
+
+        `field` is whitelisted to a fixed (table, column); `q` is parameterized
+        and matched case-insensitively as a substring. Returns a list of values.
+        """
+        q = (q or "").strip()
+        mapping = self._SUGGEST_FIELDS.get(field)
+        if not mapping or not q:
+            return []
+        table, col = mapping
+        try:
+            limit = max(1, min(int(limit or 10), 50))
+        except (TypeError, ValueError):
+            limit = 10
+        sql = text(f"""
+            SELECT DISTINCT {col} AS v
+            FROM {table}
+            WHERE {col} ILIKE :q AND {col} IS NOT NULL AND {col} <> ''
+            ORDER BY {col}
+            LIMIT :limit
+        """)
+        with self.engine.begin() as conn:
+            rows = conn.execute(sql, {"q": f"%{q}%", "limit": limit}).fetchall()
+        return [r[0] for r in rows]
 
     def autofill(self, catalog="", name=""):
-        # Stub implementation
-        return {}
+        """Look up an existing item by catalog # (preferred) or name and return
+        its details so the Add/Edit form can pre-fill. Keys match the form's
+        CATALOG_AUTOFILL_FIELDS (name/vendor/state/size/unit/system) + catalog.
+        """
+        catalog = (catalog or "").strip()
+        name = (name or "").strip()
+        if catalog:
+            where, key = "i.catalog_number ILIKE :key", catalog
+        elif name:
+            where, key = "i.name ILIKE :key", name
+        else:
+            return {}
+        sql = text(f"""
+            SELECT
+                i.name           AS name,
+                i.catalog_number AS catalog,
+                i.physical_state AS state,
+                v.vendor_name    AS vendor,
+                c.size           AS size,
+                c.unit           AS unit,
+                c.system         AS system
+            FROM items i
+            LEFT JOIN vendors v ON v.vendor_id = i.vendor_id
+            LEFT JOIN LATERAL (
+                SELECT size, unit, system
+                FROM containers cc
+                WHERE cc.item_id = i.item_id
+                ORDER BY cc.container_id DESC
+                LIMIT 1
+            ) c ON TRUE
+            WHERE {where}
+            ORDER BY i.item_id
+            LIMIT 1
+        """)
+        with self.engine.begin() as conn:
+            row = conn.execute(sql, {"key": key}).mappings().first()
+        if not row:
+            return {}
+        return {k: v for k, v in dict(row).items() if v not in (None, "")}
 
     def mark_barcodes_printed(self, barcodes):
         """Mark barcodes as printed"""
@@ -9505,50 +9603,26 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1150
-
-```text
-            new_name = (data.get("name") or "").strip()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1151
-
-```text
-            current_item_id = current["item_id"]
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1152
-
-```text
-            new_name = (
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
 ### Line 1153
 
 ```text
-                data.get("name")
+            item_cur = conn.execute(text("""
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1154
 
 ```text
-                or data.get("material_name")
+                SELECT name, description, catalog_number, physical_state, vendor_id
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1155
 
 ```text
-                or data.get("item_name")
+                FROM items
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -9556,12 +9630,60 @@ class ChemInventoryService:
 ### Line 1156
 
 ```text
+                WHERE item_id = :item_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1157
+
+```text
+            """), {"item_id": current["item_id"]}).mappings().first()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1159
+
+```text
+            new_name = (
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1160
+
+```text
+                data.get("name")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1161
+
+```text
+                or data.get("material_name")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1162
+
+```text
+                or data.get("item_name")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1163
+
+```text
                 or data.get("chemical_name")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1157
+### Line 1164
 
 ```text
                 or ""
@@ -9569,7 +9691,7 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1158
+### Line 1165
 
 ```text
             ).strip()
@@ -9577,130 +9699,58 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1160
-
-```text
-            if new_name:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 1161
-
-```text
-                conn.execute(text("""
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1162
-
-```text
-                    UPDATE items
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1163
-
-```text
-                    SET name = :name,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1164
-
-```text
-                        description = :name
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1165
-
-```text
-                    WHERE item_id = :item_id
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1166
-
-```text
-                """), {
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
 ### Line 1167
 
 ```text
-                    "name": new_name,
+            item_name  = keep_or_update(new_name,                   item_cur["name"])
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1168
 
 ```text
-                    "item_id": current["item_id"]
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1169
-
-```text
-                })
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1170
-
-```text
-            room_id = self.resolve_room_id(
+            item_desc  = keep_or_update(data.get("description"),    item_cur["description"])
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1171
+### Line 1169
 
 ```text
-                conn,
+            item_cat   = keep_or_update(data.get("catalog_number"), item_cur["catalog_number"])
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1172
+### Line 1170
 
 ```text
-                data.get("room_no"),
+            item_state = keep_or_update(data.get("physical_state"), item_cur["physical_state"])
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1173
-
-```text
-                data.get("room_desc"),
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1174
 
 ```text
-                data.get("area_class")
+            vendor_name = (data.get("vendor_name") or "").strip()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1175
 
 ```text
-            )
+            vendor_id = (
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1176
+
+```text
+                self._upsert(conn, "vendors", "vendor_name", vendor_name)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -9708,116 +9758,20 @@ class ChemInventoryService:
 ### Line 1177
 
 ```text
-            manuf = keep_or_update(data.get("manuf_date"), current["manuf_date"])
+                if vendor_name else item_cur["vendor_id"]
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1178
 
 ```text
-            exp = keep_or_update(data.get("expire"), current["expiry_date"])
+            )
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1179
-
-```text
-            nmr_exp = keep_or_update(data.get("nmr_exp"), current["nmr_expiry"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1181
-
-```text
-            sloc = keep_or_update(data.get("storage_location"), current["storage_location"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1182
-
-```text
-            ssub = keep_or_update(data.get("storage_subloc"), current["storage_sublocation"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1183
-
-```text
-            sdev = keep_or_update(data.get("storage_device"), current["storage_device"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1184
-
-```text
-            size = keep_or_update(data.get("size"), current["size"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1185
-
-```text
-            unit = keep_or_update(data.get("unit"), current["unit"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1186
-
-```text
-            sys = keep_or_update(data.get("system"), current["system"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1187
-
-```text
-            lot = keep_or_update(data.get("lot_number"), current["lot_number"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1188
-
-```text
-            choice = keep_or_update(data.get("choice"), current["choice"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1189
-
-```text
-            nmr = keep_or_update(data.get("nmr"), current["nmr"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1190
-
-```text
-            owner = keep_or_update(data.get("owner"), current["owner"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1191
-
-```text
-            notes = keep_or_update(data.get("notes"), current["notes"])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1193
+### Line 1180
 
 ```text
             conn.execute(text("""
@@ -9825,143 +9779,63 @@ class ChemInventoryService:
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 1194
+### Line 1181
 
 ```text
-                UPDATE containers
+                UPDATE items
 ```
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 1195
+### Line 1182
 
 ```text
-                SET room_id = :room_id,
+                SET name           = :name,
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1196
+### Line 1183
 
 ```text
-                    storage_location = :sloc,
+                    description    = :description,
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1197
+### Line 1184
 
 ```text
-                    storage_sublocation = :ssub,
+                    catalog_number = :catalog_number,
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1198
+### Line 1185
 
 ```text
-                    storage_device = :sdev,
+                    physical_state = :physical_state,
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1199
+### Line 1186
 
 ```text
-                    size = :size,
+                    vendor_id      = :vendor_id
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1200
+### Line 1187
 
 ```text
-                    unit = :unit,
+                WHERE item_id = :item_id
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1201
-
-```text
-                    system = :sys,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1202
-
-```text
-                    manuf_date = :manuf,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1203
-
-```text
-                    expiry_date = :exp,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1204
-
-```text
-                    lot_number = :lot,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1205
-
-```text
-                    choice = :choice,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1206
-
-```text
-                    nmr = :nmr,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1207
-
-```text
-                    nmr_expiry = :nmr_exp,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1208
-
-```text
-                    owner = :owner,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1209
-
-```text
-                    notes = :notes
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1210
-
-```text
-                WHERE container_id = :cid
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1211
+### Line 1188
 
 ```text
             """), {
@@ -9969,135 +9843,55 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1212
+### Line 1189
 
 ```text
-                "room_id": room_id,
+                "name": item_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1213
+### Line 1190
 
 ```text
-                "sloc": sloc,
+                "description": item_desc,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1214
+### Line 1191
 
 ```text
-                "ssub": ssub,
+                "catalog_number": item_cat,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1215
+### Line 1192
 
 ```text
-                "sdev": sdev,
+                "physical_state": item_state,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1216
+### Line 1193
 
 ```text
-                "size": size,
+                "vendor_id": vendor_id,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1217
+### Line 1194
 
 ```text
-                "unit": unit,
+                "item_id": current["item_id"],
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1218
-
-```text
-                "sys": sys,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1219
-
-```text
-                "manuf": manuf,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1220
-
-```text
-                "exp": exp,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1221
-
-```text
-                "lot": lot,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1222
-
-```text
-                "choice": choice,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1223
-
-```text
-                "nmr": nmr,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1224
-
-```text
-                "nmr_exp": nmr_exp,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1225
-
-```text
-                "owner": owner,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1226
-
-```text
-                "notes": notes,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1227
-
-```text
-                "cid": container_id
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1228
+### Line 1195
 
 ```text
             })
@@ -10105,159 +9899,15 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1230
+### Line 1196
 
 ```text
-            updated_fields = {
+            resolved_room_id = self.resolve_room_id(
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 1231
-
-```text
-                "material_name": new_name if new_name else None,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1232
-
-```text
-                "room_id": room_id,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1233
-
-```text
-                "storage_location": sloc,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1234
-
-```text
-                "storage_sublocation": ssub,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1235
-
-```text
-                "storage_device": sdev,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1236
-
-```text
-                "size": size,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1237
-
-```text
-                "unit": unit,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1238
-
-```text
-                "system": sys,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1239
-
-```text
-                "manuf_date": str(manuf) if manuf else None,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1240
-
-```text
-                "expiry_date": str(exp) if exp else None,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1241
-
-```text
-                "lot_number": lot,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1242
-
-```text
-                "choice": choice,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1243
-
-```text
-                "nmr": nmr,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1244
-
-```text
-                "nmr_expiry": str(nmr_exp) if nmr_exp else None,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1245
-
-```text
-                "owner": owner,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1246
-
-```text
-                "notes": notes
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1247
-
-```text
-            }
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1249
-
-```text
-            self.log_transaction(
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1250
+### Line 1197
 
 ```text
                 conn,
@@ -10265,66 +9915,434 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1251
+### Line 1198
 
 ```text
-                action="EDIT",
+                data.get("room_no"),
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1199
+
+```text
+                data.get("room_desc"),
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1200
+
+```text
+                data.get("area_class")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1201
+
+```text
+            )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1206
+
+```text
+            room_id = resolved_room_id if resolved_room_id is not None else current["room_id"]
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1208
+
+```text
+            manuf = keep_or_update(data.get("manuf_date"), current["manuf_date"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1209
+
+```text
+            exp = keep_or_update(data.get("expiry_date"), current["expiry_date"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1210
+
+```text
+            nmr_exp = keep_or_update(data.get("nmr_expiry"), current["nmr_expiry"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1212
+
+```text
+            sloc = keep_or_update(data.get("storage_location"), current["storage_location"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1213
+
+```text
+            ssub = keep_or_update(data.get("storage_sublocation"), current["storage_sublocation"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1214
+
+```text
+            sdev = keep_or_update(data.get("storage_device"), current["storage_device"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1215
+
+```text
+            size = keep_or_update(data.get("size"), current["size"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1216
+
+```text
+            unit = keep_or_update(data.get("unit"), current["unit"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1217
+
+```text
+            sys = keep_or_update(data.get("system"), current["system"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1218
+
+```text
+            lot = keep_or_update(data.get("lot_number"), current["lot_number"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1219
+
+```text
+            choice = keep_or_update(data.get("choice"), current["choice"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1220
+
+```text
+            nmr = keep_or_update(data.get("nmr"), current["nmr"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1221
+
+```text
+            owner = keep_or_update(data.get("owner"), current["owner"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1222
+
+```text
+            notes = keep_or_update(data.get("notes"), current["notes"])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1224
+
+```text
+            conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1225
+
+```text
+                UPDATE containers
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1226
+
+```text
+                SET room_id = :room_id,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1227
+
+```text
+                    storage_location = :sloc,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1228
+
+```text
+                    storage_sublocation = :ssub,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1229
+
+```text
+                    storage_device = :sdev,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1230
+
+```text
+                    size = :size,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1231
+
+```text
+                    unit = :unit,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1232
+
+```text
+                    system = :sys,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1233
+
+```text
+                    manuf_date = :manuf,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1234
+
+```text
+                    expiry_date = :exp,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1235
+
+```text
+                    lot_number = :lot,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1236
+
+```text
+                    choice = :choice,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1237
+
+```text
+                    nmr = :nmr,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1238
+
+```text
+                    nmr_expiry = :nmr_exp,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1239
+
+```text
+                    owner = :owner,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1240
+
+```text
+                    notes = :notes
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1241
+
+```text
+                WHERE container_id = :cid
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1242
+
+```text
+            """), {
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1243
+
+```text
+                "room_id": room_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1244
+
+```text
+                "sloc": sloc,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1245
+
+```text
+                "ssub": ssub,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1246
+
+```text
+                "sdev": sdev,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1247
+
+```text
+                "size": size,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1248
+
+```text
+                "unit": unit,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1249
+
+```text
+                "sys": sys,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1250
+
+```text
+                "manuf": manuf,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1251
+
+```text
+                "exp": exp,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1252
 
 ```text
-                container_id=container_id,
+                "lot": lot,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1253
 
 ```text
-                barcode=current["barcode"],
+                "choice": choice,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1254
 
 ```text
-                item_id=current["item_id"],
+                "nmr": nmr,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1255
 
 ```text
-                room_id=room_id,
+                "nmr_exp": nmr_exp,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1256
 
 ```text
-                performed_by=data.get("performed_by") or data.get("added_by") or None,
+                "owner": owner,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1257
 
 ```text
-                details={
+                "notes": notes,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1258
 
 ```text
-                    "notes": notes,
+                "cid": container_id
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10332,15 +10350,7 @@ class ChemInventoryService:
 ### Line 1259
 
 ```text
-                    "updated_fields": updated_fields
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1260
-
-```text
-                }
+            })
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10348,7 +10358,15 @@ class ChemInventoryService:
 ### Line 1261
 
 ```text
-            )
+            updated_fields = {
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1262
+
+```text
+                "material_name": new_name if new_name else None,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10356,47 +10374,63 @@ class ChemInventoryService:
 ### Line 1263
 
 ```text
-    def get_transactions(self, q="", limit=500):
+                "room_id": room_id,
 ```
 
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1264
 
 ```text
-        from sqlalchemy import text
+                "storage_location": sloc,
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1265
+
+```text
+                "storage_sublocation": ssub,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1266
 
 ```text
-        q = (q or "").strip()
+                "storage_device": sdev,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1267
 
 ```text
-        like = f"%{q}%"
+                "size": size,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1268
+
+```text
+                "unit": unit,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1269
 
 ```text
-        sql = """
+                "system": sys,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1270
 
 ```text
-            SELECT
+                "manuf_date": str(manuf) if manuf else None,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10404,7 +10438,7 @@ class ChemInventoryService:
 ### Line 1271
 
 ```text
-                t.transaction_id,
+                "expiry_date": str(exp) if exp else None,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10412,7 +10446,7 @@ class ChemInventoryService:
 ### Line 1272
 
 ```text
-                t.action,
+                "lot_number": lot,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10420,7 +10454,7 @@ class ChemInventoryService:
 ### Line 1273
 
 ```text
-                t.container_id,
+                "choice": choice,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10428,7 +10462,7 @@ class ChemInventoryService:
 ### Line 1274
 
 ```text
-                t.barcode,
+                "nmr": nmr,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10436,7 +10470,7 @@ class ChemInventoryService:
 ### Line 1275
 
 ```text
-                t.item_id,
+                "nmr_expiry": str(nmr_exp) if nmr_exp else None,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10444,7 +10478,7 @@ class ChemInventoryService:
 ### Line 1276
 
 ```text
-                t.room_id,
+                "owner": owner,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10452,7 +10486,7 @@ class ChemInventoryService:
 ### Line 1277
 
 ```text
-                t.details,
+                "notes": notes
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10460,15 +10494,15 @@ class ChemInventoryService:
 ### Line 1278
 
 ```text
-                t.performed_by,
+            }
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1279
+### Line 1280
 
 ```text
-                t.created_at,
+            self.log_transaction(
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10476,7 +10510,7 @@ class ChemInventoryService:
 ### Line 1281
 
 ```text
-                i.name AS material_name,
+                conn,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10484,372 +10518,84 @@ class ChemInventoryService:
 ### Line 1282
 
 ```text
-                r.room_no,
+                action="EDIT",
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1283
 
 ```text
-                c.storage_location,
+                container_id=container_id,
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1284
+
+```text
+                barcode=current["barcode"],
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1285
 
 ```text
-                COALESCE(t.details::json->>'reason', '') AS reason,
+                item_id=current["item_id"],
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1286
 
 ```text
-                COALESCE(t.details::json->>'notes', c.notes, '') AS notes
+                room_id=room_id,
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1287
+
+```text
+                performed_by=data.get("performed_by") or data.get("added_by") or None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1288
 
 ```text
-            FROM transactions t
+                details={
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1289
 
 ```text
-            LEFT JOIN containers c ON t.container_id = c.container_id
+                    "notes": notes,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1290
 
 ```text
-            LEFT JOIN items i ON COALESCE(t.item_id, c.item_id) = i.item_id
+                    "updated_fields": updated_fields
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1291
 
 ```text
-            LEFT JOIN rooms r ON COALESCE(t.room_id, c.room_id) = r.room_id
+                }
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1292
-
-```text
-            WHERE 1=1
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1293
-
-```text
-        """
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1295
-
-```text
-        params = {"limit": limit}
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1297
-
-```text
-        if q:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 1298
-
-```text
-            sql += """
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1299
-
-```text
-                AND (
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1300
-
-```text
-                    COALESCE(t.action, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1301
-
-```text
-                    OR COALESCE(t.barcode, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1302
-
-```text
-                    OR COALESCE(t.performed_by, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1303
-
-```text
-                    OR COALESCE(t.details, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1304
-
-```text
-                    OR COALESCE(i.name, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1305
-
-```text
-                    OR COALESCE(r.room_no, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1306
-
-```text
-                    OR COALESCE(c.storage_location, '') ILIKE :like
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1307
-
-```text
-                )
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1308
-
-```text
-            """
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1309
-
-```text
-            params["like"] = like
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1311
-
-```text
-        sql += """
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1312
-
-```text
-            ORDER BY t.created_at DESC, t.transaction_id DESC
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1313
-
-```text
-            LIMIT :limit
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1314
-
-```text
-        """
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1316
-
-```text
-        with self.engine.begin() as conn:
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1317
-
-```text
-            rows = conn.execute(text(sql), params).mappings().all()
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1319
-
-```text
-        return rows
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1321
-
-```text
-    def suggest(self, field, q, limit=10):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 1323
-
-```text
-        return []
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1325
-
-```text
-    def autofill(self, catalog="", name=""):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 1327
-
-```text
-        return {}
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1329
-
-```text
-    def mark_barcodes_printed(self, barcodes):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 1330
-
-```text
-        """Mark barcodes as printed"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1331
-
-```text
-        with self.engine.begin() as conn:
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1332
-
-```text
-            result = conn.execute(
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1333
-
-```text
-                text("""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1334
-
-```text
-                    UPDATE containers
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1335
-
-```text
-                    SET label_printed = TRUE,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1336
-
-```text
-                        label_printed_at = NOW()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1337
-
-```text
-                    WHERE barcode = ANY(:bcs)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1338
-
-```text
-                """),
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1339
-
-```text
-                {"bcs": barcodes}
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1340
 
 ```text
             )
@@ -10857,29 +10603,357 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1341
+### Line 1294
 
 ```text
-            return result.rowcount
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1344
-
-```text
-    def get_scan_reports(self, limit=200):
+    def get_transactions(self, q="", limit=500):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 1345
+### Line 1295
 
 ```text
         from sqlalchemy import text
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1297
+
+```text
+        q = (q or "").strip()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1298
+
+```text
+        like = f"%{q}%"
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1300
+
+```text
+        sql = """
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1301
+
+```text
+            SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1302
+
+```text
+                t.transaction_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1303
+
+```text
+                t.action,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1304
+
+```text
+                t.container_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1305
+
+```text
+                t.barcode,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1306
+
+```text
+                t.item_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1307
+
+```text
+                t.room_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1308
+
+```text
+                t.details,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1309
+
+```text
+                t.performed_by,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1310
+
+```text
+                t.created_at,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1312
+
+```text
+                i.name AS material_name,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1313
+
+```text
+                r.room_no,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1314
+
+```text
+                c.storage_location,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1316
+
+```text
+                COALESCE(t.details::json->>'reason', '') AS reason,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1317
+
+```text
+                COALESCE(t.details::json->>'notes', c.notes, '') AS notes
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1319
+
+```text
+            FROM transactions t
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1320
+
+```text
+            LEFT JOIN containers c ON t.container_id = c.container_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1321
+
+```text
+            LEFT JOIN items i ON COALESCE(t.item_id, c.item_id) = i.item_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1322
+
+```text
+            LEFT JOIN rooms r ON COALESCE(t.room_id, c.room_id) = r.room_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1323
+
+```text
+            WHERE 1=1
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1324
+
+```text
+        """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1326
+
+```text
+        params = {"limit": limit}
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1328
+
+```text
+        if q:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 1329
+
+```text
+            sql += """
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1330
+
+```text
+                AND (
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1331
+
+```text
+                    COALESCE(t.action, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1332
+
+```text
+                    OR COALESCE(t.barcode, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1333
+
+```text
+                    OR COALESCE(t.performed_by, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1334
+
+```text
+                    OR COALESCE(t.details, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1335
+
+```text
+                    OR COALESCE(i.name, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1336
+
+```text
+                    OR COALESCE(r.room_no, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1337
+
+```text
+                    OR COALESCE(c.storage_location, '') ILIKE :like
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1338
+
+```text
+                )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1339
+
+```text
+            """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1340
+
+```text
+            params["like"] = like
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1342
+
+```text
+        sql += """
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1343
+
+```text
+            ORDER BY t.created_at DESC, t.transaction_id DESC
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1344
+
+```text
+            LIMIT :limit
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1345
+
+```text
+        """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1347
 
@@ -10892,63 +10966,31 @@ class ChemInventoryService:
 ### Line 1348
 
 ```text
-            rows = conn.execute(text("""
+            rows = conn.execute(text(sql), params).mappings().all()
 ```
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 1349
-
-```text
-                SELECT
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
 ### Line 1350
 
 ```text
-                    cycle_id,
+        return rows
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1351
-
-```text
-                    COALESCE(report_name, 'Unnamed Scan Report') AS report_name,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1352
-
-```text
-                    COALESCE(performed_by, '') AS performed_by,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1353
-
-```text
-                    COALESCE(location, '') AS location,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1354
 
 ```text
-                    COALESCE(filename, '') AS filename,
+    _SUGGEST_FIELDS = {
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1355
 
 ```text
-                    COALESCE(total_scanned, 0) AS total_scanned,
+        "name":                ("items", "name"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10956,7 +10998,7 @@ class ChemInventoryService:
 ### Line 1356
 
 ```text
-                    COALESCE(matched_count, 0) AS matched_count,
+        "vendor":              ("vendors", "vendor_name"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10964,7 +11006,7 @@ class ChemInventoryService:
 ### Line 1357
 
 ```text
-                    COALESCE(unmatched_count, 0) AS unmatched_count,
+        "unit":                ("containers", "unit"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10972,7 +11014,7 @@ class ChemInventoryService:
 ### Line 1358
 
 ```text
-                    created_at
+        "system":              ("containers", "system"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10980,7 +11022,7 @@ class ChemInventoryService:
 ### Line 1359
 
 ```text
-                FROM inventory_cycles
+        "storage_device":      ("containers", "storage_device"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10988,7 +11030,7 @@ class ChemInventoryService:
 ### Line 1360
 
 ```text
-                ORDER BY cycle_id DESC
+        "storage_location":    ("containers", "storage_location"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -10996,7 +11038,7 @@ class ChemInventoryService:
 ### Line 1361
 
 ```text
-                LIMIT :limit
+        "storage_sublocation": ("containers", "storage_sublocation"),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11004,7 +11046,7 @@ class ChemInventoryService:
 ### Line 1362
 
 ```text
-            """), {"limit": limit}).mappings().all()
+    }
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11012,31 +11054,39 @@ class ChemInventoryService:
 ### Line 1364
 
 ```text
-        return rows
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1366
-
-```text
-    def get_inventory_scan_coverage(self, limit=5000):
+    def suggest(self, field, q, limit=10):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
+### Line 1365
+
+```text
+        """Distinct-value type-ahead for the chem Add/Edit forms.
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
 ### Line 1367
 
 ```text
-        from sqlalchemy import text
+        `field` is whitelisted to a fixed (table, column); `q` is parameterized
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1368
+
+```text
+        and matched case-insensitively as a substring. Returns a list of values.
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1369
 
 ```text
-        with self.engine.begin() as conn:
+        """
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11044,95 +11094,95 @@ class ChemInventoryService:
 ### Line 1370
 
 ```text
-            rows = conn.execute(text("""
+        q = (q or "").strip()
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1371
 
 ```text
-                SELECT
+        mapping = self._SUGGEST_FIELDS.get(field)
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1372
 
 ```text
-                    c.container_id,
+        if not mapping or not q:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1373
 
 ```text
-                    c.barcode,
+            return []
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1374
 
 ```text
-                    i.name AS material_name,
+        table, col = mapping
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1375
 
 ```text
-                    i.catalog_number,
+        try:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 1376
 
 ```text
-                    r.room_no,
+            limit = max(1, min(int(limit or 10), 50))
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1377
 
 ```text
-                    r.room_name,
+        except (TypeError, ValueError):
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 1378
 
 ```text
-                    c.area_class,
+            limit = 10
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1379
 
 ```text
-                    c.storage_location,
+        sql = text(f"""
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1380
 
 ```text
-                    c.storage_sublocation,
+            SELECT DISTINCT {col} AS v
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1381
 
 ```text
-                    c.storage_device,
+            FROM {table}
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11140,7 +11190,7 @@ class ChemInventoryService:
 ### Line 1382
 
 ```text
-                    c.owner,
+            WHERE {col} ILIKE :q AND {col} IS NOT NULL AND {col} <> ''
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11148,7 +11198,7 @@ class ChemInventoryService:
 ### Line 1383
 
 ```text
-                    c.last_scan_at,
+            ORDER BY {col}
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11156,7 +11206,7 @@ class ChemInventoryService:
 ### Line 1384
 
 ```text
-                    CASE
+            LIMIT :limit
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11164,7 +11214,7 @@ class ChemInventoryService:
 ### Line 1385
 
 ```text
-                        WHEN c.last_scan_at IS NULL THEN 'UNSCANNED'
+        """)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11172,7 +11222,7 @@ class ChemInventoryService:
 ### Line 1386
 
 ```text
-                        ELSE 'SCANNED'
+        with self.engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11180,47 +11230,39 @@ class ChemInventoryService:
 ### Line 1387
 
 ```text
-                    END AS scan_status
+            rows = conn.execute(sql, {"q": f"%{q}%", "limit": limit}).fetchall()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1388
 
 ```text
-                FROM containers c
+        return [r[0] for r in rows]
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1389
-
-```text
-                LEFT JOIN items i ON c.item_id = i.item_id
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1390
 
 ```text
-                LEFT JOIN rooms r ON c.room_id = r.room_id
+    def autofill(self, catalog="", name=""):
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 1391
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+        """Look up an existing item by catalog # (preferred) or name and return
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1392
 
 ```text
-                ORDER BY
+        its details so the Add/Edit form can pre-fill. Keys match the form's
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11228,7 +11270,7 @@ class ChemInventoryService:
 ### Line 1393
 
 ```text
-                    CASE WHEN c.last_scan_at IS NULL THEN 0 ELSE 1 END,
+        CATALOG_AUTOFILL_FIELDS (name/vendor/state/size/unit/system) + catalog.
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11236,7 +11278,7 @@ class ChemInventoryService:
 ### Line 1394
 
 ```text
-                    r.room_no NULLS LAST,
+        """
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11244,63 +11286,87 @@ class ChemInventoryService:
 ### Line 1395
 
 ```text
-                    i.name NULLS LAST,
+        catalog = (catalog or "").strip()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1396
 
 ```text
-                    c.barcode NULLS LAST
+        name = (name or "").strip()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1397
 
 ```text
-                LIMIT :limit
+        if catalog:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1398
 
 ```text
-            """), {"limit": limit}).mappings().all()
+            where, key = "i.catalog_number ILIKE :key", catalog
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1399
+
+```text
+        elif name:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1400
 
 ```text
-        return rows
+            where, key = "i.name ILIKE :key", name
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1401
+
+```text
+        else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1402
 
 ```text
-    def report_totals(self):
+            return {}
 ```
 
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1403
 
 ```text
-        from sqlalchemy import text
+        sql = text(f"""
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1404
+
+```text
+            SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1405
 
 ```text
-        with self.engine.begin() as conn:
+                i.name           AS name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11308,15 +11374,15 @@ class ChemInventoryService:
 ### Line 1406
 
 ```text
-            row = conn.execute(text("""
+                i.catalog_number AS catalog,
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1407
 
 ```text
-                SELECT
+                i.physical_state AS state,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11324,7 +11390,7 @@ class ChemInventoryService:
 ### Line 1408
 
 ```text
-                    COUNT(*) AS total_containers,
+                v.vendor_name    AS vendor,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11332,7 +11398,7 @@ class ChemInventoryService:
 ### Line 1409
 
 ```text
-                    COUNT(DISTINCT item_id) AS unique_materials,
+                c.size           AS size,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11340,7 +11406,7 @@ class ChemInventoryService:
 ### Line 1410
 
 ```text
-                    COUNT(*) FILTER (
+                c.unit           AS unit,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11348,7 +11414,7 @@ class ChemInventoryService:
 ### Line 1411
 
 ```text
-                        WHERE expiry_date IS NOT NULL
+                c.system         AS system
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11356,15 +11422,15 @@ class ChemInventoryService:
 ### Line 1412
 
 ```text
-                          AND expiry_date >= CURRENT_DATE
+            FROM items i
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1413
 
 ```text
-                          AND expiry_date <= CURRENT_DATE + INTERVAL '30 days'
+            LEFT JOIN vendors v ON v.vendor_id = i.vendor_id
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -11372,7 +11438,7 @@ class ChemInventoryService:
 ### Line 1414
 
 ```text
-                    ) AS expiring_30,
+            LEFT JOIN LATERAL (
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11380,15 +11446,15 @@ class ChemInventoryService:
 ### Line 1415
 
 ```text
-                    COUNT(*) FILTER (
+                SELECT size, unit, system
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1416
 
 ```text
-                        WHERE expiry_date IS NOT NULL
+                FROM containers cc
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11396,15 +11462,15 @@ class ChemInventoryService:
 ### Line 1417
 
 ```text
-                          AND expiry_date < CURRENT_DATE
+                WHERE cc.item_id = i.item_id
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1418
 
 ```text
-                    ) AS expired
+                ORDER BY cc.container_id DESC
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11412,7 +11478,7 @@ class ChemInventoryService:
 ### Line 1419
 
 ```text
-                FROM containers
+                LIMIT 1
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11420,15 +11486,23 @@ class ChemInventoryService:
 ### Line 1420
 
 ```text
-                WHERE COALESCE(status, 'ACTIVE') != 'REMOVED'
+            ) c ON TRUE
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1421
 
 ```text
-            """)).mappings().first()
+            WHERE {where}
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1422
+
+```text
+            ORDER BY i.item_id
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11436,15 +11510,15 @@ class ChemInventoryService:
 ### Line 1423
 
 ```text
-        return row or {
+            LIMIT 1
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1424
 
 ```text
-            "total_containers": 0,
+        """)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11452,7 +11526,7 @@ class ChemInventoryService:
 ### Line 1425
 
 ```text
-            "unique_materials": 0,
+        with self.engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11460,42 +11534,50 @@ class ChemInventoryService:
 ### Line 1426
 
 ```text
-            "expiring_30": 0,
+            row = conn.execute(sql, {"key": key}).mappings().first()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1427
 
 ```text
-            "expired": 0,
+        if not row:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 1428
 
 ```text
-        }
+            return {}
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 1430
+### Line 1429
 
 ```text
-    def report_expiring(self):
+        return {k: v for k, v in dict(row).items() if v not in (None, "")}
 ```
 
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1431
 
 ```text
-        from sqlalchemy import text
+    def mark_barcodes_printed(self, barcodes):
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1432
+
+```text
+        """Mark barcodes as printed"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1433
 
@@ -11508,7 +11590,7 @@ class ChemInventoryService:
 ### Line 1434
 
 ```text
-            rows = conn.execute(text("""
+            result = conn.execute(
 ```
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
@@ -11516,7 +11598,7 @@ class ChemInventoryService:
 ### Line 1435
 
 ```text
-                SELECT
+                text("""
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11524,39 +11606,39 @@ class ChemInventoryService:
 ### Line 1436
 
 ```text
-                    c.expiry_date AS exp_date,
+                    UPDATE containers
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1437
 
 ```text
-                    i.name AS material_name,
+                    SET label_printed = TRUE,
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1438
 
 ```text
-                    c.size,
+                        label_printed_at = NOW()
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1439
 
 ```text
-                    c.unit,
+                    WHERE barcode = ANY(:bcs)
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1440
 
 ```text
-                    v.vendor_name AS vendor,
+                """),
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11564,7 +11646,7 @@ class ChemInventoryService:
 ### Line 1441
 
 ```text
-                    c.lot_number,
+                {"bcs": barcodes}
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11572,7 +11654,7 @@ class ChemInventoryService:
 ### Line 1442
 
 ```text
-                    r.room_no,
+            )
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11580,87 +11662,63 @@ class ChemInventoryService:
 ### Line 1443
 
 ```text
-                    r.room_name AS room_desc,
+            return result.rowcount
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1444
-
-```text
-                    c.storage_location,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1445
-
-```text
-                    c.storage_sublocation,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1446
 
 ```text
-                    c.owner,
+    def get_scan_reports(self, limit=200):
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 1447
 
 ```text
-                    c.barcode
+        from sqlalchemy import text
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1448
-
-```text
-                FROM containers c
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 1449
 
 ```text
-                LEFT JOIN items i ON c.item_id = i.item_id
+        with self.engine.begin() as conn:
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1450
 
 ```text
-                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
+            rows = conn.execute(text("""
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1451
 
 ```text
-                LEFT JOIN rooms r ON c.room_id = r.room_id
+                SELECT
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1452
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+                    cycle_id,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1453
 
 ```text
-                  AND c.expiry_date IS NOT NULL
+                    COALESCE(report_name, 'Unnamed Scan Report') AS report_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11668,23 +11726,23 @@ class ChemInventoryService:
 ### Line 1454
 
 ```text
-                  AND c.expiry_date >= CURRENT_DATE
+                    COALESCE(performed_by, '') AS performed_by,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1455
 
 ```text
-                  AND c.expiry_date <= CURRENT_DATE + INTERVAL '30 days'
+                    COALESCE(location, '') AS location,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1456
 
 ```text
-                ORDER BY c.expiry_date ASC, i.name ASC
+                    COALESCE(filename, '') AS filename,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11692,7 +11750,15 @@ class ChemInventoryService:
 ### Line 1457
 
 ```text
-            """)).mappings().all()
+                    COALESCE(total_scanned, 0) AS total_scanned,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1458
+
+```text
+                    COALESCE(matched_count, 0) AS matched_count,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11700,20 +11766,68 @@ class ChemInventoryService:
 ### Line 1459
 
 ```text
+                    COALESCE(unmatched_count, 0) AS unmatched_count,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1460
+
+```text
+                    created_at
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1461
+
+```text
+                FROM inventory_cycles
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1462
+
+```text
+                ORDER BY cycle_id DESC
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1463
+
+```text
+                LIMIT :limit
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1464
+
+```text
+            """), {"limit": limit}).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1466
+
+```text
         return rows
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 1461
+### Line 1468
 
 ```text
-    def report_expired(self):
+    def get_inventory_scan_coverage(self, limit=5000):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 1462
+### Line 1469
 
 ```text
         from sqlalchemy import text
@@ -11721,66 +11835,10 @@ class ChemInventoryService:
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 1464
-
-```text
-        with self.engine.begin() as conn:
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1465
-
-```text
-            rows = conn.execute(text("""
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1466
-
-```text
-                SELECT
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1467
-
-```text
-                    c.expiry_date AS exp_date,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1468
-
-```text
-                    i.name AS material_name,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1469
-
-```text
-                    c.size,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1470
-
-```text
-                    c.unit,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
 ### Line 1471
 
 ```text
-                    v.vendor_name AS vendor,
+        with self.engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11788,15 +11846,15 @@ class ChemInventoryService:
 ### Line 1472
 
 ```text
-                    c.lot_number,
+            rows = conn.execute(text("""
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1473
 
 ```text
-                    r.room_no,
+                SELECT
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11804,7 +11862,7 @@ class ChemInventoryService:
 ### Line 1474
 
 ```text
-                    r.room_name AS room_desc,
+                    c.container_id,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11812,7 +11870,7 @@ class ChemInventoryService:
 ### Line 1475
 
 ```text
-                    c.storage_location,
+                    c.barcode,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11820,7 +11878,7 @@ class ChemInventoryService:
 ### Line 1476
 
 ```text
-                    c.storage_sublocation,
+                    i.name AS material_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11828,7 +11886,7 @@ class ChemInventoryService:
 ### Line 1477
 
 ```text
-                    c.owner,
+                    i.catalog_number,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11836,7 +11894,7 @@ class ChemInventoryService:
 ### Line 1478
 
 ```text
-                    c.barcode
+                    r.room_no,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11844,7 +11902,7 @@ class ChemInventoryService:
 ### Line 1479
 
 ```text
-                FROM containers c
+                    r.room_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -11852,140 +11910,36 @@ class ChemInventoryService:
 ### Line 1480
 
 ```text
-                LEFT JOIN items i ON c.item_id = i.item_id
+                    c.area_class,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1481
 
 ```text
-                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
+                    c.storage_location,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1482
 
 ```text
-                LEFT JOIN rooms r ON c.room_id = r.room_id
+                    c.storage_sublocation,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1483
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+                    c.storage_device,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1484
-
-```text
-                  AND c.expiry_date IS NOT NULL
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1485
-
-```text
-                  AND c.expiry_date < CURRENT_DATE
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1486
-
-```text
-                ORDER BY c.expiry_date ASC, i.name ASC
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1487
-
-```text
-            """)).mappings().all()
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1489
-
-```text
-        return rows
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1491
-
-```text
-    def report_nmr_due(self):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 1492
-
-```text
-        from sqlalchemy import text
-```
-
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
-
-### Line 1494
-
-```text
-        with self.engine.begin() as conn:
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1495
-
-```text
-            rows = conn.execute(text("""
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 1496
-
-```text
-                SELECT
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1497
-
-```text
-                    c.nmr_expiry AS nmr_exp,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1498
-
-```text
-                    c.nmr,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1499
-
-```text
-                    i.name AS material_name,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1500
 
 ```text
                     c.owner,
@@ -11993,10 +11947,130 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1501
+### Line 1485
 
 ```text
-                    r.room_no,
+                    c.last_scan_at,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1486
+
+```text
+                    CASE
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1487
+
+```text
+                        WHEN c.last_scan_at IS NULL THEN 'UNSCANNED'
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1488
+
+```text
+                        ELSE 'SCANNED'
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1489
+
+```text
+                    END AS scan_status
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1490
+
+```text
+                FROM containers c
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1491
+
+```text
+                LEFT JOIN items i ON c.item_id = i.item_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1492
+
+```text
+                LEFT JOIN rooms r ON c.room_id = r.room_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1493
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1494
+
+```text
+                ORDER BY
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1495
+
+```text
+                    CASE WHEN c.last_scan_at IS NULL THEN 0 ELSE 1 END,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1496
+
+```text
+                    r.room_no NULLS LAST,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1497
+
+```text
+                    i.name NULLS LAST,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1498
+
+```text
+                    c.barcode NULLS LAST
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1499
+
+```text
+                LIMIT :limit
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1500
+
+```text
+            """), {"limit": limit}).mappings().all()
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12004,71 +12078,55 @@ class ChemInventoryService:
 ### Line 1502
 
 ```text
-                    r.room_name AS room_desc,
+        return rows
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1503
-
-```text
-                    c.barcode
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1504
 
 ```text
-                FROM containers c
+    def report_totals(self):
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 1505
 
 ```text
-                LEFT JOIN items i ON c.item_id = i.item_id
+        from sqlalchemy import text
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1506
-
-```text
-                LEFT JOIN rooms r ON c.room_id = r.room_id
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 1507
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1508
-
-```text
-                  AND c.nmr_expiry IS NOT NULL
+        with self.engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
+### Line 1508
+
+```text
+            row = conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
 ### Line 1509
 
 ```text
-                  AND c.nmr_expiry <= CURRENT_DATE + INTERVAL '30 days'
+                SELECT
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1510
 
 ```text
-                ORDER BY c.nmr_expiry ASC, i.name ASC
+                    COUNT(*) AS total_containers,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12076,7 +12134,15 @@ class ChemInventoryService:
 ### Line 1511
 
 ```text
-            """)).mappings().all()
+                    COUNT(DISTINCT item_id) AS unique_materials,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1512
+
+```text
+                    COUNT(*) FILTER (
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12084,31 +12150,47 @@ class ChemInventoryService:
 ### Line 1513
 
 ```text
-        return rows
+                        WHERE expiry_date IS NOT NULL
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1514
+
+```text
+                          AND expiry_date >= CURRENT_DATE
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1515
 
 ```text
-    def report_by_room(self):
+                          AND expiry_date <= CURRENT_DATE + INTERVAL '30 days'
 ```
 
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1516
 
 ```text
-        from sqlalchemy import text
+                    ) AS expiring_30,
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1517
+
+```text
+                    COUNT(*) FILTER (
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1518
 
 ```text
-        with self.engine.begin() as conn:
+                        WHERE expiry_date IS NOT NULL
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12116,15 +12198,15 @@ class ChemInventoryService:
 ### Line 1519
 
 ```text
-            rows = conn.execute(text("""
+                          AND expiry_date < CURRENT_DATE
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1520
 
 ```text
-                SELECT
+                    ) AS expired
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12132,7 +12214,7 @@ class ChemInventoryService:
 ### Line 1521
 
 ```text
-                    COALESCE(r.room_no, '') AS room_no,
+                FROM containers
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12140,23 +12222,15 @@ class ChemInventoryService:
 ### Line 1522
 
 ```text
-                    COALESCE(r.room_name, '') AS room_desc,
+                WHERE COALESCE(status, 'ACTIVE') != 'REMOVED'
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1523
 
 ```text
-                    COUNT(*) AS n
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1524
-
-```text
-                FROM containers c
+            """)).mappings().first()
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12164,23 +12238,23 @@ class ChemInventoryService:
 ### Line 1525
 
 ```text
-                LEFT JOIN rooms r ON c.room_id = r.room_id
+        return row or {
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1526
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+            "total_containers": 0,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1527
 
 ```text
-                GROUP BY r.room_no, r.room_name
+            "unique_materials": 0,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12188,7 +12262,7 @@ class ChemInventoryService:
 ### Line 1528
 
 ```text
-                ORDER BY r.room_no NULLS LAST, r.room_name NULLS LAST
+            "expiring_30": 0,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12196,28 +12270,28 @@ class ChemInventoryService:
 ### Line 1529
 
 ```text
-            """)).mappings().all()
+            "expired": 0,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1531
+### Line 1530
 
 ```text
-        return rows
+        }
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1533
+### Line 1532
 
 ```text
-    def report_by_vendor(self):
+    def report_expiring(self):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 1534
+### Line 1533
 
 ```text
         from sqlalchemy import text
@@ -12225,7 +12299,7 @@ class ChemInventoryService:
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 1536
+### Line 1535
 
 ```text
         with self.engine.begin() as conn:
@@ -12233,7 +12307,7 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1537
+### Line 1536
 
 ```text
             rows = conn.execute(text("""
@@ -12241,10 +12315,18 @@ class ChemInventoryService:
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 1538
+### Line 1537
 
 ```text
                 SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1538
+
+```text
+                    c.expiry_date AS exp_date,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12252,7 +12334,7 @@ class ChemInventoryService:
 ### Line 1539
 
 ```text
-                    COALESCE(v.vendor_name, '') AS vendor,
+                    i.name AS material_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12260,7 +12342,7 @@ class ChemInventoryService:
 ### Line 1540
 
 ```text
-                    COUNT(*) AS n
+                    c.size,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12268,7 +12350,7 @@ class ChemInventoryService:
 ### Line 1541
 
 ```text
-                FROM containers c
+                    c.unit,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12276,31 +12358,31 @@ class ChemInventoryService:
 ### Line 1542
 
 ```text
-                LEFT JOIN items i ON c.item_id = i.item_id
+                    v.vendor_name AS vendor,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1543
 
 ```text
-                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
+                    c.lot_number,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1544
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+                    r.room_no,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1545
 
 ```text
-                GROUP BY v.vendor_name
+                    r.room_name AS room_desc,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12308,7 +12390,7 @@ class ChemInventoryService:
 ### Line 1546
 
 ```text
-                ORDER BY COUNT(*) DESC, v.vendor_name
+                    c.storage_location,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12316,7 +12398,15 @@ class ChemInventoryService:
 ### Line 1547
 
 ```text
-            """)).mappings().all()
+                    c.storage_sublocation,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1548
+
+```text
+                    c.owner,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12324,63 +12414,79 @@ class ChemInventoryService:
 ### Line 1549
 
 ```text
-        return rows
+                    c.barcode
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1550
+
+```text
+                FROM containers c
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1551
 
 ```text
-    def report_by_system(self):
+                LEFT JOIN items i ON c.item_id = i.item_id
 ```
 
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1552
 
 ```text
-        from sqlalchemy import text
+                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1553
+
+```text
+                LEFT JOIN rooms r ON c.room_id = r.room_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1554
 
 ```text
-        with self.engine.begin() as conn:
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1555
 
 ```text
-            rows = conn.execute(text("""
+                  AND c.expiry_date IS NOT NULL
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1556
 
 ```text
-                SELECT
+                  AND c.expiry_date >= CURRENT_DATE
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1557
 
 ```text
-                    COALESCE(c.system, '') AS system,
+                  AND c.expiry_date <= CURRENT_DATE + INTERVAL '30 days'
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1558
 
 ```text
-                    COUNT(*) AS n
+                ORDER BY c.expiry_date ASC, i.name ASC
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12388,44 +12494,12 @@ class ChemInventoryService:
 ### Line 1559
 
 ```text
-                FROM containers c
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1560
-
-```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1561
-
-```text
-                GROUP BY c.system
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1562
-
-```text
-                ORDER BY COUNT(*) DESC, c.system
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1563
-
-```text
             """)).mappings().all()
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1565
+### Line 1561
 
 ```text
         return rows
@@ -12433,15 +12507,15 @@ class ChemInventoryService:
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 1567
+### Line 1563
 
 ```text
-    def report_by_owner(self):
+    def report_expired(self):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 1568
+### Line 1564
 
 ```text
         from sqlalchemy import text
@@ -12449,7 +12523,7 @@ class ChemInventoryService:
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 1570
+### Line 1566
 
 ```text
         with self.engine.begin() as conn:
@@ -12457,7 +12531,7 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1571
+### Line 1567
 
 ```text
             rows = conn.execute(text("""
@@ -12465,7 +12539,7 @@ class ChemInventoryService:
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 1572
+### Line 1568
 
 ```text
                 SELECT
@@ -12473,10 +12547,42 @@ class ChemInventoryService:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
+### Line 1569
+
+```text
+                    c.expiry_date AS exp_date,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1570
+
+```text
+                    i.name AS material_name,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1571
+
+```text
+                    c.size,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1572
+
+```text
+                    c.unit,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
 ### Line 1573
 
 ```text
-                    COALESCE(c.owner, '') AS owner,
+                    v.vendor_name AS vendor,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12484,7 +12590,7 @@ class ChemInventoryService:
 ### Line 1574
 
 ```text
-                    COUNT(*) AS n
+                    c.lot_number,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12492,7 +12598,7 @@ class ChemInventoryService:
 ### Line 1575
 
 ```text
-                FROM containers c
+                    r.room_no,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12500,15 +12606,15 @@ class ChemInventoryService:
 ### Line 1576
 
 ```text
-                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+                    r.room_name AS room_desc,
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1577
 
 ```text
-                GROUP BY c.owner
+                    c.storage_location,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12516,7 +12622,7 @@ class ChemInventoryService:
 ### Line 1578
 
 ```text
-                ORDER BY COUNT(*) DESC, c.owner
+                    c.storage_sublocation,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12524,7 +12630,15 @@ class ChemInventoryService:
 ### Line 1579
 
 ```text
-            """)).mappings().all()
+                    c.owner,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1580
+
+```text
+                    c.barcode
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12532,31 +12646,47 @@ class ChemInventoryService:
 ### Line 1581
 
 ```text
-        return rows
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 1584
-
-```text
-    def log_transaction(
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 1585
-
-```text
-        self,
+                FROM containers c
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
+### Line 1582
+
+```text
+                LEFT JOIN items i ON c.item_id = i.item_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1583
+
+```text
+                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1584
+
+```text
+                LEFT JOIN rooms r ON c.room_id = r.room_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1585
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
 ### Line 1586
 
 ```text
-        conn,
+                  AND c.expiry_date IS NOT NULL
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12564,7 +12694,7 @@ class ChemInventoryService:
 ### Line 1587
 
 ```text
-        action,
+                  AND c.expiry_date < CURRENT_DATE
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12572,60 +12702,36 @@ class ChemInventoryService:
 ### Line 1588
 
 ```text
-        container_id=None,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1589
-
-```text
-        barcode=None,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1590
-
-```text
-        item_id=None,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1591
-
-```text
-        room_id=None,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1592
-
-```text
-        details=None,
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1593
-
-```text
-        performed_by=None
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 1594
-
-```text
-    ):
+                ORDER BY c.expiry_date ASC, i.name ASC
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 1595
+### Line 1589
+
+```text
+            """)).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1591
+
+```text
+        return rows
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 1593
+
+```text
+    def report_nmr_due(self):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1594
 
 ```text
         from sqlalchemy import text
@@ -12636,31 +12742,39 @@ class ChemInventoryService:
 ### Line 1596
 
 ```text
-        import json
+        with self.engine.begin() as conn:
 ```
 
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1597
+
+```text
+            rows = conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1598
 
 ```text
-        conn.execute(text("""
+                SELECT
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1599
 
 ```text
-            INSERT INTO transactions (
+                    c.nmr_expiry AS nmr_exp,
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1600
 
 ```text
-                action,
+                    c.nmr,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12668,7 +12782,7 @@ class ChemInventoryService:
 ### Line 1601
 
 ```text
-                container_id,
+                    i.name AS material_name,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12676,7 +12790,7 @@ class ChemInventoryService:
 ### Line 1602
 
 ```text
-                barcode,
+                    c.owner,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12684,7 +12798,7 @@ class ChemInventoryService:
 ### Line 1603
 
 ```text
-                item_id,
+                    r.room_no,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12692,7 +12806,7 @@ class ChemInventoryService:
 ### Line 1604
 
 ```text
-                room_id,
+                    r.room_name AS room_desc,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12700,7 +12814,7 @@ class ChemInventoryService:
 ### Line 1605
 
 ```text
-                details,
+                    c.barcode
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12708,7 +12822,7 @@ class ChemInventoryService:
 ### Line 1606
 
 ```text
-                performed_by,
+                FROM containers c
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12716,31 +12830,31 @@ class ChemInventoryService:
 ### Line 1607
 
 ```text
-                created_at
+                LEFT JOIN items i ON c.item_id = i.item_id
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1608
 
 ```text
-            )
+                LEFT JOIN rooms r ON c.room_id = r.room_id
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1609
 
 ```text
-            VALUES (
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1610
 
 ```text
-                :action,
+                  AND c.nmr_expiry IS NOT NULL
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12748,15 +12862,15 @@ class ChemInventoryService:
 ### Line 1611
 
 ```text
-                :container_id,
+                  AND c.nmr_expiry <= CURRENT_DATE + INTERVAL '30 days'
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 1612
 
 ```text
-                :barcode,
+                ORDER BY c.nmr_expiry ASC, i.name ASC
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12764,15 +12878,7 @@ class ChemInventoryService:
 ### Line 1613
 
 ```text
-                :item_id,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1614
-
-```text
-                :room_id,
+            """)).mappings().all()
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12780,47 +12886,31 @@ class ChemInventoryService:
 ### Line 1615
 
 ```text
-                :details,
+        return rows
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1616
-
-```text
-                :performed_by,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
 ### Line 1617
 
 ```text
-                NOW()
+    def report_by_room(self):
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
 ### Line 1618
 
 ```text
-            )
+        from sqlalchemy import text
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 1619
-
-```text
-        """), {
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
 ### Line 1620
 
 ```text
-            "action": action,
+        with self.engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12828,15 +12918,15 @@ class ChemInventoryService:
 ### Line 1621
 
 ```text
-            "container_id": container_id,
+            rows = conn.execute(text("""
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
 ### Line 1622
 
 ```text
-            "barcode": barcode,
+                SELECT
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12844,7 +12934,7 @@ class ChemInventoryService:
 ### Line 1623
 
 ```text
-            "item_id": item_id,
+                    COALESCE(r.room_no, '') AS room_no,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12852,7 +12942,7 @@ class ChemInventoryService:
 ### Line 1624
 
 ```text
-            "room_id": room_id,
+                    COALESCE(r.room_name, '') AS room_desc,
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12860,7 +12950,7 @@ class ChemInventoryService:
 ### Line 1625
 
 ```text
-            "details": json.dumps(details or {}),
+                    COUNT(*) AS n
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -12868,12 +12958,724 @@ class ChemInventoryService:
 ### Line 1626
 
 ```text
-            "performed_by": performed_by
+                FROM containers c
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 1627
+
+```text
+                LEFT JOIN rooms r ON c.room_id = r.room_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1628
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1629
+
+```text
+                GROUP BY r.room_no, r.room_name
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1630
+
+```text
+                ORDER BY r.room_no NULLS LAST, r.room_name NULLS LAST
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1631
+
+```text
+            """)).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1633
+
+```text
+        return rows
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 1635
+
+```text
+    def report_by_vendor(self):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1636
+
+```text
+        from sqlalchemy import text
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1638
+
+```text
+        with self.engine.begin() as conn:
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1639
+
+```text
+            rows = conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1640
+
+```text
+                SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1641
+
+```text
+                    COALESCE(v.vendor_name, '') AS vendor,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1642
+
+```text
+                    COUNT(*) AS n
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1643
+
+```text
+                FROM containers c
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1644
+
+```text
+                LEFT JOIN items i ON c.item_id = i.item_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1645
+
+```text
+                LEFT JOIN vendors v ON i.vendor_id = v.vendor_id
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1646
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1647
+
+```text
+                GROUP BY v.vendor_name
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1648
+
+```text
+                ORDER BY COUNT(*) DESC, v.vendor_name
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1649
+
+```text
+            """)).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1651
+
+```text
+        return rows
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 1653
+
+```text
+    def report_by_system(self):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1654
+
+```text
+        from sqlalchemy import text
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1656
+
+```text
+        with self.engine.begin() as conn:
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1657
+
+```text
+            rows = conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1658
+
+```text
+                SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1659
+
+```text
+                    COALESCE(c.system, '') AS system,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1660
+
+```text
+                    COUNT(*) AS n
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1661
+
+```text
+                FROM containers c
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1662
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1663
+
+```text
+                GROUP BY c.system
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1664
+
+```text
+                ORDER BY COUNT(*) DESC, c.system
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1665
+
+```text
+            """)).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1667
+
+```text
+        return rows
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 1669
+
+```text
+    def report_by_owner(self):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1670
+
+```text
+        from sqlalchemy import text
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1672
+
+```text
+        with self.engine.begin() as conn:
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1673
+
+```text
+            rows = conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1674
+
+```text
+                SELECT
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1675
+
+```text
+                    COALESCE(c.owner, '') AS owner,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1676
+
+```text
+                    COUNT(*) AS n
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1677
+
+```text
+                FROM containers c
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1678
+
+```text
+                WHERE COALESCE(c.status, 'ACTIVE') != 'REMOVED'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1679
+
+```text
+                GROUP BY c.owner
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1680
+
+```text
+                ORDER BY COUNT(*) DESC, c.owner
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1681
+
+```text
+            """)).mappings().all()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1683
+
+```text
+        return rows
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 1686
+
+```text
+    def log_transaction(
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 1687
+
+```text
+        self,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1688
+
+```text
+        conn,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1689
+
+```text
+        action,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1690
+
+```text
+        container_id=None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1691
+
+```text
+        barcode=None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1692
+
+```text
+        item_id=None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1693
+
+```text
+        room_id=None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1694
+
+```text
+        details=None,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1695
+
+```text
+        performed_by=None
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 1696
+
+```text
+    ):
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1697
+
+```text
+        from sqlalchemy import text
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1698
+
+```text
+        import json
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 1700
+
+```text
+        conn.execute(text("""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1701
+
+```text
+            INSERT INTO transactions (
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 1702
+
+```text
+                action,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1703
+
+```text
+                container_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1704
+
+```text
+                barcode,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1705
+
+```text
+                item_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1706
+
+```text
+                room_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1707
+
+```text
+                details,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1708
+
+```text
+                performed_by,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1709
+
+```text
+                created_at
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1710
+
+```text
+            )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1711
+
+```text
+            VALUES (
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1712
+
+```text
+                :action,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1713
+
+```text
+                :container_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1714
+
+```text
+                :barcode,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1715
+
+```text
+                :item_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1716
+
+```text
+                :room_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1717
+
+```text
+                :details,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1718
+
+```text
+                :performed_by,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1719
+
+```text
+                NOW()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1720
+
+```text
+            )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1721
+
+```text
+        """), {
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1722
+
+```text
+            "action": action,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1723
+
+```text
+            "container_id": container_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1724
+
+```text
+            "barcode": barcode,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1725
+
+```text
+            "item_id": item_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1726
+
+```text
+            "room_id": room_id,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1727
+
+```text
+            "details": json.dumps(details or {}),
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1728
+
+```text
+            "performed_by": performed_by
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 1729
 
 ```text
         })

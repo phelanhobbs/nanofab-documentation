@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/templates/base.html`
-- Lines read: `64`
+- Lines read: `103`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `954c7773acca93b1`
+- Sanitized SHA-256 prefix: `90b36cbc7241ba2d`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -24,7 +24,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 - Forms: 0 detected
 - Inputs: 0 detected
-- Scripts: 4 detected
+- Scripts: 5 detected
 
 ## Sanitized Source Excerpt
 
@@ -46,6 +46,45 @@ This section is written so a maintainer can recreate the file's behavior without
 
     <!-- Custom CSS -->
     {% block styles %}{% endblock %}
+
+    <!-- CSRF: expose the token and auto-attach it to same-origin AJAX so the
+         existing fetch()-based admin/task actions keep working unchanged. -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+    (function () {
+      var meta = document.querySelector('meta[name="csrf-token"]');
+      var token = meta ? meta.getAttribute('content') : '';
+      var unsafe = /^(POST|PUT|PATCH|DELETE)$/i;
+      function sameOrigin(u) {
+        try { return new URL(u, window.location.origin).origin === window.location.origin; }
+        catch (e) { return true; }   // relative URL -> same origin
+      }
+      var _fetch = window.fetch;
+      if (_fetch) {
+        window.fetch = function (input, init) {
+          init = init || {};
+          var method = init.method || (input && typeof input !== 'string' && input.method) || 'GET';
+          var url = (typeof input === 'string') ? input : (input && input.url) || '';
+          if (token && unsafe.test(method) && sameOrigin(url)) {
+            var headers = new Headers(init.headers || (input && typeof input !== 'string' && input.headers) || {});
+            if (!headers.has('X-CSRFToken')) headers.set('X-CSRFToken', token);
+            init.headers = headers;
+          }
+          return _fetch.call(this, input, init);
+        };
+      }
+      var _open = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function (method, url) {
+        this._csrfUnsafe = !!(token && unsafe.test(method || '') && sameOrigin(url || ''));
+        return _open.apply(this, arguments);
+      };
+      var _send = XMLHttpRequest.prototype.send;
+      XMLHttpRequest.prototype.send = function (body) {
+        if (this._csrfUnsafe) { try { this.setRequestHeader('X-CSRFToken', token); } catch (e) {} }
+        return _send.apply(this, arguments);
+      };
+    })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -185,18 +224,10 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 18
+### Line 20
 
 ```text
-</head>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 19
-
-```text
-<body>
+         existing fetch()-based admin/task actions keep working unchanged. -->
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -204,119 +235,143 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 21
 
 ```text
-    <nav>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 ```
 
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 22
 
 ```text
-        <a href="{{ url_for('machines.index') }}">Home</a>
+    <script>
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
 
 ### Line 23
 
 ```text
-        <a href="{{ url_for('machines.machines') }}">Machines</a>
+    (function () {
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 24
 
 ```text
-        <a href="{{ url_for('machines.log_files') }}">Log Files</a>
+      var meta = document.querySelector('meta[name="csrf-token"]');
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 25
 
 ```text
-        <a href="{{ url_for('tasks.index') }}">Tasks</a>
+      var token = meta ? meta.getAttribute('content') : '';
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 26
+
+```text
+      var unsafe = /^(POST|PUT|PATCH|DELETE)$/i;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 27
 
 ```text
-        {% if current_user.is_authenticated %}
+      function sameOrigin(u) {
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 28
 
 ```text
-            {% if current_user.is_admin %}
+        try { return new URL(u, window.location.origin).origin === window.location.origin; }
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 29
 
 ```text
-                <a href="{{ url_for('admin.admin_panel') }}">Admin Panel</a>
+        catch (e) { return true; }   // relative URL -> same origin
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 30
 
 ```text
-            {% endif %}
+      }
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 31
 
 ```text
-            <a href="{{ url_for('auth.logout') }}">Logout ({{ current_user.username }})</a>
+      var _fetch = window.fetch;
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 32
 
 ```text
-        {% else %}
+      if (_fetch) {
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 33
 
 ```text
-            <a href="{{ url_for('auth.login') }}">Login</a>
+        window.fetch = function (input, init) {
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 34
 
 ```text
-            <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+          init = init || {};
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 35
 
 ```text
-        {% endif %}
+          var method = init.method || (input && typeof input !== 'string' && input.method) || 'GET';
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 36
 
 ```text
-    </nav>
+          var url = (typeof input === 'string') ? input : (input && input.url) || '';
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 37
+
+```text
+          if (token && unsafe.test(method) && sameOrigin(url)) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 38
+
+```text
+            var headers = new Headers(init.headers || (input && typeof input !== 'string' && input.headers) || {});
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -324,23 +379,23 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 39
 
 ```text
-    {% with messages = get_flashed_messages(with_categories=true) %}
+            if (!headers.has('X-CSRFToken')) headers.set('X-CSRFToken', token);
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 40
 
 ```text
-        {% if messages %}
+            init.headers = headers;
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 41
 
 ```text
-            <div class="flash-messages">
+          }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -348,31 +403,31 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 42
 
 ```text
-                {% for category, message in messages %}
+          return _fetch.call(this, input, init);
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 43
 
 ```text
-                    <div class="alert alert-{{ category }}">
+        };
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 44
 
 ```text
-                        {{ message }}
+      }
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 45
 
 ```text
-                    </div>
+      var _open = XMLHttpRequest.prototype.open;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -380,15 +435,15 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 46
 
 ```text
-                {% endfor %}
+      XMLHttpRequest.prototype.open = function (method, url) {
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 47
 
 ```text
-            </div>
+        this._csrfUnsafe = !!(token && unsafe.test(method || '') && sameOrigin(url || ''));
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -396,23 +451,39 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 48
 
 ```text
-        {% endif %}
+        return _open.apply(this, arguments);
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 49
 
 ```text
-    {% endwith %}
+      };
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 50
+
+```text
+      var _send = XMLHttpRequest.prototype.send;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 51
+
+```text
+      XMLHttpRequest.prototype.send = function (body) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 52
 
 ```text
-    <main>
+        if (this._csrfUnsafe) { try { this.setRequestHeader('X-CSRFToken', token); } catch (e) {} }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -420,15 +491,31 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 53
 
 ```text
-        {% block content %}{% endblock %}
+        return _send.apply(this, arguments);
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 54
 
 ```text
-    </main>
+      };
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 55
+
+```text
+    })();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 56
+
+```text
+    </script>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -436,7 +523,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 57
 
 ```text
-    <footer>
+</head>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -444,23 +531,31 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 58
 
 ```text
-        <p>&copy; 2024 University of Utah Nanofab. Created by Phelan Hobbs.</p>
+<body>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 59
+### Line 60
 
 ```text
-    </footer>
+    <nav>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 61
+
+```text
+        <a href="{{ url_for('machines.index') }}">Home</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
 ### Line 62
 
 ```text
-    {% block scripts %}{% endblock %}
+        <a href="{{ url_for('machines.machines') }}">Machines</a>
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
@@ -468,12 +563,252 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 63
 
 ```text
+        <a href="{{ url_for('machines.log_files') }}">Log Files</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 64
+
+```text
+        <a href="{{ url_for('tasks.index') }}">Tasks</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 66
+
+```text
+        {% if current_user.is_authenticated %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 67
+
+```text
+            {% if current_user.is_admin %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 68
+
+```text
+                <a href="{{ url_for('admin.admin_panel') }}">Admin Panel</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 69
+
+```text
+            {% endif %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 70
+
+```text
+            <a href="{{ url_for('auth.logout') }}">Logout ({{ current_user.username }})</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 71
+
+```text
+        {% else %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 72
+
+```text
+            <a href="{{ url_for('auth.login') }}">Login</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 73
+
+```text
+            <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 74
+
+```text
+        {% endif %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 75
+
+```text
+    </nav>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 78
+
+```text
+    {% with messages = get_flashed_messages(with_categories=true) %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 79
+
+```text
+        {% if messages %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 80
+
+```text
+            <div class="flash-messages">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 81
+
+```text
+                {% for category, message in messages %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 82
+
+```text
+                    <div class="alert alert-{{ category }}">
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 83
+
+```text
+                        {{ message }}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 84
+
+```text
+                    </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 85
+
+```text
+                {% endfor %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 86
+
+```text
+            </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 87
+
+```text
+        {% endif %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 88
+
+```text
+    {% endwith %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 91
+
+```text
+    <main>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 92
+
+```text
+        {% block content %}{% endblock %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 93
+
+```text
+    </main>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 96
+
+```text
+    <footer>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 97
+
+```text
+        <p>&copy; 2024 University of Utah Nanofab. Created by Phelan Hobbs.</p>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 98
+
+```text
+    </footer>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 101
+
+```text
+    {% block scripts %}{% endblock %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 102
+
+```text
 </body>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 64
+### Line 103
 
 ```text
 </html>

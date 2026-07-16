@@ -2,8 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/app/services/auth_service.py
 
-> **Update (2026-07-13, commit `8f048ed`):** `verify_user_credentials` now always runs a bcrypt compare — against a precomputed `_DUMMY_PASSWORD_HASH` when the username doesn't exist — to close the login-timing/username-enumeration oracle (the no-user path used to return before bcrypt). Wrapped in try/except so a malformed stored hash can't 500 the login. Preserve the constant-time behavior in any rewrite. The embedded excerpt predates this fix.
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
@@ -12,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/services/auth_service.py`
-- Lines read: `128`
+- Lines read: `168`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `0e40048b241666c6`
+- Sanitized SHA-256 prefix: `ddfd41d4db302cf5`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -26,7 +24,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 - Imports: `import bcrypt`, `import uuid`, `import asyncio`, `import duo_client`, `from flask import current_app`, `from datetime import datetime, timedelta`, `from app.models import db, User, Session`, `import html`
 - Classes: none detected
-- Functions: `hash_password`, `verify_password`, `create_user`, `verify_user_credentials`, `verify_user_unid`, `update_user_password`, `create_user_session`, `get_user_from_session`, `delete_old_sessions`, `is_user_admin`, `can_user_assign`, `duo_authenticate`, `sanitize_input`
+- Functions: `hash_password`, `verify_password`, `create_user`, `_legacy_sanitize`, `verify_user_credentials`, `verify_user_unid`, `update_user_password`, `create_user_session`, `get_user_from_session`, `delete_old_sessions`, `is_user_admin`, `can_user_assign`, `duo_authenticate`, `sanitize_input`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -42,6 +40,11 @@ import duo_client
 from flask import current_app
 from datetime import datetime, timedelta
 from app.models import db, User, Session
+
+
+# Precomputed bcrypt hash used to equalize login timing when a username doesn't
+# exist, so a missing account can't be told apart by response time (enumeration).
+_DUMMY_PASSWORD_HASH = <redacted-secret-value>, bcrypt.gensalt())
 
 
 def hash_password(password):
@@ -68,12 +71,47 @@ def create_user(username, password, unid):
         return None
 
 
+def _legacy_sanitize(password):
+    """Frozen copy of the pre-2026-07 password transform (strip -> truncate 255 ->
+    HTML-escape) that signup/reset used to apply before hashing.
+
+    Kept ONLY so accounts created back then still verify. Deliberately independent
+    of sanitize_input() so future edits there can never lock legacy users out.
+    """
+    import html
+    return html.escape(password.strip()[:255])
+
+
 def verify_user_credentials(username, password):
-    """Verify user credentials"""
+    """Verify credentials against the raw password.
+
+    Always runs at least one bcrypt comparison — even when the username doesn't
+    exist (against a dummy hash) — so a missing account can't be told apart by
+    response time. Accounts created before passwords stopped being sanitized hold
+    a hash of the *sanitized* password; those are matched via a frozen legacy
+    fallback and transparently re-hashed to the raw password on success.
+    """
     user = User.query.filter_by(username=username).first()
-    if user and verify_password(password, user.password_hash):
-        return user
-    return None
+    stored_hash = user.password_hash if user else _DUMMY_PASSWORD_HASH
+    try:
+        password_ok = verify_password(password, stored_hash)
+        if not password_ok:
+            legacy = _legacy_sanitize(password)
+            # Only spend a second bcrypt op when sanitizing would actually change
+            # the input, and run it for real and non-existent users alike so this
+            # branch can't be used to enumerate usernames by timing.
+            if legacy != password and verify_password(legacy, stored_hash):
+                password_ok = True
+                if user:
+                    try:
+                        user.password_hash = hash_password(password)
+                        db.session.commit()
+                    except Exception as e:
+                        db.session.rollback()
+                        current_app.logger.error(f"Password rehash failed for {username}: {e}")
+    except (ValueError, TypeError):
+        password_ok = False
+    return user if (user and password_ok) else None
 
 
 def verify_user_unid(username, unid):
@@ -244,7 +282,15 @@ from app.models import db, User, Session
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 13
+### Line 15
+
+```text
+_DUMMY_PASSWORD_HASH = <redacted-secret-value>, bcrypt.gensalt())
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 18
 
 ```text
 def hash_password(password):
@@ -252,7 +298,7 @@ def hash_password(password):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 14
+### Line 19
 
 ```text
     """Hash a password using bcrypt"""
@@ -260,7 +306,7 @@ def hash_password(password):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 15
+### Line 20
 
 ```text
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
@@ -268,7 +314,7 @@ def hash_password(password):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 18
+### Line 23
 
 ```text
 def verify_password(password, password_hash):
@@ -276,7 +322,7 @@ def verify_password(password, password_hash):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 19
+### Line 24
 
 ```text
     """Verify a password against a hash"""
@@ -284,7 +330,7 @@ def verify_password(password, password_hash):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 20
+### Line 25
 
 ```text
     return bcrypt.checkpw(password.encode(), password_hash)
@@ -292,7 +338,7 @@ def verify_password(password, password_hash):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 23
+### Line 28
 
 ```text
 def create_user(username, password, unid):
@@ -300,7 +346,7 @@ def create_user(username, password, unid):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 24
+### Line 29
 
 ```text
     """Create a new user"""
@@ -308,7 +354,7 @@ def create_user(username, password, unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 25
+### Line 30
 
 ```text
     try:
@@ -316,7 +362,7 @@ def create_user(username, password, unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 26
+### Line 31
 
 ```text
         password_hash = hash_password(password)
@@ -324,7 +370,7 @@ def create_user(username, password, unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 27
+### Line 32
 
 ```text
         user = User(username=username, password_hash=password_hash, unid=unid)
@@ -332,7 +378,7 @@ def create_user(username, password, unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 28
+### Line 33
 
 ```text
         db.session.add(user)
@@ -340,7 +386,7 @@ def create_user(username, password, unid):
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 29
+### Line 34
 
 ```text
         db.session.commit()
@@ -348,7 +394,7 @@ def create_user(username, password, unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 30
+### Line 35
 
 ```text
         return user
@@ -356,7 +402,7 @@ def create_user(username, password, unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 31
+### Line 36
 
 ```text
     except Exception as e:
@@ -364,7 +410,7 @@ def create_user(username, password, unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 32
+### Line 37
 
 ```text
         db.session.rollback()
@@ -372,7 +418,7 @@ def create_user(username, password, unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 33
+### Line 38
 
 ```text
         current_app.logger.error(f"Error creating user: {e}")
@@ -380,7 +426,7 @@ def create_user(username, password, unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 34
+### Line 39
 
 ```text
         return None
@@ -388,66 +434,34 @@ def create_user(username, password, unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 37
+### Line 42
 
 ```text
-def verify_user_credentials(username, password):
+def _legacy_sanitize(password):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 38
+### Line 43
 
 ```text
-    """Verify user credentials"""
+    """Frozen copy of the pre-2026-07 password transform (strip -> truncate 255 ->
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 39
+### Line 44
 
 ```text
-    user = User.query.filter_by(username=username).first()
+    HTML-escape) that signup/reset used to apply before hashing.
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 40
-
-```text
-    if user and verify_password(password, user.password_hash):
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 41
-
-```text
-        return user
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 42
-
-```text
-    return None
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 45
-
-```text
-def verify_user_unid(username, unid):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 46
 
 ```text
-    """Verify user UNID for password reset"""
+    Kept ONLY so accounts created back then still verify. Deliberately independent
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -455,476 +469,20 @@ def verify_user_unid(username, unid):
 ### Line 47
 
 ```text
-    user = User.query.filter_by(username=username, unid=unid).first()
+    of sanitize_input() so future edits there can never lock legacy users out.
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 48
 
 ```text
-    return user is not None
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 51
-
-```text
-def update_user_password(username, new_password):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 52
-
-```text
-    """Update user password"""
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 53
-
-```text
-    try:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 54
-
-```text
-        user = User.query.filter_by(username=username).first()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 55
-
-```text
-        if user:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 56
-
-```text
-            user.password_hash = hash_password(new_password)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 57
-
-```text
-            db.session.commit()
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 58
-
-```text
-            return True
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 59
-
-```text
-        return False
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 60
-
-```text
-    except Exception as e:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 61
-
-```text
-        db.session.rollback()
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 62
-
-```text
-        current_app.logger.error(f"Error updating password: {e}")
+    """
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 63
-
-```text
-        return False
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 66
-
-```text
-def create_user_session(username):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 67
-
-```text
-    """Create a new session for a user"""
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 68
-
-```text
-    session_id = str(uuid.uuid4())
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 69
-
-```text
-    session = Session(session_id=session_id, username=username)
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 70
-
-```text
-    db.session.add(session)
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 71
-
-```text
-    db.session.commit()
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 72
-
-```text
-    return session_id
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 75
-
-```text
-def get_user_from_session(session_id):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 76
-
-```text
-    """Get username from session ID"""
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 77
-
-```text
-    session = Session.query.filter_by(session_id=session_id).first()
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 78
-
-```text
-    return session.username if session else None
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 81
-
-```text
-def delete_old_sessions(minutes=120):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 82
-
-```text
-    """Delete sessions older than specified minutes"""
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 83
-
-```text
-    cutoff_time = datetime.utcnow() - timedelta(minutes=minutes)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 84
-
-```text
-    Session.query.filter(Session.created_at < cutoff_time).delete()
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 85
-
-```text
-    db.session.commit()
-```
-
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
-
-### Line 88
-
-```text
-def is_user_admin(username):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 89
-
-```text
-    """Check if user is an admin"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 90
-
-```text
-    user = User.query.filter_by(username=username).first()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 91
-
-```text
-    return user.is_admin if user else False
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 94
-
-```text
-def can_user_assign(username):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 95
-
-```text
-    """Check if user can assign tasks"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 96
-
-```text
-    user = User.query.filter_by(username=username).first()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 97
-
-```text
-    return user.can_assign if user else False
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 100
-
-```text
-async def duo_authenticate(unid):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 101
-
-```text
-    """Perform Duo 2FA authentication"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 102
-
-```text
-    try:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 103
-
-```text
-        auth_api = duo_client.Auth(
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 104
-
-```text
-            ikey=current_app.config['DUO_IKEY'],
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 105
-
-```text
-            skey=current_app.config['DUO_SKEY'],
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 106
-
-```text
-            host=current_app.config['DUO_HOST']
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 107
-
-```text
-        )
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 109
-
-```text
-        auth_params = {
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 110
-
-```text
-            'username': unid,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 111
-
-```text
-            'factor': 'push',
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 112
-
-```text
-            'device': 'auto'
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 113
-
-```text
-        }
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 115
-
-```text
-        response = await asyncio.to_thread(auth_api.auth, **auth_params)
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 116
-
-```text
-        return response['result'] == 'allow'
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 117
-
-```text
-    except Exception as e:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 118
-
-```text
-        current_app.logger.error(f"Duo authentication error: {e}")
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 119
-
-```text
-        return False
-```
-
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
-
-### Line 122
-
-```text
-def sanitize_input(input_str, max_length=255):
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 123
-
-```text
-    """Sanitize user input to prevent attacks"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 124
+### Line 49
 
 ```text
     import html
@@ -932,7 +490,719 @@ def sanitize_input(input_str, max_length=255):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
+### Line 50
+
+```text
+    return html.escape(password.strip()[:255])
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 53
+
+```text
+def verify_user_credentials(username, password):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 54
+
+```text
+    """Verify credentials against the raw password.
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 56
+
+```text
+    Always runs at least one bcrypt comparison — even when the username doesn't
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 57
+
+```text
+    exist (against a dummy hash) — so a missing account can't be told apart by
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 58
+
+```text
+    response time. Accounts created before passwords stopped being sanitized hold
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 59
+
+```text
+    a hash of the *sanitized* password; those are matched via a frozen legacy
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 60
+
+```text
+    fallback and transparently re-hashed to the raw password on success.
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 61
+
+```text
+    """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 62
+
+```text
+    user = User.query.filter_by(username=username).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 63
+
+```text
+    stored_hash = user.password_hash if user else _DUMMY_PASSWORD_HASH
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 64
+
+```text
+    try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 65
+
+```text
+        password_ok = verify_password(password, stored_hash)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 66
+
+```text
+        if not password_ok:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 67
+
+```text
+            legacy = _legacy_sanitize(password)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 71
+
+```text
+            if legacy != password and verify_password(legacy, stored_hash):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 72
+
+```text
+                password_ok = True
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 73
+
+```text
+                if user:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 74
+
+```text
+                    try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 75
+
+```text
+                        user.password_hash = hash_password(password)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 76
+
+```text
+                        db.session.commit()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 77
+
+```text
+                    except Exception as e:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 78
+
+```text
+                        db.session.rollback()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 79
+
+```text
+                        current_app.logger.error(f"Password rehash failed for {username}: {e}")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 80
+
+```text
+    except (ValueError, TypeError):
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 81
+
+```text
+        password_ok = False
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 82
+
+```text
+    return user if (user and password_ok) else None
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 85
+
+```text
+def verify_user_unid(username, unid):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 86
+
+```text
+    """Verify user UNID for password reset"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 87
+
+```text
+    user = User.query.filter_by(username=username, unid=unid).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 88
+
+```text
+    return user is not None
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 91
+
+```text
+def update_user_password(username, new_password):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 92
+
+```text
+    """Update user password"""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 93
+
+```text
+    try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 94
+
+```text
+        user = User.query.filter_by(username=username).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 95
+
+```text
+        if user:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 96
+
+```text
+            user.password_hash = hash_password(new_password)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 97
+
+```text
+            db.session.commit()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 98
+
+```text
+            return True
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 99
+
+```text
+        return False
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 100
+
+```text
+    except Exception as e:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 101
+
+```text
+        db.session.rollback()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 102
+
+```text
+        current_app.logger.error(f"Error updating password: {e}")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 103
+
+```text
+        return False
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 106
+
+```text
+def create_user_session(username):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 107
+
+```text
+    """Create a new session for a user"""
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 108
+
+```text
+    session_id = str(uuid.uuid4())
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 109
+
+```text
+    session = Session(session_id=session_id, username=username)
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 110
+
+```text
+    db.session.add(session)
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 111
+
+```text
+    db.session.commit()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 112
+
+```text
+    return session_id
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 115
+
+```text
+def get_user_from_session(session_id):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 116
+
+```text
+    """Get username from session ID"""
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 117
+
+```text
+    session = Session.query.filter_by(session_id=session_id).first()
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 118
+
+```text
+    return session.username if session else None
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 121
+
+```text
+def delete_old_sessions(minutes=120):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 122
+
+```text
+    """Delete sessions older than specified minutes"""
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 123
+
+```text
+    cutoff_time = datetime.utcnow() - timedelta(minutes=minutes)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 124
+
+```text
+    Session.query.filter(Session.created_at < cutoff_time).delete()
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
 ### Line 125
+
+```text
+    db.session.commit()
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 128
+
+```text
+def is_user_admin(username):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 129
+
+```text
+    """Check if user is an admin"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 130
+
+```text
+    user = User.query.filter_by(username=username).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 131
+
+```text
+    return user.is_admin if user else False
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 134
+
+```text
+def can_user_assign(username):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 135
+
+```text
+    """Check if user can assign tasks"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 136
+
+```text
+    user = User.query.filter_by(username=username).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 137
+
+```text
+    return user.can_assign if user else False
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 140
+
+```text
+async def duo_authenticate(unid):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 141
+
+```text
+    """Perform Duo 2FA authentication"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 142
+
+```text
+    try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 143
+
+```text
+        auth_api = duo_client.Auth(
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 144
+
+```text
+            ikey=current_app.config['DUO_IKEY'],
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 145
+
+```text
+            skey=current_app.config['DUO_SKEY'],
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 146
+
+```text
+            host=current_app.config['DUO_HOST']
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 147
+
+```text
+        )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 149
+
+```text
+        auth_params = {
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 150
+
+```text
+            'username': unid,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 151
+
+```text
+            'factor': 'push',
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 152
+
+```text
+            'device': 'auto'
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 153
+
+```text
+        }
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 155
+
+```text
+        response = await asyncio.to_thread(auth_api.auth, **auth_params)
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 156
+
+```text
+        return response['result'] == 'allow'
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 157
+
+```text
+    except Exception as e:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 158
+
+```text
+        current_app.logger.error(f"Duo authentication error: {e}")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 159
+
+```text
+        return False
+```
+
+`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+
+### Line 162
+
+```text
+def sanitize_input(input_str, max_length=255):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 163
+
+```text
+    """Sanitize user input to prevent attacks"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 164
+
+```text
+    import html
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 165
 
 ```text
     sanitized = input_str.strip()
@@ -940,7 +1210,7 @@ def sanitize_input(input_str, max_length=255):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 126
+### Line 166
 
 ```text
     sanitized = sanitized[:max_length]
@@ -948,7 +1218,7 @@ def sanitize_input(input_str, max_length=255):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 127
+### Line 167
 
 ```text
     sanitized = html.escape(sanitized)
@@ -956,7 +1226,7 @@ def sanitize_input(input_str, max_length=255):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 128
+### Line 168
 
 ```text
     return sanitized

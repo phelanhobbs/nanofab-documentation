@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/templates/chem/add.html`
-- Lines read: `524`
+- Lines read: `525`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `433897d6cd130f0e`
+- Sanitized SHA-256 prefix: `bc627876ad8918f0`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -23,7 +23,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ## Template Structure Summary
 
 - Forms: 1 detected
-- Inputs: 23 detected
+- Inputs: 24 detected
 - Scripts: 1 detected
 
 ## Sanitized Source Excerpt
@@ -44,6 +44,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 <section class="card">
   <form method="post" action="{{ url_for('chem.add') }}" autocomplete="off">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <!-- CATALOG FIRST -->
     <div class="grid location-grid">
       <div class="field field-span-2">
@@ -653,18 +654,18 @@ select:focus {
 
 `html-form` — This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names.
 
-### Line 17
+### Line 16
 
 ```text
-    <div class="grid location-grid">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 ```
 
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 18
 
 ```text
-      <div class="field field-span-2">
+    <div class="grid location-grid">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -672,7 +673,7 @@ select:focus {
 ### Line 19
 
 ```text
-        <label for="catalog"><strong>Catalog #</strong></label>
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -680,12 +681,20 @@ select:focus {
 ### Line 20
 
 ```text
+        <label for="catalog"><strong>Catalog #</strong></label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 21
+
+```text
         <input id="catalog" name="catalog" type="text" placeholder="e.g. 328634" inputmode="text">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 21
+### Line 22
 
 ```text
         <div class="hint">Enter a known catalog # to autofill Vendor/Name/Unit/Location/etc.</div>
@@ -693,18 +702,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 22
+### Line 23
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 24
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -712,7 +713,7 @@ select:focus {
 ### Line 25
 
 ```text
-        <label for="qty"># of Containers</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -720,12 +721,20 @@ select:focus {
 ### Line 26
 
 ```text
+        <label for="qty"># of Containers</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 27
+
+```text
         <input id="qty" name="qty" type="number" min="1" max="500" value="1">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 27
+### Line 28
 
 ```text
       </div>
@@ -733,7 +742,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 28
+### Line 29
 
 ```text
     </div>
@@ -741,18 +750,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 30
+### Line 31
 
 ```text
     <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 33
-
-```text
-    <h2 class="h2">Material</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -760,7 +761,7 @@ select:focus {
 ### Line 34
 
 ```text
-    <div class="grid location-grid">
+    <h2 class="h2">Material</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -768,7 +769,7 @@ select:focus {
 ### Line 35
 
 ```text
-      <div class="field field-span-2">
+    <div class="grid location-grid">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -776,7 +777,7 @@ select:focus {
 ### Line 36
 
 ```text
-        <label for="name">Material Name</label>
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -784,23 +785,23 @@ select:focus {
 ### Line 37
 
 ```text
+        <label for="name">Material Name</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 38
+
+```text
         <input id="name" name="name" type="text" placeholder="Chemical name">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 38
+### Line 39
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 40
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -808,7 +809,7 @@ select:focus {
 ### Line 41
 
 ```text
-        <label for="vendor">Vendor</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -816,23 +817,23 @@ select:focus {
 ### Line 42
 
 ```text
+        <label for="vendor">Vendor</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 43
+
+```text
         <input id="vendor" name="vendor" type="text" placeholder="Vendor">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 43
+### Line 44
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 45
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -840,7 +841,7 @@ select:focus {
 ### Line 46
 
 ```text
-        <label for="state">Physical State</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -848,23 +849,23 @@ select:focus {
 ### Line 47
 
 ```text
+        <label for="state">Physical State</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 48
+
+```text
         <input id="state" name="state" type="text" placeholder="Liquid / Solid / Gas">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 48
+### Line 49
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 50
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -872,7 +873,7 @@ select:focus {
 ### Line 51
 
 ```text
-        <label for="size">Amount per Container</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -880,23 +881,23 @@ select:focus {
 ### Line 52
 
 ```text
+        <label for="size">Amount per Container</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 53
+
+```text
         <input id="size" name="size" type="text" placeholder="e.g. 1">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 53
+### Line 54
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 55
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -904,7 +905,7 @@ select:focus {
 ### Line 56
 
 ```text
-        <label for="unit">Unit</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -912,23 +913,23 @@ select:focus {
 ### Line 57
 
 ```text
+        <label for="unit">Unit</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 58
+
+```text
         <input id="unit" name="unit" type="text" placeholder="e.g. Liter / mL / g">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 58
+### Line 59
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 60
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -936,7 +937,7 @@ select:focus {
 ### Line 61
 
 ```text
-        <label for="system">System</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -944,23 +945,23 @@ select:focus {
 ### Line 62
 
 ```text
+        <label for="system">System</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 63
+
+```text
         <input id="system" name="system" type="text" placeholder="Open / Closed / etc">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 63
+### Line 64
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 65
-
-```text
-      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -968,7 +969,7 @@ select:focus {
 ### Line 66
 
 ```text
-        <label for="lot_number"><strong>Lot #</strong></label>
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -976,12 +977,20 @@ select:focus {
 ### Line 67
 
 ```text
+        <label for="lot_number"><strong>Lot #</strong></label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 68
+
+```text
         <input id="lot_number" name="lot_number" type="text" placeholder="Lot number">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 68
+### Line 69
 
 ```text
       </div>
@@ -989,7 +998,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 69
+### Line 70
 
 ```text
     </div>
@@ -997,18 +1006,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 71
+### Line 72
 
 ```text
     <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 74
-
-```text
-<h2 class="h2">Location</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1016,15 +1017,15 @@ select:focus {
 ### Line 75
 
 ```text
-<div class="grid location-grid">
+<h2 class="h2">Location</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 78
+### Line 76
 
 ```text
-  <div class="field field-span-2">
+<div class="grid location-grid">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1032,7 +1033,7 @@ select:focus {
 ### Line 79
 
 ```text
-    <label for="location_template">Location Template</label>
+  <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1040,12 +1041,20 @@ select:focus {
 ### Line 80
 
 ```text
+    <label for="location_template">Location Template</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 81
+
+```text
     <select id="location_template" name="location_template">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 81
+### Line 82
 
 ```text
       <option value="">Select a location...</option>
@@ -1053,7 +1062,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 82
+### Line 83
 
 ```text
         <option value="gas_chem_room">Gas Chem Room</option>
@@ -1061,7 +1070,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 83
+### Line 84
 
 ```text
         <option value="pass_through">Pass-Through</option>
@@ -1069,7 +1078,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 84
+### Line 85
 
 ```text
       <option value="bay_a">Bay A</option>
@@ -1077,7 +1086,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 85
+### Line 86
 
 ```text
       <option value="bay_b">Bay B</option>
@@ -1085,7 +1094,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 86
+### Line 87
 
 ```text
       <option value="bay_c">Bay C</option>
@@ -1093,7 +1102,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 87
+### Line 88
 
 ```text
       <option value="bay_d">Bay D</option>
@@ -1101,7 +1110,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 88
+### Line 89
 
 ```text
       <option value="bay_e">Bay E</option>
@@ -1109,7 +1118,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 89
+### Line 90
 
 ```text
       <option value="bay_f">Bay F</option>
@@ -1117,7 +1126,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 90
+### Line 91
 
 ```text
       <option value="bay_g">Bay G</option>
@@ -1125,7 +1134,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 92
+### Line 93
 
 ```text
       <option value="student_yellow">Student Yellow</option>
@@ -1133,7 +1142,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 93
+### Line 94
 
 ```text
       <option value="mocvd">MOCVD</option>
@@ -1141,7 +1150,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 94
+### Line 95
 
 ```text
       <option value="microfluidics">Microfluidics</option>
@@ -1149,7 +1158,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 95
+### Line 96
 
 ```text
       <option value="metrology">Metrology</option>
@@ -1157,7 +1166,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 97
+### Line 98
 
 ```text
       <option value="backend_lab">Backend Lab</option>
@@ -1165,7 +1174,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 98
+### Line 99
 
 ```text
       <option value="prototyping_lab">Prototyping Lab</option>
@@ -1173,7 +1182,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 99
+### Line 100
 
 ```text
       <option value="cr_shop">CR Shop</option>
@@ -1181,7 +1190,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 100
+### Line 101
 
 ```text
     </select>
@@ -1189,7 +1198,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 101
+### Line 102
 
 ```text
     <div class="hint">Select a room. Storage fields remain editable.</div>
@@ -1197,7 +1206,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 102
+### Line 103
 
 ```text
   </div>
@@ -1205,7 +1214,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 105
+### Line 106
 
 ```text
   <input type="hidden" id="room_no" name="room_no">
@@ -1213,7 +1222,7 @@ select:focus {
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 106
+### Line 107
 
 ```text
   <input type="hidden" id="room_name" name="room_name">
@@ -1221,7 +1230,7 @@ select:focus {
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 107
+### Line 108
 
 ```text
   <input type="hidden" id="area_class" name="area_class">
@@ -1229,18 +1238,10 @@ select:focus {
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 110
-
-```text
-  <div class="field field-span-2">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 111
 
 ```text
-    <label>Selected Room</label>
+  <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1248,23 +1249,23 @@ select:focus {
 ### Line 112
 
 ```text
+    <label>Selected Room</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 113
+
+```text
     <input id="room_display" type="text" readonly placeholder="No location selected">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 113
+### Line 114
 
 ```text
   </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 116
-
-```text
-  <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1272,7 +1273,7 @@ select:focus {
 ### Line 117
 
 ```text
-    <label for="storage_location">Storage Location</label>
+  <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1280,23 +1281,23 @@ select:focus {
 ### Line 118
 
 ```text
+    <label for="storage_location">Storage Location</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 119
+
+```text
     <input id="storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 119
+### Line 120
 
 ```text
   </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 121
-
-```text
-  <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1304,7 +1305,7 @@ select:focus {
 ### Line 122
 
 ```text
-    <label for="storage_sublocation">Sub-Storage Location</label>
+  <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1312,23 +1313,23 @@ select:focus {
 ### Line 123
 
 ```text
+    <label for="storage_sublocation">Sub-Storage Location</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 124
+
+```text
     <input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 124
+### Line 125
 
 ```text
   </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 126
-
-```text
-  <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1336,7 +1337,7 @@ select:focus {
 ### Line 127
 
 ```text
-    <label for="storage_device">Storage Device</label>
+  <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1344,12 +1345,20 @@ select:focus {
 ### Line 128
 
 ```text
+    <label for="storage_device">Storage Device</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 129
+
+```text
     <input id="storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 129
+### Line 130
 
 ```text
   </div>
@@ -1357,7 +1366,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 130
+### Line 131
 
 ```text
 </div>
@@ -1365,7 +1374,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 132
+### Line 133
 
 ```text
     <h2 class="h2">Dates & Compliance</h2>
@@ -1373,7 +1382,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 133
+### Line 134
 
 ```text
     <div class="grid location-grid">
@@ -1381,18 +1390,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 134
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 135
 
 ```text
-        <label for="manuf_date">Manufacture Date</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1400,23 +1401,23 @@ select:focus {
 ### Line 136
 
 ```text
+        <label for="manuf_date">Manufacture Date</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 137
+
+```text
         <input id="manuf_date" name="manuf_date" type="date">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 137
+### Line 138
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 139
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1424,7 +1425,7 @@ select:focus {
 ### Line 140
 
 ```text
-        <label for="expire">Expiration Date</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1432,23 +1433,23 @@ select:focus {
 ### Line 141
 
 ```text
+        <label for="expire">Expiration Date</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 142
+
+```text
         <input id="expire" name="expire" type="date">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 142
+### Line 143
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 144
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1456,7 +1457,7 @@ select:focus {
 ### Line 145
 
 ```text
-        <label for="choice">Choice</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1464,12 +1465,20 @@ select:focus {
 ### Line 146
 
 ```text
+        <label for="choice">Choice</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 147
+
+```text
         <input id="choice" name="choice" type="text" placeholder="">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 147
+### Line 148
 
 ```text
       </div>
@@ -1477,7 +1486,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 148
+### Line 149
 
 ```text
     </div>
@@ -1485,18 +1494,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 150
+### Line 151
 
 ```text
     <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 153
-
-```text
-    <h2 class="h2">NMR</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1504,7 +1505,7 @@ select:focus {
 ### Line 154
 
 ```text
-    <div class="grid">
+    <h2 class="h2">NMR</h2>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1512,7 +1513,7 @@ select:focus {
 ### Line 155
 
 ```text
-      <div class="field">
+    <div class="grid">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1520,7 +1521,7 @@ select:focus {
 ### Line 156
 
 ```text
-        <label for="nmr">NMR</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1528,23 +1529,23 @@ select:focus {
 ### Line 157
 
 ```text
+        <label for="nmr">NMR</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 158
+
+```text
         <input id="nmr" name="nmr" type="text" placeholder="">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 158
+### Line 159
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 160
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1552,7 +1553,7 @@ select:focus {
 ### Line 161
 
 ```text
-        <label for="nmr_exp">NMR Expiry</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1560,12 +1561,20 @@ select:focus {
 ### Line 162
 
 ```text
+        <label for="nmr_exp">NMR Expiry</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 163
+
+```text
         <input id="nmr_exp" name="nmr_exp" type="date">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 163
+### Line 164
 
 ```text
       </div>
@@ -1573,7 +1582,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 164
+### Line 165
 
 ```text
     </div>
@@ -1581,7 +1590,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 166
+### Line 167
 
 ```text
     <hr class="sep">
@@ -1589,7 +1598,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 169
+### Line 170
 
 ```text
     <h2 class="h2">Ownership</h2>
@@ -1597,7 +1606,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 170
+### Line 171
 
 ```text
     <div class="grid">
@@ -1605,18 +1614,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 171
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 172
 
 ```text
-        <label for="owner">Owner</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1624,23 +1625,23 @@ select:focus {
 ### Line 173
 
 ```text
+        <label for="owner">Owner</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 174
+
+```text
         <input id="owner" name="owner" type="text" placeholder="">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 174
+### Line 175
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 176
-
-```text
-      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1648,7 +1649,7 @@ select:focus {
 ### Line 177
 
 ```text
-        <label for="added_by">Added By</label>
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1656,23 +1657,23 @@ select:focus {
 ### Line 178
 
 ```text
+        <label for="added_by">Added By</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 179
+
+```text
         <input id="added_by" name="added_by" type="text" placeholder="">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 179
+### Line 180
 
 ```text
       </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 181
-
-```text
-      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1680,7 +1681,7 @@ select:focus {
 ### Line 182
 
 ```text
-        <label for="notes">Notes</label>
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1688,7 +1689,7 @@ select:focus {
 ### Line 183
 
 ```text
-        <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
+        <label for="notes">Notes</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1696,7 +1697,7 @@ select:focus {
 ### Line 184
 
 ```text
-      </div>
+        <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1704,15 +1705,15 @@ select:focus {
 ### Line 185
 
 ```text
-    </div>
+      </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 187
+### Line 186
 
 ```text
-    <div class="actions">
+    </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1720,12 +1721,20 @@ select:focus {
 ### Line 188
 
 ```text
+    <div class="actions">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 189
+
+```text
       <button class="btn" type="submit">Add Container(s)</button>
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 189
+### Line 190
 
 ```text
       <a class="btn btn-secondary" href="{{ url_for('chem.inventory') }}">Cancel</a>
@@ -1733,7 +1742,7 @@ select:focus {
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 190
+### Line 191
 
 ```text
       <span id="autofillStatus" class="muted"></span>
@@ -1741,7 +1750,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 191
+### Line 192
 
 ```text
     </div>
@@ -1749,7 +1758,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 192
+### Line 193
 
 ```text
   </form>
@@ -1757,7 +1766,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 193
+### Line 194
 
 ```text
 </section>
@@ -1765,7 +1774,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 195
+### Line 196
 
 ```text
 <style>
@@ -1773,7 +1782,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 196
+### Line 197
 
 ```text
 .page-head {
@@ -1781,18 +1790,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 197
-
-```text
-  max-width: 1100px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 198
 
 ```text
-  margin: 20px auto 14px;
+  max-width: 1100px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1800,7 +1801,7 @@ select:focus {
 ### Line 199
 
 ```text
-  padding: 0 12px;
+  margin: 20px auto 14px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1808,15 +1809,15 @@ select:focus {
 ### Line 200
 
 ```text
-}
+  padding: 0 12px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 202
+### Line 201
 
 ```text
-.page-head h1 {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1824,7 +1825,7 @@ select:focus {
 ### Line 203
 
 ```text
-  margin: 0 0 8px;
+.page-head h1 {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1832,7 +1833,7 @@ select:focus {
 ### Line 204
 
 ```text
-  font-size: 28px;
+  margin: 0 0 8px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1840,7 +1841,7 @@ select:focus {
 ### Line 205
 
 ```text
-  font-weight: 800;
+  font-size: 28px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1848,7 +1849,7 @@ select:focus {
 ### Line 206
 
 ```text
-  color: #222;
+  font-weight: 800;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1856,15 +1857,15 @@ select:focus {
 ### Line 207
 
 ```text
-}
+  color: #222;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 209
+### Line 208
 
 ```text
-.muted {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1872,7 +1873,7 @@ select:focus {
 ### Line 210
 
 ```text
-  opacity: 0.78;
+.muted {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1880,15 +1881,15 @@ select:focus {
 ### Line 211
 
 ```text
-}
+  opacity: 0.78;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 213
+### Line 212
 
 ```text
-.card {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1896,7 +1897,7 @@ select:focus {
 ### Line 214
 
 ```text
-  max-width: 1100px;
+.card {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1904,7 +1905,7 @@ select:focus {
 ### Line 215
 
 ```text
-  margin: 0 auto 24px;
+  max-width: 1100px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1912,7 +1913,7 @@ select:focus {
 ### Line 216
 
 ```text
-  background: #fff;
+  margin: 0 auto 24px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1920,7 +1921,7 @@ select:focus {
 ### Line 217
 
 ```text
-  border-radius: 14px;
+  background: #fff;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1928,7 +1929,7 @@ select:focus {
 ### Line 218
 
 ```text
-  padding: 18px 18px 22px;
+  border-radius: 14px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1936,7 +1937,7 @@ select:focus {
 ### Line 219
 
 ```text
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  padding: 18px 18px 22px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1944,15 +1945,15 @@ select:focus {
 ### Line 220
 
 ```text
-}
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 222
+### Line 221
 
 ```text
-.grid {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1960,7 +1961,7 @@ select:focus {
 ### Line 223
 
 ```text
-  display: grid;
+.grid {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1968,7 +1969,7 @@ select:focus {
 ### Line 224
 
 ```text
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: grid;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1976,7 +1977,7 @@ select:focus {
 ### Line 225
 
 ```text
-  gap: 16px 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1984,15 +1985,15 @@ select:focus {
 ### Line 226
 
 ```text
-}
+  gap: 16px 14px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 228
+### Line 227
 
 ```text
-.field {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2000,7 +2001,7 @@ select:focus {
 ### Line 229
 
 ```text
-  display: flex;
+.field {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2008,7 +2009,7 @@ select:focus {
 ### Line 230
 
 ```text
-  flex-direction: column;
+  display: flex;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2016,7 +2017,7 @@ select:focus {
 ### Line 231
 
 ```text
-  gap: 7px;
+  flex-direction: column;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2024,15 +2025,15 @@ select:focus {
 ### Line 232
 
 ```text
-}
+  gap: 7px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 234
+### Line 233
 
 ```text
-.field-span-2 {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2040,7 +2041,7 @@ select:focus {
 ### Line 235
 
 ```text
-  grid-column: span 2;
+.field-span-2 {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2048,15 +2049,15 @@ select:focus {
 ### Line 236
 
 ```text
-}
+  grid-column: span 2;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 238
+### Line 237
 
 ```text
-label {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2064,7 +2065,7 @@ label {
 ### Line 239
 
 ```text
-  font-weight: 700;
+label {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2072,7 +2073,7 @@ label {
 ### Line 240
 
 ```text
-  font-size: 15px;
+  font-weight: 700;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2080,7 +2081,7 @@ label {
 ### Line 241
 
 ```text
-  color: #222;
+  font-size: 15px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2088,7 +2089,7 @@ label {
 ### Line 242
 
 ```text
-  line-height: 1.2;
+  color: #222;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2096,15 +2097,15 @@ label {
 ### Line 243
 
 ```text
-}
+  line-height: 1.2;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 245
+### Line 244
 
 ```text
-input,
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2112,7 +2113,7 @@ input,
 ### Line 246
 
 ```text
-textarea,
+input,
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2120,7 +2121,7 @@ textarea,
 ### Line 247
 
 ```text
-select {
+textarea,
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2128,7 +2129,7 @@ select {
 ### Line 248
 
 ```text
-  padding: 11px 12px;
+select {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2136,7 +2137,7 @@ select {
 ### Line 249
 
 ```text
-  border: 1px solid rgba(0,0,0,.16);
+  padding: 11px 12px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2144,7 +2145,7 @@ select {
 ### Line 250
 
 ```text
-  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.16);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2152,7 +2153,7 @@ select {
 ### Line 251
 
 ```text
-  outline: none;
+  border-radius: 10px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2160,7 +2161,7 @@ select {
 ### Line 252
 
 ```text
-  background: #fff;
+  outline: none;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2168,7 +2169,7 @@ select {
 ### Line 253
 
 ```text
-  font-size: 15px;
+  background: #fff;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2176,7 +2177,7 @@ select {
 ### Line 254
 
 ```text
-  min-height: 46px;
+  font-size: 15px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2184,7 +2185,7 @@ select {
 ### Line 255
 
 ```text
-  box-sizing: border-box;
+  min-height: 46px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2192,15 +2193,15 @@ select {
 ### Line 256
 
 ```text
-}
+  box-sizing: border-box;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 258
+### Line 257
 
 ```text
-textarea {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2208,7 +2209,7 @@ textarea {
 ### Line 259
 
 ```text
-  min-height: 82px;
+textarea {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2216,7 +2217,7 @@ textarea {
 ### Line 260
 
 ```text
-  resize: vertical;
+  min-height: 82px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2224,15 +2225,15 @@ textarea {
 ### Line 261
 
 ```text
-}
+  resize: vertical;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 263
+### Line 262
 
 ```text
-input[readonly] {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2240,7 +2241,7 @@ input[readonly] {
 ### Line 264
 
 ```text
-  background: #f5f5f5;
+input[readonly] {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2248,7 +2249,7 @@ input[readonly] {
 ### Line 265
 
 ```text
-  color: #555;
+  background: #f5f5f5;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2256,15 +2257,15 @@ input[readonly] {
 ### Line 266
 
 ```text
-}
+  color: #555;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 268
+### Line 267
 
 ```text
-input:focus,
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2272,7 +2273,7 @@ input:focus,
 ### Line 269
 
 ```text
-textarea:focus,
+input:focus,
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2280,7 +2281,7 @@ textarea:focus,
 ### Line 270
 
 ```text
-select:focus {
+textarea:focus,
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2288,7 +2289,7 @@ select:focus {
 ### Line 271
 
 ```text
-  border-color: rgba(204,0,0,.55);
+select:focus {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2296,7 +2297,7 @@ select:focus {
 ### Line 272
 
 ```text
-  box-shadow: 0 0 0 3px rgba(204,0,0,.12);
+  border-color: rgba(204,0,0,.55);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2304,15 +2305,15 @@ select:focus {
 ### Line 273
 
 ```text
-}
+  box-shadow: 0 0 0 3px rgba(204,0,0,.12);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 275
+### Line 274
 
 ```text
-.sep {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2320,7 +2321,7 @@ select:focus {
 ### Line 276
 
 ```text
-  border: 0;
+.sep {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2328,7 +2329,7 @@ select:focus {
 ### Line 277
 
 ```text
-  border-top: 1px solid rgba(0,0,0,.10);
+  border: 0;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2336,7 +2337,7 @@ select:focus {
 ### Line 278
 
 ```text
-  margin: 18px 0 18px;
+  border-top: 1px solid rgba(0,0,0,.10);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2344,15 +2345,15 @@ select:focus {
 ### Line 279
 
 ```text
-}
+  margin: 18px 0 18px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 281
+### Line 280
 
 ```text
-.h2 {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2360,7 +2361,7 @@ select:focus {
 ### Line 282
 
 ```text
-  margin: 6px 0 14px;
+.h2 {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2368,7 +2369,7 @@ select:focus {
 ### Line 283
 
 ```text
-  font-size: 20px;
+  margin: 6px 0 14px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2376,7 +2377,7 @@ select:focus {
 ### Line 284
 
 ```text
-  font-weight: 800;
+  font-size: 20px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2384,7 +2385,7 @@ select:focus {
 ### Line 285
 
 ```text
-  color: #222;
+  font-weight: 800;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2392,7 +2393,7 @@ select:focus {
 ### Line 286
 
 ```text
-  line-height: 1.2;
+  color: #222;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2400,15 +2401,15 @@ select:focus {
 ### Line 287
 
 ```text
-}
+  line-height: 1.2;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 289
+### Line 288
 
 ```text
-.hint {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2416,7 +2417,7 @@ select:focus {
 ### Line 290
 
 ```text
-  font-size: 13px;
+.hint {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2424,7 +2425,7 @@ select:focus {
 ### Line 291
 
 ```text
-  opacity: .75;
+  font-size: 13px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2432,7 +2433,7 @@ select:focus {
 ### Line 292
 
 ```text
-  margin-top: -1px;
+  opacity: .75;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2440,15 +2441,15 @@ select:focus {
 ### Line 293
 
 ```text
-}
+  margin-top: -1px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 295
+### Line 294
 
 ```text
-.actions {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2456,7 +2457,7 @@ select:focus {
 ### Line 296
 
 ```text
-  display: flex;
+.actions {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2464,7 +2465,7 @@ select:focus {
 ### Line 297
 
 ```text
-  align-items: center;
+  display: flex;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2472,7 +2473,7 @@ select:focus {
 ### Line 298
 
 ```text
-  gap: 10px;
+  align-items: center;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2480,7 +2481,7 @@ select:focus {
 ### Line 299
 
 ```text
-  margin-top: 22px;
+  gap: 10px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2488,15 +2489,15 @@ select:focus {
 ### Line 300
 
 ```text
-}
+  margin-top: 22px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 302
+### Line 301
 
 ```text
-.btn {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2504,7 +2505,7 @@ select:focus {
 ### Line 303
 
 ```text
-  background: #c00;
+.btn {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2512,7 +2513,7 @@ select:focus {
 ### Line 304
 
 ```text
-  color: #fff;
+  background: #c00;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2520,7 +2521,7 @@ select:focus {
 ### Line 305
 
 ```text
-  border: 0;
+  color: #fff;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2528,7 +2529,7 @@ select:focus {
 ### Line 306
 
 ```text
-  border-radius: 10px;
+  border: 0;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2536,7 +2537,7 @@ select:focus {
 ### Line 307
 
 ```text
-  padding: 11px 16px;
+  border-radius: 10px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2544,7 +2545,7 @@ select:focus {
 ### Line 308
 
 ```text
-  cursor: pointer;
+  padding: 11px 16px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2552,7 +2553,7 @@ select:focus {
 ### Line 309
 
 ```text
-  font-size: 15px;
+  cursor: pointer;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2560,7 +2561,7 @@ select:focus {
 ### Line 310
 
 ```text
-  font-weight: 700;
+  font-size: 15px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2568,15 +2569,15 @@ select:focus {
 ### Line 311
 
 ```text
-}
+  font-weight: 700;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 313
+### Line 312
 
 ```text
-.btn:hover {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2584,7 +2585,7 @@ select:focus {
 ### Line 314
 
 ```text
-  filter: brightness(.96);
+.btn:hover {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2592,15 +2593,15 @@ select:focus {
 ### Line 315
 
 ```text
-}
+  filter: brightness(.96);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 317
+### Line 316
 
 ```text
-.btn-secondary {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2608,7 +2609,7 @@ select:focus {
 ### Line 318
 
 ```text
-  background: #444;
+.btn-secondary {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2616,15 +2617,15 @@ select:focus {
 ### Line 319
 
 ```text
-}
+  background: #444;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 322
+### Line 320
 
 ```text
-.section-block {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2632,7 +2633,7 @@ select:focus {
 ### Line 323
 
 ```text
-  margin-bottom: 10px;
+.section-block {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2640,15 +2641,15 @@ select:focus {
 ### Line 324
 
 ```text
-}
+  margin-bottom: 10px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 326
+### Line 325
 
 ```text
-.section-block:last-of-type {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2656,7 +2657,7 @@ select:focus {
 ### Line 327
 
 ```text
-  margin-bottom: 0;
+.section-block:last-of-type {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2664,15 +2665,15 @@ select:focus {
 ### Line 328
 
 ```text
-}
+  margin-bottom: 0;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 331
+### Line 329
 
 ```text
-.location-grid {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2680,7 +2681,7 @@ select:focus {
 ### Line 332
 
 ```text
-  margin-bottom: 14px;
+.location-grid {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2688,15 +2689,15 @@ select:focus {
 ### Line 333
 
 ```text
-}
+  margin-bottom: 14px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 335
+### Line 334
 
 ```text
-@media (max-width: 900px) {
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2704,7 +2705,7 @@ select:focus {
 ### Line 336
 
 ```text
-  .grid {
+@media (max-width: 900px) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2712,7 +2713,7 @@ select:focus {
 ### Line 337
 
 ```text
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .grid {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2720,15 +2721,15 @@ select:focus {
 ### Line 338
 
 ```text
-  }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 340
+### Line 339
 
 ```text
-  .field-span-2 {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2736,7 +2737,7 @@ select:focus {
 ### Line 341
 
 ```text
-    grid-column: span 2;
+  .field-span-2 {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2744,7 +2745,7 @@ select:focus {
 ### Line 342
 
 ```text
-  }
+    grid-column: span 2;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2752,7 +2753,7 @@ select:focus {
 ### Line 343
 
 ```text
-}
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2760,7 +2761,7 @@ select:focus {
 ### Line 344
 
 ```text
-</style>
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2768,15 +2769,15 @@ select:focus {
 ### Line 345
 
 ```text
-{% endblock %}
+</style>
 ```
 
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 346
 
 ```text
-{% block scripts %}
+{% endblock %}
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
@@ -2784,12 +2785,20 @@ select:focus {
 ### Line 347
 
 ```text
+{% block scripts %}
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
+### Line 348
+
+```text
 <script>
 ```
 
 `asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
 
-### Line 348
+### Line 349
 
 ```text
 (function () {
@@ -2797,7 +2806,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 349
+### Line 350
 
 ```text
   const statusEl = document.getElementById("autofillStatus");
@@ -2805,7 +2814,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 351
+### Line 352
 
 ```text
   const CATALOG_AUTOFILL_FIELDS = ["name", "vendor", "state", "size", "unit", "system"];
@@ -2813,7 +2822,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 353
+### Line 354
 
 ```text
   const LOCATION_TEMPLATES = {
@@ -2821,7 +2830,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 354
+### Line 355
 
 ```text
     bay_a: { room_no: "2025N", room_name: "Bay A", area_class: "H-5" },
@@ -2829,7 +2838,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 355
+### Line 356
 
 ```text
     bay_b: { room_no: "2022N", room_name: "Bay B", area_class: "H-5" },
@@ -2837,7 +2846,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 356
+### Line 357
 
 ```text
     bay_c: { room_no: "2020N", room_name: "Bay C", area_class: "H-5" },
@@ -2845,7 +2854,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 357
+### Line 358
 
 ```text
     bay_d: { room_no: "2018N", room_name: "Bay D", area_class: "H-5" },
@@ -2853,7 +2862,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 358
+### Line 359
 
 ```text
     bay_e: { room_no: "2016N", room_name: "Bay E", area_class: "H-5" },
@@ -2861,7 +2870,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 359
+### Line 360
 
 ```text
     bay_f: { room_no: "2014N", room_name: "Bay F", area_class: "H-5" },
@@ -2869,7 +2878,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 360
+### Line 361
 
 ```text
     bay_g: { room_no: "2012N", room_name: "Bay G", area_class: "H-5" },
@@ -2877,7 +2886,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 362
+### Line 363
 
 ```text
     student_yellow: { room_no: "2010N", room_name: "Student Yellow", area_class: "H-5" },
@@ -2885,7 +2894,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 363
+### Line 364
 
 ```text
     mocvd: { room_no: "2006N", room_name: "MOCVD", area_class: "H-5" },
@@ -2893,7 +2902,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 364
+### Line 365
 
 ```text
     microfluidics: { room_no: "2008N", room_name: "Microfluidics", area_class: "H-5" },
@@ -2901,7 +2910,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 365
+### Line 366
 
 ```text
     metrology: { room_no: "2026N", room_name: "Metrology", area_class: "H-5" },
@@ -2909,7 +2918,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 367
+### Line 368
 
 ```text
     backend_lab: { room_no: "2223", room_name: "Backend Lab", area_class: "General" },
@@ -2917,7 +2926,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 368
+### Line 369
 
 ```text
     prototyping_lab: { room_no: "2237", room_name: "Prototyping Lab", area_class: "General" },
@@ -2925,7 +2934,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 369
+### Line 370
 
 ```text
     cr_shop: { room_no: "2237N", room_name: "CR Shop", area_class: "General" },
@@ -2933,7 +2942,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 371
+### Line 372
 
 ```text
     gas_chem_room: { room_no: "2018N", room_name: "Gas Chem Room", area_class: "H-2,3,4" },
@@ -2941,7 +2950,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 372
+### Line 373
 
 ```text
     pass_through: { room_no: "2018N", room_name: "Pass-Through", area_class: "H-5" }
@@ -2949,7 +2958,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 373
+### Line 374
 
 ```text
   };
@@ -2957,7 +2966,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 375
+### Line 376
 
 ```text
   function setStatus(msg) {
@@ -2965,7 +2974,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 376
+### Line 377
 
 ```text
     if (!statusEl) return;
@@ -2973,7 +2982,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 377
+### Line 378
 
 ```text
     statusEl.textContent = msg || "";
@@ -2981,18 +2990,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 378
+### Line 379
 
 ```text
   }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 380
-
-```text
-  function setIfEmpty(id, value) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3000,7 +3001,7 @@ select:focus {
 ### Line 381
 
 ```text
-    const el = document.getElementById(id);
+  function setIfEmpty(id, value) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3008,15 +3009,15 @@ select:focus {
 ### Line 382
 
 ```text
-    if (!el) return;
+    const el = document.getElementById(id);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 384
+### Line 383
 
 ```text
-    const current = (el.value || "").trim();
+    if (!el) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3024,7 +3025,7 @@ select:focus {
 ### Line 385
 
 ```text
-    const incoming = (value == null ? "" : String(value)).trim();
+    const current = (el.value || "").trim();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3032,15 +3033,15 @@ select:focus {
 ### Line 386
 
 ```text
-    if (!incoming) return;
+    const incoming = (value == null ? "" : String(value)).trim();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 388
+### Line 387
 
 ```text
-    if (!current) {
+    if (!incoming) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3048,7 +3049,7 @@ select:focus {
 ### Line 389
 
 ```text
-      el.value = incoming;
+    if (!current) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3056,7 +3057,7 @@ select:focus {
 ### Line 390
 
 ```text
-    }
+      el.value = incoming;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3064,15 +3065,15 @@ select:focus {
 ### Line 391
 
 ```text
-  }
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 393
+### Line 392
 
 ```text
-  function setValue(id, value) {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3080,7 +3081,7 @@ select:focus {
 ### Line 394
 
 ```text
-    const el = document.getElementById(id);
+  function setValue(id, value) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3088,7 +3089,7 @@ select:focus {
 ### Line 395
 
 ```text
-    if (!el) return;
+    const el = document.getElementById(id);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3096,7 +3097,7 @@ select:focus {
 ### Line 396
 
 ```text
-    el.value = value == null ? "" : value;
+    if (!el) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3104,15 +3105,15 @@ select:focus {
 ### Line 397
 
 ```text
-  }
+    el.value = value == null ? "" : value;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 399
+### Line 398
 
 ```text
-  function applyLocationTemplate(templateKey) {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3120,15 +3121,15 @@ select:focus {
 ### Line 400
 
 ```text
-    const tpl = LOCATION_TEMPLATES[templateKey];
+  function applyLocationTemplate(templateKey) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 402
+### Line 401
 
 ```text
-    if (!tpl) {
+    const tpl = LOCATION_TEMPLATES[templateKey];
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3136,7 +3137,7 @@ select:focus {
 ### Line 403
 
 ```text
-      setValue("room_no", "");
+    if (!tpl) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3144,7 +3145,7 @@ select:focus {
 ### Line 404
 
 ```text
-      setValue("room_name", "");
+      setValue("room_no", "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3152,7 +3153,7 @@ select:focus {
 ### Line 405
 
 ```text
-      setValue("area_class", "");
+      setValue("room_name", "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3160,7 +3161,7 @@ select:focus {
 ### Line 406
 
 ```text
-      setValue("room_display", "");
+      setValue("area_class", "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3168,7 +3169,7 @@ select:focus {
 ### Line 407
 
 ```text
-      return;
+      setValue("room_display", "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3176,15 +3177,15 @@ select:focus {
 ### Line 408
 
 ```text
-    }
+      return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 410
+### Line 409
 
 ```text
-    setValue("room_no", tpl.room_no || "");
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3192,7 +3193,7 @@ select:focus {
 ### Line 411
 
 ```text
-    setValue("room_name", tpl.room_name || "");
+    setValue("room_no", tpl.room_no || "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3200,7 +3201,7 @@ select:focus {
 ### Line 412
 
 ```text
-    setValue("area_class", tpl.area_class || "");
+    setValue("room_name", tpl.room_name || "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3208,15 +3209,15 @@ select:focus {
 ### Line 413
 
 ```text
-    setValue("room_display", `${tpl.room_name || ""} (${tpl.room_no || ""}, ${tpl.area_class || ""})`);
+    setValue("area_class", tpl.area_class || "");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 415
+### Line 414
 
 ```text
-    setStatus("Location template applied.");
+    setValue("room_display", `${tpl.room_name || ""} (${tpl.room_no || ""}, ${tpl.area_class || ""})`);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3224,7 +3225,7 @@ select:focus {
 ### Line 416
 
 ```text
-    setTimeout(() => setStatus(""), 1500);
+    setStatus("Location template applied.");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3232,15 +3233,15 @@ select:focus {
 ### Line 417
 
 ```text
-  }
+    setTimeout(() => setStatus(""), 1500);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 419
+### Line 418
 
 ```text
-  async function autofillByCatalog(catalog) {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3248,7 +3249,7 @@ select:focus {
 ### Line 420
 
 ```text
-    const cat = (catalog || "").trim();
+  async function autofillByCatalog(catalog) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3256,12 +3257,20 @@ select:focus {
 ### Line 421
 
 ```text
+    const cat = (catalog || "").trim();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 422
+
+```text
     if (!cat) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 423
+### Line 424
 
 ```text
     setStatus("Autofilling…");
@@ -3269,7 +3278,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 425
+### Line 426
 
 ```text
     try {
@@ -3277,7 +3286,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 426
+### Line 427
 
 ```text
       const res = await fetch(`/chem/api/autofill?catalog=${encodeURIComponent(cat)}`);
@@ -3285,7 +3294,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 427
+### Line 428
 
 ```text
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -3293,7 +3302,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 429
+### Line 430
 
 ```text
       const payload = await res.json();
@@ -3301,7 +3310,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 430
+### Line 431
 
 ```text
       const data = payload && payload.data ? payload.data : {};
@@ -3309,7 +3318,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 432
+### Line 433
 
 ```text
       if (!data || Object.keys(data).length === 0) {
@@ -3317,7 +3326,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 433
+### Line 434
 
 ```text
         setStatus("No match found for that Catalog # (that’s OK — enter manually).");
@@ -3325,7 +3334,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 434
+### Line 435
 
 ```text
         return;
@@ -3333,18 +3342,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 435
+### Line 436
 
 ```text
       }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 437
-
-```text
-      if (data.catalog) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3352,7 +3353,7 @@ select:focus {
 ### Line 438
 
 ```text
-        setIfEmpty("catalog", data.catalog);
+      if (data.catalog) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3360,15 +3361,15 @@ select:focus {
 ### Line 439
 
 ```text
-      }
+        setIfEmpty("catalog", data.catalog);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 441
+### Line 440
 
 ```text
-      CATALOG_AUTOFILL_FIELDS.forEach((k) => {
+      }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3376,7 +3377,7 @@ select:focus {
 ### Line 442
 
 ```text
-        if (k in data) setIfEmpty(k, data[k]);
+      CATALOG_AUTOFILL_FIELDS.forEach((k) => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3384,15 +3385,15 @@ select:focus {
 ### Line 443
 
 ```text
-      });
+        if (k in data) setIfEmpty(k, data[k]);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 445
+### Line 444
 
 ```text
-      setStatus("Autofill complete.");
+      });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3400,7 +3401,7 @@ select:focus {
 ### Line 446
 
 ```text
-      setTimeout(() => setStatus(""), 2000);
+      setStatus("Autofill complete.");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3408,7 +3409,7 @@ select:focus {
 ### Line 447
 
 ```text
-    } catch (e) {
+      setTimeout(() => setStatus(""), 2000);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3416,7 +3417,7 @@ select:focus {
 ### Line 448
 
 ```text
-      console.error(e);
+    } catch (e) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3424,7 +3425,7 @@ select:focus {
 ### Line 449
 
 ```text
-      setStatus("Autofill failed (check server logs).");
+      console.error(e);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3432,7 +3433,7 @@ select:focus {
 ### Line 450
 
 ```text
-    }
+      setStatus("Autofill failed (check server logs).");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3440,15 +3441,15 @@ select:focus {
 ### Line 451
 
 ```text
-  }
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 453
+### Line 452
 
 ```text
-  const catalogEl = document.getElementById("catalog");
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3456,7 +3457,7 @@ select:focus {
 ### Line 454
 
 ```text
-  if (catalogEl) {
+  const catalogEl = document.getElementById("catalog");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3464,7 +3465,7 @@ select:focus {
 ### Line 455
 
 ```text
-    catalogEl.addEventListener("change", () => autofillByCatalog(catalogEl.value));
+  if (catalogEl) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3472,7 +3473,7 @@ select:focus {
 ### Line 456
 
 ```text
-    catalogEl.addEventListener("blur", () => autofillByCatalog(catalogEl.value));
+    catalogEl.addEventListener("change", () => autofillByCatalog(catalogEl.value));
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3480,7 +3481,7 @@ select:focus {
 ### Line 457
 
 ```text
-    catalogEl.addEventListener("keydown", (ev) => {
+    catalogEl.addEventListener("blur", () => autofillByCatalog(catalogEl.value));
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3488,7 +3489,7 @@ select:focus {
 ### Line 458
 
 ```text
-      if (ev.key === "Enter") {
+    catalogEl.addEventListener("keydown", (ev) => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3496,7 +3497,7 @@ select:focus {
 ### Line 459
 
 ```text
-        ev.preventDefault();
+      if (ev.key === "Enter") {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3504,7 +3505,7 @@ select:focus {
 ### Line 460
 
 ```text
-        autofillByCatalog(catalogEl.value);
+        ev.preventDefault();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3512,7 +3513,7 @@ select:focus {
 ### Line 461
 
 ```text
-      }
+        autofillByCatalog(catalogEl.value);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3520,7 +3521,7 @@ select:focus {
 ### Line 462
 
 ```text
-    });
+      }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3528,15 +3529,15 @@ select:focus {
 ### Line 463
 
 ```text
-  }
+    });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 465
+### Line 464
 
 ```text
-  const templateEl = document.getElementById("location_template");
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3544,7 +3545,7 @@ select:focus {
 ### Line 466
 
 ```text
-  if (templateEl) {
+  const templateEl = document.getElementById("location_template");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3552,7 +3553,7 @@ select:focus {
 ### Line 467
 
 ```text
-    templateEl.addEventListener("change", function () {
+  if (templateEl) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3560,7 +3561,7 @@ select:focus {
 ### Line 468
 
 ```text
-      applyLocationTemplate(this.value);
+    templateEl.addEventListener("change", function () {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3568,15 +3569,15 @@ select:focus {
 ### Line 469
 
 ```text
-    });
+      applyLocationTemplate(this.value);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 471
+### Line 470
 
 ```text
-    if (templateEl.value) {
+    });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3584,7 +3585,7 @@ select:focus {
 ### Line 472
 
 ```text
-      applyLocationTemplate(templateEl.value);
+    if (templateEl.value) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3592,7 +3593,7 @@ select:focus {
 ### Line 473
 
 ```text
-    }
+      applyLocationTemplate(templateEl.value);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3600,15 +3601,15 @@ select:focus {
 ### Line 474
 
 ```text
-  }
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 476
+### Line 475
 
 ```text
-  function attachSuggest(inputId, fieldName) {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3616,7 +3617,7 @@ select:focus {
 ### Line 477
 
 ```text
-    const el = document.getElementById(inputId);
+  function attachSuggest(inputId, fieldName) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3624,15 +3625,15 @@ select:focus {
 ### Line 478
 
 ```text
-    if (!el) return;
+    const el = document.getElementById(inputId);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 480
+### Line 479
 
 ```text
-    const listId = `${inputId}_list`;
+    if (!el) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3640,15 +3641,15 @@ select:focus {
 ### Line 481
 
 ```text
-    let dl = document.getElementById(listId);
+    const listId = `${inputId}_list`;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 483
+### Line 482
 
 ```text
-    if (!dl) {
+    let dl = document.getElementById(listId);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3656,7 +3657,7 @@ select:focus {
 ### Line 484
 
 ```text
-      dl = document.createElement("datalist");
+    if (!dl) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3664,7 +3665,7 @@ select:focus {
 ### Line 485
 
 ```text
-      dl.id = listId;
+      dl = document.createElement("datalist");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3672,7 +3673,7 @@ select:focus {
 ### Line 486
 
 ```text
-      document.body.appendChild(dl);
+      dl.id = listId;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3680,7 +3681,7 @@ select:focus {
 ### Line 487
 
 ```text
-      el.setAttribute("list", listId);
+      document.body.appendChild(dl);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3688,15 +3689,15 @@ select:focus {
 ### Line 488
 
 ```text
-    }
+      el.setAttribute("list", listId);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 490
+### Line 489
 
 ```text
-    let lastQ = "";
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3704,7 +3705,7 @@ select:focus {
 ### Line 491
 
 ```text
-    el.addEventListener("input", async () => {
+    let lastQ = "";
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3712,7 +3713,7 @@ select:focus {
 ### Line 492
 
 ```text
-      const q = (el.value || "").trim();
+    el.addEventListener("input", async () => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3720,7 +3721,7 @@ select:focus {
 ### Line 493
 
 ```text
-      if (q.length < 2 || q === lastQ) return;
+      const q = (el.value || "").trim();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3728,15 +3729,15 @@ select:focus {
 ### Line 494
 
 ```text
-      lastQ = q;
+      if (q.length < 2 || q === lastQ) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 496
+### Line 495
 
 ```text
-      try {
+      lastQ = q;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3744,7 +3745,7 @@ select:focus {
 ### Line 497
 
 ```text
-        const res = await fetch(
+      try {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3752,7 +3753,7 @@ select:focus {
 ### Line 498
 
 ```text
-          `/chem/api/suggest?field=${encodeURIComponent(fieldName)}&q=${encodeURIComponent(q)}&limit=12`
+        const res = await fetch(
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3760,7 +3761,7 @@ select:focus {
 ### Line 499
 
 ```text
-        );
+          `/chem/api/suggest?field=${encodeURIComponent(fieldName)}&q=${encodeURIComponent(q)}&limit=12`
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3768,15 +3769,15 @@ select:focus {
 ### Line 500
 
 ```text
-        if (!res.ok) return;
+        );
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 502
+### Line 501
 
 ```text
-        const payload = await res.json();
+        if (!res.ok) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3784,15 +3785,15 @@ select:focus {
 ### Line 503
 
 ```text
-        const results = payload && payload.results ? payload.results : [];
+        const payload = await res.json();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 505
+### Line 504
 
 ```text
-        dl.innerHTML = "";
+        const results = payload && payload.results ? payload.results : [];
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3800,7 +3801,7 @@ select:focus {
 ### Line 506
 
 ```text
-        results.forEach((v) => {
+        dl.innerHTML = "";
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3808,7 +3809,7 @@ select:focus {
 ### Line 507
 
 ```text
-          const opt = document.createElement("option");
+        results.forEach((v) => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3816,7 +3817,7 @@ select:focus {
 ### Line 508
 
 ```text
-          opt.value = v;
+          const opt = document.createElement("option");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3824,7 +3825,7 @@ select:focus {
 ### Line 509
 
 ```text
-          dl.appendChild(opt);
+          opt.value = v;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3832,7 +3833,7 @@ select:focus {
 ### Line 510
 
 ```text
-        });
+          dl.appendChild(opt);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3840,7 +3841,7 @@ select:focus {
 ### Line 511
 
 ```text
-      } catch (e) {
+        });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3848,7 +3849,7 @@ select:focus {
 ### Line 512
 
 ```text
-      }
+      } catch (e) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3856,7 +3857,7 @@ select:focus {
 ### Line 513
 
 ```text
-    });
+      }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3864,15 +3865,15 @@ select:focus {
 ### Line 514
 
 ```text
-  }
+    });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 516
+### Line 515
 
 ```text
-  attachSuggest("name", "name");
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3880,7 +3881,7 @@ select:focus {
 ### Line 517
 
 ```text
-  attachSuggest("vendor", "vendor");
+  attachSuggest("name", "name");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3888,7 +3889,7 @@ select:focus {
 ### Line 518
 
 ```text
-  attachSuggest("unit", "unit");
+  attachSuggest("vendor", "vendor");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3896,7 +3897,7 @@ select:focus {
 ### Line 519
 
 ```text
-  attachSuggest("storage_device", "storage_device");
+  attachSuggest("unit", "unit");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3904,7 +3905,7 @@ select:focus {
 ### Line 520
 
 ```text
-  attachSuggest("storage_location", "storage_location");
+  attachSuggest("storage_device", "storage_device");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3912,7 +3913,7 @@ select:focus {
 ### Line 521
 
 ```text
-  attachSuggest("storage_sublocation", "storage_sublocation");
+  attachSuggest("storage_location", "storage_location");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3920,7 +3921,7 @@ select:focus {
 ### Line 522
 
 ```text
-})();
+  attachSuggest("storage_sublocation", "storage_sublocation");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3928,12 +3929,20 @@ select:focus {
 ### Line 523
 
 ```text
-</script>
+})();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 524
+
+```text
+</script>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 525
 
 ```text
 {% endblock %}

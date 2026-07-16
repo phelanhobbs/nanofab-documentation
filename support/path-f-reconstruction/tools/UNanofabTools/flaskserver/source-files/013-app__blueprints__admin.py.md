@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/blueprints/admin.py`
-- Lines read: `71`
+- Lines read: `89`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `6491073d6504ceb1`
+- Sanitized SHA-256 prefix: `4e615fde1ea94815`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -66,8 +66,17 @@ def admin_panel():
 @admin_required
 def delete_user():
     """Delete a user"""
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     unid = data.get('uNID')
+
+    target = admin_service.get_user_by_unid(unid)
+    if not target:
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+    # Lockout guards: never delete your own account or the last remaining admin.
+    if target.unid == current_user.unid:
+        return jsonify({'status': 'error', 'message': 'You cannot delete your own account'}), 400
+    if target.is_admin and admin_service.count_admins() <= 1:
+        return jsonify({'status': 'error', 'message': 'Cannot delete the last remaining admin'}), 400
 
     if admin_service.delete_user(unid):
         return jsonify({'status': 'success', 'message': 'User deleted'}), 200
@@ -80,8 +89,17 @@ def delete_user():
 @admin_required
 def toggle_admin():
     """Toggle user admin status"""
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     unid = data.get('uNID')
+
+    target = admin_service.get_user_by_unid(unid)
+    if not target:
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+    # Lockout guards: never demote yourself or the last remaining admin.
+    if target.unid == current_user.unid:
+        return jsonify({'status': 'error', 'message': 'You cannot change your own admin status'}), 400
+    if target.is_admin and admin_service.count_admins() <= 1:
+        return jsonify({'status': 'error', 'message': 'Cannot remove the last remaining admin'}), 400
 
     if admin_service.toggle_admin_status(unid):
         return jsonify({'status': 'success', 'message': 'Admin status toggled'}), 200
@@ -340,7 +358,7 @@ def delete_user():
 ### Line 37
 
 ```text
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
@@ -356,31 +374,39 @@ def delete_user():
 ### Line 40
 
 ```text
-    if admin_service.delete_user(unid):
+    target = admin_service.get_user_by_unid(unid)
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 41
 
 ```text
-        return jsonify({'status': 'success', 'message': 'User deleted'}), 200
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 42
-
-```text
-    else:
+    if not target:
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 43
+### Line 42
 
 ```text
-        return jsonify({'status': 'error', 'message': 'Failed to delete user'}), 400
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 44
+
+```text
+    if target.unid == current_user.unid:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 45
+
+```text
+        return jsonify({'status': 'error', 'message': 'You cannot delete your own account'}), 400
 ```
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
@@ -388,12 +414,60 @@ def delete_user():
 ### Line 46
 
 ```text
+    if target.is_admin and admin_service.count_admins() <= 1:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 47
+
+```text
+        return jsonify({'status': 'error', 'message': 'Cannot delete the last remaining admin'}), 400
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 49
+
+```text
+    if admin_service.delete_user(unid):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 50
+
+```text
+        return jsonify({'status': 'success', 'message': 'User deleted'}), 200
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 51
+
+```text
+    else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 52
+
+```text
+        return jsonify({'status': 'error', 'message': 'Failed to delete user'}), 400
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 55
+
+```text
 @admin_bp.route('/toggleAdminStatus', methods=['POST'])
 ```
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 47
+### Line 56
 
 ```text
 @login_required
@@ -401,7 +475,7 @@ def delete_user():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 48
+### Line 57
 
 ```text
 @admin_required
@@ -409,7 +483,7 @@ def delete_user():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 49
+### Line 58
 
 ```text
 def toggle_admin():
@@ -417,7 +491,7 @@ def toggle_admin():
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 50
+### Line 59
 
 ```text
     """Toggle user admin status"""
@@ -425,15 +499,15 @@ def toggle_admin():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 51
+### Line 60
 
 ```text
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 52
+### Line 61
 
 ```text
     unid = data.get('uNID')
@@ -441,7 +515,63 @@ def toggle_admin():
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 54
+### Line 63
+
+```text
+    target = admin_service.get_user_by_unid(unid)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 64
+
+```text
+    if not target:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 65
+
+```text
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 67
+
+```text
+    if target.unid == current_user.unid:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 68
+
+```text
+        return jsonify({'status': 'error', 'message': 'You cannot change your own admin status'}), 400
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 69
+
+```text
+    if target.is_admin and admin_service.count_admins() <= 1:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 70
+
+```text
+        return jsonify({'status': 'error', 'message': 'Cannot remove the last remaining admin'}), 400
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 72
 
 ```text
     if admin_service.toggle_admin_status(unid):
@@ -449,7 +579,7 @@ def toggle_admin():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 55
+### Line 73
 
 ```text
         return jsonify({'status': 'success', 'message': 'Admin status toggled'}), 200
@@ -457,7 +587,7 @@ def toggle_admin():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 56
+### Line 74
 
 ```text
     else:
@@ -465,7 +595,7 @@ def toggle_admin():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 57
+### Line 75
 
 ```text
         return jsonify({'status': 'error', 'message': 'Failed to toggle admin status'}), 400
@@ -473,7 +603,7 @@ def toggle_admin():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 60
+### Line 78
 
 ```text
 @admin_bp.route('/toggleAssign', methods=['POST'])
@@ -481,7 +611,7 @@ def toggle_admin():
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 61
+### Line 79
 
 ```text
 @login_required
@@ -489,7 +619,7 @@ def toggle_admin():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 62
+### Line 80
 
 ```text
 @admin_required
@@ -497,7 +627,7 @@ def toggle_admin():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 63
+### Line 81
 
 ```text
 def toggle_assign():
@@ -505,7 +635,7 @@ def toggle_assign():
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 64
+### Line 82
 
 ```text
     """Toggle user task assignment privilege"""
@@ -513,7 +643,7 @@ def toggle_assign():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 65
+### Line 83
 
 ```text
     data = request.get_json()
@@ -521,7 +651,7 @@ def toggle_assign():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 66
+### Line 84
 
 ```text
     unid = data.get('uNID')
@@ -529,7 +659,7 @@ def toggle_assign():
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 68
+### Line 86
 
 ```text
     if admin_service.toggle_assign_privilege(unid):
@@ -537,7 +667,7 @@ def toggle_assign():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 69
+### Line 87
 
 ```text
         return jsonify({'status': 'success', 'message': 'Assign privilege toggled'}), 200
@@ -545,7 +675,7 @@ def toggle_assign():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 70
+### Line 88
 
 ```text
     else:
@@ -553,7 +683,7 @@ def toggle_assign():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 71
+### Line 89
 
 ```text
         return jsonify({'status': 'error', 'message': 'Failed to toggle assign privilege'}), 400

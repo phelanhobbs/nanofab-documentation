@@ -2,10 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/app/blueprints/machines.py
 
-> **Update (2026-07-08, commit `f177140`):** `render_machine_data` now guards `os.path.exists(csv_file)` and renders a "No data available yet" page instead of 500'ing when a machine's `small_*` CSV is missing. (The machine/graph/log/admin templates were also rebuilt + committed the same week — commit `d7efcb9` — after being absent from git; see `known-issues` R7.) The embedded excerpt predates these fixes.
-
-> **Update (2026-07-08, commits `66b83f8` + `f83caed`):** the Parylene log page now reads `LogData/Paralyne/analog/` (was `Paralyne/uploads/`), `sort_files_by_time` is hardened so one unparseable filename can't blank the whole listing, and `graph_file` derives machine/type from the path relative to `log_dir` (the `Desktop/Logs/` prefix had shifted the column split) and plots the real `pressure`/`vapor`/`temp` columns instead of a hardcoded `'Vacuum pressure'`. See `known-issues` R9.
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
@@ -14,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/blueprints/machines.py`
-- Lines read: `303`
+- Lines read: `320`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `485e24c352e52b83`
+- Sanitized SHA-256 prefix: `af03a521cc43c8da`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -94,7 +90,7 @@ def mocvd():
 @login_required
 def parylene():
     """Display Parylene machine data"""
-    return render_log_files('Paralyne', 'uploads')
+    return render_log_files('Paralyne', 'analog')
 
 
 @machines_bp.route('/pecvd')
@@ -202,21 +198,21 @@ def allwin():
 @login_required
 def ald_rf_data():
     """Display ALD RF log data"""
-    return render_log_files('ALD', 'RF')
+    return render_log_files('ALD', 'RF Data')
 
 
 @machines_bp.route('/aldlog/pressuredata')
 @login_required
 def ald_pressure_data():
     """Display ALD pressure log data"""
-    return render_log_files('ALD', 'Pressure')
+    return render_log_files('ALD', 'Pressure Data')
 
 
 @machines_bp.route('/paralyneuploads')
 @login_required
 def parylene_uploads():
     """Display Parylene uploads"""
-    return render_log_files('Paralyne', 'uploads')
+    return render_log_files('Paralyne', 'analog')
 
 
 @machines_bp.route('/download/<path:filepath>')
@@ -251,23 +247,31 @@ def graph_file(filepath):
     filepath = unquote(filepath)
 
     log_dir = os.path.realpath(current_app.config['LOG_DATA_DIR'])
-    actual_path = os.path.realpath(filepath)
+    # Support the same legacy "Desktop/Logs/<rel>" links that download_file accepts,
+    # so a log file can be graphed straight from the log_files listing.
+    if 'Desktop/Logs/' in filepath:
+        relative_path = filepath.split('Desktop/Logs/')[1]
+        actual_path = os.path.realpath(os.path.join(log_dir, relative_path))
+    else:
+        actual_path = os.path.realpath(filepath)
 
     # Ensure resolved path is within the data directory
     if not actual_path.startswith(log_dir + os.sep):
         return jsonify({'error': 'Access denied'}), 403
 
-    parts = filepath.split(os.sep)
+    # Pick the column(s) to plot from the file's location *relative to log_dir*,
+    # so it works whether the link used a "Desktop/Logs/..." prefix or a bare path.
+    parts = os.path.relpath(actual_path, log_dir).split(os.sep)  # e.g. ['Paralyne','analog','<file>']
 
     try:
         graph_data = []
-        if len(parts) > 2 and parts[1] == 'ALD':
-            if parts[2] == 'RF':
+        if len(parts) > 2 and parts[0] == 'ALD':
+            if parts[1] == 'RF Data':
                 graph_data = [['For Pwr (W) ', 'Refl Pwr (W)']]
-            elif parts[2] == 'Pressure':
+            elif parts[1] == 'Pressure Data':
                 graph_data = [['Pressure ']]
-        elif len(parts) > 2 and parts[1] == 'Paralyne' and parts[2] == 'analog':
-            graph_data = [['Vacuum pressure']]
+        elif len(parts) > 2 and parts[0] == 'Paralyne' and parts[1] == 'analog':
+            graph_data = [['pressure', 'vapor', 'temp']]
 
         data = data_service.prepare_graph_data(actual_path, graph_data[0] if graph_data else [])
         return render_template('graph.html', graph_data=json.dumps(data))
@@ -307,6 +311,15 @@ def render_machine_data(machine, graph_columns):
     """Helper to render machine data page"""
     data_dir = current_app.config['DATA_DIR']
     csv_file = os.path.join(data_dir, f'small_{machine}_DataCollection.csv')
+
+    # Some machines have no data file yet (e.g. PECVD isn't scheduled). Degrade
+    # gracefully instead of 500'ing on the missing CSV.
+    if not os.path.exists(csv_file):
+        current_app.logger.warning("No data CSV for machine %s (%s)", machine, csv_file)
+        return render_template('machine_data.html',
+                               machine=machine,
+                               table_html="<p>No data available yet for this machine.</p>",
+                               graphs=[])
 
     html_table = data_service.csv_to_html_table(csv_file)
 
@@ -696,7 +709,7 @@ def parylene():
 ### Line 61
 
 ```text
-    return render_log_files('Paralyne', 'uploads')
+    return render_log_files('Paralyne', 'analog')
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
@@ -1296,7 +1309,7 @@ def ald_rf_data():
 ### Line 169
 
 ```text
-    return render_log_files('ALD', 'RF')
+    return render_log_files('ALD', 'RF Data')
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
@@ -1336,7 +1349,7 @@ def ald_pressure_data():
 ### Line 176
 
 ```text
-    return render_log_files('ALD', 'Pressure')
+    return render_log_files('ALD', 'Pressure Data')
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
@@ -1376,7 +1389,7 @@ def parylene_uploads():
 ### Line 183
 
 ```text
-    return render_log_files('Paralyne', 'uploads')
+    return render_log_files('Paralyne', 'analog')
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
@@ -1565,319 +1578,31 @@ def graph_file(filepath):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 218
+### Line 220
 
 ```text
-    actual_path = os.path.realpath(filepath)
+    if 'Desktop/Logs/' in filepath:
 ```
 
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 221
 
 ```text
-    if not actual_path.startswith(log_dir + os.sep):
+        relative_path = filepath.split('Desktop/Logs/')[1]
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
 ### Line 222
 
 ```text
-        return jsonify({'error': 'Access denied'}), 403
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 224
-
-```text
-    parts = filepath.split(os.sep)
+        actual_path = os.path.realpath(os.path.join(log_dir, relative_path))
 ```
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 226
-
-```text
-    try:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 227
-
-```text
-        graph_data = []
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 228
-
-```text
-        if len(parts) > 2 and parts[1] == 'ALD':
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 229
-
-```text
-            if parts[2] == 'RF':
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 230
-
-```text
-                graph_data = [['For Pwr (W) ', 'Refl Pwr (W)']]
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 231
-
-```text
-            elif parts[2] == 'Pressure':
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 232
-
-```text
-                graph_data = [['Pressure ']]
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 233
-
-```text
-        elif len(parts) > 2 and parts[1] == 'Paralyne' and parts[2] == 'analog':
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 234
-
-```text
-            graph_data = [['Vacuum pressure']]
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 236
-
-```text
-        data = data_service.prepare_graph_data(actual_path, graph_data[0] if graph_data else [])
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 237
-
-```text
-        return render_template('graph.html', graph_data=json.dumps(data))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 238
-
-```text
-    except Exception as e:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 239
-
-```text
-        current_app.logger.error(f"Error graphing file: {e}")
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 240
-
-```text
-        return jsonify({'error': str(e)}), 400
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 243
-
-```text
-@machines_bp.route('/submitALDData', methods=['POST'])
-```
-
-`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
-
-### Line 244
-
-```text
-@login_required
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 245
-
-```text
-def submit_ald_data():
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 246
-
-```text
-    """Submit ALD data for graphing"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 247
-
-```text
-    material = request.form.get('material')
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 248
-
-```text
-    depmode = request.form.get('depmode')
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 249
-
-```text
-    chuck_temp = request.form.get('temp')
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 251
-
-```text
-    depo_rates = data_service.calculate_ald_deposition_rate(material, depmode, chuck_temp)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 253
-
-```text
-    if depo_rates:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 254
-
-```text
-        labels = list(range(1, len(depo_rates) + 1))
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 255
-
-```text
-        graph_data = {
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 256
-
-```text
-            'labels': labels,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 257
-
-```text
-            'datasets': [{
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 258
-
-```text
-                'label': 'Deposition Rate (nm/cycle)',
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 259
-
-```text
-                'data': depo_rates,
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 260
-
-```text
-                'borderColor': 'rgba(75, 192, 192, 1)',
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 261
-
-```text
-                'backgroundColor': 'rgba(75, 192, 192, 0.2)',
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 262
-
-```text
-                'fill': False
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 263
-
-```text
-            }]
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 264
-
-```text
-        }
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 265
-
-```text
-        return render_template('ald_graph.html', graph_data=json.dumps(graph_data))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 266
+### Line 223
 
 ```text
     else:
@@ -1885,26 +1610,298 @@ def submit_ald_data():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 267
+### Line 224
 
 ```text
-        return jsonify({'error': 'Data not found'}), 404
+        actual_path = os.path.realpath(filepath)
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 227
+
+```text
+    if not actual_path.startswith(log_dir + os.sep):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 228
+
+```text
+        return jsonify({'error': 'Access denied'}), 403
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 270
+### Line 232
 
 ```text
-def render_machine_data(machine, graph_columns):
+    parts = os.path.relpath(actual_path, log_dir).split(os.sep)  # e.g. ['Paralyne','analog','<file>']
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 234
+
+```text
+    try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 235
+
+```text
+        graph_data = []
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 236
+
+```text
+        if len(parts) > 2 and parts[0] == 'ALD':
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 237
+
+```text
+            if parts[1] == 'RF Data':
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 238
+
+```text
+                graph_data = [['For Pwr (W) ', 'Refl Pwr (W)']]
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 239
+
+```text
+            elif parts[1] == 'Pressure Data':
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 240
+
+```text
+                graph_data = [['Pressure ']]
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 241
+
+```text
+        elif len(parts) > 2 and parts[0] == 'Paralyne' and parts[1] == 'analog':
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 242
+
+```text
+            graph_data = [['pressure', 'vapor', 'temp']]
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 244
+
+```text
+        data = data_service.prepare_graph_data(actual_path, graph_data[0] if graph_data else [])
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 245
+
+```text
+        return render_template('graph.html', graph_data=json.dumps(data))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 246
+
+```text
+    except Exception as e:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 247
+
+```text
+        current_app.logger.error(f"Error graphing file: {e}")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 248
+
+```text
+        return jsonify({'error': str(e)}), 400
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 251
+
+```text
+@machines_bp.route('/submitALDData', methods=['POST'])
+```
+
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
+
+### Line 252
+
+```text
+@login_required
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 253
+
+```text
+def submit_ald_data():
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
+### Line 254
+
+```text
+    """Submit ALD data for graphing"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 255
+
+```text
+    material = request.form.get('material')
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 256
+
+```text
+    depmode = request.form.get('depmode')
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 257
+
+```text
+    chuck_temp = request.form.get('temp')
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 259
+
+```text
+    depo_rates = data_service.calculate_ald_deposition_rate(material, depmode, chuck_temp)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 261
+
+```text
+    if depo_rates:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 262
+
+```text
+        labels = list(range(1, len(depo_rates) + 1))
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 263
+
+```text
+        graph_data = {
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 264
+
+```text
+            'labels': labels,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 265
+
+```text
+            'datasets': [{
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 266
+
+```text
+                'label': 'Deposition Rate (nm/cycle)',
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 267
+
+```text
+                'data': depo_rates,
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 268
+
+```text
+                'borderColor': 'rgba(75, 192, 192, 1)',
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 269
+
+```text
+                'backgroundColor': 'rgba(75, 192, 192, 0.2)',
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 270
+
+```text
+                'fill': False
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
 ### Line 271
 
 ```text
-    """Helper to render machine data page"""
+            }]
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -1912,12 +1909,60 @@ def render_machine_data(machine, graph_columns):
 ### Line 272
 
 ```text
+        }
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 273
+
+```text
+        return render_template('ald_graph.html', graph_data=json.dumps(graph_data))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 274
+
+```text
+    else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 275
+
+```text
+        return jsonify({'error': 'Data not found'}), 404
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 278
+
+```text
+def render_machine_data(machine, graph_columns):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 279
+
+```text
+    """Helper to render machine data page"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 280
+
+```text
     data_dir = current_app.config['DATA_DIR']
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 273
+### Line 281
 
 ```text
     csv_file = os.path.join(data_dir, f'small_{machine}_DataCollection.csv')
@@ -1925,7 +1970,55 @@ def render_machine_data(machine, graph_columns):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 275
+### Line 285
+
+```text
+    if not os.path.exists(csv_file):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 286
+
+```text
+        current_app.logger.warning("No data CSV for machine %s (%s)", machine, csv_file)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 287
+
+```text
+        return render_template('machine_data.html',
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 288
+
+```text
+                               machine=machine,
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 289
+
+```text
+                               table_html="<p>No data available yet for this machine.</p>",
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 290
+
+```text
+                               graphs=[])
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 292
 
 ```text
     html_table = data_service.csv_to_html_table(csv_file)
@@ -1933,7 +2026,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 277
+### Line 294
 
 ```text
     graphs = []
@@ -1941,7 +2034,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 278
+### Line 295
 
 ```text
     for cols in graph_columns:
@@ -1949,7 +2042,7 @@ def render_machine_data(machine, graph_columns):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 279
+### Line 296
 
 ```text
         graph_data = data_service.prepare_graph_data(csv_file, cols if isinstance(cols, list) else [cols])
@@ -1957,7 +2050,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 280
+### Line 297
 
 ```text
         graphs.append(graph_data)
@@ -1965,7 +2058,7 @@ def render_machine_data(machine, graph_columns):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 282
+### Line 299
 
 ```text
     return render_template('machine_data.html',
@@ -1973,7 +2066,7 @@ def render_machine_data(machine, graph_columns):
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 283
+### Line 300
 
 ```text
                          machine=machine,
@@ -1981,7 +2074,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 284
+### Line 301
 
 ```text
                          table_html=html_table,
@@ -1989,7 +2082,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 285
+### Line 302
 
 ```text
                          graphs=graphs)
@@ -1997,7 +2090,7 @@ def render_machine_data(machine, graph_columns):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 288
+### Line 305
 
 ```text
 def render_log_files(machine, datatype):
@@ -2005,7 +2098,7 @@ def render_log_files(machine, datatype):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 289
+### Line 306
 
 ```text
     """Helper to render log files page"""
@@ -2013,7 +2106,7 @@ def render_log_files(machine, datatype):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 290
+### Line 307
 
 ```text
     log_dir = current_app.config['LOG_DATA_DIR']
@@ -2021,7 +2114,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 291
+### Line 308
 
 ```text
     directory_path = os.path.join(log_dir, machine, datatype)
@@ -2029,7 +2122,7 @@ def render_log_files(machine, datatype):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 293
+### Line 310
 
 ```text
     files = []
@@ -2037,7 +2130,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 294
+### Line 311
 
 ```text
     date_format = 2 if machine == 'Denton635' else (1 if machine == 'Paralyne' else 0)
@@ -2045,7 +2138,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 296
+### Line 313
 
 ```text
     if os.path.exists(directory_path):
@@ -2053,7 +2146,7 @@ def render_log_files(machine, datatype):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 297
+### Line 314
 
 ```text
         all_files = os.listdir(directory_path)
@@ -2061,7 +2154,7 @@ def render_log_files(machine, datatype):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 298
+### Line 315
 
 ```text
         files = data_service.sort_files_by_time(all_files, date_format)
@@ -2069,7 +2162,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 300
+### Line 317
 
 ```text
     return render_template('log_files.html',
@@ -2077,7 +2170,7 @@ def render_log_files(machine, datatype):
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 301
+### Line 318
 
 ```text
                          machine=machine,
@@ -2085,7 +2178,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 302
+### Line 319
 
 ```text
                          datatype=datatype,
@@ -2093,7 +2186,7 @@ def render_log_files(machine, datatype):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 303
+### Line 320
 
 ```text
                          files=files)

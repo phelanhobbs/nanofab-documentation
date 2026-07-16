@@ -48,7 +48,7 @@ Every redacted value must be supplied through approved configuration, a local `.
 ### `UNanofabTools/flaskserver`
 
 - Folder: [`tools/UNanofabTools/flaskserver/README.md`](tools/UNanofabTools/flaskserver/README.md)
-- Source files covered: `79`
+- Source files covered: `81`
 - Role: Modern Flask web application, including auth, tasks, machine pages, particle-data API, chemical inventory, templates, static assets, config, and migrations.
 - External inputs to identify before rebuilding:
   - .env values for Flask secret, Duo, database, and production host behavior

@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `requirements.txt`
-- Lines read: `14`
+- Lines read: `15`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `93c550ef13cfe8dc`
+- Sanitized SHA-256 prefix: `7663e391696b16db`
 - Code fence language: `text`
 
 ## Reconstruction Purpose
@@ -29,6 +29,7 @@ Flask-SQLAlchemy==3.1.1
 Flask-Bcrypt==1.0.1
 Flask-CORS==4.0.0
 Flask-Migrate==4.1.0
+Flask-WTF==1.2.1
 python-dotenv==1.0.0
 bcrypt==4.1.2
 duo-client==5.3.0
@@ -92,7 +93,7 @@ Flask-Migrate==4.1.0
 ### Line 7
 
 ```text
-python-dotenv==1.0.0
+Flask-WTF==1.2.1
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -100,7 +101,7 @@ python-dotenv==1.0.0
 ### Line 8
 
 ```text
-bcrypt==4.1.2
+python-dotenv==1.0.0
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -108,7 +109,7 @@ bcrypt==4.1.2
 ### Line 9
 
 ```text
-duo-client==5.3.0
+bcrypt==4.1.2
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -116,7 +117,7 @@ duo-client==5.3.0
 ### Line 10
 
 ```text
-pandas==2.2.0
+duo-client==5.3.0
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -124,7 +125,7 @@ pandas==2.2.0
 ### Line 11
 
 ```text
-SQLAlchemy==2.0.25
+pandas==2.2.0
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -132,7 +133,7 @@ SQLAlchemy==2.0.25
 ### Line 12
 
 ```text
-psycopg2-binary==2.9.9
+SQLAlchemy==2.0.25
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
@@ -140,12 +141,20 @@ psycopg2-binary==2.9.9
 ### Line 13
 
 ```text
-xlsxwriter==3.2.0
+psycopg2-binary==2.9.9
 ```
 
 `prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
 
 ### Line 14
+
+```text
+xlsxwriter==3.2.0
+```
+
+`prose` — This documentation line is part of the original repo's operator or developer guidance. Preserve the claim only if it still matches source and live state; edge cases include stale paths, old deployment assumptions, and instructions that expose secrets.
+
+### Line 15
 
 ```text
 pytz==2024.1

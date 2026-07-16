@@ -60,7 +60,7 @@ Do not treat the proof checks above as complete until [`../../../FIXTURE-AND-EVI
 | `NanofabToolkit/PreciousMetalReader/PreciousMetalReader.spec` | [`source-files/001-PreciousMetalReader__PreciousMetalReader.spec.md`](source-files/001-PreciousMetalReader__PreciousMetalReader.spec.md) | no | no |
 | `NanofabToolkit/PreciousMetalReader/main.py` | [`source-files/002-PreciousMetalReader__main.py.md`](source-files/002-PreciousMetalReader__main.py.md) | no | no |
 | `NanofabToolkit/PreciousMetalReader/requirements.txt` | [`source-files/003-PreciousMetalReader__requirements.txt.md`](source-files/003-PreciousMetalReader__requirements.txt.md) | no | no |
-| `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py` | [`source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md`](source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md) | no | no |
+| `NanofabToolkit/PreciousMetalReader/src/RetrieveMonthsMetals.py` | [`source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md`](source-files/004-PreciousMetalReader__src__RetrieveMonthsMetals.py.md) | yes | no |
 | `NanofabToolkit/PreciousMetalReader/src/gui.py` | [`source-files/005-PreciousMetalReader__src__gui.py.md`](source-files/005-PreciousMetalReader__src__gui.py.md) | no | no |
 
 ## Tool Reconstruction Contract

@@ -344,7 +344,7 @@ Uses `requests`, `pandas`, `numpy`, `schedule`, plus `signal`/`sys` for graceful
 - `save<Machine>()` — one per implemented tool (`saveALD`, `saveEbeam`, `saveMOCVD`, `saveParylene`, `savePECVD`, `saveDenton635`, `saveDenton18`, `saveTMV`, `saveDRIE`, `saveIsotropic`, `savePlasmalab`, `savePlasmaTherm`, `saveTechnics`, `saveCleanOx`, `saveDopedOx`, `saveLTO`, `saveNitride`, `savePoly`, `saveAllwin`)
   Each: `retrieveData` → select/rename/format the columns relevant to that tool → write the full CSV and a `small_` CSV into `DATA_DIR`. The `small_<Machine>_DataCollection.csv` files are what the portal reads.
 - `save()`
-  Orchestrator that calls the active `save<Machine>()` functions. `savePECVD()` is defined but currently commented out in `save()`, so PECVD data is not refreshed by the scheduled loop unless that line is re-enabled.
+  Orchestrator that calls the active `save<Machine>()` functions, **each in its own `try/except`**, so one machine's failure (a CORES schema change raising `KeyError`, a network error) is logged and skipped without aborting the rest of the run; a per-run failure summary is logged at the end. `savePECVD()` is defined but currently left out of the machine list, so PECVD data is not refreshed by the scheduled loop unless it is re-added.
 - `graceful_exit(signum, frame)` + `runForever()`
   Signal-handled main loop using the `schedule` library to run `save()` periodically until terminated cleanly.
 
@@ -360,7 +360,7 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 
 - Runs as a long-lived process (a service / scheduled host), driven by `schedule` + `runForever`.
 - Designed to stop cleanly on signal (`graceful_exit`).
-- Network/auth failures: `downloadFile` does minimal error handling — a CORES outage or token rotation will surface as exceptions / empty data. Add retry/alerting if reliability matters.
+- Network/auth failures: `downloadFile` uses `timeout=30` (a hung CORES/n8n request can't stall the run) and `raise_for_status()` (a revoked-token `403` becomes a clean exception rather than a confusing `JSONDecodeError`). Combined with the per-machine `try/except` in `save()`, one machine's outage or a schema drift no longer aborts the others — the failure is logged and that machine's CSV is left stale until the next run. (Alerting on repeated failures is still a worthwhile enhancement.)
 - Per-machine `Base Pressure` scaling is hardened (commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Deployed live 2026-06-29 (alongside the CORES token rotation) and verified — the crash is gone from `journalctl --user -u hscdownloader` and saves complete.
 - It writes to the same `HSCDATA` directory the server reads; ensure both run with consistent paths/permissions.
 
@@ -403,14 +403,15 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 - **Residual (Low, optional cleanup):** the old value still sits in old commits (≤ `0114dc5`), but it is now a **dead credential** (403) — a `git filter-repo`/BFG history scrub is optional hygiene, not a live security need.
 - **Cross-tool note:** `PreciousMetalReader` **shares this CORES token**. Its local `auth.py` now holds the revoked value (403), so that tool needs its env rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) to keep working — see `known-issues/NanofabToolkit/PreciousMetalReader.md` #1.
 
-### 2. Minimal error handling on downloads — Medium
-- **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
-- **Risk:** a CORES outage, slow response, or token rotation throws or yields empty data; machine pages silently go stale.
-- **Fix:** check HTTP status, add timeouts + retries, and log/alert on failure.
+### 2. Minimal error handling on downloads — Medium (mostly resolved)
+- **Where:** `downloadFile`.
+- **Status:** `downloadFile` now uses `timeout=30` and `raise_for_status()`, and `save()` wraps each machine in its own `try/except`. A CORES outage, slow response, or revoked token now surfaces as a clean, per-machine-contained failure instead of a hang or a confusing `JSONDecodeError` that aborts the whole run.
+- **Residual (Low):** no automatic retry yet, and no alerting — a failing machine is logged and left stale until the next cycle (see #3).
 
-### 3. No staleness detection / alerting — Medium
+### 3. No staleness detection / alerting — Medium (partly mitigated)
 - **Where:** the scheduled `save()` loop.
 - **Risk:** if downloads start failing, nobody is notified; the website quietly shows old data.
+- **Mitigation in place:** `save()` runs each machine in its own `try/except` and logs a per-run failure summary, so one machine's failure no longer aborts the others and each failure is visible in the log. **Proactive alerting is still missing.**
 - **Fix:** record last-successful-update per machine; alert if a machine hasn't updated in N cycles.
 
 ### 4. Machine→service_id map is brittle and buried — Medium
@@ -520,6 +521,7 @@ So when you open a machine's page on the website and see a table of recent runs,
 - It runs on a **schedule**, automatically and unattended, and is designed to shut down cleanly when asked.
 - It uses a **secret access token** to talk to CORES. That token now lives in a protected settings file (`.env`), not in the program, and it was **rotated (replaced with a fresh one) on 2026-06-29** after the original had been left in the code's history. (The same token is shared with the Precious Metal Reader, which now needs the new token applied too.)
 - Each machine's formatting lives in its own function, so adding or adjusting a machine is a localized change.
+- **One machine's problem no longer sinks the whole run.** Each machine is downloaded and saved inside its own safety net, so if one tool's data is malformed or the network hiccups on it, that one is logged and skipped and the rest still update. The download also has a **time limit**, so a stuck request from CORES can't freeze the entire nightly run.
 - A couple of machines are noted in the code as "currently has no data" — expected gaps, not bugs.
 
 In short: HSCDownloader is the quiet supply line that keeps the website's machine data current by pulling it from CORES and laying it out as spreadsheets the site can display.
@@ -679,12 +681,13 @@ READ ALOUD OR USE AS SPEAKER NOTES:
 - Give a practical diagnostic. If a machine page looks stale, work down this list: is the downloader process running at all; can it reach
 - CORES (outage or an expired/rotated token); and did that machine's CORES ID change (which silently breaks just that tool). There's no
 - automatic alert today, so staleness is usually noticed by eye — which is itself on the fix list.
-- If CORES is down or the token changes, pages quietly go stale (no alert today).
+- Each machine runs in its own safety net, so if one fails, the rest still update; the download also has a time limit so it can't hang.
+- If CORES is down or a machine's data is bad, only that machine goes stale — but there's still no proactive alert today.
 - Each machine maps to a CORES ID; if an ID changes, that machine stops updating.
 - A couple of machines are marked 'no data yet' — expected, not bugs.
 - Cover the watch-items honestly. The secret token has been moved out of the code into a protected setting (.env) and was rotated on
-- 2026-06-29, so that earlier credential-in-source risk is resolved. The main remaining gap is alerting: there's no alert today, so a
-- CORES outage or token change shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a
+- 2026-06-29, so that earlier credential-in-source risk is resolved. Reliability is better too: each machine is now downloaded and saved inside its own safety net, so a single bad response or schema change is logged and skipped instead of aborting the whole run, and the download has a time limit so a stuck CORES request can't freeze the nightly job. The main remaining gap is alerting: there's still no proactive alert, so a
+- sustained CORES outage shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a
 - CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few machines are noted as having no data yet,
 - which is expected. All of this is in the developer notes and issues list.
 - Those spreadsheets are what the website's machine pages display.

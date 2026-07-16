@@ -230,7 +230,7 @@ Uses `requests`, `pandas`, `numpy`, `schedule`, plus `signal`/`sys` for graceful
 - `save<Machine>()` — one per implemented tool (`saveALD`, `saveEbeam`, `saveMOCVD`, `saveParylene`, `savePECVD`, `saveDenton635`, `saveDenton18`, `saveTMV`, `saveDRIE`, `saveIsotropic`, `savePlasmalab`, `savePlasmaTherm`, `saveTechnics`, `saveCleanOx`, `saveDopedOx`, `saveLTO`, `saveNitride`, `savePoly`, `saveAllwin`)
   Each: `retrieveData` → select/rename/format the columns relevant to that tool → write the full CSV and a `small_` CSV into `DATA_DIR`. The `small_<Machine>_DataCollection.csv` files are what the portal reads.
 - `save()`
-  Orchestrator that calls the active `save<Machine>()` functions. `savePECVD()` is defined but currently commented out in `save()`, so PECVD data is not refreshed by the scheduled loop unless that line is re-enabled.
+  Orchestrator that calls the active `save<Machine>()` functions, **each in its own `try/except`**, so one machine's failure (a CORES schema change raising `KeyError`, a network error) is logged and skipped without aborting the rest of the run; a per-run failure summary is logged at the end. `savePECVD()` is defined but currently left out of the machine list, so PECVD data is not refreshed by the scheduled loop unless it is re-added.
 - `graceful_exit(signum, frame)` + `runForever()`
   Signal-handled main loop using the `schedule` library to run `save()` periodically until terminated cleanly.
 
@@ -246,7 +246,7 @@ The portal expects `HSCDATA/small_<Machine>_DataCollection.csv` with the columns
 
 - Runs as a long-lived process (a service / scheduled host), driven by `schedule` + `runForever`.
 - Designed to stop cleanly on signal (`graceful_exit`).
-- Network/auth failures: `downloadFile` does minimal error handling — a CORES outage or token rotation will surface as exceptions / empty data. Add retry/alerting if reliability matters.
+- Network/auth failures: `downloadFile` uses `timeout=30` (a hung CORES/n8n request can't stall the run) and `raise_for_status()` (a revoked-token `403` becomes a clean exception rather than a confusing `JSONDecodeError`). Combined with the per-machine `try/except` in `save()`, one machine's outage or a schema drift no longer aborts the others — the failure is logged and that machine's CSV is left stale until the next run. (Alerting on repeated failures is still a worthwhile enhancement.)
 - Per-machine `Base Pressure` scaling is hardened (commit `8717375`): a `scalePressure()` helper casts the value and tolerates bad rows, so a string value no longer aborts the Ebeam / Denton635 / Denton18 / TMV save (which previously caught the `TypeError`, logged it, and left that machine's CSV stale). Deployed live 2026-06-29 (alongside the CORES token rotation) and verified — the crash is gone from `journalctl --user -u hscdownloader` and saves complete.
 - It writes to the same `HSCDATA` directory the server reads; ensure both run with consistent paths/permissions.
 
@@ -289,14 +289,15 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 - **Residual (Low, optional cleanup):** the old value still sits in old commits (≤ `0114dc5`), but it is now a **dead credential** (403) — a `git filter-repo`/BFG history scrub is optional hygiene, not a live security need.
 - **Cross-tool note:** `PreciousMetalReader` **shares this CORES token**. Its local `auth.py` now holds the revoked value (403), so that tool needs its env rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) to keep working — see `known-issues/NanofabToolkit/PreciousMetalReader.md` #1.
 
-### 2. Minimal error handling on downloads — Medium
-- **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
-- **Risk:** a CORES outage, slow response, or token rotation throws or yields empty data; machine pages silently go stale.
-- **Fix:** check HTTP status, add timeouts + retries, and log/alert on failure.
+### 2. Minimal error handling on downloads — Medium (mostly resolved)
+- **Where:** `downloadFile`.
+- **Status:** `downloadFile` now uses `timeout=30` and `raise_for_status()`, and `save()` wraps each machine in its own `try/except`. A CORES outage, slow response, or revoked token now surfaces as a clean, per-machine-contained failure instead of a hang or a confusing `JSONDecodeError` that aborts the whole run.
+- **Residual (Low):** no automatic retry yet, and no alerting — a failing machine is logged and left stale until the next cycle (see #3).
 
-### 3. No staleness detection / alerting — Medium
+### 3. No staleness detection / alerting — Medium (partly mitigated)
 - **Where:** the scheduled `save()` loop.
 - **Risk:** if downloads start failing, nobody is notified; the website quietly shows old data.
+- **Mitigation in place:** `save()` runs each machine in its own `try/except` and logs a per-run failure summary, so one machine's failure no longer aborts the others and each failure is visible in the log. **Proactive alerting is still missing.**
 - **Fix:** record last-successful-update per machine; alert if a machine hasn't updated in N cycles.
 
 ### 4. Machine→service_id map is brittle and buried — Medium

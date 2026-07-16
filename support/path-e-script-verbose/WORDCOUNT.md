@@ -2,7 +2,7 @@
 
 - Directory: `support/path-e-script-verbose/`
 - Script files directory: `scripts/`
-- Total script word count: **300,501**
+- Total script word count: **302,885**
 - Target minimum: **250,000**
 - Target maximum: none
 - Source docs included: **82**
@@ -15,26 +15,26 @@
 |---|---:|
 | `scripts/00-operator-and-session-plan.md` | 3,816 |
 | `scripts/module-00-set-the-contract.md` | 6,107 |
-| `scripts/module-01-big-picture-of-the-server.md` | 36,097 |
+| `scripts/module-01-big-picture-of-the-server.md` | 37,049 |
 | `scripts/module-02-live-server.md` | 19,052 |
 | `scripts/module-03-server-access.md` | 15,470 |
 | `scripts/module-04-flask-startup.md` | 5,722 |
-| `scripts/module-05-configuration-and-local-development.md` | 12,461 |
-| `scripts/module-06-authentication-and-admin.md` | 9,840 |
+| `scripts/module-05-configuration-and-local-development.md` | 12,627 |
+| `scripts/module-06-authentication-and-admin.md` | 10,289 |
 | `scripts/module-07-tasks.md` | 7,747 |
 | `scripts/module-08-machines-and-logs.md` | 7,726 |
-| `scripts/module-09-device-apis.md` | 12,501 |
-| `scripts/module-10-chemical-inventory.md` | 14,165 |
-| `scripts/module-11-request-lifecycle-and-endpoints.md` | 12,877 |
+| `scripts/module-09-device-apis.md` | 12,658 |
+| `scripts/module-10-chemical-inventory.md` | 14,276 |
+| `scripts/module-11-request-lifecycle-and-endpoints.md` | 12,976 |
 | `scripts/module-12-security-model.md` | 5,839 |
-| `scripts/module-13-hscdownloader.md` | 11,160 |
+| `scripts/module-13-hscdownloader.md` | 11,466 |
 | `scripts/module-14-file-transfers.md` | 10,930 |
 | `scripts/module-15-pico-and-particle.md` | 27,365 |
 | `scripts/module-16-other-tools.md` | 33,994 |
 | `scripts/module-17-legacy-server.md` | 11,369 |
-| `scripts/module-18-known-issues-triage.md` | 13,805 |
+| `scripts/module-18-known-issues-triage.md` | 13,834 |
 | `scripts/module-19-path-d-audit-practice.md` | 8,011 |
-| `scripts/module-20-operational-scenarios.md` | 8,078 |
+| `scripts/module-20-operational-scenarios.md` | 8,193 |
 | `scripts/module-21-final-no-contact-check.md` | 6,369 |
 
 Verification command:

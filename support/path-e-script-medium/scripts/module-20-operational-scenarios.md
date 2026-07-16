@@ -600,8 +600,9 @@ Test restores periodically. The CSV tree is the only copy of long-run sensor his
 
 - **Session cleanup:** `auth_service.delete_old_sessions()` is not scheduled. Add a cron/management hook to purge `sessioninfo` rows periodically, or accept unbounded growth (rows are tiny).
 - **Parylene temp cleanup:** orphaned `LogData/Paralyne/temp/<session>/` dirs (runs that never finalized) can be safely deleted after confirming no active upload.
-- **Deploys:** `git pull` → `pip install -r requirements.txt` (if changed) → `flask db upgrade` (if migrations added) → `sudo systemctl restart untools`.
-- **Rotating SECRET_KEY:** invalidates all Flask-Login cookies (forces re-login). Do this if a key compromise is suspected.
+- **Deploys:** `git pull` → **`pip install -r requirements.txt` into the service's venv** → `flask db upgrade` (if migrations added) → restart the service. Run the pip step even for a "code-only" change: the app imports `flask_wtf` at startup (`from flask_wtf.csrf import CSRFProtect`), so a deploy that skips the install crashes on boot with `ModuleNotFoundError: No module named 'flask_wtf'` (nginx then serves a 502). Install with the interpreter the unit actually runs — `.venv/bin/python -m pip install -r requirements.txt` — not a system `pip`.
+- **First production start also requires a real `SECRET_KEY`:** `ProductionConfig` fails closed and refuses to boot if `SECRET_KEY` is unset or the dev default (see `03`). If the service won't start, check the journal for `RuntimeError: SECRET_KEY must be set...` as well as the import error above.
+- **Rotating SECRET_KEY:** invalidates all Flask-Login cookies **and CSRF tokens** (forces re-login and a page reload). Do this if a key compromise is suspected.
 
 ## 9.11 Health checks & monitoring
 

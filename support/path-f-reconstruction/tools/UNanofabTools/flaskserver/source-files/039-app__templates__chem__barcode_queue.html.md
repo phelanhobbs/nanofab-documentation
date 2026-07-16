@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/templates/chem/barcode_queue.html`
-- Lines read: `125`
+- Lines read: `126`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `b31aff0e8d226e89`
+- Sanitized SHA-256 prefix: `c5db1047022f852c`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -23,7 +23,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ## Template Structure Summary
 
 - Forms: 2 detected
-- Inputs: 3 detected
+- Inputs: 4 detected
 - Scripts: 1 detected
 
 ## Sanitized Source Excerpt
@@ -67,6 +67,7 @@ This section is written so a maintainer can recreate the file's behavior without
 </div>
 
 <form method="post" action="{{ url_for('chem.barcode_mark_printed') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
   <div class="actions" style="justify-content:space-between; margin-bottom:12px;">
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
       <button type="submit" class="btn btn-primary">Mark Selected Printed</button>
@@ -425,15 +426,15 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 39
 
 ```text
-  <div class="actions" style="justify-content:space-between; margin-bottom:12px;">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 ```
 
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 40
 
 ```text
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+  <div class="actions" style="justify-content:space-between; margin-bottom:12px;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -441,15 +442,15 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 41
 
 ```text
-      <button type="submit" class="btn btn-primary">Mark Selected Printed</button>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
 ```
 
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 42
 
 ```text
-      <button type="button" class="btn" id="selectAllBtn">Select All</button>
+      <button type="submit" class="btn btn-primary">Mark Selected Printed</button>
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -457,7 +458,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 43
 
 ```text
-      <button type="button" class="btn" id="clearAllBtn">Clear</button>
+      <button type="button" class="btn" id="selectAllBtn">Select All</button>
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -465,15 +466,15 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 44
 
 ```text
-    </div>
+      <button type="button" class="btn" id="clearAllBtn">Clear</button>
 ```
 
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 45
 
 ```text
-    <div class="muted">
+    </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -481,12 +482,20 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 46
 
 ```text
+    <div class="muted">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 47
+
+```text
       {{ rows|length }} item{{ '' if rows|length == 1 else 's' }}
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 47
+### Line 48
 
 ```text
     </div>
@@ -494,18 +503,10 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 48
+### Line 49
 
 ```text
   </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 50
-
-```text
-  <div class="card" style="padding:0;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -513,7 +514,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 51
 
 ```text
-    <div style="overflow-x:auto;">
+  <div class="card" style="padding:0;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -521,7 +522,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 52
 
 ```text
-      <table class="inv-table" style="width:100%; border-collapse:collapse;">
+    <div style="overflow-x:auto;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -529,7 +530,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 53
 
 ```text
-        <thead>
+      <table class="inv-table" style="width:100%; border-collapse:collapse;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -537,7 +538,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 54
 
 ```text
-          <tr>
+        <thead>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -545,7 +546,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 55
 
 ```text
-            <th style="width:44px; padding:10px 12px;"></th>
+          <tr>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -553,7 +554,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 56
 
 ```text
-            <th style="padding:10px 12px;">Barcode</th>
+            <th style="width:44px; padding:10px 12px;"></th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -561,7 +562,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 57
 
 ```text
-            <th style="padding:10px 12px;">Item</th>
+            <th style="padding:10px 12px;">Barcode</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -569,7 +570,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 58
 
 ```text
-            <th style="padding:10px 12px;">Lot #</th>
+            <th style="padding:10px 12px;">Item</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -577,7 +578,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 59
 
 ```text
-            <th style="padding:10px 12px;">Room</th>
+            <th style="padding:10px 12px;">Lot #</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -585,7 +586,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 60
 
 ```text
-            <th style="padding:10px 12px;">Storage</th>
+            <th style="padding:10px 12px;">Room</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -593,7 +594,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 61
 
 ```text
-            <th style="padding:10px 12px;">Printed?</th>
+            <th style="padding:10px 12px;">Storage</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -601,7 +602,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 62
 
 ```text
-            <th style="padding:10px 12px;">Date Added</th>
+            <th style="padding:10px 12px;">Printed?</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -609,7 +610,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 63
 
 ```text
-          </tr>
+            <th style="padding:10px 12px;">Date Added</th>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -617,7 +618,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 64
 
 ```text
-        </thead>
+          </tr>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -625,7 +626,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 65
 
 ```text
-        <tbody>
+        </thead>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -633,23 +634,23 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 66
 
 ```text
+        <tbody>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 67
+
+```text
         {% for r in rows %}
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 67
-
-```text
-          <tr>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 68
 
 ```text
-            <td style="padding:10px 12px;">
+          <tr>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -657,12 +658,20 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 69
 
 ```text
+            <td style="padding:10px 12px;">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 70
+
+```text
               <input
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 70
+### Line 71
 
 ```text
                 type="checkbox"
@@ -670,7 +679,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 71
+### Line 72
 
 ```text
                 name="barcode"
@@ -678,7 +687,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 72
+### Line 73
 
 ```text
                 value="{{ r.barcode }}"
@@ -686,7 +695,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 73
+### Line 74
 
 ```text
                 {% if r.barcode in preselected %}checked{% endif %}
@@ -694,7 +703,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 74
+### Line 75
 
 ```text
               >
@@ -702,7 +711,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 75
+### Line 76
 
 ```text
             </td>
@@ -710,7 +719,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 76
+### Line 77
 
 ```text
             <td class="mono" style="padding:10px 12px;"><code>{{ r.barcode }}</code></td>
@@ -718,7 +727,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 77
+### Line 78
 
 ```text
             <td style="padding:10px 12px;">{{ r.material_name or r.item_name or '' }}</td>
@@ -726,7 +735,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 78
+### Line 79
 
 ```text
             <td style="padding:10px 12px;">{{ r.lot_number or '' }}</td>
@@ -734,7 +743,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 79
+### Line 80
 
 ```text
             <td style="padding:10px 12px;">{{ r.room_no or '' }}</td>
@@ -742,7 +751,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 80
+### Line 81
 
 ```text
             <td style="padding:10px 12px;">
@@ -750,7 +759,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 81
+### Line 82
 
 ```text
               {{ r.storage_location or '' }}{% if r.storage_sublocation %} — {{ r.storage_sublocation }}{% endif %}
@@ -758,18 +767,10 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 82
-
-```text
-            </td>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 83
 
 ```text
-            <td style="padding:10px 12px;">
+            </td>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -777,12 +778,20 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 84
 
 ```text
+            <td style="padding:10px 12px;">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 85
+
+```text
               {% if r.barcode_printed %}
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 85
+### Line 86
 
 ```text
                 <span style="color:#067647; font-weight:600;">Yes</span>
@@ -790,7 +799,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 86
+### Line 87
 
 ```text
               {% else %}
@@ -798,7 +807,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 87
+### Line 88
 
 ```text
                 <span style="color:#b42318; font-weight:600;">No</span>
@@ -806,7 +815,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 88
+### Line 89
 
 ```text
               {% endif %}
@@ -814,7 +823,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 89
+### Line 90
 
 ```text
             </td>
@@ -822,7 +831,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 90
+### Line 91
 
 ```text
             <td style="padding:10px 12px;">{{ r.created_at.strftime('%m/%d/%y') if r.created_at else '' }}</td>
@@ -830,7 +839,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 91
+### Line 92
 
 ```text
           </tr>
@@ -838,7 +847,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 92
+### Line 93
 
 ```text
         {% else %}
@@ -846,7 +855,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 93
+### Line 94
 
 ```text
           <tr>
@@ -854,7 +863,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 94
+### Line 95
 
 ```text
             <td colspan="8" style="padding:16px 12px;" class="muted">No barcode queue items found.</td>
@@ -862,7 +871,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 95
+### Line 96
 
 ```text
           </tr>
@@ -870,7 +879,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 96
+### Line 97
 
 ```text
         {% endfor %}
@@ -878,7 +887,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 97
+### Line 98
 
 ```text
         </tbody>
@@ -886,7 +895,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 98
+### Line 99
 
 ```text
       </table>
@@ -894,7 +903,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 99
+### Line 100
 
 ```text
     </div>
@@ -902,7 +911,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 100
+### Line 101
 
 ```text
   </div>
@@ -910,7 +919,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 101
+### Line 102
 
 ```text
 </form>
@@ -918,7 +927,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 103
+### Line 104
 
 ```text
 <script>
@@ -926,7 +935,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
 
-### Line 104
+### Line 105
 
 ```text
 (function(){
@@ -934,7 +943,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 105
+### Line 106
 
 ```text
   const selectAllBtn = document.getElementById("selectAllBtn");
@@ -942,7 +951,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 106
+### Line 107
 
 ```text
   const clearAllBtn = document.getElementById("clearAllBtn");
@@ -950,7 +959,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 108
+### Line 109
 
 ```text
   function getBoxes() {
@@ -958,7 +967,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 109
+### Line 110
 
 ```text
     return Array.from(document.querySelectorAll('input[type="checkbox"][name="barcode"]'));
@@ -966,18 +975,10 @@ This section is written so a maintainer can recreate the file's behavior without
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 110
+### Line 111
 
 ```text
   }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 112
-
-```text
-  if (selectAllBtn) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -985,7 +986,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 113
 
 ```text
-    selectAllBtn.addEventListener("click", function() {
+  if (selectAllBtn) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -993,7 +994,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 114
 
 ```text
-      getBoxes().forEach(b => b.checked = true);
+    selectAllBtn.addEventListener("click", function() {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1001,7 +1002,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 115
 
 ```text
-    });
+      getBoxes().forEach(b => b.checked = true);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1009,15 +1010,15 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 116
 
 ```text
-  }
+    });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 118
+### Line 117
 
 ```text
-  if (clearAllBtn) {
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1025,7 +1026,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 119
 
 ```text
-    clearAllBtn.addEventListener("click", function() {
+  if (clearAllBtn) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1033,7 +1034,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 120
 
 ```text
-      getBoxes().forEach(b => b.checked = false);
+    clearAllBtn.addEventListener("click", function() {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1041,7 +1042,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 121
 
 ```text
-    });
+      getBoxes().forEach(b => b.checked = false);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1049,7 +1050,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 122
 
 ```text
-  }
+    });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1057,7 +1058,7 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 123
 
 ```text
-})();
+  }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1065,12 +1066,20 @@ This section is written so a maintainer can recreate the file's behavior without
 ### Line 124
 
 ```text
-</script>
+})();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 125
+
+```text
+</script>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 126
 
 ```text
 {% endblock %}

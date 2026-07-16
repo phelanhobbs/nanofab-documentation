@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/services/admin_service.py`
-- Lines read: `55`
+- Lines read: `65`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `61ff57c8fd7c2628`
+- Sanitized SHA-256 prefix: `7b462dd38e13b931`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -24,7 +24,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 - Imports: `from flask import current_app`, `from app.models import db, User`
 - Classes: none detected
-- Functions: `get_all_users`, `delete_user`, `toggle_admin_status`, `toggle_assign_privilege`
+- Functions: `get_all_users`, `get_user_by_unid`, `count_admins`, `delete_user`, `toggle_admin_status`, `toggle_assign_privilege`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -40,6 +40,16 @@ from app.models import db, User
 def get_all_users():
     """Get all users"""
     return User.query.all()
+
+
+def get_user_by_unid(unid):
+    """Look up a single user by uNID (or None)."""
+    return User.query.filter_by(unid=unid).first()
+
+
+def count_admins():
+    """Number of users with admin rights — used to prevent last-admin lockout."""
+    return User.query.filter_by(is_admin=True).count()
 
 
 def delete_user(unid):
@@ -156,7 +166,7 @@ def get_all_users():
 ### Line 13
 
 ```text
-def delete_user(unid):
+def get_user_by_unid(unid):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
@@ -164,12 +174,60 @@ def delete_user(unid):
 ### Line 14
 
 ```text
+    """Look up a single user by uNID (or None)."""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 15
+
+```text
+    return User.query.filter_by(unid=unid).first()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 18
+
+```text
+def count_admins():
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 19
+
+```text
+    """Number of users with admin rights — used to prevent last-admin lockout."""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 20
+
+```text
+    return User.query.filter_by(is_admin=True).count()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 23
+
+```text
+def delete_user(unid):
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 24
+
+```text
     """Delete a user by UNID"""
 ```
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 15
+### Line 25
 
 ```text
     try:
@@ -177,7 +235,7 @@ def delete_user(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 16
+### Line 26
 
 ```text
         user = User.query.filter_by(unid=unid).first()
@@ -185,7 +243,7 @@ def delete_user(unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 17
+### Line 27
 
 ```text
         if user:
@@ -193,7 +251,7 @@ def delete_user(unid):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 18
+### Line 28
 
 ```text
             db.session.delete(user)
@@ -201,7 +259,7 @@ def delete_user(unid):
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 19
+### Line 29
 
 ```text
             db.session.commit()
@@ -209,7 +267,7 @@ def delete_user(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 20
+### Line 30
 
 ```text
             return True
@@ -217,7 +275,7 @@ def delete_user(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 21
+### Line 31
 
 ```text
         return False
@@ -225,7 +283,7 @@ def delete_user(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 22
+### Line 32
 
 ```text
     except Exception as e:
@@ -233,7 +291,7 @@ def delete_user(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 23
+### Line 33
 
 ```text
         db.session.rollback()
@@ -241,7 +299,7 @@ def delete_user(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 24
+### Line 34
 
 ```text
         current_app.logger.error(f"Error deleting user: {e}")
@@ -249,7 +307,7 @@ def delete_user(unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 25
+### Line 35
 
 ```text
         return False
@@ -257,7 +315,7 @@ def delete_user(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 28
+### Line 38
 
 ```text
 def toggle_admin_status(unid):
@@ -265,7 +323,7 @@ def toggle_admin_status(unid):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 29
+### Line 39
 
 ```text
     """Toggle user admin status"""
@@ -273,7 +331,7 @@ def toggle_admin_status(unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 30
+### Line 40
 
 ```text
     try:
@@ -281,7 +339,7 @@ def toggle_admin_status(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 31
+### Line 41
 
 ```text
         user = User.query.filter_by(unid=unid).first()
@@ -289,7 +347,7 @@ def toggle_admin_status(unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 32
+### Line 42
 
 ```text
         if user:
@@ -297,7 +355,7 @@ def toggle_admin_status(unid):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 33
+### Line 43
 
 ```text
             user.is_admin = not user.is_admin
@@ -305,7 +363,7 @@ def toggle_admin_status(unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 34
+### Line 44
 
 ```text
             db.session.commit()
@@ -313,7 +371,7 @@ def toggle_admin_status(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 35
+### Line 45
 
 ```text
             return True
@@ -321,7 +379,7 @@ def toggle_admin_status(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 36
+### Line 46
 
 ```text
         return False
@@ -329,7 +387,7 @@ def toggle_admin_status(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 37
+### Line 47
 
 ```text
     except Exception as e:
@@ -337,7 +395,7 @@ def toggle_admin_status(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 38
+### Line 48
 
 ```text
         db.session.rollback()
@@ -345,7 +403,7 @@ def toggle_admin_status(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 39
+### Line 49
 
 ```text
         current_app.logger.error(f"Error toggling admin status: {e}")
@@ -353,7 +411,7 @@ def toggle_admin_status(unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 40
+### Line 50
 
 ```text
         return False
@@ -361,7 +419,7 @@ def toggle_admin_status(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 43
+### Line 53
 
 ```text
 def toggle_assign_privilege(unid):
@@ -369,7 +427,7 @@ def toggle_assign_privilege(unid):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 44
+### Line 54
 
 ```text
     """Toggle user task assignment privilege"""
@@ -377,7 +435,7 @@ def toggle_assign_privilege(unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 45
+### Line 55
 
 ```text
     try:
@@ -385,7 +443,7 @@ def toggle_assign_privilege(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 46
+### Line 56
 
 ```text
         user = User.query.filter_by(unid=unid).first()
@@ -393,7 +451,7 @@ def toggle_assign_privilege(unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 47
+### Line 57
 
 ```text
         if user:
@@ -401,7 +459,7 @@ def toggle_assign_privilege(unid):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 48
+### Line 58
 
 ```text
             user.can_assign = not user.can_assign
@@ -409,7 +467,7 @@ def toggle_assign_privilege(unid):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 49
+### Line 59
 
 ```text
             db.session.commit()
@@ -417,7 +475,7 @@ def toggle_assign_privilege(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 50
+### Line 60
 
 ```text
             return True
@@ -425,7 +483,7 @@ def toggle_assign_privilege(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 51
+### Line 61
 
 ```text
         return False
@@ -433,7 +491,7 @@ def toggle_assign_privilege(unid):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 52
+### Line 62
 
 ```text
     except Exception as e:
@@ -441,7 +499,7 @@ def toggle_assign_privilege(unid):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 53
+### Line 63
 
 ```text
         db.session.rollback()
@@ -449,7 +507,7 @@ def toggle_assign_privilege(unid):
 
 `database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
 
-### Line 54
+### Line 64
 
 ```text
         current_app.logger.error(f"Error toggling assign privilege: {e}")
@@ -457,7 +515,7 @@ def toggle_assign_privilege(unid):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 55
+### Line 65
 
 ```text
         return False

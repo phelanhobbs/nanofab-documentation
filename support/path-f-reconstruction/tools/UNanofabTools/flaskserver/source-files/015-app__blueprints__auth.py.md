@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/blueprints/auth.py`
-- Lines read: `120`
+- Lines read: `123`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `9f346420532d086e`
+- Sanitized SHA-256 prefix: `e0a88df0e58013e1`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -47,7 +47,10 @@ def login():
     """Handle user login"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        # Never sanitize the password: HTML-escaping/stripping it silently mangles
+        # and weakens the secret. It's hashed, never rendered, so escaping is
+        # pointless and any change to sanitize_input would otherwise break logins.
+        password = request.form.get('password', '')
 
         # Verify user credentials
         user = auth_service.verify_user_credentials(username, password)
@@ -83,7 +86,7 @@ def signup():
     """Handle user signup"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')  # hash the raw secret, don't sanitize
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 
         # Check if user already exists
@@ -135,7 +138,7 @@ def reset_password():
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
-        new_password = auth_service.sanitize_input(request.form.get('password', ''))
+        new_password = request.form.get('password', '')  # hash the raw secret, don't sanitize
 
         # Verify username and UNID
         if auth_service.verify_user_unid(username, unid):
@@ -266,15 +269,15 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 18
+### Line 21
 
 ```text
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 21
+### Line 24
 
 ```text
         user = auth_service.verify_user_credentials(username, password)
@@ -282,7 +285,7 @@ def login():
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 23
+### Line 26
 
 ```text
         if user:
@@ -290,7 +293,7 @@ def login():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 25
+### Line 28
 
 ```text
             if current_app.config['DEBUG_MODE']:
@@ -298,7 +301,7 @@ def login():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 27
+### Line 30
 
 ```text
                 session_id = auth_service.create_user_session(username)
@@ -306,7 +309,7 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 28
+### Line 31
 
 ```text
                 flask_session['session_id'] = session_id
@@ -314,7 +317,7 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 29
+### Line 32
 
 ```text
                 login_user(user)
@@ -322,7 +325,7 @@ def login():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 30
+### Line 33
 
 ```text
                 return redirect(url_for('tasks.index'))
@@ -330,7 +333,7 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 31
+### Line 34
 
 ```text
             else:
@@ -338,7 +341,7 @@ def login():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 33
+### Line 36
 
 ```text
                 duo_success = asyncio.run(auth_service.duo_authenticate(user.unid))
@@ -346,7 +349,7 @@ def login():
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 34
+### Line 37
 
 ```text
                 if duo_success:
@@ -354,7 +357,7 @@ def login():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 35
+### Line 38
 
 ```text
                     session_id = auth_service.create_user_session(username)
@@ -362,7 +365,7 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 36
+### Line 39
 
 ```text
                     flask_session['session_id'] = session_id
@@ -370,7 +373,7 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 37
+### Line 40
 
 ```text
                     login_user(user)
@@ -378,7 +381,7 @@ def login():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 38
+### Line 41
 
 ```text
                     return redirect(url_for('tasks.index'))
@@ -386,34 +389,10 @@ def login():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 39
-
-```text
-                else:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 40
-
-```text
-                    flash('2FA authentication failed', 'error')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 41
-
-```text
-                    return redirect(url_for('auth.login'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
 ### Line 42
 
 ```text
-        else:
+                else:
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
@@ -421,7 +400,7 @@ def login():
 ### Line 43
 
 ```text
-            flash('Invalid credentials', 'error')
+                    flash('2FA authentication failed', 'error')
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -429,15 +408,31 @@ def login():
 ### Line 44
 
 ```text
-            return redirect(url_for('auth.login'))
+                    return redirect(url_for('auth.login'))
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
+### Line 45
+
+```text
+        else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
 ### Line 46
 
 ```text
-    return render_template('login.html')
+            flash('Invalid credentials', 'error')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 47
+
+```text
+            return redirect(url_for('auth.login'))
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
@@ -445,12 +440,20 @@ def login():
 ### Line 49
 
 ```text
+    return render_template('login.html')
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 52
+
+```text
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 ```
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 50
+### Line 53
 
 ```text
 def signup():
@@ -458,7 +461,7 @@ def signup():
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 51
+### Line 54
 
 ```text
     """Handle user signup"""
@@ -466,7 +469,7 @@ def signup():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 52
+### Line 55
 
 ```text
     if request.method == 'POST':
@@ -474,7 +477,7 @@ def signup():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 53
+### Line 56
 
 ```text
         username = auth_service.sanitize_input(request.form.get('username', ''))
@@ -482,18 +485,10 @@ def signup():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 54
+### Line 57
 
 ```text
-        password = auth_service.sanitize_input(request.form.get('password', ''))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 55
-
-```text
-        unid = auth_service.sanitize_input(request.form.get('unid', ''))
+        password = request.form.get('password', '')  # hash the raw secret, don't sanitize
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
@@ -501,12 +496,20 @@ def signup():
 ### Line 58
 
 ```text
+        unid = auth_service.sanitize_input(request.form.get('unid', ''))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 61
+
+```text
         existing_user = User.query.filter_by(username=username).first()
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 59
+### Line 62
 
 ```text
         if existing_user:
@@ -514,7 +517,7 @@ def signup():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 60
+### Line 63
 
 ```text
             flash('Username already exists', 'error')
@@ -522,7 +525,7 @@ def signup():
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 61
+### Line 64
 
 ```text
             return redirect(url_for('auth.signup'))
@@ -530,7 +533,7 @@ def signup():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 64
+### Line 67
 
 ```text
         if current_app.config['DEBUG_MODE']:
@@ -538,7 +541,7 @@ def signup():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 66
+### Line 69
 
 ```text
             user = auth_service.create_user(username, password, unid)
@@ -546,7 +549,7 @@ def signup():
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 67
+### Line 70
 
 ```text
             if user:
@@ -554,7 +557,7 @@ def signup():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 68
+### Line 71
 
 ```text
                 flash('User created successfully', 'success')
@@ -562,34 +565,10 @@ def signup():
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 69
-
-```text
-                return redirect(url_for('auth.login'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 70
-
-```text
-            else:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 71
-
-```text
-                flash('Error creating user', 'error')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
 ### Line 72
 
 ```text
-                return redirect(url_for('auth.signup'))
+                return redirect(url_for('auth.login'))
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
@@ -597,100 +576,20 @@ def signup():
 ### Line 73
 
 ```text
-        else:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 75
-
-```text
-            duo_success = asyncio.run(auth_service.duo_authenticate(unid))
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 76
-
-```text
-            if duo_success:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 77
-
-```text
-                user = auth_service.create_user(username, password, unid)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 78
-
-```text
-                if user:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 79
-
-```text
-                    flash('User created successfully', 'success')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 80
-
-```text
-                    return redirect(url_for('auth.login'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 81
-
-```text
-                else:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 82
-
-```text
-                    flash('Error creating user', 'error')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 83
-
-```text
-                    return redirect(url_for('auth.signup'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 84
-
-```text
             else:
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 85
+### Line 74
 
 ```text
-                flash('2FA authentication failed', 'error')
+                flash('Error creating user', 'error')
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 86
+### Line 75
 
 ```text
                 return redirect(url_for('auth.signup'))
@@ -698,183 +597,7 @@ def signup():
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 88
-
-```text
-    return render_template('signup.html')
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 91
-
-```text
-@auth_bp.route('/logout')
-```
-
-`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
-
-### Line 92
-
-```text
-@login_required
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 93
-
-```text
-def logout():
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 94
-
-```text
-    """Handle user logout"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 95
-
-```text
-    logout_user()
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 96
-
-```text
-    flash('Logged out successfully', 'success')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 97
-
-```text
-    return redirect(url_for('auth.login'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 100
-
-```text
-@auth_bp.route('/resetpassword', methods=['GET', 'POST'])
-```
-
-`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
-
-### Line 101
-
-```text
-def reset_password():
-```
-
-`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
-
-### Line 102
-
-```text
-    """Handle password reset"""
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 103
-
-```text
-    if request.method == 'POST':
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 104
-
-```text
-        username = auth_service.sanitize_input(request.form.get('username', ''))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 105
-
-```text
-        unid = auth_service.sanitize_input(request.form.get('unid', ''))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 106
-
-```text
-        new_password = auth_service.sanitize_input(request.form.get('password', ''))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 109
-
-```text
-        if auth_service.verify_user_unid(username, unid):
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 110
-
-```text
-            if auth_service.update_user_password(username, new_password):
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 111
-
-```text
-                flash('Password updated successfully', 'success')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 112
-
-```text
-                return redirect(url_for('auth.login'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 113
-
-```text
-            else:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 114
-
-```text
-                flash('Error updating password', 'error')
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 115
-
-```text
-                return redirect(url_for('auth.reset_password'))
-```
-
-`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
-
-### Line 116
+### Line 76
 
 ```text
         else:
@@ -882,10 +605,266 @@ def reset_password():
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
+### Line 78
+
+```text
+            duo_success = asyncio.run(auth_service.duo_authenticate(unid))
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 79
+
+```text
+            if duo_success:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 80
+
+```text
+                user = auth_service.create_user(username, password, unid)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 81
+
+```text
+                if user:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 82
+
+```text
+                    flash('User created successfully', 'success')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 83
+
+```text
+                    return redirect(url_for('auth.login'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 84
+
+```text
+                else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 85
+
+```text
+                    flash('Error creating user', 'error')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 86
+
+```text
+                    return redirect(url_for('auth.signup'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 87
+
+```text
+            else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 88
+
+```text
+                flash('2FA authentication failed', 'error')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 89
+
+```text
+                return redirect(url_for('auth.signup'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 91
+
+```text
+    return render_template('signup.html')
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 94
+
+```text
+@auth_bp.route('/logout')
+```
+
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
+
+### Line 95
+
+```text
+@login_required
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 96
+
+```text
+def logout():
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 97
+
+```text
+    """Handle user logout"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 98
+
+```text
+    logout_user()
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 99
+
+```text
+    flash('Logged out successfully', 'success')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 100
+
+```text
+    return redirect(url_for('auth.login'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 103
+
+```text
+@auth_bp.route('/resetpassword', methods=['GET', 'POST'])
+```
+
+`route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
+
+### Line 104
+
+```text
+def reset_password():
+```
+
+`function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
+
+### Line 105
+
+```text
+    """Handle password reset"""
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 106
+
+```text
+    if request.method == 'POST':
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 107
+
+```text
+        username = auth_service.sanitize_input(request.form.get('username', ''))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 108
+
+```text
+        unid = auth_service.sanitize_input(request.form.get('unid', ''))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 109
+
+```text
+        new_password = request.form.get('password', '')  # hash the raw secret, don't sanitize
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 112
+
+```text
+        if auth_service.verify_user_unid(username, unid):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 113
+
+```text
+            if auth_service.update_user_password(username, new_password):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 114
+
+```text
+                flash('Password updated successfully', 'success')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 115
+
+```text
+                return redirect(url_for('auth.login'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 116
+
+```text
+            else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
 ### Line 117
 
 ```text
-            flash('Invalid username or UNID', 'error')
+                flash('Error updating password', 'error')
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -893,12 +872,36 @@ def reset_password():
 ### Line 118
 
 ```text
+                return redirect(url_for('auth.reset_password'))
+```
+
+`web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
+
+### Line 119
+
+```text
+        else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 120
+
+```text
+            flash('Invalid username or UNID', 'error')
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 121
+
+```text
             return redirect(url_for('auth.reset_password'))
 ```
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 120
+### Line 123
 
 ```text
     return render_template('resetpassword.html')

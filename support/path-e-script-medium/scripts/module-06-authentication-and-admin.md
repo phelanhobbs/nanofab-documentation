@@ -340,13 +340,14 @@ There is no role table and no per-resource ACL; authorization is entirely these 
 
 - Hashing: `bcrypt.hashpw(password.encode(), bcrypt.gensalt())` (default cost ≈ 12). Plaintext is never stored.
 - Verification: `bcrypt.checkpw(...)`.
-- All credential input is run through `auth_service.sanitize_input` (strip, truncate to 255, `html.escape`) before use.
+- The **username and uNID** are run through `auth_service.sanitize_input` (strip, truncate to 255, `html.escape`) before use.
+- The **password is used raw** — never sanitized or escaped. It is hashed, never rendered, so escaping would only mangle and weaken it (and would couple every stored hash to the sanitizer's exact behavior). `verify_user_credentials` verifies the raw password first, then falls back to a frozen legacy transform (`_legacy_sanitize`) for accounts whose hash predates this change, transparently re-hashing them to the raw password on a successful login. Timing is equalized against a dummy hash so a missing username can't be told apart by response time.
 
 ## 7.3 Login flow (`POST /login`)
 
 ```
-sanitize(username,password)
-   └─ verify_user_credentials(username,password)   # username lookup + bcrypt
+sanitize(username)                               # password passed raw (not sanitized)
+   └─ verify_user_credentials(username,password)   # username lookup + bcrypt (+ legacy fallback)
         ├─ None  → flash 'Invalid credentials' → redirect /login
         └─ User  → if DEBUG_MODE:
                        create_user_session → flask_session['session_id'] → login_user → redirect /tasks
@@ -373,7 +374,7 @@ Session lifetime: `PERMANENT_SESSION_LIFETIME = 7200` seconds (2 hours) is confi
 ## 7.5 Signup flow (`POST /signup`)
 
 ```
-sanitize(username,password,unid)
+sanitize(username,unid)                          # password passed raw
    └─ reject if username exists
    └─ if DEBUG_MODE: create_user → redirect /login
       else: duo_authenticate(unid) → if allow: create_user → /login ; else flash → /signup
@@ -384,7 +385,7 @@ Because Duo runs against the supplied `unid` before the account is created, you 
 ## 7.6 Password reset (`POST /resetpassword`)
 
 ```
-sanitize(username,unid,new_password)
+sanitize(username,unid)                          # new_password passed raw
    └─ verify_user_unid(username,unid)   # both must match an existing row
         ├─ True  → update_user_password → flash success → /login
         └─ False → flash 'Invalid username or UNID' → /resetpassword
@@ -427,6 +428,8 @@ def admin_required(f):
 ```
 Stacked **below** `@login_required` on every admin route, so the effective requirement is "authenticated AND `is_admin`."
 
+**Lockout guards.** `deleteUser` and `toggleAdminStatus` additionally refuse to act on the **current user's own account** and refuse any change that would remove the **last remaining admin** (`admin_service.count_admins()`), so an admin can't accidentally delete themselves or demote the final admin and lock everyone out of the panel. Both parse the JSON body defensively (`get_json(silent=True)`), returning `400`/`404` instead of a `500` on a malformed or missing body.
+
 ### `can_assign` (inline check, `tasks.create_task`)
 Not a decorator; checked in the view body:
 ```python
@@ -452,7 +455,7 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 | `/logout` | authenticated | `@login_required` |
 | `/tasks`, task actions, `/users` | authenticated | `@login_required` |
 | `/createtasks` | authenticated + `can_assign` | `@login_required` + inline check |
-| All `/adminpanel`, `/deleteUser`, `/toggle*` | authenticated + `is_admin` | `@login_required` + `@admin_required` |
+| All `/adminpanel`, `/deleteUser`, `/toggle*` | authenticated + `is_admin` (+ self / last-admin lockout guards on delete & admin-toggle) | `@login_required` + `@admin_required` |
 | All machine routes | authenticated | `@login_required` |
 | All `/api/*` device routes | none | public (perimeter trust) |
 | All `/chem/*` routes | WordPress signed-token session (`before_request`) | **gated since 2026-06-25** — `/chem/enter` validates an HMAC link (`CHEM_SSO_SECRET`) and sets `session['chem_authed']`; others 302 to staff-tools |
@@ -462,7 +465,8 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 
 - TLS terminated by nginx; Flask binds loopback only (see `09`).
 - Session cookie flags (config): `Secure` (prod), `HttpOnly`, `SameSite=Lax`.
-- `SECRET_KEY` signs the Flask-Login cookie; protect it. The dev default is unusable in production.
+- **CSRF protection (Flask-WTF `CSRFProtect`).** All browser-facing state-changing routes (`POST`/`PUT`/`PATCH`/`DELETE`) require a CSRF token: forms include `{{ csrf_token() }}`, and AJAX sends it via the `X-CSRFToken` header — a small fetch/XHR shim in `base.html` and `chem/base.html` attaches it automatically to same-origin unsafe requests, so the existing `fetch()`-based admin and task actions work unchanged. The device/IoT `api` blueprint is exempted (`csrf.exempt(api_bp)`) because sensors can't carry a token. `SameSite=Lax` is now a second layer, not the only CSRF defense.
+- `SECRET_KEY` signs the Flask-Login cookie and CSRF tokens; protect it. In production the app **fails closed** — `ProductionConfig.init_app` refuses to start if `SECRET_KEY` is unset or still the dev default.
 
 ## 7.11 Practical guidance for the maintainer
 
@@ -521,7 +525,7 @@ def login():
     """Handle user login"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')  # raw — never sanitized
 
         # Verify user credentials
         user = auth_service.verify_user_credentials(username, password)
@@ -557,6 +561,7 @@ Line by line:
 - **`@auth_bp.route('/login', methods=['GET', 'POST'])`** — register this function as the handler for `/login`, for both GETs (page loads) and POSTs (form submissions).
 - **`if request.method == 'POST':`** — branch based on whether this is a form submission or a fresh page load. If it's a GET, we fall through to the final `return render_template('login.html')` and just show the login form.
 - **`username = auth_service.sanitize_input(request.form.get('username', ''))`** — pull the `username` field from the submitted form (or empty string if missing), then run it through the sanitizer. The sanitizer trims whitespace, truncates to 255 chars, and HTML-escapes (so `<script>` becomes `&lt;script&gt;`).
+- **`password = request.form.get('password', '')`** — the password is taken **raw**, deliberately *not* sanitized. It's hashed, never displayed, so HTML-escaping it would serve no purpose and would only mangle and weaken the secret (and tie every stored hash to the sanitizer's exact behavior). `verify_user_credentials` checks the raw password first, then falls back to the old sanitized form for any account created before this change and quietly re-hashes it on a successful login — so nobody gets locked out.
 - **Same for password.**
 - **`user = auth_service.verify_user_credentials(username, password)`** — try to find a `User` row whose username matches and whose bcrypt-hashed password verifies against the supplied password. Returns the `User` object on success, `None` on failure.
 - **`if user:`** — we have a valid user; now decide whether to require 2FA.
@@ -577,7 +582,7 @@ def signup():
     """Handle user signup"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')  # raw — never sanitized
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 
         # Check if user already exists
@@ -638,7 +643,7 @@ def reset_password():
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
-        new_password = auth_service.sanitize_input(request.form.get('password', ''))
+        new_password = request.form.get('password', '')  # raw — never sanitized
 
         # Verify username and UNID
         if auth_service.verify_user_unid(username, unid):
@@ -945,6 +950,8 @@ def delete_user():
 This route expects a JSON body — i.e., it's called from JavaScript (`fetch`) rather than a normal HTML form. The JS extracts the uNID of the user-to-delete from a table row and POSTs `{"uNID": "u12345"}`. The route delegates to `admin_service.delete_user(unid)` and returns a JSON status.
 
 Note this is `POST /deleteUser` rather than `DELETE /users/<id>`, which would be more RESTful. The current style is fine; it's just slightly less idiomatic.
+
+**Lockout guards.** Before deleting, the route checks two things (and `/toggleAdminStatus` does the same): it won't act on **your own account**, and it won't remove the **last remaining admin** (it counts the admins first). So an admin can't accidentally delete themselves or demote the final admin and lock everyone out of the panel — the action is refused with a clear error instead. Both routes also read the JSON body defensively, so a malformed request returns a tidy `400`/`404` rather than a server error.
 
 ### `/toggleAdminStatus` and `/toggleAssign`
 

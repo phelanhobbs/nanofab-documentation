@@ -2,8 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/init_chem_db.py
 
-> **Update (2026-06-29):** the embedded excerpt predates commit `313e495`, which rewrote `init_chem_db.py` around an `apply_sql_file()` helper that applies `chem_schema.sql` → `chem_schema_migration_v2.sql` → `chem_schema_migration_v3.sql` in order, so a fresh build matches production. See the v3 supplement at [`../../flaskserver/source-files/062b-chem_schema_migration_v3.sql.md`](../../flaskserver/source-files/062b-chem_schema_migration_v3.sql.md).
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
@@ -12,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `init_chem_db.py`
-- Lines read: `78`
+- Lines read: `87`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `ca12aeb1ab888c0f`
+- Sanitized SHA-256 prefix: `c83f12c04b3a6fdd`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -26,7 +24,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 - Imports: `import os`, `import sys`, `from pathlib import Path`, `from sqlalchemy import create_engine, text`, `from dotenv import load_dotenv`
 - Classes: none detected
-- Functions: `get_db_url`, `read_schema_sql`, `init_database`
+- Functions: `get_db_url`, `apply_sql_file`, `init_database`
 - Routes: none detected
 
 ## Sanitized Source Excerpt
@@ -56,19 +54,28 @@ def get_db_url():
 
     return f"postgresql+psycopg2://{user}:{pwd}@{host}:{port}/{db}"
 
-def read_schema_sql():
-    """Read the schema.sql file from resources directory"""
-    schema_path = Path(__file__).parent / "chem_schema.sql"
+def apply_sql_file(conn, path):
+    """Execute one .sql file statement-by-statement (skipping BEGIN/COMMIT wrappers).
 
-    if not schema_path.exists():
-        print(f"Error: chem_schema.sql not found at {schema_path}")
-        sys.exit(1)
-
-    with open(schema_path, 'r') as f:
-        return f.read()
+    Line comments are stripped first so a semicolon appearing *inside* a ``--``
+    comment is not mistaken for a statement terminator. (The chem schema has no
+    semicolons inside string literals or function bodies, so this is sufficient.)
+    """
+    print(f"  applying {path.name} ...")
+    raw = path.read_text()
+    sql = "\n".join(line.split('--', 1)[0] for line in raw.splitlines())
+    for statement in sql.split(';'):
+        statement = statement.strip()
+        if statement and not statement.upper().startswith(('BEGIN', 'COMMIT')):
+            conn.execute(text(statement))
 
 def init_database():
-    """Initialize the database with schema"""
+    """Initialize the database: base schema + every migration, in order.
+
+    Applies chem_schema.sql (v1) then each migration so a fresh database matches
+    production. The migrations are idempotent (IF NOT EXISTS), so this is also
+    safe to re-run against an existing database.
+    """
     print("Chemical Inventory Database Initialization")
     print("=" * 50)
 
@@ -76,33 +83,33 @@ def init_database():
     db_url = get_db_url()
     print(f"Connecting to: {db_url.split('@')[1]}")  # Don't print password
 
+    here = Path(__file__).parent
+    sql_files = [
+        here / "chem_schema.sql",                # v1 — base tables, views, seq_barcode, seed
+        here / "chem_schema_migration_v2.sql",   # v2 — rooms/barcode-print columns + view refresh
+        here / "chem_schema_migration_v3.sql",   # v3 — reconcile remaining production drift
+    ]
+    missing = [f.name for f in sql_files if not f.exists()]
+    if missing:
+        print(f"Error: missing SQL file(s): {', '.join(missing)}")
+        sys.exit(1)
+
     try:
-        # Create engine
         engine = create_engine(db_url, future=True)
-
-        # Read schema
-        print("Reading schema.sql...")
-        schema_sql = read_schema_sql()
-
-        # Execute schema
-        print("Executing schema...")
+        print("Applying base schema + migrations...")
         with engine.begin() as conn:
-            # Split by statement and execute (handle multi-statement SQL)
-            for statement in schema_sql.split(';'):
-                statement = statement.strip()
-                if statement and not statement.upper().startswith('BEGIN') and not statement.upper().startswith('COMMIT'):
-                    conn.execute(text(statement))
+            for f in sql_files:
+                apply_sql_file(conn, f)
 
-        print("✓ Database initialized successfully!")
-        print("\nCreated:")
+        print("✓ Database initialized successfully (chem_schema.sql + v2 + v3)!")
+        print("\nA fresh database now matches production:")
         print("  - Tables: categories, vendors, rooms, items, containers")
-        print("  - Tables: inventory_cycles, scan_raw, container_scans")
+        print("  - Tables: inventory_cycles, scan_raw, container_scans, transactions")
         print("  - Views: v_all_containers, v_cycle_report, inventory_view")
         print("  - Sequence: seq_barcode")
         print("\nNext steps:")
         print("  1. Run your Flask app: python run.py")
         print("  2. Navigate to /chem/inventory to view the chemical inventory")
-        print("  3. Use /chem/add to add new containers")
 
     except Exception as e:
         print(f"✗ Error initializing database: {e}")
@@ -261,7 +268,7 @@ def get_db_url():
 ### Line 25
 
 ```text
-def read_schema_sql():
+def apply_sql_file(conn, path):
 ```
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
@@ -269,47 +276,55 @@ def read_schema_sql():
 ### Line 26
 
 ```text
-    """Read the schema.sql file from resources directory"""
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 27
-
-```text
-    schema_path = Path(__file__).parent / "chem_schema.sql"
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 29
-
-```text
-    if not schema_path.exists():
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 30
-
-```text
-        print(f"Error: chem_schema.sql not found at {schema_path}")
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 31
-
-```text
-        sys.exit(1)
+    """Execute one .sql file statement-by-statement (skipping BEGIN/COMMIT wrappers).
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
+### Line 28
+
+```text
+    Line comments are stripped first so a semicolon appearing *inside* a ``--``
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 29
+
+```text
+    comment is not mistaken for a statement terminator. (The chem schema has no
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 30
+
+```text
+    semicolons inside string literals or function bodies, so this is sufficient.)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 31
+
+```text
+    """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 32
+
+```text
+    print(f"  applying {path.name} ...")
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
 ### Line 33
 
 ```text
-    with open(schema_path, 'r') as f:
+    raw = path.read_text()
 ```
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
@@ -317,12 +332,44 @@ def read_schema_sql():
 ### Line 34
 
 ```text
-        return f.read()
+    sql = "\n".join(line.split('--', 1)[0] for line in raw.splitlines())
 ```
 
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 35
+
+```text
+    for statement in sql.split(';'):
+```
+
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 36
+
+```text
+        statement = statement.strip()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 37
+
+```text
+        if statement and not statement.upper().startswith(('BEGIN', 'COMMIT')):
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 38
+
+```text
+            conn.execute(text(statement))
+```
+
+`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+
+### Line 40
 
 ```text
 def init_database():
@@ -330,42 +377,26 @@ def init_database():
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 37
+### Line 41
 
 ```text
-    """Initialize the database with schema"""
+    """Initialize the database: base schema + every migration, in order.
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 38
-
-```text
-    print("Chemical Inventory Database Initialization")
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 39
-
-```text
-    print("=" * 50)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 42
-
-```text
-    db_url = get_db_url()
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 43
 
 ```text
-    print(f"Connecting to: {db_url.split('@')[1]}")  # Don't print password
+    Applies chem_schema.sql (v1) then each migration so a fresh database matches
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 44
+
+```text
+    production. The migrations are idempotent (IF NOT EXISTS), so this is also
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -373,47 +404,71 @@ def init_database():
 ### Line 45
 
 ```text
-    try:
-```
-
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 47
-
-```text
-        engine = create_engine(db_url, future=True)
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 50
-
-```text
-        print("Reading schema.sql...")
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 51
-
-```text
-        schema_sql = read_schema_sql()
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
-### Line 54
-
-```text
-        print("Executing schema...")
+    safe to re-run against an existing database.
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
+### Line 46
+
+```text
+    """
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 47
+
+```text
+    print("Chemical Inventory Database Initialization")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 48
+
+```text
+    print("=" * 50)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 51
+
+```text
+    db_url = get_db_url()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 52
+
+```text
+    print(f"Connecting to: {db_url.split('@')[1]}")  # Don't print password
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 54
+
+```text
+    here = Path(__file__).parent
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
 ### Line 55
 
 ```text
-        with engine.begin() as conn:
+    sql_files = [
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 56
+
+```text
+        here / "chem_schema.sql",                # v1 — base tables, views, seq_barcode, seed
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -421,39 +476,47 @@ def init_database():
 ### Line 57
 
 ```text
-            for statement in schema_sql.split(';'):
+        here / "chem_schema_migration_v2.sql",   # v2 — rooms/barcode-print columns + view refresh
 ```
 
-`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 58
 
 ```text
-                statement = statement.strip()
+        here / "chem_schema_migration_v3.sql",   # v3 — reconcile remaining production drift
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 59
 
 ```text
-                if statement and not statement.upper().startswith('BEGIN') and not statement.upper().startswith('COMMIT'):
+    ]
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 60
 
 ```text
-                    conn.execute(text(statement))
+    missing = [f.name for f in sql_files if not f.exists()]
 ```
 
-`database` — This database line affects durable state. Preserve table names, column names, constraints, query parameters, transaction boundaries, commit timing, rollback behavior, and migration assumptions; edge cases are missing rows, duplicate rows, concurrent writes, schema drift, and failed commits.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 61
+
+```text
+    if missing:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 62
 
 ```text
-        print("✓ Database initialized successfully!")
+        print(f"Error: missing SQL file(s): {', '.join(missing)}")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -461,15 +524,7 @@ def init_database():
 ### Line 63
 
 ```text
-        print("\nCreated:")
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 64
-
-```text
-        print("  - Tables: categories, vendors, rooms, items, containers")
+        sys.exit(1)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -477,23 +532,23 @@ def init_database():
 ### Line 65
 
 ```text
-        print("  - Tables: inventory_cycles, scan_raw, container_scans")
+    try:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
 ### Line 66
 
 ```text
-        print("  - Views: v_all_containers, v_cycle_report, inventory_view")
+        engine = create_engine(db_url, future=True)
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 67
 
 ```text
-        print("  - Sequence: seq_barcode")
+        print("Applying base schema + migrations...")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -501,7 +556,7 @@ def init_database():
 ### Line 68
 
 ```text
-        print("\nNext steps:")
+        with engine.begin() as conn:
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -509,23 +564,23 @@ def init_database():
 ### Line 69
 
 ```text
-        print("  1. Run your Flask app: python run.py")
+            for f in sql_files:
 ```
 
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
 ### Line 70
 
 ```text
-        print("  2. Navigate to /chem/inventory to view the chemical inventory")
+                apply_sql_file(conn, f)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 71
+### Line 72
 
 ```text
-        print("  3. Use /chem/add to add new containers")
+        print("✓ Database initialized successfully (chem_schema.sql + v2 + v3)!")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -533,15 +588,15 @@ def init_database():
 ### Line 73
 
 ```text
-    except Exception as e:
+        print("\nA fresh database now matches production:")
 ```
 
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 74
 
 ```text
-        print(f"✗ Error initializing database: {e}")
+        print("  - Tables: categories, vendors, rooms, items, containers")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -549,7 +604,15 @@ def init_database():
 ### Line 75
 
 ```text
-        sys.exit(1)
+        print("  - Tables: inventory_cycles, scan_raw, container_scans, transactions")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 76
+
+```text
+        print("  - Views: v_all_containers, v_cycle_report, inventory_view")
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -557,12 +620,68 @@ def init_database():
 ### Line 77
 
 ```text
+        print("  - Sequence: seq_barcode")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 78
+
+```text
+        print("\nNext steps:")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 79
+
+```text
+        print("  1. Run your Flask app: python run.py")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 80
+
+```text
+        print("  2. Navigate to /chem/inventory to view the chemical inventory")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 82
+
+```text
+    except Exception as e:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 83
+
+```text
+        print(f"✗ Error initializing database: {e}")
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 84
+
+```text
+        sys.exit(1)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 86
+
+```text
 if __name__ == "__main__":
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 78
+### Line 87
 
 ```text
     init_database()

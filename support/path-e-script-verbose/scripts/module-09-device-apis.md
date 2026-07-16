@@ -887,7 +887,7 @@ This endpoint is the recommended target for new sensors (it subsumes `/particle-
 **Producer:** the Parylene tool's Raspberry Pi (on-device script; not in NanofabToolkit).
 
 **Content-Type:** `text/csv`. **Headers:**
-- `X-Session-ID` — unique per run (required).
+- `X-Session-ID` — unique per run (required). Because it becomes part of the temp directory and combined filename, it is strictly allow-listed to `^[0-9A-Za-z_-]{1,64}$` (no `.`, `/`, or `\`) to prevent path traversal; an invalid value is rejected with `400` before any file is written. The Parylene Pi sends the first 8 hex chars of the board id (`hexlify(machine.unique_id())[:8]`), which fits the allow-list.
 - `X-Batch-Number` — 1-based integer (required).
 - `X-Total-Batches` — integer (required).
 - `X-Is-Final-Batch` — `"true"` to force finalize (optional).
@@ -1026,10 +1026,14 @@ def handle_csv_batch():
         if not session_id or not batch_number or not total_batches:
             return jsonify({'status': 'error', 'message': 'Missing headers'}), 400
 
+        if not _valid_session_id(session_id):
+            return jsonify({'status': 'error', 'message': 'Invalid session id'}), 400
+
         batch_number = int(batch_number)
         total_batches = int(total_batches)
 
-        # Write directly to disk
+        # Write directly to disk (session_id is validated above, so it can't
+        # escape LogData/ via '..' or a slash)
         temp_dir = os.path.join(current_app.config['LOG_DATA_DIR'], 'Paralyne', 'temp', session_id)
         os.makedirs(temp_dir, exist_ok=True)
 
@@ -1063,6 +1067,7 @@ def handle_csv_batch():
 A handful of important details:
 
 - **Three required headers** identify the batch: `X-Session-ID` (random ID for this run), `X-Batch-Number`, `X-Total-Batches`. Optional `X-Is-Final-Batch` short-circuits the count check if the Pi knows the run is done.
+- **`X-Session-ID` is validated before use.** Because it becomes part of a folder name (and the final combined filename), a value like `../../etc` could otherwise let a caller write outside `LogData/`. `_valid_session_id` rejects anything that isn't plain letters/digits/underscore/hyphen (1–64 chars) — no dots or slashes — returning `400` before any file is touched. The finalize endpoint and the combine helper re-check it too. The Parylene Pi sends an 8-character hex board id, which passes cleanly.
 - Each session gets its own temp folder under `LogData/Paralyne/temp/<session>/`.
 - The first batch also writes `start_time.txt` — this is the timestamp used in the eventual combined filename.
 - Each batch is stored as `batch_NNNN.csv` with a 4-digit zero-padded number so simple lexicographic sort gives chronological order.

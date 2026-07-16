@@ -1,6 +1,6 @@
 
 
-# Source Reconstruction: UNanofabTools/app/templates/chem/edit.html
+# Source Reconstruction: UNanofabTools/app/templates/chem/move.html
 
 ## Breadcrumbs
 
@@ -9,11 +9,11 @@
 If you opened this page directly from search, stop here first: read the owning tool README, then return to this source page only for implementation evidence.
 
 - Repository: `UNanofabTools`
-- Relative path: `app/templates/chem/edit.html`
-- Lines read: `581`
+- Relative path: `app/templates/chem/move.html`
+- Lines read: `561`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `9440ad081013e14e`
+- Sanitized SHA-256 prefix: `84b7736bd0dcf166`
 - Code fence language: `html`
 
 ## Reconstruction Purpose
@@ -22,108 +22,108 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Template Structure Summary
 
-- Forms: 1 detected
-- Inputs: 26 detected
-- Scripts: 1 detected
+- Forms: 2 detected
+- Inputs: 24 detected
+- Scripts: 5 detected
 
 ## Sanitized Source Excerpt
 
 ```html
 {% extends "chem/base.html" %}
-
-{% block title %}Edit Chemical Container – Utah Nanofab{% endblock %}
+{% block title %}Move Container{% endblock %}
 
 {% block content %}
-<section class="page-head">
-  <h1>Edit Chemical Container</h1>
-  <p class="muted">
-    Scan or enter a <strong>barcode</strong> to load an existing container, then update any fields and save.
-  </p>
-</section>
+<div class="container">
+  <h1 class="page-title">Move Container</h1>
+
+  <div class="card">
+    <div class="row">
+      <div class="col">
+        <label for="barcode"><strong>Barcode</strong></label>
+        <input id="barcode" name="barcode" type="text" placeholder="Scan or type barcode…" autocomplete="off">
+        <div class="help">Scan a barcode, then press Enter (or click Load).</div>
+
+        <div class="btn-row">
+          <button type="button" id="btnLoad" class="btn">Load Current</button>
+          <button type="button" id="btnClear" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <div id="lookupStatus" class="status"></div>
+      </div>
+
+      <div class="col barcode-box">
+        <div class="barcode-title">Scan Target</div>
+        <div id="barcodeText" class="barcode-text">(empty)</div>
+        <!-- If JsBarcode is available in your project, this will render -->
+        <svg id="barcodeSvg"></svg>
+        <div class="help">This is just to make it obvious what’s loaded. Use Clear between scans.</div>
+      </div>
+    </div>
+  </div>
 
 <section class="card">
-  <form method="post" action="{{ url_for('chem.edit_container') }}" autocomplete="off">
-    <!-- REQUIRED HIDDEN ID -->
-    <input type="hidden" id="container_id" name="container_id">
+  <h2 class="h2">Bulk Move by Scanner</h2>
+  <p class="muted">
+    Scan barcodes directly into the box below, one per line, then choose the destination and apply the move.
+  </p>
 
-    <!-- LOOKUP -->
+  <form method="post" action="{{ url_for('chem.move_bulk') }}" autocomplete="off">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="grid location-grid">
-      <div class="field field-span-2">
-        <label for="barcode_lookup"><strong>Barcode</strong></label>
-        <input id="barcode_lookup" name="barcode_lookup" type="text" placeholder="Scan or enter barcode" inputmode="text">
-        <div class="hint">Use barcode to load the existing container record.</div>
-      </div>
+      <div class="field field-span-2" style="grid-column: 1 / -1;">
+        <label for="bulk_barcodes">Scanned Barcodes</label>
 
-      <div class="field">
-        <label>&nbsp;</label>
-        <button class="btn" type="button" id="lookupBtn">Load Container</button>
-      </div>
+          <div class="hint" style="margin-bottom: 10px;">
+              1. Click in the box below<br>
+                  2. Scan the barcode image to dump stored scanner data<br>
+                      3. Review and apply bulk move
+                        </div>
 
-      <div class="field">
-        <label for="container_code">Container Code</label>
-        <input id="container_code" name="container_code_display" type="text" readonly placeholder="Will autofill">
-      </div>
+                          <div style="display: grid; grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr); gap: 24px; align-items: start; width: 100%;">
+
+                                  <!-- LEFT SIDE -->
+                                      <div style="width: 100%;">
+                                            <textarea
+                                                    id="bulk_barcodes"
+                                                            name="bulk_barcodes"
+                                                                    rows="12"
+                                                                            placeholder="Stored barcodes will appear here after scanning the trigger image"
+                                                                                    style="width: 100%; min-height: 260px; resize: vertical; box-sizing: border-box;"></textarea>
+
+                                                                                          <div class="hint" style="margin-top: 8px;">
+                                                                                                  Scanner input goes into this box.
+                                                                                                        </div>
+                                                                                                            </div>
+
+                                                                                                                <!-- RIGHT SIDE -->
+                                                                                                                    <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                                                                                                          <img
+                                                                                                                                  id="dump_trigger_img"
+                                                                                                                                          src="{{ url_for('static', filename='img/BARCODESCANOUT.png') }}"
+                                                                                                                                                  alt="Scanner dump trigger barcode"
+                                                                                                                                                          style="width: 100%; max-width: 300px; height: auto; border: 2px solid rgba(0,0,0,.15); border-radius: 10px; padding: 10px; background: #fff; cursor: pointer; box-sizing: border-box;">
+
+                                                                                                                                                                <button
+                                                                                                                                                                  class="btn btn-secondary"
+                                                                                                                                                                    type="button"
+                                                                                                                                                                      id="clear_bulk_scan"
+                                                                                                                                                                        onclick="clearBulkScanBox()"
+                                                                                                                                                                          style="margin-top: 14px;">
+                                                                                                                                                                            Clear
+                                                                                                                                                                            </button>
+                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                    </div>
+
     </div>
 
     <hr class="sep">
 
-    <!-- MATERIAL -->
-    <h2 class="h2">Material</h2>
+    <h3 class="h2">Destination</h3>
     <div class="grid location-grid">
       <div class="field field-span-2">
-        <label for="item_name">Material Name</label>
-        <input id="item_name" name="item_name" type="text" placeholder="Chemical name">
-      </div>
-
-      <div class="field">
-        <label for="vendor_name">Vendor</label>
-        <input id="vendor_name" name="vendor_name" type="text" placeholder="Vendor">
-      </div>
-
-      <div class="field">
-        <label for="physical_state">Physical State</label>
-        <input id="physical_state" name="physical_state" type="text" placeholder="Liquid / Solid / Gas">
-      </div>
-
-      <div class="field">
-        <label for="size">Amount per Container</label>
-        <input id="size" name="size" type="text" placeholder="e.g. 1">
-      </div>
-
-      <div class="field">
-        <label for="unit">Unit</label>
-        <input id="unit" name="unit" type="text" placeholder="e.g. Liter / mL / g">
-      </div>
-
-      <div class="field">
-        <label for="system">System</label>
-        <input id="system" name="system" type="text" placeholder="Open / Closed / etc">
-      </div>
-
-      <div class="field field-span-2">
-        <label for="catalog_number">Catalog #</label>
-        <input id="catalog_number" name="catalog_number" type="text" placeholder="Catalog number">
-      </div>
-
-      <div class="field field-span-2">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" rows="3" placeholder="Optional description"></textarea>
-      </div>
-
-      <div class="field field-span-2">
-        <label for="lot_number"><strong>Lot #</strong></label>
-        <input id="lot_number" name="lot_number" type="text" placeholder="Lot number">
-      </div>
-    </div>
-
-    <hr class="sep">
-
-    <!-- LOCATION -->
-    <h2 class="h2">Location</h2>
-    <div class="grid location-grid">
-      <div class="field field-span-2">
-        <label for="location_template">Location Template</label>
-        <select id="location_template" name="location_template">
+        <label for="bulk_location_template">Location Template</label>
+        <select id="bulk_location_template">
           <option value="">Select a location...</option>
           <option value="gas_chem_room">Gas Chem Room</option>
           <option value="pass_through">Pass-Through</option>
@@ -141,475 +141,455 @@ This section is written so a maintainer can recreate the file's behavior without
           <option value="backend_lab">Backend Lab</option>
           <option value="prototyping_lab">Prototyping Lab</option>
           <option value="cr_shop">CR Shop</option>
+          <option value="unfound">Unfound</option>
         </select>
-        <div class="hint">Select a room template or edit room fields manually.</div>
       </div>
 
       <div class="field">
-        <label for="room_no">Room #</label>
-        <input id="room_no" name="room_no" type="text" placeholder="e.g. 2025N">
-      </div>
-
-      <div class="field">
-        <label for="room_name">Room Name</label>
-        <input id="room_name" name="room_name" type="text" placeholder="e.g. Bay A">
+        <label for="bulk_room_no">Room #</label>
+        <input id="bulk_room_no" name="room_no" type="text" placeholder="e.g. 2018N">
       </div>
 
       <div class="field field-span-2">
-        <label for="room_desc">Room Description</label>
-        <input id="room_desc" name="room_desc" type="text" placeholder="Optional room description">
+        <label for="bulk_room_desc">Room Description</label>
+        <input id="bulk_room_desc" name="room_desc" type="text" placeholder="e.g. Pass-Through">
       </div>
 
       <div class="field">
-        <label for="area_class">Area Class</label>
-        <input id="area_class" name="area_class" type="text" placeholder="e.g. H-5">
+        <label for="bulk_area_class">Area Class</label>
+        <input id="bulk_area_class" name="area_class" type="text" placeholder="e.g. H-5">
       </div>
 
       <div class="field field-span-2">
-        <label>Selected Room</label>
-        <input id="room_display" type="text" readonly placeholder="No location selected">
-      </div>
-
-      <div class="field field-span-2">
-        <label for="storage_location">Storage Location</label>
-        <input id="storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
+        <label for="bulk_storage_location">Storage Location</label>
+        <input id="bulk_storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
       </div>
 
       <div class="field">
-        <label for="storage_sublocation">Sub-Storage Location</label>
-        <input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
+        <label for="bulk_storage_sublocation">Sub-Storage Location</label>
+        <input id="bulk_storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
       </div>
 
       <div class="field">
-        <label for="storage_device">Storage Device</label>
-        <input id="storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
-      </div>
-    </div>
-
-    <hr class="sep">
-
-    <!-- DATES / COMPLIANCE -->
-    <h2 class="h2">Dates & Compliance</h2>
-    <div class="grid location-grid">
-      <div class="field">
-        <label for="manuf_date">Manufacture Date</label>
-        <input id="manuf_date" name="manuf_date" type="date">
+        <label for="bulk_storage_device">Storage Device</label>
+        <input id="bulk_storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
       </div>
 
       <div class="field">
-        <label for="expiry_date">Expiration Date</label>
-        <input id="expiry_date" name="expiry_date" type="date">
-      </div>
-
-      <div class="field">
-        <label for="choice">Choice</label>
-        <input id="choice" name="choice" type="text" placeholder="">
-      </div>
-    </div>
-
-    <hr class="sep">
-
-    <!-- NMR -->
-    <h2 class="h2">NMR</h2>
-    <div class="grid">
-      <div class="field">
-        <label for="nmr">NMR</label>
-        <input id="nmr" name="nmr" type="text" placeholder="">
-      </div>
-
-      <div class="field">
-        <label for="nmr_expiry">NMR Expiry</label>
-        <input id="nmr_expiry" name="nmr_expiry" type="date">
-      </div>
-    </div>
-
-    <hr class="sep">
-
-    <!-- OWNERSHIP / NOTES -->
-    <h2 class="h2">Ownership</h2>
-    <div class="grid">
-      <div class="field">
-        <label for="owner">Owner</label>
-        <input id="owner" name="owner" type="text" placeholder="">
-      </div>
-
-      <div class="field">
-        <label for="added_by">Added By</label>
-        <input id="added_by" name="added_by" type="text" placeholder="">
-      </div>
-
-      <div class="field field-span-2">
-        <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
+        <label for="bulk_performed_by">Moved By</label>
+        <input id="bulk_performed_by" name="performed_by" type="text" placeholder="Your name">
       </div>
     </div>
 
     <div class="actions">
-      <button class="btn" type="submit">Save Changes</button>
-      <a class="btn btn-secondary" href="{{ url_for('chem.inventory') }}">Cancel</a>
-      <span id="autofillStatus" class="muted"></span>
+      <button class="btn" type="submit">Apply Bulk Move</button>
     </div>
   </form>
 </section>
 
+
+  <form method="post" action="{{ url_for('chem.move_material') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <!-- barcode is submitted from this hidden input (we keep the visible barcode input outside the form UI) -->
+    <input type="hidden" name="barcode" id="barcodeHidden">
+
+    <div class="card">
+      <h2 class="subhead">Location</h2>
+
+      <div class="grid">
+        <div class="grid-head">Field</div>
+        <div class="grid-head">Current Location</div>
+        <div class="grid-head">New Location</div>
+
+        <!-- Room No -->
+        <div class="grid-label">Room No</div>
+        <div class="grid-current"><input id="cur_room_no" type="text" readonly></div>
+        <div class="grid-new"><input id="room_no" name="room_no" type="text" placeholder="e.g., 02020N"></div>
+
+        <!-- Room Desc -->
+        <div class="grid-label">Room Desc</div>
+        <div class="grid-current"><input id="cur_room_desc" type="text" readonly></div>
+        <div class="grid-new"><input id="room_desc" name="room_desc" type="text" placeholder="e.g., H-5"></div>
+
+        <!-- Area Class -->
+        <div class="grid-label">Area Class</div>
+        <div class="grid-current"><input id="cur_area_class" type="text" readonly></div>
+        <div class="grid-new"><input id="area_class" name="area_class" type="text" placeholder="e.g., H-5"></div>
+
+        <!-- Storage Location -->
+        <div class="grid-label">Storage Location</div>
+        <div class="grid-current"><input id="cur_storage_location" type="text" readonly></div>
+        <div class="grid-new"><input id="storage_location" name="storage_location" type="text" placeholder="e.g., Fume Hood, SE"></div>
+
+        <!-- Sub-Storage Location -->
+        <div class="grid-label">Sub-Storage Location</div>
+        <div class="grid-current"><input id="cur_storage_sublocation" type="text" readonly></div>
+        <div class="grid-new"><input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g., Storage - Left"></div>
+
+        <!-- Storage Device -->
+        <div class="grid-label">Storage Device</div>
+        <div class="grid-current"><input id="cur_storage_device" type="text" readonly></div>
+        <div class="grid-new"><input id="storage_device" name="storage_device" type="text" placeholder="e.g., Acid Cabinet"></div>
+	<div>
+	<label>User</label>
+	<input type="text" name="performed_by" placeholder="User">
+	</div>
+      </div>
+
+      <div class="move-actions">
+        <button type="submit" class="btn btn-primary" id="btnSubmit" disabled>Move</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 <style>
-.page-head {
-  max-width: 1100px;
-  margin: 20px auto 14px;
-  padding: 0 12px;
-}
-
-.page-head h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
-  font-weight: 800;
-  color: #222;
-}
-
-.muted {
-  opacity: 0.78;
-}
-
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.page-title { margin: 14px 0 18px; }
 .card {
-  max-width: 1100px;
-  margin: 0 auto 24px;
   background: #fff;
-  border-radius: 14px;
-  padding: 18px 18px 22px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  padding: 16px;
+  margin-bottom: 16px;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px 14px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.field-span-2 {
-  grid-column: span 2;
-}
-
-label {
-  font-weight: 700;
-  font-size: 15px;
-  color: #222;
-  line-height: 1.2;
-}
-
-input,
-textarea,
-select,
-button {
-  padding: 11px 12px;
-  border: 1px solid rgba(0,0,0,.16);
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+.col { flex: 1 1 420px; min-width: 320px; }
+label { display:block; margin-bottom: 6px; }
+input[type="text"]{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d7d7d7;
   border-radius: 10px;
-  outline: none;
   background: #fff;
-  font-size: 15px;
-  min-height: 46px;
-  box-sizing: border-box;
 }
-
-textarea {
-  min-height: 82px;
-  resize: vertical;
-}
-
-input[readonly] {
-  background: #f5f5f5;
-  color: #555;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: rgba(204,0,0,.55);
-  box-shadow: 0 0 0 3px rgba(204,0,0,.12);
-}
-
-.sep {
+input[readonly] { background: #f6f6f6; }
+.help { font-size: 12px; opacity: .75; margin-top: 6px; }
+.status { margin-top: 10px; font-size: 13px; }
+.btn-row { display:flex; gap:10px; margin-top: 10px; }
+.btn{
   border: 0;
-  border-top: 1px solid rgba(0,0,0,.10);
-  margin: 18px 0 18px;
-}
-
-.h2 {
-  margin: 6px 0 14px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #222;
-  line-height: 1.2;
-}
-
-.hint {
-  font-size: 13px;
-  opacity: .75;
-  margin-top: -1px;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.btn {
-  background: #c00;
-  color: #fff;
-  border: 0;
+  padding: 10px 14px;
   border-radius: 10px;
-  padding: 11px 16px;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
 }
+.btn-primary { background: #0b5; color: #fff; }
+.btn-secondary { background: #444; color: #fff; }
+.btn { background: #222; color: #fff; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
 
-.btn:hover {
-  filter: brightness(.96);
+.barcode-box{
+  border: 1px dashed #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fafafa;
 }
+.barcode-title { font-weight: 700; margin-bottom: 6px; }
+.barcode-text { font-size: 20px; font-weight: 800; letter-spacing: .5px; margin: 6px 0 10px; }
+#barcodeSvg { width: 100%; height: 70px; }
 
-.btn-secondary {
-  background: #444;
+.subhead { margin: 0 0 12px; font-size: 18px; }
+.grid{
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 10px;
+  align-items: center;
 }
-
-.location-grid {
-  margin-bottom: 14px;
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .field-span-2 {
-    grid-column: span 2;
-  }
+.grid-head { font-weight: 800; padding: 6px 0; }
+.grid-label { font-weight: 600; }
+.grid-current, .grid-new { }
+.move-actions { margin-top: 16px; display:flex; justify-content:flex-end; }
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+  .grid-head{ display:none; }
 }
 </style>
-{% endblock %}
 
-{% block scripts %}
 <script>
 (function () {
-  const statusEl = document.getElementById("autofillStatus");
+  const barcodeEl = document.getElementById("barcode");
+  const barcodeHiddenEl = document.getElementById("barcodeHidden");
+  const statusEl = document.getElementById("lookupStatus");
+  const btnLoad = document.getElementById("btnLoad");
+  const btnClear = document.getElementById("btnClear");
+  const btnSubmit = document.getElementById("btnSubmit");
+  const barcodeText = document.getElementById("barcodeText");
+  const barcodeSvg = document.getElementById("barcodeSvg");
 
-  const LOCATION_TEMPLATES = {
-    bay_a: { room_no: "2025N", room_name: "Bay A", area_class: "H-5" },
-    bay_b: { room_no: "2022N", room_name: "Bay B", area_class: "H-5" },
-    bay_c: { room_no: "2020N", room_name: "Bay C", area_class: "H-5" },
-    bay_d: { room_no: "2018N", room_name: "Bay D", area_class: "H-5" },
-    bay_e: { room_no: "2016N", room_name: "Bay E", area_class: "H-5" },
-    bay_f: { room_no: "2014N", room_name: "Bay F", area_class: "H-5" },
-    bay_g: { room_no: "2012N", room_name: "Bay G", area_class: "H-5" },
-
-    student_yellow: { room_no: "2010N", room_name: "Student Yellow", area_class: "H-5" },
-    mocvd: { room_no: "2006N", room_name: "MOCVD", area_class: "H-5" },
-    microfluidics: { room_no: "2008N", room_name: "Microfluidics", area_class: "H-5" },
-    metrology: { room_no: "2026N", room_name: "Metrology", area_class: "H-5" },
-
-    backend_lab: { room_no: "2223", room_name: "Backend Lab", area_class: "General" },
-    prototyping_lab: { room_no: "2237", room_name: "Prototyping Lab", area_class: "General" },
-    cr_shop: { room_no: "2237N", room_name: "CR Shop", area_class: "General" },
-
-    gas_chem_room: { room_no: "2018N", room_name: "Gas Chem Room", area_class: "H-2,3,4" },
-    pass_through: { room_no: "2018N", room_name: "Pass-Through", area_class: "H-5" }
-  };
-
-  function setStatus(msg) {
-    if (statusEl) statusEl.textContent = msg || "";
+  function setStatus(msg, isError) {
+    if (!statusEl) return;
+    statusEl.textContent = msg || "";
+    statusEl.style.color = isError ? "#b00" : "#222";
   }
 
-  function fill(id, value) {
-  const el = document.getElementById(id);
-  if (!el) {
-    console.log("MISSING ELEMENT ID:", id, "VALUE:", value);
-    return;
-  }
-  el.value = value == null ? "" : value;
+  function setCurrentField(id, value) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = (value == null ? "" : String(value));
   }
 
-  function updateRoomDisplay() {
-    const roomName = document.getElementById("room_name")?.value || "";
-    const roomNo = document.getElementById("room_no")?.value || "";
-    const areaClass = document.getElementById("area_class")?.value || "";
-    fill("room_display", [roomName, roomNo, areaClass].filter(Boolean).join(" | "));
+  function clearAll() {
+    barcodeEl.value = "";
+    barcodeHiddenEl.value = "";
+    barcodeText.textContent = "(empty)";
+    setStatus("");
+
+    // clear current fields
+    ["cur_room_no","cur_room_desc","cur_area_class","cur_storage_location","cur_storage_sublocation","cur_storage_device"]
+      .forEach(id => setCurrentField(id, ""));
+
+    // clear new fields
+    ["room_no","room_desc","area_class","storage_location","storage_sublocation","storage_device"]
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      });
+
+    // clear barcode svg
+    if (barcodeSvg) barcodeSvg.innerHTML = "";
+
+    btnSubmit.disabled = true;
+    barcodeEl.focus();
   }
 
-  function normalizeDate(v) {
-    if (!v) return "";
-    if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
-    const s = String(v).slice(0, 10);
-    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
-    return "";
-  }
+  function renderBarcodeDisplay(code) {
+    const c = (code || "").trim();
+    barcodeText.textContent = c ? c : "(empty)";
+    if (!c) {
+      if (barcodeSvg) barcodeSvg.innerHTML = "";
+      return;
+    }
 
-  function detectTemplate(data) {
-    const roomNo = (data.room_no || "").trim();
-    const roomName = (data.room_name || "").trim();
-    const areaClass = (data.area_class || "").trim();
-
-    for (const [key, tpl] of Object.entries(LOCATION_TEMPLATES)) {
-      if (
-        (tpl.room_no || "") === roomNo &&
-        (tpl.room_name || "") === roomName &&
-        (tpl.area_class || "") === areaClass
-      ) {
-        return key;
+    // If JsBarcode exists globally in your project, use it.
+    // This will NOT crash if JsBarcode isn't present.
+    try {
+      if (window.JsBarcode && barcodeSvg) {
+        window.JsBarcode(barcodeSvg, c, {
+          format: "CODE128",
+          displayValue: false,
+          margin: 0,
+          height: 55
+        });
+      } else {
+        if (barcodeSvg) barcodeSvg.innerHTML = "";
       }
+    } catch (e) {
+      if (barcodeSvg) barcodeSvg.innerHTML = "";
     }
-    return "";
   }
 
-  function applyLocationTemplate(templateKey) {
-    const tpl = LOCATION_TEMPLATES[templateKey];
-
-    if (!tpl) {
-      updateRoomDisplay();
+  async function loadCurrent() {
+    const bc = (barcodeEl.value || "").trim();
+    if (!bc) {
+      setStatus("Scan/enter a barcode first.", true);
       return;
     }
 
-    fill("room_no", tpl.room_no || "");
-    fill("room_name", tpl.room_name || "");
-    fill("area_class", tpl.area_class || "");
-    updateRoomDisplay();
-
-    setStatus("Location template applied.");
-    setTimeout(() => setStatus(""), 1200);
-  }
-
-  async function loadContainerByBarcode() {
-    const barcode = (document.getElementById("barcode_lookup")?.value || "").trim();
-    if (!barcode) {
-      setStatus("Enter a barcode first.");
-      return;
-    }
-
-    setStatus("Loading container...");
+    setStatus("Loading current location…");
+    btnSubmit.disabled = true;
 
     try {
-      const res = await fetch(`/chem/api/container_lookup?barcode=${encodeURIComponent(barcode)}`);
+      const res = await fetch(`/chem/api/container_lookup?barcode=${encodeURIComponent(bc)}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
       const payload = await res.json();
-      const data = payload && payload.data ? payload.data : null;
-      console.log("LOOKUP DATA:", data);
-      if (!data) {
-        setStatus("No container found for that barcode.");
+      const data = payload && payload.data ? payload.data : {};
+
+      if (!data || Object.keys(data).length === 0) {
+        setStatus("Barcode not found.", true);
+        renderBarcodeDisplay(bc);
+        barcodeHiddenEl.value = bc;
         return;
       }
 
-      fill("container_id", data.container_id);
-      fill("container_code", data.container_code);
-      fill("item_name", data.item_name);
-      fill("description", data.description);
-      fill("catalog_number", data.catalog_number);
-      fill("physical_state", data.physical_state);
-      fill("size", data.size);
-      fill("unit", data.unit);
-      fill("system", data.system);
-      fill("vendor_name", data.vendor_name);
+      // Fill current (read-only)
+      setCurrentField("cur_room_no", data.room_no);
+      setCurrentField("cur_room_desc", data.room_desc);
+      setCurrentField("cur_area_class", data.area_class);
+      setCurrentField("cur_storage_location", data.storage_location);
+      setCurrentField("cur_storage_sublocation", data.storage_sublocation);
+      setCurrentField("cur_storage_device", data.storage_device);
 
-      fill("room_no", data.room_no);
-      fill("room_name", data.room_name);
-      fill("room_desc", data.room_desc);
-      fill("area_class", data.area_class);
+      // Also lock in barcode to submit
+      barcodeHiddenEl.value = bc;
 
-      fill("storage_location", data.storage_location);
-      fill("storage_sublocation", data.storage_sublocation);
-      fill("storage_device", data.storage_device);
+      renderBarcodeDisplay(bc);
 
-      fill("manuf_date", normalizeDate(data.manuf_date));
-      fill("expiry_date", normalizeDate(data.expiry_date));
-      fill("lot_number", data.lot_number);
-      fill("choice", data.choice);
-      fill("nmr", data.nmr);
-      fill("nmr_expiry", normalizeDate(data.nmr_expiry));
-      fill("owner", data.owner);
-      fill("notes", data.notes);
-      fill("added_by", data.added_by);
-
-      const detected = detectTemplate(data);
-      fill("location_template", detected);
-      updateRoomDisplay();
-
-      setStatus("Container loaded.");
-      setTimeout(() => setStatus(""), 1500);
-    } catch (err) {
-      console.error(err);
-      setStatus("Load failed. Check server logs.");
-    }
-  }
-
-  function attachSuggest(inputId, fieldName) {
-    const el = document.getElementById(inputId);
-    if (!el) return;
-
-    const listId = `${inputId}_list`;
-    let dl = document.getElementById(listId);
-
-    if (!dl) {
-      dl = document.createElement("datalist");
-      dl.id = listId;
-      document.body.appendChild(dl);
-      el.setAttribute("list", listId);
-    }
-
-    let lastQ = "";
-    el.addEventListener("input", async () => {
-      const q = (el.value || "").trim();
-      if (q.length < 2 || q === lastQ) return;
-      lastQ = q;
-
-      try {
-        const res = await fetch(`/chem/api/suggest?field=${encodeURIComponent(fieldName)}&q=${encodeURIComponent(q)}&limit=12`);
-        if (!res.ok) return;
-        const payload = await res.json();
-        const results = payload && payload.results ? payload.results : [];
-        dl.innerHTML = "";
-        results.forEach((v) => {
-          const opt = document.createElement("option");
-          opt.value = v;
-          dl.appendChild(opt);
-        });
-      } catch (e) {
+      // If removed, prevent moving
+      if (String(data.status || "").toLowerCase() === "removed") {
+        setStatus("This container is marked Removed. Move is disabled.", true);
+        btnSubmit.disabled = true;
+        return;
       }
-    });
+
+      setStatus("Loaded.");
+      btnSubmit.disabled = false;
+
+      // Put cursor into first "new location" field
+      const roomNoEl = document.getElementById("room_no");
+      if (roomNoEl) roomNoEl.focus();
+    } catch (e) {
+      console.error(e);
+      setStatus("Lookup failed (check server logs).", true);
+    }
   }
 
-  document.getElementById("lookupBtn")?.addEventListener("click", loadContainerByBarcode);
+  btnLoad.addEventListener("click", loadCurrent);
+  btnClear.addEventListener("click", clearAll);
 
-  document.getElementById("barcode_lookup")?.addEventListener("keydown", (ev) => {
+  barcodeEl.addEventListener("keydown", (ev) => {
     if (ev.key === "Enter") {
       ev.preventDefault();
-      loadContainerByBarcode();
+      loadCurrent();
     }
   });
 
-  document.getElementById("location_template")?.addEventListener("change", function () {
-    applyLocationTemplate(this.value);
-  });
-
-  ["room_no", "room_name", "area_class"].forEach((id) => {
-    document.getElementById(id)?.addEventListener("input", updateRoomDisplay);
-  });
-
-  attachSuggest("item_name", "name");
-  attachSuggest("vendor_name", "vendor");
-  attachSuggest("unit", "unit");
-  attachSuggest("system", "system");
-  attachSuggest("storage_device", "storage_device");
-  attachSuggest("storage_location", "storage_location");
-  attachSuggest("storage_sublocation", "storage_sublocation");
+  // start empty
+  clearAll();
 })();
 </script>
+
+<script>
+(function () {
+  const bulkBox = document.getElementById("bulk_barcodes");
+  const focusBtn = document.getElementById("focus_bulk_scan");
+  const clearBtn = document.getElementById("clear_bulk_scan");
+  const templateEl = document.getElementById("bulk_location_template");
+
+  const LOCATION_TEMPLATES = {
+    bay_a: { room_no: "2025N", room_desc: "Bay A", area_class: "H-5" },
+    bay_b: { room_no: "2022N", room_desc: "Bay B", area_class: "H-5" },
+    bay_c: { room_no: "2020N", room_desc: "Bay C", area_class: "H-5" },
+    bay_d: { room_no: "2018N", room_desc: "Bay D", area_class: "H-5" },
+    bay_e: { room_no: "2016N", room_desc: "Bay E", area_class: "H-5" },
+    bay_f: { room_no: "2014N", room_desc: "Bay F", area_class: "H-5" },
+    bay_g: { room_no: "2012N", room_desc: "Bay G", area_class: "H-5" },
+
+    student_yellow: { room_no: "2010N", room_desc: "Student Yellow", area_class: "H-5" },
+    mocvd: { room_no: "2006N", room_desc: "MOCVD", area_class: "H-5" },
+    microfluidics: { room_no: "2008N", room_desc: "Microfluidics", area_class: "H-5" },
+    metrology: { room_no: "2026N", room_desc: "Metrology", area_class: "H-5" },
+
+    backend_lab: { room_no: "2223", room_desc: "Backend Lab", area_class: "General" },
+    prototyping_lab: { room_no: "2237", room_desc: "Prototyping Lab", area_class: "General" },
+    cr_shop: { room_no: "2237N", room_desc: "CR Shop", area_class: "General" },
+
+    gas_chem_room: { room_no: "2018N", room_desc: "Gas Chem Room", area_class: "H-2,3,4" },
+    pass_through: { room_no: "2018N", room_desc: "Pass-Through", area_class: "H-5" },
+
+    unfound: { room_no: "UNFOUND", room_desc: "Unfound", area_class: "Unfound" }
+  };
+
+  function setVal(id, value) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = value == null ? "" : value;
+  }
+
+
+
+  templateEl?.addEventListener("change", function () {
+    const tpl = LOCATION_TEMPLATES[this.value];
+    if (!tpl) return;
+
+    setVal("bulk_room_no", tpl.room_no);
+    setVal("bulk_room_desc", tpl.room_desc);
+    setVal("bulk_area_class", tpl.area_class);
+
+
+
+
+
+})();
+</script>
+
+
+<script>
+const bulkBox = document.getElementById("bulk_barcodes");
+const dumpImg = document.getElementById("dump_trigger_img");
+
+dumpImg?.addEventListener("click", () => {
+  bulkBox?.focus();
+});
+
+
+window.addEventListener("load", () => {
+  bulkBox?.focus();
+});
+
+
+// Clicking image focuses textbox
+dumpImg?.addEventListener("click", () => {
+  bulkBox?.focus();
+</script>
+
+
+
+<script>
+  function clearBulkScanBox() {
+      const bulkBox = document.getElementById("bulk_barcodes");
+          if (bulkBox) {
+                bulkBox.value = "";
+                      bulkBox.focus();
+                          }
+                            }
+
+                              window.addEventListener("load", function () {
+                                  const bulkBox = document.getElementById("bulk_barcodes");
+                                      const dumpImg = document.getElementById("dump_trigger_img");
+
+                                          if (dumpImg) {
+                                                dumpImg.addEventListener("click", function () {
+                                                        if (bulkBox) bulkBox.focus();
+                                                              });
+                                                                  }
+
+                                                                      if (bulkBox) bulkBox.focus();
+                                                                        });
+                                                                        </script>
+<script>
+  const bulkTemplateEl = document.getElementById("bulk_location_template");
+
+  const BULK_LOCATION_TEMPLATES = {
+    bay_a: { room_no: "2025N", room_desc: "Bay A", area_class: "H-5" },
+    bay_b: { room_no: "2022N", room_desc: "Bay B", area_class: "H-5" },
+    bay_c: { room_no: "2020N", room_desc: "Bay C", area_class: "H-5" },
+    bay_d: { room_no: "2018N", room_desc: "Bay D", area_class: "H-5" },
+    bay_e: { room_no: "2016N", room_desc: "Bay E", area_class: "H-5" },
+    bay_f: { room_no: "2014N", room_desc: "Bay F", area_class: "H-5" },
+    bay_g: { room_no: "2012N", room_desc: "Bay G", area_class: "H-5" },
+
+    student_yellow: { room_no: "2010N", room_desc: "Student Yellow", area_class: "H-5" },
+    mocvd: { room_no: "2006N", room_desc: "MOCVD", area_class: "H-5" },
+    microfluidics: { room_no: "2008N", room_desc: "Microfluidics", area_class: "H-5" },
+    metrology: { room_no: "2026N", room_desc: "Metrology", area_class: "H-5" },
+
+    backend_lab: { room_no: "2223", room_desc: "Backend Lab", area_class: "General" },
+    prototyping_lab: { room_no: "2237", room_desc: "Prototyping Lab", area_class: "General" },
+    cr_shop: { room_no: "2237N", room_desc: "CR Shop", area_class: "General" },
+
+    gas_chem_room: { room_no: "2018N", room_desc: "Gas Chem Room", area_class: "H-2,3,4" },
+    pass_through: { room_no: "2018N", room_desc: "Pass-Through", area_class: "H-5" },
+    unfound: { room_no: "UNFOUND", room_desc: "Unfound", area_class: "Unfound" }
+  };
+
+  function setBulkVal(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.value = value || "";
+  }
+
+  if (bulkTemplateEl) {
+    bulkTemplateEl.addEventListener("change", function () {
+      const tpl = BULK_LOCATION_TEMPLATES[this.value];
+      if (!tpl) return;
+
+      setBulkVal("bulk_room_no", tpl.room_no);
+      setBulkVal("bulk_room_desc", tpl.room_desc);
+      setBulkVal("bulk_area_class", tpl.area_class);
+    });
+  }
+</script>
 {% endblock %}
+
 ```
 
 ## Line-By-Line Reconstruction Notes
@@ -622,15 +602,15 @@ select:focus {
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 3
+### Line 2
 
 ```text
-{% block title %}Edit Chemical Container – Utah Nanofab{% endblock %}
+{% block title %}Move Container{% endblock %}
 ```
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 5
+### Line 4
 
 ```text
 {% block content %}
@@ -638,18 +618,18 @@ select:focus {
 
 `template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
 
-### Line 6
+### Line 5
 
 ```text
-<section class="page-head">
+<div class="container">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 7
+### Line 6
 
 ```text
-  <h1>Edit Chemical Container</h1>
+  <h1 class="page-title">Move Container</h1>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -657,7 +637,7 @@ select:focus {
 ### Line 8
 
 ```text
-  <p class="muted">
+  <div class="card">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -665,7 +645,7 @@ select:focus {
 ### Line 9
 
 ```text
-    Scan or enter a <strong>barcode</strong> to load an existing container, then update any fields and save.
+    <div class="row">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -673,7 +653,7 @@ select:focus {
 ### Line 10
 
 ```text
-  </p>
+      <div class="col">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -681,39 +661,55 @@ select:focus {
 ### Line 11
 
 ```text
-</section>
+        <label for="barcode"><strong>Barcode</strong></label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 13
+### Line 12
 
 ```text
-<section class="card">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 14
-
-```text
-  <form method="post" action="{{ url_for('chem.edit_container') }}" autocomplete="off">
-```
-
-`html-form` — This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names.
-
-### Line 16
-
-```text
-    <input type="hidden" id="container_id" name="container_id">
+        <input id="barcode" name="barcode" type="text" placeholder="Scan or type barcode…" autocomplete="off">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 19
+### Line 13
 
 ```text
-    <div class="grid location-grid">
+        <div class="help">Scan a barcode, then press Enter (or click Load).</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 15
+
+```text
+        <div class="btn-row">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 16
+
+```text
+          <button type="button" id="btnLoad" class="btn">Load Current</button>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 17
+
+```text
+          <button type="button" id="btnClear" class="btn btn-secondary">Clear</button>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 18
+
+```text
+        </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -721,7 +717,7 @@ select:focus {
 ### Line 20
 
 ```text
-      <div class="field field-span-2">
+        <div id="lookupStatus" class="status"></div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -729,23 +725,15 @@ select:focus {
 ### Line 21
 
 ```text
-        <label for="barcode_lookup"><strong>Barcode</strong></label>
+      </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 22
-
-```text
-        <input id="barcode_lookup" name="barcode_lookup" type="text" placeholder="Scan or enter barcode" inputmode="text">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
 ### Line 23
 
 ```text
-        <div class="hint">Use barcode to load the existing container record.</div>
+      <div class="col barcode-box">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -753,15 +741,15 @@ select:focus {
 ### Line 24
 
 ```text
-      </div>
+        <div class="barcode-title">Scan Target</div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 26
+### Line 25
 
 ```text
-      <div class="field">
+        <div id="barcodeText" class="barcode-text">(empty)</div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -769,7 +757,7 @@ select:focus {
 ### Line 27
 
 ```text
-        <label>&nbsp;</label>
+        <svg id="barcodeSvg"></svg>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -777,10 +765,10 @@ select:focus {
 ### Line 28
 
 ```text
-        <button class="btn" type="button" id="lookupBtn">Load Container</button>
+        <div class="help">This is just to make it obvious what’s loaded. Use Clear between scans.</div>
 ```
 
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 29
 
@@ -790,39 +778,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 31
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 32
-
-```text
-        <label for="container_code">Container Code</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 33
-
-```text
-        <input id="container_code" name="container_code_display" type="text" readonly placeholder="Will autofill">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 34
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 35
+### Line 30
 
 ```text
     </div>
@@ -830,21 +786,69 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 37
+### Line 31
 
 ```text
-    <hr class="sep">
+  </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 33
+
+```text
+<section class="card">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 34
+
+```text
+  <h2 class="h2">Bulk Move by Scanner</h2>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 35
+
+```text
+  <p class="muted">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 36
+
+```text
+    Scan barcodes directly into the box below, one per line, then choose the destination and apply the move.
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 37
+
+```text
+  </p>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 39
+
+```text
+  <form method="post" action="{{ url_for('chem.move_bulk') }}" autocomplete="off">
+```
+
+`html-form` — This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names.
 
 ### Line 40
 
 ```text
-    <h2 class="h2">Material</h2>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 ```
 
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
 ### Line 41
 
@@ -857,7 +861,7 @@ select:focus {
 ### Line 42
 
 ```text
-      <div class="field field-span-2">
+      <div class="field field-span-2" style="grid-column: 1 / -1;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -865,23 +869,23 @@ select:focus {
 ### Line 43
 
 ```text
-        <label for="item_name">Material Name</label>
+        <label for="bulk_barcodes">Scanned Barcodes</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 44
-
-```text
-        <input id="item_name" name="item_name" type="text" placeholder="Chemical name">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
 ### Line 45
 
 ```text
-      </div>
+          <div class="hint" style="margin-bottom: 10px;">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 46
+
+```text
+              1. Click in the box below<br>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -889,7 +893,7 @@ select:focus {
 ### Line 47
 
 ```text
-      <div class="field">
+                  2. Scan the barcode image to dump stored scanner data<br>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -897,7 +901,7 @@ select:focus {
 ### Line 48
 
 ```text
-        <label for="vendor_name">Vendor</label>
+                      3. Review and apply bulk move
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -905,31 +909,15 @@ select:focus {
 ### Line 49
 
 ```text
-        <input id="vendor_name" name="vendor_name" type="text" placeholder="Vendor">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 50
-
-```text
-      </div>
+                        </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 52
+### Line 51
 
 ```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 53
-
-```text
-        <label for="physical_state">Physical State</label>
+                          <div style="display: grid; grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr); gap: 24px; align-items: start; width: 100%;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -937,15 +925,23 @@ select:focus {
 ### Line 54
 
 ```text
-        <input id="physical_state" name="physical_state" type="text" placeholder="Liquid / Solid / Gas">
+                                      <div style="width: 100%;">
 ```
 
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 55
 
 ```text
-      </div>
+                                            <textarea
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 56
+
+```text
+                                                    id="bulk_barcodes"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -953,7 +949,7 @@ select:focus {
 ### Line 57
 
 ```text
-      <div class="field">
+                                                            name="bulk_barcodes"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -961,7 +957,7 @@ select:focus {
 ### Line 58
 
 ```text
-        <label for="size">Amount per Container</label>
+                                                                    rows="12"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -969,15 +965,15 @@ select:focus {
 ### Line 59
 
 ```text
-        <input id="size" name="size" type="text" placeholder="e.g. 1">
+                                                                            placeholder="Stored barcodes will appear here after scanning the trigger image"
 ```
 
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 60
 
 ```text
-      </div>
+                                                                                    style="width: 100%; min-height: 260px; resize: vertical; box-sizing: border-box;"></textarea>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -985,7 +981,7 @@ select:focus {
 ### Line 62
 
 ```text
-      <div class="field">
+                                                                                          <div class="hint" style="margin-top: 8px;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -993,7 +989,7 @@ select:focus {
 ### Line 63
 
 ```text
-        <label for="unit">Unit</label>
+                                                                                                  Scanner input goes into this box.
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1001,23 +997,15 @@ select:focus {
 ### Line 64
 
 ```text
-        <input id="unit" name="unit" type="text" placeholder="e.g. Liter / mL / g">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 65
-
-```text
-      </div>
+                                                                                                        </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 67
+### Line 65
 
 ```text
-      <div class="field">
+                                                                                                            </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1025,7 +1013,7 @@ select:focus {
 ### Line 68
 
 ```text
-        <label for="system">System</label>
+                                                                                                                    <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1033,23 +1021,31 @@ select:focus {
 ### Line 69
 
 ```text
-        <input id="system" name="system" type="text" placeholder="Open / Closed / etc">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 70
-
-```text
-      </div>
+                                                                                                                          <img
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
+### Line 70
+
+```text
+                                                                                                                                  id="dump_trigger_img"
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 71
+
+```text
+                                                                                                                                          src="{{ url_for('static', filename='img/BARCODESCANOUT.png') }}"
+```
+
+`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
+
 ### Line 72
 
 ```text
-      <div class="field field-span-2">
+                                                                                                                                                  alt="Scanner dump trigger barcode"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1057,23 +1053,23 @@ select:focus {
 ### Line 73
 
 ```text
-        <label for="catalog_number">Catalog #</label>
+                                                                                                                                                          style="width: 100%; max-width: 300px; height: auto; border: 2px solid rgba(0,0,0,.15); border-radius: 10px; padding: 10px; background: #fff; cursor: pointer; box-sizing: border-box;">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 74
+### Line 75
 
 ```text
-        <input id="catalog_number" name="catalog_number" type="text" placeholder="Catalog number">
+                                                                                                                                                                <button
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
 
-### Line 75
+### Line 76
 
 ```text
-      </div>
+                                                                                                                                                                  class="btn btn-secondary"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1081,7 +1077,7 @@ select:focus {
 ### Line 77
 
 ```text
-      <div class="field field-span-2">
+                                                                                                                                                                    type="button"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1089,7 +1085,7 @@ select:focus {
 ### Line 78
 
 ```text
-        <label for="description">Description</label>
+                                                                                                                                                                      id="clear_bulk_scan"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1097,7 +1093,7 @@ select:focus {
 ### Line 79
 
 ```text
-        <textarea id="description" name="description" rows="3" placeholder="Optional description"></textarea>
+                                                                                                                                                                        onclick="clearBulkScanBox()"
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1105,7 +1101,15 @@ select:focus {
 ### Line 80
 
 ```text
-      </div>
+                                                                                                                                                                          style="margin-top: 14px;">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 81
+
+```text
+                                                                                                                                                                            Clear
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1113,7 +1117,7 @@ select:focus {
 ### Line 82
 
 ```text
-      <div class="field field-span-2">
+                                                                                                                                                                            </button>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1121,7 +1125,7 @@ select:focus {
 ### Line 83
 
 ```text
-        <label for="lot_number"><strong>Lot #</strong></label>
+                                                                                                                                                                                                                  </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1129,20 +1133,20 @@ select:focus {
 ### Line 84
 
 ```text
-        <input id="lot_number" name="lot_number" type="text" placeholder="Lot number">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 85
-
-```text
-      </div>
+                                                                                                                                                                                                                    </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 86
+### Line 85
+
+```text
+                                                                                                                                                                                                                    </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 87
 
 ```text
     </div>
@@ -1150,7 +1154,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 88
+### Line 89
 
 ```text
     <hr class="sep">
@@ -1161,7 +1165,7 @@ select:focus {
 ### Line 91
 
 ```text
-    <h2 class="h2">Location</h2>
+    <h3 class="h2">Destination</h3>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1185,7 +1189,7 @@ select:focus {
 ### Line 94
 
 ```text
-        <label for="location_template">Location Template</label>
+        <label for="bulk_location_template">Location Template</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1193,7 +1197,7 @@ select:focus {
 ### Line 95
 
 ```text
-        <select id="location_template" name="location_template">
+        <select id="bulk_location_template">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1337,7 +1341,7 @@ select:focus {
 ### Line 113
 
 ```text
-        </select>
+          <option value="unfound">Unfound</option>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1345,7 +1349,7 @@ select:focus {
 ### Line 114
 
 ```text
-        <div class="hint">Select a room template or edit room fields manually.</div>
+        </select>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1369,7 +1373,7 @@ select:focus {
 ### Line 118
 
 ```text
-        <label for="room_no">Room #</label>
+        <label for="bulk_room_no">Room #</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1377,7 +1381,7 @@ select:focus {
 ### Line 119
 
 ```text
-        <input id="room_no" name="room_no" type="text" placeholder="e.g. 2025N">
+        <input id="bulk_room_no" name="room_no" type="text" placeholder="e.g. 2018N">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1393,7 +1397,7 @@ select:focus {
 ### Line 122
 
 ```text
-      <div class="field">
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1401,7 +1405,7 @@ select:focus {
 ### Line 123
 
 ```text
-        <label for="room_name">Room Name</label>
+        <label for="bulk_room_desc">Room Description</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1409,7 +1413,7 @@ select:focus {
 ### Line 124
 
 ```text
-        <input id="room_name" name="room_name" type="text" placeholder="e.g. Bay A">
+        <input id="bulk_room_desc" name="room_desc" type="text" placeholder="e.g. Pass-Through">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1425,7 +1429,7 @@ select:focus {
 ### Line 127
 
 ```text
-      <div class="field field-span-2">
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1433,7 +1437,7 @@ select:focus {
 ### Line 128
 
 ```text
-        <label for="room_desc">Room Description</label>
+        <label for="bulk_area_class">Area Class</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1441,7 +1445,7 @@ select:focus {
 ### Line 129
 
 ```text
-        <input id="room_desc" name="room_desc" type="text" placeholder="Optional room description">
+        <input id="bulk_area_class" name="area_class" type="text" placeholder="e.g. H-5">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1457,7 +1461,7 @@ select:focus {
 ### Line 132
 
 ```text
-      <div class="field">
+      <div class="field field-span-2">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1465,7 +1469,7 @@ select:focus {
 ### Line 133
 
 ```text
-        <label for="area_class">Area Class</label>
+        <label for="bulk_storage_location">Storage Location</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1473,7 +1477,7 @@ select:focus {
 ### Line 134
 
 ```text
-        <input id="area_class" name="area_class" type="text" placeholder="e.g. H-5">
+        <input id="bulk_storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1489,7 +1493,7 @@ select:focus {
 ### Line 137
 
 ```text
-      <div class="field field-span-2">
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1497,7 +1501,7 @@ select:focus {
 ### Line 138
 
 ```text
-        <label>Selected Room</label>
+        <label for="bulk_storage_sublocation">Sub-Storage Location</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1505,7 +1509,7 @@ select:focus {
 ### Line 139
 
 ```text
-        <input id="room_display" type="text" readonly placeholder="No location selected">
+        <input id="bulk_storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1521,7 +1525,7 @@ select:focus {
 ### Line 142
 
 ```text
-      <div class="field field-span-2">
+      <div class="field">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1529,7 +1533,7 @@ select:focus {
 ### Line 143
 
 ```text
-        <label for="storage_location">Storage Location</label>
+        <label for="bulk_storage_device">Storage Device</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1537,7 +1541,7 @@ select:focus {
 ### Line 144
 
 ```text
-        <input id="storage_location" name="storage_location" type="text" placeholder="e.g. Fume Hood, SE">
+        <input id="bulk_storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1561,7 +1565,7 @@ select:focus {
 ### Line 148
 
 ```text
-        <label for="storage_sublocation">Sub-Storage Location</label>
+        <label for="bulk_performed_by">Moved By</label>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1569,7 +1573,7 @@ select:focus {
 ### Line 149
 
 ```text
-        <input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g. Shelf 2">
+        <input id="bulk_performed_by" name="performed_by" type="text" placeholder="Your name">
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1582,10 +1586,10 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 152
+### Line 151
 
 ```text
-      <div class="field">
+    </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1593,7 +1597,7 @@ select:focus {
 ### Line 153
 
 ```text
-        <label for="storage_device">Storage Device</label>
+    <div class="actions">
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1601,7 +1605,7 @@ select:focus {
 ### Line 154
 
 ```text
-        <input id="storage_device" name="storage_device" type="text" placeholder="e.g. Cabinet / As Received">
+      <button class="btn" type="submit">Apply Bulk Move</button>
 ```
 
 `html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
@@ -1609,7 +1613,7 @@ select:focus {
 ### Line 155
 
 ```text
-      </div>
+    </div>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -1617,412 +1621,12 @@ select:focus {
 ### Line 156
 
 ```text
-    </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 158
-
-```text
-    <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 161
-
-```text
-    <h2 class="h2">Dates & Compliance</h2>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 162
-
-```text
-    <div class="grid location-grid">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 163
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 164
-
-```text
-        <label for="manuf_date">Manufacture Date</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 165
-
-```text
-        <input id="manuf_date" name="manuf_date" type="date">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 166
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 168
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 169
-
-```text
-        <label for="expiry_date">Expiration Date</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 170
-
-```text
-        <input id="expiry_date" name="expiry_date" type="date">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 171
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 173
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 174
-
-```text
-        <label for="choice">Choice</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 175
-
-```text
-        <input id="choice" name="choice" type="text" placeholder="">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 176
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 177
-
-```text
-    </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 179
-
-```text
-    <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 182
-
-```text
-    <h2 class="h2">NMR</h2>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 183
-
-```text
-    <div class="grid">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 184
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 185
-
-```text
-        <label for="nmr">NMR</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 186
-
-```text
-        <input id="nmr" name="nmr" type="text" placeholder="">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 187
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 189
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 190
-
-```text
-        <label for="nmr_expiry">NMR Expiry</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 191
-
-```text
-        <input id="nmr_expiry" name="nmr_expiry" type="date">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 192
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 193
-
-```text
-    </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 195
-
-```text
-    <hr class="sep">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 198
-
-```text
-    <h2 class="h2">Ownership</h2>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 199
-
-```text
-    <div class="grid">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 200
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 201
-
-```text
-        <label for="owner">Owner</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 202
-
-```text
-        <input id="owner" name="owner" type="text" placeholder="">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 203
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 205
-
-```text
-      <div class="field">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 206
-
-```text
-        <label for="added_by">Added By</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 207
-
-```text
-        <input id="added_by" name="added_by" type="text" placeholder="">
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 208
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 210
-
-```text
-      <div class="field field-span-2">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 211
-
-```text
-        <label for="notes">Notes</label>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 212
-
-```text
-        <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 213
-
-```text
-      </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 214
-
-```text
-    </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 216
-
-```text
-    <div class="actions">
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 217
-
-```text
-      <button class="btn" type="submit">Save Changes</button>
-```
-
-`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
-
-### Line 218
-
-```text
-      <a class="btn btn-secondary" href="{{ url_for('chem.inventory') }}">Cancel</a>
-```
-
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
-
-### Line 219
-
-```text
-      <span id="autofillStatus" class="muted"></span>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 220
-
-```text
-    </div>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 221
-
-```text
   </form>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 222
+### Line 157
 
 ```text
 </section>
@@ -2030,7 +1634,311 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 224
+### Line 160
+
+```text
+  <form method="post" action="{{ url_for('chem.move_material') }}">
+```
+
+`html-form` — This form line defines browser input flow. Preserve action URL, method, CSRF/auth assumptions, field names, and submit behavior; edge cases include missing required fields, browser autofill, duplicate submissions, and routes that expect exact names.
+
+### Line 161
+
+```text
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 163
+
+```text
+    <input type="hidden" name="barcode" id="barcodeHidden">
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 165
+
+```text
+    <div class="card">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 166
+
+```text
+      <h2 class="subhead">Location</h2>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 168
+
+```text
+      <div class="grid">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 169
+
+```text
+        <div class="grid-head">Field</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 170
+
+```text
+        <div class="grid-head">Current Location</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 171
+
+```text
+        <div class="grid-head">New Location</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 174
+
+```text
+        <div class="grid-label">Room No</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 175
+
+```text
+        <div class="grid-current"><input id="cur_room_no" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 176
+
+```text
+        <div class="grid-new"><input id="room_no" name="room_no" type="text" placeholder="e.g., 02020N"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 179
+
+```text
+        <div class="grid-label">Room Desc</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 180
+
+```text
+        <div class="grid-current"><input id="cur_room_desc" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 181
+
+```text
+        <div class="grid-new"><input id="room_desc" name="room_desc" type="text" placeholder="e.g., H-5"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 184
+
+```text
+        <div class="grid-label">Area Class</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 185
+
+```text
+        <div class="grid-current"><input id="cur_area_class" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 186
+
+```text
+        <div class="grid-new"><input id="area_class" name="area_class" type="text" placeholder="e.g., H-5"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 189
+
+```text
+        <div class="grid-label">Storage Location</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 190
+
+```text
+        <div class="grid-current"><input id="cur_storage_location" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 191
+
+```text
+        <div class="grid-new"><input id="storage_location" name="storage_location" type="text" placeholder="e.g., Fume Hood, SE"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 194
+
+```text
+        <div class="grid-label">Sub-Storage Location</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 195
+
+```text
+        <div class="grid-current"><input id="cur_storage_sublocation" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 196
+
+```text
+        <div class="grid-new"><input id="storage_sublocation" name="storage_sublocation" type="text" placeholder="e.g., Storage - Left"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 199
+
+```text
+        <div class="grid-label">Storage Device</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 200
+
+```text
+        <div class="grid-current"><input id="cur_storage_device" type="text" readonly></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 201
+
+```text
+        <div class="grid-new"><input id="storage_device" name="storage_device" type="text" placeholder="e.g., Acid Cabinet"></div>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 202
+
+```text
+	<div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 203
+
+```text
+	<label>User</label>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 204
+
+```text
+	<input type="text" name="performed_by" placeholder="User">
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 205
+
+```text
+	</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 206
+
+```text
+      </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 208
+
+```text
+      <div class="move-actions">
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 209
+
+```text
+        <button type="submit" class="btn btn-primary" id="btnSubmit" disabled>Move</button>
+```
+
+`html-control` — This control line defines user-editable input or a visible action. Preserve name, id, value, required status, option set, and accessibility label; edge cases include empty values, unexpected values, disabled controls, and mismatches with Flask form parsing.
+
+### Line 210
+
+```text
+      </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 211
+
+```text
+    </div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 212
+
+```text
+  </form>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 213
+
+```text
+</div>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 215
 
 ```text
 <style>
@@ -2038,119 +1946,23 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 225
+### Line 216
 
 ```text
-.page-head {
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 226
+### Line 217
 
 ```text
-  max-width: 1100px;
+.page-title { margin: 14px 0 18px; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 227
-
-```text
-  margin: 20px auto 14px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 228
-
-```text
-  padding: 0 12px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 229
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 231
-
-```text
-.page-head h1 {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 232
-
-```text
-  margin: 0 0 8px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 233
-
-```text
-  font-size: 28px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 234
-
-```text
-  font-weight: 800;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 235
-
-```text
-  color: #222;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 236
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 238
-
-```text
-.muted {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 239
-
-```text
-  opacity: 0.78;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 240
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 242
+### Line 218
 
 ```text
 .card {
@@ -2158,23 +1970,7 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 243
-
-```text
-  max-width: 1100px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 244
-
-```text
-  margin: 0 auto 24px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 245
+### Line 219
 
 ```text
   background: #fff;
@@ -2182,31 +1978,39 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 246
+### Line 220
 
 ```text
-  border-radius: 14px;
+  border-radius: 12px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 247
+### Line 221
 
 ```text
-  padding: 18px 18px 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 248
+### Line 222
 
 ```text
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  padding: 16px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 249
+### Line 223
+
+```text
+  margin-bottom: 16px;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 224
 
 ```text
 }
@@ -2214,10 +2018,210 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
+### Line 225
+
+```text
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 226
+
+```text
+.col { flex: 1 1 420px; min-width: 320px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 227
+
+```text
+label { display:block; margin-bottom: 6px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 228
+
+```text
+input[type="text"]{
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 229
+
+```text
+  width: 100%;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 230
+
+```text
+  padding: 10px 12px;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 231
+
+```text
+  border: 1px solid #d7d7d7;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 232
+
+```text
+  border-radius: 10px;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 233
+
+```text
+  background: #fff;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 234
+
+```text
+}
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 235
+
+```text
+input[readonly] { background: #f6f6f6; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 236
+
+```text
+.help { font-size: 12px; opacity: .75; margin-top: 6px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 237
+
+```text
+.status { margin-top: 10px; font-size: 13px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 238
+
+```text
+.btn-row { display:flex; gap:10px; margin-top: 10px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 239
+
+```text
+.btn{
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 240
+
+```text
+  border: 0;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 241
+
+```text
+  padding: 10px 14px;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 242
+
+```text
+  border-radius: 10px;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 243
+
+```text
+  cursor: pointer;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 244
+
+```text
+}
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 245
+
+```text
+.btn-primary { background: #0b5; color: #fff; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 246
+
+```text
+.btn-secondary { background: #444; color: #fff; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 247
+
+```text
+.btn { background: #222; color: #fff; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 248
+
+```text
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 250
+
+```text
+.barcode-box{
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
 ### Line 251
 
 ```text
-.grid {
+  border: 1px dashed #ddd;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2225,7 +2229,7 @@ select:focus {
 ### Line 252
 
 ```text
-  display: grid;
+  border-radius: 12px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2233,7 +2237,7 @@ select:focus {
 ### Line 253
 
 ```text
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 12px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2241,7 +2245,7 @@ select:focus {
 ### Line 254
 
 ```text
-  gap: 16px 14px;
+  background: #fafafa;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2254,26 +2258,18 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
+### Line 256
+
+```text
+.barcode-title { font-weight: 700; margin-bottom: 6px; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
 ### Line 257
 
 ```text
-.field {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 258
-
-```text
-  display: flex;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 259
-
-```text
-  flex-direction: column;
+.barcode-text { font-size: 20px; font-weight: 800; letter-spacing: .5px; margin: 6px 0 10px; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2281,7 +2277,7 @@ select:focus {
 ### Line 260
 
 ```text
-  gap: 7px;
+.subhead { margin: 0 0 12px; font-size: 18px; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2289,7 +2285,15 @@ select:focus {
 ### Line 261
 
 ```text
-}
+.grid{
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 262
+
+```text
+  display: grid;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2297,7 +2301,7 @@ select:focus {
 ### Line 263
 
 ```text
-.field-span-2 {
+  grid-template-columns: 180px 1fr 1fr;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2305,12 +2309,20 @@ select:focus {
 ### Line 264
 
 ```text
-  grid-column: span 2;
+  gap: 10px;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
 ### Line 265
+
+```text
+  align-items: center;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 266
 
 ```text
 }
@@ -2321,7 +2333,7 @@ select:focus {
 ### Line 267
 
 ```text
-label {
+.grid-head { font-weight: 800; padding: 6px 0; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2329,7 +2341,7 @@ label {
 ### Line 268
 
 ```text
-  font-weight: 700;
+.grid-label { font-weight: 600; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2337,7 +2349,7 @@ label {
 ### Line 269
 
 ```text
-  font-size: 15px;
+.grid-current, .grid-new { }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2345,7 +2357,7 @@ label {
 ### Line 270
 
 ```text
-  color: #222;
+.move-actions { margin-top: 16px; display:flex; justify-content:flex-end; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2353,7 +2365,7 @@ label {
 ### Line 271
 
 ```text
-  line-height: 1.2;
+@media (max-width: 900px){
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2361,7 +2373,15 @@ label {
 ### Line 272
 
 ```text
-}
+  .grid{ grid-template-columns: 1fr; }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 273
+
+```text
+  .grid-head{ display:none; }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2369,7 +2389,7 @@ label {
 ### Line 274
 
 ```text
-input,
+}
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2377,15 +2397,7 @@ input,
 ### Line 275
 
 ```text
-textarea,
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 276
-
-```text
-select,
+</style>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -2393,628 +2405,12 @@ select,
 ### Line 277
 
 ```text
-button {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 278
-
-```text
-  padding: 11px 12px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 279
-
-```text
-  border: 1px solid rgba(0,0,0,.16);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 280
-
-```text
-  border-radius: 10px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 281
-
-```text
-  outline: none;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 282
-
-```text
-  background: #fff;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 283
-
-```text
-  font-size: 15px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 284
-
-```text
-  min-height: 46px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 285
-
-```text
-  box-sizing: border-box;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 286
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 288
-
-```text
-textarea {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 289
-
-```text
-  min-height: 82px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 290
-
-```text
-  resize: vertical;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 291
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 293
-
-```text
-input[readonly] {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 294
-
-```text
-  background: #f5f5f5;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 295
-
-```text
-  color: #555;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 296
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 298
-
-```text
-input:focus,
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 299
-
-```text
-textarea:focus,
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 300
-
-```text
-select:focus {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 301
-
-```text
-  border-color: rgba(204,0,0,.55);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 302
-
-```text
-  box-shadow: 0 0 0 3px rgba(204,0,0,.12);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 303
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 305
-
-```text
-.sep {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 306
-
-```text
-  border: 0;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 307
-
-```text
-  border-top: 1px solid rgba(0,0,0,.10);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 308
-
-```text
-  margin: 18px 0 18px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 309
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 311
-
-```text
-.h2 {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 312
-
-```text
-  margin: 6px 0 14px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 313
-
-```text
-  font-size: 20px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 314
-
-```text
-  font-weight: 800;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 315
-
-```text
-  color: #222;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 316
-
-```text
-  line-height: 1.2;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 317
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 319
-
-```text
-.hint {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 320
-
-```text
-  font-size: 13px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 321
-
-```text
-  opacity: .75;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 322
-
-```text
-  margin-top: -1px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 323
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 325
-
-```text
-.actions {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 326
-
-```text
-  display: flex;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 327
-
-```text
-  align-items: center;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 328
-
-```text
-  gap: 10px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 329
-
-```text
-  margin-top: 22px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 330
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 332
-
-```text
-.btn {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 333
-
-```text
-  background: #c00;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 334
-
-```text
-  color: #fff;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 335
-
-```text
-  border: 0;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 336
-
-```text
-  border-radius: 10px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 337
-
-```text
-  padding: 11px 16px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 338
-
-```text
-  cursor: pointer;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 339
-
-```text
-  font-size: 15px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 340
-
-```text
-  font-weight: 700;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 341
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 343
-
-```text
-.btn:hover {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 344
-
-```text
-  filter: brightness(.96);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 345
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 347
-
-```text
-.btn-secondary {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 348
-
-```text
-  background: #444;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 349
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 351
-
-```text
-.location-grid {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 352
-
-```text
-  margin-bottom: 14px;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 353
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 355
-
-```text
-@media (max-width: 900px) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 356
-
-```text
-  .grid {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 357
-
-```text
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 358
-
-```text
-  }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 360
-
-```text
-  .field-span-2 {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 361
-
-```text
-    grid-column: span 2;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 362
-
-```text
-  }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 363
-
-```text
-}
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 364
-
-```text
-</style>
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 365
-
-```text
-{% endblock %}
-```
-
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
-
-### Line 367
-
-```text
-{% block scripts %}
-```
-
-`template` — This template expression bridges server data into HTML. Preserve variable names, filters, loops, and conditional rendering; edge cases include missing context keys, empty lists, unsafe HTML, and values that need escaping.
-
-### Line 368
-
-```text
 <script>
 ```
 
 `asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
 
-### Line 369
+### Line 278
 
 ```text
 (function () {
@@ -3022,175 +2418,103 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 370
+### Line 279
 
 ```text
-  const statusEl = document.getElementById("autofillStatus");
+  const barcodeEl = document.getElementById("barcode");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 372
+### Line 280
 
 ```text
-  const LOCATION_TEMPLATES = {
+  const barcodeHiddenEl = document.getElementById("barcodeHidden");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 373
+### Line 281
 
 ```text
-    bay_a: { room_no: "2025N", room_name: "Bay A", area_class: "H-5" },
+  const statusEl = document.getElementById("lookupStatus");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 374
+### Line 282
 
 ```text
-    bay_b: { room_no: "2022N", room_name: "Bay B", area_class: "H-5" },
+  const btnLoad = document.getElementById("btnLoad");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 375
+### Line 283
 
 ```text
-    bay_c: { room_no: "2020N", room_name: "Bay C", area_class: "H-5" },
+  const btnClear = document.getElementById("btnClear");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 376
+### Line 284
 
 ```text
-    bay_d: { room_no: "2018N", room_name: "Bay D", area_class: "H-5" },
+  const btnSubmit = document.getElementById("btnSubmit");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 377
+### Line 285
 
 ```text
-    bay_e: { room_no: "2016N", room_name: "Bay E", area_class: "H-5" },
+  const barcodeText = document.getElementById("barcodeText");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 378
+### Line 286
 
 ```text
-    bay_f: { room_no: "2014N", room_name: "Bay F", area_class: "H-5" },
+  const barcodeSvg = document.getElementById("barcodeSvg");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 379
+### Line 288
 
 ```text
-    bay_g: { room_no: "2012N", room_name: "Bay G", area_class: "H-5" },
+  function setStatus(msg, isError) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 381
+### Line 289
 
 ```text
-    student_yellow: { room_no: "2010N", room_name: "Student Yellow", area_class: "H-5" },
+    if (!statusEl) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 382
+### Line 290
 
 ```text
-    mocvd: { room_no: "2006N", room_name: "MOCVD", area_class: "H-5" },
+    statusEl.textContent = msg || "";
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 383
+### Line 291
 
 ```text
-    microfluidics: { room_no: "2008N", room_name: "Microfluidics", area_class: "H-5" },
+    statusEl.style.color = isError ? "#b00" : "#222";
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 384
-
-```text
-    metrology: { room_no: "2026N", room_name: "Metrology", area_class: "H-5" },
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 386
-
-```text
-    backend_lab: { room_no: "2223", room_name: "Backend Lab", area_class: "General" },
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 387
-
-```text
-    prototyping_lab: { room_no: "2237", room_name: "Prototyping Lab", area_class: "General" },
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 388
-
-```text
-    cr_shop: { room_no: "2237N", room_name: "CR Shop", area_class: "General" },
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 390
-
-```text
-    gas_chem_room: { room_no: "2018N", room_name: "Gas Chem Room", area_class: "H-2,3,4" },
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 391
-
-```text
-    pass_through: { room_no: "2018N", room_name: "Pass-Through", area_class: "H-5" }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 392
-
-```text
-  };
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 394
-
-```text
-  function setStatus(msg) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 395
-
-```text
-    if (statusEl) statusEl.textContent = msg || "";
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 396
+### Line 292
 
 ```text
   }
@@ -3198,10 +2522,634 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
+### Line 294
+
+```text
+  function setCurrentField(id, value) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 295
+
+```text
+    const el = document.getElementById(id);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 296
+
+```text
+    if (!el) return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 297
+
+```text
+    el.value = (value == null ? "" : String(value));
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 298
+
+```text
+  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 300
+
+```text
+  function clearAll() {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 301
+
+```text
+    barcodeEl.value = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 302
+
+```text
+    barcodeHiddenEl.value = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 303
+
+```text
+    barcodeText.textContent = "(empty)";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 304
+
+```text
+    setStatus("");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 307
+
+```text
+    ["cur_room_no","cur_room_desc","cur_area_class","cur_storage_location","cur_storage_sublocation","cur_storage_device"]
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 308
+
+```text
+      .forEach(id => setCurrentField(id, ""));
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 311
+
+```text
+    ["room_no","room_desc","area_class","storage_location","storage_sublocation","storage_device"]
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 312
+
+```text
+      .forEach(id => {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 313
+
+```text
+        const el = document.getElementById(id);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 314
+
+```text
+        if (el) el.value = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 315
+
+```text
+      });
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 318
+
+```text
+    if (barcodeSvg) barcodeSvg.innerHTML = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 320
+
+```text
+    btnSubmit.disabled = true;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 321
+
+```text
+    barcodeEl.focus();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 322
+
+```text
+  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 324
+
+```text
+  function renderBarcodeDisplay(code) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 325
+
+```text
+    const c = (code || "").trim();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 326
+
+```text
+    barcodeText.textContent = c ? c : "(empty)";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 327
+
+```text
+    if (!c) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 328
+
+```text
+      if (barcodeSvg) barcodeSvg.innerHTML = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 329
+
+```text
+      return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 330
+
+```text
+    }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 334
+
+```text
+    try {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 335
+
+```text
+      if (window.JsBarcode && barcodeSvg) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 336
+
+```text
+        window.JsBarcode(barcodeSvg, c, {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 337
+
+```text
+          format: "CODE128",
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 338
+
+```text
+          displayValue: false,
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 339
+
+```text
+          margin: 0,
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 340
+
+```text
+          height: 55
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 341
+
+```text
+        });
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 342
+
+```text
+      } else {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 343
+
+```text
+        if (barcodeSvg) barcodeSvg.innerHTML = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 344
+
+```text
+      }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 345
+
+```text
+    } catch (e) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 346
+
+```text
+      if (barcodeSvg) barcodeSvg.innerHTML = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 347
+
+```text
+    }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 348
+
+```text
+  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 350
+
+```text
+  async function loadCurrent() {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 351
+
+```text
+    const bc = (barcodeEl.value || "").trim();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 352
+
+```text
+    if (!bc) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 353
+
+```text
+      setStatus("Scan/enter a barcode first.", true);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 354
+
+```text
+      return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 355
+
+```text
+    }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 357
+
+```text
+    setStatus("Loading current location…");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 358
+
+```text
+    btnSubmit.disabled = true;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 360
+
+```text
+    try {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 361
+
+```text
+      const res = await fetch(`/chem/api/container_lookup?barcode=${encodeURIComponent(bc)}`);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 362
+
+```text
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 363
+
+```text
+      const payload = await res.json();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 364
+
+```text
+      const data = payload && payload.data ? payload.data : {};
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 366
+
+```text
+      if (!data || Object.keys(data).length === 0) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 367
+
+```text
+        setStatus("Barcode not found.", true);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 368
+
+```text
+        renderBarcodeDisplay(bc);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 369
+
+```text
+        barcodeHiddenEl.value = bc;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 370
+
+```text
+        return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 371
+
+```text
+      }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 374
+
+```text
+      setCurrentField("cur_room_no", data.room_no);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 375
+
+```text
+      setCurrentField("cur_room_desc", data.room_desc);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 376
+
+```text
+      setCurrentField("cur_area_class", data.area_class);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 377
+
+```text
+      setCurrentField("cur_storage_location", data.storage_location);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 378
+
+```text
+      setCurrentField("cur_storage_sublocation", data.storage_sublocation);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 379
+
+```text
+      setCurrentField("cur_storage_device", data.storage_device);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 382
+
+```text
+      barcodeHiddenEl.value = bc;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 384
+
+```text
+      renderBarcodeDisplay(bc);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 387
+
+```text
+      if (String(data.status || "").toLowerCase() === "removed") {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 388
+
+```text
+        setStatus("This container is marked Removed. Move is disabled.", true);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 389
+
+```text
+        btnSubmit.disabled = true;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 390
+
+```text
+        return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 391
+
+```text
+      }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 393
+
+```text
+      setStatus("Loaded.");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 394
+
+```text
+      btnSubmit.disabled = false;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 397
+
+```text
+      const roomNoEl = document.getElementById("room_no");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
 ### Line 398
 
 ```text
-  function fill(id, value) {
+      if (roomNoEl) roomNoEl.focus();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3209,7 +3157,7 @@ select:focus {
 ### Line 399
 
 ```text
-  const el = document.getElementById(id);
+    } catch (e) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3217,7 +3165,7 @@ select:focus {
 ### Line 400
 
 ```text
-  if (!el) {
+      console.error(e);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3225,7 +3173,7 @@ select:focus {
 ### Line 401
 
 ```text
-    console.log("MISSING ELEMENT ID:", id, "VALUE:", value);
+      setStatus("Lookup failed (check server logs).", true);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3233,7 +3181,7 @@ select:focus {
 ### Line 402
 
 ```text
-    return;
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3246,26 +3194,18 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 404
-
-```text
-  el.value = value == null ? "" : value;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
 ### Line 405
 
 ```text
-  }
+  btnLoad.addEventListener("click", loadCurrent);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 407
+### Line 406
 
 ```text
-  function updateRoomDisplay() {
+  btnClear.addEventListener("click", clearAll);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3273,7 +3213,7 @@ select:focus {
 ### Line 408
 
 ```text
-    const roomName = document.getElementById("room_name")?.value || "";
+  barcodeEl.addEventListener("keydown", (ev) => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3281,7 +3221,7 @@ select:focus {
 ### Line 409
 
 ```text
-    const roomNo = document.getElementById("room_no")?.value || "";
+    if (ev.key === "Enter") {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3289,7 +3229,7 @@ select:focus {
 ### Line 410
 
 ```text
-    const areaClass = document.getElementById("area_class")?.value || "";
+      ev.preventDefault();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3297,7 +3237,7 @@ select:focus {
 ### Line 411
 
 ```text
-    fill("room_display", [roomName, roomNo, areaClass].filter(Boolean).join(" | "));
+      loadCurrent();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3305,23 +3245,15 @@ select:focus {
 ### Line 412
 
 ```text
-  }
+    }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 414
+### Line 413
 
 ```text
-  function normalizeDate(v) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 415
-
-```text
-    if (!v) return "";
+  });
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3329,7 +3261,7 @@ select:focus {
 ### Line 416
 
 ```text
-    if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+  clearAll();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3337,7 +3269,7 @@ select:focus {
 ### Line 417
 
 ```text
-    const s = String(v).slice(0, 10);
+})();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3345,15 +3277,7 @@ select:focus {
 ### Line 418
 
 ```text
-    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 419
-
-```text
-    return "";
+</script>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3361,7 +3285,15 @@ select:focus {
 ### Line 420
 
 ```text
-  }
+<script>
+```
+
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
+
+### Line 421
+
+```text
+(function () {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3369,7 +3301,7 @@ select:focus {
 ### Line 422
 
 ```text
-  function detectTemplate(data) {
+  const bulkBox = document.getElementById("bulk_barcodes");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3377,7 +3309,7 @@ select:focus {
 ### Line 423
 
 ```text
-    const roomNo = (data.room_no || "").trim();
+  const focusBtn = document.getElementById("focus_bulk_scan");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3385,7 +3317,7 @@ select:focus {
 ### Line 424
 
 ```text
-    const roomName = (data.room_name || "").trim();
+  const clearBtn = document.getElementById("clear_bulk_scan");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3393,7 +3325,7 @@ select:focus {
 ### Line 425
 
 ```text
-    const areaClass = (data.area_class || "").trim();
+  const templateEl = document.getElementById("bulk_location_template");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3401,7 +3333,7 @@ select:focus {
 ### Line 427
 
 ```text
-    for (const [key, tpl] of Object.entries(LOCATION_TEMPLATES)) {
+  const LOCATION_TEMPLATES = {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3409,7 +3341,7 @@ select:focus {
 ### Line 428
 
 ```text
-      if (
+    bay_a: { room_no: "2025N", room_desc: "Bay A", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3417,7 +3349,7 @@ select:focus {
 ### Line 429
 
 ```text
-        (tpl.room_no || "") === roomNo &&
+    bay_b: { room_no: "2022N", room_desc: "Bay B", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3425,7 +3357,7 @@ select:focus {
 ### Line 430
 
 ```text
-        (tpl.room_name || "") === roomName &&
+    bay_c: { room_no: "2020N", room_desc: "Bay C", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3433,7 +3365,7 @@ select:focus {
 ### Line 431
 
 ```text
-        (tpl.area_class || "") === areaClass
+    bay_d: { room_no: "2018N", room_desc: "Bay D", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3441,7 +3373,7 @@ select:focus {
 ### Line 432
 
 ```text
-      ) {
+    bay_e: { room_no: "2016N", room_desc: "Bay E", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3449,7 +3381,7 @@ select:focus {
 ### Line 433
 
 ```text
-        return key;
+    bay_f: { room_no: "2014N", room_desc: "Bay F", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3457,15 +3389,7 @@ select:focus {
 ### Line 434
 
 ```text
-      }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 435
-
-```text
-    }
+    bay_g: { room_no: "2012N", room_desc: "Bay G", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3473,7 +3397,7 @@ select:focus {
 ### Line 436
 
 ```text
-    return "";
+    student_yellow: { room_no: "2010N", room_desc: "Student Yellow", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3481,7 +3405,15 @@ select:focus {
 ### Line 437
 
 ```text
-  }
+    mocvd: { room_no: "2006N", room_desc: "MOCVD", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 438
+
+```text
+    microfluidics: { room_no: "2008N", room_desc: "Microfluidics", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3489,15 +3421,15 @@ select:focus {
 ### Line 439
 
 ```text
-  function applyLocationTemplate(templateKey) {
+    metrology: { room_no: "2026N", room_desc: "Metrology", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 440
+### Line 441
 
 ```text
-    const tpl = LOCATION_TEMPLATES[templateKey];
+    backend_lab: { room_no: "2223", room_desc: "Backend Lab", area_class: "General" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3505,7 +3437,7 @@ select:focus {
 ### Line 442
 
 ```text
-    if (!tpl) {
+    prototyping_lab: { room_no: "2237", room_desc: "Prototyping Lab", area_class: "General" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3513,15 +3445,7 @@ select:focus {
 ### Line 443
 
 ```text
-      updateRoomDisplay();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 444
-
-```text
-      return;
+    cr_shop: { room_no: "2237N", room_desc: "CR Shop", area_class: "General" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3529,15 +3453,15 @@ select:focus {
 ### Line 445
 
 ```text
-    }
+    gas_chem_room: { room_no: "2018N", room_desc: "Gas Chem Room", area_class: "H-2,3,4" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 447
+### Line 446
 
 ```text
-    fill("room_no", tpl.room_no || "");
+    pass_through: { room_no: "2018N", room_desc: "Pass-Through", area_class: "H-5" },
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3545,7 +3469,7 @@ select:focus {
 ### Line 448
 
 ```text
-    fill("room_name", tpl.room_name || "");
+    unfound: { room_no: "UNFOUND", room_desc: "Unfound", area_class: "Unfound" }
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3553,15 +3477,15 @@ select:focus {
 ### Line 449
 
 ```text
-    fill("area_class", tpl.area_class || "");
+  };
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 450
+### Line 451
 
 ```text
-    updateRoomDisplay();
+  function setVal(id, value) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3569,7 +3493,7 @@ select:focus {
 ### Line 452
 
 ```text
-    setStatus("Location template applied.");
+    const el = document.getElementById(id);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3577,7 +3501,7 @@ select:focus {
 ### Line 453
 
 ```text
-    setTimeout(() => setStatus(""), 1200);
+    if (!el) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3585,31 +3509,15 @@ select:focus {
 ### Line 454
 
 ```text
+    el.value = value == null ? "" : value;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 455
+
+```text
   }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 456
-
-```text
-  async function loadContainerByBarcode() {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 457
-
-```text
-    const barcode = (document.getElementById("barcode_lookup")?.value || "").trim();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 458
-
-```text
-    if (!barcode) {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3617,7 +3525,7 @@ select:focus {
 ### Line 459
 
 ```text
-      setStatus("Enter a barcode first.");
+  templateEl?.addEventListener("change", function () {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3625,7 +3533,7 @@ select:focus {
 ### Line 460
 
 ```text
-      return;
+    const tpl = LOCATION_TEMPLATES[this.value];
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3633,7 +3541,7 @@ select:focus {
 ### Line 461
 
 ```text
-    }
+    if (!tpl) return;
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3641,7 +3549,15 @@ select:focus {
 ### Line 463
 
 ```text
-    setStatus("Loading container...");
+    setVal("bulk_room_no", tpl.room_no);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 464
+
+```text
+    setVal("bulk_room_desc", tpl.room_desc);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3649,39 +3565,7 @@ select:focus {
 ### Line 465
 
 ```text
-    try {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 466
-
-```text
-      const res = await fetch(`/chem/api/container_lookup?barcode=${encodeURIComponent(barcode)}`);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 467
-
-```text
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 469
-
-```text
-      const payload = await res.json();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 470
-
-```text
-      const data = payload && payload.data ? payload.data : null;
+    setVal("bulk_area_class", tpl.area_class);
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3689,7 +3573,7 @@ select:focus {
 ### Line 471
 
 ```text
-      console.log("LOOKUP DATA:", data);
+})();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3697,23 +3581,7 @@ select:focus {
 ### Line 472
 
 ```text
-      if (!data) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 473
-
-```text
-        setStatus("No container found for that barcode.");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 474
-
-```text
-        return;
+</script>
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3721,7 +3589,15 @@ select:focus {
 ### Line 475
 
 ```text
-      }
+<script>
+```
+
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
+
+### Line 476
+
+```text
+const bulkBox = document.getElementById("bulk_barcodes");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3729,15 +3605,7 @@ select:focus {
 ### Line 477
 
 ```text
-      fill("container_id", data.container_id);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 478
-
-```text
-      fill("container_code", data.container_code);
+const dumpImg = document.getElementById("dump_trigger_img");
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3745,7 +3613,7 @@ select:focus {
 ### Line 479
 
 ```text
-      fill("item_name", data.item_name);
+dumpImg?.addEventListener("click", () => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3753,7 +3621,7 @@ select:focus {
 ### Line 480
 
 ```text
-      fill("description", data.description);
+  bulkBox?.focus();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3761,23 +3629,7 @@ select:focus {
 ### Line 481
 
 ```text
-      fill("catalog_number", data.catalog_number);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 482
-
-```text
-      fill("physical_state", data.physical_state);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 483
-
-```text
-      fill("size", data.size);
+});
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3785,7 +3637,7 @@ select:focus {
 ### Line 484
 
 ```text
-      fill("unit", data.unit);
+window.addEventListener("load", () => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3793,7 +3645,7 @@ select:focus {
 ### Line 485
 
 ```text
-      fill("system", data.system);
+  bulkBox?.focus();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3801,23 +3653,7 @@ select:focus {
 ### Line 486
 
 ```text
-      fill("vendor_name", data.vendor_name);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 488
-
-```text
-      fill("room_no", data.room_no);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 489
-
-```text
-      fill("room_name", data.room_name);
+});
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3825,7 +3661,7 @@ select:focus {
 ### Line 490
 
 ```text
-      fill("room_desc", data.room_desc);
+dumpImg?.addEventListener("click", () => {
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
@@ -3833,604 +3669,12 @@ select:focus {
 ### Line 491
 
 ```text
-      fill("area_class", data.area_class);
+  bulkBox?.focus();
 ```
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 493
-
-```text
-      fill("storage_location", data.storage_location);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 494
-
-```text
-      fill("storage_sublocation", data.storage_sublocation);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 495
-
-```text
-      fill("storage_device", data.storage_device);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 497
-
-```text
-      fill("manuf_date", normalizeDate(data.manuf_date));
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 498
-
-```text
-      fill("expiry_date", normalizeDate(data.expiry_date));
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 499
-
-```text
-      fill("lot_number", data.lot_number);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 500
-
-```text
-      fill("choice", data.choice);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 501
-
-```text
-      fill("nmr", data.nmr);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 502
-
-```text
-      fill("nmr_expiry", normalizeDate(data.nmr_expiry));
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 503
-
-```text
-      fill("owner", data.owner);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 504
-
-```text
-      fill("notes", data.notes);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 505
-
-```text
-      fill("added_by", data.added_by);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 507
-
-```text
-      const detected = detectTemplate(data);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 508
-
-```text
-      fill("location_template", detected);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 509
-
-```text
-      updateRoomDisplay();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 511
-
-```text
-      setStatus("Container loaded.");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 512
-
-```text
-      setTimeout(() => setStatus(""), 1500);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 513
-
-```text
-    } catch (err) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 514
-
-```text
-      console.error(err);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 515
-
-```text
-      setStatus("Load failed. Check server logs.");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 516
-
-```text
-    }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 517
-
-```text
-  }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 519
-
-```text
-  function attachSuggest(inputId, fieldName) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 520
-
-```text
-    const el = document.getElementById(inputId);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 521
-
-```text
-    if (!el) return;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 523
-
-```text
-    const listId = `${inputId}_list`;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 524
-
-```text
-    let dl = document.getElementById(listId);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 526
-
-```text
-    if (!dl) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 527
-
-```text
-      dl = document.createElement("datalist");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 528
-
-```text
-      dl.id = listId;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 529
-
-```text
-      document.body.appendChild(dl);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 530
-
-```text
-      el.setAttribute("list", listId);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 531
-
-```text
-    }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 533
-
-```text
-    let lastQ = "";
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 534
-
-```text
-    el.addEventListener("input", async () => {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 535
-
-```text
-      const q = (el.value || "").trim();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 536
-
-```text
-      if (q.length < 2 || q === lastQ) return;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 537
-
-```text
-      lastQ = q;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 539
-
-```text
-      try {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 540
-
-```text
-        const res = await fetch(`/chem/api/suggest?field=${encodeURIComponent(fieldName)}&q=${encodeURIComponent(q)}&limit=12`);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 541
-
-```text
-        if (!res.ok) return;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 542
-
-```text
-        const payload = await res.json();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 543
-
-```text
-        const results = payload && payload.results ? payload.results : [];
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 544
-
-```text
-        dl.innerHTML = "";
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 545
-
-```text
-        results.forEach((v) => {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 546
-
-```text
-          const opt = document.createElement("option");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 547
-
-```text
-          opt.value = v;
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 548
-
-```text
-          dl.appendChild(opt);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 549
-
-```text
-        });
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 550
-
-```text
-      } catch (e) {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 551
-
-```text
-      }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 552
-
-```text
-    });
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 553
-
-```text
-  }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 555
-
-```text
-  document.getElementById("lookupBtn")?.addEventListener("click", loadContainerByBarcode);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 557
-
-```text
-  document.getElementById("barcode_lookup")?.addEventListener("keydown", (ev) => {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 558
-
-```text
-    if (ev.key === "Enter") {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 559
-
-```text
-      ev.preventDefault();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 560
-
-```text
-      loadContainerByBarcode();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 561
-
-```text
-    }
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 562
-
-```text
-  });
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 564
-
-```text
-  document.getElementById("location_template")?.addEventListener("change", function () {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 565
-
-```text
-    applyLocationTemplate(this.value);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 566
-
-```text
-  });
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 568
-
-```text
-  ["room_no", "room_name", "area_class"].forEach((id) => {
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 569
-
-```text
-    document.getElementById(id)?.addEventListener("input", updateRoomDisplay);
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 570
-
-```text
-  });
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 572
-
-```text
-  attachSuggest("item_name", "name");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 573
-
-```text
-  attachSuggest("vendor_name", "vendor");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 574
-
-```text
-  attachSuggest("unit", "unit");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 575
-
-```text
-  attachSuggest("system", "system");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 576
-
-```text
-  attachSuggest("storage_device", "storage_device");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 577
-
-```text
-  attachSuggest("storage_location", "storage_location");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 578
-
-```text
-  attachSuggest("storage_sublocation", "storage_sublocation");
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 579
-
-```text
-})();
-```
-
-`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
-
-### Line 580
+### Line 492
 
 ```text
 </script>
@@ -4438,7 +3682,439 @@ select:focus {
 
 `html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
 
-### Line 581
+### Line 496
+
+```text
+<script>
+```
+
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
+
+### Line 497
+
+```text
+  function clearBulkScanBox() {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 498
+
+```text
+      const bulkBox = document.getElementById("bulk_barcodes");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 499
+
+```text
+          if (bulkBox) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 500
+
+```text
+                bulkBox.value = "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 501
+
+```text
+                      bulkBox.focus();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 502
+
+```text
+                          }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 503
+
+```text
+                            }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 505
+
+```text
+                              window.addEventListener("load", function () {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 506
+
+```text
+                                  const bulkBox = document.getElementById("bulk_barcodes");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 507
+
+```text
+                                      const dumpImg = document.getElementById("dump_trigger_img");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 509
+
+```text
+                                          if (dumpImg) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 510
+
+```text
+                                                dumpImg.addEventListener("click", function () {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 511
+
+```text
+                                                        if (bulkBox) bulkBox.focus();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 512
+
+```text
+                                                              });
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 513
+
+```text
+                                                                  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 515
+
+```text
+                                                                      if (bulkBox) bulkBox.focus();
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 516
+
+```text
+                                                                        });
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 517
+
+```text
+                                                                        </script>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 518
+
+```text
+<script>
+```
+
+`asset-link` — This asset linkage pulls in JavaScript, CSS, or browser behavior. Preserve relative paths, load order, cache expectations, and fallback behavior; edge cases include missing static files, stale browser cache, and scripts running before elements exist.
+
+### Line 519
+
+```text
+  const bulkTemplateEl = document.getElementById("bulk_location_template");
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 521
+
+```text
+  const BULK_LOCATION_TEMPLATES = {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 522
+
+```text
+    bay_a: { room_no: "2025N", room_desc: "Bay A", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 523
+
+```text
+    bay_b: { room_no: "2022N", room_desc: "Bay B", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 524
+
+```text
+    bay_c: { room_no: "2020N", room_desc: "Bay C", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 525
+
+```text
+    bay_d: { room_no: "2018N", room_desc: "Bay D", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 526
+
+```text
+    bay_e: { room_no: "2016N", room_desc: "Bay E", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 527
+
+```text
+    bay_f: { room_no: "2014N", room_desc: "Bay F", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 528
+
+```text
+    bay_g: { room_no: "2012N", room_desc: "Bay G", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 530
+
+```text
+    student_yellow: { room_no: "2010N", room_desc: "Student Yellow", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 531
+
+```text
+    mocvd: { room_no: "2006N", room_desc: "MOCVD", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 532
+
+```text
+    microfluidics: { room_no: "2008N", room_desc: "Microfluidics", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 533
+
+```text
+    metrology: { room_no: "2026N", room_desc: "Metrology", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 535
+
+```text
+    backend_lab: { room_no: "2223", room_desc: "Backend Lab", area_class: "General" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 536
+
+```text
+    prototyping_lab: { room_no: "2237", room_desc: "Prototyping Lab", area_class: "General" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 537
+
+```text
+    cr_shop: { room_no: "2237N", room_desc: "CR Shop", area_class: "General" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 539
+
+```text
+    gas_chem_room: { room_no: "2018N", room_desc: "Gas Chem Room", area_class: "H-2,3,4" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 540
+
+```text
+    pass_through: { room_no: "2018N", room_desc: "Pass-Through", area_class: "H-5" },
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 541
+
+```text
+    unfound: { room_no: "UNFOUND", room_desc: "Unfound", area_class: "Unfound" }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 542
+
+```text
+  };
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 544
+
+```text
+  function setBulkVal(id, value) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 545
+
+```text
+    const el = document.getElementById(id);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 546
+
+```text
+    if (el) el.value = value || "";
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 547
+
+```text
+  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 549
+
+```text
+  if (bulkTemplateEl) {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 550
+
+```text
+    bulkTemplateEl.addEventListener("change", function () {
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 551
+
+```text
+      const tpl = BULK_LOCATION_TEMPLATES[this.value];
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 552
+
+```text
+      if (!tpl) return;
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 554
+
+```text
+      setBulkVal("bulk_room_no", tpl.room_no);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 555
+
+```text
+      setBulkVal("bulk_room_desc", tpl.room_desc);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 556
+
+```text
+      setBulkVal("bulk_area_class", tpl.area_class);
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 557
+
+```text
+    });
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 558
+
+```text
+  }
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 559
+
+```text
+</script>
+```
+
+`html` — This HTML structure controls what the user sees. Preserve hierarchy, semantic meaning, important classes and ids, and template blocks; edge cases include long text, missing data, mobile layout, and hidden dependencies used by JavaScript.
+
+### Line 560
 
 ```text
 {% endblock %}
@@ -4450,27 +4126,27 @@ select:focus {
 
 ## Edge-Case Matrix For This File
 
-1. **Empty Input**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `empty input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-2. **Single Input**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `single input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-3. **Large Input**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `large input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-4. **Duplicate Input**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `duplicate input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-5. **Malformed Input**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `malformed input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-6. **Missing File**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `missing file` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-7. **Permission Denied**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `permission denied` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-8. **Network Timeout**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `network timeout` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-9. **Stale Credential**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `stale credential` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-10. **Rotated Secret**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `rotated secret` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-11. **Schema Drift**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `schema drift` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-12. **Partial Database Write**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `partial database write` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-13. **Concurrent Request**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `concurrent request` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-14. **Browser Refresh**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `browser refresh` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-15. **Double Submit**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `double submit` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-16. **Stale Tmux Session**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `stale tmux session` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-17. **Wrong Working Directory**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `wrong working directory` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-18. **Wrong User Account**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `wrong user account` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-19. **University It Boundary**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `University IT boundary` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-20. **Backup Restore**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `backup restore` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-21. **Disk Pressure**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `disk pressure` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-22. **Old Source Copy**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `old source copy` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-23. **Production Versus Development Configuration**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `production versus development configuration` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
-24. **Redacted Secret Reconstruction**: When recreating `UNanofabTools/app/templates/chem/edit.html`, test the `redacted secret reconstruction` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+1. **Empty Input**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `empty input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+2. **Single Input**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `single input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+3. **Large Input**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `large input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+4. **Duplicate Input**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `duplicate input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+5. **Malformed Input**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `malformed input` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+6. **Missing File**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `missing file` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+7. **Permission Denied**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `permission denied` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+8. **Network Timeout**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `network timeout` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+9. **Stale Credential**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `stale credential` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+10. **Rotated Secret**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `rotated secret` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+11. **Schema Drift**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `schema drift` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+12. **Partial Database Write**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `partial database write` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+13. **Concurrent Request**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `concurrent request` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+14. **Browser Refresh**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `browser refresh` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+15. **Double Submit**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `double submit` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+16. **Stale Tmux Session**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `stale tmux session` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+17. **Wrong Working Directory**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `wrong working directory` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+18. **Wrong User Account**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `wrong user account` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+19. **University It Boundary**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `University IT boundary` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+20. **Backup Restore**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `backup restore` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+21. **Disk Pressure**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `disk pressure` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+22. **Old Source Copy**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `old source copy` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+23. **Production Versus Development Configuration**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `production versus development configuration` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.
+24. **Redacted Secret Reconstruction**: When recreating `UNanofabTools/app/templates/chem/move.html`, test the `redacted secret reconstruction` case explicitly. The expected result is not merely that the code avoids crashing; the expected result is that the user-visible response, log entry, database state, file output, and follow-up operational instruction remain consistent with the rest of the system. If the original behavior is unsafe, document the compatibility break and the reason before changing it.

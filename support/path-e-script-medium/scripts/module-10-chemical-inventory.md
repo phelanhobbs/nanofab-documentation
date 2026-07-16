@@ -820,7 +820,7 @@ I'll group the routes by purpose.
 def inventory():
     service = ChemInventoryService()
     q = request.args.get("q", "").strip()
-    limit = int(request.args.get("limit", 500))
+    limit = request.args.get("limit", default=500, type=int) or 500
     show_removed = request.args.get("show_removed", "0") == "1"
 
     rows = service.search_inventory(q, limit, show_removed=show_removed)
@@ -837,7 +837,7 @@ def inventory():
 The main inventory page. Three URL params:
 
 - **`q`** — search query (matches against many fields; see `search_inventory` below).
-- **`limit`** — how many rows to show (default 500).
+- **`limit`** — how many rows to show (default 500). Read with `type=int`, so a non-numeric `?limit` (e.g. `?limit=abc`) safely falls back to 500 instead of crashing the page with an unhandled error. The Add-form `qty` and barcode `copies` parameters are read the same defensive way.
 - **`show_removed`** — if `1`, include removed containers in the list. By default, removed containers are hidden.
 
 Note this route carries no `@login_required` decorator, but as of 2026-06-25 the **entire `/chem` blueprint is gated by a `before_request` hook**: every chem page (this one included) requires a session granted via `/chem/enter`, which validates a signed link from the WordPress staff-tools page. Inventory views are no longer public — read and write are both behind the WordPress SSO gate (separate from the site's Duo login).
@@ -897,8 +897,8 @@ def add():
             'system': (request.form.get("system") or "").strip(),
             'lot_number': (request.form.get("lot_number") or "").strip(),
 
-            # Quantity
-            'qty': max(1, min(int(request.form.get("qty") or "1"), 500)),
+            # Quantity — type=int falls back to 1 on a missing/non-numeric value
+            'qty': max(1, min(request.form.get("qty", default=1, type=int) or 1, 500)),
 
             # Location
             'area_class': (request.form.get("area_class") or "").strip(),
@@ -1033,6 +1033,8 @@ def edit_container():
 
 A two-step UX: the user looks up a barcode on `/chem/edit`, the page fetches its data via `/chem/api/container_lookup`, the user edits the fields and POSTs back to `/chem/edit-container`.
 
+`update_container` uses "keep-or-update" for every field — a blank input keeps the existing value rather than wiping it. That includes the **room**: if the edit form submits no room fields, the container keeps its current room instead of having `room_id` set to nothing. So editing (say) an expiry date can never accidentally erase where the bottle lives.
+
 ### Barcode queue / printing
 
 ```python
@@ -1048,7 +1050,7 @@ def barcode_queue():
 def barcode_print():
     """Print barcode labels"""
     ...
-    copies = max(1, int(request.args.get('copies', 1)))
+    copies = max(1, request.args.get('copies', default=1, type=int) or 1)
     ...
     labels = service.get_barcode_labels(q, copies, limit)
     pages = [labels[i:i+30] for i in range(0, len(labels), 30)] if labels else [[]]

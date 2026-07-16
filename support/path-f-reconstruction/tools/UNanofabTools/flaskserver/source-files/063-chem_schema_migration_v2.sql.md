@@ -2,8 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/chem_schema_migration_v2.sql
 
-> **Update (2026-06-29):** a third migration, `chem_schema_migration_v3.sql` (commit `313e495`), now follows this one and reconciles the remaining schema drift. See the supplement page [`062b-chem_schema_migration_v3.sql.md`](062b-chem_schema_migration_v3.sql.md). `init_chem_db.py` applies v1 → v2 → v3.
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)

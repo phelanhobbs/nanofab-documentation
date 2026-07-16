@@ -2,8 +2,6 @@
 
 # Source Reconstruction: UNanofabTools/app/services/data_service.py
 
-> **Update (2026-07-08, commit `f177140`):** `csv_to_html_table` now runs every header/data cell through `html.escape()` (was a stored-XSS gap — cells were interpolated raw into `<th>/<td>`). Preserve that escaping in any rewrite. The embedded excerpt predates this fix.
-
 ## Breadcrumbs
 
 [Path F Home](../../../../README.md) | [Navigator](../../../../NAVIGATOR.md) | [Troubleshooting Routes](../../../../TROUBLESHOOTING-ROUTES.md) | [Reconstruction Checklist](../../../../RECONSTRUCTION-CHECKLIST.md) | [First Hour](../../../../MAINTAINER-FIRST-HOUR.md) | [Glossary](../../../../GLOSSARY.md) | [Evidence Template](../../../../REBUILD-EVIDENCE-TEMPLATE.md) | [Fixture Index](../../../../FIXTURE-AND-EVIDENCE-INDEX.md) | [Tool Index](../../../INDEX.md) | [System Map](../../../00-system-map/README.md) | [Owning Tool README](../README.md)
@@ -12,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/services/data_service.py`
-- Lines read: `172`
+- Lines read: `177`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `16e13590d62ab7ae`
+- Sanitized SHA-256 prefix: `ab30f38a9e113e91`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -24,7 +22,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: `import csv`, `import os`, `import re`, `import random`, `import pandas`, `from datetime import datetime`, `from flask import current_app`
+- Imports: `import csv`, `import html`, `import os`, `import re`, `import random`, `import pandas`, `from datetime import datetime`, `from flask import current_app`
 - Classes: none detected
 - Functions: `csv_to_html_table`, `prepare_graph_data`, `graph_csv`, `graph_txt`, `create_graph_data`, `sort_files_by_time`, `get_machine_data`, `calculate_ald_deposition_rate`
 - Routes: none detected
@@ -36,6 +34,7 @@ This section is written so a maintainer can recreate the file's behavior without
 CSV and data processing service
 """
 import csv
+import html
 import os
 import re
 import random
@@ -51,10 +50,10 @@ def csv_to_html_table(csv_file):
     with open(csv_file, newline='') as f:
         reader = csv.reader(f)
         header_row = next(reader)
-        html_output += "<thead><tr>" + "".join(f"<th>{cell}</th>" for cell in header_row) + "</tr></thead><tbody>"
+        html_output += "<thead><tr>" + "".join(f"<th>{html.escape(cell)}</th>" for cell in header_row) + "</tr></thead><tbody>"
 
         for row in reader:
-            html_output += "<tr>" + "".join(f"<td>{cell}</td>" for cell in row) + "</tr>"
+            html_output += "<tr>" + "".join(f"<td>{html.escape(cell)}</td>" for cell in row) + "</tr>"
 
     html_output += "</tbody></table>"
     return html_output
@@ -134,16 +133,21 @@ def create_graph_data(labels, data, y_axes):
 
 
 def sort_files_by_time(files, date_format):
-    """Sort files by timestamp extracted from filename"""
-    try:
-        file_details = []
+    """Sort files by timestamp extracted from filename.
 
-        for file in files:
-            # Extract run number
-            match = re.search(r'Event_Log_Run#(\d+)', file)
-            run_number = int(match.group(1)) if match else float('inf')
+    A filename that doesn't match the expected date format no longer discards the
+    whole listing — the offending file is kept with a fallback timestamp so it
+    still appears (sorted last) instead of blanking every file in the directory.
+    """
+    file_details = []
 
-            # Extract date based on format
+    for file in files:
+        # Extract run number
+        match = re.search(r'Event_Log_Run#(\d+)', file)
+        run_number = int(match.group(1)) if match else float('inf')
+
+        # Extract date based on format; tolerate a single unparseable name.
+        try:
             if date_format == 0:
                 parts = file.rsplit('_')
                 run_date = '_'.join(parts[:4])
@@ -164,15 +168,14 @@ def sort_files_by_time(files, date_format):
                     dt = datetime.now()
             else:
                 dt = datetime.now()
+        except (ValueError, IndexError):
+            dt = datetime.min  # keep the file; just sort it last
 
-            file_details.append((file, run_number, dt))
+        file_details.append((file, run_number, dt))
 
-        # Sort by run number first, then by date
-        sorted_files = sorted(file_details, key=lambda x: (x[1], x[2]), reverse=True)
-        return [file for file, _, _ in sorted_files]
-
-    except ValueError:
-        return []
+    # Sort by run number first, then by date (newest first)
+    sorted_files = sorted(file_details, key=lambda x: (x[1], x[2]), reverse=True)
+    return [file for file, _, _ in sorted_files]
 
 
 def get_machine_data(machine):
@@ -243,7 +246,7 @@ import csv
 ### Line 5
 
 ```text
-import os
+import html
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -251,7 +254,7 @@ import os
 ### Line 6
 
 ```text
-import re
+import os
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -259,7 +262,7 @@ import re
 ### Line 7
 
 ```text
-import random
+import re
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -267,7 +270,7 @@ import random
 ### Line 8
 
 ```text
-import pandas as pd
+import random
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -275,7 +278,7 @@ import pandas as pd
 ### Line 9
 
 ```text
-from datetime import datetime
+import pandas as pd
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -283,12 +286,20 @@ from datetime import datetime
 ### Line 10
 
 ```text
+from datetime import datetime
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 11
+
+```text
 from flask import current_app
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 13
+### Line 14
 
 ```text
 def csv_to_html_table(csv_file):
@@ -296,7 +307,7 @@ def csv_to_html_table(csv_file):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 14
+### Line 15
 
 ```text
     """Convert CSV file to HTML table"""
@@ -304,7 +315,7 @@ def csv_to_html_table(csv_file):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 15
+### Line 16
 
 ```text
     html_output = "<table id='sortableTable' border='1'>"
@@ -312,7 +323,7 @@ def csv_to_html_table(csv_file):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 17
+### Line 18
 
 ```text
     with open(csv_file, newline='') as f:
@@ -320,7 +331,7 @@ def csv_to_html_table(csv_file):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 18
+### Line 19
 
 ```text
         reader = csv.reader(f)
@@ -328,7 +339,7 @@ def csv_to_html_table(csv_file):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 19
+### Line 20
 
 ```text
         header_row = next(reader)
@@ -336,15 +347,15 @@ def csv_to_html_table(csv_file):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 20
+### Line 21
 
 ```text
-        html_output += "<thead><tr>" + "".join(f"<th>{cell}</th>" for cell in header_row) + "</tr></thead><tbody>"
+        html_output += "<thead><tr>" + "".join(f"<th>{html.escape(cell)}</th>" for cell in header_row) + "</tr></thead><tbody>"
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 22
+### Line 23
 
 ```text
         for row in reader:
@@ -352,18 +363,10 @@ def csv_to_html_table(csv_file):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 23
+### Line 24
 
 ```text
-            html_output += "<tr>" + "".join(f"<td>{cell}</td>" for cell in row) + "</tr>"
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 25
-
-```text
-    html_output += "</tbody></table>"
+            html_output += "<tr>" + "".join(f"<td>{html.escape(cell)}</td>" for cell in row) + "</tr>"
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -371,12 +374,20 @@ def csv_to_html_table(csv_file):
 ### Line 26
 
 ```text
+    html_output += "</tbody></table>"
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 27
+
+```text
     return html_output
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 29
+### Line 30
 
 ```text
 def prepare_graph_data(file_path, y_axes):
@@ -384,7 +395,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 30
+### Line 31
 
 ```text
     """Prepare data for graphing from CSV or TXT file"""
@@ -392,7 +403,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 31
+### Line 32
 
 ```text
     _, file_extension = os.path.splitext(file_path)
@@ -400,7 +411,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 33
+### Line 34
 
 ```text
     if file_extension.lower() == '.csv':
@@ -408,7 +419,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 34
+### Line 35
 
 ```text
         return graph_csv(file_path, y_axes)
@@ -416,7 +427,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 35
+### Line 36
 
 ```text
     elif file_extension.lower() == '.txt':
@@ -424,7 +435,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 36
+### Line 37
 
 ```text
         return graph_txt(file_path, y_axes)
@@ -432,7 +443,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 37
+### Line 38
 
 ```text
     else:
@@ -440,7 +451,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 38
+### Line 39
 
 ```text
         raise ValueError("Unsupported file type")
@@ -448,7 +459,7 @@ def prepare_graph_data(file_path, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 41
+### Line 42
 
 ```text
 def graph_csv(csv_file, y_axes):
@@ -456,7 +467,7 @@ def graph_csv(csv_file, y_axes):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 42
+### Line 43
 
 ```text
     """Convert CSV data to graph format"""
@@ -464,7 +475,7 @@ def graph_csv(csv_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 43
+### Line 44
 
 ```text
     with open(csv_file, newline='') as csvfile:
@@ -472,7 +483,7 @@ def graph_csv(csv_file, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 44
+### Line 45
 
 ```text
         reader = csv.DictReader(csvfile)
@@ -480,7 +491,7 @@ def graph_csv(csv_file, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 45
+### Line 46
 
 ```text
         run = []
@@ -488,7 +499,7 @@ def graph_csv(csv_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 46
+### Line 47
 
 ```text
         data = {y_axis: [] for y_axis in y_axes}
@@ -496,7 +507,7 @@ def graph_csv(csv_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 48
+### Line 49
 
 ```text
         for row in reader:
@@ -504,7 +515,7 @@ def graph_csv(csv_file, y_axes):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 49
+### Line 50
 
 ```text
             run.append(row[reader.fieldnames[0]])
@@ -512,7 +523,7 @@ def graph_csv(csv_file, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 50
+### Line 51
 
 ```text
             for y_axis in y_axes:
@@ -520,7 +531,7 @@ def graph_csv(csv_file, y_axes):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 51
+### Line 52
 
 ```text
                 try:
@@ -528,7 +539,7 @@ def graph_csv(csv_file, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 52
+### Line 53
 
 ```text
                     data[y_axis].append(float(row[y_axis]))
@@ -536,7 +547,7 @@ def graph_csv(csv_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 53
+### Line 54
 
 ```text
                 except (ValueError, KeyError) as e:
@@ -544,7 +555,7 @@ def graph_csv(csv_file, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 54
+### Line 55
 
 ```text
                     current_app.logger.warning(f"Error converting {y_axis} value: {e}")
@@ -552,7 +563,7 @@ def graph_csv(csv_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 55
+### Line 56
 
 ```text
                     data[y_axis].append(0)
@@ -560,7 +571,7 @@ def graph_csv(csv_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 57
+### Line 58
 
 ```text
         return create_graph_data(run, data, y_axes)
@@ -568,7 +579,7 @@ def graph_csv(csv_file, y_axes):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 60
+### Line 61
 
 ```text
 def graph_txt(txt_file, y_axes):
@@ -576,7 +587,7 @@ def graph_txt(txt_file, y_axes):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 61
+### Line 62
 
 ```text
     """Convert TXT data to graph format"""
@@ -584,7 +595,7 @@ def graph_txt(txt_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 62
+### Line 63
 
 ```text
     with open(txt_file, 'r') as file:
@@ -592,7 +603,7 @@ def graph_txt(txt_file, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 63
+### Line 64
 
 ```text
         lines = file.readlines()
@@ -600,7 +611,7 @@ def graph_txt(txt_file, y_axes):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 64
+### Line 65
 
 ```text
         headers = lines[0].strip().split('\t')
@@ -608,7 +619,7 @@ def graph_txt(txt_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 65
+### Line 66
 
 ```text
         run = []
@@ -616,7 +627,7 @@ def graph_txt(txt_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 66
+### Line 67
 
 ```text
         data = {y_axis: [] for y_axis in y_axes}
@@ -624,7 +635,7 @@ def graph_txt(txt_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 68
+### Line 69
 
 ```text
         for line in lines[1:]:
@@ -632,7 +643,7 @@ def graph_txt(txt_file, y_axes):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 69
+### Line 70
 
 ```text
             values = line.strip().split('\t')
@@ -640,7 +651,7 @@ def graph_txt(txt_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 70
+### Line 71
 
 ```text
             row = dict(zip(headers, values))
@@ -648,7 +659,7 @@ def graph_txt(txt_file, y_axes):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 71
+### Line 72
 
 ```text
             run.append(row[headers[0]])
@@ -656,7 +667,7 @@ def graph_txt(txt_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 73
+### Line 74
 
 ```text
             for y_axis in y_axes:
@@ -664,7 +675,7 @@ def graph_txt(txt_file, y_axes):
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 74
+### Line 75
 
 ```text
                 try:
@@ -672,7 +683,7 @@ def graph_txt(txt_file, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 75
+### Line 76
 
 ```text
                     data[y_axis].append(float(row[y_axis]))
@@ -680,7 +691,7 @@ def graph_txt(txt_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 76
+### Line 77
 
 ```text
                 except (ValueError, KeyError) as e:
@@ -688,7 +699,7 @@ def graph_txt(txt_file, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 77
+### Line 78
 
 ```text
                     current_app.logger.warning(f"Error converting {y_axis} value: {e}")
@@ -696,7 +707,7 @@ def graph_txt(txt_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 78
+### Line 79
 
 ```text
                     data[y_axis].append(0)
@@ -704,7 +715,7 @@ def graph_txt(txt_file, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 80
+### Line 81
 
 ```text
         return create_graph_data(run, data, y_axes)
@@ -712,7 +723,7 @@ def graph_txt(txt_file, y_axes):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 83
+### Line 84
 
 ```text
 def create_graph_data(labels, data, y_axes):
@@ -720,7 +731,7 @@ def create_graph_data(labels, data, y_axes):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 84
+### Line 85
 
 ```text
     """Create graph data structure for Chart.js"""
@@ -728,7 +739,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 85
+### Line 86
 
 ```text
     try:
@@ -736,7 +747,7 @@ def create_graph_data(labels, data, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 86
+### Line 87
 
 ```text
         return {
@@ -744,7 +755,7 @@ def create_graph_data(labels, data, y_axes):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 87
+### Line 88
 
 ```text
             'labels': labels,
@@ -752,7 +763,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 88
+### Line 89
 
 ```text
             'datasets': [
@@ -760,7 +771,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 89
+### Line 90
 
 ```text
                 {
@@ -768,7 +779,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 90
+### Line 91
 
 ```text
                     'label': f'{y_axis} over Time',
@@ -776,7 +787,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 91
+### Line 92
 
 ```text
                     'data': data[y_axis],
@@ -784,7 +795,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 92
+### Line 93
 
 ```text
                     'borderColor': f'rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 1)',
@@ -792,7 +803,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 93
+### Line 94
 
 ```text
                     'backgroundColor': f'rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.2)',
@@ -800,7 +811,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 94
+### Line 95
 
 ```text
                 } for y_axis in y_axes
@@ -808,7 +819,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 95
+### Line 96
 
 ```text
             ]
@@ -816,7 +827,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 96
+### Line 97
 
 ```text
         }
@@ -824,7 +835,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 97
+### Line 98
 
 ```text
     except Exception as e:
@@ -832,7 +843,7 @@ def create_graph_data(labels, data, y_axes):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 98
+### Line 99
 
 ```text
         current_app.logger.error(f"Error creating graph data: {e}")
@@ -840,7 +851,7 @@ def create_graph_data(labels, data, y_axes):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 99
+### Line 100
 
 ```text
         return {}
@@ -848,7 +859,7 @@ def create_graph_data(labels, data, y_axes):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 102
+### Line 103
 
 ```text
 def sort_files_by_time(files, date_format):
@@ -856,55 +867,87 @@ def sort_files_by_time(files, date_format):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 103
+### Line 104
 
 ```text
-    """Sort files by timestamp extracted from filename"""
+    """Sort files by timestamp extracted from filename.
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 104
+### Line 106
 
 ```text
-    try:
+    A filename that doesn't match the expected date format no longer discards the
 ```
 
-`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
-
-### Line 105
-
-```text
-        file_details = []
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 107
 
 ```text
-        for file in files:
+    whole listing — the offending file is kept with a fallback timestamp so it
 ```
 
-`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 108
+
+```text
+    still appears (sorted last) instead of blanking every file in the directory.
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 109
 
 ```text
-            match = re.search(r'Event_Log_Run#(\d+)', file)
+    """
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
 ### Line 110
 
 ```text
-            run_number = int(match.group(1)) if match else float('inf')
+    file_details = []
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 113
+### Line 112
+
+```text
+    for file in files:
+```
+
+`loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
+
+### Line 114
+
+```text
+        match = re.search(r'Event_Log_Run#(\d+)', file)
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 115
+
+```text
+        run_number = int(match.group(1)) if match else float('inf')
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 118
+
+```text
+        try:
+```
+
+`exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
+
+### Line 119
 
 ```text
             if date_format == 0:
@@ -912,58 +955,10 @@ def sort_files_by_time(files, date_format):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 114
-
-```text
-                parts = file.rsplit('_')
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 115
-
-```text
-                run_date = '_'.join(parts[:4])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 116
-
-```text
-                dt = datetime.strptime(run_date, "%m_%d_%Y_%I-%M %p")
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 117
-
-```text
-            elif date_format == 1:
-```
-
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
-
-### Line 118
-
-```text
-                parts = file.rsplit('_')
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
-### Line 119
-
-```text
-                run_date = '_'.join(parts[:1])
-```
-
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
-
 ### Line 120
 
 ```text
-                dt = datetime.strptime(run_date, "%Y%m%d%H%M%S")
+                parts = file.rsplit('_')
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -971,15 +966,15 @@ def sort_files_by_time(files, date_format):
 ### Line 121
 
 ```text
-            elif date_format == 2:
+                run_date = '_'.join(parts[:4])
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 122
 
 ```text
-                date_start_pos = file.find('.dat ')
+                dt = datetime.strptime(run_date, "%m_%d_%Y_%I-%M %p")
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -987,7 +982,7 @@ def sort_files_by_time(files, date_format):
 ### Line 123
 
 ```text
-                if date_start_pos != -1:
+            elif date_format == 1:
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
@@ -995,7 +990,7 @@ def sort_files_by_time(files, date_format):
 ### Line 124
 
 ```text
-                    date_part = file[date_start_pos + 5:]
+                parts = file.rsplit('_')
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -1003,15 +998,15 @@ def sort_files_by_time(files, date_format):
 ### Line 125
 
 ```text
-                    if date_part.endswith('.dat'):
+                run_date = '_'.join(parts[:1])
 ```
 
-`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
 ### Line 126
 
 ```text
-                        date_part = date_part[:-4]
+                dt = datetime.strptime(run_date, "%Y%m%d%H%M%S")
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -1019,15 +1014,15 @@ def sort_files_by_time(files, date_format):
 ### Line 127
 
 ```text
-                    date_time_str = date_part.replace('_', ':')
+            elif date_format == 2:
 ```
 
-`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
 ### Line 128
 
 ```text
-                    dt = datetime.strptime(date_time_str, "%Y-%m-%d %H:%M:%S")
+                date_start_pos = file.find('.dat ')
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -1035,7 +1030,7 @@ def sort_files_by_time(files, date_format):
 ### Line 129
 
 ```text
-                else:
+                if date_start_pos != -1:
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
@@ -1043,7 +1038,7 @@ def sort_files_by_time(files, date_format):
 ### Line 130
 
 ```text
-                    dt = datetime.now()
+                    date_part = file[date_start_pos + 5:]
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -1051,7 +1046,7 @@ def sort_files_by_time(files, date_format):
 ### Line 131
 
 ```text
-            else:
+                    if date_part.endswith('.dat'):
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
@@ -1059,7 +1054,15 @@ def sort_files_by_time(files, date_format):
 ### Line 132
 
 ```text
-                dt = datetime.now()
+                        date_part = date_part[:-4]
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 133
+
+```text
+                    date_time_str = date_part.replace('_', ':')
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
@@ -1067,44 +1070,84 @@ def sort_files_by_time(files, date_format):
 ### Line 134
 
 ```text
-            file_details.append((file, run_number, dt))
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 137
-
-```text
-        sorted_files = sorted(file_details, key=lambda x: (x[1], x[2]), reverse=True)
+                    dt = datetime.strptime(date_time_str, "%Y-%m-%d %H:%M:%S")
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
+### Line 135
+
+```text
+                else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 136
+
+```text
+                    dt = datetime.now()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 137
+
+```text
+            else:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
 ### Line 138
 
 ```text
-        return [file for file, _, _ in sorted_files]
+                dt = datetime.now()
 ```
 
-`return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 140
+### Line 139
 
 ```text
-    except ValueError:
+        except (ValueError, IndexError):
 ```
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 141
+### Line 140
 
 ```text
-        return []
+            dt = datetime.min  # keep the file; just sort it last
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 142
+
+```text
+        file_details.append((file, run_number, dt))
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 145
+
+```text
+    sorted_files = sorted(file_details, key=lambda x: (x[1], x[2]), reverse=True)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 146
+
+```text
+    return [file for file, _, _ in sorted_files]
 ```
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 144
+### Line 149
 
 ```text
 def get_machine_data(machine):
@@ -1112,7 +1155,7 @@ def get_machine_data(machine):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 145
+### Line 150
 
 ```text
     """Get machine data from CSV"""
@@ -1120,7 +1163,7 @@ def get_machine_data(machine):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 146
+### Line 151
 
 ```text
     try:
@@ -1128,7 +1171,7 @@ def get_machine_data(machine):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 147
+### Line 152
 
 ```text
         data_dir = current_app.config['DATA_DIR']
@@ -1136,7 +1179,7 @@ def get_machine_data(machine):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 148
+### Line 153
 
 ```text
         df = pd.read_csv(os.path.join(data_dir, f'small_{machine}_DataCollection.csv'))
@@ -1144,7 +1187,7 @@ def get_machine_data(machine):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 149
+### Line 154
 
 ```text
         return df
@@ -1152,7 +1195,7 @@ def get_machine_data(machine):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 150
+### Line 155
 
 ```text
     except FileNotFoundError:
@@ -1160,7 +1203,7 @@ def get_machine_data(machine):
 
 `exception` — This exception boundary defines recovery. Recreate what is caught, what is logged, what is re-raised, and what user or device response is produced; edge cases include swallowing important failures, leaking secrets in errors, and continuing after corrupt state.
 
-### Line 151
+### Line 156
 
 ```text
         current_app.logger.error(f"File not found for machine: {machine}")
@@ -1168,7 +1211,7 @@ def get_machine_data(machine):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 152
+### Line 157
 
 ```text
         return None
@@ -1176,7 +1219,7 @@ def get_machine_data(machine):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 155
+### Line 160
 
 ```text
 def calculate_ald_deposition_rate(material, depmode, chuck_temp):
@@ -1184,7 +1227,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 156
+### Line 161
 
 ```text
     """Calculate ALD deposition rate"""
@@ -1192,7 +1235,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 157
+### Line 162
 
 ```text
     df = get_machine_data('ALD')
@@ -1200,7 +1243,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 158
+### Line 163
 
 ```text
     if df is None:
@@ -1208,7 +1251,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 159
+### Line 164
 
 ```text
         return None
@@ -1216,7 +1259,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 161
+### Line 166
 
 ```text
     filtered_df = df[
@@ -1224,7 +1267,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 162
+### Line 167
 
 ```text
         (df['Film Deposited'] == material) &
@@ -1232,7 +1275,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 163
+### Line 168
 
 ```text
         (df['Deposition Mode'] == depmode) &
@@ -1240,7 +1283,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 164
+### Line 169
 
 ```text
         (df['Chuck Temperature (C)'] == int(chuck_temp))
@@ -1248,7 +1291,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 165
+### Line 170
 
 ```text
     ]
@@ -1256,7 +1299,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 167
+### Line 172
 
 ```text
     if not filtered_df.empty:
@@ -1264,7 +1307,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 168
+### Line 173
 
 ```text
         filtered_df['Deposition Rate'] = filtered_df['Measured Thickness (nm)'] / filtered_df['Number of Cycles']
@@ -1272,7 +1315,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 169
+### Line 174
 
 ```text
         filtered_df['Deposition Rate'] = filtered_df['Deposition Rate'].fillna(0)
@@ -1280,7 +1323,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 170
+### Line 175
 
 ```text
         return filtered_df['Deposition Rate'].tolist()
@@ -1288,7 +1331,7 @@ def calculate_ald_deposition_rate(material, depmode, chuck_temp):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 172
+### Line 177
 
 ```text
     return None

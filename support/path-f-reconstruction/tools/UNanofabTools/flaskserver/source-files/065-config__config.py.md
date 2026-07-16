@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `config/config.py`
-- Lines read: `113`
+- Lines read: `126`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `0cbfb39fe4a5ffb8`
+- Sanitized SHA-256 prefix: `610e24935782d1c5`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -74,6 +74,10 @@ class Config:
     CHEM_POSTGRES_USER = os.getenv('CHEM_POSTGRES_USER', os.getenv('POSTGRES_USER', 'postgres'))
     CHEM_POSTGRES_PASSWORD = os.getenv('CHEM_POSTGRES_PASSWORD', os.getenv('POSTGRES_PASSWORD', 'changeme'))
 
+    # Shared secret for the WordPress → chem-inventory signed-link gate (HMAC).
+    # Must match the value in the WordPress 'chem_inventory_link' snippet.
+    CHEM_SSO_SECRET = os.getenv('CHEM_SSO_SECRET')
+
     # Duo Security Configuration
     DUO_IKEY = os.getenv('DUO_IKEY')
     DUO_SKEY = os.getenv('DUO_SKEY')
@@ -121,6 +125,15 @@ class ProductionConfig(Config):
     @classmethod
     def init_app(cls, app):
         Config.init_app(app)
+
+        # Fail closed: refuse to start in production with an unset or default
+        # SECRET_KEY, since a known key makes session cookies forgeable.
+        if not app.config.get('SECRET_KEY') or \
+                app.config['SECRET_KEY'] == 'dev-secret-key-change-in-production':
+            raise RuntimeError(
+                "SECRET_KEY must be set to a strong random value in production "
+                "(e.g. `python -c \"import secrets; print(secrets.token_hex(32))\"`)."
+            )
 
         # Production-specific initialization
         import logging
@@ -355,7 +368,15 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 46
+### Line 47
+
+```text
+    CHEM_SSO_SECRET = os.getenv('CHEM_SSO_SECRET')
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 50
 
 ```text
     DUO_IKEY = os.getenv('DUO_IKEY')
@@ -363,7 +384,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 47
+### Line 51
 
 ```text
     DUO_SKEY = os.getenv('DUO_SKEY')
@@ -371,7 +392,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 48
+### Line 52
 
 ```text
     DUO_HOST = os.getenv('DUO_HOST')
@@ -379,7 +400,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 51
+### Line 55
 
 ```text
     SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'True').lower() == 'true'
@@ -387,7 +408,7 @@ class Config:
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 52
+### Line 56
 
 ```text
     SESSION_COOKIE_HTTPONLY = os.getenv('SESSION_COOKIE_HTTPONLY', 'True').lower() == 'true'
@@ -395,7 +416,7 @@ class Config:
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 53
+### Line 57
 
 ```text
     SESSION_COOKIE_SAMESITE = os.getenv('SESSION_COOKIE_SAMESITE', 'Lax')
@@ -403,7 +424,7 @@ class Config:
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 54
+### Line 58
 
 ```text
     PERMANENT_SESSION_LIFETIME = int(os.getenv('PERMANENT_SESSION_LIFETIME', 7200))
@@ -411,7 +432,7 @@ class Config:
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 57
+### Line 61
 
 ```text
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
@@ -419,7 +440,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 58
+### Line 62
 
 ```text
     MAX_CONTENT_LENGTH = int(os.getenv('MAX_CONTENT_LENGTH', 16 * 1024 * 1024))  # 16MB default
@@ -427,7 +448,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 59
+### Line 63
 
 ```text
     ALLOWED_EXTENSIONS = set(os.getenv('ALLOWED_EXTENSIONS', 'txt,pdf,csv,png,jpg,jpeg,doc,docx,xls,xlsx').split(','))
@@ -435,7 +456,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 62
+### Line 66
 
 ```text
     DATA_DIR = os.getenv('DATA_DIR', 'HSCDATA')
@@ -443,7 +464,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 63
+### Line 67
 
 ```text
     LOG_DATA_DIR = os.getenv('LOG_DATA_DIR', 'LogData')
@@ -451,7 +472,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 65
+### Line 69
 
 ```text
     @staticmethod
@@ -459,7 +480,7 @@ class Config:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 66
+### Line 70
 
 ```text
     def init_app(app):
@@ -467,7 +488,7 @@ class Config:
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 67
+### Line 71
 
 ```text
         """Initialize application with this configuration"""
@@ -475,7 +496,7 @@ class Config:
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 72
+### Line 76
 
 ```text
         for key in ('UPLOAD_FOLDER', 'DATA_DIR', 'LOG_DATA_DIR'):
@@ -483,7 +504,7 @@ class Config:
 
 `loop` — This loop repeats work over files, rows, devices, users, months, or sensor samples. Preserve ordering, termination, empty-input handling, duplicate handling, and partial-failure behavior; edge cases are zero items, one item, many items, and one bad item among many good ones.
 
-### Line 73
+### Line 77
 
 ```text
             app.config[key] = os.path.abspath(app.config[key])
@@ -491,7 +512,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 74
+### Line 78
 
 ```text
             os.makedirs(app.config[key], exist_ok=True)
@@ -499,7 +520,7 @@ class Config:
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 77
+### Line 81
 
 ```text
 class DevelopmentConfig(Config):
@@ -507,7 +528,7 @@ class DevelopmentConfig(Config):
 
 `class` — This class boundary groups state and behavior. Recreate the constructor expectations, instance attributes, inheritance, class-level constants, and public methods; edge cases include partially initialized objects, reused instances, and serialization or database mapping assumptions.
 
-### Line 78
+### Line 82
 
 ```text
     """Development configuration"""
@@ -515,7 +536,7 @@ class DevelopmentConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 79
+### Line 83
 
 ```text
     DEBUG = True
@@ -523,7 +544,7 @@ class DevelopmentConfig(Config):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 80
+### Line 84
 
 ```text
     DEBUG_MODE = True
@@ -531,7 +552,7 @@ class DevelopmentConfig(Config):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 81
+### Line 85
 
 ```text
     SESSION_COOKIE_SECURE = False  # Allow HTTP in development
@@ -539,7 +560,7 @@ class DevelopmentConfig(Config):
 
 `web` — This web-framework line touches request, response, session, redirect, or template behavior. Preserve browser-visible semantics and server-side authorization checks; edge cases are expired sessions, missing request fields, forged values, template context omissions, and response codes that clients depend on.
 
-### Line 84
+### Line 88
 
 ```text
 class ProductionConfig(Config):
@@ -547,7 +568,7 @@ class ProductionConfig(Config):
 
 `class` — This class boundary groups state and behavior. Recreate the constructor expectations, instance attributes, inheritance, class-level constants, and public methods; edge cases include partially initialized objects, reused instances, and serialization or database mapping assumptions.
 
-### Line 85
+### Line 89
 
 ```text
     """Production configuration"""
@@ -555,7 +576,7 @@ class ProductionConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 86
+### Line 90
 
 ```text
     DEBUG = False
@@ -563,7 +584,7 @@ class ProductionConfig(Config):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 87
+### Line 91
 
 ```text
     DEBUG_MODE = False
@@ -571,7 +592,7 @@ class ProductionConfig(Config):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 89
+### Line 93
 
 ```text
     @classmethod
@@ -579,7 +600,7 @@ class ProductionConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 90
+### Line 94
 
 ```text
     def init_app(cls, app):
@@ -587,7 +608,7 @@ class ProductionConfig(Config):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 91
+### Line 95
 
 ```text
         Config.init_app(app)
@@ -595,58 +616,26 @@ class ProductionConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 94
+### Line 99
 
 ```text
-        import logging
-```
-
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
-
-### Line 95
-
-```text
-        from logging.handlers import RotatingFileHandler
-```
-
-`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
-
-### Line 97
-
-```text
-        if not app.debug:
+        if not app.config.get('SECRET_KEY') or \
 ```
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 98
+### Line 100
 
 ```text
-            file_handler = RotatingFileHandler('logs/untools.log', maxBytes=10240000, backupCount=10)
+                app.config['SECRET_KEY'] == 'dev-secret-key-change-in-production':
 ```
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 99
-
-```text
-            file_handler.setFormatter(logging.Formatter(
-```
-
-`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
-
-### Line 100
-
-```text
-                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-```
-
-`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
-
 ### Line 101
 
 ```text
-            ))
+            raise RuntimeError(
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -654,7 +643,7 @@ class ProductionConfig(Config):
 ### Line 102
 
 ```text
-            file_handler.setLevel(logging.INFO)
+                "SECRET_KEY must be set to a strong random value in production "
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
@@ -662,12 +651,92 @@ class ProductionConfig(Config):
 ### Line 103
 
 ```text
+                "(e.g. `python -c \"import secrets; print(secrets.token_hex(32))\"`)."
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 104
+
+```text
+            )
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 107
+
+```text
+        import logging
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 108
+
+```text
+        from logging.handlers import RotatingFileHandler
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 110
+
+```text
+        if not app.debug:
+```
+
+`branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
+
+### Line 111
+
+```text
+            file_handler = RotatingFileHandler('logs/untools.log', maxBytes=10240000, backupCount=10)
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 112
+
+```text
+            file_handler.setFormatter(logging.Formatter(
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 113
+
+```text
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+```
+
+`filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
+
+### Line 114
+
+```text
+            ))
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 115
+
+```text
+            file_handler.setLevel(logging.INFO)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 116
+
+```text
             app.logger.addHandler(file_handler)
 ```
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 105
+### Line 118
 
 ```text
             app.logger.setLevel(logging.INFO)
@@ -675,7 +744,7 @@ class ProductionConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 106
+### Line 119
 
 ```text
             app.logger.info('UNanofabTools startup')
@@ -683,7 +752,7 @@ class ProductionConfig(Config):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 109
+### Line 122
 
 ```text
 config = {
@@ -691,7 +760,7 @@ config = {
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 110
+### Line 123
 
 ```text
     'development': DevelopmentConfig,
@@ -699,7 +768,7 @@ config = {
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 111
+### Line 124
 
 ```text
     'production': ProductionConfig,
@@ -707,7 +776,7 @@ config = {
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 112
+### Line 125
 
 ```text
     'default': DevelopmentConfig
@@ -715,7 +784,7 @@ config = {
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 113
+### Line 126
 
 ```text
 }

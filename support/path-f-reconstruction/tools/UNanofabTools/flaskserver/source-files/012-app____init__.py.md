@@ -10,10 +10,10 @@ If you opened this page directly from search, stop here first: read the owning t
 
 - Repository: `UNanofabTools`
 - Relative path: `app/__init__.py`
-- Lines read: `98`
+- Lines read: `110`
 - Dirty in working tree at generation time: `no`
 - Untracked at generation time: `no`
-- Sanitized SHA-256 prefix: `e1ac240614c0b52f`
+- Sanitized SHA-256 prefix: `cb070fc787d06138`
 - Code fence language: `python`
 
 ## Reconstruction Purpose
@@ -22,7 +22,7 @@ This section is written so a maintainer can recreate the file's behavior without
 
 ## Python Structure Summary
 
-- Imports: `import os`, `from datetime import datetime, date`, `from flask import Flask`, `from flask_login import LoginManager`, `from flask_bcrypt import Bcrypt`, `from flask_migrate import Migrate`, `from flask_cors import CORS`, `from config.config import config`, `from app.models import db, User`, `from app.blueprints.auth import auth_bp`, `from app.blueprints.tasks import tasks_bp`, `from app.blueprints.admin import admin_bp`, `from app.blueprints.machines import machines_bp`, `from app.blueprints.api import api_bp`, `from app.blueprints.chem_inventory import chem_bp`, `from app.blueprints.particle_demo_will import particle_demo_will_bp`
+- Imports: `import os`, `from datetime import datetime, date`, `from flask import Flask`, `from flask_login import LoginManager`, `from flask_bcrypt import Bcrypt`, `from flask_migrate import Migrate`, `from flask_cors import CORS`, `from flask_wtf.csrf import CSRFProtect`, `from config.config import config`, `from app.models import db, User`, `from app.blueprints.auth import auth_bp`, `from app.blueprints.tasks import tasks_bp`, `from app.blueprints.admin import admin_bp`, `from app.blueprints.machines import machines_bp`, `from app.blueprints.api import api_bp`, `from app.blueprints.chem_inventory import chem_bp`, `from app.blueprints.particle_demo_will import particle_demo_will_bp`
 - Classes: none detected
 - Functions: `create_app`, `load_user`, `fmtdate`, `serve_js`, `serve_css`, `favicon`
 - Routes: `@app.route('/js/<path:filename>')`, `@app.route('/css/<path:filename>')`, `@app.route('/favicon.ico')`
@@ -40,6 +40,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_cors import CORS
+from flask_wtf.csrf import CSRFProtect
 from config.config import config
 from app.models import db, User
 
@@ -47,6 +48,7 @@ from app.models import db, User
 login_manager = LoginManager()
 bcrypt = Bcrypt()
 migrate = Migrate()
+csrf = CSRFProtect()
 
 
 def create_app(config_name='default'):
@@ -65,6 +67,11 @@ def create_app(config_name='default'):
     login_manager.init_app(app)
     bcrypt.init_app(app)
     migrate.init_app(app, db)
+    # CSRF protection for all browser-facing POST/PUT/PATCH/DELETE routes.
+    # Templates include {{ csrf_token() }} in forms; AJAX sends it via the
+    # X-CSRFToken header (see the shim in base.html). The device/IoT API is
+    # exempted below because sensors/instruments can't carry a CSRF token.
+    csrf.init_app(app)
 
     # Configure login manager
     login_manager.login_view = 'auth.login'
@@ -97,6 +104,11 @@ def create_app(config_name='default'):
     app.register_blueprint(api_bp)
     app.register_blueprint(chem_bp)
     app.register_blueprint(particle_demo_will_bp)
+
+    # The device/IoT endpoints (Pico sensors, instrument PCs) are machine-to-machine
+    # and can't send a CSRF token, so exempt that blueprint. They remain protected by
+    # the X-Session-ID allow-list and (future) device auth, not CSRF.
+    csrf.exempt(api_bp)
 
     # Register static routes
     @app.route('/js/<path:filename>')
@@ -215,7 +227,7 @@ from flask_cors import CORS
 ### Line 11
 
 ```text
-from config.config import config
+from flask_wtf.csrf import CSRFProtect
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
@@ -223,12 +235,20 @@ from config.config import config
 ### Line 12
 
 ```text
+from config.config import config
+```
+
+`import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
+
+### Line 13
+
+```text
 from app.models import db, User
 ```
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 15
+### Line 16
 
 ```text
 login_manager = LoginManager()
@@ -236,7 +256,7 @@ login_manager = LoginManager()
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 16
+### Line 17
 
 ```text
 bcrypt = Bcrypt()
@@ -244,7 +264,7 @@ bcrypt = Bcrypt()
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 17
+### Line 18
 
 ```text
 migrate = Migrate()
@@ -252,7 +272,15 @@ migrate = Migrate()
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 20
+### Line 19
+
+```text
+csrf = CSRFProtect()
+```
+
+`assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
+
+### Line 22
 
 ```text
 def create_app(config_name='default'):
@@ -260,7 +288,7 @@ def create_app(config_name='default'):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 21
+### Line 23
 
 ```text
     """Create and configure the Flask application"""
@@ -268,7 +296,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 22
+### Line 24
 
 ```text
     app = Flask(__name__)
@@ -276,7 +304,7 @@ def create_app(config_name='default'):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 25
+### Line 27
 
 ```text
     app.config.from_object(config[config_name])
@@ -284,7 +312,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 26
+### Line 28
 
 ```text
     config[config_name].init_app(app)
@@ -292,7 +320,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 29
+### Line 31
 
 ```text
     CORS(app)
@@ -300,7 +328,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 32
+### Line 34
 
 ```text
     db.init_app(app)
@@ -308,7 +336,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 33
+### Line 35
 
 ```text
     login_manager.init_app(app)
@@ -316,7 +344,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 34
+### Line 36
 
 ```text
     bcrypt.init_app(app)
@@ -324,7 +352,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 35
+### Line 37
 
 ```text
     migrate.init_app(app, db)
@@ -332,7 +360,15 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 38
+### Line 42
+
+```text
+    csrf.init_app(app)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 45
 
 ```text
     login_manager.login_view = 'auth.login'
@@ -340,7 +376,7 @@ def create_app(config_name='default'):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 39
+### Line 46
 
 ```text
     login_manager.login_message = 'Please log in to access this page.'
@@ -348,7 +384,7 @@ def create_app(config_name='default'):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 40
+### Line 47
 
 ```text
     login_manager.login_message_category = 'info'
@@ -356,7 +392,7 @@ def create_app(config_name='default'):
 
 `assignment` — This assignment establishes configuration, state, a constant, or an intermediate value. Preserve when it is evaluated, whether it is mutable, whether it can be overridden, and whether it is safe to expose; edge cases include defaults that are fine locally but unsafe in production.
 
-### Line 43
+### Line 50
 
 ```text
     @app.template_filter("fmtdate")
@@ -364,7 +400,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 44
+### Line 51
 
 ```text
     def fmtdate(value, fmt="%Y-%m-%d"):
@@ -372,7 +408,7 @@ def create_app(config_name='default'):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 45
+### Line 52
 
 ```text
         """Format date values for display"""
@@ -380,7 +416,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 46
+### Line 53
 
 ```text
         if value in (None, "", "—"):
@@ -388,7 +424,7 @@ def create_app(config_name='default'):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 47
+### Line 54
 
 ```text
             return "—"
@@ -396,7 +432,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 48
+### Line 55
 
 ```text
         if isinstance(value, (date, datetime)):
@@ -404,7 +440,7 @@ def create_app(config_name='default'):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 49
+### Line 56
 
 ```text
             return value.strftime(fmt)
@@ -412,7 +448,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 50
+### Line 57
 
 ```text
         return str(value)
@@ -420,7 +456,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 53
+### Line 60
 
 ```text
     from app.blueprints.auth import auth_bp
@@ -428,7 +464,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 54
+### Line 61
 
 ```text
     from app.blueprints.tasks import tasks_bp
@@ -436,7 +472,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 55
+### Line 62
 
 ```text
     from app.blueprints.admin import admin_bp
@@ -444,7 +480,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 56
+### Line 63
 
 ```text
     from app.blueprints.machines import machines_bp
@@ -452,7 +488,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 57
+### Line 64
 
 ```text
     from app.blueprints.api import api_bp
@@ -460,7 +496,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 58
+### Line 65
 
 ```text
     from app.blueprints.chem_inventory import chem_bp
@@ -468,7 +504,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 59
+### Line 66
 
 ```text
     from app.blueprints.particle_demo_will import particle_demo_will_bp
@@ -476,7 +512,7 @@ def create_app(config_name='default'):
 
 `import` — This dependency line names an external package, standard-library module, or local module. A rebuild must install or recreate that dependency before this file can run; edge cases are missing packages, version drift, import cycles, and local module name collisions.
 
-### Line 61
+### Line 68
 
 ```text
     app.register_blueprint(auth_bp)
@@ -484,7 +520,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 62
+### Line 69
 
 ```text
     app.register_blueprint(tasks_bp)
@@ -492,7 +528,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 63
+### Line 70
 
 ```text
     app.register_blueprint(admin_bp)
@@ -500,7 +536,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 64
+### Line 71
 
 ```text
     app.register_blueprint(machines_bp)
@@ -508,7 +544,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 65
+### Line 72
 
 ```text
     app.register_blueprint(api_bp)
@@ -516,7 +552,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 66
+### Line 73
 
 ```text
     app.register_blueprint(chem_bp)
@@ -524,7 +560,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 67
+### Line 74
 
 ```text
     app.register_blueprint(particle_demo_will_bp)
@@ -532,7 +568,15 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 70
+### Line 79
+
+```text
+    csrf.exempt(api_bp)
+```
+
+`generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
+
+### Line 82
 
 ```text
     @app.route('/js/<path:filename>')
@@ -540,7 +584,7 @@ def create_app(config_name='default'):
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 71
+### Line 83
 
 ```text
     def serve_js(filename):
@@ -548,7 +592,7 @@ def create_app(config_name='default'):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 72
+### Line 84
 
 ```text
         """Serve JavaScript files"""
@@ -556,7 +600,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 73
+### Line 85
 
 ```text
         return app.send_static_file(f'js/{filename}')
@@ -564,7 +608,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 75
+### Line 87
 
 ```text
     @app.route('/css/<path:filename>')
@@ -572,7 +616,7 @@ def create_app(config_name='default'):
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 76
+### Line 88
 
 ```text
     def serve_css(filename):
@@ -580,7 +624,7 @@ def create_app(config_name='default'):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 77
+### Line 89
 
 ```text
         """Serve CSS files"""
@@ -588,7 +632,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 78
+### Line 90
 
 ```text
         return app.send_static_file(f'css/{filename}')
@@ -596,7 +640,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 80
+### Line 92
 
 ```text
     @app.route('/favicon.ico')
@@ -604,7 +648,7 @@ def create_app(config_name='default'):
 
 `route` — This route decorator is an HTTP contract. Preserve the URL rule, allowed methods, authentication posture, request payload shape, response type, redirects, template names, and side effects; edge cases include wrong method, missing form fields, unauthenticated callers, stale sessions, and malformed device payloads.
 
-### Line 81
+### Line 93
 
 ```text
     def favicon():
@@ -612,7 +656,7 @@ def create_app(config_name='default'):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 82
+### Line 94
 
 ```text
         """Serve favicon"""
@@ -620,7 +664,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 83
+### Line 95
 
 ```text
         favicon_path = os.path.join(app.root_path, '..', 'favicon.ico')
@@ -628,7 +672,7 @@ def create_app(config_name='default'):
 
 `filesystem` — This filesystem line touches paths, files, directories, or subprocesses. Preserve relative-vs-absolute path assumptions, permissions, encoding, missing-file behavior, overwrite policy, and cleanup behavior; edge cases include stale symlinks, spaces in paths, locked files, and partial writes.
 
-### Line 84
+### Line 96
 
 ```text
         if os.path.isfile(favicon_path):
@@ -636,7 +680,7 @@ def create_app(config_name='default'):
 
 `branch` — This branch decides between pathways. Recreate the condition and both the taken and not-taken behavior; edge cases include falsy values, missing keys, unexpected types, stale state, and a condition that was assumed impossible but occurs in production.
 
-### Line 85
+### Line 97
 
 ```text
             return app.send_static_file('../favicon.ico')
@@ -644,7 +688,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 86
+### Line 98
 
 ```text
         return '', 404
@@ -652,7 +696,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 89
+### Line 101
 
 ```text
     with app.app_context():
@@ -660,7 +704,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 90
+### Line 102
 
 ```text
         db.create_all()
@@ -668,7 +712,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 92
+### Line 104
 
 ```text
     return app
@@ -676,7 +720,7 @@ def create_app(config_name='default'):
 
 `return` — This return line defines what the caller receives. Preserve shape, type, status meaning, error sentinel behavior, and whether callers expect truthiness; edge cases include returning None, returning partial data, and returning a success-looking value after a failed side effect.
 
-### Line 95
+### Line 107
 
 ```text
 @login_manager.user_loader
@@ -684,7 +728,7 @@ def create_app(config_name='default'):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 96
+### Line 108
 
 ```text
 def load_user(user_id):
@@ -692,7 +736,7 @@ def load_user(user_id):
 
 `function` — This function boundary is an interface. Preserve its name-level responsibility, parameters, return value, exceptions, side effects, and logging behavior; edge cases include None inputs, empty collections, filesystem absence, failed network calls, and repeated invocation.
 
-### Line 97
+### Line 109
 
 ```text
     """Load user for Flask-Login"""
@@ -700,7 +744,7 @@ def load_user(user_id):
 
 `generic` — This line contributes to the file's behavior or documentation. Recreate it by preserving inputs, outputs, ordering, and side effects; edge cases are missing context, unexpected data, and differences between development and production.
 
-### Line 98
+### Line 110
 
 ```text
     return User.query.get(int(user_id))

@@ -221,7 +221,7 @@ Complete reference for every route the server exposes. Routes are grouped by blu
 ### `GET|POST /login` — Public
 - **GET**: renders `login.html`.
 - **POST form**: `username`, `password`.
-- **Behavior**: `sanitize_input` both fields → `verify_user_credentials`. If valid and `DEBUG_MODE`, create session + `login_user` + redirect `tasks.index`. If valid and not debug, run `duo_authenticate(user.unid)`; on `allow`, proceed; else flash `'2FA authentication failed'` and redirect to login. Invalid creds flash `'Invalid credentials'`.
+- **Behavior**: `sanitize_input` on the username (the **password is passed raw** — not sanitized) → `verify_user_credentials`. If valid and `DEBUG_MODE`, create session + `login_user` + redirect `tasks.index`. If valid and not debug, run `duo_authenticate(user.unid)`; on `allow`, proceed; else flash `'2FA authentication failed'` and redirect to login. Invalid creds flash `'Invalid credentials'`.
 - **Responses**: 302 redirect to `/tasks` on success; 302 back to `/login` on failure (with flash).
 
 ### `GET|POST /signup` — Public
@@ -359,13 +359,14 @@ All routes are `Device` (no auth). Intended for private-network devices and desk
 ### `POST /sdsanalog` — Device
 - **Headers**: `Content-Type: text/csv`; `X-Session-ID`, `X-Batch-Number`, `X-Total-Batches` (all required); `X-Is-Final-Batch` (optional, `"true"`).
 - **Body**: raw CSV text (one batch).
+- **Session-ID validation**: `X-Session-ID` is used to build the temp directory and the combined filename, so it is strictly allow-listed (`^[0-9A-Za-z_-]{1,64}$`, via `_valid_session_id`) to block path traversal. A value containing `.`, `/`, or `\` is rejected with `400` before anything is written.
 - **Behavior**: writes the batch to `LogData/Paralyne/temp/<session>/batch_NNNN.csv`; writes `start_time.txt` on first batch; when received-count == total or final flag, calls `combine_csv_batches_final(session, cleanup=False)`.
-- **Responses**: `200 {"status":"success","message":"Batch n/m received","session_id":...}`; `400` missing headers / wrong content-type; `500` on error.
+- **Responses**: `200 {"status":"success","message":"Batch n/m received","session_id":...}`; `400` missing headers / wrong content-type / invalid session id; `500` on error.
 
 ### `POST /sdsanalogfinished` — Device
-- **Input**: `session_id` from JSON body or `X-Session-ID` header.
-- **Behavior**: `combine_csv_batches_final(session)` (cleanup=True default) → writes `LogData/Paralyne/analog/<ts>_SDSLOG_combined_<session>.csv`, removes temp dir.
-- **Responses**: `200 {"status":"session_finalized",...}`; `500` on error.
+- **Input**: `session_id` from JSON body or `X-Session-ID` header (same allow-list validation as `/sdsanalog`; an invalid id returns `400`).
+- **Behavior**: `combine_csv_batches_final(session)` (cleanup=True default) → writes `LogData/Paralyne/analog/<ts>_SDSLOG_combined_<session>.csv`, removes temp dir. `combine_csv_batches_final` re-validates the id as a backstop.
+- **Responses**: `200 {"status":"session_finalized",...}`; `400` invalid session id; `500` on error.
 
 ### `POST /denton18pump` — Device
 - **JSON body**: `{ "pressure": <raw ADC int> }`.
@@ -717,7 +718,7 @@ Sets `self.engine = get_chem_engine()`.
 - **`remove_containers_by_barcodes(self, raw_barcodes, removed_by=None, reason=None, notes=None) -> dict`** — parses many barcodes (comma/tab/newline, de-duped), calls `remove_container` per barcode. Returns `{requested_count, removed_count, removed, not_found}`.
 - **`move_container(self, barcode, room_no, room_desc, area_class, storage_location, storage_sublocation, storage_device, moved_by=None) -> bool`** — resolve room; COALESCE-update room/area/storage; log `MOVE` with from/to detail. `False` if not found.
 - **`bulk_move_by_barcodes(self, raw_barcodes, room_no=None, ..., performed_by=None) -> dict`** — parse many barcodes; resolve one destination room; per barcode COALESCE-update + log `BULK_MOVE`. Returns `{requested_count, matched_count, moved_count, unmatched}`. Returns zeros if no barcodes or no destination provided. Contains `print(...)` debug output.
-- **`update_container(self, container_id, data) -> None`** — rename item (if a name provided), resolve room, "keep-or-update" each field (blank input keeps existing value), UPDATE container, log `EDIT`. Raises `ValueError` if the container id is not found. *(Field-key alignment was corrected 2026-06-30, commit `11fd3e4`: `expiry_date`/`nmr_expiry`/`storage_sublocation` plus the item's `catalog_number`/`physical_state`/`vendor_name`/`description` are now all persisted — several were silently dropped before, under mismatched dict keys.)*
+- **`update_container(self, container_id, data) -> None`** — rename item (if a name provided), resolve room, "keep-or-update" each field (blank input keeps existing value) — **including `room_id`, which is preserved when the form supplies no room fields, so an unrelated edit can't NULL the container's location** — UPDATE container, log `EDIT`. Raises `ValueError` if the container id is not found. *(Field-key alignment was corrected 2026-06-30, commit `11fd3e4`: `expiry_date`/`nmr_expiry`/`storage_sublocation` plus the item's `catalog_number`/`physical_state`/`vendor_name`/`description` are now all persisted — several were silently dropped before, under mismatched dict keys.)*
 - **`mark_barcodes_printed(self, barcodes) -> int`** — `UPDATE containers SET label_printed=TRUE, label_printed_at=NOW() WHERE barcode = ANY(:bcs)`. Returns affected row count.
 - **`log_transaction(self, conn, action, container_id=None, barcode=None, item_id=None, room_id=None, details=None, performed_by=None) -> None`** — INSERT into `transactions` with `details = json.dumps(details or {})` and `created_at = NOW()`. Must be called within an existing transaction (`conn`).
 
