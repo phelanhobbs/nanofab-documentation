@@ -17,7 +17,7 @@ import os
 from app import create_app
 from config.config import config
 
-config_name = os.getenv('FLASK_ENV', 'development')
+config_name = os.getenv('FLASK_ENV', 'production')
 app = create_app(config_name)
 
 if __name__ == '__main__':
@@ -34,7 +34,7 @@ Line by line:
 - **`import os`** — gives us access to operating-system stuff. We use `os.getenv()` below to read environment variables.
 - **`from app import create_app`** — imports the function `create_app` from the `app/` directory's `__init__.py`. We'll dissect that function next.
 - **`from config.config import config`** — imports the configuration dictionary (it maps strings like `'production'` to configuration classes). The actual configuration classes are explained in `03-Configuration.md`.
-- **`config_name = os.getenv('FLASK_ENV', 'development')`** — looks at the environment variable `FLASK_ENV`. If it's set, use that; otherwise default to `'development'`. In production you set `FLASK_ENV=production` so you get the production settings.
+- **`config_name = os.getenv('FLASK_ENV', 'production')`** — looks at the environment variable `FLASK_ENV`. If it's set, use that; otherwise default to `'production'`. Defaulting to production is deliberate: a missing or misspelled value fails safe (Duo 2FA on, secure cookies) instead of silently dropping into the looser development settings. For local development you set `FLASK_ENV=development` explicitly.
 - **`app = create_app(config_name)`** — calls the factory function. This actually builds the Flask app. By the time this line finishes, `app` is a fully configured Flask application ready to handle requests. Everything below is "if you're running this file directly, also start the dev web server."
 - **`if __name__ == '__main__':`** — a Python idiom meaning "only run the indented block if this file was executed as a script, not imported as a library." In production, a WSGI server like gunicorn or uwsgi imports `app` from this file and serves it; that path skips the `app.run()` call. The block under `if __name__ == '__main__':` is mainly for local development with `python run.py`.
 - **`app.run(host=host, port=port, debug=debug, use_reloader=debug)`** — start Flask's built-in development server. `use_reloader=debug` means: in debug mode, watch the files and auto-restart when something changes. This is great for development but never for production (Flask's built-in server is single-threaded and slow).
@@ -249,7 +249,7 @@ This single function is the bridge between the bare ID in the cookie and the ric
 To recap, here is what happens from "you run the server" to "it's ready":
 
 1. `python run.py` is executed (or a production WSGI server imports `app` from it).
-2. `run.py` reads `FLASK_ENV` and decides which config to use (development by default).
+2. `run.py` reads `FLASK_ENV` and decides which config to use (**production by default**; set `FLASK_ENV=development` for local work).
 3. It calls `create_app(config_name)`.
 4. Inside `create_app`:
    - A Flask object is built.

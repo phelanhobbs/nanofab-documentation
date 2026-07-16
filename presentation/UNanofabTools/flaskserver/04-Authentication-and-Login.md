@@ -39,7 +39,7 @@ def login():
     """Handle user login"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')  # raw — never sanitized
 
         # Verify user credentials
         user = auth_service.verify_user_credentials(username, password)
@@ -75,6 +75,7 @@ Line by line:
 - **`@auth_bp.route('/login', methods=['GET', 'POST'])`** — register this function as the handler for `/login`, for both GETs (page loads) and POSTs (form submissions).
 - **`if request.method == 'POST':`** — branch based on whether this is a form submission or a fresh page load. If it's a GET, we fall through to the final `return render_template('login.html')` and just show the login form.
 - **`username = auth_service.sanitize_input(request.form.get('username', ''))`** — pull the `username` field from the submitted form (or empty string if missing), then run it through the sanitizer. The sanitizer trims whitespace, truncates to 255 chars, and HTML-escapes (so `<script>` becomes `&lt;script&gt;`).
+- **`password = request.form.get('password', '')`** — the password is taken **raw**, deliberately *not* sanitized. It's hashed, never displayed, so HTML-escaping it would serve no purpose and would only mangle and weaken the secret (and tie every stored hash to the sanitizer's exact behavior). `verify_user_credentials` checks the raw password first, then falls back to the old sanitized form for any account created before this change and quietly re-hashes it on a successful login — so nobody gets locked out.
 - **Same for password.**
 - **`user = auth_service.verify_user_credentials(username, password)`** — try to find a `User` row whose username matches and whose bcrypt-hashed password verifies against the supplied password. Returns the `User` object on success, `None` on failure.
 - **`if user:`** — we have a valid user; now decide whether to require 2FA.
@@ -95,7 +96,7 @@ def signup():
     """Handle user signup"""
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
-        password = auth_service.sanitize_input(request.form.get('password', ''))
+        password = request.form.get('password', '')  # raw — never sanitized
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
 
         # Check if user already exists
@@ -156,7 +157,7 @@ def reset_password():
     if request.method == 'POST':
         username = auth_service.sanitize_input(request.form.get('username', ''))
         unid = auth_service.sanitize_input(request.form.get('unid', ''))
-        new_password = auth_service.sanitize_input(request.form.get('password', ''))
+        new_password = request.form.get('password', '')  # raw — never sanitized
 
         # Verify username and UNID
         if auth_service.verify_user_unid(username, unid):

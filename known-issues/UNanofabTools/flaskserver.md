@@ -158,7 +158,7 @@ Verified fixed or confirmed non-issues during the 2026-06-17/18 live checks. Mov
 ### R2. Weak default `SECRET_KEY` — was High — CLOSED
 - **Original concern:** `config.py` falls back to a public default, making session cookies forgeable if the env var is unset.
 - **Why closed:** `SECRET_KEY` is present in the live `.env` (verified) — not the default.
-- **Optional hardening:** make `ProductionConfig.init_app` raise if `SECRET_KEY` is unset; drop the `'changeme'` DB-password default; regenerate with `secrets.token_hex(32)` if short.
+- **Hardening now in place:** `ProductionConfig.init_app` **raises at startup if `SECRET_KEY` is unset or the public default** (fail-closed), and `run.py` defaults `FLASK_ENV` to `production`, so a fresh/misconfigured deploy can't silently run with a forgeable key or in dev mode. Residual (Low): the `'changeme'` DB-password default still exists in `config.py`.
 
 ### R3. No service supervision (tmux only) — was High — CLOSED (2026-06-18)
 - **Original concern:** Flask and HSCDownloader ran as bare `python run.py` / `python HSCDownloader.py` inside tmux — no auto-restart on crash, and a reboot killed both (silent outage).

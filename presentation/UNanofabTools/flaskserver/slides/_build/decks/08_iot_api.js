@@ -104,15 +104,15 @@ module.exports = {
       title: "The Parylene batch trick",
       bullets: [
         "The Parylene Pi samples fast, so it sends data in numbered batches.",
-        "The server saves each batch to a temporary folder.",
-        "When all batches arrive (or the Pi signals 'done'), it combines them.",
-        "The result is one tidy CSV per coating run.",
+        "Each batch carries a session ID naming its temporary folder.",
+        "That ID is strictly validated (letters/digits only) so it can't escape the data folder.",
+        "When all batches arrive (or the Pi signals 'done'), it combines them into one tidy CSV per run.",
       ],
       notes:
         "One nice pattern worth calling out. The Parylene coater samples many times per second, so rather than send each point, the Pi groups " +
-        "them into numbered batches. The server stashes each batch in a temporary folder and, once it has them all (or the Pi says the run is " +
-        "finished), concatenates them into a single clean CSV for that run. It's a sensible way to handle a fast, chatty data source over a " +
-        "network.",
+        "them into numbered batches, each tagged with a session ID. The server stashes each batch in a temporary folder named after that ID and, once it has them all (or the Pi says the run is " +
+        "finished), concatenates them into a single clean CSV for that run. Because that ID becomes a folder name, the server strictly validates it first — only letters, digits, underscore, or hyphen are allowed, so a sneaky value like '../..' is rejected before any file is written and can't be used to write outside the data folder. It's a sensible way to handle a fast, chatty data source over a " +
+        "network, safely.",
     });
 
     d.bullets({

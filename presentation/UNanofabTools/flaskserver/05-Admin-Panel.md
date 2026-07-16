@@ -73,6 +73,8 @@ This route expects a JSON body — i.e., it's called from JavaScript (`fetch`) r
 
 Note this is `POST /deleteUser` rather than `DELETE /users/<id>`, which would be more RESTful. The current style is fine; it's just slightly less idiomatic.
 
+**Lockout guards.** Before deleting, the route checks two things (and `/toggleAdminStatus` does the same): it won't act on **your own account**, and it won't remove the **last remaining admin** (it counts the admins first). So an admin can't accidentally delete themselves or demote the final admin and lock everyone out of the panel — the action is refused with a clear error instead. Both routes also read the JSON body defensively, so a malformed request returns a tidy `400`/`404` rather than a server error.
+
 ### `/toggleAdminStatus` and `/toggleAssign`
 
 ```python

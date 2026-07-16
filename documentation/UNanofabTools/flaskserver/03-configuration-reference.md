@@ -5,7 +5,7 @@ All configuration lives in `config/config.py` and is sourced from environment va
 ## 3.1 How configuration loads
 
 1. `config/config.py` calls `load_dotenv()` at import time, populating `os.environ` from `.env` if present. `python-dotenv` does **not** override already-set process environment variables unless called with `override=True`; this code does not pass that flag.
-2. `run.py` reads `FLASK_ENV` (default `development`) and passes it to `create_app`.
+2. `run.py` reads `FLASK_ENV` (default `production`) and passes it to `create_app`.
 3. `create_app` does `app.config.from_object(config[config_name])`, copying every uppercase attribute of the chosen config class into `app.config`.
 4. `create_app` then calls `config[config_name].init_app(app)` for per-environment setup.
 
@@ -19,7 +19,7 @@ config = {
 }
 ```
 
-`FLASK_ENV=production` selects `ProductionConfig`; unset defaults to `development`; `development` and `default` select `DevelopmentConfig`. Any other non-empty value is a startup error because `create_app` indexes the dictionary directly.
+`FLASK_ENV=production` selects `ProductionConfig`; **unset defaults to `production`**, so a missing or misnamed value fails safe (Duo 2FA on, `Secure` cookies) instead of silently loading the dev config. Local development must opt in explicitly with `FLASK_ENV=development`. `development` and `default` select `DevelopmentConfig`. Any other non-empty value is a startup error because `create_app` indexes the dictionary directly.
 
 ## 3.2 Configuration keys
 
@@ -29,7 +29,7 @@ Each row lists the `app.config` key, the environment variable it reads, the defa
 
 | Key | Env var | Default | Meaning |
 |-----|---------|---------|---------|
-| `SECRET_KEY` | `SECRET_KEY` | `'dev-secret-key-change-in-production'` | Signs session cookies. **Must** be a strong random value in production; if leaked, sessions can be forged. |
+| `SECRET_KEY` | `SECRET_KEY` | `'dev-secret-key-change-in-production'` | Signs session cookies (and CSRF tokens). **Must** be a strong random value in production; if leaked, sessions can be forged. Fail-closed: `ProductionConfig.init_app` raises at startup if this is unset or still the default, so a forgeable-session deploy cannot start. |
 | `DEBUG_MODE` | `DEBUG_MODE` | `False` | App-level debug flag. Drives two behaviors: (1) bypasses Duo 2FA in `auth.py`; (2) passed to `app.run(debug=...)`. Subclasses override (dev `True`, prod `False`). |
 
 ### Server binding
@@ -39,7 +39,7 @@ Each row lists the `app.config` key, the environment variable it reads, the defa
 | `HOST` | `HOST` | `'127.0.0.1'` | Interface Flask binds to. Loopback by design; nginx fronts it. |
 | `PORT` | `PORT` | `5000` | Port Flask binds to. Cast to `int`. |
 
-> The committed `.env.example` overrides these to `155.98.11.6:443`, reflecting a legacy "Flask serves TLS directly" deployment. The current intended model (per `run.py`'s docstring) is nginx on 443 → Flask on `127.0.0.1:5000`. See `09`.
+> The committed `.env.example` sets these to the loopback defaults (`127.0.0.1:5000`), matching the reverse-proxy model: nginx terminates TLS on 443 and proxies to Flask on the loopback address. Flask never binds the external interface directly. See `09`.
 
 ### SSL (standalone only)
 

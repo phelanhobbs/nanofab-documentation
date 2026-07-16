@@ -13,14 +13,15 @@ Severity: **High** = security / data correctness · **Medium** = robustness/main
 - **Residual (Low, optional cleanup):** the old value still sits in old commits (≤ `0114dc5`), but it is now a **dead credential** (403) — a `git filter-repo`/BFG history scrub is optional hygiene, not a live security need.
 - **Cross-tool note:** `PreciousMetalReader` **shares this CORES token**. Its local `auth.py` now holds the revoked value (403), so that tool needs its env rollout (set the new `CORES_TOKEN`, delete `auth.py`, rebuild the `.exe`) to keep working — see `known-issues/NanofabToolkit/PreciousMetalReader.md` #1.
 
-### 2. Minimal error handling on downloads — Medium
-- **Where:** `downloadFile` does `json.loads(requests.get(...).text)` with no status check, timeout, or retry.
-- **Risk:** a CORES outage, slow response, or token rotation throws or yields empty data; machine pages silently go stale.
-- **Fix:** check HTTP status, add timeouts + retries, and log/alert on failure.
+### 2. Minimal error handling on downloads — Medium (mostly resolved)
+- **Where:** `downloadFile`.
+- **Status:** `downloadFile` now uses `timeout=30` and `raise_for_status()`, and `save()` wraps each machine in its own `try/except`. A CORES outage, slow response, or revoked token now surfaces as a clean, per-machine-contained failure instead of a hang or a confusing `JSONDecodeError` that aborts the whole run.
+- **Residual (Low):** no automatic retry yet, and no alerting — a failing machine is logged and left stale until the next cycle (see #3).
 
-### 3. No staleness detection / alerting — Medium
+### 3. No staleness detection / alerting — Medium (partly mitigated)
 - **Where:** the scheduled `save()` loop.
 - **Risk:** if downloads start failing, nobody is notified; the website quietly shows old data.
+- **Mitigation in place:** `save()` runs each machine in its own `try/except` and logs a per-run failure summary, so one machine's failure no longer aborts the others and each failure is visible in the log. **Proactive alerting is still missing.**
 - **Fix:** record last-successful-update per machine; alert if a machine hasn't updated in N cycles.
 
 ### 4. Machine→service_id map is brittle and buried — Medium

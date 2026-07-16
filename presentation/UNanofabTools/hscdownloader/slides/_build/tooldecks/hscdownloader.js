@@ -138,14 +138,15 @@ module.exports = {
       title: "Things to watch",
       bullets: [
         "Its CORES access token now lives in a protected setting (.env) and was rotated 2026-06-29 — no longer in the code.",
-        "If CORES is down or the token changes, pages quietly go stale (no alert today).",
+        "Each machine runs in its own safety net, so if one fails, the rest still update; the download also has a time limit so it can't hang.",
+        "If CORES is down or a machine's data is bad, only that machine goes stale — but there's still no proactive alert today.",
         "Each machine maps to a CORES ID; if an ID changes, that machine stops updating.",
         "A couple of machines are marked 'no data yet' — expected, not bugs.",
       ],
       notes:
         "Cover the watch-items honestly. The secret token has been moved out of the code into a protected setting (.env) and was rotated on " +
-        "2026-06-29, so that earlier credential-in-source risk is resolved. The main remaining gap is alerting: there's no alert today, so a " +
-        "CORES outage or token change shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a " +
+        "2026-06-29, so that earlier credential-in-source risk is resolved. Reliability is better too: each machine is now downloaded and saved inside its own safety net, so a single bad response or schema change is logged and skipped instead of aborting the whole run, and the download has a time limit so a stuck CORES request can't freeze the nightly job. The main remaining gap is alerting: there's still no proactive alert, so a " +
+        "sustained CORES outage shows up only as stale machine pages — adding failure alerts is recommended. Each machine is tied to a " +
         "CORES ID number; if CORES renumbers one, that machine silently stops updating. And a few machines are noted as having no data yet, " +
         "which is expected. All of this is in the developer notes and issues list.",
     });

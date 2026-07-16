@@ -37,13 +37,14 @@ module.exports = {
       intro: "We store a scrambled fingerprint, not the password itself.",
       bullets: [
         "Passwords are run through bcrypt, a one-way scrambler — you can't reverse it.",
+        "The password is taken exactly as typed — never trimmed or escaped — then scrambled.",
         "Logging in re-scrambles what you typed and compares the fingerprints.",
         "bcrypt is intentionally slow, which makes mass guessing impractical.",
         "Even if the database were stolen, the actual passwords aren't in it.",
       ],
       notes:
         "This is the most reassuring point for a general audience. We never store the password. We store a 'hash' — a scrambled fingerprint " +
-        "produced by a tool called bcrypt that can't be run backwards. When you log in, the server scrambles what you typed and checks " +
+        "produced by a tool called bcrypt that can't be run backwards. One subtlety worth mentioning: the password is scrambled exactly as typed — unlike the username, it's never cleaned or HTML-escaped first, because a value that's only ever hashed gains nothing from escaping and would only be weakened by it. When you log in, the server scrambles what you typed and checks " +
         "whether the two fingerprints match. bcrypt is deliberately slow, so an attacker can't rapidly guess millions of passwords. The " +
         "upshot: if someone stole the user database, they'd get fingerprints, not passwords.",
     });

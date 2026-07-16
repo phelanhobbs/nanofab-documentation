@@ -72,13 +72,13 @@ module.exports = {
         "Add containers (and auto-generate their barcodes).",
         "Move containers to new locations — one at a time or in bulk.",
         "Remove containers (a soft delete that keeps the history).",
-        "Edit a container's details.",
+        "Edit a container's details — blank fields keep the old value, so an edit can't erase a bottle's location.",
         "Upload barcode scans from an audit; print barcode labels.",
       ],
       notes:
         "The everyday actions. You can search the whole inventory and export it. You can add new bottles, which automatically get unique " +
         "barcodes. You can move bottles between locations individually or in bulk. You can remove bottles — but as a 'soft delete' that keeps " +
-        "the record for history. You can edit details. And you can run scanning audits and print labels. That's a full lifecycle for a " +
+        "the record for history. You can edit details — and editing is 'keep-or-update', so leaving a field blank keeps its current value rather than wiping it; that even protects the container's room, so fixing (say) an expiry date can't accidentally erase where the bottle lives. And you can run scanning audits and print labels. Small robustness touch: list views read their row-limit defensively, so a bad '?limit' value in the URL falls back to the default instead of erroring. That's a full lifecycle for a " +
         "chemical container.",
     });
 

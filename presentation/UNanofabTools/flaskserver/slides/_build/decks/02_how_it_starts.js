@@ -34,14 +34,15 @@ module.exports = {
       title: "run.py — the ignition",
       intro: "The whole starter file, simplified:",
       code:
-"config_name = os.getenv('FLASK_ENV', 'development')\n" +
+"config_name = os.getenv('FLASK_ENV', 'production')\n" +
 "app = create_app(config_name)\n\n" +
 "if __name__ == '__main__':\n" +
 "    app.run(host, port, debug=...)",
       caption: "Read which mode to run in, build the app, and (if launched directly) start serving.",
       notes:
         "Walk it in plain words. Line 1: look up an environment setting called FLASK_ENV to decide whether we're in 'development' or " +
-        "'production' mode; default to development. Line 2: call create_app — that's the factory that assembles everything. The 'if' block " +
+        "'production' mode; it defaults to production, so a missing or misspelled value fails safe (2FA on, secure cookies) instead of " +
+        "quietly dropping into the looser dev settings — local development sets FLASK_ENV=development on purpose. Line 2: call create_app — that's the factory that assembles everything. The 'if' block " +
         "at the bottom only runs when you launch this file directly (handy for local testing); in real production a separate, sturdier " +
         "web server loads the app instead. The headline: run.py decides the mode, then hands off to the factory.",
     });

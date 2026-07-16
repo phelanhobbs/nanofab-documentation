@@ -48,16 +48,15 @@ module.exports = {
     d.bullets({
       title: "Authentication & authorization",
       bullets: [
-        "Passwords stored only as irreversible bcrypt fingerprints.",
+        "Passwords stored only as irreversible bcrypt fingerprints (the raw password is hashed, never altered or escaped).",
         "Two-factor (Duo) required in production for login and signup.",
-        "Login cookie is signed (tamper-proof) and HTTPS-only in production.",
-        "Permissions are two flags — admin and can-assign — enforced on the server.",
+        "Login cookie is signed and HTTPS-only in production; the app refuses to start without a strong secret key.",
+        "Two permission flags — admin and can-assign — enforced on the server; admins can't delete themselves or the last admin.",
       ],
       notes:
-        "This is the strongest area. Real passwords are never stored; only irreversible fingerprints. Two-factor via Duo is mandatory in " +
-        "production. The login cookie is cryptographically signed so it can't be forged and is only sent over encryption in production. The " +
-        "configured two-hour lifetime applies only to permanent sessions, and the current login flow does not mark sessions permanent. " +
-        "Permissions are simple but enforced server-side, not just hidden in the page. For the human-facing app, this is a solid, conventional " +
+        "This is the strongest area. Real passwords are never stored; only irreversible fingerprints — and the raw password is hashed as typed, never run through the input sanitizer (escaping a value that's only ever hashed would just weaken it). Two-factor via Duo is mandatory in " +
+        "production. The login cookie is cryptographically signed so it can't be forged and is only sent over encryption in production; in production the app now fails closed and won't even start if the secret key is missing or the default. " +
+        "Permissions are simple but enforced server-side, not just hidden in the page — and the admin panel has lockout guards so an admin can't accidentally delete their own account or remove the last remaining admin. For the human-facing app, this is a solid, conventional " +
         "security posture.",
     });
 
@@ -65,14 +64,15 @@ module.exports = {
       title: "Input handling & file safety",
       bullets: [
         "Database queries keep user input strictly as data — injection-safe.",
-        "Page templates auto-escape values, blunting cross-site scripting.",
-        "Downloads use a resolve-then-verify check to stay inside their folder.",
+        "Templates auto-escape values, and the hand-built machine table escapes every cell too.",
+        "Every browser form and AJAX action carries a CSRF token (Flask-WTF); the device API is exempt.",
+        "Downloads resolve-then-verify; device upload session IDs are allow-listed so they can't escape their folder.",
         "Uploads are type-checked and given safe, unique filenames.",
       ],
       notes:
         "Two more solid areas. All database access treats typed-in values as data, never commands, which stops injection attacks — the most " +
-        "common web vulnerability. The page templates automatically escape values, which blunts cross-site scripting. File downloads use the " +
-        "proper resolve-then-verify path check from the machines session. Uploads are restricted by type and given safe, unique names. The " +
+        "common web vulnerability. The page templates automatically escape values, and the one place that builds HTML by hand (the machine-data table) escapes every cell too, so cross-site scripting is blunted throughout. Cross-site request forgery is now handled with real tokens: every browser form and every AJAX action must present a CSRF token, added automatically to same-origin requests; only the device/IoT API is exempt (sensors can't carry one). File downloads use the " +
+        "proper resolve-then-verify path check, and the Parylene device-upload endpoints allow-list the session ID so a value like '../..' can't write outside the data folder. Uploads are restricted by type and given safe, unique names. The " +
         "fundamentals are handled correctly.",
     });
 
@@ -98,14 +98,12 @@ module.exports = {
       title: "What to harden first",
       intro: "If asked 'what would you fix first?', this is the order.",
       bullets: [
-        "Require login on the inventory's editing/removing pages.",
-        "Add an access key (or similar) to the device endpoints if ever exposed.",
+        "Add an access key (or signed request) to the device endpoints if ever exposed.",
         "Narrow cross-origin access to the known internal tools.",
         "Add a second factor to the password-reset flow.",
       ],
       notes:
-        "Give a concrete priority list. First and easiest with the biggest payoff: require login on the inventory pages that change data. " +
-        "Then, only if the server's exposure ever grows, add a shared key to the device endpoints. Then narrow cross-origin access. Then " +
+        "Give a concrete priority list. The old top item — requiring login on the inventory's editing pages — is already done: the whole chemical inventory now sits behind a WordPress signed-token sign-on. So the remaining roadmap is: first, only if the server's exposure ever grows, add a shared key to the device endpoints. Then narrow cross-origin access to the known internal tools. Then " +
         "strengthen password reset with a second factor. This is the practical roadmap a successor would follow.",
     });
 

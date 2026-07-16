@@ -141,7 +141,7 @@ def test_login_page(client):
 
 - Templates are Jinja2. The `fmtdate` filter (`{{ value | fmtdate }}`) formats dates and renders missing values as `—`.
 - Static JS: `adminActions.js` (admin table actions), `taskActions.js` (task actions), `graph.js` (Chart.js helpers), `tablesort.js` (sortable tables keyed off `id='sortableTable'`). CSS: `inventory.css`.
-- `csv_to_html_table` emits `<table id='sortableTable'>` so `tablesort.js` can hook it. (It does not escape cell values — keep inputs trusted, or add escaping if you feed it user data.)
+- `csv_to_html_table` emits `<table id='sortableTable'>` so `tablesort.js` can hook it. (It escapes every header and cell with `html.escape`, so even untrusted CSV content renders as inert text.)
 
 ## 10.9 Gotchas and non-obvious behaviors
 

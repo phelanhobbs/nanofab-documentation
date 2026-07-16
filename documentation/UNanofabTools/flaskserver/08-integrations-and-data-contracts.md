@@ -86,7 +86,7 @@ This endpoint is the recommended target for new sensors (it subsumes `/particle-
 **Producer:** the Parylene tool's Raspberry Pi (on-device script; not in NanofabToolkit).
 
 **Content-Type:** `text/csv`. **Headers:**
-- `X-Session-ID` — unique per run (required).
+- `X-Session-ID` — unique per run (required). Because it becomes part of the temp directory and combined filename, it is strictly allow-listed to `^[0-9A-Za-z_-]{1,64}$` (no `.`, `/`, or `\`) to prevent path traversal; an invalid value is rejected with `400` before any file is written. The Parylene Pi sends the first 8 hex chars of the board id (`hexlify(machine.unique_id())[:8]`), which fits the allow-list.
 - `X-Batch-Number` — 1-based integer (required).
 - `X-Total-Batches` — integer (required).
 - `X-Is-Final-Batch` — `"true"` to force finalize (optional).

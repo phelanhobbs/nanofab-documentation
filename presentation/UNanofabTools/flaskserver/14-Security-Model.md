@@ -43,7 +43,7 @@ And from `run.py`'s docstring:
 - On successful login, two things happen:
   1. A row is written to `sessioninfo.db` with a random UUID (`auth_service.create_user_session`).
   2. Flask-Login sets a signed cookie containing the user's database ID.
-- The cookie is signed with `SECRET_KEY`. If `SECRET_KEY` leaks, an attacker could forge sessions — so it must be a strong random value in production (the default `'dev-secret-key-change-in-production'` is intentionally unusable).
+- The cookie is signed with `SECRET_KEY`. If `SECRET_KEY` leaks, an attacker could forge sessions — so it must be a strong random value in production. This is enforced: `ProductionConfig` **fails closed** and refuses to start if `SECRET_KEY` is unset or the public default (`'dev-secret-key-change-in-production'`), so a forgeable-session deploy can't run.
 - `PERMANENT_SESSION_LIFETIME = 7200` is configured, but the current login flow does not mark Flask sessions permanent; it is not an enforced two-hour logout by itself.
 - `delete_old_sessions()` exists to purge stale session rows, though it isn't auto-scheduled.
 
@@ -58,6 +58,16 @@ SESSION_COOKIE_SAMESITE = 'Lax'  # cookie not sent on cross-site POSTs (blunts C
 ```
 
 These three flags are the standard cookie-security trio. `Secure` is relaxed to `False` only in `DevelopmentConfig` so local HTTP testing works.
+
+### CSRF tokens (Flask-WTF)
+
+`SameSite=Lax` is no longer the *only* CSRF defense. The app enables Flask-WTF `CSRFProtect`, so every browser-facing state-changing request (`POST`/`PUT`/`PATCH`/`DELETE`) must carry a CSRF token:
+
+- Forms render `{{ csrf_token() }}` as a hidden field.
+- AJAX calls send it in the `X-CSRFToken` header — a small fetch/XHR shim in `base.html` and `chem/base.html` attaches it automatically to same-origin unsafe requests, so the existing `fetch()`-based admin and task actions work unchanged.
+- The device/IoT `api` blueprint is exempted (`csrf.exempt(api_bp)`) because sensors and instrument PCs can't carry a token; those endpoints rely on network perimeter trust (and, for Parylene batches, the session-ID allow-list — see §5).
+
+A request that's missing or has a bad token gets a `400`. `SameSite=Lax` now stands as a second, defense-in-depth layer behind the tokens.
 
 ## 3. Authorization (what are you allowed to do?)
 
@@ -93,6 +103,8 @@ if not auth_service.can_user_assign(current_user.username):
 
 **Important principle the code follows:** permissions are enforced **server-side**, not just hidden in the UI. The front-end may hide the "Create Task" button from users without `can_assign`, but even if someone POSTs directly to `/createtasks`, the server rejects it. Never trust the client to police itself.
 
+**Lockout protection.** The admin actions carry two extra guards so the panel can't be self-destructed: `deleteUser` and `toggleAdminStatus` refuse to act on the **current user's own account**, and refuse any change that would remove the **last remaining admin** (`admin_service.count_admins()`). So an admin can't accidentally delete themselves or demote the final admin and lock everyone out.
+
 ## 4. Input handling
 
 ### SQL injection
@@ -113,7 +125,7 @@ The `:barcode` value is sent to the database separately from the SQL text, so it
 ### Cross-site scripting (XSS)
 
 - **Jinja2 auto-escapes** all template variables by default — `{{ value }}` renders `<script>` as harmless text.
-- The auth service adds belt-and-suspenders escaping with `sanitize_input`, which trims, truncates, and HTML-escapes user input.
+- The auth service adds belt-and-suspenders escaping with `sanitize_input` (trims, truncates, HTML-escapes) on the **username and uNID**. Passwords are deliberately **not** run through it — they're hashed and never rendered, so escaping would only mangle and weaken them.
 
 ```python
 def sanitize_input(input_str, max_length=255):
@@ -124,7 +136,7 @@ def sanitize_input(input_str, max_length=255):
     return sanitized
 ```
 
-**One known sharp edge:** `data_service.csv_to_html_table` builds an HTML table by hand and does **not** escape cell contents. If a machine CSV ever contained `<script>`, it would render as live HTML. Since the CSVs are produced by trusted machine software, this is low-risk in practice — but it's the one place where the auto-escaping guarantee doesn't apply, and it's worth a future fix (escape each cell with `html.escape`).
+`data_service.csv_to_html_table` builds a machine-data table by hand, so it **escapes every header and cell with `html.escape`** before inserting it. Even if a machine CSV ever contained `<script>`, it renders as inert text rather than live HTML — the auto-escaping guarantee is preserved on this hand-built path too.
 
 ### Request size limits
 
@@ -161,6 +173,19 @@ if not filename.endswith('.csv'):
 
 String-based rejection plus an extension allow-list. Sufficient because the Flask route uses `<filename>` (not `<path:filename>`), so slashes can't appear anyway.
 
+### Parylene batch uploads: `X-Session-ID` allow-list
+
+The Parylene batch endpoints (`/sdsanalog`, `/sdsanalogfinished`) build a temp directory **and** the final combined filename out of the client-supplied `X-Session-ID` header. Left unchecked, a value like `../../../../tmp/x` would let an (unauthenticated) caller write files outside `LogData/`. So the id is strictly allow-listed before any path is built:
+
+```python
+_VALID_SESSION_ID = re.compile(r'^[0-9A-Za-z_-]{1,64}$')
+
+def _valid_session_id(session_id):
+    return bool(session_id) and bool(_VALID_SESSION_ID.match(session_id))
+```
+
+Anything containing `.`, `/`, or `\` is rejected with `400` before a file is touched — rejected outright rather than "sanitized," so a crafted value can't be quietly rewritten into something valid. Both the batch route and the finalize route check it, and `combine_csv_batches_final` re-checks as a backstop. The Parylene Pi sends an 8-character hex board id, which fits the allow-list.
+
 ### Medium: particle demo
 
 ```python
@@ -192,25 +217,29 @@ A fair security review names what *isn't* protected and why. These are conscious
 
 5. **The password-reset flow uses the uNID as the only secret** (no email confirmation, no Duo step). Anyone who knows a username and its associated uNID can reset that user's password. Since uNIDs are semi-public within the university, this is weaker than the login flow. Adding a Duo push to the reset flow would close it.
 
-6. **Timing oracle on login.** `verify_user_credentials` skips the bcrypt comparison when the username doesn't exist, so a non-existent username returns slightly faster than a wrong password. This is a minor information leak (an attacker can enumerate valid usernames) and is low-priority.
+6. **Login timing (mitigated).** `verify_user_credentials` always runs a bcrypt comparison — against a dummy hash when the username doesn't exist — so a missing account no longer returns faster than a wrong password, closing the username-enumeration timing leak. The raw-vs-legacy password fallback (see §2) is designed so the number of bcrypt operations depends only on the submitted password, not on whether the account exists.
 
 ## Summary scorecard
 
 | Area | Status |
 |------|--------|
 | HTTPS in transit | Strong (nginx TLS, Flask loopback-only) |
-| Password storage | Strong (bcrypt) |
+| `SECRET_KEY` handling | Strong (fail-closed: prod won't start on unset/default) |
+| Password storage | Strong (bcrypt; raw password hashed, never sanitized) |
 | Two-factor login | Strong (Duo, mandatory in production) |
-| Session cookies | Strong (Secure + HttpOnly + SameSite, 2-hour expiry) |
+| Session cookies | Strong (Secure + HttpOnly + SameSite) |
+| CSRF | Strong (Flask-WTF tokens on all browser POSTs; SameSite second layer; device API exempt) |
 | SQL injection | Strong (parameterized everywhere) |
-| XSS | Strong (Jinja auto-escape) with one unescaped CSV-table edge |
-| Path traversal | Strong on machine downloads; adequate elsewhere |
+| XSS | Strong (Jinja auto-escape; the hand-built CSV table escapes every cell too) |
+| Path traversal | Strong on machine downloads; Parylene batch `X-Session-ID` allow-listed; adequate elsewhere |
 | Upload safety | Strong (allow-list + secure_filename) |
+| Admin lockout | Strong (no self-delete / last-admin removal) |
+| Username enumeration | Mitigated (constant-time credential check) |
 | IoT endpoint auth | **Open by design** (perimeter trust) |
-| Chem inventory auth | **Open — write routes should be gated** |
+| Chem inventory auth | Gated (WordPress signed-token session) |
 | CORS | **Wide open — could be tightened** |
 | Password reset strength | **Weaker than login (uNID only)** |
 
-The headline: **the human-facing login path is well-secured** (bcrypt + Duo + hardened cookies + parameterized queries). **The machine-facing and inventory paths trade authentication for convenience**, relying on network perimeter security. That's a reasonable posture for an internal cleanroom tool, but the three bolded gaps (chem write routes, IoT auth, CORS) are the things to mention if anyone asks "what would you harden first?"
+The headline: **the human-facing login path is well-secured** (bcrypt + Duo + hardened cookies + CSRF tokens + parameterized queries), and the chem inventory is now gated behind a WordPress signed-token session. **The machine-facing (IoT) endpoints still trade authentication for convenience**, relying on network perimeter security — a reasonable posture for an internal cleanroom tool. The two things to mention if anyone asks "what would you harden first?" are **IoT endpoint auth** (an API-key header) and **CORS** (restrict to known internal origins); a Duo step on **password reset** is the third.
 
 Next: `15-Endpoint-Reference.md`.

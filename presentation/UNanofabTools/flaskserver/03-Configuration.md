@@ -42,7 +42,7 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 ```
 
-`SECRET_KEY` is the cryptographic key Flask uses to sign session cookies. If an attacker knows this key, they can forge logged-in sessions. The default `'dev-secret-key-change-in-production'` is intentionally awful — you must override it in production via the `.env`.
+`SECRET_KEY` is the cryptographic key Flask uses to sign session cookies (and CSRF tokens). If an attacker knows this key, they can forge logged-in sessions. The default `'dev-secret-key-change-in-production'` is intentionally awful — you must override it in production via the `.env`. This is now **enforced**: in production the app *refuses to start* if `SECRET_KEY` is unset or still the default (`ProductionConfig.init_app` raises), so you can't accidentally run live with a forgeable key. Generate one with `python -c "import secrets; print(secrets.token_hex(32))"`.
 
 ```python
     # Debug Mode
@@ -133,7 +133,7 @@ Four important security knobs for the login cookie:
 
 - **`SECURE`** — only send the cookie over HTTPS. Always `True` in production. The dev config below overrides this to `False` so plain HTTP works for local testing.
 - **`HTTPONLY`** — JavaScript in the browser cannot read the cookie. This is a big deal: it means an XSS bug (malicious JS injected into a page) cannot grab someone's login.
-- **`SAMESITE='Lax'`** — the cookie isn't sent on cross-site form submissions, which protects against most CSRF attacks.
+- **`SAMESITE='Lax'`** — the cookie isn't sent on cross-site form submissions, which blocks most CSRF attacks. This is now a *second* layer: the app also uses Flask-WTF `CSRFProtect`, so every browser form and AJAX call must carry a CSRF token (the device/IoT API is exempt). See the Security Model deck for details.
 - **`PERMANENT_SESSION_LIFETIME = 7200`** — the lifetime Flask would apply to sessions marked permanent. The current login flow does not mark the cookie session permanent, so this is not an enforced two-hour logout by itself.
 
 ### Uploads and data folders

@@ -25,6 +25,7 @@ The application is constructed via the **application-factory pattern** (`app/cre
 | ORM core / engine (PostgreSQL) | SQLAlchemy | 2.0.25 |
 | Password hashing | Flask-Bcrypt 1.0.1 / bcrypt 4.1.2 | — |
 | Schema migrations | Flask-Migrate (Alembic) | — |
+| CSRF protection | Flask-WTF (`CSRFProtect`) | 1.2.1 |
 | CORS | Flask-CORS | 4.0.0 |
 | 2FA | duo-client | 5.3.0 |
 | PostgreSQL driver | psycopg2-binary | 2.9.9 |
@@ -109,7 +110,7 @@ Factory responsibilities, in order:
 1. Instantiate `Flask(__name__)`.
 2. Load config from the selected config class (`app.config.from_object`) and run its `init_app` hook (absolute-path resolution; production logging).
 3. Enable CORS for all origins/routes.
-4. Bind extensions: SQLAlchemy (`db`), Flask-Login, Bcrypt, Flask-Migrate.
+4. Bind extensions: SQLAlchemy (`db`), Flask-Login, Bcrypt, Flask-Migrate, and Flask-WTF `CSRFProtect` (the device/IoT `api` blueprint is then `csrf.exempt`-ed).
 5. Configure Flask-Login (`login_view = 'auth.login'`, messages).
 6. Register the `fmtdate` Jinja filter (date formatting for chem templates).
 7. Import and register all seven blueprints.

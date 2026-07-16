@@ -14,7 +14,7 @@ Complete reference for every route the server exposes. Routes are grouped by blu
 ### `GET|POST /login` — Public
 - **GET**: renders `login.html`.
 - **POST form**: `username`, `password`.
-- **Behavior**: `sanitize_input` both fields → `verify_user_credentials`. If valid and `DEBUG_MODE`, create session + `login_user` + redirect `tasks.index`. If valid and not debug, run `duo_authenticate(user.unid)`; on `allow`, proceed; else flash `'2FA authentication failed'` and redirect to login. Invalid creds flash `'Invalid credentials'`.
+- **Behavior**: `sanitize_input` on the username (the **password is passed raw** — not sanitized) → `verify_user_credentials`. If valid and `DEBUG_MODE`, create session + `login_user` + redirect `tasks.index`. If valid and not debug, run `duo_authenticate(user.unid)`; on `allow`, proceed; else flash `'2FA authentication failed'` and redirect to login. Invalid creds flash `'Invalid credentials'`.
 - **Responses**: 302 redirect to `/tasks` on success; 302 back to `/login` on failure (with flash).
 
 ### `GET|POST /signup` — Public
@@ -152,13 +152,14 @@ All routes are `Device` (no auth). Intended for private-network devices and desk
 ### `POST /sdsanalog` — Device
 - **Headers**: `Content-Type: text/csv`; `X-Session-ID`, `X-Batch-Number`, `X-Total-Batches` (all required); `X-Is-Final-Batch` (optional, `"true"`).
 - **Body**: raw CSV text (one batch).
+- **Session-ID validation**: `X-Session-ID` is used to build the temp directory and the combined filename, so it is strictly allow-listed (`^[0-9A-Za-z_-]{1,64}$`, via `_valid_session_id`) to block path traversal. A value containing `.`, `/`, or `\` is rejected with `400` before anything is written.
 - **Behavior**: writes the batch to `LogData/Paralyne/temp/<session>/batch_NNNN.csv`; writes `start_time.txt` on first batch; when received-count == total or final flag, calls `combine_csv_batches_final(session, cleanup=False)`.
-- **Responses**: `200 {"status":"success","message":"Batch n/m received","session_id":...}`; `400` missing headers / wrong content-type; `500` on error.
+- **Responses**: `200 {"status":"success","message":"Batch n/m received","session_id":...}`; `400` missing headers / wrong content-type / invalid session id; `500` on error.
 
 ### `POST /sdsanalogfinished` — Device
-- **Input**: `session_id` from JSON body or `X-Session-ID` header.
-- **Behavior**: `combine_csv_batches_final(session)` (cleanup=True default) → writes `LogData/Paralyne/analog/<ts>_SDSLOG_combined_<session>.csv`, removes temp dir.
-- **Responses**: `200 {"status":"session_finalized",...}`; `500` on error.
+- **Input**: `session_id` from JSON body or `X-Session-ID` header (same allow-list validation as `/sdsanalog`; an invalid id returns `400`).
+- **Behavior**: `combine_csv_batches_final(session)` (cleanup=True default) → writes `LogData/Paralyne/analog/<ts>_SDSLOG_combined_<session>.csv`, removes temp dir. `combine_csv_batches_final` re-validates the id as a backstop.
+- **Responses**: `200 {"status":"session_finalized",...}`; `400` invalid session id; `500` on error.
 
 ### `POST /denton18pump` — Device
 - **JSON body**: `{ "pressure": <raw ADC int> }`.

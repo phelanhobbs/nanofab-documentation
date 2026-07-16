@@ -4,3 +4,11 @@
 ~$*
 support/.pending-drift.jsonl
 **/__pycache__/
+
+# Slide build artifacts — regenerate with `npm install pptxgenjs` then
+# `node build_all.js` (flaskserver) or `node build_tool.js tooldecks/<name>.js`.
+node_modules/
+**/_build/out/
+**/_build/out_tools/
+**/_build/package.json
+**/_build/package-lock.json

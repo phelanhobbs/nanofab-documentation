@@ -156,14 +156,14 @@ module.exports = {
       headers: ["Mistake", "Consequence / fix"],
       rows: [
         ["DEBUG_MODE on in production", "Two-factor silently disabled → set it False"],
-        ["Default SECRET_KEY left in place", "Logins can be forged → set a strong random value"],
+        ["Default SECRET_KEY left in place", "Now blocked: production refuses to start on the default/unset key (fail-closed) — set a strong random value"],
         ["Default DB password ('changeme')", "Easily guessed → set a real password"],
         ["Missing logs/ folder", "Production won't start → create the folder"],
       ],
       colW: [4.6, 7.3],
       notes:
         "Walk the failure modes a new operator is most likely to hit. The most dangerous is leaving DEBUG_MODE on in production because it " +
-        "quietly turns off two-factor. Leaving the placeholder secret key allows forged logins. The default database password is trivially " +
+        "quietly turns off two-factor. The placeholder secret key would allow forged logins — but the app now fails closed on it: in production it refuses to start if SECRET_KEY is unset or the default, so you can't accidentally ship a forgeable key. The default database password is trivially " +
         "guessable. And production logging needs a logs folder to exist or the app refuses to start. Each has a one-line fix. This slide is " +
         "essentially a pre-launch checklist.",
     });

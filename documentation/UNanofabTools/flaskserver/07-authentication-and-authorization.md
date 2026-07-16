@@ -17,13 +17,14 @@ There is no role table and no per-resource ACL; authorization is entirely these 
 
 - Hashing: `bcrypt.hashpw(password.encode(), bcrypt.gensalt())` (default cost ≈ 12). Plaintext is never stored.
 - Verification: `bcrypt.checkpw(...)`.
-- All credential input is run through `auth_service.sanitize_input` (strip, truncate to 255, `html.escape`) before use.
+- The **username and uNID** are run through `auth_service.sanitize_input` (strip, truncate to 255, `html.escape`) before use.
+- The **password is used raw** — never sanitized or escaped. It is hashed, never rendered, so escaping would only mangle and weaken it (and would couple every stored hash to the sanitizer's exact behavior). `verify_user_credentials` verifies the raw password first, then falls back to a frozen legacy transform (`_legacy_sanitize`) for accounts whose hash predates this change, transparently re-hashing them to the raw password on a successful login. Timing is equalized against a dummy hash so a missing username can't be told apart by response time.
 
 ## 7.3 Login flow (`POST /login`)
 
 ```
-sanitize(username,password)
-   └─ verify_user_credentials(username,password)   # username lookup + bcrypt
+sanitize(username)                               # password passed raw (not sanitized)
+   └─ verify_user_credentials(username,password)   # username lookup + bcrypt (+ legacy fallback)
         ├─ None  → flash 'Invalid credentials' → redirect /login
         └─ User  → if DEBUG_MODE:
                        create_user_session → flask_session['session_id'] → login_user → redirect /tasks
@@ -50,7 +51,7 @@ Session lifetime: `PERMANENT_SESSION_LIFETIME = 7200` seconds (2 hours) is confi
 ## 7.5 Signup flow (`POST /signup`)
 
 ```
-sanitize(username,password,unid)
+sanitize(username,unid)                          # password passed raw
    └─ reject if username exists
    └─ if DEBUG_MODE: create_user → redirect /login
       else: duo_authenticate(unid) → if allow: create_user → /login ; else flash → /signup
@@ -61,7 +62,7 @@ Because Duo runs against the supplied `unid` before the account is created, you 
 ## 7.6 Password reset (`POST /resetpassword`)
 
 ```
-sanitize(username,unid,new_password)
+sanitize(username,unid)                          # new_password passed raw
    └─ verify_user_unid(username,unid)   # both must match an existing row
         ├─ True  → update_user_password → flash success → /login
         └─ False → flash 'Invalid username or UNID' → /resetpassword
@@ -104,6 +105,8 @@ def admin_required(f):
 ```
 Stacked **below** `@login_required` on every admin route, so the effective requirement is "authenticated AND `is_admin`."
 
+**Lockout guards.** `deleteUser` and `toggleAdminStatus` additionally refuse to act on the **current user's own account** and refuse any change that would remove the **last remaining admin** (`admin_service.count_admins()`), so an admin can't accidentally delete themselves or demote the final admin and lock everyone out of the panel. Both parse the JSON body defensively (`get_json(silent=True)`), returning `400`/`404` instead of a `500` on a malformed or missing body.
+
 ### `can_assign` (inline check, `tasks.create_task`)
 Not a decorator; checked in the view body:
 ```python
@@ -129,7 +132,7 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 | `/logout` | authenticated | `@login_required` |
 | `/tasks`, task actions, `/users` | authenticated | `@login_required` |
 | `/createtasks` | authenticated + `can_assign` | `@login_required` + inline check |
-| All `/adminpanel`, `/deleteUser`, `/toggle*` | authenticated + `is_admin` | `@login_required` + `@admin_required` |
+| All `/adminpanel`, `/deleteUser`, `/toggle*` | authenticated + `is_admin` (+ self / last-admin lockout guards on delete & admin-toggle) | `@login_required` + `@admin_required` |
 | All machine routes | authenticated | `@login_required` |
 | All `/api/*` device routes | none | public (perimeter trust) |
 | All `/chem/*` routes | WordPress signed-token session (`before_request`) | **gated since 2026-06-25** — `/chem/enter` validates an HMAC link (`CHEM_SSO_SECRET`) and sets `session['chem_authed']`; others 302 to staff-tools |
@@ -139,7 +142,8 @@ Order matters: `@login_required` must precede `@admin_required` so unauthenticat
 
 - TLS terminated by nginx; Flask binds loopback only (see `09`).
 - Session cookie flags (config): `Secure` (prod), `HttpOnly`, `SameSite=Lax`.
-- `SECRET_KEY` signs the Flask-Login cookie; protect it. The dev default is unusable in production.
+- **CSRF protection (Flask-WTF `CSRFProtect`).** All browser-facing state-changing routes (`POST`/`PUT`/`PATCH`/`DELETE`) require a CSRF token: forms include `{{ csrf_token() }}`, and AJAX sends it via the `X-CSRFToken` header — a small fetch/XHR shim in `base.html` and `chem/base.html` attaches it automatically to same-origin unsafe requests, so the existing `fetch()`-based admin and task actions work unchanged. The device/IoT `api` blueprint is exempted (`csrf.exempt(api_bp)`) because sensors can't carry a token. `SameSite=Lax` is now a second layer, not the only CSRF defense.
+- `SECRET_KEY` signs the Flask-Login cookie and CSRF tokens; protect it. In production the app **fails closed** — `ProductionConfig.init_app` refuses to start if `SECRET_KEY` is unset or still the dev default.
 
 ## 7.11 Practical guidance for the maintainer
 

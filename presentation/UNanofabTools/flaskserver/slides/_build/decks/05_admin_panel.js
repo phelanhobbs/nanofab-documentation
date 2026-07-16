@@ -63,12 +63,13 @@ module.exports = {
         "The web page hides admin buttons from non-admins.",
         "But hiding a button isn't security — anyone could try the action directly.",
         "So the server independently re-checks permission on every action.",
+        "It also refuses to let you delete your own account or the last admin — no accidental lockout.",
         "Rule of thumb: never trust the browser to police itself.",
       ],
       notes:
         "An important security principle, told simply. The page hides admin buttons from people who shouldn't see them — but that's just " +
         "convenience, not protection, because a determined person could try the underlying action directly. So the server checks permission " +
-        "again on its own, every time. The general lesson, which recurs across the system: the front end is for friendliness; the server is " +
+        "again on its own, every time. It also has two lockout guards: it won't delete or demote your own account, and it won't remove the last remaining admin — so nobody can accidentally lock everyone out of the panel. The general lesson, which recurs across the system: the front end is for friendliness; the server is " +
         "for enforcement.",
     });
 

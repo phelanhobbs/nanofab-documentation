@@ -45,6 +45,7 @@ So when you open a machine's page on the website and see a table of recent runs,
 - It runs on a **schedule**, automatically and unattended, and is designed to shut down cleanly when asked.
 - It uses a **secret access token** to talk to CORES. That token now lives in a protected settings file (`.env`), not in the program, and it was **rotated (replaced with a fresh one) on 2026-06-29** after the original had been left in the code's history. (The same token is shared with the Precious Metal Reader, which now needs the new token applied too.)
 - Each machine's formatting lives in its own function, so adding or adjusting a machine is a localized change.
+- **One machine's problem no longer sinks the whole run.** Each machine is downloaded and saved inside its own safety net, so if one tool's data is malformed or the network hiccups on it, that one is logged and skipped and the rest still update. The download also has a **time limit**, so a stuck request from CORES can't freeze the entire nightly run.
 - A couple of machines are noted in the code as "currently has no data" — expected gaps, not bugs.
 
 In short: HSCDownloader is the quiet supply line that keeps the website's machine data current by pulling it from CORES and laying it out as spreadsheets the site can display.
